@@ -22,7 +22,7 @@ const mockedUseStaticQuery = useStaticQuery.mockImplementation(() => ({
 
 test('gatsby-image actually renders image', () => {
   render(<StaticImage />)
-  const image = screen.getByRole('img', { name: /gatsby image/i })
+  const image = screen.getByRole('img', { name: /bruden image/i })
   expect(mockedUseStaticQuery).toHaveBeenCalledTimes(1)
   expect(image).toBeInTheDocument()
 })

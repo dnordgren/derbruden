@@ -5,8 +5,8 @@ import styled from '@emotion/styled'
 import { transitions, size, padding } from 'polished'
 import media from '@/utils/media'
 import { Theme, ThemeProps } from '@theme'
-import { ReactComponent as LogoIcon } from '@/icons/logo.svg'
-import { ReactComponent as GithubIcon } from '@/icons/github.svg'
+import { ReactComponent as LogoIcon } from '@/icons/american-football-helmet.svg'
+import { ReactComponent as FooterIcon } from '@/icons/american-football-ball-motion.svg'
 
 const Header = styled.header(({ theme }: ThemeProps) => ({
   display: 'grid',
@@ -55,7 +55,6 @@ const Footer = styled.footer(({ theme }: ThemeProps) => ({
 }))
 
 interface LayoutProps {
-  /** Page content */
   children: React.ReactNode
 }
 
@@ -72,21 +71,18 @@ const Layout = ({ children }: LayoutProps) => {
           }}
         />
         <Link to="/" css={theme.typography.styles.title}>
-          Gatsby Starter Vadyan
+          Der Bruden
         </Link>
         <Nav>
-          <StyledLink to="/" activeClassName="active">
-            Quick start
-          </StyledLink>
-          <StyledLink to="/showcase/" activeClassName="active">
-            Showcase
+          <StyledLink to="https://fantasy.espn.com/football/league?leagueId=794521" activeClassName="active">
+            ESPN League Home
           </StyledLink>
         </Nav>
       </Header>
       <Main>{children}</Main>
       <Footer>
-        <a href="https://github.com/p1t1ch/gatsby-starter" target="_blank" rel="noopener noreferrer">
-          <GithubIcon width={48} title="Project page on Github" />
+        <a href="https://github.com/dnordgren/derbruden" target="_blank" rel="noopener noreferrer">
+          <FooterIcon width={48} height={'100%'} title="Project page on GitHub" />
         </a>
       </Footer>
     </div>

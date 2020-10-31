@@ -11,6 +11,6 @@ test('renders content passed in children', () => {
 
 test('title in header must be a link to the main page', () => {
   render(<Layout>Page content</Layout>)
-  const title = screen.getByRole('link', { name: /gatsby starter vadyan/i })
+  const title = screen.getByRole('link', { name: /der bruden/i })
   expect(title).toHaveAttribute('href', '/')
 })

@@ -68,8 +68,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: "derbruden.com",
+        bucketName: 'derbruden.com',
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'markdown-pages',
+        path: `${__dirname}/src/markdown-pages`,
+      },
+    },
+    'gatsby-transformer-remark',
   ],
 }

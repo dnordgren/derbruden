@@ -7,7 +7,7 @@ import { ThemeProps } from '@theme'
 
 const ImageWrapper = styled.div(({ theme }: ThemeProps) => ({
   width: '100%',
-  maxWidth: '25rem',
+  maxWidth: '40rem',
   ...padding('0.5rem', '1.5rem'),
   border: `4px solid ${theme.colors.purpleDark}`,
   borderRadius: 8,

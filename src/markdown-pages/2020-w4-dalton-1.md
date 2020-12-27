@@ -1,6 +1,6 @@
 ---
-slug: "/owners-updates/2020-w4-dalton-1"
-date: "2020-10-09"
+slug: '/owners-updates/2020-w4-dalton-1'
+date: '2020-10-09'
 title: "Dalton's Week 13 Owners Update"
 ---
 

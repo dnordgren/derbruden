@@ -74,6 +74,9 @@ const Layout = ({ children }: LayoutProps) => {
           Der Bruden
         </Link>
         <Nav>
+          <StyledLink to="/owners-updates/" activeClassName="active">
+            Owners Updates
+          </StyledLink>
           <StyledLink to="https://fantasy.espn.com/football/league?leagueId=794521" activeClassName="active">
             ESPN League Home
           </StyledLink>

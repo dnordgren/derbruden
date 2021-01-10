@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '@/components/Layout'
 import Seo from '@/components/Seo'
-import StaticImage from '@/components/StaticImage'
+import StaticImage from '@/components/DiaperImg2019'
 import SelectCharacter from '@/components/SelectCharacter'
 
 const ShowcasePage = () => {

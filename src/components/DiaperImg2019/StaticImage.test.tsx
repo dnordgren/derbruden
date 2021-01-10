@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@test-utils'
 import * as Gatsby from 'gatsby'
-import StaticImage from '@/components/StaticImage'
+import StaticImage from '@/components/DiaperImg2019'
 
 const useStaticQuery = jest.spyOn(Gatsby, 'useStaticQuery')
 const mockedUseStaticQuery = useStaticQuery.mockImplementation(() => ({

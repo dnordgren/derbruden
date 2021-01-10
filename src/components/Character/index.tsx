@@ -9,8 +9,8 @@ const Article = styled.article(({ theme }: ThemeProps) => ({
   display: 'flex',
   alignItems: 'center',
   padding: '1rem',
-  backgroundColor: theme.colors.purpleLight,
-  color: theme.colors.purpleDark,
+  backgroundColor: theme.colors.light,
+  color: theme.colors.barstoolBlue,
   boxShadow: theme.shadows.basic,
 }))
 
@@ -71,9 +71,9 @@ const Character = ({ id }: CharacterProps) => {
   const fallbackText = 'loading...'
   const fallbackData: CharacterData = {
     character: {
-      image: `https://dummyimage.com/${imageSize}x${imageSize}/${theme.colors.purpleDark.slice(
+      image: `https://dummyimage.com/${imageSize}x${imageSize}/${theme.colors.barstoolBlue.slice(
         1
-      )}/${theme.colors.purpleLight.slice(1)}.png&text=${fallbackText}`,
+      )}/${theme.colors.light.slice(1)}.png&text=${fallbackText}`,
       name: fallbackText,
       species: fallbackText,
       origin: {

@@ -18,11 +18,11 @@ const Wrapper = styled.div(() => ({
 const Button = styled.button(({ theme }: ThemeProps) => ({
   ...padding('1rem', '0.5rem'),
   ...linearGradient({
-    colorStops: [`${theme.colors.purpleDark} 10%`, `${theme.colors.purple} 51%`, `${theme.colors.purpleDark} 90%`],
+    colorStops: [`${theme.colors.barstoolBlue} 10%`, `${theme.colors.light} 51%`, `${theme.colors.barstoolBlue} 90%`],
     toDirection: 'to right',
-    fallback: theme.colors.purpleDark,
+    fallback: theme.colors.barstoolBlue,
   }),
-  color: theme.colors.purpleLight,
+  color: theme.colors.light,
   borderRadius: 4,
   boxShadow: theme.shadows.basic,
   backgroundSize: '200% auto',

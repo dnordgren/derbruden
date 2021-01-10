@@ -9,10 +9,10 @@ const ImageWrapper = styled.div(({ theme }: ThemeProps) => ({
   width: '100%',
   maxWidth: '40rem',
   ...padding('0.5rem', '1.5rem'),
-  border: `4px solid ${theme.colors.purpleDark}`,
+  border: `4px solid ${theme.colors.barstoolBlue}`,
   borderRadius: 8,
   boxShadow: theme.shadows.basic,
-  backgroundColor: theme.colors.purpleLight,
+  backgroundColor: theme.colors.light,
 }))
 
 interface StaticImageQuery {
@@ -28,7 +28,7 @@ const StaticImage = () => {
     query {
       file(relativePath: { eq: "bruden2017.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 400, traceSVG: { color: "#362066" }) {
+          fluid(maxWidth: 400, traceSVG: { color: "#141e30" }) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }

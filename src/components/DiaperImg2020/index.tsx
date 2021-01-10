@@ -9,10 +9,10 @@ const ImageWrapper = styled.div(({ theme }: ThemeProps) => ({
   width: '100%',
   maxWidth: '40rem',
   ...padding('0.5rem', '1.5rem'),
-  border: `4px solid ${theme.colors.purpleDark}`,
+  border: `4px solid ${theme.colors.barstoolBlue}`,
   borderRadius: 8,
   boxShadow: theme.shadows.basic,
-  backgroundColor: theme.colors.purpleLight,
+  backgroundColor: theme.colors.light,
 }))
 
 interface StaticImageQuery {

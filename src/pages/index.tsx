@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '@/components/Layout'
 import Seo from '@/components/Seo'
+import DiaperImg2020 from '@/components/DiaperImg2020'
 import DiaperImg2019 from '@/components/DiaperImg2019'
 import DiaperImg2018 from '@/components/DiaperImg2018'
 import DiaperImg2017 from '@/components/DiaperImg2017'
@@ -11,13 +12,16 @@ const IndexPage = () => {
     <Layout>
       <Seo title="Der Bruden Home" />
       <h1>Don&apos;t Come in Last</h1>
-      <p>2019:</p>
+      <h2>2020</h2>
+      <p>All hail the champion, Midnight in Montgomery</p>
+      <DiaperImg2020 />
+      <h2>2019</h2>
       <DiaperImg2019 />
-      <p>2018:</p>
+      <h2>2018</h2>
       <DiaperImg2018 />
-      <p>2017:</p>
+      <h2>2017</h2>
       <DiaperImg2017 />
-      <p>2016:</p>
+      <h2>2016</h2>
       <DiaperImg2016 />
     </Layout>
   )

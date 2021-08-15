@@ -2,9 +2,11 @@
 // In project they are available via useTheme hook or prop in styled components
 
 const colors = {
-  purple: '#639',
-  purpleLight: '#fcfaff',
-  purpleDark: '#362066',
+  purple: '#f5f5f5',
+  light: '#f5f5f5',
+  barstoolBlue: '#141e30',
+  barstoolSecondary: '#757575',
+  barstoolRed: '#c62232',
 }
 
 const breakpoints = {
@@ -61,7 +63,7 @@ const typography = {
 }
 
 const shadows = {
-  basic: `0 0 4px 1px ${colors.purpleDark}`,
+  basic: `0 0 4px 1px ${colors.barstoolBlue}`,
 }
 
 const transitions = {

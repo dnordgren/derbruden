@@ -18,8 +18,8 @@ const GlobalStyles = () => {
             boxSizing: 'border-box',
           },
           '::selection': {
-            backgroundColor: theme.colors.purpleDark,
-            color: theme.colors.purpleLight,
+            backgroundColor: theme.colors.barstoolBlue,
+            color: theme.colors.light,
           },
           html: {
             fontFamily: [theme.typography.family, ...theme.typography.stacks.sansSerif].join(', '),
@@ -30,8 +30,8 @@ const GlobalStyles = () => {
           },
           body: {
             ...theme.typography.styles.body,
-            backgroundColor: theme.colors.purpleDark,
-            color: theme.colors.purpleLight,
+            backgroundColor: theme.colors.barstoolBlue,
+            color: theme.colors.barstoolBlue,
           },
           'h1, h2, h3, h4, h5, h6, p, ol, ul, dl, dd, hr, blockquote, figure': {
             margin: 0,
@@ -43,7 +43,7 @@ const GlobalStyles = () => {
             outline: 'none',
           },
           ':focus': {
-            outline: `3px solid ${theme.colors.purpleLight}`,
+            outline: `3px solid ${theme.colors.light}`,
             outlineOffset: 2,
           },
           [buttons()]: {
@@ -51,15 +51,18 @@ const GlobalStyles = () => {
             padding: 0,
             background: 'none',
             cursor: 'pointer',
-            color: theme.colors.purpleLight,
+            color: theme.colors.light,
             ...transitions(['color', 'background-color'], theme.transitions.long),
             ':hover': {
               ...transitions(['color', 'background-color'], theme.transitions.short),
             },
           },
+          p: {
+            color: theme.colors.barstoolSecondary,
+          },
           a: {
             textDecoration: 'none',
-            color: theme.colors.purpleLight,
+            color: theme.colors.barstoolSecondary,
             ...transitions(['color'], theme.transitions.long),
             ':hover': {
               ...transitions(['color'], theme.transitions.short),

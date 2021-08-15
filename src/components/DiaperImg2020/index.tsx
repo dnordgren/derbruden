@@ -26,7 +26,7 @@ interface StaticImageQuery {
 const StaticImage = () => {
   const data: StaticImageQuery = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "bruden2019.jpg" }) {
+      file(relativePath: { eq: "bruden2020.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 400, traceSVG: { color: "#141e30" }) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG

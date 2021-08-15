@@ -15,7 +15,7 @@ const Header = styled.header(({ theme }: ThemeProps) => ({
   gridRowGap: '0.5rem',
   alignItems: 'center',
   padding: '1rem',
-  backgroundColor: theme.colors.purpleDark,
+  backgroundColor: theme.colors.barstoolBlue,
   boxShadow: theme.shadows.basic,
   zIndex: 1,
   [media.sm]: { gridTemplateColumns: 'auto 1fr', gridColumnGap: '1rem' },
@@ -42,12 +42,12 @@ const Main = styled.main(({ theme }: ThemeProps) => ({
   alignContent: 'start',
   gridGap: '1.5rem',
   ...padding('3rem', '1rem'),
-  backgroundColor: theme.colors.purple,
+  backgroundColor: theme.colors.light,
   [media.sm]: { ...padding('1.5rem', null) },
 }))
 
 const Footer = styled.footer(({ theme }: ThemeProps) => ({
-  backgroundColor: theme.colors.purpleDark,
+  backgroundColor: theme.colors.barstoolBlue,
   ...padding('0.5rem', '1rem'),
   textAlign: 'center',
   boxShadow: theme.shadows.basic,
@@ -68,23 +68,33 @@ const Layout = ({ children }: LayoutProps) => {
           css={{
             ...size('6.5rem'),
             [media.sm]: { ...size('4rem') },
+            color: theme.colors.barstoolRed,
           }}
         />
-        <Link to="/" css={theme.typography.styles.title}>
+        <Link to="/" css={theme.typography.styles.title} style={{ color: theme.colors.light }}>
           Der Bruden
         </Link>
         <Nav>
-          <StyledLink to="/owners-updates/" activeClassName="active">
+          <StyledLink to="/owners-updates/" activeClassName="active" style={{ color: theme.colors.light }}>
             Owners Updates
           </StyledLink>
-          <StyledLink to="https://fantasy.espn.com/football/league?leagueId=794521" activeClassName="active">
+          <StyledLink
+            to="https://fantasy.espn.com/football/league?leagueId=794521"
+            activeClassName="active"
+            style={{ color: theme.colors.light }}
+          >
             ESPN League Home
           </StyledLink>
         </Nav>
       </Header>
       <Main>{children}</Main>
       <Footer>
-        <a href="https://github.com/dnordgren/derbruden" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://github.com/dnordgren/derbruden"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: theme.colors.light }}
+        >
           <FooterIcon width={48} height={'100%'} title="Project page on GitHub" />
         </a>
       </Footer>

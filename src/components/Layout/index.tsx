@@ -77,9 +77,9 @@ const Layout = ({ children }: LayoutProps) => {
           Der Bruden
         </StyledLink>
         <Nav>
-          <StyledLink to="/chat/" activeClassName="active" style={{ color: theme.colors.light }}>
+          {/* <StyledLink to="/chat/" activeClassName="active" style={{ color: theme.colors.light }}>
             Chat
-          </StyledLink>
+          </StyledLink> */}
           <StyledLink to="/owners-updates/" activeClassName="active" style={{ color: theme.colors.light }}>
             Owners Updates
           </StyledLink>

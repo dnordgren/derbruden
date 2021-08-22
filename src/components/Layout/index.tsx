@@ -24,6 +24,7 @@ const Header = styled.header(({ theme }: ThemeProps) => ({
 const Nav = styled.nav(() => ({
   [media.sm]: { gridColumn: 2 },
   'a:not(:last-child)': { marginRight: '1rem' },
+  fontSize: '1.5rem',
 }))
 
 const StyledLink = styled(Link)(({ theme }: ThemeProps) => ({
@@ -33,6 +34,7 @@ const StyledLink = styled(Link)(({ theme }: ThemeProps) => ({
     fontWeight: 800,
     ...transitions(['font-weight'], theme.transitions.short),
   },
+  fontSize: '1.5rem',
 }))
 
 const Main = styled.main(({ theme }: ThemeProps) => ({
@@ -71,9 +73,9 @@ const Layout = ({ children }: LayoutProps) => {
             color: theme.colors.barstoolRed,
           }}
         />
-        <Link to="/" css={theme.typography.styles.title} style={{ color: theme.colors.light }}>
+        <StyledLink to="/" css={theme.typography.styles.title} style={{ color: theme.colors.light }}>
           Der Bruden
-        </Link>
+        </StyledLink>
         <Nav>
           <StyledLink to="/chat/" activeClassName="active" style={{ color: theme.colors.light }}>
             Chat

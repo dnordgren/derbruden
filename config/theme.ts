@@ -7,6 +7,8 @@ const colors = {
   barstoolBlue: '#141e30',
   barstoolSecondary: '#757575',
   barstoolRed: '#c62232',
+  uniformLeContrastInk: '#232a31',
+  uniformElectric: '#009ce3',
 }
 
 const breakpoints = {

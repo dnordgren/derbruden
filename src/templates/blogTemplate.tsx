@@ -3,10 +3,35 @@ import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { ThemeProps } from '@theme'
 import Layout from '@/components/Layout'
+import { margin, padding } from 'polished'
 
 const BlogPostWrapper = styled.div(({ theme }: ThemeProps) => ({
-  margin: '3rem',
-  backgroundColor: theme.colors.light,
+  ...padding('4rem', '8rem'),
+  ...margin('0rem', '3rem'),
+  backgroundColor: 'white',
+  boxShadow: '4px 3px 8px 1px #969696',
+  maxWidth: '1000px',
+  height: '100%',
+  h2: {
+    marginTop: '1rem',
+    marginBottom: '0.5rem',
+    color: theme.colors.barstoolSecondary,
+  },
+  h3: {
+    marginTop: '1rem',
+  },
+  p: {
+    marginTop: '0.75rem',
+    marginBottom: '0.75rem',
+    color: theme.colors.uniformLeContrastInk,
+  },
+  li: {
+    listStyle: 'circle',
+    listStylePosition: 'inside',
+  },
+  a: {
+    color: theme.colors.uniformElectric,
+  }
 }))
 
 export default function Template({
@@ -18,12 +43,10 @@ export default function Template({
   return (
     <Layout>
       <BlogPostWrapper>
-        <div className="blog-post-container">
-          <div className="blog-post">
-            <h1>{frontmatter.title}</h1>
-            <h2>{frontmatter.date}</h2>
-            <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: html }} />
-          </div>
+        <div className="blog-post">
+          <h1>{frontmatter.title}</h1>
+          <h2>{frontmatter.date}</h2>
+          <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: html }} />
         </div>
       </BlogPostWrapper>
     </Layout>

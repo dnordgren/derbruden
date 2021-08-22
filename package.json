@@ -63,6 +63,7 @@
     "@emotion/styled": "^10.0.27",
     "@svgr/webpack": "^5.4.0",
     "@widgetbot/react-embed": "^1.4.0",
+    "browser-monads": "^1.0.0",
     "cross-fetch": "^3.0.6",
     "emotion-theming": "^10.0.27",
     "focus-visible": "^5.2.0",

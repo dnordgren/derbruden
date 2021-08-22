@@ -75,6 +75,9 @@ const Layout = ({ children }: LayoutProps) => {
           Der Bruden
         </Link>
         <Nav>
+          <StyledLink to="/chat/" activeClassName="active" style={{ color: theme.colors.light }}>
+            Chat
+          </StyledLink>
           <StyledLink to="/owners-updates/" activeClassName="active" style={{ color: theme.colors.light }}>
             Owners Updates
           </StyledLink>
@@ -83,7 +86,7 @@ const Layout = ({ children }: LayoutProps) => {
             activeClassName="active"
             style={{ color: theme.colors.light }}
           >
-            ESPN League Home
+            ESPN League
           </StyledLink>
         </Nav>
       </Header>

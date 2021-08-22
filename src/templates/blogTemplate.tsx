@@ -26,7 +26,7 @@ const BlogPostWrapper = styled.div(({ theme }: ThemeProps) => ({
     color: theme.colors.uniformLeContrastInk,
   },
   li: {
-    listStyle: 'circle',
+    listStyle: 'disc',
     listStylePosition: 'inside',
   },
   a: {

@@ -3,10 +3,8 @@ import Layout from '@/components/Layout'
 import WidgetBot from '@widgetbot/react-embed'
 
 const ChatPage = () => {
-  // @ts-ignore
-  const browserHeight = isNaN(window.innerHeight) ? window.clientHeight : window.innerHeight
-  // @ts-ignore
-  const browserWidth = isNaN(window.innerWidth) ? window.clientWidth : window.innerWidth
+  const browserHeight = document.body.offsetHeight
+  const browserWidth = document.body.offsetWidth
 
   const discordWidgetHeight = Math.max(browserHeight - 200 - 100, 500) // 200 = height of header, footer + padding
   const discordWidgetWidth = Math.max(browserWidth - 150, 500) // padding

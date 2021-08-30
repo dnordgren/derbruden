@@ -31,7 +31,7 @@ The site is hosted on Amazon S3 and deployed via [Gatsby's tooling](https://www.
 In order to deploy, run the command:
 
 ```cli
-yarn run deploy
+gatsby build && yarn run deploy
 ```
 
 This uses the `aws` CLI. If you have multiple profiles set up in your credentials, you can declare the correct credentials like:

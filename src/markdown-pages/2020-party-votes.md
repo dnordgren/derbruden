@@ -7,7 +7,7 @@ title: '2020 Der Bruden Fantasy Party | Owner Votes'
 ## Highlights
 
 - No Owner voted out
-- Cole awarded the Golden Quill for his [Doo-Dah Man](https://derbruden.com/owners-updates/2020-w1-cole-1)
+- Cole awarded the Golden Quill for his [Doo-Dah Man](/owners-updates/2020-w1-cole-1)
 - DEF points changes
 - Keeper league based on 2021 draft picks set for 2022 season
 - Snake draft order changes
@@ -44,7 +44,7 @@ title: '2020 Der Bruden Fantasy Party | Owner Votes'
 
 **Overview**: Cole vs Alec.
 
-**Verdict**: Cole wins 4-2 for ["The Doo-dah man"](https://derbruden.com/owners-updates/2020-w1-cole-1). Alec's ["conquering an enemy"](https://derbruden.com/owners-updates/2020-w1-alec-1) also to be highlighted on website.
+**Verdict**: Cole wins 4-2 for ["The Doo-dah man"](/owners-updates/2020-w1-cole-1). Alec's ["conquering an enemy"](/owners-updates/2020-w1-alec-1) also to be highlighted on website.
 
 **Notes**: "Strange dreams lately? DerBruden.com"
 
@@ -84,4 +84,4 @@ title: '2020 Der Bruden Fantasy Party | Owner Votes'
 
 ## Original Notes
 
-[[1]](https://www.derbruden.com/assets/IMG_4620.JPG), [[2]](https://www.derbruden.com/assets/IMG_4621.JPG)
+[[1]](/201227-votes-notes-01.jpg), [[2]](/201227-votes-notes-02.jpg)

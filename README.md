@@ -40,6 +40,8 @@ This uses the `aws` CLI. If you have multiple profiles set up in your credential
 AWS_PROFILE=yourprofilename yarn run deploy
 ```
 
+The site runs as a static site from AWS S3 via public hosting, fronted by CloudFront with HTTPS via AWS ACM and AWS Lambda@Edge in place to aid CloudFront index resolution. See [this post](https://chrisschuld.com/2020/05/gatsby-hosting-on-cloudfront/) for an overview of the setup.
+
 ## Ideas
 
 Set up trade activity notifications. Poll the following endpoint with headers via new API SDK:

@@ -31,7 +31,7 @@ const BlogPostWrapper = styled.div(({ theme }: ThemeProps) => ({
   },
   a: {
     color: theme.colors.uniformElectric,
-  }
+  },
 }))
 
 export default function Template({
@@ -54,7 +54,7 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {

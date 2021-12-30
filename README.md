@@ -40,6 +40,25 @@ This uses the `aws` CLI. If you have multiple profiles set up in your credential
 AWS_PROFILE=yourprofilename yarn run deploy
 ```
 
+## Run ESPN Fantasy Bot
+
+### Current - Docker container running on EC2
+
+- Pull image (requires AWS credentials)
+```sh
+$ docker login -u AWS -p $(aws ecr get-login-password --region us-east-1) 354450307824.dkr.ecr.us-east-1.amazonaws.com
+$ docker pull 354450307824.dkr.ecr.us-east-1.amazonaws.com/fantasy_football_chat_bot:latest
+```
+
+- Run container
+```sh
+docker container run -it --name=discord_bot --env-file fantasy-chatbot-env.txt 354450307824.dkr.ecr.us-east-1.amazonaws.com/fantasy_football_chat_bot:latest # env file stored on EC2 instance
+```
+
+### Previous - ECS on Fargate
+
+Was running on ECS/Fargate. Was a bit cost-prohibitive so moved to EC2 instance since it doesn't need to scale. Could just restart task from ECR image if desired.
+
 ## Ideas
 
 Set up trade activity notifications. Poll the following endpoint with headers via new API SDK:

@@ -1,3 +1,6 @@
+.env.production
+.env.development
+
 # Logs
 logs
 *.log
@@ -35,6 +38,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+package.lock
 
 # Typescript v1 declaration files
 typings/
@@ -51,15 +55,12 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
-# dotenv environment variable files
-.env*
+# dotenv environment variables file
+.env
 
 # gatsby files
 .cache/
 public
-
-# Storybook files
-docs
 
 # Mac files
 .DS_Store
@@ -68,11 +69,6 @@ docs
 yarn-error.log
 .pnp/
 .pnp.js
+# Yarn Integrity file
 .yarn-integrity
-
-# Code editors
-.vscode
-
-# Cypress files
-cypress/videos
-cypress/screenshots
+yarn.lock

@@ -14,7 +14,11 @@
   "dependencies": {
     "gatsby": "^4.4.0",
     "gatsby-plugin-emotion": "^7.0.0",
+    "gatsby-remark-autolink-headers": "^5.4.0",
+    "gatsby-remark-images": "^6.4.0",
+    "gatsby-source-filesystem": "^4.4.0",
     "gatsby-theme-codebushi": "^1.0.0",
+    "gatsby-transformer-remark": "^5.4.0",
     "postcss": "^8.3.8",
     "react": "^17.0.1",
     "react-anchor-link-smooth-scroll": "^1.0.12",

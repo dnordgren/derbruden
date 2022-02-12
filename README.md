@@ -11,7 +11,7 @@ nvm use
 The site is build with [Gatsby](https://www.gatsbyjs.com/docs/quick-start/).
 
 ```sh
-npm i -g gatsby-cli
+npm i -g gatsby-cli@2.19.3
 ```
 
 Run the following command to build the static front-end website locally:

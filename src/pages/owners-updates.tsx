@@ -20,7 +20,7 @@ const UpdatesWrapper = styled.div(({ theme }: ThemeProps) => ({
   },
   a: {
     color: theme.colors.uniformElectric,
-  }
+  },
 }))
 
 const OwnersUpdatesPage = () => {
@@ -30,7 +30,7 @@ const OwnersUpdatesPage = () => {
         <Seo title="Owners Updates | Der Bruden" />
         <h1>Owners Updates - 2020</h1>
         <h2 id="2020-party">Fantasy Party Recap - Owner Voting</h2>
-          <Link to="/league-updates/2020-year-end-votes">Read the Report</Link>
+        <Link to="/league-updates/2020-year-end-votes">Read the Report</Link>
         <h2 id="w1">Week 1</h2>
         <ul>
           <li>

@@ -8,6 +8,7 @@ import DiaperImg2018 from '@/components/DiaperImg2018'
 import DiaperImg2017 from '@/components/DiaperImg2017'
 import DiaperImg2016 from '@/components/DiaperImg2016'
 import DbTshirt from '@/components/DbTshirt'
+import DbStrangeDreamsSticker from '@/components/DbStrangeDreamsSticker'
 // @ts-expect-error JavaScript
 import { getPageTitle } from '../../config'
 
@@ -26,6 +27,9 @@ const IndexPage = () => {
         {'Sucker: The Aaron Jones Show. '}
         <em>{'How the mighty have fallen.'}</em>
       </p>
+      <h2>{'Having strange dreams lately?'}</h2>
+      <DbStrangeDreamsSticker />
+      <p>{"You've landed at the source."}</p>
       <h2>{'Buy Your 2021 T-Shirt Now'}</h2>
       <DbTshirt />
       <p>{'The greatest accessory since Fight Milk'}</p>

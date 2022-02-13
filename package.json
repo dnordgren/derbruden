@@ -25,7 +25,7 @@
     "lint": "eslint . --ext .tsx,.ts,.mdx,.js --fix",
     "prettier": "prettier --write",
     "format": "prettier . --write --ignore-path .gitignore",
-    "type-check": "tsc --noEmit",
+    "type-check": "tsc --noEmit --skipLibCheck",
     "validate": "yarn lint && yarn format && yarn type-check && yarn test:coverage && yarn test:e2e:run",
     "clean": "gatsby clean",
     "deploy": "gatsby-plugin-s3 deploy"

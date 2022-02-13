@@ -84,11 +84,5 @@ module.exports = {
         plugins: ['gatsby-remark-autolink-headers'],
       },
     },
-    {
-      resolve: 'gatsby-plugin-emoji-favicon',
-      options: {
-        emoji: '🛸',
-      },
-    },
   ],
 }

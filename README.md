@@ -64,3 +64,5 @@ X-Fantasy-Filter: {"topics":{"filterType":{"value":["ACTIVITY_TRANSACTIONS"]},"l
 npm audit
 npm audit fix --force
 ```
+
+- Fix emoji favicon

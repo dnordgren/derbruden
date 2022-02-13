@@ -1,6 +1,8 @@
+const siteTitle = 'Strange dreams? DerBruden.com'
+
 module.exports = {
   // Project title. Used as SEO title and PWA name
-  title: 'Having strange dreams lately? | DerBruden.com',
+  title: siteTitle,
   // Project short name. Used by PWA
   shortTitle: 'DerBruden',
   // Project description. Used in SEO meta tag and by PWA
@@ -21,4 +23,10 @@ module.exports = {
   themeColor: '#141e30',
   // Background color. Used as background on PWA launch screen. Recommended to make it the same as body color
   backgroundColor: '#141e30',
+  getPageTitle: function (pageTitle) {
+    if (!pageTitle) {
+      return siteTitle
+    }
+    return `${siteTitle} | ${pageTitle}`
+  },
 }

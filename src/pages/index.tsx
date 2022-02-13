@@ -8,15 +8,16 @@ import DiaperImg2018 from '@/components/DiaperImg2018'
 import DiaperImg2017 from '@/components/DiaperImg2017'
 import DiaperImg2016 from '@/components/DiaperImg2016'
 import DbTshirt from '@/components/DbTshirt'
-import { title } from '../../config'
+// @ts-expect-error JavaScript
+import { getPageTitle } from '../../config'
 
 const IndexPage = () => {
   return (
     <Layout>
-      <Seo title={title} />
+      <Seo title={getPageTitle('Home')} />
       <h1>{"Don't Come in Last"}</h1>
       <p>
-        <em>{"Delivering solutions for shitty seasons since '16"}</em>
+        <em>{"Fixing shitty seasons since '16"}</em>
       </p>
       <h2>{'2021 Season'}</h2>
       <DiaperImg2021 />

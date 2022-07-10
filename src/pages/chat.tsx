@@ -11,7 +11,8 @@ const ChatPage = () => {
 
   return (
     <Layout>
-      {// https://docs.widgetbot.io/embed/react-embed/props/
+      {
+        // https://docs.widgetbot.io/embed/react-embed/props/
       }
       {/* <WidgetBot
         server="870404843582406696" // Der Bruden

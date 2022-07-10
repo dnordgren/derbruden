@@ -70,9 +70,6 @@ yarn-error.log
 .pnp.js
 .yarn-integrity
 
-# Code editors
-.vscode
-
 # Cypress files
 cypress/videos
 cypress/screenshots

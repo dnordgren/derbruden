@@ -7,7 +7,8 @@ import DiaperImg2019 from '@/components/DiaperImg2019'
 import DiaperImg2018 from '@/components/DiaperImg2018'
 import DiaperImg2017 from '@/components/DiaperImg2017'
 import DiaperImg2016 from '@/components/DiaperImg2016'
-import DbTshirt from '@/components/DbTshirt'
+import DbTshirt21 from '@/components/DbTshirt21'
+import DbTShirt22 from '@/components/DbTshirt22'
 import DbStrangeDreamsSticker from '@/components/DbStrangeDreamsSticker'
 // @ts-expect-error JavaScript
 import { getPageTitle } from '../../config'
@@ -20,6 +21,11 @@ const IndexPage = () => {
       <p>
         <em>{"Fixing shitty seasons since '16"}</em>
       </p>
+      <h2>{"Order Your '22 Merch Now"}</h2>
+      <DbTShirt22 />
+      <p>
+        <em>{'Buy or yourealittlebitch.com'}</em>
+      </p>
       <h2>{'2021 Season'}</h2>
       <DiaperImg2021 />
       <p>{'All hail the champion, King Henry'}</p>
@@ -31,7 +37,7 @@ const IndexPage = () => {
       <DbStrangeDreamsSticker />
       <p>{"You've landed at the source."}</p>
       <h2>{'Buy Your 2021 T-Shirt Now'}</h2>
-      <DbTshirt />
+      <DbTshirt21 />
       <p>{'The greatest accessory since Fight Milk'}</p>
       <h2>{'2020 Season'}</h2>
       <DiaperImg2020 />

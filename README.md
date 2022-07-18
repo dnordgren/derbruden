@@ -11,7 +11,7 @@ nvm use
 The site is build with [Gatsby](https://www.gatsbyjs.com/docs/quick-start/).
 
 ```sh
-npm i -g gatsby-cli@2.19.3
+npm i -g gatsby-cli@4.18.0
 ```
 
 Run the following command to build the static front-end website locally:
@@ -64,3 +64,7 @@ X-Fantasy-Filter: {"topics":{"filterType":{"value":["ACTIVITY_TRANSACTIONS"]},"l
 npm audit
 npm audit fix --force
 ```
+
+## Bootstrapping
+
+The site was created from [gatsby-starter-ghost](https://www.gatsbyjs.com/starters/TryGhost/gatsby-starter-ghost).

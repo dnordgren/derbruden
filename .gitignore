@@ -58,9 +58,6 @@ typings/
 .cache/
 public
 
-# Storybook files
-docs
-
 # Mac files
 .DS_Store
 
@@ -68,8 +65,5 @@ docs
 yarn-error.log
 .pnp/
 .pnp.js
+# Yarn Integrity file
 .yarn-integrity
-
-# Cypress files
-cypress/videos
-cypress/screenshots

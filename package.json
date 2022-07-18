@@ -1,23 +1,24 @@
 {
-  "name": "gatsby-starter-ghost",
-  "description": "A starter template to build lightning fast websites with Ghost and Gatsby",
+  "name": "derbruden.com",
+  "description": "Having strange dreams lately? DerBruden.com",
   "version": "2.0.0",
   "license": "MIT",
-  "author": "Ghost Foundation",
-  "homepage": "https://docs.ghost.org/api/gatsby/",
+  "author": "Derek Nordgren <derek@dereknordgren.com>",
+  "homepage": "https://derbruden.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tryghost/gatsby-starter-ghost.git"
+    "url": "git+https://github.com/dnordgren/derbrudengit"
   },
   "engines": {
-    "node": ">= 12.13.0"
+    "node": ">= 16"
   },
   "bugs": {
-    "url": "https://github.com/tryghost/gatsby-starter-ghost/issues"
+    "url": "https://github.com/dnordgren/derbruden/issues"
   },
   "keywords": [
-    "gatsby",
-    "ghost"
+    "strange",
+    "dreams",
+    "bruden"
   ],
   "main": "n/a",
   "scripts": {

@@ -1,5 +1,13 @@
 # derbruden
 
+## What's in progress?
+
+- Porting Markdown posts
+
+Next up:
+
+- Basic styling for Markdown posts <https://javascript.plainenglish.io/how-to-style-your-markdown-content-in-gatsby-af43cc20880e>
+
 ## Develop
 
 It's recommended to use the [Node Version Manager](https://github.com/nvm-sh/nvm) (`nvm`) to manage your Node.js and NPM version:

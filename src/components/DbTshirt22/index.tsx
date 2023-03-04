@@ -24,9 +24,9 @@ interface StaticImageQuery {
 }
 
 const StaticImage = () => {
-  const data: StaticImageQuery = useStaticQuery(graphql`
+  const shirtBack: StaticImageQuery = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "strange-dreams.jpg" }) {
+      file(relativePath: { eq: "derbruden-the-shirt-22-back.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 400, traceSVG: { color: "#141e30" }) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -36,10 +36,22 @@ const StaticImage = () => {
     }
   `)
 
+  // const shirtFront: StaticImageQuery = useStaticQuery(graphql`
+  //   query {
+  //     file(relativePath: { eq: "derbruden-the-shirt-22-front.jpg" }) {
+  //       childImageSharp {
+  //         fluid(maxWidth: 400, traceSVG: { color: "#141e30" }) {
+  //           ...GatsbyImageSharpFluid_withWebp_tracedSVG
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+
   return (
     <ImageWrapper>
-      <a href="https://www.customink.com/g/wgw0-00cf-z5b3">
-        <Img fluid={data.file.childImageSharp.fluid} alt="Bruden image showcase" />
+      <a href="https://www.customink.com/g/wgw0-00ck-jgv2">
+        <Img fluid={shirtBack.file.childImageSharp.fluid} alt="Bruden image showcase" />
       </a>
     </ImageWrapper>
   )

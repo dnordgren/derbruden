@@ -26,7 +26,14 @@ interface StaticImageQuery {
 const StaticImage = () => {
   const data: StaticImageQuery = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "strange-dreams.jpg" }) {
+      brudenPic: file(relativePath: { eq: "bruden2022.jpeg" }) {
+        childImageSharp {
+          fluid(maxWidth: 400, traceSVG: { color: "#141e30" }) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+      tushyTussle: file(relativePath: { eq: "bruden2022-tusslin-over-tushy.jpeg" }) {
         childImageSharp {
           fluid(maxWidth: 400, traceSVG: { color: "#141e30" }) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -37,11 +44,16 @@ const StaticImage = () => {
   `)
 
   return (
-    <ImageWrapper>
-      <a href="https://www.customink.com/g/wgw0-00cf-z5b3">
-        <Img fluid={data.file.childImageSharp.fluid} alt="Bruden image showcase" />
-      </a>
-    </ImageWrapper>
+    <>
+      <ImageWrapper>
+        {/*// @ts-expect-error alias missing from StaticImageQuery */}
+        <Img fluid={data.brudenPic.childImageSharp.fluid} alt="Bruden image showcase" />
+      </ImageWrapper>
+      <ImageWrapper>
+        {/*// @ts-expect-error alias missing from StaticImageQuery */}
+        <Img fluid={data.tushyTussle.childImageSharp.fluid} alt="Bruden image showcase" />
+      </ImageWrapper>
+    </>
   )
 }
 

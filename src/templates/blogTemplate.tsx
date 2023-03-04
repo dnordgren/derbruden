@@ -2,15 +2,18 @@ import * as React from 'react'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import { ThemeProps } from '@theme'
+import Seo from '@/components/Seo'
 import Layout from '@/components/Layout'
 import { margin, padding } from 'polished'
+// @ts-expect-error JS bc TS was annoying for some reason
+import { getPageTitle } from '../../config'
 
 const BlogPostWrapper = styled.div(({ theme }: ThemeProps) => ({
-  ...padding('4rem', '8rem'),
-  ...margin('0rem', '3rem'),
+  ...padding('2rem', '2rem'),
+  ...margin('0rem', '1rem'),
   backgroundColor: 'white',
   boxShadow: '4px 3px 8px 1px #969696',
-  maxWidth: '1000px',
+  maxWidth: '72rem',
   height: '100%',
   h2: {
     marginTop: '1rem',
@@ -35,13 +38,14 @@ const BlogPostWrapper = styled.div(({ theme }: ThemeProps) => ({
 }))
 
 export default function Template({
-  // @ts-expect-error
+  // @ts-expect-error untyped data
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
   return (
     <Layout>
+      <Seo title={getPageTitle('Bruden Blog')} />
       <BlogPostWrapper>
         <div className="blog-post">
           <h1>{frontmatter.title}</h1>

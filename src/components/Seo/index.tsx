@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Helmet } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, withPrefix } from 'gatsby'
 
 interface SeoQuery {
   site: {
@@ -82,6 +82,7 @@ const Seo = ({ title, description, keywords, image, pathname }: SeoProps) => {
       {seo.image && <meta name="twitter:image" content={seo.image} />}
       {seo.image && <meta name="twitter:image:alt" content={seo.description} />}
       {seo.twitter && <meta name="twitter:creator" content={seo.twitter} />}
+      <script src={withPrefix('whats-this.js')} type="text/javascript" />
     </Helmet>
   )
 }

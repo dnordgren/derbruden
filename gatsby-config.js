@@ -84,5 +84,22 @@ module.exports = {
         plugins: ['gatsby-remark-autolink-headers'],
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ['G-P7VQGCDT79'],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_name: 'having_strange_dreams_lately',
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: false,
+          respectDNT: false,
+          exclude: [],
+          delayOnRouteUpdate: 0,
+        },
+      },
+    },
   ],
 }

@@ -24,6 +24,12 @@ const IndexPage = () => {
       </p>
       <h2>{'2022 Season'}</h2>
       <DiaperImg2022 />
+      <p>{'All hail the 3-time champion, Con Queso 🏆🏆🏆'}</p>
+      <p>
+        {'Runner Up: Diaper King  // '}
+        <em>{'He tussled over tushy and lost'}</em>
+      </p>
+      <p>{'Sucker: Bert n Ekelie 🍼'}</p>
       <h2>{"Order Your '22 Merch Now"}</h2>
       <DbTShirt22 />
       <p>
@@ -36,10 +42,10 @@ const IndexPage = () => {
       </p>
       <h2>{'2021 Season'}</h2>
       <DiaperImg2021 />
-      <p>{'All hail the champion, King Henry'}</p>
+      <p>{'Champion: King Henry'}</p>
       <p>
-        {'Sucker: The Aaron Jones Show. '}
-        <em>{'How the mighty have fallen.'}</em>
+        {'Sucker: The Aaron Jones Show // '}
+        <em>{'How the mighty have fallen'}</em>
       </p>
       <h2>{'Having strange dreams lately?'}</h2>
       <DbStrangeDreamsSticker />

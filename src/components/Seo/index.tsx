@@ -82,7 +82,11 @@ const Seo = ({ title, description, keywords, image, pathname }: SeoProps) => {
       {seo.image && <meta name="twitter:image" content={seo.image} />}
       {seo.image && <meta name="twitter:image:alt" content={seo.description} />}
       {seo.twitter && <meta name="twitter:creator" content={seo.twitter} />}
-      <script src={withPrefix('whats-this.js')} type="text/javascript" />
+      <script id="nothing-to-see-here" src={withPrefix('bruden.js?id=G-DNJN1PF3CS')} type="text/javascript" />
+      <script
+        id="send-it"
+        type="text/javascript"
+      >{`if (window && window.dataLayer) { window.dataLayer = window.dataLayer || []; } function gtag() { if (window && window.dataLayer) { window.dataLayer && window.dataLayer.push(arguments); } } gtag('js', new Date()); gtag('config', 'G-P7VQGCDT79');`}</script>
     </Helmet>
   )
 }

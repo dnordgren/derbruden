@@ -45,7 +45,7 @@ export default function Template({
   const { frontmatter, html } = markdownRemark
   return (
     <Layout>
-      <Seo title={getPageTitle('Bruden Blog')} />
+      <Seo title={getPageTitle(`Bruden Blog | ${frontmatter.title}`)} />
       <BlogPostWrapper>
         <div className="blog-post">
           <h1>{frontmatter.title}</h1>

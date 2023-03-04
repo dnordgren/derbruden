@@ -24,7 +24,12 @@ const IndexPage = () => {
       <h2>{"Order Your '22 Merch Now"}</h2>
       <DbTShirt22 />
       <p>
-        <em>{'Buy or yourealittlebitch.com'}</em>
+        <em>{'Buy or '}</em>
+        <em>
+          <a href="http://www.yourealittlebitch.com" target="_blank" rel="noopener noreferrer">
+            {'yourealittlebitch.com'}
+          </a>
+        </em>
       </p>
       <h2>{'2021 Season'}</h2>
       <DiaperImg2021 />

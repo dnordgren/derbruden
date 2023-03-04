@@ -7,7 +7,7 @@ I'm unable to build on M1 macOS.
 - <https://github.com/gatsbyjs/gatsby/discussions/29854>
 - <https://github.com/lovell/sharp/issues/2460#issuecomment-809499444>
 
-I think I need to upgrade to Gatsby v4, and then upgrade *-sharp Gatsby packages.
+I think I need to upgrade to Gatsby v4, and then upgrade \*-sharp Gatsby packages.
 
 Without this, I can't run `gatsby build` before deploying (on M1 macOS). Windows XPS is also being a little shit presently for some reason.
 

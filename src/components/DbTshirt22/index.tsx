@@ -26,7 +26,7 @@ interface StaticImageQuery {
 const StaticImage = () => {
   const shirtBack: StaticImageQuery = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "derbruden-the-shirt-22-back.png" }) {
+      file(relativePath: { eq: "derbruden-the-shirt-22-back.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 400, traceSVG: { color: "#141e30" }) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -38,7 +38,7 @@ const StaticImage = () => {
 
   // const shirtFront: StaticImageQuery = useStaticQuery(graphql`
   //   query {
-  //     file(relativePath: { eq: "derbruden-the-shirt-22.png" }) {
+  //     file(relativePath: { eq: "derbruden-the-shirt-22-front.jpg" }) {
   //       childImageSharp {
   //         fluid(maxWidth: 400, traceSVG: { color: "#141e30" }) {
   //           ...GatsbyImageSharpFluid_withWebp_tracedSVG

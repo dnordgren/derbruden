@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import Layout from '@/components/Layout'
 // import WidgetBot from '@widgetbot/react-embed'
 
@@ -12,7 +12,7 @@ const ChatPage = () => {
   return (
     <Layout>
       {
-        // https://docs.widgetbot.io/embed/react-embed/props/
+        // httes://docs.widgetbot.io/embed/react-embed/props/
       }
       {/* <WidgetBot
         server="870404843582406696" // Der Bruden

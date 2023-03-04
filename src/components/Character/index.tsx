@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { useQuery, gql } from '@apollo/client'
 import styled from '@emotion/styled'
 import { useTheme } from 'emotion-theming'

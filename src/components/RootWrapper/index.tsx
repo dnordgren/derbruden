@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { ApolloProvider } from '@apollo/client'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { ThemeProvider } from 'emotion-theming'

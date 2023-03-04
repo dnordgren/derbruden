@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import 'focus-visible'
 import { Global } from '@emotion/react'
 import { useTheme } from 'emotion-theming'

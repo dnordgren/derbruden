@@ -1,6 +1,7 @@
-import React from 'react'
+import * as React from 'react'
 import Layout from '@/components/Layout'
 import Seo from '@/components/Seo'
+import DiaperImg2022 from '@/components/DiaperImg2022'
 import DiaperImg2021 from '@/components/DiaperImg2021'
 import DiaperImg2020 from '@/components/DiaperImg2020'
 import DiaperImg2019 from '@/components/DiaperImg2019'
@@ -21,6 +22,8 @@ const IndexPage = () => {
       <p>
         <em>{"Fixing shitty seasons since '16"}</em>
       </p>
+      <h2>{'2022 Season'}</h2>
+      <DiaperImg2022 />
       <h2>{"Order Your '22 Merch Now"}</h2>
       <DbTShirt22 />
       <p>

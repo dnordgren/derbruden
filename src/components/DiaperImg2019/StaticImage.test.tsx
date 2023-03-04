@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import { render, screen } from '@test-utils'
 import * as Gatsby from 'gatsby'
 import StaticImage from '@/components/DiaperImg2019'

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Football Chart</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        .axis-label {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .line {
+            fill: none;
+            stroke-width: 2;
+        }
+        .bar {
+            fill: #012f69;
+        }
+        #tooltip {
+            position: absolute;
+            display: none;
+            padding: 5px;
+            background: #eceff4;
+            border: 1px solid #2e3440;
+            border-radius: 4px;
+            pointer-events: none;
+            font-size: 12px;
+        }
+        #chart, #tooltip, .axis, .axis-label, .legend-label {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>McAfee's Faithful - Points and Wins by Season</h1>
+    <svg id="chart" width="800" height="400"></svg>
+    <button id="exportBtn">Export as PNG</button>
+    <div id="tooltip" style="position: absolute; display: none; padding: 5px; background: lightgrey; border: 1px solid #666; border-radius: 4px; pointer-events: none; font-size: 12px;"></div>
+    <script>
+        // Sample data for the chart
+        const data = [
+            { season: '2014', points_scored: 1498, points_against: 1501, wins: 6 },
+            { season: '2015', points_scored: 2017, points_against: 1915, wins: 6 },
+            { season: '2016', points_scored: 1118, points_against: 1235, wins: 4 },
+            { season: '2017', points_scored: 1276, points_against: 1361, wins: 7 },
+            { season: '2018', points_scored: 1497, points_against: 1517, wins: 5 },
+            { season: '2019', points_scored: 1530, points_against: 1249, wins: 10 },
+            { season: '2020', points_scored: 1308, points_against: 1445, wins: 4 },
+            { season: '2021', points_scored: 1657, points_against: 1512, wins: 9 },
+            { season: '2022', points_scored: 1520, points_against: 1360, wins: 9 },
+            { season: '2023', points_scored: 1285, points_against: 1504, wins: 5 },
+        ];
+
+        // SVG and chart dimensions
+        const svg = d3.select("#chart");
+        const margin = { top: 20, right: 60, bottom: 40, left: 60 };
+        const width = +svg.attr("width") - margin.left - margin.right;
+        const height = +svg.attr("height") - margin.top - margin.bottom;
+
+        // Create a group for the chart content
+        const chart = svg.append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // Set up x-axis
+        const x = d3.scaleBand()
+            .domain(data.map(d => d.season))
+            .range([0, width])
+            .padding(0.1);
+
+        // Set up y-axis for points (left)
+        const yLeft = d3.scaleLinear()
+            //.domain([0, d3.max(data, d => Math.max(d.points_scored, d.points_against))])
+            .domain([0, 2400]) // 2300 pts is the max anyone's hit
+            .range([height, 0]);
+
+        // Set up y-axis for wins (right)
+        const yRight = d3.scaleLinear()
+            //.domain([0, d3.max(data, d => d.wins)])
+            .domain([0, 14]) // 14 wins is max possible in any season
+            .range([height, 0]);
+
+        // X-axis
+        chart.append("g")
+            .attr("transform", `translate(0,${height})`)
+            .call(d3.axisBottom(x));
+
+        chart.append("text")
+            .attr("class", "axis-label")
+            .attr("x", width / 2)
+            .attr("y", height + margin.bottom - 5)
+            .style("text-anchor", "middle")
+            .text("Season");
+
+        // Y-axis for points (left)
+        chart.append("g")
+            .call(d3.axisLeft(yLeft))
+            .append("text")
+            .attr("class", "axis-label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -40)
+            .attr("x", -height / 2)
+            .attr("dy", "1em")
+            .style("text-anchor", "middle")
+            .text("Points Scored and Points Against");
+
+        // Y-axis for wins (right)
+        chart.append("g")
+            .attr("transform", `translate(${width},0)`)
+            .call(d3.axisRight(yRight))
+            .append("text")
+            .attr("class", "axis-label")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 40)
+            .attr("x", height / 2)
+            .attr("dy", "-1em")
+            .style("text-anchor", "middle")
+            .text("Wins");
+
+        // Draw bars for wins
+        chart.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", d => x(d.season))
+            .attr("y", d => yRight(d.wins))
+            .attr("width", x.bandwidth() / 2)
+            .attr("height", d => height - yRight(d.wins))
+            .attr("transform", `translate(${x.bandwidth() / 4},0)`)
+            .attr("fill", "#012f69");
+
+        // Line generator for points scored
+        const lineScored = d3.line()
+            .x(d => x(d.season) + x.bandwidth() / 2)
+            .y(d => yLeft(d.points_scored));
+
+        // Line generator for points against
+        const lineAgainst = d3.line()
+            .x(d => x(d.season) + x.bandwidth() / 2)
+            .y(d => yLeft(d.points_against));
+
+        // Draw points scored line
+        chart.append("path")
+            .datum(data)
+            .attr("class", "line")
+            .attr("d", lineScored)
+            .style("stroke", "#008f00")
+            .style("fill", "none");
+
+        // Draw points against line
+        chart.append("path")
+            .datum(data)
+            .attr("class", "line")
+            .attr("d", lineAgainst)
+            .style("stroke", "#d60303")
+            .style("fill", "none");
+
+        // Legend data
+        const legendData = [
+            { label: "Points Scored", color: "#008f00" },
+            { label: "Points Against", color: "#d60303" },
+            { label: "Wins", color: "#012f69" }
+        ];
+
+        // Legend setup
+        const legend = chart.append("g")
+            .attr("transform", `translate(${width - 150},${-margin.top})`)
+            .attr("class", "legend");
+
+        // Legend items
+        legend.selectAll("rect")
+            .data(legendData)
+            .enter()
+            .append("rect")
+            .attr("x", 0)
+            .attr("y", (d, i) => i * 20)
+            .attr("width", 10)
+            .attr("height", 10)
+            .attr("fill", d => d.color);
+
+        // Legend labels
+        legend.selectAll("text")
+            .data(legendData)
+            .enter()
+            .append("text")
+            .attr("x", 15)
+            .attr("y", (d, i) => i * 20 + 9)
+            .attr("class", "legend-label")
+            .style("font-size", "12px")
+            .text(d => d.label);
+
+        // Select tooltip div
+        const tooltip = d3.select("#tooltip");
+
+        // Tooltip function to show and hide
+        function showTooltip(event, d) {
+            tooltip.style("display", "block")
+                .html(`
+                    <strong>Season:</strong> ${d.season}<br>
+                    <strong>Points Scored:</strong> ${d.points_scored}<br>
+                    <strong>Points Against:</strong> ${d.points_against}<br>
+                    <strong>Wins:</strong> ${d.wins}
+                `)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        }
+
+        function hideTooltip() {
+            tooltip.style("display", "none");
+        }
+
+        // Apply tooltip to bars (wins)
+        chart.selectAll(".bar")
+            .on("mouseover", showTooltip)
+            .on("mousemove", showTooltip)
+            .on("mouseout", hideTooltip);
+
+        // Apply tooltip to points scored line
+        chart.selectAll(".line")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("class", "line-point")
+            .attr("cx", d => x(d.season) + x.bandwidth() / 2)
+            .attr("cy", d => yLeft(d.points_scored))
+            .attr("r", 5)
+            .attr("fill", "#008f00")
+            .on("mouseover", showTooltip)
+            .on("mousemove", showTooltip)
+            .on("mouseout", hideTooltip);
+
+        // Apply tooltip to points against line
+        chart.selectAll(".line-point-against")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("class", "line-point-against")
+            .attr("cx", d => x(d.season) + x.bandwidth() / 2)
+            .attr("cy", d => yLeft(d.points_against))
+            .attr("r", 5)
+            .attr("fill", "#d60303")
+            .on("mouseover", showTooltip)
+            .on("mousemove", showTooltip)
+            .on("mouseout", hideTooltip);
+
+        document.getElementById("exportBtn").addEventListener("click", () => {
+            const svg = document.getElementById("chart");
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+            const url = URL.createObjectURL(svgBlob);
+
+            const img = new Image();
+            img.onload = function() {
+                const scaleFactor = 2;
+                const canvas = document.createElement("canvas");
+                canvas.width = svg.width.baseVal.value * scaleFactor;
+                canvas.height = svg.height.baseVal.value * scaleFactor;
+                const ctx = canvas.getContext("2d");
+
+                ctx.fillStyle = "white"; // Optional: Set background color if needed
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.scale(scaleFactor, scaleFactor);
+                ctx.drawImage(img, 0, 0);
+
+                // Create a link to download the image as PNG
+                const link = document.createElement("a");
+                link.download = "chart.png";
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+
+                URL.revokeObjectURL(url); // Clean up the URL object
+            };
+            img.src = url;
+        });
+    </script>
+</body>
+</html>

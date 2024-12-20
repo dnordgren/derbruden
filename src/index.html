@@ -20,7 +20,12 @@
     .header {
       display: flex;
       align-items: center;
-      gap: 20px;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 30px;
     }
 
@@ -37,6 +42,39 @@
     .tagline {
       margin: 0;
       color: #666;
+    }
+
+    .sponsor-box {
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: 300px;
+    }
+
+    .sponsor-box img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 0px;
+    }
+
+    .sponsor-content {
+      flex: 1;
+      text-align: left;
+      font-size: 0.7em;
+    }
+
+    .sponsor-name {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .sponsor-tagline {
+      color: #666;
+      margin: 5px 0 0 0;
+      max-width: 200px;
     }
 
     nav {
@@ -88,15 +126,52 @@
     a:hover {
       text-decoration: underline;
     }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .sponsor-box {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .sponsor-ribbon {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .championship-post {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <header class="header">
-    <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo">
-    <div>
-      <h1 class="site-title">DerBruden.com</h1>
-      <p class="tagline">Strange dreams lately?</p>
+  <header>
+    <div class="header-container">
+      <div class="header">
+        <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo">
+          <div>
+            <h1 class="site-title">DerBruden.com</h1>
+            <p class="tagline">Strange dreams lately?</p>
+          </div>
+      </div>
+
+      <div class="sponsor-box">
+        <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately" target="_blank" rel="noopener noreferrer"><img src="../static/img/about-sponsor.webp" alt="Booze Better"></a>
+        <div class="sponsor-content">
+          <p class="sponsor-tagline"><em>Brought to you by:</em></p>
+          <p class="sponsor-name">Booze Better</p>
+          <p class="sponsor-tagline">Drink Smart, Feel Better. The scientific solution to hangovers has finally arrived.</p>
+          <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately" target="_blank" rel="noopener noreferrer">Learn more</a>.
+        </div>
+      </div>
     </div>
   </header>
 

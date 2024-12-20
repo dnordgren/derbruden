@@ -21,6 +21,19 @@ brew install cwebp
 - Use `make webp` to optimize and convert any `jpg` or `png` files in
   `static/img` to `webp`.
 
+### Deploy
+
+``` sh
+AWS_PROFILE=derbruden make deploy
+```
+
+This:
+
+* Clears S3 bucket of prior `*.html` and images in `static/`
+* Syncs `*.html` from `src/` to S3 root to host site
+* Syncs `static/` to S3 `static/`
+* Invalidates the CloudFront cache
+
 ## Ideas
 
 Set up trade activity notifications. Poll the following endpoint with headers via new API SDK:

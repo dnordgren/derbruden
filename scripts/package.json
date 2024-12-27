@@ -1,0 +1,11 @@
+{
+  "name": "stats-generator",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "papaparse": "^5.4.1"
+  }
+}

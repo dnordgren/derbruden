@@ -67,7 +67,7 @@ function generateStatsIndex(data) {
       <th class="number">PA</th>
       <th class="number">PDiff</th>
       <th class="number">Playoffs</th>
-      <th class="number">Championships</th>
+      <th class="number">🏆</th>
     </tr>
   </thead>
   <tbody>
@@ -90,8 +90,7 @@ function generateOwnerStats(data, owner) {
     championships: acc.championships + (row.Champ === 'Y' ? 1 : 0)
   }), { wins: 0, losses: 0, rgpf: 0, rgpa: 0, playoffs: 0, championships: 0 });
 
-  const tableRows = ownerData.map(row => `
-    <tr>
+  const tableRows = ownerData.map(row => `<tr>
       <td class="number">${row.Season}</td>
       <td class="number">${row.W}</td>
       <td class="number">${row.L}</td>
@@ -107,8 +106,7 @@ function generateOwnerStats(data, owner) {
 
   const winPct = totals.wins / (totals.wins + totals.losses);
 
-  return `
-<table class="stats-table">
+  return `<table class="stats-table">
   <thead>
     <tr>
       <th class="number">Season</th>

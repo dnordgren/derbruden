@@ -40,8 +40,7 @@ function generateStatsIndex(data) {
     .filter(stat => stat.games >= 75)
     .sort((a, b) => b.winPct - a.winPct);
 
-  const tableRows = ownerStats.map(stat => `
-    <tr>
+  const tableRows = ownerStats.map(stat => `<tr>
       <td class="owner"><a href="./${stat.owner.toLowerCase()}.html">${stat.owner}</a></td>
       <td class="number">${stat.games}</td>
       <td class="number">${stat.wins}</td>
@@ -51,11 +50,10 @@ function generateStatsIndex(data) {
       <td class="number">${stat.rgpa.toLocaleString()}</td>
       <td class="number">${stat.pointsDiff.toLocaleString()}</td>
       <td class="number">${stat.playoffs}</td>
-      <td class="number">${stat.championships}</td>
+      <td class="number">${stat.championships ? '🏆'.repeat(stat.championships) : ''}</td>
     </tr>`).join('');
 
-  return `
-<table class="stats-table">
+  return `<table class="stats-table">
   <thead>
     <tr>
       <th>Owner</th>
@@ -67,7 +65,7 @@ function generateStatsIndex(data) {
       <th class="number">PA</th>
       <th class="number">PDiff</th>
       <th class="number">Playoffs</th>
-      <th class="number">🏆</th>
+      <th class="number">Championships</th>
     </tr>
   </thead>
   <tbody>

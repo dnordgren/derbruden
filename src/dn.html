@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     body {
       font-family: "Archivo", sans-serif;
@@ -202,6 +203,56 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* START D3.js */
+
+    .axis-label {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .line {
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .bar {
+      fill: #012f69;
+    }
+
+    #tooltip {
+      position: absolute;
+      display: none;
+      padding: 5px;
+      background: #eceff4;
+      border: 1px solid #2e3440;
+      border-radius: 4px;
+      pointer-events: none;
+      font-size: 12px;
+    }
+
+    #chart-container,
+    .chart-title {
+      font-family: monospace;
+      margin-bottom: 40px;
+    }
+
+    .chart-title {
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .export-btn {
+      display: block;
+      margin: 10px auto;
+      font-family: monospace;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    /* END D3.js */
   </style>
 </head>
 
@@ -417,7 +468,308 @@
         </tr>
       </tbody>
     </table>
+    <h1>DN - Points and Wins by Season</h1>
+    <div id="chart-container"></div>
+    <div id="tooltip"
+      style="position: absolute; display: none; padding: 5px; background: lightgrey; border: 1px solid #666; border-radius: 4px; pointer-events: none; font-size: 12px;">
+    </div>
   </main>
+
+  <script>
+    // Data for multiple teams
+    const teamsData = [
+      {
+        teamName: "McAfee's Faithful",
+        data: [
+          { season: '2014', points_scored: 1498, points_against: 1501, wins: 6 },
+          { season: '2015', points_scored: 2017, points_against: 1915, wins: 6 },
+          { season: '2016', points_scored: 1118, points_against: 1235, wins: 4 },
+          { season: '2017', points_scored: 1276, points_against: 1361, wins: 7 },
+          { season: '2018', points_scored: 1497, points_against: 1517, wins: 5 },
+          { season: '2019', points_scored: 1530, points_against: 1249, wins: 10 },
+          { season: '2020', points_scored: 1308, points_against: 1445, wins: 4 },
+          { season: '2021', points_scored: 1657, points_against: 1512, wins: 9 },
+          { season: '2022', points_scored: 1520, points_against: 1360, wins: 9 },
+          { season: '2023', points_scored: 1285, points_against: 1504, wins: 5 },
+        ]
+      },
+      // {
+      //   teamName: "bb im yr heisman trophy winner",
+      //   data: [
+      //     { season: '2014', points_scored: 1896, points_against: 1316, wins: 11 },
+      //     { season: '2015', points_scored: 1983, points_against: 2116, wins: 4 },
+      //     { season: '2016', points_scored: 1238, points_against: 1355, wins: 5 },
+      //     { season: '2017', points_scored: 1417, points_against: 1397, wins: 7 },
+      //     { season: '2018', points_scored: 1468, points_against: 1624, wins: 4 },
+      //     { season: '2019', points_scored: 1367, points_against: 1333, wins: 7 },
+      //     { season: '2020', points_scored: 1400, points_against: 1445, wins: 7 },
+      //     { season: '2021', points_scored: 1604, points_against: 1586, wins: 6 },
+      //     { season: '2022', points_scored: 1519, points_against: 1358, wins: 10 },
+      //     { season: '2023', points_scored: 1438, points_against: 1382, wins: 8 },
+      //   ]
+      // },
+      // {
+      //   teamName: "The Diabolical Liars",
+      //   data: [
+      //     { season: '2014', points_scored: 1539, points_against: 1616, wins: 5 },
+      //     { season: '2015', points_scored: 1911, points_against: 2038, wins: 3 },
+      //     { season: '2016', points_scored: 1244, points_against: 1285, wins: 7 },
+      //     { season: '2017', points_scored: 1376, points_against: 1248, wins: 8 },
+      //     { season: '2018', points_scored: 1466, points_against: 1568, wins: 8 },
+      //     { season: '2019', points_scored: 1914, points_against: 1411, wins: 11 },
+      //     { season: '2020', points_scored: 1588, points_against: 1441, wins: 8 },
+      //     { season: '2021', points_scored: 1531, points_against: 1519, wins: 6 },
+      //     { season: '2022', points_scored: 1445, points_against: 1675, wins: 4 },
+      //     { season: '2023', points_scored: 1443, points_against: 1393, wins: 7 },
+      //   ]
+      // },
+      // {
+      //   teamName: "Unburdened By What Has Been",
+      //   data: [
+      //     { season: '2014', points_scored: 1273, points_against: 1586, wins: 3 },
+      //     { season: '2015', points_scored: 1825, points_against: 2079, wins: 4 },
+      //     { season: '2016', points_scored: 1171, points_against: 994, wins: 9 },
+      //     { season: '2017', points_scored: 1313, points_against: 1177, wins: 9 },
+      //     { season: '2018', points_scored: 1561, points_against: 1430, wins: 8 },
+      //     { season: '2019', points_scored: 1402, points_against: 1322, wins: 8 },
+      //     { season: '2020', points_scored: 1573, points_against: 1482, wins: 8 },
+      //     { season: '2021', points_scored: 1669, points_against: 1679, wins: 5 },
+      //     { season: '2022', points_scored: 1699, points_against: 1521, wins: 8 },
+      //     { season: '2023', points_scored: 1676, points_against: 1374, wins: 11 },
+      //   ]
+      // }
+    ];
+
+    // Function to render chart for each team
+    function renderChart(team) {
+      // Create a container for each chart
+      const container = d3.select("#chart-container")
+        .append("div")
+        .attr("class", "chart-section");
+
+      // Add the team name as a title
+      container.append("div")
+        .attr("class", "chart-title")
+        .text(team.teamName);
+
+      // Append a new SVG for each team chart
+      const svg = container.append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      const margin = { top: 20, right: 60, bottom: 40, left: 60 };
+      const width = +svg.attr("width") - margin.left - margin.right;
+      const height = +svg.attr("height") - margin.top - margin.bottom;
+
+      const chart = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // Scales and axes
+      const x = d3.scaleBand()
+        .domain(team.data.map(d => d.season))
+        .range([0, width])
+        .padding(0.1);
+
+      const yLeft = d3.scaleLinear()
+        .domain([0, 2400])
+        .range([height, 0]);
+
+      const yRight = d3.scaleLinear()
+        .domain([0, 14])
+        .range([height, 0]);
+
+      // Axes rendering
+      chart.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+
+      chart.append("text")
+        .attr("class", "axis-label")
+        .attr("x", width / 2)
+        .attr("y", height + margin.bottom - 5)
+        .style("text-anchor", "middle")
+        .text("Season");
+
+      chart.append("g")
+        .call(d3.axisLeft(yLeft))
+        .append("text")
+        .attr("class", "axis-label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -40)
+        .attr("x", -height / 2)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Points Scored and Points Against");
+
+      chart.append("g")
+        .attr("transform", `translate(${width},0)`)
+        .call(d3.axisRight(yRight))
+        .append("text")
+        .attr("class", "axis-label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 40)
+        .attr("x", height / 2)
+        .attr("dy", "-1em")
+        .style("text-anchor", "middle")
+        .text("Wins");
+
+      // Bars and lines
+      chart.selectAll(".bar")
+        .data(team.data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", d => x(d.season))
+        .attr("y", d => yRight(d.wins))
+        .attr("width", x.bandwidth() / 2)
+        .attr("height", d => height - yRight(d.wins))
+        .attr("transform", `translate(${x.bandwidth() / 4},0)`)
+        .attr("fill", "#012f69");
+
+      const lineScored = d3.line()
+        .x(d => x(d.season) + x.bandwidth() / 2)
+        .y(d => yLeft(d.points_scored));
+
+      const lineAgainst = d3.line()
+        .x(d => x(d.season) + x.bandwidth() / 2)
+        .y(d => yLeft(d.points_against));
+
+      chart.append("path")
+        .datum(team.data)
+        .attr("class", "line")
+        .attr("d", lineScored)
+        .style("stroke", "#008f00")
+        .style("fill", "none");
+
+      chart.append("path")
+        .datum(team.data)
+        .attr("class", "line")
+        .attr("d", lineAgainst)
+        .style("stroke", "#d60303")
+        .style("fill", "none");
+
+      // Legend setup
+      const legendData = [
+        { label: "Points Scored", color: "#008f00" },
+        { label: "Points Against", color: "#d60303" },
+        { label: "Wins", color: "#012f69" }
+      ];
+
+      const legend = chart.append("g")
+        .attr("transform", `translate(${width - 150},${-margin.top})`)
+        .attr("class", "legend");
+
+      // Legend items
+      legend.selectAll("rect")
+        .data(legendData)
+        .enter()
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", (d, i) => i * 20)
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("fill", d => d.color);
+
+      // Legend labels
+      legend.selectAll("text")
+        .data(legendData)
+        .enter()
+        .append("text")
+        .attr("x", 15)
+        .attr("y", (d, i) => i * 20 + 9)
+        .attr("class", "legend-label")
+        .style("font-size", "12px")
+        .text(d => d.label);
+
+      // Select tooltip div
+      const tooltip = d3.select("#tooltip");
+
+      // Tooltip function to show and hide
+      function showTooltip(event, d) {
+        tooltip.style("display", "block")
+          .html(`
+            <strong>Season:</strong> ${d.season}<br>
+            <strong>Points Scored:</strong> ${d.points_scored}<br>
+            <strong>Points Against:</strong> ${d.points_against}<br>
+            <strong>Wins:</strong> ${d.wins}
+        `)
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 28) + "px");
+      }
+
+      function hideTooltip() {
+        tooltip.style("display", "none");
+      }
+
+      // Apply tooltip to bars (wins)
+      chart.selectAll(".bar")
+        .on("mouseover", showTooltip)
+        .on("mousemove", showTooltip)
+        .on("mouseout", hideTooltip);
+
+      // Apply tooltip to points scored line
+      chart.selectAll(".line")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("class", "line-point")
+        .attr("cx", d => x(d.season) + x.bandwidth() / 2)
+        .attr("cy", d => yLeft(d.points_scored))
+        .attr("r", 5)
+        .attr("fill", "blue")
+        .on("mouseover", showTooltip)
+        .on("mousemove", showTooltip)
+        .on("mouseout", hideTooltip);
+
+      // Apply tooltip to points against line
+      chart.selectAll(".line-point-against")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("class", "line-point-against")
+        .attr("cx", d => x(d.season) + x.bandwidth() / 2)
+        .attr("cy", d => yLeft(d.points_against))
+        .attr("r", 5)
+        .attr("fill", "red")
+        .on("mouseover", showTooltip)
+        .on("mousemove", showTooltip)
+        .on("mouseout", hideTooltip);
+
+      // Add an export button for each chart
+      // container.append("button")
+      //   .attr("class", "export-btn")
+      //   .text("Export as PNG")
+      //   .on("click", () => {
+      //     // Convert SVG to PNG
+      //     const svgData = new XMLSerializer().serializeToString(svg.node());
+      //     const svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+      //     const url = URL.createObjectURL(svgBlob);
+
+      //     const img = new Image();
+      //     img.onload = function () {
+      //       const scaleFactor = 2;
+      //       const canvas = document.createElement("canvas");
+      //       canvas.width = svg.attr("width") * scaleFactor;
+      //       canvas.height = svg.attr("height") * scaleFactor;
+      //       const ctx = canvas.getContext("2d");
+
+      //       ctx.fillStyle = "white";
+      //       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      //       ctx.scale(scaleFactor, scaleFactor);
+      //       ctx.drawImage(img, 0, 0);
+
+      //       const link = document.createElement("a");
+      //       link.download = `${team.teamName} chart.png`;
+      //       link.href = canvas.toDataURL("image/png");
+      //       link.click();
+
+      //       URL.revokeObjectURL(url);
+      //     };
+      //     img.src = url;
+      //   });
+    }
+
+    teamsData.forEach(renderChart);
+  </script>
 
   <footer>
     <p>

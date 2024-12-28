@@ -7,3 +7,8 @@ logs
 
 # Mac files
 .DS_Store
+
+# Ignore scripts/ node stuff and input/output files
+scripts/node_modules
+scripts/*.csv
+scripts/*.html

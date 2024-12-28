@@ -14,6 +14,44 @@ macOS:
 brew install cwebp
 ```
 
+### Generate stats
+
+#### Owners table index
+
+```sh
+cd scripts/
+nvm use
+npm install
+node generate-stats.js owners index # produces scripts/owners-index.html
+```
+
+#### Individual owners table
+
+Generate single owner:
+
+```sh
+# .. same directory as above
+node generate-stats.js owners {owner} # like DN, produces scripts/owners-{owner}.html
+```
+
+Generate all owners:
+
+```sh
+# .. same directory as above
+node generate-stats.js owners all # produces all scripts/owners-{owner}.html
+```
+
+#### Owners input data
+
+Assumes `/scripts/stats.csv` exists of the form:
+
+```csv
+Season,Owner,W,L,%,RGPF,RGPA,TPF,DIFF,PO?,RGRnk,Champ,PORnk
+24,ZS,9,4,0.692,1553,1365,1942.1,10.2,Y,3,N,5
+24,IK,3,10,0.231,1256,1523,1602.6,18.9,N,10,N,9
+...
+```
+
 ## Deploy
 
 ### Image optimization
@@ -29,10 +67,10 @@ AWS_PROFILE=derbruden make deploy
 
 This:
 
-* Clears S3 bucket of prior `*.html` and images in `static/`
-* Syncs `*.html` from `src/` to S3 root to host site
-* Syncs `static/` to S3 `static/`
-* Invalidates the CloudFront cache
+- Clears S3 bucket of prior `*.html` and images in `static/`
+- Syncs `*.html` from `src/` to S3 root to host site
+- Syncs `static/` to S3 `static/`
+- Invalidates the CloudFront cache
 
 ## Ideas
 

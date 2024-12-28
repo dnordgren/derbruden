@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DerBruden.com | Strange dreams lately?</title>
+  <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: "Archivo", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 75px;
+    }
+
+    .site-title {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .tagline {
+      margin: 0;
+      color: #666;
+    }
+
+    .sponsor-box {
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: 300px;
+    }
+
+    .sponsor-box img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 0px;
+    }
+
+    .sponsor-content {
+      flex: 1;
+      text-align: left;
+      font-size: 0.7em;
+    }
+
+    .sponsor-name {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .sponsor-tagline {
+      color: #666;
+      margin: 5px 0 0 0;
+      max-width: 200px;
+    }
+
+    nav {
+      margin-bottom: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav li {
+      margin-bottom: 10px;
+    }
+
+    .championship-post {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .post-image {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .post-date {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    .post-category {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* START table styles */
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9em;
+    }
+
+    .stats-table th {
+      background-color: #f4f4f4;
+      padding: 12px;
+      text-align: left;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .stats-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .stats-table tbody tr:hover {
+      background-color: #f8f8f8;
+    }
+
+    .stats-table .number {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stats-table .owner {
+      font-weight: 500;
+    }
+
+    .owner-logo-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .owner-logo-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* END table styles */
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .sponsor-box {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .sponsor-ribbon {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .championship-post {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* START D3.js */
+
+    .axis-label {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .line {
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .bar {
+      fill: #012f69;
+    }
+
+    #tooltip {
+      position: absolute;
+      display: none;
+      padding: 5px;
+      background: #eceff4;
+      border: 1px solid #2e3440;
+      border-radius: 4px;
+      pointer-events: none;
+      font-size: 12px;
+    }
+
+    #chart-container,
+    .chart-title {
+      font-family: monospace;
+      margin-bottom: 40px;
+    }
+
+    .chart-title {
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .export-btn {
+      display: block;
+      margin: 10px auto;
+      font-family: monospace;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    /* END D3.js */
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header">
+        <a href="./index.html">
+          <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" width="100" height="75">
+        </a>
+        <div>
+          <h1 class="site-title">DerBruden.com</h1>
+          <p class="tagline">Strange dreams lately?</p>
+        </div>
+      </div>
+
+      <div class="sponsor-box">
+        <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately"
+          target="_blank" rel="noopener noreferrer"><img src="../static/img/about-sponsor.webp" alt="Booze Better"></a>
+        <div class="sponsor-content">
+          <p class="sponsor-tagline"><em>Brought to you by:</em></p>
+          <p class="sponsor-name">Booze Better</p>
+          <p class="sponsor-tagline">Drink Smart, Feel Better. The scientific solution to hangovers has finally arrived.
+          </p>
+          <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately"
+            target="_blank" rel="noopener noreferrer">Learn more</a>.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <p><a href="./index.html">About</a> || <a href="./owners.html">League Owners</a></p>
+  </nav>
+
+  <main>
+    <div class="owner-logo-header">
+      <img src="../static/img/owner-dn-logo.webp" alt="DN Logo" class="owner-logo-image">
+      <h1>DN - McAfee's Faithful</h1>
+    </div>
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th class="number">Season</th>
+          <th class="number">W</th>
+          <th class="number">L</th>
+          <th class="number">Win %</th>
+          <th class="number">Final Rnk</th>
+          <th class="number">RG Rnk</th>
+          <th class="number">PF</th>
+          <th class="number">PA</th>
+          <th class="number">PDiff</th>
+          <th class="number">Playoffs</th>
+          <th class="number">Champion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="number">24</td>
+          <td class="number">4</td>
+          <td class="number">9</td>
+          <td class="number">.308</td>
+          <td class="number">7</td>
+          <td class="number">8</td>
+          <td class="number">1,410</td>
+          <td class="number">1,404</td>
+          <td class="number">6</td>
+          <td class="number">N</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">23</td>
+          <td class="number">5</td>
+          <td class="number">8</td>
+          <td class="number">.385</td>
+          <td class="number">8</td>
+          <td class="number">9</td>
+          <td class="number">1,285</td>
+          <td class="number">1,504</td>
+          <td class="number">-219</td>
+          <td class="number">N</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">22</td>
+          <td class="number">9</td>
+          <td class="number">5</td>
+          <td class="number">.643</td>
+          <td class="number">6</td>
+          <td class="number">3</td>
+          <td class="number">1,520</td>
+          <td class="number">1,360</td>
+          <td class="number">160</td>
+          <td class="number">Y</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">21</td>
+          <td class="number">9</td>
+          <td class="number">5</td>
+          <td class="number">.643</td>
+          <td class="number">4</td>
+          <td class="number">1</td>
+          <td class="number">1,657</td>
+          <td class="number">1,512</td>
+          <td class="number">145</td>
+          <td class="number">Y</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">20</td>
+          <td class="number">4</td>
+          <td class="number">9</td>
+          <td class="number">.308</td>
+          <td class="number">7</td>
+          <td class="number">9</td>
+          <td class="number">1,308</td>
+          <td class="number">1,445</td>
+          <td class="number">-137</td>
+          <td class="number">N</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">19</td>
+          <td class="number">10</td>
+          <td class="number">3</td>
+          <td class="number">.769</td>
+          <td class="number">3</td>
+          <td class="number">2</td>
+          <td class="number">1,530</td>
+          <td class="number">1,249</td>
+          <td class="number">281</td>
+          <td class="number">Y</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">18</td>
+          <td class="number">5</td>
+          <td class="number">8</td>
+          <td class="number">.385</td>
+          <td class="number">9</td>
+          <td class="number">6</td>
+          <td class="number">1,497</td>
+          <td class="number">1,517</td>
+          <td class="number">-20</td>
+          <td class="number">Y</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">17</td>
+          <td class="number">7</td>
+          <td class="number">6</td>
+          <td class="number">.538</td>
+          <td class="number">6</td>
+          <td class="number">7</td>
+          <td class="number">1,276</td>
+          <td class="number">1,361</td>
+          <td class="number">-85</td>
+          <td class="number">N</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">16</td>
+          <td class="number">4</td>
+          <td class="number">9</td>
+          <td class="number">.308</td>
+          <td class="number">10</td>
+          <td class="number">10</td>
+          <td class="number">1,118</td>
+          <td class="number">1,235</td>
+          <td class="number">-117</td>
+          <td class="number">N</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">15</td>
+          <td class="number">6</td>
+          <td class="number">7</td>
+          <td class="number">.462</td>
+          <td class="number">6</td>
+          <td class="number">7</td>
+          <td class="number">2,017</td>
+          <td class="number">1,915</td>
+          <td class="number">102</td>
+          <td class="number">N</td>
+          <td class="number"></td>
+        </tr>
+        <tr>
+          <td class="number">14</td>
+          <td class="number">6</td>
+          <td class="number">7</td>
+          <td class="number">.462</td>
+          <td class="number">5</td>
+          <td class="number">6</td>
+          <td class="number">1,498</td>
+          <td class="number">1,501</td>
+          <td class="number">-3</td>
+          <td class="number">Y</td>
+          <td class="number"></td>
+        </tr>
+        <tr class="totals-row">
+          <td class="number">Totals</td>
+          <td class="number">69</td>
+          <td class="number">76</td>
+          <td class="number">.476</td>
+          <td class="number">-</td>
+          <td class="number">-</td>
+          <td class="number">16,116</td>
+          <td class="number">16,003</td>
+          <td class="number">113</td>
+          <td class="number">5</td>
+          <td class="number"></td>
+        </tr>
+      </tbody>
+    </table>
+    <h1>DN - Points and Wins by Season</h1>
+    <div id="chart-container"></div>
+    <div id="tooltip"
+      style="position: absolute; display: none; padding: 5px; background: lightgrey; border: 1px solid #666; border-radius: 4px; pointer-events: none; font-size: 12px;">
+    </div>
+  </main>
+
+  <script>
+    // Data for multiple teams
+    const teamsData = [
+      {
+        teamName: "McAfee's Faithful",
+        data: [
+          { season: '2014', points_scored: 1498, points_against: 1501, wins: 6 },
+          { season: '2015', points_scored: 2017, points_against: 1915, wins: 6 },
+          { season: '2016', points_scored: 1118, points_against: 1235, wins: 4 },
+          { season: '2017', points_scored: 1276, points_against: 1361, wins: 7 },
+          { season: '2018', points_scored: 1497, points_against: 1517, wins: 5 },
+          { season: '2019', points_scored: 1530, points_against: 1249, wins: 10 },
+          { season: '2020', points_scored: 1308, points_against: 1445, wins: 4 },
+          { season: '2021', points_scored: 1657, points_against: 1512, wins: 9 },
+          { season: '2022', points_scored: 1520, points_against: 1360, wins: 9 },
+          { season: '2023', points_scored: 1285, points_against: 1504, wins: 5 },
+        ]
+      },
+      // {
+      //   teamName: "bb im yr heisman trophy winner",
+      //   data: [
+      //     { season: '2014', points_scored: 1896, points_against: 1316, wins: 11 },
+      //     { season: '2015', points_scored: 1983, points_against: 2116, wins: 4 },
+      //     { season: '2016', points_scored: 1238, points_against: 1355, wins: 5 },
+      //     { season: '2017', points_scored: 1417, points_against: 1397, wins: 7 },
+      //     { season: '2018', points_scored: 1468, points_against: 1624, wins: 4 },
+      //     { season: '2019', points_scored: 1367, points_against: 1333, wins: 7 },
+      //     { season: '2020', points_scored: 1400, points_against: 1445, wins: 7 },
+      //     { season: '2021', points_scored: 1604, points_against: 1586, wins: 6 },
+      //     { season: '2022', points_scored: 1519, points_against: 1358, wins: 10 },
+      //     { season: '2023', points_scored: 1438, points_against: 1382, wins: 8 },
+      //   ]
+      // },
+      // {
+      //   teamName: "The Diabolical Liars",
+      //   data: [
+      //     { season: '2014', points_scored: 1539, points_against: 1616, wins: 5 },
+      //     { season: '2015', points_scored: 1911, points_against: 2038, wins: 3 },
+      //     { season: '2016', points_scored: 1244, points_against: 1285, wins: 7 },
+      //     { season: '2017', points_scored: 1376, points_against: 1248, wins: 8 },
+      //     { season: '2018', points_scored: 1466, points_against: 1568, wins: 8 },
+      //     { season: '2019', points_scored: 1914, points_against: 1411, wins: 11 },
+      //     { season: '2020', points_scored: 1588, points_against: 1441, wins: 8 },
+      //     { season: '2021', points_scored: 1531, points_against: 1519, wins: 6 },
+      //     { season: '2022', points_scored: 1445, points_against: 1675, wins: 4 },
+      //     { season: '2023', points_scored: 1443, points_against: 1393, wins: 7 },
+      //   ]
+      // },
+      // {
+      //   teamName: "Unburdened By What Has Been",
+      //   data: [
+      //     { season: '2014', points_scored: 1273, points_against: 1586, wins: 3 },
+      //     { season: '2015', points_scored: 1825, points_against: 2079, wins: 4 },
+      //     { season: '2016', points_scored: 1171, points_against: 994, wins: 9 },
+      //     { season: '2017', points_scored: 1313, points_against: 1177, wins: 9 },
+      //     { season: '2018', points_scored: 1561, points_against: 1430, wins: 8 },
+      //     { season: '2019', points_scored: 1402, points_against: 1322, wins: 8 },
+      //     { season: '2020', points_scored: 1573, points_against: 1482, wins: 8 },
+      //     { season: '2021', points_scored: 1669, points_against: 1679, wins: 5 },
+      //     { season: '2022', points_scored: 1699, points_against: 1521, wins: 8 },
+      //     { season: '2023', points_scored: 1676, points_against: 1374, wins: 11 },
+      //   ]
+      // }
+    ];
+
+    // Function to render chart for each team
+    function renderChart(team) {
+      // Create a container for each chart
+      const container = d3.select("#chart-container")
+        .append("div")
+        .attr("class", "chart-section");
+
+      // Add the team name as a title
+      container.append("div")
+        .attr("class", "chart-title")
+        .text(team.teamName);
+
+      // Append a new SVG for each team chart
+      const svg = container.append("svg")
+        .attr("width", 800)
+        .attr("height", 400);
+
+      const margin = { top: 20, right: 60, bottom: 40, left: 60 };
+      const width = +svg.attr("width") - margin.left - margin.right;
+      const height = +svg.attr("height") - margin.top - margin.bottom;
+
+      const chart = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+      // Scales and axes
+      const x = d3.scaleBand()
+        .domain(team.data.map(d => d.season))
+        .range([0, width])
+        .padding(0.1);
+
+      const yLeft = d3.scaleLinear()
+        .domain([0, 2400])
+        .range([height, 0]);
+
+      const yRight = d3.scaleLinear()
+        .domain([0, 14])
+        .range([height, 0]);
+
+      // Axes rendering
+      chart.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+
+      chart.append("text")
+        .attr("class", "axis-label")
+        .attr("x", width / 2)
+        .attr("y", height + margin.bottom - 5)
+        .style("text-anchor", "middle")
+        .text("Season");
+
+      chart.append("g")
+        .call(d3.axisLeft(yLeft))
+        .append("text")
+        .attr("class", "axis-label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -40)
+        .attr("x", -height / 2)
+        .attr("dy", "1em")
+        .style("text-anchor", "middle")
+        .text("Points Scored and Points Against");
+
+      chart.append("g")
+        .attr("transform", `translate(${width},0)`)
+        .call(d3.axisRight(yRight))
+        .append("text")
+        .attr("class", "axis-label")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 40)
+        .attr("x", height / 2)
+        .attr("dy", "-1em")
+        .style("text-anchor", "middle")
+        .text("Wins");
+
+      // Bars and lines
+      chart.selectAll(".bar")
+        .data(team.data)
+        .enter().append("rect")
+        .attr("class", "bar")
+        .attr("x", d => x(d.season))
+        .attr("y", d => yRight(d.wins))
+        .attr("width", x.bandwidth() / 2)
+        .attr("height", d => height - yRight(d.wins))
+        .attr("transform", `translate(${x.bandwidth() / 4},0)`)
+        .attr("fill", "#012f69");
+
+      const lineScored = d3.line()
+        .x(d => x(d.season) + x.bandwidth() / 2)
+        .y(d => yLeft(d.points_scored));
+
+      const lineAgainst = d3.line()
+        .x(d => x(d.season) + x.bandwidth() / 2)
+        .y(d => yLeft(d.points_against));
+
+      chart.append("path")
+        .datum(team.data)
+        .attr("class", "line")
+        .attr("d", lineScored)
+        .style("stroke", "#008f00")
+        .style("fill", "none");
+
+      chart.append("path")
+        .datum(team.data)
+        .attr("class", "line")
+        .attr("d", lineAgainst)
+        .style("stroke", "#d60303")
+        .style("fill", "none");
+
+      // Legend setup
+      const legendData = [
+        { label: "Points Scored", color: "#008f00" },
+        { label: "Points Against", color: "#d60303" },
+        { label: "Wins", color: "#012f69" }
+      ];
+
+      const legend = chart.append("g")
+        .attr("transform", `translate(${width - 150},${-margin.top})`)
+        .attr("class", "legend");
+
+      // Legend items
+      legend.selectAll("rect")
+        .data(legendData)
+        .enter()
+        .append("rect")
+        .attr("x", 0)
+        .attr("y", (d, i) => i * 20)
+        .attr("width", 10)
+        .attr("height", 10)
+        .attr("fill", d => d.color);
+
+      // Legend labels
+      legend.selectAll("text")
+        .data(legendData)
+        .enter()
+        .append("text")
+        .attr("x", 15)
+        .attr("y", (d, i) => i * 20 + 9)
+        .attr("class", "legend-label")
+        .style("font-size", "12px")
+        .text(d => d.label);
+
+      // Select tooltip div
+      const tooltip = d3.select("#tooltip");
+
+      // Tooltip function to show and hide
+      function showTooltip(event, d) {
+        tooltip.style("display", "block")
+          .html(`
+            <strong>Season:</strong> ${d.season}<br>
+            <strong>Points Scored:</strong> ${d.points_scored}<br>
+            <strong>Points Against:</strong> ${d.points_against}<br>
+            <strong>Wins:</strong> ${d.wins}
+        `)
+          .style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY - 28) + "px");
+      }
+
+      function hideTooltip() {
+        tooltip.style("display", "none");
+      }
+
+      // Apply tooltip to bars (wins)
+      chart.selectAll(".bar")
+        .on("mouseover", showTooltip)
+        .on("mousemove", showTooltip)
+        .on("mouseout", hideTooltip);
+
+      // Apply tooltip to points scored line
+      chart.selectAll(".line")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("class", "line-point")
+        .attr("cx", d => x(d.season) + x.bandwidth() / 2)
+        .attr("cy", d => yLeft(d.points_scored))
+        .attr("r", 5)
+        .attr("fill", "blue")
+        .on("mouseover", showTooltip)
+        .on("mousemove", showTooltip)
+        .on("mouseout", hideTooltip);
+
+      // Apply tooltip to points against line
+      chart.selectAll(".line-point-against")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("class", "line-point-against")
+        .attr("cx", d => x(d.season) + x.bandwidth() / 2)
+        .attr("cy", d => yLeft(d.points_against))
+        .attr("r", 5)
+        .attr("fill", "red")
+        .on("mouseover", showTooltip)
+        .on("mousemove", showTooltip)
+        .on("mouseout", hideTooltip);
+
+      // Add an export button for each chart
+      // container.append("button")
+      //   .attr("class", "export-btn")
+      //   .text("Export as PNG")
+      //   .on("click", () => {
+      //     // Convert SVG to PNG
+      //     const svgData = new XMLSerializer().serializeToString(svg.node());
+      //     const svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+      //     const url = URL.createObjectURL(svgBlob);
+
+      //     const img = new Image();
+      //     img.onload = function () {
+      //       const scaleFactor = 2;
+      //       const canvas = document.createElement("canvas");
+      //       canvas.width = svg.attr("width") * scaleFactor;
+      //       canvas.height = svg.attr("height") * scaleFactor;
+      //       const ctx = canvas.getContext("2d");
+
+      //       ctx.fillStyle = "white";
+      //       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      //       ctx.scale(scaleFactor, scaleFactor);
+      //       ctx.drawImage(img, 0, 0);
+
+      //       const link = document.createElement("a");
+      //       link.download = `${team.teamName} chart.png`;
+      //       link.href = canvas.toDataURL("image/png");
+      //       link.click();
+
+      //       URL.revokeObjectURL(url);
+      //     };
+      //     img.src = url;
+      //   });
+    }
+
+    teamsData.forEach(renderChart);
+  </script>
+
+  <footer>
+    <p>
+      <a href="https://fantasy.espn.com/football/league?leagueId=794521" target="_blank">ESPN</a> /
+      <a href="https://discord.com/channels/870404843582406696/870404844681322549" target="_blank">Discord</a>
+    </p>
+  </footer>
+</body>
+
+</html>

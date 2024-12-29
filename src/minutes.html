@@ -1,9 +1,14 @@
 {{
-  stub: ./stubs/header.stub.html
+  stub:
+    root: ./stubs/header.stub.html
+    var:
+      meta-img: ./static/img/2024.webp
   css:
     - ./css/base.css
     - ./css/minutes.css
 }}
+
+<!-- Evaluation of stubs should recurse (?) maybe vars / mixins solve that better -->
 
 <main>
   <article>
@@ -20,13 +25,15 @@
       </ul>
     </div>
     {{
-      stub: ./stubs/owner-dn-table.html
+      stub:
+        root: ./stubs/owner-dn-table.html
     }}
   </article>
 </main>
 
 {{
-  stub: ./stubs/footer.stub.html
+  stub:
+    root: ./stubs/footer.stub.html
   javascript:
     - ./javascript/owner-d3.js
 }}

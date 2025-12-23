@@ -59,7 +59,7 @@ Season,Owner,W,L,%,RGPF,RGPA,TPF,DIFF,PO?,RGRnk,Champ,PORnk
 - Use `make webp` to optimize and convert any `jpg` or `png` files in
   `static/img` to `webp`.
 
-### Deploy
+### Run Deploy
 
 ``` sh
 AWS_PROFILE=derbruden make deploy

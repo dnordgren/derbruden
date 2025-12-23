@@ -1,0 +1,39 @@
+{{
+  stub:
+    root: ./stubs/header.stub.html
+    var:
+      meta-img: ./static/img/2024.webp
+  css:
+    - ./css/base.css
+    - ./css/minutes.css
+}}
+
+<!-- Evaluation of stubs should recurse (?) maybe vars / mixins solve that better -->
+
+<main>
+  <article>
+    <div id="minutes-2024">
+      <h1>2024 Minutes</h1>
+      <ul>
+        <li><a href="../">Page 1</a></li>
+      </ul>
+    </div>
+    <div id="minutes-2023">
+      <h1>2023 Minutes</h1>
+      <ul>
+        <li><a href="../">Page 1</a></li>
+      </ul>
+    </div>
+    {{
+      stub:
+        root: ./stubs/owner-dn-table.html
+    }}
+  </article>
+</main>
+
+{{
+  stub:
+    root: ./stubs/footer.stub.html
+  javascript:
+    - ./javascript/owner-d3.js
+}}

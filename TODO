@@ -1,0 +1,10 @@
+TODO
+
+Website changes
+
+* Create excommunicado page
+* Create leadership page - Gabe as assistant to
+
+CI/CD and tooling improvements
+
+* Publish website from pub/ or static/html/ directory rather than src/

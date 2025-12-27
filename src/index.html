@@ -344,6 +344,52 @@
       <a href="https://discord.com/channels/870404843582406696/870404844681322549" target="_blank">Discord</a>
     </p>
   </footer>
+
+  <script>
+    (function () {
+      const preloaded = new Set();
+
+      const prefetch = (url) => {
+        if (!url || preloaded.has(url)) return;
+        preloaded.add(url);
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+      };
+
+      const getUrl = (element) => {
+        const href = element.getAttribute('href');
+        if (!href) return null;
+        // Filter external links (simplified check)
+        if (href.startsWith('http') && !href.includes(window.location.hostname)) return null;
+        if (href.startsWith('#')) return null;
+        return href;
+      };
+
+      // 1. Observer for viewport (Mobile/Scroll paradigm)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const url = getUrl(entry.target);
+            if (url) prefetch(url);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      // 2. Event listeners for hover (Desktop paradigm)
+      const links = document.querySelectorAll('a');
+      links.forEach(link => {
+        observer.observe(link); // Register for viewport detection
+
+        link.addEventListener('mouseenter', () => {
+          const url = getUrl(link);
+          if (url) prefetch(url);
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>

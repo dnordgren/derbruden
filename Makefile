@@ -30,14 +30,14 @@ deploy-html:
 	@echo "make deploy-html : Started"
 	@echo "Deploying HTML to bucket derbruden.com..."
 	@aws s3 rm s3://$(BUCKET)/ --recursive --exclude "*" --include "*.html"
-	@aws s3 sync src/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html"
+	@aws s3 sync src/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=0, must-revalidate"
 	@echo "make deploy-html : Finished"
 
 deploy-static:
 	@echo "make deploy-static : Started"
 	@echo "Deploying static assets to bucket derbruden.com..."
 	@aws s3 rm s3://$(BUCKET)/static/ --recursive
-	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete
+	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --cache-control "public, max-age=31536000, immutable"
 	@echo "make deploy-static : Finished"
 
 invalidate-cache:

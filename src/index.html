@@ -352,10 +352,8 @@
       const prefetch = (url) => {
         if (!url || preloaded.has(url)) return;
         preloaded.add(url);
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = url;
-        document.head.appendChild(link);
+        // Use fetch instead of <link rel="prefetch"> to ensure execution and cache population
+        fetch(url, { priority: 'low' });
       };
 
       const getUrl = (element) => {

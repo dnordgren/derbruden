@@ -133,7 +133,7 @@
     }
 
     /* START table styles */
-    .stats-table {
+    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }    .stats-table {
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
@@ -285,15 +285,15 @@
   </header>
 
   <nav>
-    <p><a href="./index.html">About</a> || <a href="./owners.html">League Owners</a></p>
+    <p><a href="./about.html">About</a> || <a href="./owners.html">League Owners</a></p>
   </nav>
 
   <main>
     <div class="owner-logo-header">
       <img src="../static/img/owner-dn-logo.webp" alt="DN Logo" class="owner-logo-image">
-      <h1>DN - McAfee's Faithful</h1>
+      <h1>DN - Washington Redskins</h1>
     </div>
-    <table class="stats-table">
+    <div class="table-container"><table class="stats-table">
       <thead>
         <tr>
           <th class="number">Season</th>
@@ -310,6 +310,19 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td class="number">25</td>
+          <td class="number">6</td>
+          <td class="number">7</td>
+          <td class="number">.462</td>
+          <td class="number">7</td>
+          <td class="number">9</td>
+          <td class="number">1,308</td>
+          <td class="number">1,378</td>
+          <td class="number">-70</td>
+          <td class="number">N</td>
+          <td class="number"></td>
+        </tr>
         <tr>
           <td class="number">24</td>
           <td class="number">4</td>
@@ -437,7 +450,7 @@
           <td class="number">2,017</td>
           <td class="number">1,915</td>
           <td class="number">102</td>
-          <td class="number">N</td>
+          <td class="number">Y</td>
           <td class="number"></td>
         </tr>
         <tr>
@@ -455,19 +468,19 @@
         </tr>
         <tr class="totals-row">
           <td class="number">Totals</td>
-          <td class="number">69</td>
-          <td class="number">76</td>
-          <td class="number">.476</td>
+          <td class="number">75</td>
+          <td class="number">83</td>
+          <td class="number">.475</td>
           <td class="number">-</td>
           <td class="number">-</td>
-          <td class="number">16,116</td>
-          <td class="number">16,003</td>
-          <td class="number">113</td>
-          <td class="number">5</td>
+          <td class="number">17,424</td>
+          <td class="number">17,381</td>
+          <td class="number">43</td>
+          <td class="number">6</td>
           <td class="number"></td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
     <h1>DN - Points and Wins by Season</h1>
     <div id="chart-container"></div>
     <div id="tooltip"

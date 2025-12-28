@@ -2,9 +2,22 @@ TODO
 
 Website changes
 
-* Create excommunicado page
-* Create leadership page - Gabe as assistant to
+* Templating refactor
+* Create merch section in About page with prior-year stickers. Press page?
 
 CI/CD and tooling improvements
 
+* Set up Raspberry Pi with tailscale for remote deployment environment
 * Publish website from pub/ or static/html/ directory rather than src/
+
+NOW
+
+* Reduce font size on owner updates. Use Berkeley Mono in tables. #wip
+* Add PF from regular season and full season. Compute diff in dedicated column to showcase playoff differential.
+* Create D3.js SVG charts for scoring by season against wins for all owners. Include draft pick number as bar. Signify bar with color if made playoffs. Use D3 to generate visualizations from same dataset as table.
+* Optimize images per Lighthouse score. Set fixed sizes. Improve caching?
+
+LATER
+
+* Make tables sortable.
+* Learn Emacs web-mode

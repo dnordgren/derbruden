@@ -22,7 +22,7 @@ brew install cwebp
 cd scripts/
 nvm use
 npm install
-node generate-stats.js owners index # produces scripts/owners-index.html
+node generate-stats.js owners index # updates src/owners.html with updated stats
 ```
 
 #### Individual owners table
@@ -31,14 +31,14 @@ Generate single owner:
 
 ```sh
 # .. same directory as above
-node generate-stats.js owners {owner} # like DN, produces scripts/owners-{owner}.html
+node generate-stats.js owners {owner} # like DN, updates src/{owner}.html
 ```
 
 Generate all owners:
 
 ```sh
 # .. same directory as above
-node generate-stats.js owners all # produces all scripts/owners-{owner}.html
+node generate-stats.js owners all # updates all src/{owner}.html
 ```
 
 #### Owners input data
@@ -59,7 +59,7 @@ Season,Owner,W,L,%,RGPF,RGPA,TPF,DIFF,PO?,RGRnk,Champ,PORnk
 - Use `make webp` to optimize and convert any `jpg` or `png` files in
   `static/img` to `webp`.
 
-### Deploy
+### Run Deploy
 
 ``` sh
 AWS_PROFILE=derbruden make deploy

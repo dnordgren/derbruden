@@ -132,7 +132,7 @@
     }
 
     /* START table styles */
-    .stats-table {
+    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }    .stats-table {
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
@@ -234,15 +234,15 @@
   </header>
 
   <nav>
-    <p><a href="./index.html">About</a> || <a href="./owners.html">League Owners</a></p>
+    <p><a href="./about.html">About</a> || <a href="./owners.html">League Owners</a></p>
   </nav>
 
   <main>
     <div class="owner-logo-header">
       <img src="../static/img/owner-ar-logo.webp" alt="AR Logo" class="owner-logo-image">
-      <h1>AR - diapIR king</h1>
+      <h1>AR - Give 'er The Beans</h1>
     </div>
-    <table class="stats-table">
+    <div class="table-container"><table class="stats-table">
       <thead>
         <tr>
           <th class="number">Season</th>
@@ -259,6 +259,19 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td class="number">25</td>
+          <td class="number">6</td>
+          <td class="number">7</td>
+          <td class="number">.462</td>
+          <td class="number">6</td>
+          <td class="number">5</td>
+          <td class="number">1,475</td>
+          <td class="number">1,431</td>
+          <td class="number">44</td>
+          <td class="number">Y</td>
+          <td class="number"></td>
+        </tr>
         <tr>
           <td class="number">24</td>
           <td class="number">5</td>
@@ -404,19 +417,19 @@
         </tr>
         <tr class="totals-row">
           <td class="number">Totals</td>
-          <td class="number">60</td>
-          <td class="number">85</td>
-          <td class="number">.414</td>
+          <td class="number">66</td>
+          <td class="number">92</td>
+          <td class="number">.418</td>
           <td class="number">-</td>
           <td class="number">-</td>
-          <td class="number">15,441</td>
-          <td class="number">16,571</td>
-          <td class="number">-1,130</td>
-          <td class="number">4</td>
+          <td class="number">16,916</td>
+          <td class="number">18,002</td>
+          <td class="number">-1,086</td>
+          <td class="number">5</td>
           <td class="number">🏆</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </main>
 
   <footer>

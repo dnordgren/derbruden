@@ -26,6 +26,8 @@
   <!-- Apple Meta Tags for iMessage -->
   <meta name="apple-mobile-web-app-title" content="DerBruden.com">
   <link rel="apple-touch-icon" href="https://derbruden.com/static/ico/header-icon-192.png">
+  <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -205,10 +207,22 @@
   </header>
 
   <nav>
-    <p><a href="./index.html">About</a> || <a href="./owners.html">League Owners</a></p>
+    <p><a href="./about.html">About</a> || <a href="./owners.html">League Owners</a></p>
   </nav>
 
   <main>
+    <article class="championship-post">
+      <div>
+        <h2>2025 Season Champion: Significant Figures 🏆</h2>
+        <ul>
+          <li>🥇 <a href="./cr.html">Significant Figures</a></li>
+          <li>🥈 <a href="./gm.html">Toe Burrows Ice Box</a></li>
+          <li>🍼 <a href="./dm.html">Feel It In My Plums</a></li>
+        </ul>
+        <p><em>December 27, 2025</em></p>
+      </div>
+      <img src="../static/img/index-2025-sticker.webp" alt="2025 Championship" class="post-image" loading="lazy" style="max-height: 30rem;">
+    </article>
     <article class="championship-post">
       <div>
         <h2>2024 Season Champion: Ice Box 🏆🏆🏆</h2>
@@ -332,6 +346,59 @@
       <a href="https://discord.com/channels/870404843582406696/870404844681322549" target="_blank">Discord</a>
     </p>
   </footer>
+
+  <script>
+    (function () {
+      const preloaded = new Set();
+
+      const prefetch = (url) => {
+        if (!url || preloaded.has(url)) return;
+        preloaded.add(url);
+        // Use fetch instead of <link rel="prefetch"> to ensure execution and cache population
+        fetch(url, { priority: 'low' });
+      };
+
+      const getUrl = (element) => {
+        const href = element.href;
+        if (!href) return null;
+
+        try {
+          const url = new URL(href);
+          // Only fetch http/https pages
+          if (!['http:', 'https:'].includes(url.protocol)) return null;
+          // Strict origin check: must match exactly (protocol + hostname + port)
+          if (url.origin !== window.location.origin) return null;
+          // Optional: Avoid prefetching the current page
+          if (url.pathname === window.location.pathname && url.search === window.location.search) return null;
+          return url.href;
+        } catch (e) {
+          return null;
+        }
+      };
+
+      // 1. Observer for viewport (Mobile/Scroll paradigm)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const url = getUrl(entry.target);
+            if (url) prefetch(url);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      // 2. Event listeners for hover (Desktop paradigm)
+      const links = document.querySelectorAll('a');
+      links.forEach(link => {
+        observer.observe(link); // Register for viewport detection
+
+        link.addEventListener('mouseenter', () => {
+          const url = getUrl(link);
+          if (url) prefetch(url);
+        });
+      });
+    })();
+  </script>
 </body>
 
 </html>

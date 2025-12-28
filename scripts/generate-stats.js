@@ -53,7 +53,7 @@ function generateStatsIndex(data) {
       <td class="number">${stat.championships ? '🏆'.repeat(stat.championships) : ''}</td>
     </tr>`).join('');
 
-  return `<table class="stats-table">
+  return `<div class="table-container"><table class="stats-table">
   <thead>
     <tr>
       <th>Owner</th>
@@ -71,7 +71,7 @@ function generateStatsIndex(data) {
   <tbody>
     ${tableRows}
   </tbody>
-</table>`;
+</table></div>`;
 }
 
 function generateOwnerStats(data, owner) {
@@ -104,7 +104,7 @@ function generateOwnerStats(data, owner) {
 
   const winPct = totals.wins / (totals.wins + totals.losses);
 
-  return `<table class="stats-table">
+  return `<div class="table-container"><table class="stats-table">
   <thead>
     <tr>
       <th class="number">Season</th>
@@ -136,7 +136,7 @@ function generateOwnerStats(data, owner) {
       <td class="number">${totals.championships ? '🏆'.repeat(totals.championships) : ''}</td>
     </tr>
   </tbody>
-</table>`;
+</table></div>`;
 }
 
 async function main() {

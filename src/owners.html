@@ -132,7 +132,7 @@
     }
 
     /* START table styles */
-    .stats-table {
+    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }    .stats-table {
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
@@ -251,7 +251,7 @@
       <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image">
       <h1>Der Bruden</h1>
     </div>
-    <table class="stats-table">
+    <div class="table-container"><table class="stats-table">
       <thead>
         <tr>
           <th>Owner</th>
@@ -388,7 +388,7 @@
           <td class="number">🏆</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
   </main>
 
   <footer>

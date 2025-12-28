@@ -43,7 +43,7 @@ deploy-static:
 
 invalidate-cache:
 	@echo "make invalidate-cache : Started"
-	@echo "Invalidaing CloudFront cache E3CDWEEK40CKI2..."
+	@echo "Invalidating CloudFront cache E3CDWEEK40CKI2..."
 	@aws cloudfront create-invalidation --distribution-id $(DISTRIBUTION_ID) --paths "/*"
 	@echo "make invalidate-cache : Finished"
 

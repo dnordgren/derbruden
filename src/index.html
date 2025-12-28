@@ -359,12 +359,21 @@
       };
 
       const getUrl = (element) => {
-        const href = element.getAttribute('href');
+        const href = element.href;
         if (!href) return null;
-        // Filter external links (simplified check)
-        if (href.startsWith('http') && !href.includes(window.location.hostname)) return null;
-        if (href.startsWith('#')) return null;
-        return href;
+
+        try {
+          const url = new URL(href);
+          // Only fetch http/https pages
+          if (!['http:', 'https:'].includes(url.protocol)) return null;
+          // Strict origin check: must match exactly (protocol + hostname + port)
+          if (url.origin !== window.location.origin) return null;
+          // Optional: Avoid prefetching the current page
+          if (url.pathname === window.location.pathname && url.search === window.location.search) return null;
+          return url.href;
+        } catch (e) {
+          return null;
+        }
       };
 
       // 1. Observer for viewport (Mobile/Scroll paradigm)

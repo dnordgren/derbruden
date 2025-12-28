@@ -2,35 +2,23 @@ TODO
 
 Website changes
 
-* Update 2025 stats
-* Finish templating refactor
-* Create merch section in About page
+* Templating refactor
+* Make just the table (not full page) scroll horizontally
+* Create merch section in About page with prior-year stickers. Press page?
 
 CI/CD and tooling improvements
 
+* Set up Raspberry Pi with tailscale for remote deployment environment
 * Publish website from pub/ or static/html/ directory rather than src/
 
 NOW
 
-- [ ] Make just the table scroll horizontally
-- [ ] Create a standard header footer HTML page. Don't use JavaScript to make every page standard. Instead, do a build process to replace inner HTML within standard header footer as static HTML that gets built and pushed. Maybe https://www.11ty.dev/ ? No obvious solution for a static / compile time templating build.
-- [ ] Reduce font size on owner updates. Use Berkeley Mono in tables. #wip
-- [ ] Add PF from regular season and full season. Compute diff in dedicated column to showcase playoff differential.
-- [ ] Create D3.js SVG charts for scoring by season against wins for all owners. Include draft pick number as bar. Signify bar with color if made playoffs. Use D3 to generate visualizations from same dataset as table.
-- [ ] Optimize images per Lighthouse score. Set fixed sizes. Improve caching?
+* Reduce font size on owner updates. Use Berkeley Mono in tables. #wip
+* Add PF from regular season and full season. Compute diff in dedicated column to showcase playoff differential.
+* Create D3.js SVG charts for scoring by season against wins for all owners. Include draft pick number as bar. Signify bar with color if made playoffs. Use D3 to generate visualizations from same dataset as table.
+* Optimize images per Lighthouse score. Set fixed sizes. Improve caching?
 
 LATER
 
-- [ ] Make tables sortable.
-- [ ] Build Ci-Cd for iPad-based editing. Edit HTML with Textastic, check in with git client, makefile builds HTML templates, publishes to S3 and invalidates CloudFront. Use Raspberry Pi as a build machine with makefile/build script.
-- [ ] add service worker for page caching (and progressive asset loading?)
-- [ ] Learn Emacs web-mode
-- [ ] JavaScript pre-fetches linked pages, and caches (headers?), on hover.
-- [ ] Update Doom Emacs to not go full screen width - ask Claude
-- [ ] Post Up Ur Butt sticker (press page?)
-
-DONE
-
-- [x] Update DNS to release site
-- [x] Rebuild Wordpress site as static S3 site - Add sponsor logo; build CI/CD and deploy
-- [x] Make meta preview image the latest diaper pic #mobile
+* Make tables sortable.
+* Learn Emacs web-mode

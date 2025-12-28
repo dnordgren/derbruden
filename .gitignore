@@ -10,5 +10,4 @@ logs
 
 # Ignore scripts/ node stuff and input/output files
 scripts/node_modules
-scripts/*.csv
 scripts/*.html

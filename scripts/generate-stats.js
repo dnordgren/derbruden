@@ -51,7 +51,7 @@ function generateStatsIndex(data) {
       <td class="number">${stat.pointsDiff.toLocaleString()}</td>
       <td class="number">${stat.playoffs}</td>
       <td class="number">${stat.championships ? '🏆'.repeat(stat.championships) : ''}</td>
-    </tr>`).join('');
+    </tr>`).join('\n    ');
 
   return `<div class="table-container"><table class="stats-table">
   <thead>
@@ -100,7 +100,7 @@ function generateOwnerStats(data, owner) {
       <td class="number">${(row.RGPF - row.RGPA).toLocaleString()}</td>
       <td class="number">${row['PO?']}</td>
       <td class="number">${row.Champ === 'Y' ? '🏆' : ''}</td>
-    </tr>`).join('');
+    </tr>`).join('\n    ');
 
   const winPct = totals.wins / (totals.wins + totals.losses);
 
@@ -154,19 +154,40 @@ async function main() {
     skipEmptyLines: true
   }).data;
 
+  const srcDir = join(__dirname, '../src');
+
+  function updateFile(filename, newContent) {
+    const filePath = join(srcDir, filename);
+    if (!fs.existsSync(filePath)) {
+        console.warn(`File not found: ${filePath}`);
+        return;
+    }
+
+    let content = fs.readFileSync(filePath, 'utf8');
+    const regex = /<div class="table-container">[\s\S]*?<\/div>/;
+
+    if (regex.test(content)) {
+      content = content.replace(regex, newContent);
+      fs.writeFileSync(filePath, content);
+      console.log(`Updated ${filename}`);
+    } else {
+        console.warn(`Could not find table container in ${filename}`);
+    }
+  }
+
   if (subcommand === 'index') {
     const ownersIndexTable = generateStatsIndex(parsedData);
-    fs.writeFileSync(`owners-index.html`, ownersIndexTable);
+    updateFile('owners.html', ownersIndexTable);
   } else if (subcommand === 'all') {
     const owners = [...new Set(parsedData.map(row => row.Owner))];
     owners.forEach(owner => {
       if (!owner) return;
       const ownerTable = generateOwnerStats(parsedData, owner);
-      fs.writeFileSync(`owners-${owner.toLowerCase()}.html`, ownerTable);
+      updateFile(`${owner.toLowerCase()}.html`, ownerTable);
     });
   } else {
     const ownerTable = generateOwnerStats(parsedData, subcommand.toUpperCase());
-    fs.writeFileSync(`owners-${subcommand.toLowerCase()}.html`, ownerTable);
+    updateFile(`${subcommand.toLowerCase()}.html`, ownerTable);
   }
 }
 

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DerBruden.com | Strange dreams lately?</title>
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="DerBruden.com | Strange dreams lately?">
+  <meta property="og:description" content="The source of those strange dreams you&#39;ve been having. Up your butt!">
+  <meta property="og:image" content="https://derbruden.com/static/img/index-2024.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://derbruden.com/">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DerBruden.com | Strange dreams lately?">
+  <meta name="twitter:description" content="The source of those strange dreams you&#39;ve been having. Up your butt!">
+  <meta name="twitter:image" content="https://derbruden.com/static/img/index-2024.webp">
+
+  <!-- Apple Meta Tags for iMessage -->
+  <meta name="apple-mobile-web-app-title" content="DerBruden.com">
+  <link rel="apple-touch-icon" href="https://derbruden.com/static/ico/header-icon-192.png">
+  <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: "Archivo", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 75px;
+    }
+
+    .site-title {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .tagline {
+      margin: 0;
+      color: #666;
+    }
+
+    .sponsor-box {
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: 300px;
+    }
+
+    .sponsor-box img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 0px;
+    }
+
+    .sponsor-content {
+      flex: 1;
+      text-align: left;
+      font-size: 0.7em;
+    }
+
+    .sponsor-name {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .sponsor-tagline {
+      color: #666;
+      margin: 5px 0 0 0;
+      max-width: 200px;
+    }
+
+    nav {
+      margin-bottom: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav li {
+      margin-bottom: 10px;
+    }
+
+    .championship-post {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .post-image {
+      max-width: 100%;
+      height: auto;
+      max-height: 50rem; /* Added based on about.html observation */
+    }
+
+    .post-date {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    .post-category {
+      color: #666;
+      font-size: 0.9em;
+    }
+    
+    /* Table styles from owners pages */
+    .table-container {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9em;
+    }
+    .stats-table th {
+      background-color: #f4f4f4;
+      padding: 12px;
+      text-align: left;
+      border-bottom: 2px solid #ddd;
+    }
+    .stats-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+    }
+    .stats-table tbody tr:hover {
+      background-color: #f8f8f8;
+    }
+    .stats-table .number {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .stats-table .owner {
+      font-weight: 500;
+    }
+    .stats-table td a {
+      color: #00429f;
+      text-decoration: underline;
+    }
+    .owner-logo-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .owner-logo-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .sponsor-box {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .sponsor-ribbon {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+      }
+
+      .championship-post {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header">
+        <a href="./index.html">
+          <img src="/static/img/header-logo.webp" alt="DerBruden.com" class="logo">
+        </a>
+        <div>
+          <h1 class="site-title">DerBruden.com</h1>
+          <p class="tagline">Strange dreams lately?</p>
+        </div>
+      </div>
+
+      <div class="sponsor-box">
+        <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately"
+          target="_blank" rel="noopener noreferrer"><img src="/static/img/about-sponsor.webp" alt="Booze Better"></a>
+        <div class="sponsor-content">
+          <p class="sponsor-tagline"><em>Brought to you by:</em></p>
+          <p class="sponsor-name">Booze Better</p>
+          <p class="sponsor-tagline">Drink Smart, Feel Better. The scientific solution to hangovers has finally arrived.
+          </p>
+          <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately"
+            target="_blank" rel="noopener noreferrer">Learn more</a>.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <p><a href="./about.html">About</a> || <a href="./owners.html">League Owners</a></p>
+  </nav>
+
+  
+<main>
+  <article class="championship-post">
+    <div>
+      <h2>2025 Season Champion: Significant Figures 🏆</h2>
+      <ul>
+        <li>🥇 <a href="./cr.html">Significant Figures</a></li>
+        <li>🥈 <a href="./gm.html">Toe Burrows Ice Box</a></li>
+        <li>🍼 <a href="./dm.html">Feel It In My Plums</a></li>
+      </ul>
+      <p><em>December 27, 2025</em></p>
+    </div>
+    <img src="../static/img/index-2025-sticker.webp" alt="2025 Championship" class="post-image" loading="lazy" style="max-height: 30rem;">
+  </article>
+  <article class="championship-post">
+    <div>
+      <h2>2024 Season Champion: Ice Box 🏆🏆🏆</h2>
+      <ul>
+        <li>🥇 <a href="./gm.html">Ice Box</a></li>
+        <li>🥈 <a href="./jo.html">Dak Be' Down</a></li>
+        <li>🍼 <a href="./ik.html">Bathtub Collard Greens</a></li>
+      </ul>
+      <p><em>December 28, 2024</em></p>
+    </div>
+    <img src="../static/img/index-2024.webp" alt="2024 Championship" class="post-image" loading="lazy">
+  </article>
+  <article class="championship-post">
+    <div>
+      <h2>2023 Season Champion: No Diggity 🏆</h2>
+      <ul>
+        <li>🥇 <a href="./zs.html">No Diggity</a></li>
+        <li>🥈 <a href="./cr.html">Who's Colesdad?</a></li>
+        <li>🍼 <a href="./ar.html">The Diaper King</a></li>
+      </ul>
+      <p><em>December 28, 2023</em></p>
+    </div>
+    <img src="../static/img/index-2023.webp" alt="2023 Championship" class="post-image" loading="lazy">
+  </article>
+
+  <article class="championship-post">
+    <div>
+      <h2>2022 Season Champion: Con Queso 🏆🏆🏆</h2>
+      <ul>
+        <li>🥇 <a href="./dm.html">Con Queso</a></li>
+        <li>🥈 <a href="./ar.html">Diaper King</a></li>
+        <li>🍼 <a href="./an.html">Bert n Ekelie</a></li>
+      </ul>
+      <p><em>December 30, 2022</em></p>
+    </div>
+    <img src="../static/img/index-2022.webp" alt="2022 Championship" class="post-image" loading="lazy">
+  </article>
+
+  <article class="championship-post">
+    <div>
+      <h2>2021 Season Champion: King Henry 🏆🏆</h2>
+      <ul>
+        <li>🥇 <a href="./ik.html">King Henry</a></li>
+        <li>🥈 <a href="./jo.html">Dak Me Up</a></li>
+        <li>🍼 <a href="./jh.html">The Aaron Jones Show</a></li>
+      </ul>
+      <p><em>January 2, 2022</em></p>
+    </div>
+    <img src="../static/img/index-2021.webp" alt="2021 Championship" class="post-image" loading="lazy">
+  </article>
+
+  <article class="championship-post">
+    <div>
+      <h2>2020 Season Champion: Midnight in Montgomery 🏆</h2>
+      <ul>
+        <li>🥇 <a href="./jh.html">Midnight in Montgomery</a></li>
+        <li>🥈 <a href="./an.html">The Kyler Murray Wine Mixer</a></li>
+        <li>🍼 <a href="./ar.html">Taysom Hill Gang</a></li>
+      </ul>
+      <p><em>December 27, 2020</em></p>
+    </div>
+    <img src="../static/img/index-2020.webp" alt="2020 Championship" class="post-image" loading="lazy">
+  </article>
+
+  <article class="championship-post">
+    <div>
+      <h2>2019 Season Champion: Booger's Left Hand 🏆</h2>
+      <ul>
+        <li>🥇 <a href="./ik.html">Booger's Left Hand</a></li>
+        <li>🥈 <a href="./an.html">McCaFREE NAPS</a></li>
+        <li>🍼 <a href="./zs.html">Small Town Shanahan</a></li>
+      </ul>
+      <p><em>December 28, 2019</em></p>
+    </div>
+    <img src="../static/img/index-2019.webp" alt="2019 Championship" class="post-image" loading="lazy">
+  </article>
+
+  <article class="championship-post">
+    <div>
+      <h2>2018 Season Champion: Fat Joe Hit Hard 🏆🏆</h2>
+      <ul>
+        <li>🥇 <a href="./gm.html">Fat Joe Hit Hard</a></li>
+        <li>🥈 <a href="./cr.html">U.S. Space Force</a></li>
+        <li>🍼 <a href="./ar.html">Baby Birds</a></li>
+      </ul>
+      <p><em>December 30, 2018</em></p>
+    </div>
+    <img src="../static/img/index-2018.webp" alt="2018 Championship" class="post-image" loading="lazy">
+  </article>
+
+  <article class="championship-post">
+    <div>
+      <h2>2017 Season Champion: The Raunch 🏆🏆</h2>
+      <ul>
+        <li>🥇 <a href="./dm.html">The Raunch</a></li>
+        <li>🥈 <a href="./an.html">Bigger Ol' TDs</a></li>
+        <li>🍼 <a href="./ar.html">Birdwatchers</a></li>
+      </ul>
+      <p><em>December 30, 2017</em></p>
+    </div>
+    <img src="../static/img/index-2017.webp" alt="2017 Championship" class="post-image" loading="lazy">
+  </article>
+
+  <article class="championship-post">
+    <div>
+      <h2>2016 Season Champion: Fat Joe Hit Hard 🏆</h2>
+      <ul>
+        <li>🥇 <a href="./dm.html">The Raunch</a></li>
+        <li>🥈 <a href="./jo.html">Starr Struck</a></li>
+        <li>🍼 <a href="./dn.html">Bad Hombres</a></li>
+      </ul>
+      <p><em>December 30, 2016</em></p>
+    </div>
+    <img src="../static/img/index-2016.webp" alt="2016 Championship" class="post-image" loading="lazy">
+  </article>
+</main>
+
+
+  <footer>
+    <p>
+      <a href="https://fantasy.espn.com/football/league?leagueId=794521" target="_blank">ESPN</a> /
+      <a href="https://discord.com/channels/870404843582406696/870404844681322549" target="_blank">Discord</a>
+    </p>
+  </footer>
+
+  <script>
+    (function () {
+      const preloaded = new Set();
+
+      const prefetch = (url) => {
+        if (!url || preloaded.has(url)) return;
+        preloaded.add(url);
+        // Use fetch instead of <link rel="prefetch"> to ensure execution and cache population
+        fetch(url, { priority: 'low' })
+          .then(() => console.log(`Prefetched: ${url}`))
+          .catch(err => console.error(`Failed to prefetch ${url}`, err));
+      };
+
+      const getUrl = (element) => {
+        // Use the resolved href property to get the absolute URL
+        const href = element.href;
+        if (!href) return null;
+
+        try {
+          const url = new URL(href);
+          // Only fetch http/https pages
+          if (!['http:', 'https:'].includes(url.protocol)) return null;
+          // Strict origin check: must match exactly (protocol + hostname + port)
+          if (url.origin !== window.location.origin) return null;
+          // Optional: Avoid prefetching the current page
+          if (url.pathname === window.location.pathname && url.search === window.location.search) return null;
+          
+          return url.href;
+        } catch (e) {
+          return null;
+        }
+      };
+
+      // 1. Observer for viewport (Mobile/Scroll paradigm)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const url = getUrl(entry.target);
+            if (url) prefetch(url);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      // 2. Event listeners for hover (Desktop paradigm)
+      const links = document.querySelectorAll('a');
+      links.forEach(link => {
+        observer.observe(link); // Register for viewport detection
+
+        link.addEventListener('mouseenter', () => {
+          const url = getUrl(link);
+          if (url) prefetch(url);
+        });
+      });
+    })();
+  </script>
+  
+</body>
+
+</html>

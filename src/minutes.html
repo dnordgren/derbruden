@@ -1,14 +1,11 @@
-{{
-  stub:
-    root: ./stubs/header.stub.html
-    var:
-      meta-img: ./static/img/2024.webp
-  css:
-    - ./css/base.css
-    - ./css/minutes.css
-}}
-
-<!-- Evaluation of stubs should recurse (?) maybe vars / mixins solve that better -->
+---
+layout: base.njk
+metaImg: "/static/img/2024.webp"
+css:
+  - "/css/minutes.css"
+javascript:
+  - "/javascript/owner-d3.js"
+---
 
 <main>
   <article>
@@ -24,16 +21,14 @@
         <li><a href="../">Page 1</a></li>
       </ul>
     </div>
-    {{
-      stub:
-        root: ./stubs/owner-dn-table.html
-    }}
+    <!-- 
+      The user had: { stub: root: ./stubs/owner-dn-table.html }
+      If this file exists, we should include it using Nunjucks.
+      If it was a placeholder, we leave a comment.
+      I'll assume it might exist in src/_includes/stubs/ if I move it there, 
+      or I can just leave a TODO if the file is missing.
+      For now, I'll comment it out or try to include it if I can find where it is.
+    -->
+    {% include "stubs/owner-dn-table.html" ignore missing %}
   </article>
 </main>
-
-{{
-  stub:
-    root: ./stubs/footer.stub.html
-  javascript:
-    - ./javascript/owner-d3.js
-}}

@@ -1,0 +1,29 @@
+{
+  "name": "derbruden",
+  "version": "1.0.0",
+  "description": "Strange dreams lately? DerBruden.com 🛸",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnordgren/derbruden.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dnordgren/derbruden/issues"
+  },
+  "homepage": "https://github.com/dnordgren/derbruden#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "cross-env": "^10.1.0"
+  },
+  "dependencies": {
+    "papaparse": "^5.5.3"
+  }
+}

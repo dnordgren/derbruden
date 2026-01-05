@@ -1,4 +1,4 @@
-.PHONY: webp clean deploy deploy-html deploy-static invalidate-cache
+.PHONY: install build webp clean deploy deploy-html deploy-static invalidate-cache
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -7,6 +7,14 @@ DISTRIBUTION_ID = E3CDWEEK40CKI2
 IMAGES := $(wildcard static/img/*.jpg) $(wildcard static/img/*.png)
 # Generate target webp filenames
 WEBP_FILES := $(IMAGES:%=%.webp)
+
+install:
+	@echo "Installing dependencies..."
+	@npm install
+
+build: install
+	@echo "Building site with Eleventy..."
+	@npm run build
 
 webp: $(WEBP_FILES)
 	@echo "All images converted to WebP"
@@ -23,14 +31,14 @@ webp: $(WEBP_FILES)
 	@rm $<
 	@echo "Deleted original: $<"
 
-deploy: deploy-html deploy-static invalidate-cache
+deploy: build deploy-html deploy-static invalidate-cache
 	@echo "Deployment complete"
 
 deploy-html:
 	@echo "make deploy-html : Started"
 	@echo "Deploying HTML to bucket derbruden.com..."
 	@aws s3 rm s3://$(BUCKET)/ --recursive --exclude "*" --include "*.html"
-	@aws s3 sync src/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=0, must-revalidate"
+	@aws s3 sync _site/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=600, must-revalidate"
 	@echo "make deploy-html : Finished"
 
 deploy-static:
@@ -43,7 +51,7 @@ deploy-static:
 
 invalidate-cache:
 	@echo "make invalidate-cache : Started"
-	@echo "Invalidating CloudFront cache E3CDWEEK40CKI2..."
+	@echo "Invalidaing CloudFront cache E3CDWEEK40CKI2..."
 	@aws cloudfront create-invalidation --distribution-id $(DISTRIBUTION_ID) --paths "/*"
 	@echo "make invalidate-cache : Finished"
 
@@ -51,4 +59,5 @@ clean:
 	@echo "make clean : Started"
 	@echo "Removing webp files from static/img/ ..."
 	@rm -f static/img/*.webp
+	@rm -rf _site
 	@echo "make clean : Finished"

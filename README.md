@@ -6,49 +6,31 @@ Strange dreams lately? DerBruden.com 🛸
 
 ### Install tools
 
-- `cwebp` for image optimization
+- `cwebp` for image optimization (macOS: `brew install cwebp`)
+- `node` (version >= 18)
 
-macOS:
+### Local Development
 
-```sh
-brew install cwebp
-```
-
-### Generate stats
-
-#### Owners table index
+Install dependencies and start the local development server:
 
 ```sh
-cd scripts/
-nvm use
 npm install
-node generate-stats.js owners index # updates src/owners.html with updated stats
+npm run serve
 ```
+This will start a hot-reloading server at `http://localhost:8080`.
 
-#### Individual owners table
+### Stats Data
 
-Generate single owner:
+The site data is driven by `scripts/stats.csv`. To update the stats on the site:
 
-```sh
-# .. same directory as above
-node generate-stats.js owners {owner} # like DN, updates src/{owner}.html
-```
+1. Update `scripts/stats.csv` with the latest data.
+2. The site will automatically rebuild if you are running `npm run serve`.
+3. Otherwise, run `npm run build` to generate the static files in `_site/`.
 
-Generate all owners:
-
-```sh
-# .. same directory as above
-node generate-stats.js owners all # updates all src/{owner}.html
-```
-
-#### Owners input data
-
-Assumes `/scripts/stats.csv` exists of the form:
-
+**CSV Format:**
 ```csv
 Season,Owner,W,L,%,RGPF,RGPA,TPF,DIFF,PO?,RGRnk,Champ,PORnk
 24,ZS,9,4,0.692,1553,1365,1942.1,10.2,Y,3,N,5
-24,IK,3,10,0.231,1256,1523,1602.6,18.9,N,10,N,9
 ...
 ```
 
@@ -65,12 +47,11 @@ Season,Owner,W,L,%,RGPF,RGPA,TPF,DIFF,PO?,RGRnk,Champ,PORnk
 AWS_PROFILE=derbruden make deploy
 ```
 
-This:
-
-- Clears S3 bucket of prior `*.html` and images in `static/`
-- Syncs `*.html` from `src/` to S3 root to host site
-- Syncs `static/` to S3 `static/`
-- Invalidates the CloudFront cache
+This will:
+1. Run `npm install` and `npm run build` to generate the static site in `_site/`.
+2. Sync `_site/*.html` to the S3 bucket root.
+3. Sync `static/` assets to S3.
+4. Invalidate the CloudFront cache.
 
 ## Ideas
 

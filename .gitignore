@@ -9,5 +9,5 @@ logs
 .DS_Store
 
 # Ignore scripts/ node stuff and input/output files
-scripts/node_modules
+**/node_modules/**
 scripts/*.html

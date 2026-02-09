@@ -11,7 +11,7 @@ Strange dreams lately? DerBruden.com 🛸
 macOS:
 
 ```sh
-brew install cwebp
+brew install cweb
 ```
 
 ### Generate stats

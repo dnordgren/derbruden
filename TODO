@@ -21,3 +21,18 @@ LATER
 
 * Make tables sortable.
 * Learn Emacs web-mode
+* Add Press Releases
+  * Text file posted per owner with date. I allow some self-service posting. Email? Markdown? Social media preview used - "from the desk of", subject included. Publish an RSS feed that IFTTT posts to Discord. Whatever process builds the site also has to: look for posts for an owner to add a new entry; update the RSS .atom
+* Export league stats to Excel
+  * https://www.reddit.com/r/fantasyfootball/comments/w4loig/dont_know_who_needs_this_but_i_made_an_excel_tool/
+* Generate stat D3.js charts for owner pages
+* Embed keepers sheet
+* PLACEHOLDER
+* Move Discord scores bots to Raspberry Pi
+  * https://github.com/dtcarls/fantasy_football_chat_bot
+* Add draft recap and final standings projection screenshots
+* Configure ESPN trades emails or webhooks to Discord
+  * https://github.com/dtcarls/fantasy_football_chat_bot
+  * https://github.com/mkreiser/ESPN-Fantasy-Football-API
+  * Email forwarding rule+IFTTT for trade emails from ESPN
+  * Attachment: image.jpg (https://files.todoist.com/user_upload/v2/2219179831/file.jpg)

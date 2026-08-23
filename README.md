@@ -52,6 +52,42 @@ Season,Owner,W,L,%,RGPF,RGPA,TPF,DIFF,PO?,RGRnk,Champ,PORnk
 ...
 ```
 
+### Generate power rankings
+
+Pulls the league from the ESPN fantasy API. Computes Elo ratings with a
+margin-of-victory factor. Writes `src/power-rankings.html`.
+
+The league is private. Put the `espn_s2` cookie value from espn.com in
+`scripts/.env` (git ignored):
+
+```sh
+echo "ESPN_S2=<espn_s2 cookie value>" > scripts/.env
+```
+
+To grab the cookie from iOS Safari: sign in at fantasy.espn.com, then run a
+bookmarklet that shows `document.cookie`. Copy the `espn_s2` value. The
+`SWID` cookie is not required.
+
+Generate for the current season:
+
+```sh
+node scripts/generate-power-rankings.js
+```
+
+Generate for a past season:
+
+```sh
+node scripts/generate-power-rankings.js 2025
+```
+
+Notes:
+
+- Team ids map to owners in `TEAM_OWNERS` inside the script. Verify the map
+  after each draft.
+- `scripts/power-rankings-state.json` stores the last published ranks. The
+  script uses it to render rank deltas. It is local only, not tracked by git.
+  Delete it to reset deltas.
+
 ## Deploy
 
 ### Image optimization

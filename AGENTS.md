@@ -26,9 +26,12 @@ No framework, no build step besides two Node generators in `scripts/`.
   is not required. Cookie expires periodically; re-grab from any signed-in
   browser. See README "Generate power rankings".
 - A weekly GitHub Action (`.github/workflows/power-rankings.yml`) runs
-  Tuesday mornings in season. It needs repo secrets `ESPN_S2`,
-  `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`. Rotate the ESPN secret
-  when the action starts failing with 302s.
+  Tuesday mornings in season. It needs repo secrets `ESPN_S2`, `SWID`,
+  `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`,
+  `DISCORD_WEBHOOK_URL`. Rotate the ESPN secret when the action starts
+  failing with 302s.
+- `scripts/post-discord.js` posts top-five rankings to Discord from
+  `power-rankings-state.json`. Supports `--dry-run`.
 - `TEAM_OWNERS` in `generate-power-rankings.js` maps ESPN team ids to
   owner codes. Team ids are stable franchise slots but verify against the
   league after each August draft.

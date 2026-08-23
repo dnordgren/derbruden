@@ -1,15 +1,99 @@
 {
-  "season": 2026,
+  "season": 2025,
+  "week": 13,
+  "generated": "2026-08-23",
   "ranks": {
-    "1": 5,
+    "1": 6,
     "2": 10,
-    "4": 6,
-    "5": 7,
-    "7": 3,
-    "8": 8,
+    "4": 2,
+    "5": 5,
+    "7": 4,
+    "8": 9,
     "9": 1,
-    "10": 9,
-    "11": 4,
-    "12": 2
-  }
+    "10": 8,
+    "11": 7,
+    "12": 3
+  },
+  "published": [
+    {
+      "rank": 1,
+      "id": 9,
+      "owner": "JO",
+      "name": "Adam's Revenge",
+      "rating": 1564,
+      "record": "8-5"
+    },
+    {
+      "rank": 2,
+      "id": 4,
+      "owner": "AN",
+      "name": "El Fusilado",
+      "rating": 1546,
+      "record": "6-7"
+    },
+    {
+      "rank": 3,
+      "id": 12,
+      "owner": "JH",
+      "name": "ORACLE AI",
+      "rating": 1512,
+      "record": "8-5"
+    },
+    {
+      "rank": 4,
+      "id": 7,
+      "owner": "CR",
+      "name": "Significant Figures",
+      "rating": 1506,
+      "record": "7-6"
+    },
+    {
+      "rank": 5,
+      "id": 5,
+      "owner": "AR",
+      "name": "Give 'er The Beans ",
+      "rating": 1497,
+      "record": "6-7"
+    },
+    {
+      "rank": 6,
+      "id": 1,
+      "owner": "GM",
+      "name": "Toe Burrows Ice Box",
+      "rating": 1490,
+      "record": "6-7"
+    },
+    {
+      "rank": 7,
+      "id": 11,
+      "owner": "IK",
+      "name": "Thats My God",
+      "rating": 1486,
+      "record": "7-6"
+    },
+    {
+      "rank": 8,
+      "id": 10,
+      "owner": "ZS",
+      "name": "Tomato Toes",
+      "rating": 1484,
+      "record": "6-7"
+    },
+    {
+      "rank": 9,
+      "id": 8,
+      "owner": "DN",
+      "name": "Washington Redskins",
+      "rating": 1475,
+      "record": "6-7"
+    },
+    {
+      "rank": 10,
+      "id": 2,
+      "owner": "DM",
+      "name": "Feel It In My Plums",
+      "rating": 1440,
+      "record": "5-8"
+    }
+  ]
 }

@@ -104,6 +104,23 @@ use the local install:
 export PATH="$HOME/.venvs/awscli/bin:$PATH"
 ```
 
+### Discord post
+
+The weekly action posts the top five rankings to Discord and links the
+page. Create a webhook in your server under server settings >
+integrations > webhooks. Add its URL as the `DISCORD_WEBHOOK_URL`
+repository secret.
+
+Post or preview locally:
+
+```sh
+node scripts/post-discord.js            # posts
+node scripts/post-discord.js --dry-run  # prints payload only
+```
+
+The page also carries Open Graph tags, so pasting the link anywhere
+unfurls into a card with the league logo.
+
 ## Deploy
 
 ### Image optimization

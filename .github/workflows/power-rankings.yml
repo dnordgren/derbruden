@@ -48,6 +48,11 @@ jobs:
       - name: Deploy
         run: make deploy
 
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: node scripts/post-discord.js
+
       - name: Commit updated page and rank state
         run: |
           git config user.name "github-actions[bot]"

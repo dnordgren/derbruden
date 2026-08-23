@@ -226,10 +226,31 @@ function loadPreviousRanks(season) {
   }
 }
 
-function saveState(season, rankings) {
-  const ranks = {}
-  for (const row of rankings) ranks[row.id] = row.rank
-  fs.writeFileSync(STATE_PATH, JSON.stringify({ season, ranks }, null, 2))
+function saveState(season, rankings, meta) {
+  const ranks = {};
+  const published = rankings.map(row => ({
+    rank: row.rank,
+    id: row.id,
+    owner: TEAM_OWNERS[row.id]?.owner ?? row.abbrev,
+    name: row.name,
+    rating: row.rating,
+    record: `${row.wins}-${row.losses}${row.ties ? `-${row.ties}` : ''}`,
+  }));
+  for (const row of rankings) ranks[row.id] = row.rank;
+  fs.writeFileSync(
+    STATE_PATH,
+    JSON.stringify(
+      {
+        season,
+        week: meta.throughWeek,
+        generated: meta.generated,
+        ranks,
+        published,
+      },
+      null,
+      2
+    )
+  );
 }
 
 function deltaCell(row, previousRanks) {
@@ -295,6 +316,15 @@ function pageTemplate(content) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DerBruden.com | Power Rankings</title>
+  <meta property="og:title" content="DerBruden.com | Power Rankings">
+  <meta property="og:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league. Margin-of-victory adjusted, seeded from league history.">
+  <meta property="og:url" content="https://derbruden.com/power-rankings.html">
+  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DerBruden.com | Power Rankings">
+  <meta name="twitter:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league.">
+  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
   <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
   <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -572,7 +602,7 @@ async function main() {
     previousRanks: loadPreviousRanks(season),
   }
 
-  saveState(season, rankings)
+  saveState(season, rankings, meta)
   updatePage(renderTable(rankings, meta))
 
   for (const row of rankings) {

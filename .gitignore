@@ -4,6 +4,7 @@ logs
 
 # dotenv environment variable files
 .env*
+scripts/.env*
 
 # Mac files
 .DS_Store
@@ -11,6 +12,3 @@ logs
 # Ignore scripts/ node stuff and input/output files
 scripts/node_modules
 scripts/*.html
-
-# Power rankings local state
-scripts/power-rankings-state.json

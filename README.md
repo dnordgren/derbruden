@@ -85,8 +85,24 @@ Notes:
 - Team ids map to owners in `TEAM_OWNERS` inside the script. Verify the map
   after each draft.
 - `scripts/power-rankings-state.json` stores the last published ranks. The
-  script uses it to render rank deltas. It is local only, not tracked by git.
+  script and the weekly GitHub Action use it to render rank deltas.
   Delete it to reset deltas.
+
+### Weekly update
+
+Regenerate and publish in one pass:
+
+```sh
+make power && AWS_PROFILE=derbruden make deploy
+```
+
+Run after the Monday night game settles. The deploy profile lives in
+`~/.aws`. If the system `aws` binary is broken (Ubuntu apt v1 often is),
+use the local install:
+
+```sh
+export PATH="$HOME/.venvs/awscli/bin:$PATH"
+```
 
 ## Deploy
 

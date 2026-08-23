@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DerBruden.com | Power Rankings</title>
+  <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: "Archivo", sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 75px;
+    }
+
+    .site-title {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .tagline {
+      margin: 0;
+      color: #666;
+    }
+
+    .sponsor-box {
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: 300px;
+    }
+
+    .sponsor-box img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 0px;
+    }
+
+    .sponsor-content {
+      flex: 1;
+      text-align: left;
+      font-size: 0.7em;
+    }
+
+    .sponsor-name {
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .sponsor-tagline {
+      color: #666;
+      margin: 5px 0 0 0;
+      max-width: 200px;
+    }
+
+    nav {
+      margin-bottom: 30px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.9em;
+    }
+
+    .stats-table th {
+      background-color: #f4f4f4;
+      padding: 12px;
+      text-align: left;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .stats-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .stats-table tbody tr:hover {
+      background-color: #f8f8f8;
+    }
+
+    .stats-table .number {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .stats-table .owner {
+      font-weight: 500;
+    }
+
+    .stats-table td a {
+      color: #00429f;
+      text-decoration: underline;
+    }
+
+    .pr-meta {
+      color: #666;
+      font-size: 0.9em;
+    }
+
+    .delta.up { color: #1a7f37; }
+    .delta.down { color: #c0392b; }
+
+    .methodology {
+      margin-top: 30px;
+      font-size: 0.85em;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .sponsor-box {
+        margin-top: 20px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header">
+        <a href="./index.html">
+          <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" width="100" height="75">
+        </a>
+        <div>
+          <h1 class="site-title">DerBruden.com</h1>
+          <p class="tagline">Strange dreams lately?</p>
+        </div>
+      </div>
+
+      <div class="sponsor-box">
+        <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately"
+          target="_blank" rel="noopener noreferrer"><img src="../static/img/about-sponsor.webp" alt="Booze Better"></a>
+        <div class="sponsor-content">
+          <p class="sponsor-tagline"><em>Brought to you by:</em></p>
+          <p class="sponsor-name">Booze Better</p>
+          <p class="sponsor-tagline">Drink Smart, Feel Better. The scientific solution to hangovers has finally arrived.
+          </p>
+          <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately"
+            target="_blank" rel="noopener noreferrer">Learn more</a>.
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <p><a href="./about.html">About</a> || <a href="./owners.html">League Owners</a> || <a
+        href="./power-rankings.html">Power Rankings</a></p>
+  </nav>
+
+  <main>
+    <div class="owner-logo-header">
+      <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
+        style="border-radius: 50%; object-fit: cover;">
+      <h1>Power Rankings</h1>
+    </div>
+    <p class="pr-meta">2025 season &middot; through week 13 &middot; generated 2026-08-23</p>
+                    <div class="table-container"><table class="stats-table">
+  <thead>
+    <tr>
+      <th class="number">&Delta;</th>
+      <th class="number">Rank</th>
+      <th>Owner</th>
+      <th>Team</th>
+      <th class="number">W-L</th>
+      <th class="number">PF/G</th>
+      <th class="number">Avg Opp</th>
+      <th class="number">Rating | &darr;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">1</td>
+      <td class="owner"><a href="./jo.html">JO</a></td>
+      <td>Adam's Revenge</td>
+      <td class="number">8-5</td>
+      <td class="number">117.8</td>
+      <td class="number">1494</td>
+      <td class="number"><strong>1564</strong></td>
+    </tr>
+<tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">2</td>
+      <td class="owner"><a href="./an.html">AN</a></td>
+      <td>El Fusilado</td>
+      <td class="number">6-7</td>
+      <td class="number">106.7</td>
+      <td class="number">1498</td>
+      <td class="number"><strong>1546</strong></td>
+    </tr>
+<tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">3</td>
+      <td class="owner"><a href="./jh.html">JH</a></td>
+      <td>ORACLE AI</td>
+      <td class="number">8-5</td>
+      <td class="number">104.8</td>
+      <td class="number">1505</td>
+      <td class="number"><strong>1512</strong></td>
+    </tr>
+<tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">4</td>
+      <td class="owner"><a href="./cr.html">CR</a></td>
+      <td>Significant Figures</td>
+      <td class="number">7-6</td>
+      <td class="number">108.5</td>
+      <td class="number">1499</td>
+      <td class="number"><strong>1506</strong></td>
+    </tr>
+<tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">5</td>
+      <td class="owner"><a href="./ar.html">AR</a></td>
+      <td>Give 'er The Beans </td>
+      <td class="number">6-7</td>
+      <td class="number">113.4</td>
+      <td class="number">1492</td>
+      <td class="number"><strong>1497</strong></td>
+    </tr>
+<tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">6</td>
+      <td class="owner"><a href="./gm.html">GM</a></td>
+      <td>Toe Burrows Ice Box</td>
+      <td class="number">6-7</td>
+      <td class="number">111.9</td>
+      <td class="number">1495</td>
+      <td class="number"><strong>1490</strong></td>
+    </tr>
+<tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">7</td>
+      <td class="owner"><a href="./ik.html">IK</a></td>
+      <td>Thats My God</td>
+      <td class="number">7-6</td>
+      <td class="number">112.0</td>
+      <td class="number">1506</td>
+      <td class="number"><strong>1486</strong></td>
+    </tr>
+<tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">8</td>
+      <td class="owner"><a href="./zs.html">ZS</a></td>
+      <td>Tomato Toes</td>
+      <td class="number">6-7</td>
+      <td class="number">101.6</td>
+      <td class="number">1497</td>
+      <td class="number"><strong>1484</strong></td>
+    </tr>
+<tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">9</td>
+      <td class="owner"><a href="./dn.html">DN</a></td>
+      <td>Washington Redskins</td>
+      <td class="number">6-7</td>
+      <td class="number">100.6</td>
+      <td class="number">1502</td>
+      <td class="number"><strong>1475</strong></td>
+    </tr>
+<tr>
+      <td class="number delta">&ndash;</td>
+      <td class="number">10</td>
+      <td class="owner"><a href="./dm.html">DM</a></td>
+      <td>Feel It In My Plums</td>
+      <td class="number">5-8</td>
+      <td class="number">105.5</td>
+      <td class="number">1512</td>
+      <td class="number"><strong>1440</strong></td>
+    </tr>
+  </tbody>
+</table></div>
+    <details class="methodology">
+      <summary>How these rankings work</summary>
+      <p>Each team carries an Elo rating. Teams start near 1500. Last season's win percentage sets the starting point.</p>
+      <p>After each game, the winner takes points from the loser. Blowouts move ratings more than close games. An upset moves ratings more than a win over a weaker team. Regular season games only.</p>
+      <p>Avg Opp is the average rating of opponents faced. A low number means an easy schedule so far. Delta (&Delta;) compares this publish to the last one.</p>
+      <p>Data comes from the ESPN fantasy API. This page regenerates weekly.</p>
+    </details>
+  </main>
+
+  <footer>
+    <p>
+      <a href="https://fantasy.espn.com/football/league?leagueId=794521" target="_blank">ESPN</a> /
+      <a href="https://discord.com/channels/870404843582406696/870404844681322549" target="_blank">Discord</a>
+    </p>
+  </footer>
+</body>
+
+</html>

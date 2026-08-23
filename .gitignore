@@ -4,6 +4,7 @@ logs
 
 # dotenv environment variable files
 .env*
+scripts/.env*
 
 # Mac files
 .DS_Store

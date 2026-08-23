@@ -29,7 +29,11 @@ jobs:
         run: npm install --prefix scripts
 
       - name: Configure league auth
-        run: echo "ESPN_S2=${{ secrets.ESPN_S2 }}" > scripts/.env
+        run: |
+          {
+            echo "ESPN_S2=${{ secrets.ESPN_S2 }}"
+            echo "SWID=${{ secrets.SWID }}"
+          } > scripts/.env
 
       - name: Generate power rankings
         run: node scripts/generate-power-rankings.js

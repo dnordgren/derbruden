@@ -25,19 +25,25 @@ function periodLabel(state) {
   return `${state.season} Week ${state.week}`
 }
 
+function pageUrl(state) {
+  // Bust scraper caches (Discord) so each week unfurls fresh.
+  return `${PAGE_URL}?x=${state.season}-w${state.week || 0}`
+}
+
 function buildPayload(state) {
   const medals = ['🥇', '🥈', '🥉']
   const lines = state.published.slice(0, 5).map(row => {
     const medal = medals[row.rank - 1] ?? `**${row.rank}.**`
     return `${medal} **${row.owner}** — ${row.name} \`${row.rating}\` (${row.record})`
   })
+  const url = pageUrl(state)
   return {
     username: 'Der Bruden Power Rankings',
     embeds: [
       {
         title: `Power Rankings — ${periodLabel(state)}`,
-        url: PAGE_URL,
-        description: lines.join('\n') + `\n\nFull table and movement: ${PAGE_URL}`,
+        url,
+        description: lines.join('\n') + `\n\nFull table and movement: ${url}`,
         color: 0x00429f,
         footer: { text: 'Elo ratings · margin-of-victory adjusted · regular season only' },
       },

@@ -4,6 +4,10 @@ logs
 
 # dotenv environment variable files
 .env*
+!.env.example
+
+# trade watcher runtime state
+/data/
 
 # Mac files
 .DS_Store

@@ -72,6 +72,36 @@ This:
 - Syncs `static/` to S3 `static/`
 - Invalidates the CloudFront cache
 
+## Trade watcher
+
+`scripts/watch-trades.mjs` polls ESPN for trade activity, posts new events to
+Discord, and updates `static/data/trades.json` for the
+[trade log](https://derbruden.com/trades.html).
+
+Setup:
+
+```sh
+cp .env.example .env  # fill in ESPN_S2, SWID, DISCORD_WEBHOOK_URL
+node scripts/watch-trades.mjs --dry-run
+```
+
+Run it on a schedule (crontab example):
+
+```txt
+*/10 9-23 * * * cd /path/to/derbruden && node scripts/watch-trades.mjs >> data/watch.log 2>&1
+```
+
+Flags:
+
+- `--dry-run`: print what would be posted. No writes, no Discord.
+- `--backfill N`: seed the ledger with the last N trades. No notifications.
+
+ESPN auth: trade data needs `ESPN_S2` and `SWID` copied from the same
+signed-in browser session (DevTools > Application > Cookies on
+fantasy.espn.com). `ESPN_S2` alone only reads basic league data.
+
+Tests: `node --test scripts/watch-trades.test.mjs`.
+
 ## Ideas
 
 Set up trade activity notifications. Poll the following endpoint with headers via new API SDK:

@@ -1,0 +1,50 @@
+{
+  "leagueId": "794521",
+  "season": 2026,
+  "updated": "2026-08-23T19:30:43.184Z",
+  "trades": [
+    {
+      "id": "b4f8f7af-cb66-4b32-95d0-7040cf565023",
+      "event": "TRADE_ACCEPT",
+      "date": "2026-07-09T17:12:11.690Z",
+      "teams": [
+        {
+          "teamId": 4,
+          "name": "El Fusilado",
+          "gives": [
+            "Jason Myers"
+          ]
+        },
+        {
+          "teamId": 11,
+          "name": "Thats My God",
+          "gives": [
+            "Ka'imi Fairbairn",
+            "Draft pick #67"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ea2ba579-4807-403f-801c-338e0bf1f336",
+      "event": "TRADE_ACCEPT",
+      "date": "2026-07-09T17:10:32.653Z",
+      "teams": [
+        {
+          "teamId": 2,
+          "name": "Girthquake",
+          "gives": [
+            "Draft pick #41"
+          ]
+        },
+        {
+          "teamId": 4,
+          "name": "El Fusilado",
+          "gives": [
+            "Draft pick #117"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "transactions": [
+    {
+      "id": "1003",
+      "type": "TRADE_ACCEPT",
+      "proposedDate": 1755086400000,
+      "scoringPeriodId": 1,
+      "items": [
+        { "playerId": 4040715, "type": "ADD", "teamId": 5 },
+        { "playerId": 3139477, "type": "DROP", "teamId": 5 },
+        { "playerId": 3139477, "type": "ADD", "teamId": 8 },
+        { "playerId": 4040715, "type": "DROP", "teamId": 8 }
+      ]
+    },
+    {
+      "id": "1002",
+      "typeId": 239,
+      "proposedDate": 1755000000000,
+      "teamId": 8,
+      "scoringPeriodId": 0,
+      "items": [
+        { "playerId": 3139477, "fromTeamId": 8, "toTeamId": 5 },
+        { "playerId": 4040715, "fromTeamId": 5, "toTeamId": 8 }
+      ]
+    },
+    {
+      "id": "1001",
+      "type": "WAIVER",
+      "proposedDate": 1754900000000,
+      "items": [{ "playerId": 3051395, "type": "ADD", "teamId": 2 }]
+    }
+  ]
+}

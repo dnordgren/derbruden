@@ -21,8 +21,10 @@ function loadSummary() {
 }
 
 function periodLabel(state) {
-  if (!state.week) return `${state.season} Preseason`
-  return `${state.season} Week ${state.week}`
+  if (!state.week) {
+    return `Preseason Power Rankings (seeded from ${state.season - 1})`
+  }
+  return `Power Rankings — ${state.season} Week ${state.week}`
 }
 
 function pageUrl(state) {
@@ -41,7 +43,7 @@ function buildPayload(state) {
     username: 'Der Bruden Power Rankings',
     embeds: [
       {
-        title: `Power Rankings — ${periodLabel(state)}`,
+        title: periodLabel(state),
         url,
         description: lines.join('\n') + `\n\nFull table and movement: ${url}`,
         color: 0x00429f,
@@ -56,7 +58,13 @@ async function main() {
   const webhook = process.env.DISCORD_WEBHOOK_URL
   const dryRun = process.argv.includes('--dry-run')
 
-  const payload = buildPayload(loadSummary())
+  const state = loadSummary()
+  if (!state.week && !dryRun) {
+    console.log('Preseason board, no games played. Skipping Discord post.')
+    return
+  }
+
+  const payload = buildPayload(state)
   if (dryRun) {
     console.log(JSON.stringify(payload, null, 2))
     return

@@ -36,8 +36,9 @@ deploy-html:
 deploy-static:
 	@echo "make deploy-static : Started"
 	@echo "Deploying static assets to bucket derbruden.com..."
-	@aws s3 rm s3://$(BUCKET)/static/ --recursive
-	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --cache-control "public, max-age=31536000, immutable"
+	@aws s3 rm s3://$(BUCKET)/static/ --recursive --exclude "data/trades.json"
+	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --cache-control "public, max-age=31536000, immutable"
+	@aws s3 cp static/data/trades.json s3://$(BUCKET)/static/data/trades.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/ico/header-icon-32.png s3://$(BUCKET)/favicon.ico --cache-control "public, max-age=31536000, immutable"
 	@echo "make deploy-static : Finished"
 

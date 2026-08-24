@@ -5,6 +5,7 @@ logs
 # dotenv environment variable files
 .env*
 !.env.example
+scripts/.env*
 
 # trade watcher runtime state
 /data/

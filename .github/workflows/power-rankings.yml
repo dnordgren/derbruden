@@ -1,0 +1,66 @@
+name: Power Rankings
+
+on:
+  schedule:
+    # Tuesdays 14:00 UTC (~10am ET) during regular season months.
+    - cron: '0 14 * 1,9-12 2'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: power-rankings
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        run: npm install --prefix scripts
+
+      - name: Configure league auth
+        run: |
+          {
+            echo "ESPN_S2=${{ secrets.ESPN_S2 }}"
+            echo "SWID=${{ secrets.SWID }}"
+          } > scripts/.env
+
+      - name: Generate power rankings
+        run: node scripts/generate-power-rankings.js
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Deploy
+        run: make deploy
+
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_POWERRANKINGS }}
+        run: node scripts/post-discord.js
+
+      - name: Commit updated page and rank state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/power-rankings.html scripts/power-rankings-state.json
+          if git diff --cached --quiet; then
+            echo "No changes since last publish."
+          else
+            git commit -m "chore: Weekly power rankings update"
+            git push
+          fi

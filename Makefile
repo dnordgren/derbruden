@@ -52,3 +52,9 @@ clean:
 	@echo "Removing webp files from static/img/ ..."
 	@rm -f static/img/*.webp
 	@echo "make clean : Finished"
+
+power:
+	@echo "make power : Started"
+	@echo "Generating power rankings..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-power-rankings.js
+	@echo "make power : Finished"

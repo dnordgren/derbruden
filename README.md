@@ -52,6 +52,78 @@ Season,Owner,W,L,%,RGPF,RGPA,TPF,DIFF,PO?,RGRnk,Champ,PORnk
 ...
 ```
 
+### Generate power rankings
+
+Pulls the league from the ESPN fantasy API. Computes Elo ratings with a
+margin-of-victory factor. Writes `src/power-rankings.html`.
+
+The league is private. Put the `espn_s2` cookie value from espn.com in
+`scripts/.env` (git ignored):
+
+```sh
+echo "ESPN_S2=<espn_s2 cookie value>" > scripts/.env
+```
+
+To grab the cookie from iOS Safari: sign in at fantasy.espn.com, then run a
+bookmarklet that shows `document.cookie`. Copy the `espn_s2` value. The
+`SWID` cookie is not required.
+
+Generate for the current season:
+
+```sh
+node scripts/generate-power-rankings.js
+```
+
+Generate for a past season:
+
+```sh
+node scripts/generate-power-rankings.js 2025
+```
+
+Notes:
+
+- Team ids map to owners in `TEAM_OWNERS` inside the script. Verify the map
+  after each draft.
+- `scripts/power-rankings-state.json` stores the last published ranks. The
+  script and the weekly GitHub Action use it to render rank deltas.
+  Delete it to reset deltas.
+
+### Weekly update
+
+Regenerate and publish in one pass:
+
+```sh
+make power && AWS_PROFILE=derbruden make deploy
+```
+
+Run after the Monday night game settles. The deploy profile lives in
+`~/.aws`. If the system `aws` binary is broken (Ubuntu apt v1 often is),
+use the local install:
+
+```sh
+export PATH="$HOME/.venvs/awscli/bin:$PATH"
+```
+
+### Discord post
+
+The weekly action posts the top five rankings to Discord and links the
+page. Create a webhook in your server under server settings >
+integrations > webhooks. Add its URL as the
+`DISCORD_WEBHOOK_POWERRANKINGS` repository secret.
+
+Post or preview locally:
+
+```sh
+node scripts/post-discord.js            # posts
+node scripts/post-discord.js --dry-run  # prints payload only
+```
+
+Posts are skipped before week 1 of a new season. The preseason board is
+a seed table, so it stays off Discord until real games happen.
+
+The page also carries Open Graph tags, so pasting the link anywhere
+unfurls into a card with the league logo.
+
 ## Deploy
 
 ### Image optimization

@@ -376,8 +376,11 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   }
 
   if (args.dryRun) {
-    for (const record of mapped)
-      console.log(`[dry-run] would post: ${JSON.stringify(buildEmbed(record))}`)
+    for (const record of mapped) {
+      if (record.event === 'TRADE_ACCEPT')
+        console.log(`[dry-run] would post: ${JSON.stringify(buildEmbed(record))}`)
+      else console.log(`[dry-run] would record only: ${record.event} ${record.id}`)
+    }
     return 0
   }
 
@@ -393,19 +396,28 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
   let failures = 0
   for (const record of mapped) {
-    if (!ledger.trades.some((t) => t.id === record.id)) {
+    const isNew = !ledger.trades.some((t) => t.id === record.id)
+    if (isNew) {
       ledger.trades.unshift(record)
       ledger.trades = ledger.trades.slice(0, 500)
       ledger.updated = new Date().toISOString()
       writeJsonAtomic(ledgerFile, ledger)
     }
-    try {
-      await postDiscord(fetchImpl, env.DISCORD_WEBHOOK_URL, buildEmbed(record))
-      console.log(`Posted ${record.event} ${record.id} to Discord.`)
-    } catch (e) {
-      failures++
-      console.error(`Discord post failed for ${record.id}: ${e.message}`)
+
+    // Proposals (and declines/vetoes when tracked) land on the web page
+    // only. Accepted trades are treated as final and hit Discord.
+    if (record.event === 'TRADE_ACCEPT') {
+      try {
+        await postDiscord(fetchImpl, env.DISCORD_WEBHOOK_URL, buildEmbed(record))
+        console.log(`Posted ${record.event} ${record.id} to Discord.`)
+      } catch (e) {
+        failures++
+        console.error(`Discord post failed for ${record.id}: ${e.message}`)
+      }
+    } else if (isNew) {
+      console.log(`Recorded ${record.event} ${record.id} in the ledger (no Discord).`)
     }
+
     state.processedIds = [...state.processedIds, String(record.id)].slice(-1000)
     writeJsonAtomic(stateFile, state)
   }

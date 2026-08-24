@@ -48,9 +48,12 @@ No framework, no build step besides two Node generators in `scripts/`.
 ## Trade watcher
 
 - `scripts/watch-trades.mjs` polls league transactions every 10 minutes via
-  `.github/workflows/trade-watcher.yml` on `master`. It posts new trades to
-  Discord, commits ledger and dedupe state under `static/data/`, and
-  publishes `trades.json` to S3 with a single-path invalidation.
+  `.github/workflows/trade-watcher.yml` on `master`. Accepted trades post to
+  Discord; proposals land on the web page only (accepted == confirmed, there
+  is no third state). Declines/vetoes are page-only when
+  `NOTIFY_DECLINED=true`. The watcher commits ledger and dedupe state under
+  `static/data/` and publishes `trades.json` to S3 with a single-path
+  invalidation.
 - Repo secrets: `ESPN_S2`, `SWID`, `DISCORD_WEBHOOK_TRADES`,
   `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
 - Transaction IDs are UUIDs; dedupe state lives in

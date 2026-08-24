@@ -189,6 +189,10 @@ Flags:
 - `--dry-run`: print what would be posted. No writes, no Discord.
 - `--backfill N`: seed the ledger with the last N trades. No notifications.
 
+Notification rules: accepted trades post to Discord. Proposed trades appear
+on the web page only. Declines and vetoes are ignored unless
+`NOTIFY_DECLINED=true`, which lists them on the page too (never Discord).
+
 ESPN auth: trade data needs `ESPN_S2` and `SWID` copied from the same
 signed-in browser session (DevTools > Application > Cookies).
 `ESPN_S2` alone only reads basic league data.

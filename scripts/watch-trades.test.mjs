@@ -168,6 +168,12 @@ test('main posts new trades and dedupes on second run', async () => {
         type: 'TRADE_ACCEPT',
         date: 1755900000000,
         items: [{ playerId: 111, fromTeamId: 5, toTeamId: 8 }]
+      },
+      {
+        id: '2002',
+        type: 'TRADE_PROPOSAL',
+        proposedDate: 1755986400000,
+        items: [{ playerId: 222, fromTeamId: 8, toTeamId: 5 }]
       }
     ]
   }
@@ -198,18 +204,20 @@ test('main posts new trades and dedupes on second run', async () => {
     assert.equal(code, 0)
     assert.equal(posts.length, 0)
     const seeded = JSON.parse(readFileSync(stateFile, 'utf8'))
-    assert.deepEqual(seeded.processedIds, ['2001'])
+    assert.deepEqual(seeded.processedIds, ['2001', '2002'])
 
-    // Established watcher sees the trade.
+    // Established watcher sees both events: accept posts, proposal only records.
     writeFileSync(stateFile, JSON.stringify({ processedIds: ['1000'] }))
     const code2 = await main([], fakeFetch, { stateFile, ledgerFile })
     assert.equal(code2, 0)
-    assert.equal(posts.length, 1)
+    assert.equal(posts.length, 1) // accepted trades only
     assert.equal(posts[0].embeds[0].title, 'Trade accepted')
     assert.match(posts[0].embeds[0].description, /\*\*Feel It In My Plums\*\* sends Jason Myers/)
     const ledger = JSON.parse(readFileSync(ledgerFile, 'utf8'))
-    assert.equal(ledger.trades.length, 1)
-    assert.equal(ledger.trades[0].id, '2001')
+    assert.equal(ledger.trades.length, 2)
+    assert.equal(ledger.trades[0].id, '2002')
+    assert.equal(ledger.trades[0].event, 'TRADE_PROPOSAL')
+    assert.equal(ledger.trades[1].id, '2001')
     assert.equal(JSON.parse(readFileSync(stateFile, 'utf8')).players['111'], 'Jason Myers')
 
     // Second identical poll dedupes.

@@ -56,8 +56,9 @@ cron / systemd timer (every 5-10 min)
        1. GET ESPN transactions with cookies
        2. Diff against state file (highest seen transaction ID)
        3. For each new trade event:
-            - POST Discord webhook embed
             - Append record to static/data/trades.json
+            - Accepted trades also POST a Discord webhook embed
+              (proposals are page-only; accepted == confirmed)
             - Save state atomically
        4. Optional: sync data to S3 + invalidate CloudFront path
 ```
@@ -212,5 +213,7 @@ Local alternative unchanged: cron or systemd timer every 5-10 minutes.
 ## Open questions
 
 1. Map ESPN team IDs to owner initials (DN, ZS, ...) for friendlier messages?
-2. Notify proposals in Discord, or accepted trades only?
+2. ~~Notify proposals in Discord, or accepted trades only?~~ Decided:
+   accepted trades post to Discord; proposals are page-only. Accepted is
+   treated as final (no separate confirmed state).
 3. Backfill how many past seasons into the site ledger?

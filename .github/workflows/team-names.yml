@@ -3,9 +3,10 @@ name: Team Names
 on:
   schedule:
     # Tuesdays at 8am ET. Cron runs on UTC only, so two windows cover
-    # daylight time (Mar-Oct) and standard time (Nov-Feb).
+    # daylight time (Mar-Oct) and standard time (Nov-Feb). GitHub cron
+    # rejects ranges that wrap the year, so list winter months out.
     - cron: '0 12 * 3-10 2'
-    - cron: '0 13 * 11-2 2'
+    - cron: '0 13 * 11,12,1,2 2'
   workflow_dispatch:
 
 permissions:

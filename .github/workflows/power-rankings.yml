@@ -50,7 +50,7 @@ jobs:
 
       - name: Notify Discord
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_POWERRANKINGS }}
         run: node scripts/post-discord.js
 
       - name: Commit updated page and rank state

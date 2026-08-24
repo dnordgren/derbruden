@@ -28,8 +28,8 @@ No framework, no build step besides two Node generators in `scripts/`.
 - A weekly GitHub Action (`.github/workflows/power-rankings.yml`) runs
   Tuesday mornings in season. It needs repo secrets `ESPN_S2`, `SWID`,
   `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`,
-  `DISCORD_WEBHOOK_URL`. Rotate the ESPN secret when the action starts
-  failing with 302s.
+  `DISCORD_WEBHOOK_POWERRANKINGS`. Rotate the ESPN secret when the
+  action starts failing with 302s.
 - `scripts/post-discord.js` posts top-five rankings to Discord from
   `power-rankings-state.json`. Supports `--dry-run`.
 - `TEAM_OWNERS` in `generate-power-rankings.js` maps ESPN team ids to

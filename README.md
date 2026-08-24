@@ -108,8 +108,8 @@ export PATH="$HOME/.venvs/awscli/bin:$PATH"
 
 The weekly action posts the top five rankings to Discord and links the
 page. Create a webhook in your server under server settings >
-integrations > webhooks. Add its URL as the `DISCORD_WEBHOOK_URL`
-repository secret.
+integrations > webhooks. Add its URL as the
+`DISCORD_WEBHOOK_POWERRANKINGS` repository secret.
 
 Post or preview locally:
 

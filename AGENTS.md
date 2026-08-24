@@ -7,13 +7,15 @@ Guidance for AI coding agents working in this repo.
 DerBruden.com. Static fantasy football league site for the Der Bruden
 ESPN league (id 794521). Plain HTML in `src/`, assets in `static/`.
 Deploys to S3 + CloudFront with `make deploy` (profile `derbruden`).
-No framework, no build step besides two Node generators in `scripts/`.
+No framework, no build step besides three Node scripts in `scripts/`.
 
 ## Commands
 
 - `node scripts/generate-stats.js owners index|all|<owner>` — rebuild
   stats tables into owner pages from `scripts/stats.csv`.
 - `make power` — regenerate `src/power-rankings.html` from the ESPN API.
+- `node scripts/sync-team-names.js [--dry-run] [season]` — sync ESPN
+  team names into owner page headers.
 - `AWS_PROFILE=derbruden make deploy` — S3 sync + CloudFront invalidation.
 - `npx prettier --check <file>` — repo uses the `.prettierrc` config.
   Legacy HTML pages fail prettier; do not reformat them wholesale.
@@ -33,9 +35,9 @@ No framework, no build step besides two Node generators in `scripts/`.
 - `scripts/post-discord.js` posts top-five rankings to Discord from
   `power-rankings-state.json`. Supports `--dry-run`. It skips posting
   when no regular season games have been played (`week === 0`).
-- `TEAM_OWNERS` in `generate-power-rankings.js` maps ESPN team ids to
-  owner codes. Team ids are stable franchise slots but verify against the
-  league after each August draft.
+- `TEAM_OWNERS` in `scripts/team-owners.js` maps ESPN team ids to
+  owner codes and pages. Both generators import it. Team ids are stable
+  franchise slots but verify against the league after each August draft.
 - Algorithm: Elo, K=20, margin-of-victory multiplier, seeded from prior
   season win percentage in `stats.csv`. Regular season only
   (`playoffTierType === 'NONE'`).
@@ -66,6 +68,15 @@ No framework, no build step besides two Node generators in `scripts/`.
 - Tests: `node --test scripts/watch-trades.test.mjs`.
 - GitHub disables schedules after 60 days without commits; re-enable each
   offseason when the notice email arrives.
+
+## Team name sync
+
+- A weekly GitHub Action (`.github/workflows/team-names.yml`) runs
+  Tuesdays at 8am ET year round (two cron windows cover DST). Same repo
+  secrets as power rankings minus the Discord webhook.
+- `scripts/sync-team-names.js` rewrites each `<h1>` inside
+  `.owner-logo-header` as `OWNER - <ESPN team name>`. It deploys and
+  commits only when a name changed; no-op weeks skip S3 and CloudFront.
 
 ## ESPN fantasy API gotchas
 

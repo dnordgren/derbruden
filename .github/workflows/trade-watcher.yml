@@ -28,7 +28,7 @@ jobs:
           LEAGUE_ID: '794521'
           ESPN_S2: ${{ secrets.ESPN_S2 }}
           SWID: ${{ secrets.SWID }}
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_TRADES }}
         run: |
           # Season year: Aug-Dec maps to current calendar year, Jan-Jul to prior.
           MONTH=$(date +%-m)

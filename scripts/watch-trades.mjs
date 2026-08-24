@@ -12,7 +12,8 @@ import path from 'node:path'
 import fs from 'node:fs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const DEFAULT_STATE_FILE = path.join(ROOT, 'data', 'state.json')
+// State lives under static/data so GitHub Actions runs can commit it back.
+const DEFAULT_STATE_FILE = path.join(ROOT, 'static', 'data', 'trades-state.json')
 const LEDGER_FILE = path.join(ROOT, 'static', 'data', 'trades.json')
 const ENV_FILE = path.join(ROOT, '.env')
 
@@ -275,7 +276,7 @@ async function postDiscord(fetchImpl, webhookUrl, embed) {
   const res = await fetchImpl(webhookUrl, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: 'DerBruden Trades', embeds: [embed] })
+    body: JSON.stringify({ username: 'Der Bruden Trades', embeds: [embed] })
   })
   if (res.status === 429) {
     const body = res.headers.get('content-type')?.includes('json') ? await res.json() : {}
@@ -284,7 +285,7 @@ async function postDiscord(fetchImpl, webhookUrl, embed) {
     const retry = await fetchImpl(webhookUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: 'DerBruden Trades', embeds: [embed] })
+      body: JSON.stringify({ username: 'Der Bruden Trades', embeds: [embed] })
     })
     if (!retry.ok && retry.status !== 204)
       throw new Error(`Discord retry failed with HTTP ${retry.status}`)

@@ -167,15 +167,17 @@ and move future values into `.env` or SSM.
 
 ## Scheduling
 
-Primary: cron or systemd timer on the Pi or WSL, every 5-10 minutes.
+Chosen: GitHub Actions cron, every 10 minutes, year-round. Free on the public
+repo. The workflow commits ledger and state changes back to the branch it
+runs on and publishes `trades.json` to S3 with a targeted CloudFront
+invalidation when trades land. Schedule only activates after this work merges
+to the default branch; `workflow_dispatch` can run it from any branch.
+
+Local alternative unchanged: cron or systemd timer every 5-10 minutes.
 
 ```
-*/10 9-23 * * *  cd ~/repos/derbruden-trades && node scripts/watch-trades.mjs >> data/watch.log 2>&1
+*/10 9-23 * * *  cd ~/repos/derbruden && node scripts/watch-trades.mjs >> data/watch.log 2>&1
 ```
-
-Poll only during afternoon/evening hours; trades rarely happen overnight.
-Alternatives kept open for later: GitHub Actions cron (20 min minimum, can be
-late) or Lambda + EventBridge (no always-on host).
 
 ## Edge cases
 

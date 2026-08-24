@@ -45,6 +45,25 @@ No framework, no build step besides two Node generators in `scripts/`.
 - Regression check: `node scripts/generate-power-rankings.js 2025` must
   rank JO #1 (1564) through DM #10 (1440).
 
+## Trade watcher
+
+- `scripts/watch-trades.mjs` polls league transactions every 10 minutes via
+  `.github/workflows/trade-watcher.yml` on `master`. It posts new trades to
+  Discord, commits ledger and dedupe state under `static/data/`, and
+  publishes `trades.json` to S3 with a single-path invalidation.
+- Repo secrets: `ESPN_S2`, `SWID`, `DISCORD_WEBHOOK_TRADES`,
+  `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
+- Transaction IDs are UUIDs; dedupe state lives in
+  `static/data/trades-state.json`. Empty state seeds silently on first run
+  and never back-posts.
+- ESPN auth quirk: transactions need BOTH `ESPN_S2` and `SWID` from one
+  login session, served from `lm-api-reads.fantasy.espn.com`. The
+  `fantasy.espn.com` host 302s everything now. Player names resolve from
+  `sports.core.api.espn.com` without auth.
+- Tests: `node --test scripts/watch-trades.test.mjs`.
+- GitHub disables schedules after 60 days without commits; re-enable each
+  offseason when the notice email arrives.
+
 ## ESPN fantasy API gotchas
 
 - Base URL is `https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/...

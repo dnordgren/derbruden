@@ -150,14 +150,35 @@ This:
 Discord, and updates `static/data/trades.json` for the
 [trade log](https://derbruden.com/trades.html).
 
-Setup:
+### GitHub Action (production)
+
+`.github/workflows/trade-watcher.yml` runs every 10 minutes on `master`.
+On a new trade it posts to Discord, commits the ledger and dedupe state
+under `static/data/`, publishes `trades.json` to S3, and invalidates that
+single CloudFront path. Idle runs change nothing.
+
+Repo secrets: `ESPN_S2`, `SWID`, `DISCORD_WEBHOOK_TRADES`,
+`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
+
+Notes:
+
+- Free on this public repo. GitHub may delay scheduled runs a few minutes.
+- GitHub disables schedules after 60 days without a commit; re-enable the
+  workflow when that email arrives each offseason.
+- Run it manually from Actions ("Trade watcher" > "Run workflow") or with
+  `gh workflow run trade-watcher.yml`.
+- Season year derives from the month: Aug-Dec is the current calendar year,
+  Jan-Jul the prior one.
+
+### Local runs
 
 ```sh
 cp .env.example .env  # fill in ESPN_S2, SWID, DISCORD_WEBHOOK_URL
 node scripts/watch-trades.mjs --dry-run
 ```
 
-Run it on a schedule (crontab example):
+Local cron alternative (skips the S3 publish; ledger updates land on the
+next deploy):
 
 ```txt
 */10 9-23 * * * cd /path/to/derbruden && node scripts/watch-trades.mjs >> data/watch.log 2>&1
@@ -169,8 +190,8 @@ Flags:
 - `--backfill N`: seed the ledger with the last N trades. No notifications.
 
 ESPN auth: trade data needs `ESPN_S2` and `SWID` copied from the same
-signed-in browser session (DevTools > Application > Cookies on
-fantasy.espn.com). `ESPN_S2` alone only reads basic league data.
+signed-in browser session (DevTools > Application > Cookies).
+`ESPN_S2` alone only reads basic league data.
 
 Tests: `node --test scripts/watch-trades.test.mjs`.
 

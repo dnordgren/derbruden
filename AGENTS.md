@@ -57,7 +57,17 @@ No framework, no build step besides three Node scripts in `scripts/`.
   `static/data/` and publishes `trades.json` to S3 with a single-path
   invalidation.
 - Repo secrets: `ESPN_S2`, `SWID`, `DISCORD_WEBHOOK_TRADES`,
-  `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
+  `OPENCODE_GO_API_KEY`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
+- Roast agent: right after a trade post, the workflow runs
+  `scripts/roast-trade.mjs <posted-trades.json>`. It reads the handoff file
+  the watcher wrote to `$RUNNER_TEMP`, pulls rosters, standings, traded-player
+  news, and NFL headlines from ESPN, then asks OpenCode Go (`kimi-k3` by
+  default, `ROAST_MODEL` to override) for one pithy, evidence-free verdict on
+  the losing owner and posts it as a second Discord message. The step is
+  `continue-on-error`; LLM failures never block ledger commit or S3 publish.
+- Local roast dry run: `LEAGUE_ID=794521 LEAGUE_YEAR=2026 node scripts/
+  roast-trade.mjs posted-trades.json --dry-run` prints the research packet;
+  no API key needed.
 - Transaction IDs are UUIDs; dedupe state lives in
   `static/data/trades-state.json`. Empty state seeds silently on first run
   and never back-posts.
@@ -65,7 +75,7 @@ No framework, no build step besides three Node scripts in `scripts/`.
   login session, served from `lm-api-reads.fantasy.espn.com`. The
   `fantasy.espn.com` host 302s everything now. Player names resolve from
   `sports.core.api.espn.com` without auth.
-- Tests: `node --test scripts/watch-trades.test.mjs`.
+- Tests: `node --test scripts/watch-trades.test.mjs scripts/roast-trade.test.mjs`.
 - GitHub disables schedules after 60 days without commits; re-enable each
   offseason when the notice email arrives.
 

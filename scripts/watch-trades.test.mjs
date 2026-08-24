@@ -208,9 +208,18 @@ test('main posts new trades and dedupes on second run', async () => {
 
     // Established watcher sees both events: accept posts, proposal only records.
     writeFileSync(stateFile, JSON.stringify({ processedIds: ['1000'] }))
+    const postedFile = path.join(dir, 'posted.json')
+    process.env.POSTED_TRADES_FILE = postedFile
     const code2 = await main([], fakeFetch, { stateFile, ledgerFile })
     assert.equal(code2, 0)
     assert.equal(posts.length, 1) // accepted trades only
+    // Successful posts are handed to the roast agent.
+    const posted = JSON.parse(readFileSync(postedFile, 'utf8'))
+    assert.deepEqual(
+      posted.map((r) => r.id),
+      ['2001']
+    )
+    delete process.env.POSTED_TRADES_FILE
     assert.equal(posts[0].embeds[0].title, 'Trade accepted')
     assert.match(posts[0].embeds[0].description, /\*\*Feel It In My Plums\*\* sends Jason Myers/)
     const ledger = JSON.parse(readFileSync(ledgerFile, 'utf8'))

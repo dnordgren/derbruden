@@ -118,6 +118,9 @@ node scripts/post-discord.js            # posts
 node scripts/post-discord.js --dry-run  # prints payload only
 ```
 
+Posts are skipped before week 1 of a new season. The preseason board is
+a seed table, so it stays off Discord until real games happen.
+
 The page also carries Open Graph tags, so pasting the link anywhere
 unfurls into a card with the league logo.
 

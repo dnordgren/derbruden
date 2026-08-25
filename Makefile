@@ -1,4 +1,4 @@
-.PHONY: webp clean deploy deploy-html deploy-static invalidate-cache
+.PHONY: webp clean deploy deploy-html deploy-static invalidate-cache drafts
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -59,3 +59,9 @@ power:
 	@echo "Generating power rankings..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-power-rankings.js
 	@echo "make power : Finished"
+
+drafts:
+	@echo "make drafts : Started"
+	@echo "Generating draft history..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-drafts.js
+	@echo "make drafts : Finished"

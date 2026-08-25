@@ -1,0 +1,6862 @@
+{
+  "version": 1,
+  "players": {
+    "2018:3051392": {
+      "name": "Ezekiel Elliott",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2018:15825": {
+      "name": "Le'Veon Bell",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2018:3115364": {
+      "name": "Leonard Fournette",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2018:13934": {
+      "name": "Antonio Brown",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2018:2508176": {
+      "name": "David Johnson",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2018:2977644": {
+      "name": "Todd Gurley",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2018:3929630": {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "pro": "NYG"
+    },
+    "2018:3054850": {
+      "name": "Alvin Kamara",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2018:16733": {
+      "name": "Odell Beckham Jr.",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2018:15795": {
+      "name": "DeAndre Hopkins",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2018:13983": {
+      "name": "A.J. Green",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2018:13982": {
+      "name": "Julio Jones",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2018:3059915": {
+      "name": "Kareem Hunt",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2018:12514": {
+      "name": "LeSean McCoy",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2018:8439": {
+      "name": "Aaron Rodgers",
+      "pos": "QB",
+      "pro": "GB"
+    },
+    "2018:16944": {
+      "name": "Devonta Freeman",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2018:2576434": {
+      "name": "Melvin Gordon III",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2018:2976316": {
+      "name": "Michael Thomas",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2018:15818": {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2018:3116593": {
+      "name": "Dalvin Cook",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2018:2330": {
+      "name": "Tom Brady",
+      "pos": "QB",
+      "pro": "NE"
+    },
+    "2018:15847": {
+      "name": "Travis Kelce",
+      "pos": "TE",
+      "pro": "KC"
+    },
+    "2018:3117251": {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "pro": "CAR"
+    },
+    "2018:16800": {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2018:3116406": {
+      "name": "Tyreek Hill",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2018:2976212": {
+      "name": "Stefon Diggs",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2018:5528": {
+      "name": "Larry Fitzgerald",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2018:16460": {
+      "name": "Adam Thielen",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2018:16737": {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2018:3046409": {
+      "name": "Alex Collins",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2018:16782": {
+      "name": "Jerick McKinnon",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2018:2976499": {
+      "name": "Amari Cooper",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2018:3060022": {
+      "name": "Jordan Howard",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2018:13216": {
+      "name": "Demaryius Thomas",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2018:16731": {
+      "name": "Brandin Cooks",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2018:3116385": {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "pro": "CIN"
+    },
+    "2018:3120348": {
+      "name": "JuJu Smith-Schuster",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2018:8416": {
+      "name": "Alex Smith",
+      "pos": "QB",
+      "pro": "WSH"
+    },
+    "2018:2573300": {
+      "name": "Jay Ajayi",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2018:15072": {
+      "name": "Marvin Jones Jr.",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2018:2979843": {
+      "name": "Kenyan Drake",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2018:13981": {
+      "name": "Mark Ingram II",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2018:3122672": {
+      "name": "Royce Freeman",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2018:10456": {
+      "name": "Marshawn Lynch",
+      "pos": "RB",
+      "pro": "OAK"
+    },
+    "2018:3043078": {
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2018:3122840": {
+      "name": "Deshaun Watson",
+      "pos": "QB",
+      "pro": "HOU"
+    },
+    "2018:9761": {
+      "name": "Delanie Walker",
+      "pos": "TE",
+      "pro": "TEN"
+    },
+    "2018:14221": {
+      "name": "Doug Baldwin",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2018:13217": {
+      "name": "Golden Tate",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2018:14881": {
+      "name": "Russell Wilson",
+      "pos": "QB",
+      "pro": "SEA"
+    },
+    "2018:2979477": {
+      "name": "Tevin Coleman",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2018:15705": {
+      "name": "Josh Gordon",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2018:13994": {
+      "name": "Cam Newton",
+      "pos": "QB",
+      "pro": "CAR"
+    },
+    "2018:14402": {
+      "name": "Chris Hogan",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2018:10475": {
+      "name": "Greg Olsen",
+      "pos": "TE",
+      "pro": "CAR"
+    },
+    "2018:3066158": {
+      "name": "Tarik Cohen",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2018:15966": {
+      "name": "Chris Thompson",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2018:14886": {
+      "name": "Lamar Miller",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2018:3052876": {
+      "name": "William Fuller V",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2018:3912550": {
+      "name": "Ronald Jones",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2018:15880": {
+      "name": "Robert Woods",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2018:3139925": {
+      "name": "Rashaad Penny",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2018:2573079": {
+      "name": "Carson Wentz",
+      "pos": "QB",
+      "pro": "PHI"
+    },
+    "2018:13295": {
+      "name": "Emmanuel Sanders",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2018:13232": {
+      "name": "Jimmy Graham",
+      "pos": "TE",
+      "pro": "GB"
+    },
+    "2018:15860": {
+      "name": "Jordan Reed",
+      "pos": "TE",
+      "pro": "WSH"
+    },
+    "2018:11439": {
+      "name": "Pierre Garcon",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2018:14912": {
+      "name": "Alshon Jeffery",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2018:14198": {
+      "name": "Dion Lewis",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2018:14874": {
+      "name": "Andrew Luck",
+      "pos": "QB",
+      "pro": "IND"
+    },
+    "2018:12649": {
+      "name": "Julian Edelman",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2018:3042778": {
+      "name": "Corey Davis",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2018:5536": {
+      "name": "Ben Roethlisberger",
+      "pos": "QB",
+      "pro": "PIT"
+    },
+    "2018:12563": {
+      "name": "Michael Crabtree",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2018:3051876": {
+      "name": "Evan Engram",
+      "pos": "TE",
+      "pro": "NYG"
+    },
+    "2018:14053": {
+      "name": "Randall Cobb",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2018:16725": {
+      "name": "Sammy Watkins",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2018:15839": {
+      "name": "Marquise Goodwin",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2018:2977609": {
+      "name": "Devin Funchess",
+      "pos": "TE",
+      "pro": "CAR"
+    },
+    "2018:15788": {
+      "name": "Tyler Eifert",
+      "pos": "TE",
+      "pro": "CIN"
+    },
+    "2018:2977187": {
+      "name": "Cooper Kupp",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2018:3139605": {
+      "name": "Marlon Mack",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2018:13213": {
+      "name": "LeGarrette Blount",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2018:2576623": {
+      "name": "DeVante Parker",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2018:3128721": {
+      "name": "Sony Michel",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2018:2574808": {
+      "name": "Robbie Chosen",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2018:14054": {
+      "name": "Kyle Rudolph",
+      "pos": "TE",
+      "pro": "MIN"
+    },
+    "2018:11270": {
+      "name": "Jordy Nelson",
+      "pos": "WR",
+      "pro": "OAK"
+    },
+    "2018:14145": {
+      "name": "Charles Clay",
+      "pos": "TE",
+      "pro": "BUF"
+    },
+    "2018:16504": {
+      "name": "Jack Doyle",
+      "pos": "TE",
+      "pro": "IND"
+    },
+    "2018:16730": {
+      "name": "Kelvin Benjamin",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2018:16016": {
+      "name": "Kenny Stills",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2018:2976592": {
+      "name": "Sterling Shepard",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2018:2580": {
+      "name": "Drew Brees",
+      "pos": "QB",
+      "pro": "NO"
+    },
+    "2018:2576716": {
+      "name": "Jamison Crowder",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2018:2969962": {
+      "name": "Duke Johnson",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2018:14880": {
+      "name": "Kirk Cousins",
+      "pos": "QB",
+      "pro": "MIN"
+    },
+    "2018:17177": {
+      "name": "Allen Hurns",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2018:12483": {
+      "name": "Matthew Stafford",
+      "pos": "QB",
+      "pro": "DET"
+    },
+    "2018:16787": {
+      "name": "Marqise Lee",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2018:3916925": {
+      "name": "Kerryon Johnson",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2018:15971": {
+      "name": "Rex Burkhead",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2018:11237": {
+      "name": "Matt Ryan",
+      "pos": "QB",
+      "pro": "ATL"
+    },
+    "2018:16760": {
+      "name": "Jimmy Garoppolo",
+      "pos": "QB",
+      "pro": "LAR"
+    },
+    "2018:2974858": {
+      "name": "Kenny Golladay",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2018:2576019": {
+      "name": "Josh Doctson",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2018:2577134": {
+      "name": "Ty Montgomery II",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2018:3139477": {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "pro": "KC"
+    },
+    "2018:17133": {
+      "name": "Isaiah Crowell",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2018:14922": {
+      "name": "Mohamed Sanu",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2018:3042519": {
+      "name": "Aaron Jones Sr.",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2018:3915416": {
+      "name": "DJ Moore",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2018:3925357": {
+      "name": "Calvin Ridley",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2018:2971618": {
+      "name": "Nelson Agholor",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2018:14993": {
+      "name": "Greg Zuerlein",
+      "pos": "PK",
+      "pro": "LAR"
+    },
+    "2018:13215": {
+      "name": "Dez Bryant",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2018:9354": {
+      "name": "Robbie Gould",
+      "pos": "PK",
+      "pro": "SF"
+    },
+    "2018:4036348": {
+      "name": "Michael Gallup",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2018:17372": {
+      "name": "Chris Boswell",
+      "pos": "PK",
+      "pro": "PIT"
+    },
+    "2018:5529": {
+      "name": "Philip Rivers",
+      "pos": "QB",
+      "pro": "LAC"
+    },
+    "2018:2577327": {
+      "name": "Tyler Lockett",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2018:9704": {
+      "name": "Stephen Gostkowski",
+      "pos": "PK",
+      "pro": "NE"
+    },
+    "2018:16757": {
+      "name": "Derek Carr",
+      "pos": "QB",
+      "pro": "OAK"
+    },
+    "2018:3046779": {
+      "name": "Jared Goff",
+      "pos": "QB",
+      "pro": "LAR"
+    },
+    "2018:3039707": {
+      "name": "Mitchell Trubisky",
+      "pos": "QB",
+      "pro": "CHI"
+    },
+    "2018:2980453": {
+      "name": "Jamaal Williams",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2018:16974": {
+      "name": "Trey Burton",
+      "pos": "TE",
+      "pro": "CHI"
+    },
+    "2018:16777": {
+      "name": "Carlos Hyde",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2018:3052177": {
+      "name": "John Ross",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2018:2985659": {
+      "name": "Wil Lutz",
+      "pos": "PK",
+      "pro": "NO"
+    },
+    "2018:3123076": {
+      "name": "David Njoku",
+      "pos": "TE",
+      "pro": "CLE"
+    },
+    "2018:1097": {
+      "name": "Adam Vinatieri",
+      "pos": "PK",
+      "pro": "IND"
+    },
+    "2018:3116389": {
+      "name": "Samaje Perine",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2018:3122866": {
+      "name": "Devontae Booker",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2018:3043080": {
+      "name": "O.J. Howard",
+      "pos": "TE",
+      "pro": "TB"
+    },
+    "2018:3040151": {
+      "name": "George Kittle",
+      "pos": "TE",
+      "pro": "SF"
+    },
+    "2018:3050478": {
+      "name": "Jake Elliott",
+      "pos": "PK",
+      "pro": "PHI"
+    },
+    "2018:3055899": {
+      "name": "Harrison Butker",
+      "pos": "PK",
+      "pro": "KC"
+    },
+    "2018:15102": {
+      "name": "Rishard Matthews",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2018:16781": {
+      "name": "Paul Richardson Jr.",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2018:3128720": {
+      "name": "Nick Chubb",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2018:15994": {
+      "name": "Theo Riddick",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2018:4333": {
+      "name": "Matt Bryant",
+      "pos": "PK",
+      "pro": "ATL"
+    },
+    "2019:3117251": {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "pro": "CAR"
+    },
+    "2019:3054850": {
+      "name": "Alvin Kamara",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2019:3929630": {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "pro": "NYG"
+    },
+    "2019:3051392": {
+      "name": "Ezekiel Elliott",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2019:2508176": {
+      "name": "David Johnson",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2019:15795": {
+      "name": "DeAndre Hopkins",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2019:13982": {
+      "name": "Julio Jones",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2019:2977644": {
+      "name": "Todd Gurley",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2019:2976316": {
+      "name": "Michael Thomas",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2019:15825": {
+      "name": "Le'Veon Bell",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2019:16733": {
+      "name": "Odell Beckham Jr.",
+      "pos": "WR",
+      "pro": "CLE"
+    },
+    "2019:16800": {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2019:3045147": {
+      "name": "James Conner",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2019:3116406": {
+      "name": "Tyreek Hill",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2019:3128720": {
+      "name": "Nick Chubb",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2019:15847": {
+      "name": "Travis Kelce",
+      "pos": "TE",
+      "pro": "KC"
+    },
+    "2019:3116385": {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "pro": "CIN"
+    },
+    "2019:3120348": {
+      "name": "JuJu Smith-Schuster",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2019:3116593": {
+      "name": "Dalvin Cook",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2019:2976499": {
+      "name": "Amari Cooper",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2019:16944": {
+      "name": "Devonta Freeman",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2019:3115364": {
+      "name": "Leonard Fournette",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2019:13934": {
+      "name": "Antonio Brown",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2019:12649": {
+      "name": "Julian Edelman",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2019:16460": {
+      "name": "Adam Thielen",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2019:15818": {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2019:16737": {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2019:3040151": {
+      "name": "George Kittle",
+      "pos": "TE",
+      "pro": "SF"
+    },
+    "2019:2576434": {
+      "name": "Melvin Gordon III",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2019:3128721": {
+      "name": "Sony Michel",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2019:3139477": {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "pro": "KC"
+    },
+    "2019:17359": {
+      "name": "Damien Williams",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2019:16731": {
+      "name": "Brandin Cooks",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2019:2976212": {
+      "name": "Stefon Diggs",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2019:3916925": {
+      "name": "Kerryon Johnson",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2019:2974858": {
+      "name": "Kenny Golladay",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2019:3043078": {
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2019:15880": {
+      "name": "Robert Woods",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2019:3042519": {
+      "name": "Aaron Jones Sr.",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2019:3045138": {
+      "name": "Mike Williams",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2019:14912": {
+      "name": "Alshon Jeffery",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2019:3919596": {
+      "name": "Chris Carson",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2019:4047365": {
+      "name": "Josh Jacobs",
+      "pos": "RB",
+      "pro": "OAK"
+    },
+    "2019:13981": {
+      "name": "Mark Ingram II",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2019:2577327": {
+      "name": "Tyler Lockett",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2019:8439": {
+      "name": "Aaron Rodgers",
+      "pos": "QB",
+      "pro": "GB"
+    },
+    "2019:3052117": {
+      "name": "Phillip Lindsay",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2019:2977187": {
+      "name": "Cooper Kupp",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2019:3122840": {
+      "name": "Deshaun Watson",
+      "pos": "QB",
+      "pro": "HOU"
+    },
+    "2019:2969962": {
+      "name": "Duke Johnson",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2019:3045144": {
+      "name": "Tyler Boyd",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2019:3915416": {
+      "name": "DJ Moore",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2019:3116165": {
+      "name": "Chris Godwin Jr.",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2019:2979843": {
+      "name": "Kenyan Drake",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2019:3139605": {
+      "name": "Marlon Mack",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2019:3066158": {
+      "name": "Tarik Cohen",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2019:4035538": {
+      "name": "David Montgomery",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2019:15705": {
+      "name": "Josh Gordon",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2019:12537": {
+      "name": "Jared Cook",
+      "pos": "TE",
+      "pro": "NO"
+    },
+    "2019:11237": {
+      "name": "Matt Ryan",
+      "pos": "QB",
+      "pro": "ATL"
+    },
+    "2019:3051876": {
+      "name": "Evan Engram",
+      "pos": "TE",
+      "pro": "NYG"
+    },
+    "2019:3892889": {
+      "name": "Dede Westbrook",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2019:13295": {
+      "name": "Emmanuel Sanders",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2019:13983": {
+      "name": "A.J. Green",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2019:3925357": {
+      "name": "Calvin Ridley",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2019:3068267": {
+      "name": "Austin Ekeler",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2019:2573079": {
+      "name": "Carson Wentz",
+      "pos": "QB",
+      "pro": "PHI"
+    },
+    "2019:3046439": {
+      "name": "Hunter Henry",
+      "pos": "TE",
+      "pro": "LAC"
+    },
+    "2019:4045163": {
+      "name": "Miles Sanders",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2019:2580": {
+      "name": "Drew Brees",
+      "pos": "QB",
+      "pro": "NO"
+    },
+    "2019:3043080": {
+      "name": "O.J. Howard",
+      "pos": "TE",
+      "pro": "TB"
+    },
+    "2019:3052587": {
+      "name": "Baker Mayfield",
+      "pos": "QB",
+      "pro": "CLE"
+    },
+    "2019:2577417": {
+      "name": "Dak Prescott",
+      "pos": "QB",
+      "pro": "DAL"
+    },
+    "2019:15853": {
+      "name": "Vance McDonald",
+      "pos": "TE",
+      "pro": "PIT"
+    },
+    "2019:14881": {
+      "name": "Russell Wilson",
+      "pos": "QB",
+      "pro": "SEA"
+    },
+    "2019:5536": {
+      "name": "Ben Roethlisberger",
+      "pos": "QB",
+      "pro": "PIT"
+    },
+    "2019:3122672": {
+      "name": "Royce Freeman",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2019:16725": {
+      "name": "Sammy Watkins",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2019:3039707": {
+      "name": "Mitchell Trubisky",
+      "pos": "QB",
+      "pro": "CHI"
+    },
+    "2019:3123076": {
+      "name": "David Njoku",
+      "pos": "TE",
+      "pro": "CLE"
+    },
+    "2019:2979477": {
+      "name": "Tevin Coleman",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2019:2574808": {
+      "name": "Robbie Chosen",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2019:15072": {
+      "name": "Marvin Jones Jr.",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2019:2976592": {
+      "name": "Sterling Shepard",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2019:3139925": {
+      "name": "Rashaad Penny",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2019:3843750": {
+      "name": "Derrius Guice",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2019:5528": {
+      "name": "Larry Fitzgerald",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2019:12514": {
+      "name": "LeSean McCoy",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2019:13994": {
+      "name": "Cam Newton",
+      "pos": "QB",
+      "pro": "CAR"
+    },
+    "2019:3895856": {
+      "name": "Christian Kirk",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2019:3128429": {
+      "name": "Courtland Sutton",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2019:3051902": {
+      "name": "Peyton Barber",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2019:3052876": {
+      "name": "William Fuller V",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2019:4036348": {
+      "name": "Michael Gallup",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2019:3060022": {
+      "name": "Jordan Howard",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2019:3046779": {
+      "name": "Jared Goff",
+      "pos": "QB",
+      "pro": "LAR"
+    },
+    "2019:3127306": {
+      "name": "Dante Pettis",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2019:14993": {
+      "name": "Greg Zuerlein",
+      "pos": "PK",
+      "pro": "LAR"
+    },
+    "2019:3121427": {
+      "name": "Curtis Samuel",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2019:3055899": {
+      "name": "Harrison Butker",
+      "pos": "PK",
+      "pro": "KC"
+    },
+    "2019:11283": {
+      "name": "DeSean Jackson",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2019:3042778": {
+      "name": "Corey Davis",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2019:3043275": {
+      "name": "Austin Hooper",
+      "pos": "TE",
+      "pro": "ATL"
+    },
+    "2019:2576716": {
+      "name": "Jamison Crowder",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2019:2985659": {
+      "name": "Wil Lutz",
+      "pos": "PK",
+      "pro": "NO"
+    },
+    "2019:9761": {
+      "name": "Delanie Walker",
+      "pos": "TE",
+      "pro": "TEN"
+    },
+    "2019:3122449": {
+      "name": "James Washington",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2019:4039359": {
+      "name": "Darrell Henderson Jr.",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2019:3049916": {
+      "name": "Matt Breida",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2019:2971573": {
+      "name": "Ka'imi Fairbairn",
+      "pos": "PK",
+      "pro": "HOU"
+    },
+    "2019:9704": {
+      "name": "Stephen Gostkowski",
+      "pos": "PK",
+      "pro": "NE"
+    },
+    "2019:9354": {
+      "name": "Robbie Gould",
+      "pos": "PK",
+      "pro": "SF"
+    },
+    "2019:3916430": {
+      "name": "Nyheim Hines",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2019:3059915": {
+      "name": "Kareem Hunt",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2019:3916387": {
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "pro": "BAL"
+    },
+    "2019:16777": {
+      "name": "Carlos Hyde",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2019:2330": {
+      "name": "Tom Brady",
+      "pos": "QB",
+      "pro": "NE"
+    },
+    "2019:4361606": {
+      "name": "Darwin Thompson",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2019:16016": {
+      "name": "Kenny Stills",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2019:16791": {
+      "name": "Donte Moncrief",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2019:3115913": {
+      "name": "Geronimo Allison",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2019:2972091": {
+      "name": "Jalen Richard",
+      "pos": "RB",
+      "pro": "OAK"
+    },
+    "2019:10475": {
+      "name": "Greg Olsen",
+      "pos": "TE",
+      "pro": "CAR"
+    },
+    "2019:14886": {
+      "name": "Lamar Miller",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2019:5529": {
+      "name": "Philip Rivers",
+      "pos": "QB",
+      "pro": "LAC"
+    },
+    "2019:2587819": {
+      "name": "Tyrell Williams",
+      "pos": "WR",
+      "pro": "OAK"
+    },
+    "2019:3050487": {
+      "name": "Anthony Miller",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2019:4040761": {
+      "name": "Devin Singletary",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2019:11122": {
+      "name": "Matt Prater",
+      "pos": "PK",
+      "pro": "DET"
+    },
+    "2019:3916148": {
+      "name": "Tony Pollard",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2019:14874": {
+      "name": "Andrew Luck",
+      "pos": "QB",
+      "pro": "IND"
+    },
+    "2019:10636": {
+      "name": "Mason Crosby",
+      "pos": "PK",
+      "pro": "GB"
+    },
+    "2019:3915823": {
+      "name": "Keke Coutee",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2019:3912547": {
+      "name": "Sam Darnold",
+      "pos": "QB",
+      "pro": "NYJ"
+    },
+    "2019:3917315": {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "pro": "ARI"
+    },
+    "2019:3050478": {
+      "name": "Jake Elliott",
+      "pos": "PK",
+      "pro": "PHI"
+    },
+    "2019:3123052": {
+      "name": "Michael Badgley",
+      "pos": "PK",
+      "pro": "LAC"
+    },
+    "2019:16974": {
+      "name": "Trey Burton",
+      "pos": "TE",
+      "pro": "CHI"
+    },
+    "2019:14880": {
+      "name": "Kirk Cousins",
+      "pos": "QB",
+      "pro": "MIN"
+    },
+    "2019:3116365": {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "pro": "BAL"
+    },
+    "2019:16732": {
+      "name": "Eric Ebron",
+      "pos": "TE",
+      "pro": "IND"
+    },
+    "2019:13232": {
+      "name": "Jimmy Graham",
+      "pos": "TE",
+      "pro": "GB"
+    },
+    "2019:4047650": {
+      "name": "DK Metcalf",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2020:3117251": {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "pro": "CAR"
+    },
+    "2020:3051392": {
+      "name": "Ezekiel Elliott",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2020:3929630": {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "pro": "NYG"
+    },
+    "2020:3054850": {
+      "name": "Alvin Kamara",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2020:3043078": {
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2020:2976316": {
+      "name": "Michael Thomas",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2020:3116593": {
+      "name": "Dalvin Cook",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2020:3128720": {
+      "name": "Nick Chubb",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2020:4047365": {
+      "name": "Josh Jacobs",
+      "pos": "RB",
+      "pro": "LV"
+    },
+    "2020:4242214": {
+      "name": "Clyde Edwards-Helaire",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2020:3116406": {
+      "name": "Tyreek Hill",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2020:15795": {
+      "name": "DeAndre Hopkins",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2020:2979843": {
+      "name": "Kenyan Drake",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2020:4045163": {
+      "name": "Miles Sanders",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2020:13982": {
+      "name": "Julio Jones",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2020:3042519": {
+      "name": "Aaron Jones Sr.",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2020:15847": {
+      "name": "Travis Kelce",
+      "pos": "TE",
+      "pro": "KC"
+    },
+    "2020:16800": {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2020:2976499": {
+      "name": "Amari Cooper",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2020:3068267": {
+      "name": "Austin Ekeler",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2020:3919596": {
+      "name": "Chris Carson",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2020:16737": {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2020:3139477": {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "pro": "KC"
+    },
+    "2020:3116165": {
+      "name": "Chris Godwin Jr.",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2020:2974858": {
+      "name": "Kenny Golladay",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2020:3116385": {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "pro": "CIN"
+    },
+    "2020:16460": {
+      "name": "Adam Thielen",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2020:3915416": {
+      "name": "DJ Moore",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2020:16733": {
+      "name": "Odell Beckham Jr.",
+      "pos": "WR",
+      "pro": "CLE"
+    },
+    "2020:3916387": {
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "pro": "BAL"
+    },
+    "2020:3040151": {
+      "name": "George Kittle",
+      "pos": "TE",
+      "pro": "SF"
+    },
+    "2020:3120348": {
+      "name": "JuJu Smith-Schuster",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2020:3045147": {
+      "name": "James Conner",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2020:2977644": {
+      "name": "Todd Gurley",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2020:2577327": {
+      "name": "Tyler Lockett",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2020:2508176": {
+      "name": "David Johnson",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2020:3925357": {
+      "name": "Calvin Ridley",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2020:4047646": {
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2020:15825": {
+      "name": "Le'Veon Bell",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2020:3128429": {
+      "name": "Courtland Sutton",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2020:2576414": {
+      "name": "Raheem Mostert",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2020:3116365": {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "pro": "BAL"
+    },
+    "2020:13981": {
+      "name": "Mark Ingram II",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2020:2977187": {
+      "name": "Cooper Kupp",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2020:15880": {
+      "name": "Robert Woods",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2020:2576434": {
+      "name": "Melvin Gordon III",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2020:4047650": {
+      "name": "DK Metcalf",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2020:4240021": {
+      "name": "Cam Akers",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2020:3115364": {
+      "name": "Leonard Fournette",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2020:4242335": {
+      "name": "Jonathan Taylor",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2020:15818": {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2020:13983": {
+      "name": "A.J. Green",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2020:3121422": {
+      "name": "Terry McLaurin",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2020:3115394": {
+      "name": "DJ Chark",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2020:2577417": {
+      "name": "Dak Prescott",
+      "pos": "QB",
+      "pro": "DAL"
+    },
+    "2020:2576925": {
+      "name": "Darren Waller",
+      "pos": "TE",
+      "pro": "LV"
+    },
+    "2020:14881": {
+      "name": "Russell Wilson",
+      "pos": "QB",
+      "pro": "SEA"
+    },
+    "2020:3122840": {
+      "name": "Deshaun Watson",
+      "pos": "QB",
+      "pro": "HOU"
+    },
+    "2020:4040761": {
+      "name": "Devin Singletary",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2020:3917315": {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "pro": "ARI"
+    },
+    "2020:4241372": {
+      "name": "Hollywood Brown",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2020:2976212": {
+      "name": "Stefon Diggs",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2020:3051876": {
+      "name": "Evan Engram",
+      "pos": "TE",
+      "pro": "NYG"
+    },
+    "2020:3059915": {
+      "name": "Kareem Hunt",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2020:4036348": {
+      "name": "Michael Gallup",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2020:3045144": {
+      "name": "Tyler Boyd",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2020:11237": {
+      "name": "Matt Ryan",
+      "pos": "QB",
+      "pro": "ATL"
+    },
+    "2020:15072": {
+      "name": "Marvin Jones Jr.",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2020:4259545": {
+      "name": "D'Andre Swift",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2020:4241985": {
+      "name": "J.K. Dobbins",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2020:3052876": {
+      "name": "William Fuller V",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2020:3060022": {
+      "name": "Jordan Howard",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2020:16731": {
+      "name": "Brandin Cooks",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2020:2573401": {
+      "name": "Tyler Higbee",
+      "pos": "TE",
+      "pro": "LAR"
+    },
+    "2020:3052117": {
+      "name": "Phillip Lindsay",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2020:4035538": {
+      "name": "David Montgomery",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2020:2576623": {
+      "name": "DeVante Parker",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2020:2976592": {
+      "name": "Sterling Shepard",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2020:2330": {
+      "name": "Tom Brady",
+      "pos": "QB",
+      "pro": "TB"
+    },
+    "2020:12649": {
+      "name": "Julian Edelman",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2020:12537": {
+      "name": "Jared Cook",
+      "pos": "TE",
+      "pro": "NO"
+    },
+    "2020:4241463": {
+      "name": "Jerry Jeudy",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2020:3126486": {
+      "name": "Deebo Samuel Sr.",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2020:3916925": {
+      "name": "Kerryon Johnson",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2020:3912550": {
+      "name": "Ronald Jones",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2020:3046439": {
+      "name": "Hunter Henry",
+      "pos": "TE",
+      "pro": "LAC"
+    },
+    "2020:2580": {
+      "name": "Drew Brees",
+      "pos": "QB",
+      "pro": "NO"
+    },
+    "2020:4035676": {
+      "name": "Zack Moss",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2020:3066158": {
+      "name": "Tarik Cohen",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2020:12483": {
+      "name": "Matthew Stafford",
+      "pos": "QB",
+      "pro": "DET"
+    },
+    "2020:4048244": {
+      "name": "Alexander Mattison",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2020:2979477": {
+      "name": "Tevin Coleman",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2020:8439": {
+      "name": "Aaron Rodgers",
+      "pos": "QB",
+      "pro": "GB"
+    },
+    "2020:3915399": {
+      "name": "Preston Williams",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2020:3932905": {
+      "name": "Diontae Johnson",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2020:4036131": {
+      "name": "Noah Fant",
+      "pos": "TE",
+      "pro": "DEN"
+    },
+    "2020:4241475": {
+      "name": "Henry Ruggs III",
+      "pos": "WR",
+      "pro": "LV"
+    },
+    "2020:4241389": {
+      "name": "CeeDee Lamb",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2020:3918298": {
+      "name": "Josh Allen",
+      "pos": "QB",
+      "pro": "BUF"
+    },
+    "2020:4035004": {
+      "name": "Mecole Hardman Jr.",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2020:3895856": {
+      "name": "Christian Kirk",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2020:2576716": {
+      "name": "Jamison Crowder",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2020:3049916": {
+      "name": "Matt Breida",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2020:3139605": {
+      "name": "Marlon Mack",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2020:13295": {
+      "name": "Emmanuel Sanders",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2020:2573079": {
+      "name": "Carson Wentz",
+      "pos": "QB",
+      "pro": "PHI"
+    },
+    "2020:4036133": {
+      "name": "T.J. Hockenson",
+      "pos": "TE",
+      "pro": "DET"
+    },
+    "2020:3043275": {
+      "name": "Austin Hooper",
+      "pos": "TE",
+      "pro": "CLE"
+    },
+    "2020:13994": {
+      "name": "Cam Newton",
+      "pos": "QB",
+      "pro": "NE"
+    },
+    "2020:13217": {
+      "name": "Golden Tate",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2020:3916148": {
+      "name": "Tony Pollard",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2020:2574808": {
+      "name": "Robbie Chosen",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2020:2969962": {
+      "name": "Duke Johnson",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2020:11283": {
+      "name": "DeSean Jackson",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2020:3699935": {
+      "name": "Devine Ozigbo",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2020:3055899": {
+      "name": "Harrison Butker",
+      "pos": "PK",
+      "pro": "KC"
+    },
+    "2020:3128721": {
+      "name": "Sony Michel",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2020:4039359": {
+      "name": "Darrell Henderson Jr.",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2020:3916945": {
+      "name": "Darius Slayton",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2020:5536": {
+      "name": "Ben Roethlisberger",
+      "pos": "QB",
+      "pro": "PIT"
+    },
+    "2020:2985659": {
+      "name": "Wil Lutz",
+      "pos": "PK",
+      "pro": "NO"
+    },
+    "2020:3923397": {
+      "name": "Ryquell Armstead",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2020:14993": {
+      "name": "Greg Zuerlein",
+      "pos": "PK",
+      "pro": "DAL"
+    },
+    "2020:2972460": {
+      "name": "Breshad Perriman",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2020:4360294": {
+      "name": "Antonio Gibson",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2020:3917792": {
+      "name": "Daniel Jones",
+      "pos": "QB",
+      "pro": "NYG"
+    },
+    "2020:2991767": {
+      "name": "Blake Jarwin",
+      "pos": "TE",
+      "pro": "DAL"
+    },
+    "2020:3119195": {
+      "name": "Chase Edmonds",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2020:11122": {
+      "name": "Matt Prater",
+      "pos": "PK",
+      "pro": "DET"
+    },
+    "2020:4262921": {
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2020:5528": {
+      "name": "Larry Fitzgerald",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2020:3121427": {
+      "name": "Curtis Samuel",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2020:3924365": {
+      "name": "Hayden Hurst",
+      "pos": "TE",
+      "pro": "ATL"
+    },
+    "2020:3046779": {
+      "name": "Jared Goff",
+      "pos": "QB",
+      "pro": "LAR"
+    },
+    "2020:3121410": {
+      "name": "Parris Campbell",
+      "pos": "WR",
+      "pro": "IND"
+    },
+    "2020:14876": {
+      "name": "Ryan Tannehill",
+      "pos": "QB",
+      "pro": "TEN"
+    },
+    "2020:3116164": {
+      "name": "Mike Gesicki",
+      "pos": "TE",
+      "pro": "MIA"
+    },
+    "2020:3915511": {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "pro": "CIN"
+    },
+    "2020:3050487": {
+      "name": "Anthony Miller",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2020:4040980": {
+      "name": "Irv Smith Jr.",
+      "pos": "TE",
+      "pro": "MIN"
+    },
+    "2020:16504": {
+      "name": "Jack Doyle",
+      "pos": "TE",
+      "pro": "IND"
+    },
+    "2020:9354": {
+      "name": "Robbie Gould",
+      "pos": "PK",
+      "pro": "SF"
+    },
+    "2020:3121023": {
+      "name": "Dallas Goedert",
+      "pos": "TE",
+      "pro": "PHI"
+    },
+    "2020:4249087": {
+      "name": "Matt Gay",
+      "pos": "PK",
+      "pro": "LAR"
+    },
+    "2020:3052587": {
+      "name": "Baker Mayfield",
+      "pos": "QB",
+      "pro": "CLE"
+    },
+    "2020:4047839": {
+      "name": "N'Keal Harry",
+      "pos": "TE",
+      "pro": "NE"
+    },
+    "2020:3045138": {
+      "name": "Mike Williams",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2020:4360438": {
+      "name": "Brandon Aiyuk",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2020:15966": {
+      "name": "Chris Thompson",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2020:17372": {
+      "name": "Chris Boswell",
+      "pos": "PK",
+      "pro": "PIT"
+    },
+    "2020:16725": {
+      "name": "Sammy Watkins",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2020:4239934": {
+      "name": "AJ Dillon",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2020:13934": {
+      "name": "Antonio Brown",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2020:2971573": {
+      "name": "Ka'imi Fairbairn",
+      "pos": "PK",
+      "pro": "HOU"
+    },
+    "2020:3043234": {
+      "name": "Zane Gonzalez",
+      "pos": "PK",
+      "pro": "ARI"
+    },
+    "2020:4239993": {
+      "name": "Tee Higgins",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2020:16728": {
+      "name": "Teddy Bridgewater",
+      "pos": "QB",
+      "pro": "DET"
+    },
+    "2020:14912": {
+      "name": "Alshon Jeffery",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2020:4241802": {
+      "name": "Jalen Reagor",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2020:10636": {
+      "name": "Mason Crosby",
+      "pos": "PK",
+      "pro": "GB"
+    },
+    "2021:3117251": {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "pro": "CAR"
+    },
+    "2021:3043078": {
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2021:3051392": {
+      "name": "Ezekiel Elliott",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2021:3116593": {
+      "name": "Dalvin Cook",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2021:3128720": {
+      "name": "Nick Chubb",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2021:3054850": {
+      "name": "Alvin Kamara",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2021:15847": {
+      "name": "Travis Kelce",
+      "pos": "TE",
+      "pro": "KC"
+    },
+    "2021:16800": {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2021:3116406": {
+      "name": "Tyreek Hill",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2021:3929630": {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "pro": "NYG"
+    },
+    "2021:3042519": {
+      "name": "Aaron Jones Sr.",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2021:3068267": {
+      "name": "Austin Ekeler",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2021:2976212": {
+      "name": "Stefon Diggs",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2021:4241457": {
+      "name": "Najee Harris",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2021:4047650": {
+      "name": "DK Metcalf",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2021:15795": {
+      "name": "DeAndre Hopkins",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2021:4360294": {
+      "name": "Antonio Gibson",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2021:4242335": {
+      "name": "Jonathan Taylor",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2021:3116385": {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "pro": "CIN"
+    },
+    "2021:4047365": {
+      "name": "Josh Jacobs",
+      "pos": "RB",
+      "pro": "LV"
+    },
+    "2021:15818": {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2021:4047646": {
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2021:2576925": {
+      "name": "Darren Waller",
+      "pos": "TE",
+      "pro": "LV"
+    },
+    "2021:4262921": {
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2021:3925357": {
+      "name": "Calvin Ridley",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2021:4242214": {
+      "name": "Clyde Edwards-Helaire",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2021:3919596": {
+      "name": "Chris Carson",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2021:3040151": {
+      "name": "George Kittle",
+      "pos": "TE",
+      "pro": "SF"
+    },
+    "2021:3121422": {
+      "name": "Terry McLaurin",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2021:4052042": {
+      "name": "James Robinson",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2021:4035538": {
+      "name": "David Montgomery",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2021:3139477": {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "pro": "KC"
+    },
+    "2021:3051926": {
+      "name": "Gus Edwards",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2021:3925347": {
+      "name": "Damien Harris",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2021:2976499": {
+      "name": "Amari Cooper",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2021:4045163": {
+      "name": "Miles Sanders",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2021:4259545": {
+      "name": "D'Andre Swift",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2021:16737": {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2021:15880": {
+      "name": "Robert Woods",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2021:3918298": {
+      "name": "Josh Allen",
+      "pos": "QB",
+      "pro": "BUF"
+    },
+    "2021:16460": {
+      "name": "Adam Thielen",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2021:2977187": {
+      "name": "Cooper Kupp",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2021:2577327": {
+      "name": "Tyler Lockett",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2021:3917315": {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "pro": "ARI"
+    },
+    "2021:3119195": {
+      "name": "Chase Edmonds",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2021:3116165": {
+      "name": "Chris Godwin Jr.",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2021:3886818": {
+      "name": "Myles Gaskin",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2021:13982": {
+      "name": "Julio Jones",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2021:4241389": {
+      "name": "CeeDee Lamb",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2021:3116365": {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "pro": "BAL"
+    },
+    "2021:3916387": {
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "pro": "BAL"
+    },
+    "2021:2577417": {
+      "name": "Dak Prescott",
+      "pos": "QB",
+      "pro": "DAL"
+    },
+    "2021:8439": {
+      "name": "Aaron Rodgers",
+      "pos": "QB",
+      "pro": "GB"
+    },
+    "2021:4360248": {
+      "name": "Kyle Pitts Sr.",
+      "pos": "TE",
+      "pro": "ATL"
+    },
+    "2021:14881": {
+      "name": "Russell Wilson",
+      "pos": "QB",
+      "pro": "SEA"
+    },
+    "2021:3915416": {
+      "name": "DJ Moore",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2021:4038941": {
+      "name": "Justin Herbert",
+      "pos": "QB",
+      "pro": "LAC"
+    },
+    "2021:3932905": {
+      "name": "Diontae Johnson",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2021:16813": {
+      "name": "Logan Thomas",
+      "pos": "TE",
+      "pro": "SF"
+    },
+    "2021:3059915": {
+      "name": "Kareem Hunt",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2021:4036133": {
+      "name": "T.J. Hockenson",
+      "pos": "TE",
+      "pro": "DET"
+    },
+    "2021:16733": {
+      "name": "Odell Beckham Jr.",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2021:3128429": {
+      "name": "Courtland Sutton",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2021:2576414": {
+      "name": "Raheem Mostert",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2021:3025433": {
+      "name": "Mike Davis",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2021:4241463": {
+      "name": "Jerry Jeudy",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2021:4243160": {
+      "name": "Laviska Shenault Jr.",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2021:4362628": {
+      "name": "Ja'Marr Chase",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2021:2976316": {
+      "name": "Michael Thomas",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2021:2330": {
+      "name": "Tom Brady",
+      "pos": "QB",
+      "pro": "TB"
+    },
+    "2021:4360438": {
+      "name": "Brandon Aiyuk",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2021:4361579": {
+      "name": "Javonte Williams",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2021:3120348": {
+      "name": "JuJu Smith-Schuster",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2021:4046692": {
+      "name": "Chase Claypool",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2021:2974858": {
+      "name": "Kenny Golladay",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2021:4241478": {
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2021:4239993": {
+      "name": "Tee Higgins",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2021:4241372": {
+      "name": "Hollywood Brown",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2021:14876": {
+      "name": "Ryan Tannehill",
+      "pos": "QB",
+      "pro": "TEN"
+    },
+    "2021:3128721": {
+      "name": "Sony Michel",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2021:4039359": {
+      "name": "Darrell Henderson Jr.",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2021:2574808": {
+      "name": "Robbie Chosen",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2021:4035676": {
+      "name": "Zack Moss",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2021:4036131": {
+      "name": "Noah Fant",
+      "pos": "TE",
+      "pro": "DEN"
+    },
+    "2021:3126486": {
+      "name": "Deebo Samuel Sr.",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2021:16731": {
+      "name": "Brandin Cooks",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2021:13934": {
+      "name": "Antonio Brown",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2021:12483": {
+      "name": "Matthew Stafford",
+      "pos": "QB",
+      "pro": "LAR"
+    },
+    "2021:4040761": {
+      "name": "Devin Singletary",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2021:3115364": {
+      "name": "Leonard Fournette",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2021:15072": {
+      "name": "Marvin Jones Jr.",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2021:4240657": {
+      "name": "Michael Carter",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2021:3042778": {
+      "name": "Corey Davis",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2021:2576434": {
+      "name": "Melvin Gordon III",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2021:3115394": {
+      "name": "DJ Chark",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2021:4372016": {
+      "name": "Jaylen Waddle",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2021:3121427": {
+      "name": "Curtis Samuel",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2021:2979843": {
+      "name": "Kenyan Drake",
+      "pos": "RB",
+      "pro": "LV"
+    },
+    "2021:3045147": {
+      "name": "James Conner",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2021:4040715": {
+      "name": "Jalen Hurts",
+      "pos": "QB",
+      "pro": "PHI"
+    },
+    "2021:4036348": {
+      "name": "Michael Gallup",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2021:2975674": {
+      "name": "Robert Tonyan",
+      "pos": "TE",
+      "pro": "GB"
+    },
+    "2021:3116164": {
+      "name": "Mike Gesicki",
+      "pos": "TE",
+      "pro": "MIA"
+    },
+    "2021:3121023": {
+      "name": "Dallas Goedert",
+      "pos": "TE",
+      "pro": "PHI"
+    },
+    "2021:3054212": {
+      "name": "Jonnu Smith",
+      "pos": "TE",
+      "pro": "NE"
+    },
+    "2021:3052876": {
+      "name": "William Fuller V",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2021:3115378": {
+      "name": "Russell Gage Jr.",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2021:15349": {
+      "name": "Cole Beasley",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2021:3912550": {
+      "name": "Ronald Jones",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2021:3045144": {
+      "name": "Tyler Boyd",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2021:4239934": {
+      "name": "AJ Dillon",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2021:2980453": {
+      "name": "Jamaal Williams",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2021:4241475": {
+      "name": "Henry Ruggs III",
+      "pos": "WR",
+      "pro": "LV"
+    },
+    "2021:4241802": {
+      "name": "Jalen Reagor",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2021:3915511": {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "pro": "CIN"
+    },
+    "2021:4241479": {
+      "name": "Tua Tagovailoa",
+      "pos": "QB",
+      "pro": "MIA"
+    },
+    "2021:4241401": {
+      "name": "Trey Sermon",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2021:4360310": {
+      "name": "Trevor Lawrence",
+      "pos": "QB",
+      "pro": "JAX"
+    },
+    "2021:4035687": {
+      "name": "Michael Pittman Jr.",
+      "pos": "WR",
+      "pro": "IND"
+    },
+    "2021:3045138": {
+      "name": "Mike Williams",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2021:3916430": {
+      "name": "Nyheim Hines",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2021:4035170": {
+      "name": "Marquez Callaway",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2021:3055899": {
+      "name": "Harrison Butker",
+      "pos": "PK",
+      "pro": "KC"
+    },
+    "2021:14880": {
+      "name": "Kirk Cousins",
+      "pos": "QB",
+      "pro": "MIN"
+    },
+    "2021:13983": {
+      "name": "A.J. Green",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2021:2576623": {
+      "name": "DeVante Parker",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2021:2508176": {
+      "name": "David Johnson",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2021:4035004": {
+      "name": "Mecole Hardman Jr.",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2021:4362887": {
+      "name": "Justin Fields",
+      "pos": "QB",
+      "pro": "CHI"
+    },
+    "2021:2573401": {
+      "name": "Tyler Higbee",
+      "pos": "TE",
+      "pro": "LAR"
+    },
+    "2021:3043275": {
+      "name": "Austin Hooper",
+      "pos": "TE",
+      "pro": "CLE"
+    },
+    "2021:2587819": {
+      "name": "Tyrell Williams",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2021:4383351": {
+      "name": "Trey Lance",
+      "pos": "QB",
+      "pro": "SF"
+    },
+    "2021:3052117": {
+      "name": "Phillip Lindsay",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2021:3895827": {
+      "name": "Ty'Son Williams",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2021:3916433": {
+      "name": "Jakobi Meyers",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2021:13295": {
+      "name": "Emmanuel Sanders",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2021:4048244": {
+      "name": "Alexander Mattison",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2021:3916148": {
+      "name": "Tony Pollard",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2021:3049899": {
+      "name": "Younghoe Koo",
+      "pos": "PK",
+      "pro": "ATL"
+    },
+    "2021:3046439": {
+      "name": "Hunter Henry",
+      "pos": "TE",
+      "pro": "NE"
+    },
+    "2021:4372485": {
+      "name": "Rondale Moore",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2021:16339": {
+      "name": "Brandon McManus",
+      "pos": "PK",
+      "pro": "DEN"
+    },
+    "2021:14053": {
+      "name": "Randall Cobb",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2021:2576716": {
+      "name": "Jamison Crowder",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2021:2473037": {
+      "name": "Jason Myers",
+      "pos": "PK",
+      "pro": "SEA"
+    },
+    "2021:16777": {
+      "name": "Carlos Hyde",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2021:3124679": {
+      "name": "Jason Sanders",
+      "pos": "PK",
+      "pro": "MIA"
+    },
+    "2021:3121410": {
+      "name": "Parris Campbell",
+      "pos": "WR",
+      "pro": "IND"
+    },
+    "2021:4372414": {
+      "name": "Elijah Moore",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2021:4240380": {
+      "name": "KJ Hamler",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2021:2969939": {
+      "name": "Jameis Winston",
+      "pos": "QB",
+      "pro": "NO"
+    },
+    "2021:3917232": {
+      "name": "Tyler Bass",
+      "pos": "PK",
+      "pro": "BUF"
+    },
+    "2021:11122": {
+      "name": "Matt Prater",
+      "pos": "PK",
+      "pro": "ARI"
+    },
+    "2021:11237": {
+      "name": "Matt Ryan",
+      "pos": "QB",
+      "pro": "ATL"
+    },
+    "2021:13994": {
+      "name": "Cam Newton",
+      "pos": "QB",
+      "pro": "CAR"
+    },
+    "2021:3139925": {
+      "name": "Rashaad Penny",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2021:12731": {
+      "name": "Ryan Succop",
+      "pos": "PK",
+      "pro": "TB"
+    },
+    "2021:4040655": {
+      "name": "Darnell Mooney",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2021:12460": {
+      "name": "Graham Gano",
+      "pos": "PK",
+      "pro": "NYG"
+    },
+    "2021:4249087": {
+      "name": "Matt Gay",
+      "pos": "PK",
+      "pro": "LAR"
+    },
+    "2021:4241416": {
+      "name": "Chuba Hubbard",
+      "pos": "RB",
+      "pro": "CAR"
+    },
+    "2021:3051876": {
+      "name": "Evan Engram",
+      "pos": "TE",
+      "pro": "NYG"
+    },
+    "2022:4242335": {
+      "name": "Jonathan Taylor",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2022:3117251": {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2022:3068267": {
+      "name": "Austin Ekeler",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2022:3043078": {
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2022:3128720": {
+      "name": "Nick Chubb",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2022:4262921": {
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2022:3116593": {
+      "name": "Dalvin Cook",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2022:4241457": {
+      "name": "Najee Harris",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2022:3116385": {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "pro": "CIN"
+    },
+    "2022:2976212": {
+      "name": "Stefon Diggs",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2022:4259545": {
+      "name": "D'Andre Swift",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2022:3929630": {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "pro": "NYG"
+    },
+    "2022:3042519": {
+      "name": "Aaron Jones Sr.",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2022:15847": {
+      "name": "Travis Kelce",
+      "pos": "TE",
+      "pro": "KC"
+    },
+    "2022:16800": {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "pro": "LV"
+    },
+    "2022:3054850": {
+      "name": "Alvin Kamara",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2022:3045147": {
+      "name": "James Conner",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2022:4035687": {
+      "name": "Michael Pittman Jr.",
+      "pos": "WR",
+      "pro": "IND"
+    },
+    "2022:4361579": {
+      "name": "Javonte Williams",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2022:4241389": {
+      "name": "CeeDee Lamb",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2022:15818": {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2022:16737": {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2022:3051392": {
+      "name": "Ezekiel Elliott",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2022:3116365": {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "pro": "BAL"
+    },
+    "2022:3116406": {
+      "name": "Tyreek Hill",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2022:3045138": {
+      "name": "Mike Williams",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2022:3128429": {
+      "name": "Courtland Sutton",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2022:4047646": {
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2022:4047650": {
+      "name": "DK Metcalf",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2022:3915416": {
+      "name": "DJ Moore",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2022:4035538": {
+      "name": "David Montgomery",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2022:4240021": {
+      "name": "Cam Akers",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2022:3121422": {
+      "name": "Terry McLaurin",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2022:3040151": {
+      "name": "George Kittle",
+      "pos": "TE",
+      "pro": "SF"
+    },
+    "2022:4241555": {
+      "name": "Elijah Mitchell",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2022:3932905": {
+      "name": "Diontae Johnson",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2022:4038941": {
+      "name": "Justin Herbert",
+      "pos": "QB",
+      "pro": "LAC"
+    },
+    "2022:16731": {
+      "name": "Brandin Cooks",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2022:4047365": {
+      "name": "Josh Jacobs",
+      "pos": "RB",
+      "pro": "LV"
+    },
+    "2022:4243537": {
+      "name": "Gabe Davis",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2022:3139477": {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "pro": "KC"
+    },
+    "2022:4040715": {
+      "name": "Jalen Hurts",
+      "pos": "QB",
+      "pro": "PHI"
+    },
+    "2022:4241985": {
+      "name": "J.K. Dobbins",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2022:2977187": {
+      "name": "Cooper Kupp",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2022:4239996": {
+      "name": "Travis Etienne Jr.",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2022:3918298": {
+      "name": "Josh Allen",
+      "pos": "QB",
+      "pro": "BUF"
+    },
+    "2022:4241372": {
+      "name": "Hollywood Brown",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2022:3116165": {
+      "name": "Chris Godwin Jr.",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2022:4239934": {
+      "name": "AJ Dillon",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2022:4427366": {
+      "name": "Breece Hall",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2022:4360238": {
+      "name": "Dameon Pierce",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2022:3925347": {
+      "name": "Damien Harris",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2022:2976499": {
+      "name": "Amari Cooper",
+      "pos": "WR",
+      "pro": "CLE"
+    },
+    "2022:4360294": {
+      "name": "Antonio Gibson",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2022:3916387": {
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "pro": "BAL"
+    },
+    "2022:3917315": {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "pro": "ARI"
+    },
+    "2022:3117256": {
+      "name": "Dalton Schultz",
+      "pos": "TE",
+      "pro": "DAL"
+    },
+    "2022:4040655": {
+      "name": "Darnell Mooney",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2022:2976316": {
+      "name": "Michael Thomas",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2022:4374302": {
+      "name": "Amon-Ra St. Brown",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2022:4362628": {
+      "name": "Ja'Marr Chase",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2022:4360248": {
+      "name": "Kyle Pitts Sr.",
+      "pos": "TE",
+      "pro": "ATL"
+    },
+    "2022:4241463": {
+      "name": "Jerry Jeudy",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2022:3119195": {
+      "name": "Chase Edmonds",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2022:16460": {
+      "name": "Adam Thielen",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2022:2576925": {
+      "name": "Darren Waller",
+      "pos": "TE",
+      "pro": "LV"
+    },
+    "2022:3120348": {
+      "name": "JuJu Smith-Schuster",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2022:4360939": {
+      "name": "Rashod Bateman",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2022:3139925": {
+      "name": "Rashaad Penny",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2022:4239993": {
+      "name": "Tee Higgins",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2022:14881": {
+      "name": "Russell Wilson",
+      "pos": "QB",
+      "pro": "DEN"
+    },
+    "2022:4045163": {
+      "name": "Miles Sanders",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2022:4241478": {
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2022:3930086": {
+      "name": "Dawson Knox",
+      "pos": "TE",
+      "pro": "BUF"
+    },
+    "2022:4036133": {
+      "name": "T.J. Hockenson",
+      "pos": "TE",
+      "pro": "MIN"
+    },
+    "2022:2577417": {
+      "name": "Dak Prescott",
+      "pos": "QB",
+      "pro": "DAL"
+    },
+    "2022:4360438": {
+      "name": "Brandon Aiyuk",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2022:4242214": {
+      "name": "Clyde Edwards-Helaire",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2022:4372414": {
+      "name": "Elijah Moore",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2022:4569173": {
+      "name": "Rhamondre Stevenson",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2022:3126486": {
+      "name": "Deebo Samuel Sr.",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2022:3059915": {
+      "name": "Kareem Hunt",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2022:4040761": {
+      "name": "Devin Singletary",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2022:3916148": {
+      "name": "Tony Pollard",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2022:2576434": {
+      "name": "Melvin Gordon III",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2022:3128390": {
+      "name": "Allen Lazard",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2022:2330": {
+      "name": "Tom Brady",
+      "pos": "QB",
+      "pro": "TB"
+    },
+    "2022:2577327": {
+      "name": "Tyler Lockett",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2022:15807": {
+      "name": "Cordarrelle Patterson",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2022:4372016": {
+      "name": "Jaylen Waddle",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2022:3895856": {
+      "name": "Christian Kirk",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2022:3135321": {
+      "name": "Hunter Renfrow",
+      "pos": "WR",
+      "pro": "LV"
+    },
+    "2022:4052042": {
+      "name": "James Robinson",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2022:4361370": {
+      "name": "Chris Olave",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2022:4240600": {
+      "name": "Kadarius Toney",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2022:3115364": {
+      "name": "Leonard Fournette",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2022:4567048": {
+      "name": "Kenneth Walker III",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2022:15880": {
+      "name": "Robert Woods",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2022:12483": {
+      "name": "Matthew Stafford",
+      "pos": "QB",
+      "pro": "LAR"
+    },
+    "2022:4426502": {
+      "name": "Drake London",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2022:8439": {
+      "name": "Aaron Rodgers",
+      "pos": "QB",
+      "pro": "GB"
+    },
+    "2022:14880": {
+      "name": "Kirk Cousins",
+      "pos": "QB",
+      "pro": "MIN"
+    },
+    "2022:3121023": {
+      "name": "Dallas Goedert",
+      "pos": "TE",
+      "pro": "PHI"
+    },
+    "2022:4372485": {
+      "name": "Rondale Moore",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2022:15795": {
+      "name": "DeAndre Hopkins",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2022:3046439": {
+      "name": "Hunter Henry",
+      "pos": "TE",
+      "pro": "NE"
+    },
+    "2022:4379399": {
+      "name": "James Cook III",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2022:4258595": {
+      "name": "Cole Kmet",
+      "pos": "TE",
+      "pro": "CHI"
+    },
+    "2022:4036348": {
+      "name": "Michael Gallup",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2022:4240657": {
+      "name": "Michael Carter",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2022:16757": {
+      "name": "Derek Carr",
+      "pos": "QB",
+      "pro": "LV"
+    },
+    "2022:4046692": {
+      "name": "Chase Claypool",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2022:4048244": {
+      "name": "Alexander Mattison",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2022:4241479": {
+      "name": "Tua Tagovailoa",
+      "pos": "QB",
+      "pro": "MIA"
+    },
+    "2022:3051738": {
+      "name": "Marquez Valdes-Scantling",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2022:4383351": {
+      "name": "Trey Lance",
+      "pos": "QB",
+      "pro": "SF"
+    },
+    "2022:4039359": {
+      "name": "Darrell Henderson Jr.",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2022:4567156": {
+      "name": "Treylon Burks",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2022:4569618": {
+      "name": "Garrett Wilson",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2022:3045144": {
+      "name": "Tyler Boyd",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2022:4035115": {
+      "name": "Albert Okwuegbunam Jr.",
+      "pos": "TE",
+      "pro": "DEN"
+    },
+    "2022:3916430": {
+      "name": "Nyheim Hines",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2022:3915511": {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "pro": "CIN"
+    },
+    "2022:4361411": {
+      "name": "Pat Freiermuth",
+      "pos": "TE",
+      "pro": "PIT"
+    },
+    "2022:2980453": {
+      "name": "Jamaal Williams",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2022:4362887": {
+      "name": "Justin Fields",
+      "pos": "QB",
+      "pro": "CHI"
+    },
+    "2022:4430191": {
+      "name": "Skyy Moore",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2022:2576623": {
+      "name": "DeVante Parker",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2022:3917232": {
+      "name": "Tyler Bass",
+      "pos": "PK",
+      "pro": "BUF"
+    },
+    "2022:13982": {
+      "name": "Julio Jones",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2022:4426354": {
+      "name": "George Pickens",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2022:3123076": {
+      "name": "David Njoku",
+      "pos": "TE",
+      "pro": "CLE"
+    },
+    "2022:4040980": {
+      "name": "Irv Smith Jr.",
+      "pos": "TE",
+      "pro": "MIN"
+    },
+    "2022:12731": {
+      "name": "Ryan Succop",
+      "pos": "PK",
+      "pro": "TB"
+    },
+    "2022:4360234": {
+      "name": "Evan McPherson",
+      "pos": "PK",
+      "pro": "CIN"
+    },
+    "2022:3055899": {
+      "name": "Harrison Butker",
+      "pos": "PK",
+      "pro": "KC"
+    },
+    "2022:2576414": {
+      "name": "Raheem Mostert",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2022:3916433": {
+      "name": "Jakobi Meyers",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2022:4249087": {
+      "name": "Matt Gay",
+      "pos": "PK",
+      "pro": "LAR"
+    },
+    "2022:11122": {
+      "name": "Matt Prater",
+      "pos": "PK",
+      "pro": "ARI"
+    },
+    "2022:3915165": {
+      "name": "Rodrigo Blankenship",
+      "pos": "PK",
+      "pro": "ARI"
+    },
+    "2022:4035886": {
+      "name": "Khalil Herbert",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2022:3912550": {
+      "name": "Ronald Jones",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2022:11237": {
+      "name": "Matt Ryan",
+      "pos": "QB",
+      "pro": "IND"
+    },
+    "2022:2969939": {
+      "name": "Jameis Winston",
+      "pos": "QB",
+      "pro": "NO"
+    },
+    "2022:4035004": {
+      "name": "Mecole Hardman Jr.",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2022:3975763": {
+      "name": "Greg Joseph",
+      "pos": "PK",
+      "pro": "MIN"
+    },
+    "2023:3117251": {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2023:4262921": {
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2023:3068267": {
+      "name": "Austin Ekeler",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2023:3128720": {
+      "name": "Nick Chubb",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2023:15847": {
+      "name": "Travis Kelce",
+      "pos": "TE",
+      "pro": "KC"
+    },
+    "2023:3043078": {
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2023:3116406": {
+      "name": "Tyreek Hill",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2023:3929630": {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "pro": "NYG"
+    },
+    "2023:4430807": {
+      "name": "Bijan Robinson",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2023:4040715": {
+      "name": "Jalen Hurts",
+      "pos": "QB",
+      "pro": "PHI"
+    },
+    "2023:4360238": {
+      "name": "Dameon Pierce",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2023:4047365": {
+      "name": "Josh Jacobs",
+      "pos": "RB",
+      "pro": "LV"
+    },
+    "2023:3918298": {
+      "name": "Josh Allen",
+      "pos": "QB",
+      "pro": "BUF"
+    },
+    "2023:4047646": {
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2023:4241389": {
+      "name": "CeeDee Lamb",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2023:16800": {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "pro": "LV"
+    },
+    "2023:3116385": {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "pro": "CIN"
+    },
+    "2023:4569618": {
+      "name": "Garrett Wilson",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2023:3042519": {
+      "name": "Aaron Jones Sr.",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2023:3116365": {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "pro": "BAL"
+    },
+    "2023:4239996": {
+      "name": "Travis Etienne Jr.",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2023:3916387": {
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "pro": "BAL"
+    },
+    "2023:4429795": {
+      "name": "Jahmyr Gibbs",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2023:4241457": {
+      "name": "Najee Harris",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2023:3925357": {
+      "name": "Calvin Ridley",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2023:2976499": {
+      "name": "Amari Cooper",
+      "pos": "WR",
+      "pro": "CLE"
+    },
+    "2023:3126486": {
+      "name": "Deebo Samuel Sr.",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2023:3915511": {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "pro": "CIN"
+    },
+    "2023:2977187": {
+      "name": "Cooper Kupp",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2023:4241985": {
+      "name": "J.K. Dobbins",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2023:4569173": {
+      "name": "Rhamondre Stevenson",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2023:4361579": {
+      "name": "Javonte Williams",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2023:15818": {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2023:4362887": {
+      "name": "Justin Fields",
+      "pos": "QB",
+      "pro": "CHI"
+    },
+    "2023:4240021": {
+      "name": "Cam Akers",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2023:4048244": {
+      "name": "Alexander Mattison",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2023:4241478": {
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2023:2976212": {
+      "name": "Stefon Diggs",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2023:4038941": {
+      "name": "Justin Herbert",
+      "pos": "QB",
+      "pro": "LAC"
+    },
+    "2023:4047650": {
+      "name": "DK Metcalf",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2023:3915416": {
+      "name": "DJ Moore",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2023:4248528": {
+      "name": "Christian Watson",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2023:15795": {
+      "name": "DeAndre Hopkins",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2023:4360310": {
+      "name": "Trevor Lawrence",
+      "pos": "QB",
+      "pro": "JAX"
+    },
+    "2023:3139477": {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "pro": "KC"
+    },
+    "2023:3045138": {
+      "name": "Mike Williams",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2023:4036133": {
+      "name": "T.J. Hockenson",
+      "pos": "TE",
+      "pro": "MIN"
+    },
+    "2023:3040151": {
+      "name": "George Kittle",
+      "pos": "TE",
+      "pro": "SF"
+    },
+    "2023:4242335": {
+      "name": "Jonathan Taylor",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2023:4361529": {
+      "name": "Isiah Pacheco",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2023:4426354": {
+      "name": "George Pickens",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2023:4362628": {
+      "name": "Ja'Marr Chase",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2023:16737": {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2023:4379399": {
+      "name": "James Cook III",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2023:4697815": {
+      "name": "Rachaad White",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2023:4427366": {
+      "name": "Breece Hall",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2023:4426502": {
+      "name": "Drake London",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2023:2577327": {
+      "name": "Tyler Lockett",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2023:3045147": {
+      "name": "James Conner",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2023:3895856": {
+      "name": "Christian Kirk",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2023:3054850": {
+      "name": "Alvin Kamara",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2023:3121023": {
+      "name": "Dallas Goedert",
+      "pos": "TE",
+      "pro": "PHI"
+    },
+    "2023:2576925": {
+      "name": "Darren Waller",
+      "pos": "TE",
+      "pro": "NYG"
+    },
+    "2023:4035538": {
+      "name": "David Montgomery",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2023:4361409": {
+      "name": "Jahan Dotson",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2023:3917792": {
+      "name": "Daniel Jones",
+      "pos": "QB",
+      "pro": "NYG"
+    },
+    "2023:4374302": {
+      "name": "Amon-Ra St. Brown",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2023:2980453": {
+      "name": "Jamaal Williams",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2023:4360248": {
+      "name": "Kyle Pitts Sr.",
+      "pos": "TE",
+      "pro": "ATL"
+    },
+    "2023:3123076": {
+      "name": "David Njoku",
+      "pos": "TE",
+      "pro": "CLE"
+    },
+    "2023:16782": {
+      "name": "Jerick McKinnon",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2023:3116165": {
+      "name": "Chris Godwin Jr.",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2023:16731": {
+      "name": "Brandin Cooks",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2023:4429615": {
+      "name": "Zay Flowers",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2023:4239993": {
+      "name": "Tee Higgins",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2023:3116593": {
+      "name": "Dalvin Cook",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2023:4045163": {
+      "name": "Miles Sanders",
+      "pos": "RB",
+      "pro": "CAR"
+    },
+    "2023:4429205": {
+      "name": "Jordan Addison",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2023:4035886": {
+      "name": "Khalil Herbert",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2023:4361370": {
+      "name": "Chris Olave",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2023:4035687": {
+      "name": "Michael Pittman Jr.",
+      "pos": "WR",
+      "pro": "IND"
+    },
+    "2023:3139925": {
+      "name": "Rashaad Penny",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2023:4241474": {
+      "name": "Brian Robinson Jr.",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2023:2577417": {
+      "name": "Dak Prescott",
+      "pos": "QB",
+      "pro": "DAL"
+    },
+    "2023:3051876": {
+      "name": "Evan Engram",
+      "pos": "TE",
+      "pro": "JAX"
+    },
+    "2023:4243537": {
+      "name": "Gabe Davis",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2023:4239934": {
+      "name": "AJ Dillon",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2023:4360438": {
+      "name": "Brandon Aiyuk",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2023:4241479": {
+      "name": "Tua Tagovailoa",
+      "pos": "QB",
+      "pro": "MIA"
+    },
+    "2023:16733": {
+      "name": "Odell Beckham Jr.",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2023:3932905": {
+      "name": "Diontae Johnson",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2023:4240600": {
+      "name": "Kadarius Toney",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2023:3122840": {
+      "name": "Deshaun Watson",
+      "pos": "QB",
+      "pro": "CLE"
+    },
+    "2023:2576414": {
+      "name": "Raheem Mostert",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2023:4361411": {
+      "name": "Pat Freiermuth",
+      "pos": "TE",
+      "pro": "PIT"
+    },
+    "2023:4430878": {
+      "name": "Jaxon Smith-Njigba",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2023:3916148": {
+      "name": "Tony Pollard",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2023:4372016": {
+      "name": "Jaylen Waddle",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2023:4430191": {
+      "name": "Skyy Moore",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2023:4429084": {
+      "name": "Anthony Richardson Sr.",
+      "pos": "QB",
+      "pro": "IND"
+    },
+    "2023:4360294": {
+      "name": "Antonio Gibson",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2023:3116389": {
+      "name": "Samaje Perine",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2023:4241372": {
+      "name": "Hollywood Brown",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2023:3128390": {
+      "name": "Allen Lazard",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2023:4426385": {
+      "name": "Zach Charbonnet",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2023:4429025": {
+      "name": "Quentin Johnston",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2023:3051392": {
+      "name": "Ezekiel Elliott",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2023:14880": {
+      "name": "Kirk Cousins",
+      "pos": "QB",
+      "pro": "MIN"
+    },
+    "2023:3046779": {
+      "name": "Jared Goff",
+      "pos": "QB",
+      "pro": "DET"
+    },
+    "2023:4372414": {
+      "name": "Elijah Moore",
+      "pos": "WR",
+      "pro": "CLE"
+    },
+    "2023:3925347": {
+      "name": "Damien Harris",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2023:2976316": {
+      "name": "Michael Thomas",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2023:4241555": {
+      "name": "Elijah Mitchell",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2023:4429160": {
+      "name": "De'Von Achane",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2023:4569987": {
+      "name": "Jaylen Warren",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2023:4360939": {
+      "name": "Rashod Bateman",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2023:8439": {
+      "name": "Aaron Rodgers",
+      "pos": "QB",
+      "pro": "NYJ"
+    },
+    "2023:15864": {
+      "name": "Geno Smith",
+      "pos": "QB",
+      "pro": "SEA"
+    },
+    "2023:3120348": {
+      "name": "JuJu Smith-Schuster",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2023:4371733": {
+      "name": "Kenny Gainwell",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2023:4258595": {
+      "name": "Cole Kmet",
+      "pos": "TE",
+      "pro": "CHI"
+    },
+    "2023:4567156": {
+      "name": "Treylon Burks",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2023:3128429": {
+      "name": "Courtland Sutton",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2023:3930066": {
+      "name": "Van Jefferson",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2023:4373626": {
+      "name": "Tyler Allgeier",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2023:3055899": {
+      "name": "Harrison Butker",
+      "pos": "PK",
+      "pro": "KC"
+    },
+    "2023:3917232": {
+      "name": "Tyler Bass",
+      "pos": "PK",
+      "pro": "BUF"
+    },
+    "2023:4360234": {
+      "name": "Evan McPherson",
+      "pos": "PK",
+      "pro": "CIN"
+    },
+    "2023:16460": {
+      "name": "Adam Thielen",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2023:3049899": {
+      "name": "Younghoe Koo",
+      "pos": "PK",
+      "pro": "ATL"
+    },
+    "2023:4259545": {
+      "name": "D'Andre Swift",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2023:3117256": {
+      "name": "Dalton Schultz",
+      "pos": "TE",
+      "pro": "HOU"
+    },
+    "2023:2573401": {
+      "name": "Tyler Higbee",
+      "pos": "TE",
+      "pro": "LAR"
+    },
+    "2023:14881": {
+      "name": "Russell Wilson",
+      "pos": "QB",
+      "pro": "DEN"
+    },
+    "2023:4366031": {
+      "name": "Tank Dell",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2023:4429013": {
+      "name": "Tank Bigsby",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2023:3916433": {
+      "name": "Jakobi Meyers",
+      "pos": "WR",
+      "pro": "LV"
+    },
+    "2023:14993": {
+      "name": "Greg Zuerlein",
+      "pos": "PK",
+      "pro": "NYJ"
+    },
+    "2023:16757": {
+      "name": "Derek Carr",
+      "pos": "QB",
+      "pro": "NO"
+    },
+    "2023:4567048": {
+      "name": "Kenneth Walker III",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2023:4360635": {
+      "name": "Chig Okonkwo",
+      "pos": "TE",
+      "pro": "TEN"
+    },
+    "2023:4241463": {
+      "name": "Jerry Jeudy",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2023:3051909": {
+      "name": "Daniel Carlson",
+      "pos": "PK",
+      "pro": "LV"
+    },
+    "2023:4385690": {
+      "name": "Dalton Kincaid",
+      "pos": "TE",
+      "pro": "BUF"
+    },
+    "2023:4258173": {
+      "name": "Nico Collins",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2023:4036348": {
+      "name": "Michael Gallup",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2023:4692590": {
+      "name": "Jalin Hyatt",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2023:3050478": {
+      "name": "Jake Elliott",
+      "pos": "PK",
+      "pro": "PHI"
+    },
+    "2023:3121422": {
+      "name": "Terry McLaurin",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2024:3117251": {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2024:3116406": {
+      "name": "Tyreek Hill",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2024:4241389": {
+      "name": "CeeDee Lamb",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2024:4569618": {
+      "name": "Garrett Wilson",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2024:4429795": {
+      "name": "Jahmyr Gibbs",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2024:4262921": {
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2024:4430807": {
+      "name": "Bijan Robinson",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2024:4047365": {
+      "name": "Josh Jacobs",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2024:4372016": {
+      "name": "Jaylen Waddle",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2024:4432708": {
+      "name": "Marvin Harrison Jr.",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2024:4047646": {
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2024:3043078": {
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2024:3929630": {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2024:3918298": {
+      "name": "Josh Allen",
+      "pos": "QB",
+      "pro": "BUF"
+    },
+    "2024:4239996": {
+      "name": "Travis Etienne Jr.",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2024:16737": {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2024:4429160": {
+      "name": "De'Von Achane",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2024:4426502": {
+      "name": "Drake London",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2024:4361370": {
+      "name": "Chris Olave",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2024:16800": {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2024:4360438": {
+      "name": "Brandon Aiyuk",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2024:3054850": {
+      "name": "Alvin Kamara",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2024:4040715": {
+      "name": "Jalen Hurts",
+      "pos": "QB",
+      "pro": "PHI"
+    },
+    "2024:4379399": {
+      "name": "James Cook III",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2024:2977187": {
+      "name": "Cooper Kupp",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2024:4567048": {
+      "name": "Kenneth Walker III",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2024:3916387": {
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "pro": "BAL"
+    },
+    "2024:4047650": {
+      "name": "DK Metcalf",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2024:2976212": {
+      "name": "Stefon Diggs",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2024:4361307": {
+      "name": "Trey McBride",
+      "pos": "TE",
+      "pro": "ARI"
+    },
+    "2024:3116385": {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2024:4595348": {
+      "name": "Malik Nabers",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2024:4430027": {
+      "name": "Sam LaPorta",
+      "pos": "TE",
+      "pro": "DET"
+    },
+    "2024:4366031": {
+      "name": "Tank Dell",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2024:3116365": {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "pro": "BAL"
+    },
+    "2024:4426515": {
+      "name": "Puka Nacua",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2024:4697815": {
+      "name": "Rachaad White",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2024:3121422": {
+      "name": "Terry McLaurin",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2024:4241478": {
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2024:4239993": {
+      "name": "Tee Higgins",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2024:3915416": {
+      "name": "DJ Moore",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2024:4430737": {
+      "name": "Kyren Williams",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2024:4035538": {
+      "name": "David Montgomery",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2024:4428331": {
+      "name": "Rashee Rice",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2024:4242335": {
+      "name": "Jonathan Taylor",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2024:3139477": {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "pro": "KC"
+    },
+    "2024:3042519": {
+      "name": "Aaron Jones Sr.",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2024:2976499": {
+      "name": "Amari Cooper",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2024:15847": {
+      "name": "Travis Kelce",
+      "pos": "TE",
+      "pro": "KC"
+    },
+    "2024:3045147": {
+      "name": "James Conner",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2024:4427366": {
+      "name": "Breece Hall",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2024:4374302": {
+      "name": "Amon-Ra St. Brown",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2024:3040151": {
+      "name": "George Kittle",
+      "pos": "TE",
+      "pro": "SF"
+    },
+    "2024:4035687": {
+      "name": "Michael Pittman Jr.",
+      "pos": "WR",
+      "pro": "IND"
+    },
+    "2024:3126486": {
+      "name": "Deebo Samuel Sr.",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2024:4241457": {
+      "name": "Najee Harris",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2024:4259545": {
+      "name": "D'Andre Swift",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2024:4361529": {
+      "name": "Isiah Pacheco",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2024:4385690": {
+      "name": "Dalton Kincaid",
+      "pos": "TE",
+      "pro": "BUF"
+    },
+    "2024:3051876": {
+      "name": "Evan Engram",
+      "pos": "TE",
+      "pro": "JAX"
+    },
+    "2024:4569173": {
+      "name": "Rhamondre Stevenson",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2024:4361777": {
+      "name": "Zamir White",
+      "pos": "RB",
+      "pro": "LV"
+    },
+    "2024:3917315": {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "pro": "ARI"
+    },
+    "2024:3895856": {
+      "name": "Christian Kirk",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2024:4429615": {
+      "name": "Zay Flowers",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2024:4248528": {
+      "name": "Christian Watson",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2024:4362628": {
+      "name": "Ja'Marr Chase",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2024:2576414": {
+      "name": "Raheem Mostert",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2024:3932905": {
+      "name": "Diontae Johnson",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2024:2577417": {
+      "name": "Dak Prescott",
+      "pos": "QB",
+      "pro": "DAL"
+    },
+    "2024:3916148": {
+      "name": "Tony Pollard",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2024:3068267": {
+      "name": "Austin Ekeler",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2024:4429084": {
+      "name": "Anthony Richardson Sr.",
+      "pos": "QB",
+      "pro": "IND"
+    },
+    "2024:3123076": {
+      "name": "David Njoku",
+      "pos": "TE",
+      "pro": "CLE"
+    },
+    "2024:3915511": {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "pro": "CIN"
+    },
+    "2024:4361579": {
+      "name": "Javonte Williams",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2024:4360248": {
+      "name": "Kyle Pitts Sr.",
+      "pos": "TE",
+      "pro": "ATL"
+    },
+    "2024:3116165": {
+      "name": "Chris Godwin Jr.",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2024:4242355": {
+      "name": "Jake Ferguson",
+      "pos": "TE",
+      "pro": "DAL"
+    },
+    "2024:3925357": {
+      "name": "Calvin Ridley",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2024:4040761": {
+      "name": "Devin Singletary",
+      "pos": "RB",
+      "pro": "NYG"
+    },
+    "2024:4426354": {
+      "name": "George Pickens",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2024:4241474": {
+      "name": "Brian Robinson Jr.",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2024:3128720": {
+      "name": "Nick Chubb",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2024:4683062": {
+      "name": "Xavier Worthy",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2024:4430878": {
+      "name": "Jaxon Smith-Njigba",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2024:3051926": {
+      "name": "Gus Edwards",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2024:15795": {
+      "name": "DeAndre Hopkins",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2024:4035676": {
+      "name": "Zack Moss",
+      "pos": "RB",
+      "pro": "CIN"
+    },
+    "2024:4362249": {
+      "name": "Jayden Reed",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2024:4432773": {
+      "name": "Brian Thomas Jr.",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2024:4432665": {
+      "name": "Brock Bowers",
+      "pos": "TE",
+      "pro": "LV"
+    },
+    "2024:3051392": {
+      "name": "Ezekiel Elliott",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2024:3121023": {
+      "name": "Dallas Goedert",
+      "pos": "TE",
+      "pro": "PHI"
+    },
+    "2024:4372019": {
+      "name": "Jerome Ford",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2024:4362238": {
+      "name": "Chase Brown",
+      "pos": "RB",
+      "pro": "CIN"
+    },
+    "2024:15818": {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2024:4569987": {
+      "name": "Jaylen Warren",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2024:4241372": {
+      "name": "Hollywood Brown",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2024:4428557": {
+      "name": "Tyjae Spears",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2024:4036378": {
+      "name": "Jordan Love",
+      "pos": "QB",
+      "pro": "GB"
+    },
+    "2024:4426385": {
+      "name": "Zach Charbonnet",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2024:3128429": {
+      "name": "Courtland Sutton",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2024:4426348": {
+      "name": "Jayden Daniels",
+      "pos": "QB",
+      "pro": "WSH"
+    },
+    "2024:3046779": {
+      "name": "Jared Goff",
+      "pos": "QB",
+      "pro": "DET"
+    },
+    "2024:4426388": {
+      "name": "Jameson Williams",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2024:4241479": {
+      "name": "Tua Tagovailoa",
+      "pos": "QB",
+      "pro": "MIA"
+    },
+    "2024:4635008": {
+      "name": "Keon Coleman",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2024:4429275": {
+      "name": "Trey Benson",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2024:4431299": {
+      "name": "Rome Odunze",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2024:4361411": {
+      "name": "Pat Freiermuth",
+      "pos": "TE",
+      "pro": "PIT"
+    },
+    "2024:4429096": {
+      "name": "Blake Corum",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2024:2577327": {
+      "name": "Tyler Lockett",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2024:3117256": {
+      "name": "Dalton Schultz",
+      "pos": "TE",
+      "pro": "HOU"
+    },
+    "2024:4241985": {
+      "name": "J.K. Dobbins",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2024:4429205": {
+      "name": "Jordan Addison",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2024:4361432": {
+      "name": "Romeo Doubs",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2024:3045138": {
+      "name": "Mike Williams",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2024:4038815": {
+      "name": "Rico Dowdle",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2024:4612826": {
+      "name": "Ladd McConkey",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2024:4678008": {
+      "name": "Jonathon Brooks",
+      "pos": "RB",
+      "pro": "CAR"
+    },
+    "2024:4431611": {
+      "name": "Caleb Williams",
+      "pos": "QB",
+      "pro": "CHI"
+    },
+    "2024:4241416": {
+      "name": "Chuba Hubbard",
+      "pos": "RB",
+      "pro": "CAR"
+    },
+    "2024:4036133": {
+      "name": "T.J. Hockenson",
+      "pos": "TE",
+      "pro": "MIN"
+    },
+    "2024:3049899": {
+      "name": "Younghoe Koo",
+      "pos": "PK",
+      "pro": "ATL"
+    },
+    "2024:4241463": {
+      "name": "Jerry Jeudy",
+      "pos": "WR",
+      "pro": "CLE"
+    },
+    "2024:4430034": {
+      "name": "Xavier Legette",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2024:4038941": {
+      "name": "Justin Herbert",
+      "pos": "QB",
+      "pro": "LAC"
+    },
+    "2024:4242433": {
+      "name": "Joshua Palmer",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2024:4258173": {
+      "name": "Nico Collins",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2024:4373626": {
+      "name": "Tyler Allgeier",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2024:3953687": {
+      "name": "Brandon Aubrey",
+      "pos": "PK",
+      "pro": "DAL"
+    },
+    "2024:4428085": {
+      "name": "Luke Musgrave",
+      "pos": "TE",
+      "pro": "GB"
+    },
+    "2024:3055899": {
+      "name": "Harrison Butker",
+      "pos": "PK",
+      "pro": "KC"
+    },
+    "2024:2971573": {
+      "name": "Ka'imi Fairbairn",
+      "pos": "PK",
+      "pro": "HOU"
+    },
+    "2024:4429501": {
+      "name": "Ray Davis",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2024:12483": {
+      "name": "Matthew Stafford",
+      "pos": "QB",
+      "pro": "LAR"
+    },
+    "2024:4689936": {
+      "name": "Jake Bates",
+      "pos": "PK",
+      "pro": "DET"
+    },
+    "2024:4360310": {
+      "name": "Trevor Lawrence",
+      "pos": "QB",
+      "pro": "JAX"
+    },
+    "2024:4569682": {
+      "name": "Audric Estime",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2024:4432577": {
+      "name": "C.J. Stroud",
+      "pos": "QB",
+      "pro": "HOU"
+    },
+    "2024:4682745": {
+      "name": "Jaylen Wright",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2024:4361741": {
+      "name": "Brock Purdy",
+      "pos": "QB",
+      "pro": "SF"
+    },
+    "2024:2468609": {
+      "name": "Taysom Hill",
+      "pos": "QB",
+      "pro": "NO"
+    },
+    "2024:3124679": {
+      "name": "Jason Sanders",
+      "pos": "PK",
+      "pro": "MIA"
+    },
+    "2024:4243537": {
+      "name": "Gabe Davis",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2024:4429023": {
+      "name": "MarShawn Lloyd",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2024:4360294": {
+      "name": "Antonio Gibson",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2024:3916433": {
+      "name": "Jakobi Meyers",
+      "pos": "WR",
+      "pro": "LV"
+    },
+    "2024:4596448": {
+      "name": "Bucky Irving",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2024:3915486": {
+      "name": "Tyler Conklin",
+      "pos": "TE",
+      "pro": "NYJ"
+    },
+    "2024:4597500": {
+      "name": "Adonai Mitchell",
+      "pos": "WR",
+      "pro": "IND"
+    },
+    "2025:3929630": {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2025:4362628": {
+      "name": "Ja'Marr Chase",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2025:4429795": {
+      "name": "Jahmyr Gibbs",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2025:3117251": {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "pro": "SF"
+    },
+    "2025:4241389": {
+      "name": "CeeDee Lamb",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2025:4430807": {
+      "name": "Bijan Robinson",
+      "pos": "RB",
+      "pro": "ATL"
+    },
+    "2025:4262921": {
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2025:4890973": {
+      "name": "Ashton Jeanty",
+      "pos": "RB",
+      "pro": "LV"
+    },
+    "2025:4374302": {
+      "name": "Amon-Ra St. Brown",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2025:4242335": {
+      "name": "Jonathan Taylor",
+      "pos": "RB",
+      "pro": "IND"
+    },
+    "2025:4426502": {
+      "name": "Drake London",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2025:3043078": {
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "pro": "BAL"
+    },
+    "2025:4047646": {
+      "name": "A.J. Brown",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2025:4239993": {
+      "name": "Tee Higgins",
+      "pos": "WR",
+      "pro": "CIN"
+    },
+    "2025:4429160": {
+      "name": "De'Von Achane",
+      "pos": "RB",
+      "pro": "MIA"
+    },
+    "2025:4047365": {
+      "name": "Josh Jacobs",
+      "pos": "RB",
+      "pro": "GB"
+    },
+    "2025:4361307": {
+      "name": "Trey McBride",
+      "pos": "TE",
+      "pro": "ARI"
+    },
+    "2025:4595348": {
+      "name": "Malik Nabers",
+      "pos": "WR",
+      "pro": "NYG"
+    },
+    "2025:4379399": {
+      "name": "James Cook III",
+      "pos": "RB",
+      "pro": "BUF"
+    },
+    "2025:3116406": {
+      "name": "Tyreek Hill",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2025:3918298": {
+      "name": "Josh Allen",
+      "pos": "QB",
+      "pro": "BUF"
+    },
+    "2025:3040151": {
+      "name": "George Kittle",
+      "pos": "TE",
+      "pro": "SF"
+    },
+    "2025:4430737": {
+      "name": "Kyren Williams",
+      "pos": "RB",
+      "pro": "LAR"
+    },
+    "2025:3916387": {
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "pro": "BAL"
+    },
+    "2025:4596448": {
+      "name": "Bucky Irving",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2025:4040715": {
+      "name": "Jalen Hurts",
+      "pos": "QB",
+      "pro": "PHI"
+    },
+    "2025:16800": {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2025:4685382": {
+      "name": "Omarion Hampton",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2025:4567048": {
+      "name": "Kenneth Walker III",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2025:3045147": {
+      "name": "James Conner",
+      "pos": "RB",
+      "pro": "ARI"
+    },
+    "2025:4432710": {
+      "name": "TreVeyon Henderson",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2025:4241416": {
+      "name": "Chuba Hubbard",
+      "pos": "RB",
+      "pro": "CAR"
+    },
+    "2025:3121422": {
+      "name": "Terry McLaurin",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2025:4569618": {
+      "name": "Garrett Wilson",
+      "pos": "WR",
+      "pro": "NYJ"
+    },
+    "2025:4683062": {
+      "name": "Xavier Worthy",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2025:4430878": {
+      "name": "Jaxon Smith-Njigba",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2025:4432708": {
+      "name": "Marvin Harrison Jr.",
+      "pos": "WR",
+      "pro": "ARI"
+    },
+    "2025:4426515": {
+      "name": "Puka Nacua",
+      "pos": "WR",
+      "pro": "LAR"
+    },
+    "2025:3054850": {
+      "name": "Alvin Kamara",
+      "pos": "RB",
+      "pro": "NO"
+    },
+    "2025:3042519": {
+      "name": "Aaron Jones Sr.",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2025:4430027": {
+      "name": "Sam LaPorta",
+      "pos": "TE",
+      "pro": "DET"
+    },
+    "2025:4427366": {
+      "name": "Breece Hall",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2025:4426388": {
+      "name": "Jameson Williams",
+      "pos": "WR",
+      "pro": "DET"
+    },
+    "2025:3128429": {
+      "name": "Courtland Sutton",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2025:4372016": {
+      "name": "Jaylen Waddle",
+      "pos": "WR",
+      "pro": "MIA"
+    },
+    "2025:16737": {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2025:3139477": {
+      "name": "Patrick Mahomes",
+      "pos": "QB",
+      "pro": "KC"
+    },
+    "2025:4047650": {
+      "name": "DK Metcalf",
+      "pos": "WR",
+      "pro": "PIT"
+    },
+    "2025:4241478": {
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "pro": "PHI"
+    },
+    "2025:3915416": {
+      "name": "DJ Moore",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2025:4567750": {
+      "name": "Emeka Egbuka",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2025:4259545": {
+      "name": "D'Andre Swift",
+      "pos": "RB",
+      "pro": "CHI"
+    },
+    "2025:4685472": {
+      "name": "Tetairoa McMillan",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2025:4568490": {
+      "name": "RJ Harvey",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2025:4035538": {
+      "name": "David Montgomery",
+      "pos": "RB",
+      "pro": "DET"
+    },
+    "2025:4429615": {
+      "name": "Zay Flowers",
+      "pos": "WR",
+      "pro": "BAL"
+    },
+    "2025:4428331": {
+      "name": "Rashee Rice",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2025:4575131": {
+      "name": "Jacory Croskey-Merritt",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2025:15847": {
+      "name": "Travis Kelce",
+      "pos": "TE",
+      "pro": "KC"
+    },
+    "2025:3916148": {
+      "name": "Tony Pollard",
+      "pos": "RB",
+      "pro": "TEN"
+    },
+    "2025:3925357": {
+      "name": "Calvin Ridley",
+      "pos": "WR",
+      "pro": "TEN"
+    },
+    "2025:4701936": {
+      "name": "Matthew Golden",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2025:4036133": {
+      "name": "T.J. Hockenson",
+      "pos": "TE",
+      "pro": "MIN"
+    },
+    "2025:4426354": {
+      "name": "George Pickens",
+      "pos": "WR",
+      "pro": "DAL"
+    },
+    "2025:3052587": {
+      "name": "Baker Mayfield",
+      "pos": "QB",
+      "pro": "TB"
+    },
+    "2025:4428209": {
+      "name": "Ricky Pearsall",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2025:4431299": {
+      "name": "Rome Odunze",
+      "pos": "WR",
+      "pro": "CHI"
+    },
+    "2025:4361529": {
+      "name": "Isiah Pacheco",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2025:3915511": {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "pro": "CIN"
+    },
+    "2025:3051876": {
+      "name": "Evan Engram",
+      "pos": "TE",
+      "pro": "DEN"
+    },
+    "2025:4426338": {
+      "name": "Bo Nix",
+      "pos": "QB",
+      "pro": "DEN"
+    },
+    "2025:3116365": {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "pro": "BAL"
+    },
+    "2025:2977187": {
+      "name": "Cooper Kupp",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2025:3917315": {
+      "name": "Kyler Murray",
+      "pos": "QB",
+      "pro": "ARI"
+    },
+    "2025:3128720": {
+      "name": "Nick Chubb",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2025:4241463": {
+      "name": "Jerry Jeudy",
+      "pos": "WR",
+      "pro": "CLE"
+    },
+    "2025:4819231": {
+      "name": "Kaleb Johnson",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2025:4696981": {
+      "name": "Cam Skattebo",
+      "pos": "RB",
+      "pro": "NYG"
+    },
+    "2025:2976212": {
+      "name": "Stefon Diggs",
+      "pos": "WR",
+      "pro": "NE"
+    },
+    "2025:4685415": {
+      "name": "Travis Hunter",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2025:4361370": {
+      "name": "Chris Olave",
+      "pos": "WR",
+      "pro": "NO"
+    },
+    "2025:4429205": {
+      "name": "Jordan Addison",
+      "pos": "WR",
+      "pro": "MIN"
+    },
+    "2025:4360516": {
+      "name": "Tyrone Tracy Jr.",
+      "pos": "RB",
+      "pro": "NYG"
+    },
+    "2025:3123076": {
+      "name": "David Njoku",
+      "pos": "TE",
+      "pro": "CLE"
+    },
+    "2025:3916433": {
+      "name": "Jakobi Meyers",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2025:3126486": {
+      "name": "Deebo Samuel Sr.",
+      "pos": "WR",
+      "pro": "WSH"
+    },
+    "2025:4432665": {
+      "name": "Brock Bowers",
+      "pos": "TE",
+      "pro": "LV"
+    },
+    "2025:4241985": {
+      "name": "J.K. Dobbins",
+      "pos": "RB",
+      "pro": "DEN"
+    },
+    "2025:4431452": {
+      "name": "Drake Maye",
+      "pos": "QB",
+      "pro": "NE"
+    },
+    "2025:3116165": {
+      "name": "Chris Godwin Jr.",
+      "pos": "WR",
+      "pro": "TB"
+    },
+    "2025:4569987": {
+      "name": "Jaylen Warren",
+      "pos": "RB",
+      "pro": "PIT"
+    },
+    "2025:4431459": {
+      "name": "Tyler Warren",
+      "pos": "TE",
+      "pro": "IND"
+    },
+    "2025:4373678": {
+      "name": "Khalil Shakir",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2025:4635008": {
+      "name": "Keon Coleman",
+      "pos": "WR",
+      "pro": "BUF"
+    },
+    "2025:4362238": {
+      "name": "Chase Brown",
+      "pos": "RB",
+      "pro": "CIN"
+    },
+    "2025:4572680": {
+      "name": "Tucker Kraft",
+      "pos": "TE",
+      "pro": "GB"
+    },
+    "2025:4035687": {
+      "name": "Michael Pittman Jr.",
+      "pos": "WR",
+      "pro": "IND"
+    },
+    "2025:4239996": {
+      "name": "Travis Etienne Jr.",
+      "pos": "RB",
+      "pro": "JAX"
+    },
+    "2025:4360569": {
+      "name": "Jordan Mason",
+      "pos": "RB",
+      "pro": "MIN"
+    },
+    "2025:4361741": {
+      "name": "Brock Purdy",
+      "pos": "QB",
+      "pro": "SF"
+    },
+    "2025:4426385": {
+      "name": "Zach Charbonnet",
+      "pos": "RB",
+      "pro": "SEA"
+    },
+    "2025:2577417": {
+      "name": "Dak Prescott",
+      "pos": "QB",
+      "pro": "DAL"
+    },
+    "2025:4426348": {
+      "name": "Jayden Daniels",
+      "pos": "QB",
+      "pro": "WSH"
+    },
+    "2025:4432773": {
+      "name": "Brian Thomas Jr.",
+      "pos": "WR",
+      "pro": "JAX"
+    },
+    "2025:4429013": {
+      "name": "Tank Bigsby",
+      "pos": "RB",
+      "pro": "PHI"
+    },
+    "2025:3886598": {
+      "name": "Jauan Jennings",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2025:3068267": {
+      "name": "Austin Ekeler",
+      "pos": "RB",
+      "pro": "WSH"
+    },
+    "2025:15818": {
+      "name": "Keenan Allen",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2025:4361579": {
+      "name": "Javonte Williams",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2025:4372019": {
+      "name": "Jerome Ford",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2025:3116385": {
+      "name": "Joe Mixon",
+      "pos": "RB",
+      "pro": "HOU"
+    },
+    "2025:4032473": {
+      "name": "Rashid Shaheed",
+      "pos": "WR",
+      "pro": "SEA"
+    },
+    "2025:4038941": {
+      "name": "Justin Herbert",
+      "pos": "QB",
+      "pro": "LAC"
+    },
+    "2025:4685247": {
+      "name": "Braelon Allen",
+      "pos": "RB",
+      "pro": "NYJ"
+    },
+    "2025:4612826": {
+      "name": "Ladd McConkey",
+      "pos": "WR",
+      "pro": "LAC"
+    },
+    "2025:4686472": {
+      "name": "Marvin Mims Jr.",
+      "pos": "WR",
+      "pro": "DEN"
+    },
+    "2025:4431611": {
+      "name": "Caleb Williams",
+      "pos": "QB",
+      "pro": "CHI"
+    },
+    "2025:3121023": {
+      "name": "Dallas Goedert",
+      "pos": "TE",
+      "pro": "PHI"
+    },
+    "2025:4362249": {
+      "name": "Jayden Reed",
+      "pos": "WR",
+      "pro": "GB"
+    },
+    "2025:4241372": {
+      "name": "Hollywood Brown",
+      "pos": "WR",
+      "pro": "KC"
+    },
+    "2025:4241457": {
+      "name": "Najee Harris",
+      "pos": "RB",
+      "pro": "LAC"
+    },
+    "2025:4688813": {
+      "name": "Josh Downs",
+      "pos": "WR",
+      "pro": "IND"
+    },
+    "2025:4685279": {
+      "name": "Jaydon Blue",
+      "pos": "RB",
+      "pro": "DAL"
+    },
+    "2025:4877706": {
+      "name": "Jayden Higgins",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2025:4385690": {
+      "name": "Dalton Kincaid",
+      "pos": "TE",
+      "pro": "BUF"
+    },
+    "2025:3953687": {
+      "name": "Brandon Aubrey",
+      "pos": "PK",
+      "pro": "DAL"
+    },
+    "2025:4723086": {
+      "name": "Colston Loveland",
+      "pos": "TE",
+      "pro": "CHI"
+    },
+    "2025:3150744": {
+      "name": "Chase McLaughlin",
+      "pos": "PK",
+      "pro": "TB"
+    },
+    "2025:4569173": {
+      "name": "Rhamondre Stevenson",
+      "pos": "RB",
+      "pro": "NE"
+    },
+    "2025:4040655": {
+      "name": "Darnell Mooney",
+      "pos": "WR",
+      "pro": "ATL"
+    },
+    "2025:4360238": {
+      "name": "Dameon Pierce",
+      "pos": "RB",
+      "pro": "KC"
+    },
+    "2025:4689936": {
+      "name": "Jake Bates",
+      "pos": "PK",
+      "pro": "DET"
+    },
+    "2025:4362081": {
+      "name": "Cameron Dicker",
+      "pos": "PK",
+      "pro": "LAC"
+    },
+    "2025:17372": {
+      "name": "Chris Boswell",
+      "pos": "PK",
+      "pro": "PIT"
+    },
+    "2025:4697815": {
+      "name": "Rachaad White",
+      "pos": "RB",
+      "pro": "TB"
+    },
+    "2025:2985659": {
+      "name": "Wil Lutz",
+      "pos": "PK",
+      "pro": "DEN"
+    },
+    "2025:4362887": {
+      "name": "Justin Fields",
+      "pos": "QB",
+      "pro": "NYJ"
+    },
+    "2025:4360248": {
+      "name": "Kyle Pitts Sr.",
+      "pos": "TE",
+      "pro": "ATL"
+    },
+    "2025:4432577": {
+      "name": "C.J. Stroud",
+      "pos": "QB",
+      "pro": "HOU"
+    },
+    "2025:2971573": {
+      "name": "Ka'imi Fairbairn",
+      "pos": "PK",
+      "pro": "HOU"
+    },
+    "2025:3046779": {
+      "name": "Jared Goff",
+      "pos": "QB",
+      "pro": "DET"
+    },
+    "2025:4430034": {
+      "name": "Xavier Legette",
+      "pos": "WR",
+      "pro": "CAR"
+    },
+    "2025:4241479": {
+      "name": "Tua Tagovailoa",
+      "pos": "QB",
+      "pro": "MIA"
+    },
+    "2025:4360438": {
+      "name": "Brandon Aiyuk",
+      "pos": "WR",
+      "pro": "SF"
+    },
+    "2025:3055899": {
+      "name": "Harrison Butker",
+      "pos": "PK",
+      "pro": "KC"
+    },
+    "2025:4685702": {
+      "name": "Quinshon Judkins",
+      "pos": "RB",
+      "pro": "CLE"
+    },
+    "2025:3917232": {
+      "name": "Tyler Bass",
+      "pos": "PK",
+      "pro": "BUF"
+    },
+    "2025:4258173": {
+      "name": "Nico Collins",
+      "pos": "WR",
+      "pro": "HOU"
+    },
+    "2025:3050478": {
+      "name": "Jake Elliott",
+      "pos": "PK",
+      "pro": "PHI"
+    },
+    "2025:2976499": {
+      "name": "Amari Cooper",
+      "pos": "WR",
+      "pro": "LV"
+    },
+    "2018:-16030": {
+      "name": "Jacksonville Jaguars D/ST",
+      "pos": "D/ST",
+      "pro": "JAX"
+    },
+    "2018:-16021": {
+      "name": "Philadelphia Eagles D/ST",
+      "pos": "D/ST",
+      "pro": "PHI"
+    },
+    "2018:-16014": {
+      "name": "Los Angeles Rams D/ST",
+      "pos": "D/ST",
+      "pro": "LAR"
+    },
+    "2018:-16016": {
+      "name": "Minnesota Vikings D/ST",
+      "pos": "D/ST",
+      "pro": "MIN"
+    },
+    "2018:-16029": {
+      "name": "Carolina Panthers D/ST",
+      "pos": "D/ST",
+      "pro": "CAR"
+    },
+    "2018:-16033": {
+      "name": "Baltimore Ravens D/ST",
+      "pos": "D/ST",
+      "pro": "BAL"
+    },
+    "2018:-16017": {
+      "name": "New England Patriots D/ST",
+      "pos": "D/ST",
+      "pro": "NE"
+    },
+    "2018:-16018": {
+      "name": "New Orleans Saints D/ST",
+      "pos": "D/ST",
+      "pro": "NO"
+    },
+    "2018:-16007": {
+      "name": "Denver Broncos D/ST",
+      "pos": "D/ST",
+      "pro": "DEN"
+    },
+    "2019:-16002": {
+      "name": "Buffalo Bills D/ST",
+      "pos": "D/ST",
+      "pro": "BUF"
+    },
+    "2019:-16003": {
+      "name": "Chicago Bears D/ST",
+      "pos": "D/ST",
+      "pro": "CHI"
+    },
+    "2018:-16034": {
+      "name": "Houston Texans D/ST",
+      "pos": "D/ST",
+      "pro": "HOU"
+    },
+    "2019:-16030": {
+      "name": "Jacksonville Jaguars D/ST",
+      "pos": "D/ST",
+      "pro": "JAX"
+    },
+    "2019:-16017": {
+      "name": "New England Patriots D/ST",
+      "pos": "D/ST",
+      "pro": "NE"
+    },
+    "2019:-16014": {
+      "name": "Los Angeles Rams D/ST",
+      "pos": "D/ST",
+      "pro": "LAR"
+    },
+    "2019:-16018": {
+      "name": "New Orleans Saints D/ST",
+      "pos": "D/ST",
+      "pro": "NO"
+    },
+    "2019:-16016": {
+      "name": "Minnesota Vikings D/ST",
+      "pos": "D/ST",
+      "pro": "MIN"
+    },
+    "2019:-16007": {
+      "name": "Denver Broncos D/ST",
+      "pos": "D/ST",
+      "pro": "DEN"
+    },
+    "2019:-16033": {
+      "name": "Baltimore Ravens D/ST",
+      "pos": "D/ST",
+      "pro": "BAL"
+    },
+    "2020:-16033": {
+      "name": "Baltimore Ravens D/ST",
+      "pos": "D/ST",
+      "pro": "BAL"
+    },
+    "2020:-16025": {
+      "name": "San Francisco 49ers D/ST",
+      "pos": "D/ST",
+      "pro": "SF"
+    },
+    "2020:-16017": {
+      "name": "New England Patriots D/ST",
+      "pos": "D/ST",
+      "pro": "NE"
+    },
+    "2020:-16007": {
+      "name": "Denver Broncos D/ST",
+      "pos": "D/ST",
+      "pro": "DEN"
+    },
+    "2020:-16016": {
+      "name": "Minnesota Vikings D/ST",
+      "pos": "D/ST",
+      "pro": "MIN"
+    },
+    "2020:-16011": {
+      "name": "Indianapolis Colts D/ST",
+      "pos": "D/ST",
+      "pro": "IND"
+    },
+    "2020:-16003": {
+      "name": "Chicago Bears D/ST",
+      "pos": "D/ST",
+      "pro": "CHI"
+    },
+    "2020:-16027": {
+      "name": "Tampa Bay Buccaneers D/ST",
+      "pos": "D/ST",
+      "pro": "TB"
+    },
+    "2019:-16024": {
+      "name": "Los Angeles Chargers D/ST",
+      "pos": "D/ST",
+      "pro": "LAC"
+    },
+    "2020:-16023": {
+      "name": "Pittsburgh Steelers D/ST",
+      "pos": "D/ST",
+      "pro": "PIT"
+    },
+    "2020:-16018": {
+      "name": "New Orleans Saints D/ST",
+      "pos": "D/ST",
+      "pro": "NO"
+    },
+    "2021:-16027": {
+      "name": "Tampa Bay Buccaneers D/ST",
+      "pos": "D/ST",
+      "pro": "TB"
+    },
+    "2021:-16033": {
+      "name": "Baltimore Ravens D/ST",
+      "pos": "D/ST",
+      "pro": "BAL"
+    },
+    "2021:-16017": {
+      "name": "New England Patriots D/ST",
+      "pos": "D/ST",
+      "pro": "NE"
+    },
+    "2021:-16028": {
+      "name": "Washington D/ST",
+      "pos": "D/ST",
+      "pro": "WSH"
+    },
+    "2021:-16002": {
+      "name": "Buffalo Bills D/ST",
+      "pos": "D/ST",
+      "pro": "BUF"
+    },
+    "2021:-16015": {
+      "name": "Miami Dolphins D/ST",
+      "pos": "D/ST",
+      "pro": "MIA"
+    },
+    "2021:-16007": {
+      "name": "Denver Broncos D/ST",
+      "pos": "D/ST",
+      "pro": "DEN"
+    },
+    "2022:-16002": {
+      "name": "Buffalo Bills D/ST",
+      "pos": "D/ST",
+      "pro": "BUF"
+    },
+    "2021:-16023": {
+      "name": "Pittsburgh Steelers D/ST",
+      "pos": "D/ST",
+      "pro": "PIT"
+    },
+    "2020:-16002": {
+      "name": "Buffalo Bills D/ST",
+      "pos": "D/ST",
+      "pro": "BUF"
+    },
+    "2022:-16027": {
+      "name": "Tampa Bay Buccaneers D/ST",
+      "pos": "D/ST",
+      "pro": "TB"
+    },
+    "2022:-16011": {
+      "name": "Indianapolis Colts D/ST",
+      "pos": "D/ST",
+      "pro": "IND"
+    },
+    "2022:-16005": {
+      "name": "Cleveland Browns D/ST",
+      "pos": "D/ST",
+      "pro": "CLE"
+    },
+    "2021:-16014": {
+      "name": "Los Angeles Rams D/ST",
+      "pos": "D/ST",
+      "pro": "LAR"
+    },
+    "2022:-16025": {
+      "name": "San Francisco 49ers D/ST",
+      "pos": "D/ST",
+      "pro": "SF"
+    },
+    "2021:-16025": {
+      "name": "San Francisco 49ers D/ST",
+      "pos": "D/ST",
+      "pro": "SF"
+    },
+    "2022:-16006": {
+      "name": "Dallas Cowboys D/ST",
+      "pos": "D/ST",
+      "pro": "DAL"
+    },
+    "2022:-16014": {
+      "name": "Los Angeles Rams D/ST",
+      "pos": "D/ST",
+      "pro": "LAR"
+    },
+    "2022:-16017": {
+      "name": "New England Patriots D/ST",
+      "pos": "D/ST",
+      "pro": "NE"
+    },
+    "2022:-16007": {
+      "name": "Denver Broncos D/ST",
+      "pos": "D/ST",
+      "pro": "DEN"
+    },
+    "2023:-16006": {
+      "name": "Dallas Cowboys D/ST",
+      "pos": "D/ST",
+      "pro": "DAL"
+    },
+    "2023:-16028": {
+      "name": "Washington Commanders D/ST",
+      "pos": "D/ST",
+      "pro": "WSH"
+    },
+    "2023:-16025": {
+      "name": "San Francisco 49ers D/ST",
+      "pos": "D/ST",
+      "pro": "SF"
+    },
+    "2023:-16017": {
+      "name": "New England Patriots D/ST",
+      "pos": "D/ST",
+      "pro": "NE"
+    },
+    "2023:-16021": {
+      "name": "Philadelphia Eagles D/ST",
+      "pos": "D/ST",
+      "pro": "PHI"
+    },
+    "2023:-16020": {
+      "name": "New York Jets D/ST",
+      "pos": "D/ST",
+      "pro": "NYJ"
+    },
+    "2023:-16033": {
+      "name": "Baltimore Ravens D/ST",
+      "pos": "D/ST",
+      "pro": "BAL"
+    },
+    "2023:-16002": {
+      "name": "Buffalo Bills D/ST",
+      "pos": "D/ST",
+      "pro": "BUF"
+    },
+    "2023:-16023": {
+      "name": "Pittsburgh Steelers D/ST",
+      "pos": "D/ST",
+      "pro": "PIT"
+    },
+    "2023:-16018": {
+      "name": "New Orleans Saints D/ST",
+      "pos": "D/ST",
+      "pro": "NO"
+    },
+    "2024:-16025": {
+      "name": "San Francisco 49ers D/ST",
+      "pos": "D/ST",
+      "pro": "SF"
+    },
+    "2024:-16033": {
+      "name": "Baltimore Ravens D/ST",
+      "pos": "D/ST",
+      "pro": "BAL"
+    },
+    "2024:-16020": {
+      "name": "New York Jets D/ST",
+      "pos": "D/ST",
+      "pro": "NYJ"
+    },
+    "2024:-16006": {
+      "name": "Dallas Cowboys D/ST",
+      "pos": "D/ST",
+      "pro": "DAL"
+    },
+    "2024:-16008": {
+      "name": "Detroit Lions D/ST",
+      "pos": "D/ST",
+      "pro": "DET"
+    },
+    "2024:-16012": {
+      "name": "Kansas City Chiefs D/ST",
+      "pos": "D/ST",
+      "pro": "KC"
+    },
+    "2025:-16023": {
+      "name": "Pittsburgh Steelers D/ST",
+      "pos": "D/ST",
+      "pro": "PIT"
+    },
+    "2025:-16007": {
+      "name": "Denver Broncos D/ST",
+      "pos": "D/ST",
+      "pro": "DEN"
+    },
+    "2025:-16016": {
+      "name": "Minnesota Vikings D/ST",
+      "pos": "D/ST",
+      "pro": "MIN"
+    },
+    "2024:-16005": {
+      "name": "Cleveland Browns D/ST",
+      "pos": "D/ST",
+      "pro": "CLE"
+    },
+    "2025:-16033": {
+      "name": "Baltimore Ravens D/ST",
+      "pos": "D/ST",
+      "pro": "BAL"
+    },
+    "2025:-16002": {
+      "name": "Buffalo Bills D/ST",
+      "pos": "D/ST",
+      "pro": "BUF"
+    },
+    "2025:-16008": {
+      "name": "Detroit Lions D/ST",
+      "pos": "D/ST",
+      "pro": "DET"
+    },
+    "2025:-16021": {
+      "name": "Philadelphia Eagles D/ST",
+      "pos": "D/ST",
+      "pro": "PHI"
+    },
+    "2025:-16009": {
+      "name": "Green Bay Packers D/ST",
+      "pos": "D/ST",
+      "pro": "GB"
+    },
+    "2025:-16034": {
+      "name": "Houston Texans D/ST",
+      "pos": "D/ST",
+      "pro": "HOU"
+    },
+    "2025:-16017": {
+      "name": "New England Patriots D/ST",
+      "pos": "D/ST",
+      "pro": "NE"
+    },
+    "2018:15835": {
+      "name": "Zach Ertz",
+      "pos": "",
+      "pro": ""
+    },
+    "2018:16799": {
+      "name": "Allen Robinson",
+      "pos": "",
+      "pro": ""
+    },
+    "2018:14924": {
+      "name": "T.Y. Hilton",
+      "pos": "",
+      "pro": ""
+    },
+    "2018:13229": {
+      "name": "Rob Gronkowski",
+      "pos": "",
+      "pro": ""
+    },
+    "2018:16913": {
+      "name": "James White",
+      "pos": "",
+      "pro": ""
+    },
+    "2018:16790": {
+      "name": "Jarvis Landry",
+      "pos": "",
+      "pro": ""
+    },
+    "2018:15683": {
+      "name": "Justin Tucker",
+      "pos": "",
+      "pro": ""
+    },
+    "2019:15835": {
+      "name": "Zach Ertz",
+      "pos": "",
+      "pro": ""
+    },
+    "2019:16913": {
+      "name": "James White",
+      "pos": "",
+      "pro": ""
+    },
+    "2019:16799": {
+      "name": "Allen Robinson",
+      "pos": "",
+      "pro": ""
+    },
+    "2019:14924": {
+      "name": "T.Y. Hilton",
+      "pos": "",
+      "pro": ""
+    },
+    "2019:16790": {
+      "name": "Jarvis Landry",
+      "pos": "",
+      "pro": ""
+    },
+    "2019:15683": {
+      "name": "Justin Tucker",
+      "pos": "",
+      "pro": ""
+    },
+    "2020:15835": {
+      "name": "Zach Ertz",
+      "pos": "",
+      "pro": ""
+    },
+    "2020:16799": {
+      "name": "Allen Robinson",
+      "pos": "",
+      "pro": ""
+    },
+    "2019:15920": {
+      "name": "Latavius Murray",
+      "pos": "",
+      "pro": ""
+    },
+    "2020:16790": {
+      "name": "Jarvis Landry",
+      "pos": "",
+      "pro": ""
+    },
+    "2020:14924": {
+      "name": "T.Y. Hilton",
+      "pos": "",
+      "pro": ""
+    },
+    "2020:13229": {
+      "name": "Rob Gronkowski",
+      "pos": "",
+      "pro": ""
+    },
+    "2020:15683": {
+      "name": "Justin Tucker",
+      "pos": "",
+      "pro": ""
+    },
+    "2020:16913": {
+      "name": "James White",
+      "pos": "",
+      "pro": ""
+    },
+    "2021:16799": {
+      "name": "Allen Robinson",
+      "pos": "",
+      "pro": ""
+    },
+    "2020:15920": {
+      "name": "Latavius Murray",
+      "pos": "",
+      "pro": ""
+    },
+    "2020:16804": {
+      "name": "John Brown",
+      "pos": "",
+      "pro": ""
+    },
+    "2021:16790": {
+      "name": "Jarvis Landry",
+      "pos": "",
+      "pro": ""
+    },
+    "2021:15683": {
+      "name": "Justin Tucker",
+      "pos": "",
+      "pro": ""
+    },
+    "2021:13229": {
+      "name": "Rob Gronkowski",
+      "pos": "",
+      "pro": ""
+    },
+    "2021:15835": {
+      "name": "Zach Ertz",
+      "pos": "",
+      "pro": ""
+    },
+    "2021:15920": {
+      "name": "Latavius Murray",
+      "pos": "",
+      "pro": ""
+    },
+    "2021:14924": {
+      "name": "T.Y. Hilton",
+      "pos": "",
+      "pro": ""
+    },
+    "2022:16799": {
+      "name": "Allen Robinson",
+      "pos": "",
+      "pro": ""
+    },
+    "2022:15835": {
+      "name": "Zach Ertz",
+      "pos": "",
+      "pro": ""
+    },
+    "2022:15683": {
+      "name": "Justin Tucker",
+      "pos": "",
+      "pro": ""
+    },
+    "2022:16790": {
+      "name": "Jarvis Landry",
+      "pos": "",
+      "pro": ""
+    },
+    "2023:15683": {
+      "name": "Justin Tucker",
+      "pos": "",
+      "pro": ""
+    },
+    "2024:15683": {
+      "name": "Justin Tucker",
+      "pos": "",
+      "pro": ""
+    }
+  },
+  "teams": {
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/6?lang=en&region=us": "DAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/23?lang=en&region=us": "PIT",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/30?lang=en&region=us": "JAX",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/22?lang=en&region=us": "ARI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/14?lang=en&region=us": "LAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/19?lang=en&region=us": "NYG",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/18?lang=en&region=us": "NO",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/34?lang=en&region=us": "HOU",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/1?lang=en&region=us": "ATL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/12?lang=en&region=us": "KC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/2?lang=en&region=us": "BUF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/9?lang=en&region=us": "GB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/24?lang=en&region=us": "LAC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/16?lang=en&region=us": "MIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/17?lang=en&region=us": "NE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/29?lang=en&region=us": "CAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/27?lang=en&region=us": "TB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/33?lang=en&region=us": "BAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/25?lang=en&region=us": "SF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/3?lang=en&region=us": "CHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/4?lang=en&region=us": "CIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/28?lang=en&region=us": "WSH",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/21?lang=en&region=us": "PHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/8?lang=en&region=us": "DET",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/15?lang=en&region=us": "MIA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/7?lang=en&region=us": "DEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/13?lang=en&region=us": "OAK",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/10?lang=en&region=us": "TEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/26?lang=en&region=us": "SEA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/11?lang=en&region=us": "IND",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/20?lang=en&region=us": "NYJ",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2018/teams/5?lang=en&region=us": "CLE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/29?lang=en&region=us": "CAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/18?lang=en&region=us": "NO",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/19?lang=en&region=us": "NYG",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/6?lang=en&region=us": "DAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/22?lang=en&region=us": "ARI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/34?lang=en&region=us": "HOU",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/1?lang=en&region=us": "ATL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/14?lang=en&region=us": "LAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/20?lang=en&region=us": "NYJ",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/5?lang=en&region=us": "CLE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/9?lang=en&region=us": "GB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/23?lang=en&region=us": "PIT",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/12?lang=en&region=us": "KC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/4?lang=en&region=us": "CIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/16?lang=en&region=us": "MIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/30?lang=en&region=us": "JAX",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/17?lang=en&region=us": "NE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/24?lang=en&region=us": "LAC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/27?lang=en&region=us": "TB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/25?lang=en&region=us": "SF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/8?lang=en&region=us": "DET",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/10?lang=en&region=us": "TEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/21?lang=en&region=us": "PHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/26?lang=en&region=us": "SEA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/13?lang=en&region=us": "OAK",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/33?lang=en&region=us": "BAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/7?lang=en&region=us": "DEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/11?lang=en&region=us": "IND",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/3?lang=en&region=us": "CHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/28?lang=en&region=us": "WSH",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2019/teams/2?lang=en&region=us": "BUF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/29?lang=en&region=us": "CAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/6?lang=en&region=us": "DAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/19?lang=en&region=us": "NYG",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/18?lang=en&region=us": "NO",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/10?lang=en&region=us": "TEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/16?lang=en&region=us": "MIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/5?lang=en&region=us": "CLE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/13?lang=en&region=us": "LV",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/12?lang=en&region=us": "KC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/22?lang=en&region=us": "ARI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/21?lang=en&region=us": "PHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/1?lang=en&region=us": "ATL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/9?lang=en&region=us": "GB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/24?lang=en&region=us": "LAC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/26?lang=en&region=us": "SEA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/27?lang=en&region=us": "TB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/8?lang=en&region=us": "DET",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/4?lang=en&region=us": "CIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/33?lang=en&region=us": "BAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/25?lang=en&region=us": "SF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/23?lang=en&region=us": "PIT",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/34?lang=en&region=us": "HOU",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/7?lang=en&region=us": "DEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/14?lang=en&region=us": "LAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/11?lang=en&region=us": "IND",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/28?lang=en&region=us": "WSH",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/30?lang=en&region=us": "JAX",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/2?lang=en&region=us": "BUF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/3?lang=en&region=us": "CHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/15?lang=en&region=us": "MIA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/17?lang=en&region=us": "NE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2020/teams/20?lang=en&region=us": "NYJ",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/29?lang=en&region=us": "CAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/10?lang=en&region=us": "TEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/6?lang=en&region=us": "DAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/16?lang=en&region=us": "MIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/5?lang=en&region=us": "CLE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/18?lang=en&region=us": "NO",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/12?lang=en&region=us": "KC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/9?lang=en&region=us": "GB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/19?lang=en&region=us": "NYG",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/24?lang=en&region=us": "LAC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/2?lang=en&region=us": "BUF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/23?lang=en&region=us": "PIT",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/26?lang=en&region=us": "SEA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/22?lang=en&region=us": "ARI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/28?lang=en&region=us": "WSH",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/11?lang=en&region=us": "IND",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/4?lang=en&region=us": "CIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/13?lang=en&region=us": "LV",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/1?lang=en&region=us": "ATL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/25?lang=en&region=us": "SF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/30?lang=en&region=us": "JAX",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/3?lang=en&region=us": "CHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/33?lang=en&region=us": "BAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/17?lang=en&region=us": "NE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/21?lang=en&region=us": "PHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/8?lang=en&region=us": "DET",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/27?lang=en&region=us": "TB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/14?lang=en&region=us": "LAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/15?lang=en&region=us": "MIA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/7?lang=en&region=us": "DEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/34?lang=en&region=us": "HOU",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2021/teams/20?lang=en&region=us": "NYJ",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/11?lang=en&region=us": "IND",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/25?lang=en&region=us": "SF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/24?lang=en&region=us": "LAC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/10?lang=en&region=us": "TEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/5?lang=en&region=us": "CLE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/16?lang=en&region=us": "MIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/23?lang=en&region=us": "PIT",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/4?lang=en&region=us": "CIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/2?lang=en&region=us": "BUF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/8?lang=en&region=us": "DET",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/19?lang=en&region=us": "NYG",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/9?lang=en&region=us": "GB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/12?lang=en&region=us": "KC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/13?lang=en&region=us": "LV",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/18?lang=en&region=us": "NO",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/22?lang=en&region=us": "ARI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/7?lang=en&region=us": "DEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/6?lang=en&region=us": "DAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/27?lang=en&region=us": "TB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/33?lang=en&region=us": "BAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/15?lang=en&region=us": "MIA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/21?lang=en&region=us": "PHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/26?lang=en&region=us": "SEA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/29?lang=en&region=us": "CAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/3?lang=en&region=us": "CHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/14?lang=en&region=us": "LAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/28?lang=en&region=us": "WSH",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/34?lang=en&region=us": "HOU",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/30?lang=en&region=us": "JAX",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/20?lang=en&region=us": "NYJ",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/17?lang=en&region=us": "NE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2022/teams/1?lang=en&region=us": "ATL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/25?lang=en&region=us": "SF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/16?lang=en&region=us": "MIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/24?lang=en&region=us": "LAC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/5?lang=en&region=us": "CLE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/12?lang=en&region=us": "KC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/10?lang=en&region=us": "TEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/15?lang=en&region=us": "MIA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/19?lang=en&region=us": "NYG",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/1?lang=en&region=us": "ATL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/21?lang=en&region=us": "PHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/34?lang=en&region=us": "HOU",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/13?lang=en&region=us": "LV",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/2?lang=en&region=us": "BUF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/6?lang=en&region=us": "DAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/4?lang=en&region=us": "CIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/20?lang=en&region=us": "NYJ",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/9?lang=en&region=us": "GB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/33?lang=en&region=us": "BAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/30?lang=en&region=us": "JAX",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/8?lang=en&region=us": "DET",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/23?lang=en&region=us": "PIT",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/14?lang=en&region=us": "LAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/17?lang=en&region=us": "NE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/7?lang=en&region=us": "DEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/3?lang=en&region=us": "CHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/26?lang=en&region=us": "SEA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/11?lang=en&region=us": "IND",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/27?lang=en&region=us": "TB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/22?lang=en&region=us": "ARI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/18?lang=en&region=us": "NO",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/28?lang=en&region=us": "WSH",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2023/teams/29?lang=en&region=us": "CAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/25?lang=en&region=us": "SF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/15?lang=en&region=us": "MIA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/6?lang=en&region=us": "DAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/20?lang=en&region=us": "NYJ",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/8?lang=en&region=us": "DET",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/16?lang=en&region=us": "MIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/1?lang=en&region=us": "ATL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/9?lang=en&region=us": "GB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/22?lang=en&region=us": "ARI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/21?lang=en&region=us": "PHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/33?lang=en&region=us": "BAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/2?lang=en&region=us": "BUF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/30?lang=en&region=us": "JAX",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/27?lang=en&region=us": "TB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/18?lang=en&region=us": "NO",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/14?lang=en&region=us": "LAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/26?lang=en&region=us": "SEA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/34?lang=en&region=us": "HOU",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/19?lang=en&region=us": "NYG",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/28?lang=en&region=us": "WSH",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/4?lang=en&region=us": "CIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/3?lang=en&region=us": "CHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/12?lang=en&region=us": "KC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/11?lang=en&region=us": "IND",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/23?lang=en&region=us": "PIT",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/17?lang=en&region=us": "NE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/13?lang=en&region=us": "LV",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/10?lang=en&region=us": "TEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/5?lang=en&region=us": "CLE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/7?lang=en&region=us": "DEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/24?lang=en&region=us": "LAC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2024/teams/29?lang=en&region=us": "CAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/21?lang=en&region=us": "PHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/4?lang=en&region=us": "CIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/8?lang=en&region=us": "DET",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/25?lang=en&region=us": "SF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/6?lang=en&region=us": "DAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/1?lang=en&region=us": "ATL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/16?lang=en&region=us": "MIN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/13?lang=en&region=us": "LV",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/11?lang=en&region=us": "IND",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/33?lang=en&region=us": "BAL",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/15?lang=en&region=us": "MIA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/9?lang=en&region=us": "GB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/22?lang=en&region=us": "ARI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/19?lang=en&region=us": "NYG",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/2?lang=en&region=us": "BUF",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/14?lang=en&region=us": "LAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/27?lang=en&region=us": "TB",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/24?lang=en&region=us": "LAC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/26?lang=en&region=us": "SEA",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/17?lang=en&region=us": "NE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/29?lang=en&region=us": "CAR",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/28?lang=en&region=us": "WSH",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/20?lang=en&region=us": "NYJ",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/12?lang=en&region=us": "KC",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/18?lang=en&region=us": "NO",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/7?lang=en&region=us": "DEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/23?lang=en&region=us": "PIT",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/3?lang=en&region=us": "CHI",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/10?lang=en&region=us": "TEN",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/34?lang=en&region=us": "HOU",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/5?lang=en&region=us": "CLE",
+    "http://sports.core.api.espn.com/v2/sports/football/leagues/nfl/seasons/2025/teams/30?lang=en&region=us": "JAX"
+  }
+}

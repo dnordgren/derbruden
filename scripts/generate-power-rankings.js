@@ -501,7 +501,8 @@ function pageTemplate(content) {
 
   <nav>
     <p><a href="./about.html">About</a> || <a href="./owners.html">League Owners</a> || <a
-        href="./power-rankings.html">Power Rankings</a></p>
+        href="./power-rankings.html">Power Rankings</a> || <a href="./trades.html">Trades</a> || <a
+        href="./drafts.html">Drafts</a></p>
   </nav>
 
   <main>

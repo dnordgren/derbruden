@@ -359,69 +359,13 @@ function pageTemplate(content) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DerBruden.com | Draft History</title>
   <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
-  <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/site.css?v=1">
+  
   <style>
-    body {
-      font-family: "Archivo", sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .header {
-      display: flex;
-      align-items: center;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0px;
-    }
-
-    .logo {
-      width: 100px;
-      height: 75px;
-    }
-
-    .site-title {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .tagline {
-      margin: 0;
-      color: #666;
-    }
-
-    nav {
-      margin-bottom: 30px;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #eee;
-    }
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-
     .legend {
       display: flex;
       align-items: center;
@@ -431,7 +375,7 @@ function pageTemplate(content) {
       font-size: 0.8em;
       margin-bottom: 10px;
     }
-
+    
     .chip {
       display: inline-block;
       width: 14px;
@@ -439,7 +383,7 @@ function pageTemplate(content) {
       border-radius: 3px;
       margin-left: 10px;
     }
-
+    
     .chip.skill { background: #b5e0ae; }
     .chip.qb { background: #cdb9f5; }
     .chip.te { background: #f49e9e; }
@@ -449,14 +393,14 @@ function pageTemplate(content) {
       background: linear-gradient(135deg, transparent 0 50%, #00000055 50% 100%), #fff;
       border: 1px solid #ddd;
     }
-
+    
     .draft-board {
       border-collapse: separate;
       border-spacing: 2px;
       margin: 20px 0 40px;
       font-size: 0.85em;
     }
-
+    
     .draft-board .round-head {
       position: sticky;
       left: 0;
@@ -471,12 +415,12 @@ function pageTemplate(content) {
       padding: 8px 14px 8px 2px;
       vertical-align: middle;
     }
-
+    
     .draft-board .round-head .dir {
       display: block;
       font-size: 1.1em;
     }
-
+    
     .draft-board .team-head {
       font-size: 0.72em;
       font-weight: 600;
@@ -488,19 +432,19 @@ function pageTemplate(content) {
       min-width: 104px;
       padding: 6px 8px;
     }
-
+    
     .draft-board .head-owner {
       display: block;
       color: #999;
       letter-spacing: 0.1em;
     }
-
+    
     .draft-board .board-cell {
       vertical-align: top;
       padding: 0;
       height: 1px;
     }
-
+    
     .pick {
       position: relative;
       display: flex;
@@ -512,27 +456,27 @@ function pageTemplate(content) {
       height: 100%;
       color: #1f2937;
     }
-
+    
     .pick-name {
       font-weight: 700;
       line-height: 1.25;
     }
-
+    
     .pick-sub {
       font-size: 0.78em;
       opacity: 0.75;
       white-space: nowrap;
     }
-
+    
     .pick.skill { background: #b5e0ae; }
     .pick.qb { background: #cdb9f5; }
     .pick.te { background: #f49e9e; }
     .pick.k { background: #f6bd7a; }
     .pick.dst { background: #c9d2da; }
     .pick.unknown { background: #ececec; }
-
+    
     .pick.keeper::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
@@ -541,43 +485,40 @@ function pageTemplate(content) {
       border-color: transparent #00000040 transparent transparent;
       border-top-right-radius: 3px;
     }
-
-    .owner-logo-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
+    
     .draft-meta,
     .season-links {
       color: #666;
       font-size: 0.9em;
     }
-
+    
     .season-links a {
       color: #00429f;
       text-decoration: underline;
       margin-right: 8px;
     }
-
+    
     .draft-season h2 {
       margin-bottom: 0;
     }
-
+    
     .methodology {
       margin-top: 30px;
       font-size: 0.85em;
       color: #666;
     }
-
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
   </style>
+  <script type="speculationrules">
+    {
+      "prefetch": [
+        {
+          "source": "document",
+          "where": { "href_matches": "./*.html" },
+          "eagerness": "moderate"
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body>

@@ -8,59 +8,19 @@
     <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon" />
     <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f6f5f0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#131512" media="(prefers-color-scheme: dark)" />
+    <link rel="stylesheet" href="../static/css/site.css" />
+    <link rel="preload" href="../static/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+
     <style>
-      body {
-        font-family: 'Archivo', sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .header {
-        display: flex;
-        align-items: center;
-      }
-
-      .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0px;
-      }
-
-      .logo {
-        width: 100px;
-        height: 75px;
-      }
-
-      .site-title {
-        margin: 0;
-        font-size: 24px;
-      }
-
-      .tagline {
-        margin: 0;
-        color: #666;
-      }
-
-      nav {
-        margin-bottom: 30px;
-      }
-
       h2 {
         margin-bottom: 5px;
       }
 
       .updated {
-        color: #666;
+        color: var(--muted);
         font-size: 0.9em;
         margin-top: 0;
       }
@@ -75,16 +35,17 @@
       td {
         text-align: left;
         padding: 10px 12px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--line);
         vertical-align: top;
       }
 
       th {
-        border-bottom: 2px solid #eee;
-        font-size: 0.85em;
+        border-bottom: 2px solid var(--ink);
+        font-size: 0.72rem;
+        font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: #666;
+        letter-spacing: 0.07em;
+        color: var(--muted);
       }
 
       .event-badge {
@@ -93,17 +54,17 @@
         border-radius: 10px;
         font-size: 0.8em;
         font-weight: 600;
-        color: #fff;
-        background: #95a5a6;
+        color: var(--paper);
+        background: var(--muted);
       }
 
       .event-badge.accepted {
-        background: #27ae60;
+        background: var(--accent);
       }
 
       .event-badge.declined,
       .event-badge.vetoed {
-        background: #c0392b;
+        background: var(--down);
       }
 
       .side {
@@ -111,27 +72,7 @@
         font-weight: 600;
       }
 
-      footer {
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid #eee;
-      }
-
-      a {
-        color: #000;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-
       @media (max-width: 768px) {
-        .header-container {
-          flex-direction: column;
-          text-align: center;
-        }
-
         table,
         thead,
         tbody,
@@ -145,7 +86,7 @@
 
         tbody tr {
           margin-bottom: 16px;
-          border-bottom: 1px solid #eee;
+          border-bottom: 1px solid var(--line);
           padding-bottom: 12px;
         }
       }
@@ -157,7 +98,7 @@
       <div class="header-container">
         <div class="header">
           <a href="./index.html">
-            <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" />
+            <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" width="200" height="153" />
           </a>
           <div>
             <h1 class="site-title">DerBruden.com</h1>
@@ -167,11 +108,14 @@
       </div>
     </header>
 
-    <nav>
-      <p>
-        <a href="./about.html">About</a> || <a href="./owners.html">League Owners</a> ||
-        <a href="./power-rankings.html">Power Rankings</a> || <a href="./drafts.html">Drafts</a>
-      </p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./owners.html">League Owners</a></li>
+        <li><a href="./power-rankings.html">Power Rankings</a></li>
+        <li><a href="./trades.html" aria-current="page">Trades</a></li>
+        <li><a href="./drafts.html">Drafts</a></li>
+      </ul>
     </nav>
 
     <main>
@@ -180,9 +124,9 @@
       <table>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Details</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Details</th>
           </tr>
         </thead>
         <tbody id="trade-rows">

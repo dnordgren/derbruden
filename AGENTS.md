@@ -9,6 +9,14 @@ ESPN league (id 794521). Plain HTML in `src/`, assets in `static/`.
 Deploys to S3 + CloudFront with `make deploy` (profile `derbruden`).
 No framework, no build step besides the Node scripts in `scripts/`.
 
+- Shared design system: `static/css/site.css` holds the palette
+  variables, dark mode, type scale, tables, nav, and badge styles.
+  Pages link it and keep only page-specific rules inline. Archivo is
+  self-hosted in `static/fonts/`. When changing shared chrome (header,
+  nav, footer), update the pages AND both generator templates
+  (`generate-power-rankings.js`, `generate-drafts.js`) so regenerated
+  pages stay in sync.
+
 ## Commands
 
 - `node scripts/generate-stats.js owners index|all|<owner>` — rebuild

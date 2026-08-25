@@ -5,6 +5,8 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+const champStars = n => (n ? `<span class="trophies">${'\u2605'.repeat(n)}</span>` : '')
+
 function generateStatsIndex(data) {
   const stats = data
     .filter(row => row.Owner && row.Owner !== 'null')
@@ -50,22 +52,22 @@ function generateStatsIndex(data) {
       <td class="number">${stat.rgpa.toLocaleString()}</td>
       <td class="number">${stat.pointsDiff.toLocaleString()}</td>
       <td class="number">${stat.playoffs}</td>
-      <td class="number">${stat.championships ? '🏆'.repeat(stat.championships) : ''}</td>
+      <td class="number">${stat.championships ? champStars(stat.championships) : ''}</td>
     </tr>`).join('\n    ');
 
   return `<div class="table-container"><table class="stats-table">
   <thead>
     <tr>
-      <th>Owner</th>
-      <th class="number">Games</th>
-      <th class="number">W</th>
-      <th class="number">L</th>
-      <th class="number">Win % | ↓</th>
-      <th class="number">PF</th>
-      <th class="number">PA</th>
-      <th class="number">PDiff</th>
-      <th class="number">Playoffs</th>
-      <th class="number">Championships</th>
+      <th scope="col">Owner</th>
+      <th scope="col" class="number">Games</th>
+      <th scope="col" class="number">W</th>
+      <th scope="col" class="number">L</th>
+      <th scope="col" class="number">Win % | ↓</th>
+      <th scope="col" class="number">PF</th>
+      <th scope="col" class="number">PA</th>
+      <th scope="col" class="number">PDiff</th>
+      <th scope="col" class="number">Playoffs</th>
+      <th scope="col" class="number">Championships</th>
     </tr>
   </thead>
   <tbody>
@@ -99,7 +101,7 @@ function generateOwnerStats(data, owner) {
       <td class="number">${row.RGPA.toLocaleString()}</td>
       <td class="number">${(row.RGPF - row.RGPA).toLocaleString()}</td>
       <td class="number">${row['PO?']}</td>
-      <td class="number">${row.Champ === 'Y' ? '🏆' : ''}</td>
+      <td class="number">${row.Champ === 'Y' ? champStars(1) : ''}</td>
     </tr>`).join('\n    ');
 
   const winPct = totals.wins / (totals.wins + totals.losses);
@@ -107,17 +109,17 @@ function generateOwnerStats(data, owner) {
   return `<div class="table-container"><table class="stats-table">
   <thead>
     <tr>
-      <th class="number">Season</th>
-      <th class="number">W</th>
-      <th class="number">L</th>
-      <th class="number">Win %</th>
-      <th class="number">Final Rnk</th>
-      <th class="number">RG Rnk</th>
-      <th class="number">PF</th>
-      <th class="number">PA</th>
-      <th class="number">PDiff</th>
-      <th class="number">Playoffs</th>
-      <th class="number">Champion</th>
+      <th scope="col" class="number">Season</th>
+      <th scope="col" class="number">W</th>
+      <th scope="col" class="number">L</th>
+      <th scope="col" class="number">Win %</th>
+      <th scope="col" class="number">Final Rnk</th>
+      <th scope="col" class="number">RG Rnk</th>
+      <th scope="col" class="number">PF</th>
+      <th scope="col" class="number">PA</th>
+      <th scope="col" class="number">PDiff</th>
+      <th scope="col" class="number">Playoffs</th>
+      <th scope="col" class="number">Champion</th>
     </tr>
   </thead>
   <tbody>
@@ -133,7 +135,7 @@ function generateOwnerStats(data, owner) {
       <td class="number">${totals.rgpa.toLocaleString()}</td>
       <td class="number">${(totals.rgpf - totals.rgpa).toLocaleString()}</td>
       <td class="number">${totals.playoffs}</td>
-      <td class="number">${totals.championships ? '🏆'.repeat(totals.championships) : ''}</td>
+      <td class="number">${totals.championships ? champStars(totals.championships) : ''}</td>
     </tr>
   </tbody>
 </table></div>`;

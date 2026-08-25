@@ -281,7 +281,7 @@ function renderSeasonBoard(season, picks, teams, cache) {
       const team = teams && teams[teamId]
       const label = team ? escapeHtml(team.name) : mapped ? mapped.owner : `Team ${teamId}`
       const owner = mapped ? `<span class="head-owner">${mapped.owner}</span>` : ''
-      return `<th class="team-head">${label}${owner}</th>`
+      return `<th scope="col" class="team-head">${label}${owner}</th>`
     })
     .join('')
 
@@ -297,7 +297,7 @@ function renderSeasonBoard(season, picks, teams, cache) {
           return `<td class="board-cell">${body}</td>`
         })
         .join('')
-      return `<tr><th class="round-head">ROUND #${round}<span class="dir">${dir}</span></th>${cells}</tr>`
+      return `<tr><th scope="row" class="round-head">ROUND #${round}<span class="dir">${dir}</span></th>${cells}</tr>`
     })
     .join('\n')
 
@@ -306,7 +306,7 @@ function renderSeasonBoard(season, picks, teams, cache) {
     <div class="table-container">
       <table class="draft-board">
         <thead>
-          <tr><th class="round-head"></th>${headCells}</tr>
+          <tr><th scope="col" class="round-head"></th>${headCells}</tr>
         </thead>
         <tbody>
           ${rows}
@@ -327,8 +327,7 @@ function renderContent(draftsBySeason, teamsBySeason, cache, meta) {
     .join('\n')
 
   return `<div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
-        style="border-radius: 50%; object-fit: cover;" />
+      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="861" height="893" />
       <h1>Draft History</h1>
     </div>
     <p class="draft-meta">${seasons[seasons.length - 1]}&ndash;${seasons[0]} drafts &middot; generated ${meta.generated}</p>
@@ -360,74 +359,18 @@ function pageTemplate(content) {
   <title>DerBruden.com | Draft History</title>
   <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
   <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f6f5f0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131512" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="../static/css/site.css">
+  <link rel="preload" href="../static/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
   <style>
-    body {
-      font-family: "Archivo", sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .header {
-      display: flex;
-      align-items: center;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0px;
-    }
-
-    .logo {
-      width: 100px;
-      height: 75px;
-    }
-
-    .site-title {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .tagline {
-      margin: 0;
-      color: #666;
-    }
-
-    nav {
-      margin-bottom: 30px;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #eee;
-    }
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-
     .legend {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       gap: 6px;
-      color: #666;
+      color: var(--muted);
       font-size: 0.8em;
       margin-bottom: 10px;
     }
@@ -446,8 +389,8 @@ function pageTemplate(content) {
     .chip.k { background: #f6bd7a; }
     .chip.dst { background: #c9d2da; }
     .chip.keeper-chip {
-      background: linear-gradient(135deg, transparent 0 50%, #00000055 50% 100%), #fff;
-      border: 1px solid #ddd;
+      background: linear-gradient(135deg, transparent 0 50%, #00000055 50% 100%), var(--paper);
+      border: 1px solid var(--line);
     }
 
     .draft-board {
@@ -461,9 +404,9 @@ function pageTemplate(content) {
       position: sticky;
       left: 0;
       z-index: 1;
-      background: #fff;
+      background: var(--surface);
       font-size: 0.72em;
-      font-weight: 600;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       text-align: left;
@@ -479,7 +422,7 @@ function pageTemplate(content) {
 
     .draft-board .team-head {
       font-size: 0.72em;
-      font-weight: 600;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       text-align: center;
@@ -491,7 +434,7 @@ function pageTemplate(content) {
 
     .draft-board .head-owner {
       display: block;
-      color: #999;
+      color: var(--muted);
       letter-spacing: 0.1em;
     }
 
@@ -542,50 +485,26 @@ function pageTemplate(content) {
       border-top-right-radius: 3px;
     }
 
-    .owner-logo-header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-
-    .draft-meta,
-    .season-links {
-      color: #666;
-      font-size: 0.9em;
-    }
-
     .season-links a {
-      color: #00429f;
+      color: var(--accent);
       text-decoration: underline;
+      text-underline-offset: 2px;
       margin-right: 8px;
     }
 
     .draft-season h2 {
       margin-bottom: 0;
     }
-
-    .methodology {
-      margin-top: 30px;
-      font-size: 0.85em;
-      color: #666;
-    }
-
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
   </style>
 </head>
+
 
 <body>
   <header>
     <div class="header-container">
       <div class="header">
         <a href="./index.html">
-          <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" width="100" height="75">
+          <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" width="200" height="153">
         </a>
         <div>
           <h1 class="site-title">DerBruden.com</h1>
@@ -595,10 +514,14 @@ function pageTemplate(content) {
     </div>
   </header>
 
-  <nav>
-    <p><a href="./about.html">About</a> || <a href="./owners.html">League Owners</a> || <a
-        href="./power-rankings.html">Power Rankings</a> || <a href="./trades.html">Trades</a> || <a
-        href="./drafts.html">Drafts</a></p>
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="./owners.html">League Owners</a></li>
+      <li><a href="./power-rankings.html">Power Rankings</a></li>
+      <li><a href="./trades.html">Trades</a></li>
+      <li><a href="./drafts.html" aria-current="page">Drafts</a></li>
+    </ul>
   </nav>
 
   <main>

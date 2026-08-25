@@ -157,8 +157,15 @@ On a new trade it posts to Discord, commits the ledger and dedupe state
 under `static/data/`, publishes `trades.json` to S3, and invalidates that
 single CloudFront path. Idle runs change nothing.
 
+Right after the trade post, a second workflow step runs
+`scripts/roast-trade.mjs`: it pulls both rosters, standings, traded-player
+news, and current NFL headlines from ESPN, then asks an LLM (OpenCode Go
+API) to roast whichever owner lost the trade hardest, and posts that verdict
+as a second Discord message. Roast failures never block the ledger commit or
+publish.
+
 Repo secrets: `ESPN_S2`, `SWID`, `DISCORD_WEBHOOK_TRADES`,
-`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
+`OPENCODE_GO_API_KEY`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
 
 Notes:
 
@@ -193,11 +200,27 @@ Notification rules: accepted trades post to Discord. Proposed trades appear
 on the web page only. Declines and vetoes are ignored unless
 `NOTIFY_DECLINED=true`, which lists them on the page too (never Discord).
 
+### Trade roast agent
+
+`scripts/roast-trade.mjs` reads the accepted trades the watcher just posted
+and answers them with a roast. Set `OPENCODE_GO_API_KEY` in `.env` to run it
+locally:
+
+```sh
+node scripts/watch-trades.mjs --dry-run   # confirm the trade first
+node scripts/roast-trade.mjs posted-trades.json --dry-run  # print the research packet
+```
+
+Optional config: `ROAST_MODEL` (default `kimi-k3`) and
+`OPENCODE_GO_BASE_URL` (default `https://opencode.ai/zen/go`). Verdicts are
+one short sentence, deliberately opaque: the oracle studies rosters,
+standings, and NFL news, then judges without explaining.
+
 ESPN auth: trade data needs `ESPN_S2` and `SWID` copied from the same
 signed-in browser session (DevTools > Application > Cookies).
 `ESPN_S2` alone only reads basic league data.
 
-Tests: `node --test scripts/watch-trades.test.mjs`.
+Tests: `node --test scripts/watch-trades.test.mjs scripts/roast-trade.test.mjs`.
 
 ## Ideas
 

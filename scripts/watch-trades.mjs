@@ -87,7 +87,10 @@ const CONFIG_KEYS = [
   'DISCORD_WEBHOOK_URL',
   'STATE_FILE',
   'NOTIFY_DECLINED',
-  'LEAGUE_HOST'
+  'LEAGUE_HOST',
+  // Ephemeral handoff file for downstream steps (the trade roast agent).
+  // Written outside static/data so it never lands in a commit.
+  'POSTED_TRADES_FILE'
 ]
 
 function authCookie(env) {
@@ -272,26 +275,33 @@ async function resolvePlayerNames(fetchImpl, state, playerIds) {
   return state.players
 }
 
-async function postDiscord(fetchImpl, webhookUrl, embed) {
-  const res = await fetchImpl(webhookUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ username: 'Der Bruden Trades', embeds: [embed] })
-  })
+// One shared sender for embeds and plain-content messages. Retries once on
+// a 429 using Discord's retry_after hint.
+export async function postDiscordMessage(fetchImpl, webhookUrl, payload) {
+  const send = () =>
+    fetchImpl(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+  const res = await send()
   if (res.status === 429) {
     const body = res.headers.get('content-type')?.includes('json') ? await res.json() : {}
     const waitMs = (body.retry_after ?? Number(res.headers.get('retry-after')) ?? 1) * 1000
     await new Promise((r) => setTimeout(r, Math.min(waitMs, 10000)))
-    const retry = await fetchImpl(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username: 'Der Bruden Trades', embeds: [embed] })
-    })
+    const retry = await send()
     if (!retry.ok && retry.status !== 204)
       throw new Error(`Discord retry failed with HTTP ${retry.status}`)
     return
   }
   if (!res.ok && res.status !== 204) throw new Error(`Discord failed with HTTP ${res.status}`)
+}
+
+async function postDiscord(fetchImpl, webhookUrl, embed) {
+  return postDiscordMessage(fetchImpl, webhookUrl, {
+    username: 'Der Bruden Trades',
+    embeds: [embed]
+  })
 }
 
 function loadState(file) {
@@ -395,6 +405,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   }
 
   let failures = 0
+  const posted = []
   for (const record of mapped) {
     const isNew = !ledger.trades.some((t) => t.id === record.id)
     if (isNew) {
@@ -409,6 +420,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     if (record.event === 'TRADE_ACCEPT') {
       try {
         await postDiscord(fetchImpl, env.DISCORD_WEBHOOK_URL, buildEmbed(record))
+        posted.push(record)
         console.log(`Posted ${record.event} ${record.id} to Discord.`)
       } catch (e) {
         failures++
@@ -420,6 +432,12 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
     state.processedIds = [...state.processedIds, String(record.id)].slice(-1000)
     writeJsonAtomic(stateFile, state)
+  }
+
+  // Hand successful posts to the roast step when one is wired up.
+  if (env.POSTED_TRADES_FILE && posted.length > 0) {
+    writeJsonAtomic(env.POSTED_TRADES_FILE, posted)
+    console.log(`Wrote ${posted.length} posted trade(s) for the roast agent.`)
   }
 
   return failures > 0 ? 1 : 0

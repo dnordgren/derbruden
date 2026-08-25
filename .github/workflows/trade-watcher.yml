@@ -16,6 +16,7 @@ concurrency:
 jobs:
   watch:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -29,6 +30,7 @@ jobs:
           ESPN_S2: ${{ secrets.ESPN_S2 }}
           SWID: ${{ secrets.SWID }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_TRADES }}
+          POSTED_TRADES_FILE: ${{ runner.temp }}/posted-trades.json
         run: |
           # Season year: Aug-Dec maps to current calendar year, Jan-Jul to prior.
           MONTH=$(date +%-m)
@@ -36,6 +38,27 @@ jobs:
           export LEAGUE_YEAR=$(( MONTH >= 8 ? YEAR : YEAR - 1 ))
           echo "Watching league 794521 season ${LEAGUE_YEAR}"
           node scripts/watch-trades.mjs
+
+      # Second Discord message: research the trade, roast the losing owner.
+      # Never blocks ledger commit or publishing when the LLM misbehaves.
+      - name: Roast the losing owner
+        continue-on-error: true
+        env:
+          LEAGUE_ID: '794521'
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_TRADES }}
+          OPENCODE_GO_API_KEY: ${{ secrets.OPENCODE_GO_API_KEY }}
+          POSTED_TRADES_FILE: ${{ runner.temp }}/posted-trades.json
+        run: |
+          if [[ ! -f "$POSTED_TRADES_FILE" ]]; then
+            echo "No accepted trades posted; skipping roast."
+            exit 0
+          fi
+          MONTH=$(date +%-m)
+          YEAR=$(date +%-Y)
+          export LEAGUE_YEAR=$(( MONTH >= 8 ? YEAR : YEAR - 1 ))
+          node scripts/roast-trade.mjs "$POSTED_TRADES_FILE"
 
       - name: Commit ledger updates
         id: commit

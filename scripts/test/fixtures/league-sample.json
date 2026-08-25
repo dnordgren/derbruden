@@ -1,0 +1,76 @@
+{
+  "scoringPeriodId": 3,
+  "teams": [
+    {
+      "id": 5,
+      "name": "Feel It In My Plums",
+      "record": { "overall": { "wins": 3, "losses": 1, "ties": 0, "pointsFor": 610.24 } },
+      "roster": {
+        "entries": [
+          {
+            "playerPoolEntry": {
+              "player": {
+                "id": 222,
+                "fullName": "CeeDee Lamb",
+                "defaultPositionId": 3,
+                "injuryStatus": "NORMAL",
+                "stats": [{ "statSourceId": 1, "statSplitTypeId": 0, "appliedTotal": 61.2 }],
+                "news": [
+                  {
+                    "headline": "Cowboys expect Lamb to see heavy target share",
+                    "story": "Offense runs through him.",
+                    "date": 1756000000000
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "playerPoolEntry": {
+              "player": {
+                "id": 333,
+                "fullName": "Kyren Williams",
+                "defaultPositionId": 2,
+                "injuryStatus": "NORMAL",
+                "stats": [{ "statSourceId": 1, "statSplitTypeId": 0, "appliedTotal": 48.7 }]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "name": "Toe Burrows Ice Box",
+      "record": { "overall": { "wins": 1, "losses": 3, "ties": 0, "pointsFor": 402.91 } },
+      "roster": {
+        "entries": [
+          {
+            "playerPoolEntry": {
+              "player": {
+                "id": 111,
+                "fullName": "Jason Myers",
+                "defaultPositionId": 1,
+                "injuryStatus": "QUESTIONABLE",
+                "stats": [{ "statSourceId": 1, "statSplitTypeId": 0, "appliedTotal": 88.4 }],
+                "news": [
+                  {
+                    "headline": "Myers limited at practice with knee issue",
+                    "story": "Monitor Friday report.",
+                    "date": 1755900000000
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "name": "Significant Others",
+      "record": { "overall": { "wins": 2, "losses": 2, "ties": 0, "pointsFor": 505.03 } },
+      "roster": { "entries": [] }
+    }
+  ]
+}

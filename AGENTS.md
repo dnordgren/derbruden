@@ -19,6 +19,10 @@ No framework, no build step besides the Node scripts in `scripts/`.
 - `node scripts/sync-team-names.js [--dry-run] [season]` — sync ESPN
   team names into owner page headers.
 - `AWS_PROFILE=derbruden make deploy` — S3 sync + CloudFront invalidation.
+  The apt `aws` binary is broken on the dev machine (old pyOpenSSL clash).
+  `~/.zshenv` pins PATH to the working `~/.venvs/awscli` install, so fresh
+  shells just work. If a stale session resolves `/usr/bin/aws`, run
+  `export PATH="$HOME/.venvs/awscli/bin:$PATH"` first.
 - `npx prettier --check <file>` — repo uses the `.prettierrc` config.
   Legacy HTML pages fail prettier; do not reformat them wholesale.
 - Commit style: `feat:` / `chore:` / `fix:` prefixes, imperative mood,

@@ -16,3 +16,6 @@ scripts/.env*
 # Ignore scripts/ node stuff and input/output files
 scripts/node_modules
 scripts/*.html
+
+# build output from scripts/build.mjs
+/pub/

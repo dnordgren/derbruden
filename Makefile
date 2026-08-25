@@ -1,4 +1,4 @@
-.PHONY: webp clean deploy deploy-html deploy-static invalidate-cache drafts
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -26,11 +26,17 @@ webp: $(WEBP_FILES)
 deploy: deploy-html deploy-static invalidate-cache
 	@echo "Deployment complete"
 
-deploy-html:
+build:
+	@echo "make build : Started"
+	@echo "Inlining partials into pub/..."
+	@node scripts/build.mjs
+	@echo "make build : Finished"
+
+deploy-html: build
 	@echo "make deploy-html : Started"
 	@echo "Deploying HTML to bucket derbruden.com..."
 	@aws s3 rm s3://$(BUCKET)/ --recursive --exclude "*" --include "*.html"
-	@aws s3 sync src/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=60, stale-while-revalidate=300"
+	@aws s3 sync pub/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=60, stale-while-revalidate=300"
 	@echo "make deploy-html : Finished"
 
 deploy-static:

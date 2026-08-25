@@ -88,6 +88,34 @@ Notes:
   script and the weekly GitHub Action use it to render rank deltas.
   Delete it to reset deltas.
 
+### Generate draft history
+
+Builds two views of every draft since the league moved to ESPN in 2018:
+`src/drafts.html` (all drafts) and a "Draft Picks" section on each owner
+page. Requires the same `ESPN_S2` cookie as power rankings.
+
+```sh
+make drafts
+```
+
+or directly:
+
+```sh
+node scripts/generate-drafts.js
+```
+
+Notes:
+
+- Player names, positions, and NFL teams come from the public
+  `sports.core.api.espn.com` API, scoped to the draft season so pro teams
+  match the year of the draft.
+- `scripts/draft-players.json` caches resolved players. Commit it; reruns
+  only hit the network for new picks.
+- The current season appears once its live draft has results. ESPN
+  pre-fills empty slots with playerId `-1`; the generator filters them.
+- D/ST picks carry negative player ids shaped like `-(16000 + NFL team
+id)`; the generator resolves them to team names.
+
 ### Weekly update
 
 Regenerate and publish in one pass:
@@ -133,7 +161,7 @@ unfurls into a card with the league logo.
 
 ### Run Deploy
 
-``` sh
+```sh
 AWS_PROFILE=derbruden make deploy
 ```
 

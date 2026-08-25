@@ -7,13 +7,15 @@ Guidance for AI coding agents working in this repo.
 DerBruden.com. Static fantasy football league site for the Der Bruden
 ESPN league (id 794521). Plain HTML in `src/`, assets in `static/`.
 Deploys to S3 + CloudFront with `make deploy` (profile `derbruden`).
-No framework, no build step besides three Node scripts in `scripts/`.
+No framework, no build step besides the Node scripts in `scripts/`.
 
 ## Commands
 
 - `node scripts/generate-stats.js owners index|all|<owner>` — rebuild
   stats tables into owner pages from `scripts/stats.csv`.
 - `make power` — regenerate `src/power-rankings.html` from the ESPN API.
+- `make drafts` — rebuild `src/drafts.html` and per-owner draft sections
+  from the ESPN API.
 - `node scripts/sync-team-names.js [--dry-run] [season]` — sync ESPN
   team names into owner page headers.
 - `AWS_PROFILE=derbruden make deploy` — S3 sync + CloudFront invalidation.
@@ -69,6 +71,25 @@ No framework, no build step besides three Node scripts in `scripts/`.
 - GitHub disables schedules after 60 days without commits; re-enable each
   offseason when the notice email arrives.
 
+## Draft history
+
+- `scripts/generate-drafts.js` fetches `view=mDraftDetail` per season
+  (ESPN keeps drafts back to 2018) and writes `src/drafts.html` plus a
+  "Draft Picks" section into every owner page between
+  `<!-- DRAFT_HISTORY_START -->` / `<!-- DRAFT_HISTORY_END -->` markers
+  (first run inserts them before `</main>`).
+- Requires the same `scripts/.env` `ESPN_S2` as power rankings.
+- Player info resolves from `sports.core.api.espn.com`, season-scoped:
+  `/seasons/<year>/athletes/<id>` gives draft-day team; some records are
+  thin and fall back to `/athletes/<id>`. Free agents show no position.
+- `scripts/draft-players.json` caches player lookups keyed
+  `<season>:<playerId>`. Commit it; reruns only fetch new picks.
+- ESPN quirks: pre-draft slots carry `playerId: -1` (filter or phantom
+  picks appear); D/ST ids are `-(16000 + NFL team core id)`; negative
+  ids other than `-1` resolve via `/seasons/<year>/teams/<n>`.
+- Tests: `node --test scripts/generate-drafts.test.mjs`.
+- Rerun each year after the live draft finishes.
+
 ## Team name sync
 
 - A weekly GitHub Action (`.github/workflows/team-names.yml`) runs
@@ -81,12 +102,12 @@ No framework, no build step besides three Node scripts in `scripts/`.
 ## ESPN fantasy API gotchas
 
 - Base URL is `https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/...
-  seasons/<year>/segments/0/leagues/794521`. The older
+seasons/<year>/segments/0/leagues/794521`. The older
   `fantasy.espn.com/apis/v3` domain 302s for every request now.
 - The league is private. Anonymous calls return 302. Send the espn_s2
   cookie. Never commit cookies or AWS keys.
 - `schedule[].winner` values are uppercase: `HOME`, `AWAY`,
   `UNDECIDED`, or lowercase `tie`.
 - Future matchups carry numeric `totalPoints: 0` and `winner:
-  UNDECIDED`. Filter on decided winners only or phantom ties appear.
+UNDECIDED`. Filter on decided winners only or phantom ties appear.
 - Team abbreviations change year to year; team `id`s do not.

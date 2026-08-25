@@ -1,12 +1,15 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import {
+  buildBoard,
   dslNflTeamId,
   escapeHtml,
   formatPickSummary,
   isFilledPick,
   pickRoundLabel,
   picksByOwner,
+  positionClass,
+  slotOrder,
   seasonRange,
 } from './generate-drafts.js'
 
@@ -63,4 +66,47 @@ test('isFilledPick rejects pre-draft placeholder slots', () => {
   assert.equal(isFilledPick({ playerId: 0 }), false)
   assert.equal(isFilledPick({ playerId: 4362628 }), true)
   assert.equal(isFilledPick({ playerId: -16030 }), true)
+})
+
+test('slotOrder follows first-round overall pick order', () => {
+  const picks = [
+    { roundId: 2, teamId: 4, overallPickNumber: 11 },
+    { roundId: 1, teamId: 9, overallPickNumber: 2 },
+    { roundId: 1, teamId: 2, overallPickNumber: 1 },
+    { roundId: 1, teamId: 8, overallPickNumber: 3 },
+  ]
+  assert.deepEqual(slotOrder(picks), [2, 9, 8])
+})
+
+test('buildBoard groups picks by round and team, sorting traded picks', () => {
+  const picks = [
+    { roundId: 1, teamId: 2, overallPickNumber: 1 },
+    { roundId: 2, teamId: 9, overallPickNumber: 12 },
+    { roundId: 2, teamId: 2, overallPickNumber: 11 },
+    { roundId: 2, teamId: 2, overallPickNumber: 14 },
+  ]
+  const board = buildBoard(picks)
+  assert.deepEqual(board.order, [2])
+  assert.deepEqual(
+    board.rounds[0][2].map(p => p.overallPickNumber),
+    [1]
+  )
+  assert.deepEqual(
+    board.rounds[1][2].map(p => p.overallPickNumber),
+    [11, 14]
+  )
+  assert.deepEqual(
+    board.rounds[1][9].map(p => p.overallPickNumber),
+    [12]
+  )
+})
+
+test('positionClass maps positions to board colors', () => {
+  assert.equal(positionClass('QB'), 'qb')
+  assert.equal(positionClass('TE'), 'te')
+  assert.equal(positionClass('K'), 'k')
+  assert.equal(positionClass('D/ST'), 'dst')
+  assert.equal(positionClass('RB'), 'skill')
+  assert.equal(positionClass('WR'), 'skill')
+  assert.equal(positionClass(''), 'unknown')
 })

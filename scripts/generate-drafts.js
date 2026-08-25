@@ -65,10 +65,15 @@ async function fetchJson(url, headers = {}) {
   return res.json()
 }
 
-async function fetchDraftPicks(season) {
-  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` + '?view=mDraftDetail'
+async function fetchDraft(season) {
+  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` + '?view=mDraftDetail&view=mTeam'
   const league = await fetchJson(url, authHeaders())
-  return league.draftDetail && Array.isArray(league.draftDetail.picks) ? league.draftDetail.picks : []
+  const teams = {}
+  for (const team of league.teams || []) {
+    teams[team.id] = { name: team.name || team.nickname || team.abbrev || `Team ${team.id}` }
+  }
+  const picks = league.draftDetail && Array.isArray(league.draftDetail.picks) ? league.draftDetail.picks : []
+  return { picks, teams }
 }
 
 async function mapLimit(items, limit, worker) {
@@ -207,50 +212,101 @@ export function picksByOwner(picks) {
   return grouped
 }
 
-function ownerCell(teamId) {
-  const mapped = TEAM_OWNERS[teamId]
-  if (mapped) return `<td class="owner"><a href="./${mapped.page}">${mapped.owner}</a></td>`
-  return '<td class="owner">&ndash;</td>'
-}
-
-function playerCell(pick, cache, season) {
-  if (!pick.playerId) return '<td>&ndash;</td>'
-  const info = cache.players[`${season}:${pick.playerId}`]
-  const name = escapeHtml(info ? info.name : `Player ${pick.playerId}`)
-  const keeper = pick.keeper ? ' <span class="keeper" title="Keeper pick">K</span>' : ''
-  return `<td>${name}${keeper}</td>`
-}
-
-function renderSeasonTable(season, picks, cache) {
-  const rows = [...picks]
+// Draft slot order, left to right on the board: the team making overall
+// pick 1 leads round one, and so on.
+export function slotOrder(picks) {
+  return picks
+    .filter(pick => pick.roundId === 1)
     .sort((a, b) => a.overallPickNumber - b.overallPickNumber)
-    .map(
-      pick => `<tr>
-        <td class="number">${pick.overallPickNumber}</td>
-        <td class="number">${pick.roundId}</td>
-        <td class="number">${pick.roundPickNumber}</td>
-        ${ownerCell(pick.teamId)}
-        ${playerCell(pick, cache, season)}
-        <td>${(cache.players[`${season}:${pick.playerId}`] || {}).pos || '&ndash;'}</td>
-        <td>${(cache.players[`${season}:${pick.playerId}`] || {}).pro || '&ndash;'}</td>
-      </tr>`
-    )
+    .map(pick => pick.teamId)
+}
+
+// Grid of picks keyed by round then team. A team can hold several picks in
+// one round through trades, so each cell keeps an ordered list.
+export function buildBoard(picks) {
+  const order = slotOrder(picks)
+  const rounds = []
+  for (const pick of picks) {
+    const round = pick.roundId - 1
+    if (!rounds[round]) rounds[round] = {}
+    if (!rounds[round][pick.teamId]) rounds[round][pick.teamId] = []
+    rounds[round][pick.teamId].push(pick)
+  }
+  for (const row of rounds) {
+    for (const cell of Object.values(row)) {
+      cell.sort((a, b) => a.overallPickNumber - b.overallPickNumber)
+    }
+  }
+  return { order, rounds }
+}
+
+// Board color group for a fantasy position.
+export function positionClass(pos) {
+  switch (pos) {
+    case 'QB':
+      return 'qb'
+    case 'TE':
+      return 'te'
+    case 'K':
+      return 'k'
+    case 'D/ST':
+      return 'dst'
+    case 'RB':
+    case 'WR':
+      return 'skill'
+    default:
+      return 'unknown'
+  }
+}
+
+function boardPickHtml(pick, cache, season) {
+  const info = cache.players[`${season}:${pick.playerId}`] || {}
+  let name = info.name || `Player ${pick.playerId}`
+  const pos = info.pos === 'D/ST' ? 'DST' : info.pos
+  if (info.pos === 'D/ST') name = name.replace(/ D\/ST$/, '')
+  const sub = [info.pro, pos].filter(Boolean).join(' ~ ')
+  const keeperAttrs = pick.keeper ? ' keeper" title="Keeper pick' : ''
+  return (
+    `<div class="pick ${positionClass(info.pos)}${keeperAttrs}">` +
+    `<span class="pick-name">${escapeHtml(name)}</span>` +
+    `<span class="pick-sub">${escapeHtml(sub) || '&nbsp;'}</span></div>`
+  )
+}
+
+function renderSeasonBoard(season, picks, teams, cache) {
+  const board = buildBoard(picks)
+  const headCells = board.order
+    .map(teamId => {
+      const mapped = TEAM_OWNERS[teamId]
+      const team = teams && teams[teamId]
+      const label = team ? escapeHtml(team.name) : mapped ? mapped.owner : `Team ${teamId}`
+      const owner = mapped ? `<span class="head-owner">${mapped.owner}</span>` : ''
+      return `<th class="team-head">${label}${owner}</th>`
+    })
+    .join('')
+
+  const rows = board.rounds
+    .map((row, index) => {
+      const round = index + 1
+      // Serpentine draft: odd rounds snake left to right, even rounds back.
+      const dir = round % 2 === 1 ? '&rarr;' : '&larr;'
+      const cells = board.order
+        .map(teamId => {
+          const cellPicks = (row && row[teamId]) || []
+          const body = cellPicks.map(pick => boardPickHtml(pick, cache, season)).join('')
+          return `<td class="board-cell">${body}</td>`
+        })
+        .join('')
+      return `<tr><th class="round-head">ROUND #${round}<span class="dir">${dir}</span></th>${cells}</tr>`
+    })
     .join('\n')
 
   return `<section class="draft-season" id="draft-${season}">
     <h2>${season} Draft</h2>
     <div class="table-container">
-      <table class="stats-table">
+      <table class="draft-board">
         <thead>
-          <tr>
-            <th class="number">#</th>
-            <th class="number">Rd</th>
-            <th class="number">Pk</th>
-            <th>Owner</th>
-            <th>Player</th>
-            <th>Pos</th>
-            <th>NFL</th>
-          </tr>
+          <tr><th class="round-head"></th>${headCells}</tr>
         </thead>
         <tbody>
           ${rows}
@@ -260,13 +316,15 @@ function renderSeasonTable(season, picks, cache) {
   </section>`
 }
 
-function renderContent(draftsBySeason, cache, meta) {
+function renderContent(draftsBySeason, teamsBySeason, cache, meta) {
   const seasons = Object.keys(draftsBySeason)
     .map(Number)
     .sort((a, b) => b - a)
 
   const links = seasons.map(season => `<a href="#draft-${season}">${season}</a>`).join(' ')
-  const sections = seasons.map(season => renderSeasonTable(season, draftsBySeason[season], cache)).join('\n')
+  const sections = seasons
+    .map(season => renderSeasonBoard(season, draftsBySeason[season], teamsBySeason[season], cache))
+    .join('\n')
 
   return `<div class="owner-logo-header">
       <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
@@ -275,10 +333,18 @@ function renderContent(draftsBySeason, cache, meta) {
     </div>
     <p class="draft-meta">${seasons[seasons.length - 1]}&ndash;${seasons[0]} drafts &middot; generated ${meta.generated}</p>
     <p class="season-links">${links}</p>
+    <p class="legend">
+      <span class="chip skill"></span>RB/WR
+      <span class="chip qb"></span>QB
+      <span class="chip te"></span>TE
+      <span class="chip k"></span>K
+      <span class="chip dst"></span>DST
+      <span class="chip keeper-chip"></span>Keeper
+    </p>
     ${sections}
     <details class="methodology">
       <summary>About this page</summary>
-      <p>Every draft pick since the league moved to ESPN in 2018. K marks a keeper pick. Pro teams reflect the season of the draft.</p>
+      <p>Every draft since the league moved to ESPN in 2018, laid out as the serpentine draft board. Columns follow first-round slot order; the arrow on each round shows the snake direction. The folded corner marks a keeper pick. Pro teams reflect the season of the draft.</p>
       <p>The current year appears once its live draft has results.</p>
       <p>Data comes from the ESPN fantasy API. Regenerate with <code>make drafts</code>.</p>
     </details>`
@@ -355,41 +421,125 @@ function pageTemplate(content) {
     }
 
     .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .stats-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 0.9em;
+
+    .legend {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      color: #666;
+      font-size: 0.8em;
+      margin-bottom: 10px;
     }
 
-    .stats-table th {
-      background-color: #f4f4f4;
-      padding: 12px;
+    .chip {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      margin-left: 10px;
+    }
+
+    .chip.skill { background: #b5e0ae; }
+    .chip.qb { background: #cdb9f5; }
+    .chip.te { background: #f49e9e; }
+    .chip.k { background: #f6bd7a; }
+    .chip.dst { background: #c9d2da; }
+    .chip.keeper-chip {
+      background: linear-gradient(135deg, transparent 0 50%, #00000055 50% 100%), #fff;
+      border: 1px solid #ddd;
+    }
+
+    .draft-board {
+      border-collapse: separate;
+      border-spacing: 2px;
+      margin: 20px 0 40px;
+      font-size: 0.85em;
+    }
+
+    .draft-board .round-head {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background: #fff;
+      font-size: 0.72em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
       text-align: left;
-      border-bottom: 2px solid #ddd;
+      white-space: nowrap;
+      padding: 8px 14px 8px 2px;
+      vertical-align: middle;
     }
 
-    .stats-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid #eee;
+    .draft-board .round-head .dir {
+      display: block;
+      font-size: 1.1em;
     }
 
-    .stats-table tbody tr:hover {
-      background-color: #f8f8f8;
+    .draft-board .team-head {
+      font-size: 0.72em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-align: center;
+      vertical-align: bottom;
+      max-width: 118px;
+      min-width: 104px;
+      padding: 6px 8px;
     }
 
-    .stats-table .number {
-      text-align: right;
-      font-variant-numeric: tabular-nums;
+    .draft-board .head-owner {
+      display: block;
+      color: #999;
+      letter-spacing: 0.1em;
     }
 
-    .stats-table .owner {
-      font-weight: 500;
+    .draft-board .board-cell {
+      vertical-align: top;
+      padding: 0;
+      height: 1px;
     }
 
-    .stats-table td a {
-      color: #00429f;
-      text-decoration: underline;
+    .pick {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      border-radius: 3px;
+      padding: 8px 10px;
+      min-height: 52px;
+      height: 100%;
+      color: #1f2937;
+    }
+
+    .pick-name {
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .pick-sub {
+      font-size: 0.78em;
+      opacity: 0.75;
+      white-space: nowrap;
+    }
+
+    .pick.skill { background: #b5e0ae; }
+    .pick.qb { background: #cdb9f5; }
+    .pick.te { background: #f49e9e; }
+    .pick.k { background: #f6bd7a; }
+    .pick.dst { background: #c9d2da; }
+    .pick.unknown { background: #ececec; }
+
+    .pick.keeper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-style: solid;
+      border-width: 0 10px 10px 0;
+      border-color: transparent #00000040 transparent transparent;
+      border-top-right-radius: 3px;
     }
 
     .owner-logo-header {
@@ -413,17 +563,6 @@ function pageTemplate(content) {
 
     .draft-season h2 {
       margin-bottom: 0;
-    }
-
-    .keeper {
-      display: inline-block;
-      margin-left: 4px;
-      padding: 0 6px;
-      border-radius: 8px;
-      background: #b8860b;
-      color: #fff;
-      font-size: 0.75em;
-      font-weight: 600;
     }
 
     .methodology {
@@ -478,9 +617,9 @@ function pageTemplate(content) {
 `
 }
 
-function writeDraftsPage(draftsBySeason, cache) {
+function writeDraftsPage(draftsBySeason, teamsBySeason, cache) {
   const meta = { generated: new Date().toISOString().slice(0, 10) }
-  const html = pageTemplate(renderContent(draftsBySeason, cache, meta))
+  const html = pageTemplate(renderContent(draftsBySeason, teamsBySeason, cache, meta))
   fs.writeFileSync(PAGE_PATH, html)
   console.log(`Wrote ${PAGE_PATH}`)
 }
@@ -549,10 +688,12 @@ async function main() {
 
   const lastSeason = defaultSeason()
   const draftsBySeason = {}
+  const teamsBySeason = {}
   for (const season of seasonRange(FIRST_SEASON, lastSeason)) {
-    const picks = (await fetchDraftPicks(season)).filter(isFilledPick)
+    const { picks, teams } = await fetchDraft(season)
     if (picks.length > 0) {
-      draftsBySeason[season] = picks
+      draftsBySeason[season] = picks.filter(isFilledPick)
+      teamsBySeason[season] = teams
       console.log(`${season}: ${picks.length} picks`)
     } else {
       console.log(`${season}: no completed draft, skipping`)
@@ -565,7 +706,7 @@ async function main() {
 
   const cache = await resolvePicks(draftsBySeason)
 
-  writeDraftsPage(draftsBySeason, cache)
+  writeDraftsPage(draftsBySeason, teamsBySeason, cache)
   updateOwnerPages(draftsBySeason, cache)
 }
 

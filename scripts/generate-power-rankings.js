@@ -311,164 +311,43 @@ function pageTemplate(content) {
   <meta name="twitter:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
   <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
-  <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/site.css?v=1">
+  
   <style>
-    body {
-      font-family: "Archivo", sans-serif;
-      line-height: 1.6;
-      margin: 0;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .header {
-      display: flex;
-      align-items: center;
-    }
-
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0px;
-    }
-
-    .logo {
-      width: 100px;
-      height: 75px;
-    }
-
-    .site-title {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .tagline {
-      margin: 0;
-      color: #666;
-    }
-
-    .sponsor-box {
-      border: 1px solid #eee;
-      padding: 15px;
-      border-radius: 5px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      min-width: 300px;
-    }
-
-    .sponsor-box img {
-      max-width: 100px;
-      height: auto;
-      margin-bottom: 0px;
-    }
-
-    .sponsor-content {
-      flex: 1;
-      text-align: left;
-      font-size: 0.7em;
-    }
-
-    .sponsor-name {
-      font-weight: bold;
-      margin: 0;
-    }
-
-    .sponsor-tagline {
-      color: #666;
-      margin: 5px 0 0 0;
-      max-width: 200px;
-    }
-
-    nav {
-      margin-bottom: 30px;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #eee;
-    }
-
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .stats-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
-      font-size: 0.9em;
-    }
-
-    .stats-table th {
-      background-color: #f4f4f4;
-      padding: 12px;
-      text-align: left;
-      border-bottom: 2px solid #ddd;
-    }
-
-    .stats-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .stats-table tbody tr:hover {
-      background-color: #f8f8f8;
-    }
-
-    .stats-table .number {
-      text-align: right;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .stats-table .owner {
-      font-weight: 500;
-    }
-
-    .stats-table td a {
-      color: #00429f;
-      text-decoration: underline;
-    }
-
     .pr-meta {
       color: #666;
       font-size: 0.9em;
     }
-
-    .delta.up { color: #1a7f37; }
-    .delta.down { color: #c0392b; }
-
+    
+    .delta.up {
+      color: #1a7f37;
+    }
+    
+    .delta.down {
+      color: #c0392b;
+    }
+    
     .methodology {
       margin-top: 30px;
       font-size: 0.85em;
       color: #666;
     }
-
-    @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .sponsor-box {
-        margin-top: 20px;
-        width: 100%;
-      }
-    }
   </style>
+  <script type="speculationrules">
+    {
+      "prefetch": [
+        {
+          "source": "document",
+          "where": { "href_matches": "./*.html" },
+          "eagerness": "moderate"
+        }
+      ]
+    }
+  </script>
 </head>
 
 <body>

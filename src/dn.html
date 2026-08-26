@@ -6,6 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DerBruden.com | DN</title>
   <!--#include file="partials/head-common.html" -->
+  <style>
+    /* D3 chart styles */
+    .axis-label {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .line {
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .bar {
+      fill: #012f69;
+    }
+
+    #tooltip {
+      position: absolute;
+      display: none;
+      padding: 5px;
+      background: #eceff4;
+      border: 1px solid #2e3440;
+      border-radius: 4px;
+      pointer-events: none;
+      font-size: 12px;
+    }
+
+    #chart-container,
+    .chart-title {
+      font-family: monospace;
+      margin-bottom: 40px;
+    }
+
+    .chart-title {
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .export-btn {
+      display: block;
+      margin: 10px auto;
+      font-family: monospace;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>

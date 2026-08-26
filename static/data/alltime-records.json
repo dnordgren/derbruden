@@ -1,0 +1,864 @@
+{
+  "generated": "2026-08-26",
+  "leagueId": "794521",
+  "scopeNote": "Weekly records and head-to-head include every decided regular-season and postseason game since 2018. Droughts and champions also include recorded pre-ESPN history.",
+  "records": {
+    "highestScore": {
+      "owner": "DM",
+      "team": "The Raunch",
+      "points": 261,
+      "opponent": "JO",
+      "opponentPoints": 195,
+      "season": 2018,
+      "week": 15
+    },
+    "biggestBlowout": {
+      "owner": "JO",
+      "team": "Alvin and the Dick Dunks",
+      "points": 219.6,
+      "opponent": "JH",
+      "opponentPoints": 92.6,
+      "season": 2019,
+      "week": 3,
+      "margin": 127
+    },
+    "longestWinStreak": {
+      "owner": "GM",
+      "length": 11,
+      "fromSeason": 2024,
+      "fromWeek": 7,
+      "toSeason": 2025,
+      "toWeek": 2
+    },
+    "mostPointsInASeason": {
+      "owner": "GM",
+      "team": "Fat Joe Hit Hard",
+      "points": 2375.2,
+      "season": 2018,
+      "wins": 11,
+      "losses": 4,
+      "ties": 0
+    }
+  },
+  "hallOfShame": {
+    "lowestScore": {
+      "owner": "GM",
+      "team": "Dad Joe Jo's dad",
+      "points": 8.5,
+      "opponent": "AN",
+      "opponentPoints": 104.4,
+      "season": 2023,
+      "week": 16
+    },
+    "mostPointsInALoss": {
+      "owner": "AN",
+      "team": "Talk S*** Get Kareemed",
+      "points": 212.6,
+      "opponent": "IK",
+      "opponentPoints": 260.4,
+      "season": 2018,
+      "week": 15
+    },
+    "playoffDroughts": [
+      {
+        "owner": "AR",
+        "startYear": 2016,
+        "endYear": 2020,
+        "length": 5,
+        "active": false
+      },
+      {
+        "owner": "ZS",
+        "startYear": 2017,
+        "endYear": 2020,
+        "length": 4,
+        "active": false
+      },
+      {
+        "owner": "AN",
+        "startYear": 2014,
+        "endYear": 2016,
+        "length": 3,
+        "active": false
+      },
+      {
+        "owner": "JO",
+        "startYear": 2017,
+        "endYear": 2019,
+        "length": 3,
+        "active": false
+      },
+      {
+        "owner": "IK",
+        "startYear": 2022,
+        "endYear": 2024,
+        "length": 3,
+        "active": false
+      },
+      {
+        "owner": "DN",
+        "startYear": 2023,
+        "endYear": 2025,
+        "length": 3,
+        "active": true
+      },
+      {
+        "owner": "CR",
+        "startYear": 2014,
+        "endYear": 2015,
+        "length": 2,
+        "active": false
+      },
+      {
+        "owner": "DM",
+        "startYear": 2024,
+        "endYear": 2025,
+        "length": 2,
+        "active": true
+      },
+      {
+        "owner": "Jack",
+        "startYear": 2014,
+        "endYear": 2014,
+        "length": 1,
+        "active": false
+      },
+      {
+        "owner": "Colton",
+        "startYear": 2016,
+        "endYear": 2016,
+        "length": 1,
+        "active": false
+      },
+      {
+        "owner": "Elliott",
+        "startYear": 2016,
+        "endYear": 2016,
+        "length": 1,
+        "active": false
+      },
+      {
+        "owner": "SHEN",
+        "startYear": 2018,
+        "endYear": 2018,
+        "length": 1,
+        "active": false
+      },
+      {
+        "owner": "GM",
+        "startYear": 2019,
+        "endYear": 2019,
+        "length": 1,
+        "active": false
+      },
+      {
+        "owner": "JH",
+        "startYear": 2023,
+        "endYear": 2023,
+        "length": 1,
+        "active": false
+      }
+    ]
+  },
+  "h2h": {
+    "order": [
+      "CR",
+      "AN",
+      "GM",
+      "JO",
+      "IK",
+      "DM",
+      "DN",
+      "ZS",
+      "AR",
+      "JH",
+      "SHEN"
+    ],
+    "rows": [
+      {
+        "owner": "CR",
+        "pf": 15339.4,
+        "rivals": {
+          "GM": {
+            "wins": 9,
+            "losses": 11,
+            "ties": 0
+          },
+          "DM": {
+            "wins": 10,
+            "losses": 2,
+            "ties": 0
+          },
+          "ZS": {
+            "wins": 7,
+            "losses": 4,
+            "ties": 0
+          },
+          "IK": {
+            "wins": 12,
+            "losses": 4,
+            "ties": 0
+          },
+          "AN": {
+            "wins": 6,
+            "losses": 10,
+            "ties": 0
+          },
+          "AR": {
+            "wins": 9,
+            "losses": 1,
+            "ties": 0
+          },
+          "DN": {
+            "wins": 6,
+            "losses": 7,
+            "ties": 0
+          },
+          "JO": {
+            "wins": 9,
+            "losses": 5,
+            "ties": 0
+          },
+          "SHEN": {
+            "wins": 0,
+            "losses": 1,
+            "ties": 0
+          },
+          "JH": {
+            "wins": 9,
+            "losses": 6,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "AN",
+        "pf": 14632.1,
+        "rivals": {
+          "JO": {
+            "wins": 10,
+            "losses": 9,
+            "ties": 0
+          },
+          "GM": {
+            "wins": 9,
+            "losses": 4,
+            "ties": 0
+          },
+          "DM": {
+            "wins": 9,
+            "losses": 9,
+            "ties": 0
+          },
+          "ZS": {
+            "wins": 7,
+            "losses": 8,
+            "ties": 0
+          },
+          "CR": {
+            "wins": 10,
+            "losses": 6,
+            "ties": 0
+          },
+          "SHEN": {
+            "wins": 1,
+            "losses": 0,
+            "ties": 0
+          },
+          "IK": {
+            "wins": 5,
+            "losses": 7,
+            "ties": 0
+          },
+          "AR": {
+            "wins": 5,
+            "losses": 3,
+            "ties": 0
+          },
+          "DN": {
+            "wins": 7,
+            "losses": 3,
+            "ties": 0
+          },
+          "JH": {
+            "wins": 3,
+            "losses": 12,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "GM",
+        "pf": 14598.8,
+        "rivals": {
+          "CR": {
+            "wins": 11,
+            "losses": 9,
+            "ties": 0
+          },
+          "AN": {
+            "wins": 4,
+            "losses": 9,
+            "ties": 0
+          },
+          "AR": {
+            "wins": 10,
+            "losses": 8,
+            "ties": 0
+          },
+          "DM": {
+            "wins": 7,
+            "losses": 11,
+            "ties": 0
+          },
+          "ZS": {
+            "wins": 10,
+            "losses": 5,
+            "ties": 0
+          },
+          "DN": {
+            "wins": 7,
+            "losses": 3,
+            "ties": 0
+          },
+          "JO": {
+            "wins": 7,
+            "losses": 6,
+            "ties": 0
+          },
+          "SHEN": {
+            "wins": 1,
+            "losses": 0,
+            "ties": 0
+          },
+          "IK": {
+            "wins": 5,
+            "losses": 4,
+            "ties": 0
+          },
+          "JH": {
+            "wins": 7,
+            "losses": 3,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "JO",
+        "pf": 14290.7,
+        "rivals": {
+          "AN": {
+            "wins": 9,
+            "losses": 10,
+            "ties": 0
+          },
+          "AR": {
+            "wins": 7,
+            "losses": 3,
+            "ties": 0
+          },
+          "SHEN": {
+            "wins": 2,
+            "losses": 1,
+            "ties": 0
+          },
+          "DN": {
+            "wins": 3,
+            "losses": 7,
+            "ties": 0
+          },
+          "IK": {
+            "wins": 11,
+            "losses": 5,
+            "ties": 0
+          },
+          "ZS": {
+            "wins": 6,
+            "losses": 4,
+            "ties": 0
+          },
+          "GM": {
+            "wins": 6,
+            "losses": 7,
+            "ties": 0
+          },
+          "CR": {
+            "wins": 5,
+            "losses": 9,
+            "ties": 0
+          },
+          "DM": {
+            "wins": 9,
+            "losses": 8,
+            "ties": 0
+          },
+          "JH": {
+            "wins": 11,
+            "losses": 5,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "IK",
+        "pf": 14234.9,
+        "rivals": {
+          "AR": {
+            "wins": 11,
+            "losses": 7,
+            "ties": 0
+          },
+          "SHEN": {
+            "wins": 0,
+            "losses": 2,
+            "ties": 0
+          },
+          "DN": {
+            "wins": 8,
+            "losses": 7,
+            "ties": 0
+          },
+          "CR": {
+            "wins": 4,
+            "losses": 12,
+            "ties": 0
+          },
+          "JO": {
+            "wins": 5,
+            "losses": 11,
+            "ties": 0
+          },
+          "DM": {
+            "wins": 6,
+            "losses": 4,
+            "ties": 0
+          },
+          "AN": {
+            "wins": 7,
+            "losses": 5,
+            "ties": 0
+          },
+          "ZS": {
+            "wins": 10,
+            "losses": 7,
+            "ties": 0
+          },
+          "GM": {
+            "wins": 4,
+            "losses": 5,
+            "ties": 0
+          },
+          "JH": {
+            "wins": 6,
+            "losses": 7,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "DM",
+        "pf": 14088.7,
+        "rivals": {
+          "ZS": {
+            "wins": 6,
+            "losses": 7,
+            "ties": 0
+          },
+          "CR": {
+            "wins": 2,
+            "losses": 10,
+            "ties": 0
+          },
+          "AN": {
+            "wins": 9,
+            "losses": 9,
+            "ties": 0
+          },
+          "GM": {
+            "wins": 11,
+            "losses": 7,
+            "ties": 0
+          },
+          "SHEN": {
+            "wins": 0,
+            "losses": 1,
+            "ties": 0
+          },
+          "IK": {
+            "wins": 4,
+            "losses": 6,
+            "ties": 0
+          },
+          "AR": {
+            "wins": 11,
+            "losses": 6,
+            "ties": 0
+          },
+          "DN": {
+            "wins": 4,
+            "losses": 8,
+            "ties": 0
+          },
+          "JO": {
+            "wins": 8,
+            "losses": 9,
+            "ties": 0
+          },
+          "JH": {
+            "wins": 3,
+            "losses": 7,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "DN",
+        "pf": 13973.6,
+        "rivals": {
+          "SHEN": {
+            "wins": 1,
+            "losses": 1,
+            "ties": 0
+          },
+          "ZS": {
+            "wins": 7,
+            "losses": 12,
+            "ties": 0
+          },
+          "IK": {
+            "wins": 7,
+            "losses": 8,
+            "ties": 0
+          },
+          "JO": {
+            "wins": 7,
+            "losses": 3,
+            "ties": 0
+          },
+          "AR": {
+            "wins": 16,
+            "losses": 4,
+            "ties": 0
+          },
+          "GM": {
+            "wins": 3,
+            "losses": 7,
+            "ties": 0
+          },
+          "CR": {
+            "wins": 7,
+            "losses": 6,
+            "ties": 0
+          },
+          "DM": {
+            "wins": 8,
+            "losses": 4,
+            "ties": 0
+          },
+          "AN": {
+            "wins": 3,
+            "losses": 7,
+            "ties": 0
+          },
+          "JH": {
+            "wins": 7,
+            "losses": 9,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "ZS",
+        "pf": 13348.9,
+        "rivals": {
+          "DM": {
+            "wins": 7,
+            "losses": 6,
+            "ties": 0
+          },
+          "DN": {
+            "wins": 12,
+            "losses": 7,
+            "ties": 0
+          },
+          "CR": {
+            "wins": 4,
+            "losses": 7,
+            "ties": 0
+          },
+          "AN": {
+            "wins": 8,
+            "losses": 7,
+            "ties": 0
+          },
+          "GM": {
+            "wins": 5,
+            "losses": 10,
+            "ties": 0
+          },
+          "JO": {
+            "wins": 4,
+            "losses": 6,
+            "ties": 0
+          },
+          "SHEN": {
+            "wins": 2,
+            "losses": 0,
+            "ties": 0
+          },
+          "IK": {
+            "wins": 7,
+            "losses": 10,
+            "ties": 0
+          },
+          "AR": {
+            "wins": 10,
+            "losses": 8,
+            "ties": 0
+          },
+          "JH": {
+            "wins": 3,
+            "losses": 5,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "AR",
+        "pf": 13273.8,
+        "rivals": {
+          "IK": {
+            "wins": 7,
+            "losses": 11,
+            "ties": 0
+          },
+          "JO": {
+            "wins": 3,
+            "losses": 7,
+            "ties": 0
+          },
+          "GM": {
+            "wins": 8,
+            "losses": 10,
+            "ties": 0
+          },
+          "SHEN": {
+            "wins": 0,
+            "losses": 2,
+            "ties": 0
+          },
+          "DN": {
+            "wins": 4,
+            "losses": 16,
+            "ties": 0
+          },
+          "CR": {
+            "wins": 1,
+            "losses": 9,
+            "ties": 0
+          },
+          "DM": {
+            "wins": 6,
+            "losses": 11,
+            "ties": 0
+          },
+          "AN": {
+            "wins": 3,
+            "losses": 5,
+            "ties": 0
+          },
+          "ZS": {
+            "wins": 8,
+            "losses": 10,
+            "ties": 0
+          },
+          "JH": {
+            "wins": 4,
+            "losses": 4,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "JH",
+        "pf": 12065.6,
+        "rivals": {
+          "CR": {
+            "wins": 6,
+            "losses": 9,
+            "ties": 0
+          },
+          "DM": {
+            "wins": 7,
+            "losses": 3,
+            "ties": 0
+          },
+          "JO": {
+            "wins": 5,
+            "losses": 11,
+            "ties": 0
+          },
+          "AN": {
+            "wins": 12,
+            "losses": 3,
+            "ties": 0
+          },
+          "GM": {
+            "wins": 3,
+            "losses": 7,
+            "ties": 0
+          },
+          "ZS": {
+            "wins": 5,
+            "losses": 3,
+            "ties": 0
+          },
+          "AR": {
+            "wins": 4,
+            "losses": 4,
+            "ties": 0
+          },
+          "IK": {
+            "wins": 7,
+            "losses": 6,
+            "ties": 0
+          },
+          "DN": {
+            "wins": 9,
+            "losses": 7,
+            "ties": 0
+          }
+        }
+      },
+      {
+        "owner": "SHEN",
+        "pf": 1850.9,
+        "rivals": {
+          "DN": {
+            "wins": 1,
+            "losses": 1,
+            "ties": 0
+          },
+          "IK": {
+            "wins": 2,
+            "losses": 0,
+            "ties": 0
+          },
+          "JO": {
+            "wins": 1,
+            "losses": 2,
+            "ties": 0
+          },
+          "AR": {
+            "wins": 2,
+            "losses": 0,
+            "ties": 0
+          },
+          "DM": {
+            "wins": 1,
+            "losses": 0,
+            "ties": 0
+          },
+          "AN": {
+            "wins": 0,
+            "losses": 1,
+            "ties": 0
+          },
+          "ZS": {
+            "wins": 0,
+            "losses": 2,
+            "ties": 0
+          },
+          "GM": {
+            "wins": 0,
+            "losses": 1,
+            "ties": 0
+          },
+          "CR": {
+            "wins": 1,
+            "losses": 0,
+            "ties": 0
+          }
+        }
+      }
+    ]
+  },
+  "champions": [
+    {
+      "season": 2014,
+      "owner": "DM",
+      "team": ""
+    },
+    {
+      "season": 2015,
+      "owner": "AR",
+      "team": ""
+    },
+    {
+      "season": 2016,
+      "owner": "GM",
+      "team": ""
+    },
+    {
+      "season": 2017,
+      "owner": "DM",
+      "team": ""
+    },
+    {
+      "season": 2018,
+      "owner": "GM",
+      "team": "Fat Joe Hit Hard"
+    },
+    {
+      "season": 2019,
+      "owner": "IK",
+      "team": "Booger's Left Hand"
+    },
+    {
+      "season": 2020,
+      "owner": "JH",
+      "team": "Midnight in Montgomery"
+    },
+    {
+      "season": 2021,
+      "owner": "IK",
+      "team": "King Henry"
+    },
+    {
+      "season": 2022,
+      "owner": "DM",
+      "team": "Cōn Queso"
+    },
+    {
+      "season": 2023,
+      "owner": "ZS",
+      "team": "No Diggity "
+    },
+    {
+      "season": 2024,
+      "owner": "GM",
+      "team": "Ice Box"
+    },
+    {
+      "season": 2025,
+      "owner": "CR",
+      "team": "Significant Figures"
+    }
+  ],
+  "generatedFrom": {
+    "weeklyScope": [
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "fullScope": [
+      2014,
+      2025
+    ]
+  }
+}

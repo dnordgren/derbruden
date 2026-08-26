@@ -64,9 +64,7 @@ function ownerCodes() {
 }
 
 async function fetchLeague(season) {
-  const url =
-    `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` +
-    '?view=mTeam&view=mMatchupScore'
+  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` + '?view=mTeam&view=mMatchupScore'
   const res = await fetch(url, { headers: authHeaders() })
   if (!res.ok) {
     throw new Error(`ESPN API returned ${res.status} for season ${season}`)
@@ -99,14 +97,15 @@ async function loadLeague(season, offline) {
   return null
 }
 
-export function regularGames(league) {
+export function extractGames(league) {
   const teamIds = new Set(league.teams.map(t => t.id))
   const games = []
   for (const matchup of league.schedule || []) {
-    if (matchup.playoffTierType !== 'NONE') continue
     const home = matchup.home
     const away = matchup.away
     if (
+      !home ||
+      !away ||
       !teamIds.has(home.teamId) ||
       !teamIds.has(away.teamId) ||
       typeof home.totalPoints !== 'number' ||
@@ -116,6 +115,7 @@ export function regularGames(league) {
     }
     const winner = String(matchup.winner || '').toLowerCase()
     if (!['home', 'away', 'tie'].includes(winner)) continue
+    if (winner !== 'tie' && home.totalPoints === 0 && away.totalPoints === 0) continue
     games.push({
       week: matchup.matchupPeriodId,
       homeId: home.teamId,
@@ -123,6 +123,7 @@ export function regularGames(league) {
       homeScore: home.totalPoints,
       awayScore: away.totalPoints,
       winner,
+      playoff: matchup.playoffTierType !== 'NONE',
     })
   }
   return games.sort((a, b) => a.week - b.week)
@@ -213,11 +214,12 @@ export function computeElo(seasonGamesList, statsRows, ownersById, owners) {
 
   const ordered = [...seasonGamesList].sort((a, b) => a.season - b.season)
   for (const { season, games } of ordered) {
-    if (games.length === 0) continue
+    const regular = games.filter(g => !g.playoff)
+    if (regular.length === 0) continue
     const seeds = seedsFromStats(statsRows, season, ownersById)
 
     const ids = new Set()
-    for (const g of games) {
+    for (const g of regular) {
       ids.add(g.homeId)
       ids.add(g.awayId)
     }
@@ -229,7 +231,7 @@ export function computeElo(seasonGamesList, statsRows, ownersById, owners) {
     snapshot()
 
     let week = null
-    for (const g of games) {
+    for (const g of regular) {
       if (week === null) week = g.week
       if (g.week !== week) {
         week = g.week
@@ -241,8 +243,7 @@ export function computeElo(seasonGamesList, statsRows, ownersById, owners) {
       const homeActual = winner === 'home' ? 1 : winner === 'away' ? 0 : 0.5
       const margin = Math.abs(homeScore - awayScore)
       if (margin > 0) {
-        const [winnerId, loserId] =
-          homeScore > awayScore ? [homeId, awayId] : [awayId, homeId]
+        const [winnerId, loserId] = homeScore > awayScore ? [homeId, awayId] : [awayId, homeId]
         const mult = movMultiplier(margin, ratings[winnerId], ratings[loserId])
         const delta = Math.round(K_FACTOR * mult * (homeActual - homeExpected))
         ratings[homeId] += delta
@@ -300,7 +301,7 @@ export function renderSection(payload) {
     <p class="viz-note">Weekly Elo rating, 1500 is league average.</p>
     <div class="viz-chart" id="viz-elo"></div>
     <h2>Career Head-to-Head</h2>
-    <p class="viz-note">Regular season record against each owner. Green means you won more than you lost.</p>
+    <p class="viz-note">Record against each owner, regular season and playoffs, since 2018.</p>
     <div class="viz-chart viz-chart-h2h" id="viz-h2h"></div>
     <script type="application/json" id="owner-viz-data">${json}</script>
   </section>
@@ -341,11 +342,11 @@ async function main() {
   for (const season of seasons) {
     const loaded = await loadLeague(season, offline)
     if (!loaded) continue
-    const games = regularGames(loaded.league)
+    const games = extractGames(loaded.league)
     if (loaded.source === 'network') {
-      console.log(`Season ${season}: ${games.length} regular season games fetched`)
+      console.log(`Season ${season}: ${games.length} decided games fetched`)
     } else {
-      console.log(`Season ${season}: ${games.length} regular season games from cache`)
+      console.log(`Season ${season}: ${games.length} decided games from cache`)
     }
     seasonGamesList.push({ season, games })
   }
@@ -368,9 +369,7 @@ async function main() {
     }
     const updated = injectSection(fs.readFileSync(pagePath, 'utf8'), sectionHtml)
     fs.writeFileSync(pagePath, updated)
-    console.log(
-      `Updated ${entry.page} (${entry.owner}, final Elo ${elo.finals[entry.owner] ?? '-'})`
-    )
+    console.log(`Updated ${entry.page} (${entry.owner}, final Elo ${elo.finals[entry.owner] ?? '-'})`)
   }
 }
 

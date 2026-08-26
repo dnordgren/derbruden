@@ -4,7 +4,7 @@ import {
   computeH2H,
   computeElo,
   seedsFromStats,
-  regularGames,
+  extractGames,
   renderSection,
   injectSection,
   payloadFor,
@@ -15,11 +15,11 @@ import {
 const OWNERS_BY_ID = { 1: 'AA', 2: 'BB' }
 const OWNERS = ['AA', 'BB']
 
-function game(week, homeId, awayId, homeScore, awayScore, winner) {
-  return { week, homeId, awayId, homeScore, awayScore, winner }
+function game(week, homeId, awayId, homeScore, awayScore, winner, playoff = false) {
+  return { week, homeId, awayId, homeScore, awayScore, winner, playoff }
 }
 
-test('regularGames drops playoff, unmapped, and undecided matchups', () => {
+test('extractGames drops unmapped, undecided, and zero-point games', () => {
   const league = {
     teams: [{ id: 1 }, { id: 2 }],
     schedule: [
@@ -46,21 +46,19 @@ test('regularGames drops playoff, unmapped, and undecided matchups', () => {
       },
     ],
   }
-  const games = regularGames(league)
-  assert.equal(games.length, 1)
-  assert.equal(games[0].week, 3)
-  assert.equal(games[0].winner, 'away')
+  const games = extractGames(league)
+  assert.equal(games.length, 2)
+  assert.equal(games[0].playoff, true)
+  assert.equal(games[0].week, 1)
+  assert.equal(games[1].winner, 'away')
+  assert.equal(games[1].playoff, false)
 })
 
 test('computeH2H is symmetric and counts wins, losses, ties, pf, pa', () => {
   const seasons = [
     {
       season: 2020,
-      games: [
-        game(1, 1, 2, 120, 100, 'home'),
-        game(2, 2, 1, 105.5, 105.5, 'tie'),
-        game(3, 1, 2, 90, 130, 'away'),
-      ],
+      games: [game(1, 1, 2, 120, 100, 'home'), game(2, 2, 1, 105.5, 105.5, 'tie'), game(3, 1, 2, 90, 130, 'away')],
     },
   ]
   const { records, counted, skipped } = computeH2H(seasons, OWNERS_BY_ID, OWNERS)
@@ -68,6 +66,17 @@ test('computeH2H is symmetric and counts wins, losses, ties, pf, pa', () => {
   assert.equal(skipped, 0)
   assert.deepEqual(records.AA.BB, { w: 1, l: 1, t: 1, pf: 315.5, pa: 335.5 })
   assert.deepEqual(records.BB.AA, { w: 1, l: 1, t: 1, pf: 335.5, pa: 315.5 })
+})
+
+test('computeH2H includes playoff games', () => {
+  const seasons = [
+    {
+      season: 2020,
+      games: [game(14, 1, 2, 120, 100, 'home'), game(15, 1, 2, 80, 99, 'away', true)],
+    },
+  ]
+  const { records } = computeH2H(seasons, OWNERS_BY_ID, OWNERS)
+  assert.deepEqual(records.AA.BB, { w: 1, l: 1, t: 0, pf: 200, pa: 199 })
 })
 
 test('computeH2H skips games with unmapped teams', () => {
@@ -104,8 +113,7 @@ const EPSILON_GAME = game(1, 1, 2, 120, 100, 'home')
 
 function expectedDelta(ratings, g) {
   const K = 20
-  const homeExpected =
-    1 / (1 + 10 ** ((ratings[g.awayId] - ratings[g.homeId]) / 400))
+  const homeExpected = 1 / (1 + 10 ** ((ratings[g.awayId] - ratings[g.homeId]) / 400))
   const margin = Math.abs(g.homeScore - g.awayScore)
   const base = Math.log(1 + margin / 10)
   const cap = 2.2 / ((ratings[g.homeId] - ratings[g.awayId]) * 0.001 + 2.2)
@@ -121,10 +129,31 @@ test('computeElo replays games and snapshots preseason plus weekly points', () =
   assert.ok(delta > 0)
 
   assert.deepEqual(elo.seasonStarts, [[0, 2020]])
-  assert.deepEqual(elo.series.AA, [[0, 1500], [1, 1500 + delta]])
-  assert.deepEqual(elo.series.BB, [[0, 1500], [1, 1500 - delta]])
+  assert.deepEqual(elo.series.AA, [
+    [0, 1500],
+    [1, 1500 + delta],
+  ])
+  assert.deepEqual(elo.series.BB, [
+    [0, 1500],
+    [1, 1500 - delta],
+  ])
   assert.equal(elo.finals.AA, 1500 + delta)
   assert.equal(elo.finals.BB, 1500 - delta)
+})
+
+test('computeElo ignores playoff games', () => {
+  const seasons = [
+    {
+      season: 2020,
+      games: [game(1, 1, 2, 120, 100, 'home'), game(15, 1, 2, 200, 10, 'home', true)],
+    },
+  ]
+  const elo = computeElo(seasons, [], OWNERS_BY_ID, OWNERS)
+  const delta = expectedDelta({ 1: 1500, 2: 1500 }, game(1, 1, 2, 120, 100, 'home'))
+  assert.deepEqual(elo.series.AA, [
+    [0, 1500],
+    [1, 1500 + delta],
+  ])
 })
 
 test('computeElo reseeds each season from stats.csv win pct', () => {
@@ -135,7 +164,10 @@ test('computeElo reseeds each season from stats.csv win pct', () => {
   const statsRows = [{ Season: 19, Owner: 'BB', W: 12, L: 1 }]
   const elo = computeElo(seasons, statsRows, OWNERS_BY_ID, OWNERS)
 
-  assert.deepEqual(elo.seasonStarts, [[0, 2019], [2, 2020]])
+  assert.deepEqual(elo.seasonStarts, [
+    [0, 2019],
+    [2, 2020],
+  ])
   // Season 2020 opens from the seed, not the 2019 final rating.
   const seedAA = 1500
   const seedBB = Math.round(1500 + (12 / 13 - 0.5) * 100)
@@ -188,9 +220,7 @@ test('renderSection embeds JSON payload and chart mounts', () => {
   assert.ok(html.includes('id="viz-h2h"'))
   assert.ok(html.includes('type="application/json" id="owner-viz-data"'))
   assert.ok(html.includes('owner-charts.js?v=1'))
-  const match = html.match(
-    /<script type="application\/json" id="owner-viz-data">([\s\S]*?)<\/script>/
-  )
+  const match = html.match(/<script type="application\/json" id="owner-viz-data">([\s\S]*?)<\/script>/)
   assert.ok(match)
   const parsed = JSON.parse(match[1])
   assert.equal(parsed.owner, 'DN')

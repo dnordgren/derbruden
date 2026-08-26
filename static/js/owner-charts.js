@@ -1,4 +1,4 @@
-(function () {
+;(function () {
   'use strict'
 
   var dataEl = document.getElementById('owner-viz-data')
@@ -23,7 +23,7 @@
       .style('display', 'block')
       .html(html)
       .style('left', Math.min(event.clientX + 14, window.innerWidth - 180) + 'px')
-      .style('top', (event.clientY - 12) + 'px')
+      .style('top', event.clientY - 12 + 'px')
   }
 
   function hideTip() {
@@ -54,7 +54,9 @@
   }
 
   function renderDumbbell() {
-    var rows = (data.pfpa || []).slice().sort(function (a, b) { return b.season - a.season })
+    var rows = (data.pfpa || []).slice().sort(function (a, b) {
+      return b.season - a.season
+    })
     if (!rows.length) return
 
     var W = 800
@@ -69,55 +71,87 @@
     var innerW = W - m.left - m.right
     var innerH = H - m.top - m.bottom
 
-    var lo = Math.floor(d3.min(rows, function (d) { return Math.min(d.pf, d.pa) }) / 200) * 200
-    var hi = Math.ceil(d3.max(rows, function (d) { return Math.max(d.pf, d.pa) }) / 200) * 200
+    var lo =
+      Math.floor(
+        d3.min(rows, function (d) {
+          return Math.min(d.pf, d.pa)
+        }) / 200
+      ) * 200
+    var hi =
+      Math.ceil(
+        d3.max(rows, function (d) {
+          return Math.max(d.pf, d.pa)
+        }) / 200
+      ) * 200
     var x = d3.scaleLinear().domain([lo, hi]).range([0, innerW])
-    var y = d3.scalePoint()
-      .domain(rows.map(function (d) { return d.season }))
+    var y = d3
+      .scalePoint()
+      .domain(
+        rows.map(function (d) {
+          return d.season
+        })
+      )
       .range([rowH / 2, innerH - rowH / 2])
 
-    chart.append('g')
+    chart
+      .append('g')
       .selectAll('line')
       .data(x.ticks(innerW / 90))
       .enter()
       .append('line')
-      .attr('x1', x).attr('x2', x)
-      .attr('y1', 0).attr('y2', innerH)
+      .attr('x1', x)
+      .attr('x2', x)
+      .attr('y1', 0)
+      .attr('y2', innerH)
       .attr('stroke', COLORS.grid)
 
-    chart.append('g')
+    chart
+      .append('g')
       .attr('transform', 'translate(0,' + innerH + ')')
       .call(
-        d3.axisBottom(x)
+        d3
+          .axisBottom(x)
           .tickValues(x.ticks(innerW / 90))
           .tickFormat(d3.format('~s'))
           .tickSize(0)
           .tickPadding(8)
       )
-      .call(function (g) { g.select('.domain').remove() })
+      .call(function (g) {
+        g.select('.domain').remove()
+      })
       .selectAll('text')
       .attr('fill', COLORS.neutral)
       .style('font-size', '11px')
 
-    var rowG = chart.append('g')
-      .selectAll('g')
-      .data(rows)
-      .enter()
-      .append('g')
+    var rowG = chart.append('g').selectAll('g').data(rows).enter().append('g')
 
-    rowG.append('text')
+    rowG
+      .append('text')
       .attr('x', -12)
-      .attr('y', function (d) { return y(d.season) + 4 })
+      .attr('y', function (d) {
+        return y(d.season) + 4
+      })
       .attr('text-anchor', 'end')
       .attr('fill', COLORS.neutral)
       .style('font-size', '12px')
-      .text(function (d) { return shortSeason(d.season) })
+      .text(function (d) {
+        return shortSeason(d.season)
+      })
 
-    rowG.append('line')
-      .attr('x1', function (d) { return x(Math.min(d.pf, d.pa)) })
-      .attr('x2', function (d) { return x(Math.max(d.pf, d.pa)) })
-      .attr('y1', function (d) { return y(d.season) })
-      .attr('y2', function (d) { return y(d.season) })
+    rowG
+      .append('line')
+      .attr('x1', function (d) {
+        return x(Math.min(d.pf, d.pa))
+      })
+      .attr('x2', function (d) {
+        return x(Math.max(d.pf, d.pa))
+      })
+      .attr('y1', function (d) {
+        return y(d.season)
+      })
+      .attr('y2', function (d) {
+        return y(d.season)
+      })
       .attr('stroke', COLORS.connector)
       .attr('stroke-width', 7)
       .attr('stroke-linecap', 'round')
@@ -126,14 +160,27 @@
       function handle(event, d) {
         showTip(
           event,
-          '<strong>' + d.season + '</strong><br>' +
-          'PF: ' + fmt(d.pf) + '<br>PA: ' + fmt(d.pa) + '<br>' +
-          'Diff: <strong>' + signedFmt(d.pf - d.pa) + '</strong>'
+          '<strong>' +
+            d.season +
+            '</strong><br>' +
+            'PF: ' +
+            fmt(d.pf) +
+            '<br>PA: ' +
+            fmt(d.pa) +
+            '<br>' +
+            'Diff: <strong>' +
+            signedFmt(d.pf - d.pa) +
+            '</strong>'
         )
       }
-      rowG.append('circle')
-        .attr('cx', function (d) { return x(d[key]) })
-        .attr('cy', function (d) { return y(d.season) })
+      rowG
+        .append('circle')
+        .attr('cx', function (d) {
+          return x(d[key])
+        })
+        .attr('cy', function (d) {
+          return y(d.season)
+        })
         .attr('r', 5.5)
         .attr('fill', key === 'pf' ? COLORS.pf : COLORS.pa)
         .attr('stroke', '#fff')
@@ -146,19 +193,35 @@
     dot('pa')
     dot('pf')
 
-    rowG.append('text')
+    rowG
+      .append('text')
       .attr('x', innerW + 14)
-      .attr('y', function (d) { return y(d.season) + 4 })
-      .attr('fill', function (d) { return d.pf >= d.pa ? COLORS.pf : COLORS.pa })
+      .attr('y', function (d) {
+        return y(d.season) + 4
+      })
+      .attr('fill', function (d) {
+        return d.pf >= d.pa ? COLORS.pf : COLORS.pa
+      })
       .style('font-size', '11px')
       .style('font-weight', 600)
       .style('font-variant-numeric', 'tabular-nums')
-      .text(function (d) { return signedFmt(d.pf - d.pa) })
+      .text(function (d) {
+        return signedFmt(d.pf - d.pa)
+      })
 
     var legend = chart.append('g').attr('transform', 'translate(0,-18)')
-    ;[['PF', COLORS.pf], ['PA', COLORS.pa]].forEach(function (item, i) {
-      legend.append('circle').attr('cx', i * 52).attr('cy', -4).attr('r', 5).attr('fill', item[1])
-      legend.append('text')
+    ;[
+      ['PF', COLORS.pf],
+      ['PA', COLORS.pa],
+    ].forEach(function (item, i) {
+      legend
+        .append('circle')
+        .attr('cx', i * 52)
+        .attr('cy', -4)
+        .attr('r', 5)
+        .attr('fill', item[1])
+      legend
+        .append('text')
         .attr('x', i * 52 + 10)
         .attr('y', 0)
         .attr('fill', COLORS.neutral)
@@ -182,48 +245,84 @@
     var innerW = W - m.left - m.right
     var innerH = H - m.top - m.bottom
 
-    var lo = d3.min([1500].concat(points.map(function (p) { return p[1] }))) - 15
-    var hi = d3.max([1500].concat(points.map(function (p) { return p[1] }))) + 15
-    var x = d3.scaleLinear().domain([0, points[points.length - 1][0]]).range([0, innerW])
+    var lo =
+      d3.min(
+        [1500].concat(
+          points.map(function (p) {
+            return p[1]
+          })
+        )
+      ) - 15
+    var hi =
+      d3.max(
+        [1500].concat(
+          points.map(function (p) {
+            return p[1]
+          })
+        )
+      ) + 15
+    var x = d3
+      .scaleLinear()
+      .domain([0, points[points.length - 1][0]])
+      .range([0, innerW])
     var y = d3.scaleLinear().domain([lo, hi]).range([innerH, 0])
 
-    chart.append('g')
+    chart
+      .append('g')
       .selectAll('line')
       .data(starts)
       .enter()
       .append('line')
-      .attr('x1', function (d) { return x(d[0]) })
-      .attr('x2', function (d) { return x(d[0]) })
-      .attr('y1', 0).attr('y2', innerH)
+      .attr('x1', function (d) {
+        return x(d[0])
+      })
+      .attr('x2', function (d) {
+        return x(d[0])
+      })
+      .attr('y1', 0)
+      .attr('y2', innerH)
       .attr('stroke', COLORS.grid)
 
-    chart.append('line')
-      .attr('x1', 0).attr('x2', innerW)
-      .attr('y1', y(1500)).attr('y2', y(1500))
+    chart
+      .append('line')
+      .attr('x1', 0)
+      .attr('x2', innerW)
+      .attr('y1', y(1500))
+      .attr('y2', y(1500))
       .attr('stroke', COLORS.neutral)
       .attr('stroke-dasharray', '4 4')
       .attr('opacity', 0.6)
-    chart.append('text')
+    chart
+      .append('text')
       .attr('x', innerW + 6)
       .attr('y', y(1500) + 4)
       .attr('fill', COLORS.neutral)
       .style('font-size', '10px')
       .text('1500')
 
-    chart.append('path')
+    chart
+      .append('path')
       .datum(points)
       .attr('fill', 'none')
       .attr('stroke', COLORS.elo)
       .attr('stroke-width', 2)
       .attr('stroke-linejoin', 'round')
-      .attr('d', d3.line().x(function (d) { return x(d[0]) }).y(function (d) { return y(d[1]) }))
+      .attr(
+        'd',
+        d3
+          .line()
+          .x(function (d) {
+            return x(d[0])
+          })
+          .y(function (d) {
+            return y(d[1])
+          })
+      )
 
     var last = points[points.length - 1]
-    chart.append('circle')
-      .attr('cx', x(last[0])).attr('cy', y(last[1]))
-      .attr('r', 4)
-      .attr('fill', COLORS.elo)
-    chart.append('text')
+    chart.append('circle').attr('cx', x(last[0])).attr('cy', y(last[1])).attr('r', 4).attr('fill', COLORS.elo)
+    chart
+      .append('text')
       .attr('x', x(last[0]) + 8)
       .attr('y', y(last[1]) + 4)
       .attr('fill', COLORS.elo)
@@ -231,35 +330,50 @@
       .style('font-weight', 700)
       .text(String(Math.round(last[1])))
 
-    chart.append('g')
+    chart
+      .append('g')
       .attr('transform', 'translate(0,' + innerH + ')')
       .call(
-        d3.axisBottom(x)
-          .tickValues(starts.map(function (d) { return d[0] }))
+        d3
+          .axisBottom(x)
+          .tickValues(
+            starts.map(function (d) {
+              return d[0]
+            })
+          )
           .tickFormat(function (idxValue) {
-            var found = starts.find(function (s) { return s[0] === idxValue })
+            var found = starts.find(function (s) {
+              return s[0] === idxValue
+            })
             return found ? shortSeason(found[1]) : ''
           })
           .tickSize(0)
           .tickPadding(8)
       )
-      .call(function (g) { g.select('.domain').remove() })
+      .call(function (g) {
+        g.select('.domain').remove()
+      })
       .selectAll('text')
       .attr('fill', COLORS.neutral)
       .style('font-size', '11px')
 
-    chart.append('g')
+    chart
+      .append('g')
       .call(d3.axisLeft(y).ticks(5).tickSize(0).tickPadding(8).tickFormat(d3.format('~')))
-      .call(function (g) { g.select('.domain').remove() })
+      .call(function (g) {
+        g.select('.domain').remove()
+      })
       .selectAll('text')
       .attr('fill', COLORS.neutral)
       .style('font-size', '11px')
 
-    var guide = chart.append('line')
+    var guide = chart
+      .append('line')
       .attr('stroke', COLORS.neutral)
       .attr('stroke-dasharray', '3 3')
       .style('display', 'none')
-    var marker = chart.append('circle')
+    var marker = chart
+      .append('circle')
       .attr('r', 4.5)
       .attr('fill', COLORS.elo)
       .attr('stroke', '#fff')
@@ -271,7 +385,8 @@
       })
     }
 
-    chart.append('rect')
+    chart
+      .append('rect')
       .attr('width', innerW)
       .attr('height', innerH)
       .attr('fill', 'transparent')
@@ -280,15 +395,25 @@
         var p = locate(x.invert(coords[0]))
         var season = 0
         for (var i = starts.length - 1; i >= 0; i--) {
-          if (starts[i][0] <= p[0]) { season = starts[i][1]; break }
+          if (starts[i][0] <= p[0]) {
+            season = starts[i][1]
+            break
+          }
         }
-        var weekIdx = p[0] - starts.filter(function (s) { return s[0] <= p[0] }).pop()[0]
+        var weekIdx =
+          p[0] -
+          starts
+            .filter(function (s) {
+              return s[0] <= p[0]
+            })
+            .pop()[0]
         var weekLabel = weekIdx === 0 ? 'preseason' : 'week ' + weekIdx
-        guide.attr('x1', x(p[0])).attr('x2', x(p[0]))
-          .attr('y1', 0).attr('y2', innerH)
-          .style('display', null)
+        guide.attr('x1', x(p[0])).attr('x2', x(p[0])).attr('y1', 0).attr('y2', innerH).style('display', null)
         marker.attr('cx', x(p[0])).attr('cy', y(p[1])).style('display', null)
-        showTip(event, '<strong>' + season + '</strong> · ' + weekLabel + '<br>Elo: <strong>' + Math.round(p[1]) + '</strong>')
+        showTip(
+          event,
+          '<strong>' + season + '</strong> · ' + weekLabel + '<br>Elo: <strong>' + Math.round(p[1]) + '</strong>'
+        )
       })
       .on('mouseleave', function () {
         guide.style('display', 'none')
@@ -308,52 +433,61 @@
     var H = m.top + owners.length * cell + m.bottom
 
     var svgSel = svg('#viz-h2h', W, H)
-    var chart = svgSel
-      .append('g')
-      .attr('transform', 'translate(' + m.left + ',' + m.top + ')')
+    var chart = svgSel.append('g').attr('transform', 'translate(' + m.left + ',' + m.top + ')')
 
     var rate = function (c) {
       var games = c.w + c.l + c.t
       return games ? (c.w + c.t * 0.5) / games : 0.5
     }
-    var color = d3.scaleLinear()
-      .domain([0, 0.5, 1])
-      .range(['#d60303', '#f4f4f1', '#008f00'])
-      .clamp(true)
+    var color = d3.scaleLinear().domain([0, 0.5, 1]).range(['#d60303', '#f4f4f1', '#008f00']).clamp(true)
 
-    chart.selectAll('.col-label')
+    chart
+      .selectAll('.col-label')
       .data(owners)
       .enter()
       .append('text')
-      .attr('x', function (d, i) { return i * cell + cell / 2 })
+      .attr('x', function (d, i) {
+        return i * cell + cell / 2
+      })
       .attr('y', -12)
       .attr('text-anchor', 'middle')
       .attr('fill', COLORS.neutral)
       .style('font-size', '12px')
       .style('font-weight', 600)
-      .text(function (d) { return d })
+      .text(function (d) {
+        return d
+      })
 
-    chart.selectAll('.row-label')
+    chart
+      .selectAll('.row-label')
       .data(owners)
       .enter()
       .append('text')
       .attr('x', -10)
-      .attr('y', function (d, i) { return i * cell + cell / 2 + 4 })
+      .attr('y', function (d, i) {
+        return i * cell + cell / 2 + 4
+      })
       .attr('text-anchor', 'end')
       .attr('fill', COLORS.neutral)
       .style('font-size', '12px')
       .style('font-weight', 600)
-      .text(function (d) { return d })
+      .text(function (d) {
+        return d
+      })
 
     owners.forEach(function (r, i) {
       owners.forEach(function (c, j) {
         if (r === c) {
-          chart.append('rect')
-            .attr('x', j * cell).attr('y', i * cell)
-            .attr('width', cell).attr('height', cell)
+          chart
+            .append('rect')
+            .attr('x', j * cell)
+            .attr('y', i * cell)
+            .attr('width', cell)
+            .attr('height', cell)
             .attr('rx', 4)
             .attr('fill', COLORS.diag)
-          chart.append('text')
+          chart
+            .append('text')
             .attr('x', j * cell + cell / 2)
             .attr('y', i * cell + cell / 2 + 4)
             .attr('text-anchor', 'middle')
@@ -366,8 +500,10 @@
         var g = chart.append('g')
         if (!rec || rec.w + rec.l + rec.t === 0) {
           g.append('rect')
-            .attr('x', j * cell).attr('y', i * cell)
-            .attr('width', cell).attr('height', cell)
+            .attr('x', j * cell)
+            .attr('y', i * cell)
+            .attr('width', cell)
+            .attr('height', cell)
             .attr('rx', 4)
             .attr('fill', '#fafafa')
           return
@@ -377,15 +513,27 @@
         function handle(event) {
           showTip(
             event,
-            '<strong>vs ' + c + '</strong><br>' +
-            rec.w + '-' + rec.l + (rec.t ? '-' + rec.t : '') +
-            ' (' + d3.format('.3f')(rRate).replace('0.', '.') + ')<br>' +
-            'PF: ' + fmt(rec.pf) + ' · PA: ' + fmt(rec.pa)
+            '<strong>vs ' +
+              c +
+              '</strong><br>' +
+              rec.w +
+              '-' +
+              rec.l +
+              (rec.t ? '-' + rec.t : '') +
+              ' (' +
+              d3.format('.3f')(rRate).replace('0.', '.') +
+              ')<br>' +
+              'PF: ' +
+              fmt(rec.pf) +
+              ' · PA: ' +
+              fmt(rec.pa)
           )
         }
         g.append('rect')
-          .attr('x', j * cell).attr('y', i * cell)
-          .attr('width', cell - 2).attr('height', cell - 2)
+          .attr('x', j * cell)
+          .attr('y', i * cell)
+          .attr('width', cell - 2)
+          .attr('height', cell - 2)
           .attr('rx', 4)
           .attr('fill', color(rRate))
           .on('mouseover', handle)
@@ -409,15 +557,26 @@
 
     var grad = svgSel.append('defs').append('linearGradient').attr('id', gradId)
     ;[0, 0.5, 1].forEach(function (stop) {
-      grad.append('stop').attr('offset', stop * 100 + '%').attr('stop-color', color(stop))
+      grad
+        .append('stop')
+        .attr('offset', stop * 100 + '%')
+        .attr('stop-color', color(stop))
     })
-    svgSel.append('rect')
-      .attr('x', m.left).attr('y', legendY)
-      .attr('width', legendW).attr('height', 10)
+    svgSel
+      .append('rect')
+      .attr('x', m.left)
+      .attr('y', legendY)
+      .attr('width', legendW)
+      .attr('height', 10)
       .attr('rx', 3)
       .attr('fill', 'url(#' + gradId + ')')
-    ;[[0, 'all L'], [0.5, '.500'], [1, 'all W']].forEach(function (tick) {
-      svgSel.append('text')
+    ;[
+      [0, 'all L'],
+      [0.5, '.500'],
+      [1, 'all W'],
+    ].forEach(function (tick) {
+      svgSel
+        .append('text')
         .attr('x', m.left + tick[0] * legendW)
         .attr('y', legendY + 22)
         .attr('text-anchor', tick[0] === 0 ? 'start' : tick[0] === 1 ? 'end' : 'middle')

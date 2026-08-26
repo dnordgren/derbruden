@@ -6,6 +6,108 @@
     <title>DerBruden.com | Trades</title>
 
     <!--#include file="partials/head-common.html" -->
+  <style>
+    h2 {
+      margin-bottom: 5px;
+    }
+
+    .updated {
+      color: #666;
+      font-size: 0.9em;
+      margin-top: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    th {
+      border-bottom: 2px solid #eee;
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #666;
+    }
+
+    .event-badge {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 10px;
+      font-size: 0.8em;
+      font-weight: 600;
+      color: #fff;
+      background: #95a5a6;
+    }
+
+    .event-badge.accepted {
+      background: #27ae60;
+    }
+
+    .event-badge.declined,
+    .event-badge.vetoed {
+      background: #c0392b;
+    }
+
+    .side {
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      table,
+      thead,
+      tbody,
+      tr,
+      td {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody tr {
+        margin-bottom: 16px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 12px;
+      }
+
+      td[colspan]::before {
+        content: none;
+      }
+
+      td::before {
+        display: block;
+        font-size: 0.75em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #666;
+        margin-bottom: 2px;
+      }
+
+      td:nth-child(1)::before {
+        content: 'Date';
+      }
+
+      td:nth-child(2)::before {
+        content: 'Status';
+      }
+
+      td:nth-child(3)::before {
+        content: 'Details';
+      }
+    }
+  </style>
 </head>
 
   <body>

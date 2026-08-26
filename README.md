@@ -116,6 +116,30 @@ Notes:
 - D/ST picks carry negative player ids shaped like `-(16000 + NFL team
 id)`; the generator resolves them to team names.
 
+### Generate waiver data
+
+Builds `static/data/waivers.json` for the
+[waivers page](https://derbruden.com/waivers.html): current waiver order and
+this season's waiver moves. Needs both `ESPN_S2` and `SWID`, like the trade
+watcher.
+
+```sh
+make waivers
+# or directly:
+node scripts/generate-waivers.mjs [--dry-run]
+```
+
+Notes:
+
+- The JSON is rebuilt from scratch every run, so only the current season is
+  ever retained. `scripts/waiver-players.json` caches resolved player names,
+  pruned to the current season; commit it.
+- A daily GitHub Action (`.github/workflows/waivers.yml`) regenerates the
+  data, publishes the page and JSON to S3 with two-path invalidation, and
+  commits when something changed. Idle runs change nothing.
+- Pending (`PROPOSED`) claims show a Pending badge until ESPN processes them;
+  declined or failed claims never appear.
+
 ### Weekly update
 
 Regenerate and publish in one pass:

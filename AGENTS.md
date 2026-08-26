@@ -22,6 +22,10 @@ No framework; shared page chunks are inlined at build time by
   from the ESPN API.
 - `make waivers` — regenerate `static/data/waivers.json` (waiver order +
   season moves) for `src/waivers.html`.
+- `make records` — regenerate `src/records.html` (all-time records,
+  head-to-head matrix, trophy case, hall of shame) and
+  `static/data/alltime-records.json` from the ESPN API. See
+  "All-time records" below.
 - `node scripts/sync-team-names.js [--dry-run] [season]` — sync ESPN
   team names into owner page headers.
 - `AWS_PROFILE=derbruden make deploy` — S3 sync + CloudFront invalidation.
@@ -147,6 +151,33 @@ No framework; shared page chunks are inlined at build time by
   (like `trades.json`) so full deploys never delete it or give it immutable
   caching.
 - Tests: `node --test scripts/generate-waivers.test.mjs`.
+
+## All-time records
+
+- `scripts/generate-records.js` fetches every season from 2018 (ESPN
+  keeps nothing earlier; 2014–2017 live only in stats.csv) and writes
+  `static/data/alltime-records.json` plus the body of
+  `src/records.html` between `<!-- RECORDS_START -->` /
+  `<!-- RECORDS_END -->` markers (first run creates the page; its
+  template emits partial includes like the other generators).
+- Requires the same `scripts/.env` `ESPN_S2` as power rankings.
+- Sections: records, head-to-head matrix, trophy case, hall of shame.
+  Weekly marks and h2h include playoffs; droughts and champions merge
+  stats.csv back to 2014.
+- Playoff berth = played a `WINNERS_BRACKET` game. Consolation ladder
+  and losers bracket are consolation rounds. Champion = winner of the
+  latest-week winners-bracket game; its existence also marks the season
+  complete for drought purposes.
+- Win streaks span seasons, count playoff wins, reset on ties.
+- Regression check: `node scripts/generate-records.js --check` must
+  pass. It compares per-owner regular-season W-L, playoff flags, and
+  champions against stats.csv since 2018. Two known csv errors are
+  whitelisted: JO and DN marked as 2018 playoff teams, but that
+  bracket had four teams (`playoffTeamCount=4`; both lack `PORnk`).
+  Derek chose to leave the csv untouched.
+- Tests: `node --test scripts/generate-records.test.mjs`.
+- Rerun after each week or whenever records change; no scheduled
+  action exists.
 
 ## Team name sync
 

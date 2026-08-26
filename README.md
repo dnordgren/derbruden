@@ -140,6 +140,43 @@ Notes:
 - Pending (`PROPOSED`) claims show a Pending badge until ESPN processes them;
   declined or failed claims never appear.
 
+### Generate all-time records
+
+Builds [records.html](https://derbruden.com/records.html): highest and lowest
+weekly scores, biggest blowout, longest win streak, most points in a season,
+the lifetime head-to-head matrix, champions, and the hall of shame (lowest
+score ever, most points in a loss, longest playoff droughts).
+
+```sh
+make records
+```
+
+or directly:
+
+```sh
+node scripts/generate-records.js
+```
+
+Notes:
+
+- Weekly records and head-to-head use every decided regular-season and
+  postseason game since the league joined ESPN in 2018.
+- Champions and playoff droughts reach back to 2014 by merging `PO?` and
+  `Champ` columns from `scripts/stats.csv`.
+- Playoff berths come from winners-bracket games only. Consolation ladder and
+  losers bracket games are consolation rounds, not the playoffs.
+- A win streak continues across seasons and includes playoff wins; a tie or
+  loss resets it.
+- Output lands in `static/data/alltime-records.json`; the deploy excludes it
+  from immutable caching so refreshes pick it up.
+- Regression check against `stats.csv`:
+  `node scripts/generate-records.js --check`. W-L, playoff flags, and
+  champions must agree with the sheet for every season since 2018. Two known
+  exceptions are tolerated: stats.csv marks JO and DN as 2018 playoff teams,
+  but ESPN ran a four-team bracket that year (both also lack a `PORnk`), so
+  the API wins.
+- Tests: `node --test scripts/generate-records.test.mjs`.
+
 ### Weekly update
 
 Regenerate and publish in one pass:

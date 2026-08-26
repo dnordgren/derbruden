@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts waivers
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -42,9 +42,10 @@ deploy-html: build
 deploy-static:
 	@echo "make deploy-static : Started"
 	@echo "Deploying static assets to bucket derbruden.com..."
-	@aws s3 rm s3://$(BUCKET)/static/ --recursive --exclude "data/trades.json" --exclude "data/waivers.json"
-	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --cache-control "public, max-age=31536000, immutable"
+	@aws s3 rm s3://$(BUCKET)/static/ --recursive --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json"
+	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --cache-control "public, max-age=31536000, immutable"
 	@aws s3 cp static/data/trades.json s3://$(BUCKET)/static/data/trades.json --cache-control "public, max-age=0, must-revalidate"
+	@aws s3 cp static/data/alltime-records.json s3://$(BUCKET)/static/data/alltime-records.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/waivers.json s3://$(BUCKET)/static/data/waivers.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/ico/header-icon-32.png s3://$(BUCKET)/favicon.ico --cache-control "public, max-age=31536000, immutable"
 	@echo "make deploy-static : Finished"
@@ -78,3 +79,9 @@ waivers:
 	@echo "Generating waiver order and moves..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-waivers.mjs
 	@echo "make waivers : Finished"
+
+records:
+	@echo "make records : Started"
+	@echo "Generating all-time records..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-records.js
+	@echo "make records : Finished"

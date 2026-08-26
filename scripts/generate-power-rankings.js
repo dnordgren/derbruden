@@ -310,79 +310,13 @@ function pageTemplate(content) {
   <meta name="twitter:title" content="DerBruden.com | Power Rankings">
   <meta name="twitter:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
-  <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
-    rel="stylesheet">
-    <link rel="stylesheet" href="../static/css/site.css?v=1">
-  
-  <style>
-    .pr-meta {
-      color: #666;
-      font-size: 0.9em;
-    }
-    
-    .delta.up {
-      color: #1a7f37;
-    }
-    
-    .delta.down {
-      color: #c0392b;
-    }
-    
-    .methodology {
-      margin-top: 30px;
-      font-size: 0.85em;
-      color: #666;
-    }
-  </style>
-  <script type="speculationrules">
-    {
-      "prefetch": [
-        {
-          "source": "document",
-          "where": { "href_matches": "./*.html" },
-          "eagerness": "moderate"
-        }
-      ]
-    }
-  </script>
+  <!--#include file="partials/head-common.html" -->
 </head>
 
 <body>
-  <header>
-    <div class="header-container">
-      <div class="header">
-        <a href="./index.html">
-          <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" width="100" height="75">
-        </a>
-        <div>
-          <h1 class="site-title">DerBruden.com</h1>
-          <p class="tagline">Strange dreams lately?</p>
-        </div>
-      </div>
+  <!--#include file="partials/site-header.html" -->
 
-      <div class="sponsor-box">
-        <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately"
-          target="_blank" rel="noopener noreferrer"><img src="../static/img/about-sponsor.webp" alt="Booze Better"></a>
-        <div class="sponsor-content">
-          <p class="sponsor-tagline"><em>Brought to you by:</em></p>
-          <p class="sponsor-name">Booze Better</p>
-          <p class="sponsor-tagline">Drink Smart, Feel Better. The scientific solution to hangovers has finally arrived.
-          </p>
-          <a href="https://www.supplementsolutions.us/boozebetter?utm_source=derbruden.com&utm_medium=banner&utm_campaign=strangedreamslately"
-            target="_blank" rel="noopener noreferrer">Learn more</a>.
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <nav>
-    <p><a href="./about.html">About</a> || <a href="./owners.html">League Owners</a> || <a
-        href="./power-rankings.html">Power Rankings</a> || <a href="./trades.html">Trades</a> || <a
-        href="./drafts.html">Drafts</a></p>
-  </nav>
+  <!--#include file="partials/nav.html" -->
 
   <main>
     <div class="owner-logo-header">
@@ -400,12 +334,7 @@ function pageTemplate(content) {
     </details>
   </main>
 
-  <footer>
-    <p>
-      <a href="https://fantasy.espn.com/football/league?leagueId=794521" target="_blank">ESPN</a> /
-      <a href="https://discord.com/channels/870404843582406696/870404844681322549" target="_blank">Discord</a>
-    </p>
-  </footer>
+  <!--#include file="partials/footer.html" -->
 </body>
 
 </html>

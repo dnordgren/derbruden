@@ -7,6 +7,9 @@ logs
 !.env.example
 scripts/.env*
 
+# ESPN league JSON cache for owner viz generator
+scripts/.viz-cache/
+
 # trade watcher runtime state
 /data/
 

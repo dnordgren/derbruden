@@ -6,54 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DerBruden.com | DN</title>
   <!--#include file="partials/head-common.html" -->
-  <style>
-    /* D3 chart styles */
-    .axis-label {
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .line {
-      fill: none;
-      stroke-width: 2;
-    }
-
-    .bar {
-      fill: #012f69;
-    }
-
-    #tooltip {
-      position: absolute;
-      display: none;
-      padding: 5px;
-      background: #eceff4;
-      border: 1px solid #2e3440;
-      border-radius: 4px;
-      pointer-events: none;
-      font-size: 12px;
-    }
-
-    #chart-container,
-    .chart-title {
-      font-family: monospace;
-      margin-bottom: 40px;
-    }
-
-    .chart-title {
-      font-weight: bold;
-      font-size: 16px;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .export-btn {
-      display: block;
-      margin: 10px auto;
-      font-family: monospace;
-      padding: 5px 10px;
-      cursor: pointer;
-    }
-  </style>
 </head>
 
 <body>
@@ -252,13 +204,8 @@
           <td class="number">6</td>
           <td class="number"></td>
         </tr>
-      </tbody>
-    </table></div>
-    <h1>DN - Points and Wins by Season</h1>
-    <div id="chart-container"></div>
-    <div id="tooltip"
-      style="position: absolute; display: none; padding: 5px; background: lightgrey; border: 1px solid #666; border-radius: 4px; pointer-events: none; font-size: 12px;">
-    </div>
+  </tbody>
+</table></div>
   <!-- DRAFT_HISTORY_START -->
   <section class="draft-history">
     <h2>Draft Picks</h2>
@@ -272,304 +219,23 @@
     <p><strong>2018:</strong> R1P6 (6 overall): Antonio Brown (WR, PIT); R2P5 (15 overall): A.J. Green (WR, ARI); R3P6 (26 overall): Davante Adams (WR, GB); R4P5 (35 overall): Joe Mixon (RB, CIN); R5P6 (46 overall): Kenyan Drake (RB, MIA); R6P5 (55 overall): Cam Newton (QB, CAR); R7P6 (66 overall): Robert Woods (WR, LAR); R8P5 (75 overall): Dion Lewis (RB, TEN); R9P6 (86 overall): Devin Funchess (TE, CAR); R10P5 (95 overall): Jack Doyle (TE, IND); R11P6 (106 overall): Matthew Stafford (QB, DET); R12P5 (115 overall): Mohamed Sanu (WR, ATL); R13P6 (126 overall): Baltimore Ravens D/ST (D/ST, BAL); R14P5 (135 overall): Tyler Lockett (WR, SEA); R15P6 (146 overall): James White; R16P5 (155 overall): Jake Elliott (PK, PHI)</p>
   </section>
   <!-- DRAFT_HISTORY_END -->
-  </main>
-
+  <!-- OWNER_VIZ_START -->
+  <section class="owner-viz">
+    <h2>Points For vs Points Against</h2>
+    <p class="viz-note">Each dot pair shows one season. Green is points scored, red is points allowed.</p>
+    <div class="viz-chart" id="viz-pfpa"></div>
+    <h2>Elo Trajectory</h2>
+    <p class="viz-note">Weekly Elo rating, 1500 is league average.</p>
+    <div class="viz-chart" id="viz-elo"></div>
+    <h2>Career Head-to-Head</h2>
+    <p class="viz-note">Regular season record against each owner. Green means you won more than you lost.</p>
+    <div class="viz-chart viz-chart-h2h" id="viz-h2h"></div>
+    <script type="application/json" id="owner-viz-data">{"generated":"2026-08-26","owner":"DN","pfpa":[{"season":2014,"pf":1498,"pa":1501},{"season":2015,"pf":2017,"pa":1915},{"season":2016,"pf":1118,"pa":1235},{"season":2017,"pf":1276,"pa":1361},{"season":2018,"pf":1497,"pa":1517},{"season":2019,"pf":1530,"pa":1249},{"season":2020,"pf":1308,"pa":1445},{"season":2021,"pf":1657,"pa":1512},{"season":2022,"pf":1520,"pa":1360},{"season":2023,"pf":1285,"pa":1504},{"season":2024,"pf":1410,"pa":1404},{"season":2025,"pf":1308,"pa":1378}],"elo":{"seasonStarts":[[0,2018],[14,2019],[28,2020],[42,2021],[57,2022],[72,2023],[86,2024],[100,2025]],"points":[[0,1504],[1,1513],[2,1506],[3,1488],[4,1474],[5,1491],[6,1507],[7,1524],[8,1520],[9,1508],[10,1504],[11,1492],[12,1503],[13,1486],[14,1488],[15,1510],[16,1522],[17,1521],[18,1536],[19,1554],[20,1565],[21,1566],[22,1558],[23,1551],[24,1560],[25,1566],[26,1567],[27,1576],[28,1527],[29,1541],[30,1552],[31,1540],[32,1537],[33,1524],[34,1516],[35,1496],[36,1508],[37,1504],[38,1515],[39,1499],[40,1485],[41,1470],[42,1481],[43,1488],[44,1491],[45,1490],[46,1477],[47,1500],[48,1513],[49,1527],[50,1517],[51,1534],[52,1538],[53,1549],[54,1543],[55,1548],[56,1530],[57,1514],[58,1498],[59,1504],[60,1507],[61,1526],[62,1535],[63,1528],[64,1542],[65,1554],[66,1573],[67,1552],[68,1559],[69,1551],[70,1553],[71,1546],[72,1514],[73,1495],[74,1488],[75,1476],[76,1493],[77,1473],[78,1487],[79,1469],[80,1453],[81,1459],[82,1472],[83,1462],[84,1465],[85,1450],[86,1488],[87,1476],[88,1501],[89,1492],[90,1504],[91,1496],[92,1482],[93,1471],[94,1460],[95,1479],[96,1473],[97,1465],[98,1457],[99,1474],[100,1481],[101,1493],[102,1477],[103,1492],[104,1508],[105,1487],[106,1495],[107,1487],[108,1474],[109,1479],[110,1470],[111,1470],[112,1465],[113,1475]]},"h2h":{"owners":["AN","AR","CR","DM","DN","GM","IK","JH","JO","ZS"],"row":{"AN":{"w":2,"l":7,"t":0,"pf":961.42,"pa":1085.7},"AR":{"w":12,"l":3,"t":0,"pf":1719.94,"pa":1424.34},"CR":{"w":7,"l":6,"t":0,"pf":1530.14,"pa":1486.6999999999998},"DM":{"w":5,"l":4,"t":0,"pf":1029.1200000000001,"pa":953.72},"GM":{"w":3,"l":7,"t":0,"pf":1076.98,"pa":1189.84},"IK":{"w":5,"l":6,"t":0,"pf":1175.46,"pa":1133.6399999999999},"JH":{"w":5,"l":8,"t":0,"pf":1242.1999999999998,"pa":1411.84},"JO":{"w":7,"l":2,"t":0,"pf":1027.06,"pa":900.4399999999998},"ZS":{"w":5,"l":10,"t":0,"pf":1527.74,"pa":1553.06}}}}</script>
+  </section>
   <script src="../static/js/d3.v7.min.js"></script>
-  <script>
-    // Data for multiple teams
-    const teamsData = [
-      {
-        teamName: "McAfee's Faithful",
-        data: [
-          { season: '2014', points_scored: 1498, points_against: 1501, wins: 6 },
-          { season: '2015', points_scored: 2017, points_against: 1915, wins: 6 },
-          { season: '2016', points_scored: 1118, points_against: 1235, wins: 4 },
-          { season: '2017', points_scored: 1276, points_against: 1361, wins: 7 },
-          { season: '2018', points_scored: 1497, points_against: 1517, wins: 5 },
-          { season: '2019', points_scored: 1530, points_against: 1249, wins: 10 },
-          { season: '2020', points_scored: 1308, points_against: 1445, wins: 4 },
-          { season: '2021', points_scored: 1657, points_against: 1512, wins: 9 },
-          { season: '2022', points_scored: 1520, points_against: 1360, wins: 9 },
-          { season: '2023', points_scored: 1285, points_against: 1504, wins: 5 },
-        ]
-      },
-      // {
-      //   teamName: "bb im yr heisman trophy winner",
-      //   data: [
-      //     { season: '2014', points_scored: 1896, points_against: 1316, wins: 11 },
-      //     { season: '2015', points_scored: 1983, points_against: 2116, wins: 4 },
-      //     { season: '2016', points_scored: 1238, points_against: 1355, wins: 5 },
-      //     { season: '2017', points_scored: 1417, points_against: 1397, wins: 7 },
-      //     { season: '2018', points_scored: 1468, points_against: 1624, wins: 4 },
-      //     { season: '2019', points_scored: 1367, points_against: 1333, wins: 7 },
-      //     { season: '2020', points_scored: 1400, points_against: 1445, wins: 7 },
-      //     { season: '2021', points_scored: 1604, points_against: 1586, wins: 6 },
-      //     { season: '2022', points_scored: 1519, points_against: 1358, wins: 10 },
-      //     { season: '2023', points_scored: 1438, points_against: 1382, wins: 8 },
-      //   ]
-      // },
-      // {
-      //   teamName: "The Diabolical Liars",
-      //   data: [
-      //     { season: '2014', points_scored: 1539, points_against: 1616, wins: 5 },
-      //     { season: '2015', points_scored: 1911, points_against: 2038, wins: 3 },
-      //     { season: '2016', points_scored: 1244, points_against: 1285, wins: 7 },
-      //     { season: '2017', points_scored: 1376, points_against: 1248, wins: 8 },
-      //     { season: '2018', points_scored: 1466, points_against: 1568, wins: 8 },
-      //     { season: '2019', points_scored: 1914, points_against: 1411, wins: 11 },
-      //     { season: '2020', points_scored: 1588, points_against: 1441, wins: 8 },
-      //     { season: '2021', points_scored: 1531, points_against: 1519, wins: 6 },
-      //     { season: '2022', points_scored: 1445, points_against: 1675, wins: 4 },
-      //     { season: '2023', points_scored: 1443, points_against: 1393, wins: 7 },
-      //   ]
-      // },
-      // {
-      //   teamName: "Unburdened By What Has Been",
-      //   data: [
-      //     { season: '2014', points_scored: 1273, points_against: 1586, wins: 3 },
-      //     { season: '2015', points_scored: 1825, points_against: 2079, wins: 4 },
-      //     { season: '2016', points_scored: 1171, points_against: 994, wins: 9 },
-      //     { season: '2017', points_scored: 1313, points_against: 1177, wins: 9 },
-      //     { season: '2018', points_scored: 1561, points_against: 1430, wins: 8 },
-      //     { season: '2019', points_scored: 1402, points_against: 1322, wins: 8 },
-      //     { season: '2020', points_scored: 1573, points_against: 1482, wins: 8 },
-      //     { season: '2021', points_scored: 1669, points_against: 1679, wins: 5 },
-      //     { season: '2022', points_scored: 1699, points_against: 1521, wins: 8 },
-      //     { season: '2023', points_scored: 1676, points_against: 1374, wins: 11 },
-      //   ]
-      // }
-    ];
-
-    // Function to render chart for each team
-    function renderChart(team) {
-      // Create a container for each chart
-      const container = d3.select("#chart-container")
-        .append("div")
-        .attr("class", "chart-section");
-
-      // Add the team name as a title
-      container.append("div")
-        .attr("class", "chart-title")
-        .text(team.teamName);
-
-      // Append a new SVG for each team chart
-      const svg = container.append("svg")
-        .attr("width", 800)
-        .attr("height", 400);
-
-      const margin = { top: 20, right: 60, bottom: 40, left: 60 };
-      const width = +svg.attr("width") - margin.left - margin.right;
-      const height = +svg.attr("height") - margin.top - margin.bottom;
-
-      const chart = svg.append("g")
-        .attr("transform", `translate(${margin.left},${margin.top})`);
-
-      // Scales and axes
-      const x = d3.scaleBand()
-        .domain(team.data.map(d => d.season))
-        .range([0, width])
-        .padding(0.1);
-
-      const yLeft = d3.scaleLinear()
-        .domain([0, 2400])
-        .range([height, 0]);
-
-      const yRight = d3.scaleLinear()
-        .domain([0, 14])
-        .range([height, 0]);
-
-      // Axes rendering
-      chart.append("g")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x));
-
-      chart.append("text")
-        .attr("class", "axis-label")
-        .attr("x", width / 2)
-        .attr("y", height + margin.bottom - 5)
-        .style("text-anchor", "middle")
-        .text("Season");
-
-      chart.append("g")
-        .call(d3.axisLeft(yLeft))
-        .append("text")
-        .attr("class", "axis-label")
-        .attr("transform", "rotate(-90)")
-        .attr("y", -40)
-        .attr("x", -height / 2)
-        .attr("dy", "1em")
-        .style("text-anchor", "middle")
-        .text("Points Scored and Points Against");
-
-      chart.append("g")
-        .attr("transform", `translate(${width},0)`)
-        .call(d3.axisRight(yRight))
-        .append("text")
-        .attr("class", "axis-label")
-        .attr("transform", "rotate(-90)")
-        .attr("y", 40)
-        .attr("x", height / 2)
-        .attr("dy", "-1em")
-        .style("text-anchor", "middle")
-        .text("Wins");
-
-      // Bars and lines
-      chart.selectAll(".bar")
-        .data(team.data)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", d => x(d.season))
-        .attr("y", d => yRight(d.wins))
-        .attr("width", x.bandwidth() / 2)
-        .attr("height", d => height - yRight(d.wins))
-        .attr("transform", `translate(${x.bandwidth() / 4},0)`)
-        .attr("fill", "#012f69");
-
-      const lineScored = d3.line()
-        .x(d => x(d.season) + x.bandwidth() / 2)
-        .y(d => yLeft(d.points_scored));
-
-      const lineAgainst = d3.line()
-        .x(d => x(d.season) + x.bandwidth() / 2)
-        .y(d => yLeft(d.points_against));
-
-      chart.append("path")
-        .datum(team.data)
-        .attr("class", "line")
-        .attr("d", lineScored)
-        .style("stroke", "#008f00")
-        .style("fill", "none");
-
-      chart.append("path")
-        .datum(team.data)
-        .attr("class", "line")
-        .attr("d", lineAgainst)
-        .style("stroke", "#d60303")
-        .style("fill", "none");
-
-      // Legend setup
-      const legendData = [
-        { label: "Points Scored", color: "#008f00" },
-        { label: "Points Against", color: "#d60303" },
-        { label: "Wins", color: "#012f69" }
-      ];
-
-      const legend = chart.append("g")
-        .attr("transform", `translate(${width - 150},${-margin.top})`)
-        .attr("class", "legend");
-
-      // Legend items
-      legend.selectAll("rect")
-        .data(legendData)
-        .enter()
-        .append("rect")
-        .attr("x", 0)
-        .attr("y", (d, i) => i * 20)
-        .attr("width", 10)
-        .attr("height", 10)
-        .attr("fill", d => d.color);
-
-      // Legend labels
-      legend.selectAll("text")
-        .data(legendData)
-        .enter()
-        .append("text")
-        .attr("x", 15)
-        .attr("y", (d, i) => i * 20 + 9)
-        .attr("class", "legend-label")
-        .style("font-size", "12px")
-        .text(d => d.label);
-
-      // Select tooltip div
-      const tooltip = d3.select("#tooltip");
-
-      // Tooltip function to show and hide
-      function showTooltip(event, d) {
-        tooltip.style("display", "block")
-          .html(`
-            <strong>Season:</strong> ${d.season}<br>
-            <strong>Points Scored:</strong> ${d.points_scored}<br>
-            <strong>Points Against:</strong> ${d.points_against}<br>
-            <strong>Wins:</strong> ${d.wins}
-        `)
-          .style("left", (event.pageX + 10) + "px")
-          .style("top", (event.pageY - 28) + "px");
-      }
-
-      function hideTooltip() {
-        tooltip.style("display", "none");
-      }
-
-      // Apply tooltip to bars (wins)
-      chart.selectAll(".bar")
-        .on("mouseover", showTooltip)
-        .on("mousemove", showTooltip)
-        .on("mouseout", hideTooltip);
-
-      // Apply tooltip to points scored line
-      chart.selectAll(".line")
-        .data(team.data)
-        .enter()
-        .append("circle")
-        .attr("class", "line-point")
-        .attr("cx", d => x(d.season) + x.bandwidth() / 2)
-        .attr("cy", d => yLeft(d.points_scored))
-        .attr("r", 5)
-        .attr("fill", "blue")
-        .on("mouseover", showTooltip)
-        .on("mousemove", showTooltip)
-        .on("mouseout", hideTooltip);
-
-      // Apply tooltip to points against line
-      chart.selectAll(".line-point-against")
-        .data(team.data)
-        .enter()
-        .append("circle")
-        .attr("class", "line-point-against")
-        .attr("cx", d => x(d.season) + x.bandwidth() / 2)
-        .attr("cy", d => yLeft(d.points_against))
-        .attr("r", 5)
-        .attr("fill", "red")
-        .on("mouseover", showTooltip)
-        .on("mousemove", showTooltip)
-        .on("mouseout", hideTooltip);
-
-      // Add an export button for each chart
-      // container.append("button")
-      //   .attr("class", "export-btn")
-      //   .text("Export as PNG")
-      //   .on("click", () => {
-      //     // Convert SVG to PNG
-      //     const svgData = new XMLSerializer().serializeToString(svg.node());
-      //     const svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
-      //     const url = URL.createObjectURL(svgBlob);
-
-      //     const img = new Image();
-      //     img.onload = function () {
-      //       const scaleFactor = 2;
-      //       const canvas = document.createElement("canvas");
-      //       canvas.width = svg.attr("width") * scaleFactor;
-      //       canvas.height = svg.attr("height") * scaleFactor;
-      //       const ctx = canvas.getContext("2d");
-
-      //       ctx.fillStyle = "white";
-      //       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      //       ctx.scale(scaleFactor, scaleFactor);
-      //       ctx.drawImage(img, 0, 0);
-
-      //       const link = document.createElement("a");
-      //       link.download = `${team.teamName} chart.png`;
-      //       link.href = canvas.toDataURL("image/png");
-      //       link.click();
-
-      //       URL.revokeObjectURL(url);
-      //     };
-      //     img.src = url;
-      //   });
-    }
-
-    teamsData.forEach(renderChart);
-  </script>
+  <script src="../static/js/owner-charts.js?v=1"></script>
+  <!-- OWNER_VIZ_END -->
+  </main>
 
   <!--#include file="partials/footer.html" -->
 </body>

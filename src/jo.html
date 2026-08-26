@@ -219,6 +219,22 @@
     <p><strong>2018:</strong> R1P1 (1 overall): Ezekiel Elliott (RB, DAL); R2P10 (20 overall): Tom Brady (QB, NE); R3P1 (21 overall): Michael Thomas (WR, NO); R4P10 (40 overall): Brandin Cooks (WR, LAR); R5P1 (41 overall): Jay Ajayi (RB, PHI); R6P10 (60 overall): Greg Olsen (TE, CAR); R7P1 (61 overall): Tarik Cohen (RB, CHI); R8P10 (80 overall): Michael Crabtree (WR, BAL); R9P1 (81 overall): Randall Cobb (WR, GB); R10P10 (100 overall): Jacksonville Jaguars D/ST (D/ST, JAX); R11P1 (101 overall): Drew Brees (QB, NO); R12P10 (120 overall): Aaron Jones Sr. (RB, GB); R13P1 (121 overall): DJ Moore (WR, CAR); R14P10 (140 overall): Trey Burton (TE, CHI); R15P1 (141 overall): Carlos Hyde (RB, JAX); R16P10 (160 overall): Matt Bryant (PK, ATL)</p>
   </section>
   <!-- DRAFT_HISTORY_END -->
+  <!-- OWNER_VIZ_START -->
+  <section class="owner-viz">
+    <h2>Points For vs Points Against</h2>
+    <p class="viz-note">Each dot pair shows one season. Green is points scored, red is points allowed.</p>
+    <div class="viz-chart" id="viz-pfpa"></div>
+    <h2>Elo Trajectory</h2>
+    <p class="viz-note">Weekly Elo rating, 1500 is league average.</p>
+    <div class="viz-chart" id="viz-elo"></div>
+    <h2>Career Head-to-Head</h2>
+    <p class="viz-note">Regular season record against each owner. Green means you won more than you lost.</p>
+    <div class="viz-chart viz-chart-h2h" id="viz-h2h"></div>
+    <script type="application/json" id="owner-viz-data">{"generated":"2026-08-26","owner":"JO","pfpa":[{"season":2014,"pf":1712,"pa":1328},{"season":2015,"pf":2260,"pa":2060},{"season":2016,"pf":1222,"pa":1154},{"season":2017,"pf":1325,"pa":1316},{"season":2018,"pf":1451,"pa":1374},{"season":2019,"pf":1348,"pa":1442},{"season":2020,"pf":1581,"pa":1507},{"season":2021,"pf":1507,"pa":1574},{"season":2022,"pf":1491,"pa":1537},{"season":2023,"pf":1434,"pa":1429},{"season":2024,"pf":1493,"pa":1400},{"season":2025,"pf":1531,"pa":1326}],"elo":{"seasonStarts":[[0,2018],[14,2019],[28,2020],[42,2021],[57,2022],[72,2023],[86,2024],[100,2025]],"points":[[0,1504],[1,1522],[2,1529],[3,1549],[4,1563],[5,1548],[6,1550],[7,1529],[8,1521],[9,1531],[10,1534],[11,1535],[12,1524],[13,1510],[14,1512],[15,1530],[16,1513],[17,1535],[18,1520],[19,1499],[20,1488],[21,1477],[22,1478],[23,1466],[24,1459],[25,1482],[26,1467],[27,1456],[28,1481],[29,1491],[30,1500],[31,1522],[32,1522],[33,1526],[34,1507],[35,1527],[36,1516],[37,1523],[38,1512],[39,1533],[40,1512],[41,1504],[42,1512],[43,1514],[44,1498],[45,1504],[46,1508],[47,1515],[48,1510],[49,1525],[50,1511],[51,1494],[52,1508],[53,1491],[54,1479],[55,1491],[56,1493],[57,1507],[58,1511],[59,1530],[60,1525],[61,1535],[62,1523],[63,1506],[64,1501],[65,1496],[66,1477],[67,1489],[68,1505],[69,1493],[70,1513],[71,1492],[72,1493],[73,1487],[74,1475],[75,1466],[76,1478],[77,1464],[78,1455],[79,1461],[80,1473],[81,1467],[82,1481],[83,1493],[84,1484],[85,1503],[86,1496],[87,1503],[88,1501],[89,1509],[90,1505],[91,1518],[92,1530],[93,1541],[94,1536],[95,1517],[96,1527],[97,1538],[98,1540],[99,1537],[100,1512],[101,1515],[102,1528],[103,1516],[104,1507],[105,1526],[106,1519],[107,1532],[108,1553],[109,1548],[110,1559],[111,1544],[112,1553],[113,1564]]},"h2h":{"owners":["AN","AR","CR","DM","DN","GM","IK","JH","JO","ZS"],"row":{"AN":{"w":7,"l":8,"t":0,"pf":1734.46,"pa":1778.0399999999997},"AR":{"w":6,"l":3,"t":0,"pf":1049.08,"pa":976.34},"CR":{"w":5,"l":6,"t":0,"pf":1157.3000000000002,"pa":1233.4799999999998},"DM":{"w":7,"l":7,"t":0,"pf":1545.3799999999999,"pa":1527.4},"DN":{"w":2,"l":7,"t":0,"pf":900.4399999999998,"pa":1027.06},"GM":{"w":4,"l":6,"t":0,"pf":1185.38,"pa":1164.8999999999999},"IK":{"w":10,"l":4,"t":0,"pf":1512.04,"pa":1435.96},"JH":{"w":9,"l":5,"t":0,"pf":1721.94,"pa":1457.5200000000002},"ZS":{"w":4,"l":4,"t":0,"pf":773.1199999999999,"pa":810.7800000000001}}}}</script>
+  </section>
+  <script src="../static/js/d3.v7.min.js"></script>
+  <script src="../static/js/owner-charts.js?v=1"></script>
+  <!-- OWNER_VIZ_END -->
   </main>
 
   <!--#include file="partials/footer.html" -->

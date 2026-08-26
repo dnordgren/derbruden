@@ -20,6 +20,8 @@ No framework; shared page chunks are inlined at build time by
 - `make power` — regenerate `src/power-rankings.html` from the ESPN API.
 - `make drafts` — rebuild `src/drafts.html` and per-owner draft sections
   from the ESPN API.
+- `make waivers` — regenerate `static/data/waivers.json` (waiver order +
+  season moves) for `src/waivers.html`.
 - `make records` — regenerate `src/records.html` (all-time records,
   head-to-head matrix, trophy case, hall of shame) and
   `static/data/alltime-records.json` from the ESPN API. See
@@ -128,6 +130,27 @@ No framework; shared page chunks are inlined at build time by
   ids other than `-1` resolve via `/seasons/<year>/teams/<n>`.
 - Tests: `node --test scripts/generate-drafts.test.mjs`.
 - Rerun each year after the live draft finishes.
+
+## Waivers
+
+- `scripts/generate-waivers.mjs` fetches `view=mTeam` (teams carry
+  `waiverRank`, lower is better priority) and waiver transactions
+  (`view=mTransactions2`, filter types `FREEAGENT` + `WAIVER`) and rewrites
+  `static/data/waivers.json` from scratch. Only the current season is ever
+  retained; there is no ledger or dedupe state.
+- Needs BOTH `ESPN_S2` and `SWID` (same auth quirk as trades). Player names
+  resolve from `sports.core.api.espn.com`; cache lives in
+  `scripts/waiver-players.json` keyed `<season>:<playerId>`, pruned to the
+  current season each run. Commit it.
+- A daily GitHub Action (`.github/workflows/waivers.yml`, two cron windows
+  for DST) publishes `waivers.html` + `waivers.json` with a two-path
+  invalidation, then commits when files changed. Idle runs change nothing.
+- Moves keep statuses EXECUTED and PROPOSED only; declined/failed claims are
+  dropped. List is capped at the 150 most recent.
+- `deploy-static` excludes `data/waivers.json` from the recursive rm/sync
+  (like `trades.json`) so full deploys never delete it or give it immutable
+  caching.
+- Tests: `node --test scripts/generate-waivers.test.mjs`.
 
 ## All-time records
 

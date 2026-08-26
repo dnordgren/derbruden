@@ -5,118 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DerBruden.com | Trades</title>
 
-    <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon" />
-    <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon" />
+    <!--#include file="partials/head-common.html" -->
+  <style>
+    h2 {
+      margin-bottom: 5px;
+    }
 
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#f6f5f0" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#131512" media="(prefers-color-scheme: dark)" />
-    <link rel="stylesheet" href="../static/css/site.css" />
-    <link rel="preload" href="../static/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+    .updated {
+      color: var(--muted);
+      font-size: 0.9em;
+      margin-top: 0;
+    }
 
-    <style>
-      h2 {
-        margin-bottom: 5px;
-      }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
 
-      .updated {
-        color: var(--muted);
-        font-size: 0.9em;
-        margin-top: 0;
-      }
+    th,
+    td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
 
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
+    th {
+      border-bottom: 2px solid var(--ink);
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
 
-      th,
+    .event-badge {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: 10px;
+      font-size: 0.8em;
+      font-weight: 600;
+      color: var(--paper);
+      background: var(--muted);
+    }
+
+    .event-badge.accepted {
+      background: var(--accent);
+    }
+
+    .event-badge.declined,
+    .event-badge.vetoed {
+      background: var(--down);
+    }
+
+    .side {
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      table,
+      thead,
+      tbody,
+      tr,
       td {
-        text-align: left;
-        padding: 10px 12px;
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody tr {
+        margin-bottom: 16px;
         border-bottom: 1px solid var(--line);
-        vertical-align: top;
+        padding-bottom: 12px;
       }
 
-      th {
-        border-bottom: 2px solid var(--ink);
-        font-size: 0.72rem;
-        font-weight: 800;
+      td[colspan]::before {
+        content: none;
+      }
+
+      td::before {
+        display: block;
+        font-size: 0.75em;
         text-transform: uppercase;
-        letter-spacing: 0.07em;
+        letter-spacing: 0.05em;
         color: var(--muted);
+        margin-bottom: 2px;
       }
 
-      .event-badge {
-        display: inline-block;
-        padding: 1px 8px;
-        border-radius: 10px;
-        font-size: 0.8em;
-        font-weight: 600;
-        color: var(--paper);
-        background: var(--muted);
+      td:nth-child(1)::before {
+        content: 'Date';
       }
 
-      .event-badge.accepted {
-        background: var(--accent);
+      td:nth-child(2)::before {
+        content: 'Status';
       }
 
-      .event-badge.declined,
-      .event-badge.vetoed {
-        background: var(--down);
+      td:nth-child(3)::before {
+        content: 'Details';
       }
-
-      .side {
-        white-space: nowrap;
-        font-weight: 600;
-      }
-
-      @media (max-width: 768px) {
-        table,
-        thead,
-        tbody,
-        tr {
-          display: block;
-        }
-
-        thead {
-          display: none;
-        }
-
-        tbody tr {
-          margin-bottom: 16px;
-          border-bottom: 1px solid var(--line);
-          padding-bottom: 12px;
-        }
-      }
-    </style>
-  </head>
+    }
+  </style>
+</head>
 
   <body>
-    <header>
-      <div class="header-container">
-        <div class="header">
-          <a href="./index.html">
-            <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" width="200" height="153" />
-          </a>
-          <div>
-            <h1 class="site-title">DerBruden.com</h1>
-            <p class="tagline">Strange dreams lately?</p>
-          </div>
-        </div>
-      </div>
-    </header>
+  <!--#include file="partials/site-header.html" -->
 
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./owners.html">League Owners</a></li>
-        <li><a href="./power-rankings.html">Power Rankings</a></li>
-        <li><a href="./trades.html" aria-current="page">Trades</a></li>
-        <li><a href="./drafts.html">Drafts</a></li>
-      </ul>
-    </nav>
+  <!--#include file="partials/nav.html" -->
 
     <main>
       <h2>Trade Log</h2>
@@ -137,12 +134,7 @@
       </table>
     </main>
 
-    <footer>
-      <p>
-        <a href="https://fantasy.espn.com/football/league?leagueId=794521" target="_blank">ESPN</a> /
-        <a href="https://discord.com/channels/870404843582406696/870404844681322549" target="_blank">Discord</a>
-      </p>
-    </footer>
+  <!--#include file="partials/footer.html" -->
 
     <script>
       const escapeHtml = value =>

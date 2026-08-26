@@ -7,23 +7,33 @@ Guidance for AI coding agents working in this repo.
 DerBruden.com. Static fantasy football league site for the Der Bruden
 ESPN league (id 794521). Plain HTML in `src/`, assets in `static/`.
 Deploys to S3 + CloudFront with `make deploy` (profile `derbruden`).
-No framework, no build step besides the Node scripts in `scripts/`.
+No framework; shared page chunks are inlined at build time by
+`scripts/build.mjs` into git-ignored `pub/`.
 
 - Shared design system: `static/css/site.css` holds the palette
   variables, dark mode, type scale, tables, nav, and badge styles.
   Pages link it and keep only page-specific rules inline. Archivo is
-  self-hosted in `static/fonts/`. When changing shared chrome (header,
-  nav, footer), update the pages AND both generator templates
-  (`generate-power-rankings.js`, `generate-drafts.js`) so regenerated
-  pages stay in sync.
+  self-hosted in `static/fonts/`. Shared chrome (head links, header,
+  nav + sponsor ribbon, footer) lives in `src/partials/` — change it
+  there, not per page; the two full-page generator templates
+  (`generate-power-rankings.js`, `generate-drafts.js`) emit the same
+  includes and must stay in sync. Bump `site.css?v=N` in
+  `partials/head-common.html` whenever site.css changes.
 
 ## Commands
 
+- `make build` — inline `<!--#include -->` directives from `src/*.html`
+  into git-ignored `pub/`. `deploy-html` runs it automatically; never
+  edit `pub/` or deploy `src/` directly.
 - `node scripts/generate-stats.js owners index|all|<owner>` — rebuild
   stats tables into owner pages from `scripts/stats.csv`.
 - `make power` — regenerate `src/power-rankings.html` from the ESPN API.
 - `make drafts` — rebuild `src/drafts.html` and per-owner draft sections
   from the ESPN API.
+- `make records` — regenerate `src/records.html` (all-time records,
+  head-to-head matrix, trophy case, hall of shame) and
+  `static/data/alltime-records.json` from the ESPN API. See
+  "All-time records" below.
 - `node scripts/sync-team-names.js [--dry-run] [season]` — sync ESPN
   team names into owner page headers.
 - `AWS_PROFILE=derbruden make deploy` — S3 sync + CloudFront invalidation.
@@ -33,6 +43,23 @@ No framework, no build step besides the Node scripts in `scripts/`.
   `export PATH="$HOME/.venvs/awscli/bin:$PATH"` first.
 - `npx prettier --check <file>` — repo uses the `.prettierrc` config.
   Legacy HTML pages fail prettier; do not reformat them wholesale.
+- Static assets deploy with immutable year-long caching. Whenever a file
+  under `static/` changes, bump the `?v=N` query in every HTML page (and
+  generator template) that references it — e.g. `site.css?v=1` becomes
+  `?v=2`. Invalidation clears CloudFront edges but not browser caches,
+  so unversioned renames leave returning visitors stale for a year.
+  Deploy invalidation intentionally stays a wildcard (`/*`): it costs
+  one path regardless of count and avoids missing newly added pages;
+  versioned asset names are what actually protect browser caches.
+- Shared page CSS lives in `static/css/site.css`. Pages link it and keep
+  only page-specific rules in a small inline `<style>`.
+- Shared page chunks (head links, site header, sponsor box, nav, footer)
+  live in `src/partials/` and are pulled in with
+  `<!--#include file="partials/x.html" key="value" -->`; `{{key}}` in a
+  partial is replaced by the attribute value. The directives work in
+  source pages AND in generator output: `generate-drafts.js` /
+  `generate-power-rankings.js` templates emit them, and `build.mjs`
+  expands everything before deploy.
 - Commit style: `feat:` / `chore:` / `fix:` prefixes, imperative mood,
   Tim Pope guidelines.
 
@@ -111,6 +138,33 @@ No framework, no build step besides the Node scripts in `scripts/`.
   ids other than `-1` resolve via `/seasons/<year>/teams/<n>`.
 - Tests: `node --test scripts/generate-drafts.test.mjs`.
 - Rerun each year after the live draft finishes.
+
+## All-time records
+
+- `scripts/generate-records.js` fetches every season from 2018 (ESPN
+  keeps nothing earlier; 2014–2017 live only in stats.csv) and writes
+  `static/data/alltime-records.json` plus the body of
+  `src/records.html` between `<!-- RECORDS_START -->` /
+  `<!-- RECORDS_END -->` markers (first run creates the page; its
+  template emits partial includes like the other generators).
+- Requires the same `scripts/.env` `ESPN_S2` as power rankings.
+- Sections: records, head-to-head matrix, trophy case, hall of shame.
+  Weekly marks and h2h include playoffs; droughts and champions merge
+  stats.csv back to 2014.
+- Playoff berth = played a `WINNERS_BRACKET` game. Consolation ladder
+  and losers bracket are consolation rounds. Champion = winner of the
+  latest-week winners-bracket game; its existence also marks the season
+  complete for drought purposes.
+- Win streaks span seasons, count playoff wins, reset on ties.
+- Regression check: `node scripts/generate-records.js --check` must
+  pass. It compares per-owner regular-season W-L, playoff flags, and
+  champions against stats.csv since 2018. Two known csv errors are
+  whitelisted: JO and DN marked as 2018 playoff teams, but that
+  bracket had four teams (`playoffTeamCount=4`; both lack `PORnk`).
+  Derek chose to leave the csv untouched.
+- Tests: `node --test scripts/generate-records.test.mjs`.
+- Rerun after each week or whenever records change; no scheduled
+  action exists.
 
 ## Team name sync
 

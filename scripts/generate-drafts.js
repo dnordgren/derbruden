@@ -327,7 +327,7 @@ function renderContent(draftsBySeason, teamsBySeason, cache, meta) {
     .join('\n')
 
   return `<div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="861" height="893" />
+      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="386" height="400" />
       <h1>Draft History</h1>
     </div>
     <p class="draft-meta">${seasons[seasons.length - 1]}&ndash;${seasons[0]} drafts &middot; generated ${meta.generated}</p>
@@ -357,13 +357,7 @@ function pageTemplate(content) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DerBruden.com | Draft History</title>
-  <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
-  <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f6f5f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#131512" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="../static/css/site.css">
-  <link rel="preload" href="../static/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <!--#include file="partials/head-common.html" -->
   <style>
     .legend {
       display: flex;
@@ -406,7 +400,7 @@ function pageTemplate(content) {
       z-index: 1;
       background: var(--surface);
       font-size: 0.72em;
-      font-weight: 800;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       text-align: left;
@@ -422,7 +416,7 @@ function pageTemplate(content) {
 
     .draft-board .team-head {
       font-size: 0.72em;
-      font-weight: 800;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       text-align: center;
@@ -475,7 +469,7 @@ function pageTemplate(content) {
     .pick.unknown { background: #ececec; }
 
     .pick.keeper::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       right: 0;
@@ -485,55 +479,40 @@ function pageTemplate(content) {
       border-top-right-radius: 3px;
     }
 
+    .draft-meta,
+    .season-links {
+      color: var(--muted);
+      font-size: 0.9em;
+    }
+
     .season-links a {
       color: var(--accent);
       text-decoration: underline;
-      text-underline-offset: 2px;
       margin-right: 8px;
     }
 
     .draft-season h2 {
       margin-bottom: 0;
     }
+
+    .methodology {
+      margin-top: 30px;
+      font-size: 0.85em;
+      color: var(--muted);
+    }
   </style>
 </head>
 
-
 <body>
-  <header>
-    <div class="header-container">
-      <div class="header">
-        <a href="./index.html">
-          <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" width="200" height="153">
-        </a>
-        <div>
-          <h1 class="site-title">DerBruden.com</h1>
-          <p class="tagline">Strange dreams lately?</p>
-        </div>
-      </div>
-    </div>
-  </header>
+  <!--#include file="partials/site-header.html" -->
 
-  <nav aria-label="Main">
-    <ul>
-      <li><a href="./about.html">About</a></li>
-      <li><a href="./owners.html">League Owners</a></li>
-      <li><a href="./power-rankings.html">Power Rankings</a></li>
-      <li><a href="./trades.html">Trades</a></li>
-      <li><a href="./drafts.html" aria-current="page">Drafts</a></li>
-    </ul>
-  </nav>
+  <!--#include file="partials/nav.html" -->
 
   <main>
     ${content}
   </main>
 
-  <footer>
-    <p>
-      <a href="https://fantasy.espn.com/football/league?leagueId=794521" target="_blank">ESPN</a> /
-      <a href="https://discord.com/channels/870404843582406696/870404844681322549" target="_blank">Discord</a>
-    </p>
-  </footer>
+  <!--#include file="partials/footer.html" -->
 </body>
 
 </html>

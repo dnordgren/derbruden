@@ -310,43 +310,17 @@ function pageTemplate(content) {
   <meta name="twitter:title" content="DerBruden.com | Power Rankings">
   <meta name="twitter:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
-  <link rel="icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
-  <link rel="shortcut icon" href="../static/ico/header-icon-32.png" type="image/x-icon">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f6f5f0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#131512" media="(prefers-color-scheme: dark)">
-  <link rel="stylesheet" href="../static/css/site.css">
-  <link rel="preload" href="../static/fonts/archivo-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <!--#include file="partials/head-common.html" -->
 </head>
 
 <body>
-  <header>
-    <div class="header-container">
-      <div class="header">
-        <a href="./index.html">
-          <img src="../static/img/header-logo.webp" alt="DerBruden.com" class="logo" width="200" height="153">
-        </a>
-        <div>
-          <h1 class="site-title">DerBruden.com</h1>
-          <p class="tagline">Strange dreams lately?</p>
-        </div>
-      </div>
-    </div>
-  </header>
+  <!--#include file="partials/site-header.html" -->
 
-  <nav aria-label="Main">
-    <ul>
-      <li><a href="./about.html">About</a></li>
-      <li><a href="./owners.html">League Owners</a></li>
-      <li><a href="./power-rankings.html" aria-current="page">Power Rankings</a></li>
-      <li><a href="./trades.html">Trades</a></li>
-      <li><a href="./drafts.html">Drafts</a></li>
-    </ul>
-  </nav>
+  <!--#include file="partials/nav.html" -->
 
   <main>
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="861" height="893">
+      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="386" height="400">
       <h1>Power Rankings</h1>
     </div>
     ${content}
@@ -359,12 +333,7 @@ function pageTemplate(content) {
     </details>
   </main>
 
-  <footer>
-    <p>
-      <a href="https://fantasy.espn.com/football/league?leagueId=794521" target="_blank">ESPN</a> /
-      <a href="https://discord.com/channels/870404843582406696/870404844681322549" target="_blank">Discord</a>
-    </p>
-  </footer>
+  <!--#include file="partials/footer.html" -->
 </body>
 
 </html>

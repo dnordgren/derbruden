@@ -1,4 +1,4 @@
-.PHONY: webp clean deploy deploy-html deploy-static invalidate-cache drafts
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -26,19 +26,26 @@ webp: $(WEBP_FILES)
 deploy: deploy-html deploy-static invalidate-cache
 	@echo "Deployment complete"
 
-deploy-html:
+build:
+	@echo "make build : Started"
+	@echo "Inlining partials into pub/..."
+	@node scripts/build.mjs
+	@echo "make build : Finished"
+
+deploy-html: build
 	@echo "make deploy-html : Started"
 	@echo "Deploying HTML to bucket derbruden.com..."
 	@aws s3 rm s3://$(BUCKET)/ --recursive --exclude "*" --include "*.html"
-	@aws s3 sync src/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=0, must-revalidate"
+	@aws s3 sync pub/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=60, stale-while-revalidate=300"
 	@echo "make deploy-html : Finished"
 
 deploy-static:
 	@echo "make deploy-static : Started"
 	@echo "Deploying static assets to bucket derbruden.com..."
-	@aws s3 rm s3://$(BUCKET)/static/ --recursive --exclude "data/trades.json"
-	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --cache-control "public, max-age=31536000, immutable"
+	@aws s3 rm s3://$(BUCKET)/static/ --recursive --exclude "data/trades.json" --exclude "data/alltime-records.json"
+	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/alltime-records.json" --cache-control "public, max-age=31536000, immutable"
 	@aws s3 cp static/data/trades.json s3://$(BUCKET)/static/data/trades.json --cache-control "public, max-age=0, must-revalidate"
+	@aws s3 cp static/data/alltime-records.json s3://$(BUCKET)/static/data/alltime-records.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/ico/header-icon-32.png s3://$(BUCKET)/favicon.ico --cache-control "public, max-age=31536000, immutable"
 	@echo "make deploy-static : Finished"
 
@@ -65,3 +72,9 @@ drafts:
 	@echo "Generating draft history..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-drafts.js
 	@echo "make drafts : Finished"
+
+records:
+	@echo "make records : Started"
+	@echo "Generating all-time records..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-records.js
+	@echo "make records : Finished"

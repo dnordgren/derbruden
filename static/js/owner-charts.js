@@ -434,12 +434,18 @@
   function renderH2H() {
     var owners = data.h2h && data.h2h.owners
     var row = data.h2h && data.h2h.row
-    if (!owners || !owners.length || !row) return
+    var me = data.owner
+    if (!owners || !owners.length || !row || !me) return
 
-    var cell = 42
-    var m = { top: 44, right: 12, bottom: 58, left: 40 }
-    var W = m.left + owners.length * cell + m.right
-    var H = m.top + owners.length * cell + m.bottom
+    var opponents = owners.filter(function (o) {
+      return o !== me
+    })
+    if (!opponents.length) return
+
+    var cell = 56
+    var m = { top: 12, right: 24, bottom: 58, left: 48 }
+    var W = m.left + opponents.length * cell + m.right
+    var H = 140
 
     var svgSel = svg('#viz-h2h', W, H)
     var chart = svgSel.append('g').attr('transform', 'translate(' + m.left + ',' + m.top + ')')
@@ -450,15 +456,21 @@
     }
     var color = d3.scaleLinear().domain([0, 0.5, 1]).range(['#d60303', '#f4f4f1', '#008f00']).clamp(true)
 
+    var x = d3
+      .scaleBand()
+      .domain(opponents)
+      .range([0, opponents.length * cell])
+      .padding(0.12)
+
     chart
-      .selectAll('.col-label')
-      .data(owners)
+      .selectAll('.opp-label')
+      .data(opponents)
       .enter()
       .append('text')
-      .attr('x', function (d, i) {
-        return i * cell + cell / 2
+      .attr('x', function (d) {
+        return x(d) + x.bandwidth() / 2
       })
-      .attr('y', -12)
+      .attr('y', x.bandwidth() + 18)
       .attr('text-anchor', 'middle')
       .attr('fill', COLORS.neutral)
       .style('font-size', '12px')
@@ -467,102 +479,64 @@
         return d
       })
 
-    chart
-      .selectAll('.row-label')
-      .data(owners)
-      .enter()
-      .append('text')
-      .attr('x', -10)
-      .attr('y', function (d, i) {
-        return i * cell + cell / 2 + 4
-      })
-      .attr('text-anchor', 'end')
-      .attr('fill', COLORS.neutral)
-      .style('font-size', '12px')
-      .style('font-weight', 600)
-      .text(function (d) {
-        return d
-      })
-
-    owners.forEach(function (r, i) {
-      owners.forEach(function (c, j) {
-        if (r === c) {
-          chart
-            .append('rect')
-            .attr('x', j * cell)
-            .attr('y', i * cell)
-            .attr('width', cell)
-            .attr('height', cell)
-            .attr('rx', 4)
-            .attr('fill', COLORS.diag)
-          chart
-            .append('text')
-            .attr('x', j * cell + cell / 2)
-            .attr('y', i * cell + cell / 2 + 4)
-            .attr('text-anchor', 'middle')
-            .attr('fill', '#a5adb6')
-            .style('font-size', '11px')
-            .text(r)
-          return
-        }
-        var rec = row[c]
-        var g = chart.append('g')
-        if (!rec || rec.w + rec.l + rec.t === 0) {
-          g.append('rect')
-            .attr('x', j * cell)
-            .attr('y', i * cell)
-            .attr('width', cell)
-            .attr('height', cell)
-            .attr('rx', 4)
-            .attr('fill', '#fafafa')
-          return
-        }
-        var rRate = rate(rec)
-        var strong = Math.abs(rRate - 0.5) > 0.32
-        function handle(event) {
-          showTip(
-            event,
-            '<strong>vs ' +
-              c +
-              '</strong><br>' +
-              rec.w +
-              '-' +
-              rec.l +
-              (rec.t ? '-' + rec.t : '') +
-              ' (' +
-              d3.format('.3f')(rRate).replace('0.', '.') +
-              ')<br>' +
-              'PF: ' +
-              fmt(rec.pf) +
-              ' · PA: ' +
-              fmt(rec.pa)
-          )
-        }
+    opponents.forEach(function (opp) {
+      var rec = row[opp]
+      var g = chart.append('g')
+      if (!rec || rec.w + rec.l + rec.t === 0) {
         g.append('rect')
-          .attr('x', j * cell)
-          .attr('y', i * cell)
-          .attr('width', cell - 2)
-          .attr('height', cell - 2)
+          .attr('x', x(opp))
+          .attr('y', 0)
+          .attr('width', x.bandwidth())
+          .attr('height', x.bandwidth())
           .attr('rx', 4)
-          .attr('fill', color(rRate))
-          .on('mouseover', handle)
-          .on('mousemove', handle)
-          .on('mouseout', hideTip)
-        g.append('text')
-          .attr('x', j * cell + (cell - 2) / 2)
-          .attr('y', i * cell + (cell - 2) / 2 + 4)
-          .attr('text-anchor', 'middle')
-          .attr('fill', strong ? '#fff' : '#2e3440')
-          .style('font-size', '11px')
-          .style('font-weight', 600)
-          .style('pointer-events', 'none')
-          .text(rec.w + '-' + rec.l + (rec.t ? '-' + rec.t : ''))
-      })
+          .attr('fill', '#fafafa')
+        return
+      }
+      var rRate = rate(rec)
+      var strong = Math.abs(rRate - 0.5) > 0.32
+      function handle(event) {
+        showTip(
+          event,
+          '<strong>vs ' +
+            opp +
+            '</strong><br>' +
+            rec.w +
+            '-' +
+            rec.l +
+            (rec.t ? '-' + rec.t : '') +
+            ' (' +
+            d3.format('.3f')(rRate).replace('0.', '.') +
+            ')<br>' +
+            'PF: ' +
+            fmt(rec.pf) +
+            ' · PA: ' +
+            fmt(rec.pa)
+        )
+      }
+      g.append('rect')
+        .attr('x', x(opp))
+        .attr('y', 0)
+        .attr('width', x.bandwidth())
+        .attr('height', x.bandwidth())
+        .attr('rx', 4)
+        .attr('fill', color(rRate))
+        .on('mouseover', handle)
+        .on('mousemove', handle)
+        .on('mouseout', hideTip)
+      g.append('text')
+        .attr('x', x(opp) + x.bandwidth() / 2)
+        .attr('y', x.bandwidth() / 2 + 4)
+        .attr('text-anchor', 'middle')
+        .attr('fill', strong ? '#fff' : '#2e3440')
+        .style('font-size', '12px')
+        .style('font-weight', 700)
+        .style('pointer-events', 'none')
+        .text(rec.w + '-' + rec.l + (rec.t ? '-' + rec.t : ''))
     })
 
     var gradId = 'viz-h2h-gradient'
-    var legendY = m.top + owners.length * cell + 24
-    var legendW = owners.length * cell
+    var legendY = x.bandwidth() + 44
+    var legendW = opponents.length * cell
 
     var grad = svgSel.append('defs').append('linearGradient').attr('id', gradId)
     ;[0, 0.5, 1].forEach(function (stop) {

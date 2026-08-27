@@ -301,12 +301,12 @@ export function renderSection(payload) {
     <p class="viz-note">Weekly Elo rating, 1500 is league average.</p>
     <div class="viz-chart" id="viz-elo"></div>
     <h2>Career Head-to-Head</h2>
-    <p class="viz-note">Record against each owner, regular season and playoffs, since 2018.</p>
+    <p class="viz-note">This owner's record against every other owner. Green means winning record, red means losing.</p>
     <div class="viz-chart viz-chart-h2h" id="viz-h2h"></div>
     <script type="application/json" id="owner-viz-data">${json}</script>
   </section>
   <script src="../static/js/d3.v7.min.js"></script>
-  <script src="../static/js/owner-charts.js?v=2"></script>
+  <script src="../static/js/owner-charts.js?v=3"></script>
   ${VIZ_END}`
 }
 

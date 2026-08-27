@@ -300,7 +300,7 @@ node scripts/watch-trades.mjs --dry-run   # confirm the trade first
 node scripts/roast-trade.mjs posted-trades.json --dry-run  # print the research packet
 ```
 
-Optional config: `ROAST_MODEL` (default `kimi-k3`) and
+Optional config: `ROAST_MODEL` (default `muse-spark-1.2-contributor`) and
 `OPENCODE_GO_BASE_URL` (default `https://opencode.ai/zen/go`). Verdicts are
 one short sentence, deliberately opaque: the oracle studies rosters,
 standings, and NFL news, then judges without explaining.

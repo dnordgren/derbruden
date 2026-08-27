@@ -94,8 +94,9 @@ No framework; shared page chunks are inlined at build time by
 - Roast agent: right after a trade post, the workflow runs
   `scripts/roast-trade.mjs <posted-trades.json>`. It reads the handoff file
   the watcher wrote to `$RUNNER_TEMP`, pulls rosters, standings, traded-player
-  news, and NFL headlines from ESPN, then asks OpenCode Go (`kimi-k3` by
-  default, `ROAST_MODEL` to override) for one pithy, evidence-free verdict on
+  news, and NFL headlines from ESPN, then asks OpenCode Go
+  (`muse-spark-1.2-contributor` by default, `ROAST_MODEL` to override) for one
+  pithy, evidence-free verdict on
   the losing owner and posts it as a second Discord message. The step is
   `continue-on-error`; LLM failures never block ledger commit or S3 publish.
 - Local roast dry run: `LEAGUE_ID=794521 LEAGUE_YEAR=2026 node scripts/

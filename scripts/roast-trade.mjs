@@ -22,7 +22,7 @@ const LEAGUE_PATH = '/apis/v3/games/ffl/seasons/{year}/segments/0/leagues/{leagu
 const DEFAULT_LEAGUE_HOST = 'https://lm-api-reads.fantasy.espn.com'
 const NFL_NEWS_URL = 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?limit=25'
 const DEFAULT_BASE_URL = 'https://opencode.ai/zen/go'
-const DEFAULT_MODEL = 'kimi-k3'
+const DEFAULT_MODEL = 'muse-spark-1.2-contributor'
 const DISCORD_LIMIT = 1990
 
 const POSITIONS = {

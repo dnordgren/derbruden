@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -85,3 +85,9 @@ records:
 	@echo "Generating all-time records..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-records.js
 	@echo "make records : Finished"
+
+viz:
+	@echo "make viz : Started"
+	@echo "Generating owner page charts (PF/PA dumbbell, Elo, head-to-head)..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-owner-viz.mjs
+	@echo "make viz : Finished"

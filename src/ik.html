@@ -167,6 +167,24 @@
         </tr>
       </tbody>
     </table></div>
+  
+  
+  <!-- OWNER_VIZ_START -->
+  <section class="owner-viz">
+    <h2>Points For vs Points Against</h2>
+    <p class="viz-note">Each dot pair shows one season. Green is points scored, red is points allowed.</p>
+    <div class="viz-chart" id="viz-pfpa"></div>
+    <h2>Elo Trajectory</h2>
+    <p class="viz-note">Weekly Elo rating, 1500 is league average.</p>
+    <div class="viz-chart" id="viz-elo"></div>
+    <h2>Career Head-to-Head</h2>
+    <p class="viz-note">This owner's record against every other owner. Green means winning record, red means losing.</p>
+    <div class="viz-chart viz-chart-h2h" id="viz-h2h"></div>
+    <script type="application/json" id="owner-viz-data">{"generated":"2026-08-27","owner":"IK","pfpa":[{"season":2017,"pf":1227,"pa":1408},{"season":2018,"pf":1647,"pa":1424},{"season":2019,"pf":1307,"pa":1411},{"season":2020,"pf":1376,"pa":1501},{"season":2021,"pf":1589,"pa":1591},{"season":2022,"pf":1406,"pa":1447},{"season":2023,"pf":1361,"pa":1483},{"season":2024,"pf":1256,"pa":1523},{"season":2025,"pf":1456,"pa":1473}],"elo":{"seasonStarts":[[0,2018],[14,2019],[28,2020],[42,2021],[57,2022],[72,2023],[86,2024],[100,2025]],"points":[[0,1473],[1,1492],[2,1482],[3,1500],[4,1493],[5,1508],[6,1523],[7,1536],[8,1547],[9,1555],[10,1544],[11,1556],[12,1539],[13,1553],[14,1519],[15,1497],[16,1483],[17,1487],[18,1502],[19,1492],[20,1480],[21,1469],[22,1458],[23,1465],[24,1472],[25,1470],[26,1472],[27,1486],[28,1496],[29,1482],[30,1472],[31,1484],[32,1503],[33,1488],[34,1479],[35,1485],[36,1490],[37,1483],[38,1472],[39,1461],[40,1449],[41,1442],[42,1481],[43,1479],[44,1473],[45,1480],[46,1484],[47,1482],[48,1483],[49,1469],[50,1475],[51,1488],[52,1474],[53,1474],[54,1485],[55,1500],[56,1495],[57,1507],[58,1503],[59,1523],[60,1511],[61,1527],[62,1537],[63,1523],[64,1509],[65,1492],[66,1477],[67,1465],[68,1470],[69,1459],[70,1472],[71,1463],[72,1486],[73,1492],[74,1504],[75,1487],[76,1479],[77,1483],[78,1477],[79,1495],[80,1491],[81,1507],[82,1493],[83,1474],[84,1462],[85,1451],[86,1488],[87,1481],[88,1475],[89,1462],[90,1450],[91,1439],[92,1441],[93,1452],[94,1456],[95,1438],[96,1428],[97,1420],[98,1410],[99,1403],[100,1473],[101,1470],[102,1492],[103,1498],[104,1480],[105,1475],[106,1463],[107,1471],[108,1477],[109,1483],[110,1472],[111,1487],[112,1474],[113,1486]]},"h2h":{"owners":["AN","AR","CR","DM","DN","GM","IK","JH","JO","ZS"],"row":{"AN":{"w":7,"l":5,"t":0,"pf":1409.52,"pa":1381.42},"AR":{"w":11,"l":7,"t":0,"pf":2127.7,"pa":1880.22},"CR":{"w":4,"l":12,"t":0,"pf":1820.8000000000004,"pa":2123.14},"DM":{"w":6,"l":4,"t":0,"pf":1173.3000000000002,"pa":1163.9799999999998},"DN":{"w":8,"l":7,"t":0,"pf":1538.5600000000002,"pa":1592.1999999999998},"GM":{"w":4,"l":5,"t":0,"pf":911.82,"pa":1040.86},"JH":{"w":6,"l":7,"t":0,"pf":1498.06,"pa":1444.48},"JO":{"w":5,"l":11,"t":0,"pf":1652.86,"pa":1741.12},"ZS":{"w":10,"l":7,"t":0,"pf":1882.6200000000001,"pa":1779.74}}}}</script>
+  </section>
+  <script src="../static/js/d3.v7.min.js"></script>
+  <script src="../static/js/owner-charts.js?v=3"></script>
+  <!-- OWNER_VIZ_END -->
   <!-- DRAFT_HISTORY_START -->
   <section class="draft-history">
     <h2>Draft Picks</h2>
@@ -180,6 +198,7 @@
     <p><strong>2018:</strong> R1P7 (7 overall): Saquon Barkley (RB, NYG); R2P4 (14 overall): Aaron Rodgers (QB, GB); R3P7 (27 overall): Alex Collins (RB, BAL); R4P4 (34 overall): Adam Thielen (WR, MIN); R5P7 (47 overall): Delanie Walker (TE, TEN); R6P4 (54 overall): Golden Tate (WR, PHI); R7P7 (67 overall): Rashaad Penny (RB, SEA); R8P4 (74 overall): Pierre Garcon (WR, SF); R9P7 (87 overall): Marlon Mack (RB, IND); R10P4 (94 overall): Charles Clay (TE, BUF); R11P7 (107 overall): Marqise Lee (WR, JAX); R12P4 (114 overall): Los Angeles Rams D/ST (D/ST, LAR); R13P7 (127 overall): Greg Zuerlein (PK, LAR); R14P4 (134 overall): Philip Rivers (QB, LAC); R15P7 (147 overall): Samaje Perine (RB, WSH); R16P4 (154 overall): Paul Richardson Jr. (WR, WSH)</p>
   </section>
   <!-- DRAFT_HISTORY_END -->
+  
   </main>
 
   <!--#include file="partials/footer.html" -->

@@ -179,6 +179,26 @@ No framework; shared page chunks are inlined at build time by
 - Rerun after each week or whenever records change; no scheduled
   action exists.
 
+## Owner viz charts
+
+- `make viz` (`scripts/generate-owner-viz.mjs`) injects an
+  `<!-- OWNER_VIZ_START/END -->` section into every owner page: PF/PA
+  dumbbell, Elo trajectory, head-to-head grid. Same `scripts/.env`
+  `ESPN_S2` as power rankings; `--offline` rebuilds from cache only.
+- Data embeds per page as `<script type="application/json"
+  id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
+  on vendored d3. Bump its `?v=` in `renderSection` when it changes.
+- ESPN schedules survive back to 2018 (like drafts); 2014-2017 404.
+  Elo replays the power-rankings algorithm over regular season games,
+  reseeded each season from prior stats.csv win pct. Regression anchors:
+  final 2025 ratings JO 1564 and DM 1440 must hold.
+- H2H counts all decided games including playoffs to match the matrix on
+  records.html; games vs former franchises (not in TEAM_OWNERS) are
+  skipped. Raw league JSON caches under git-ignored
+  `scripts/.viz-cache/`.
+- A 2018 schedule entry can lack `home`/`away`; extractGames guards it.
+- Tests: `node --test scripts/generate-owner-viz.test.mjs`.
+
 ## Team name sync
 
 - A weekly GitHub Action (`.github/workflows/team-names.yml`) runs

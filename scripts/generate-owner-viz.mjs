@@ -312,12 +312,16 @@ export function renderSection(payload) {
 
 export function injectSection(content, sectionHtml) {
   const markerRe = new RegExp(`${VIZ_START}[\\s\\S]*?${VIZ_END}`)
-  if (markerRe.test(content)) {
-    return content.replace(markerRe, sectionHtml)
+  const stripped = content.replace(markerRe, '')
+
+  const draftStart = '<!-- DRAFT_HISTORY_START -->'
+  const draftIdx = stripped.indexOf(draftStart)
+  if (draftIdx !== -1) {
+    return stripped.slice(0, draftIdx) + sectionHtml + '\n  ' + stripped.slice(draftIdx)
   }
-  const closeIdx = content.lastIndexOf('</main>')
-  if (closeIdx === -1) return content
-  return content.slice(0, closeIdx) + sectionHtml + '\n  ' + content.slice(closeIdx)
+  const closeIdx = stripped.lastIndexOf('</main>')
+  if (closeIdx === -1) return stripped
+  return stripped.slice(0, closeIdx) + sectionHtml + '\n  ' + stripped.slice(closeIdx)
 }
 
 function statsRows() {

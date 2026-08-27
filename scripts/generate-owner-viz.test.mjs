@@ -226,15 +226,24 @@ test('renderSection embeds JSON payload and chart mounts', () => {
   assert.equal(parsed.owner, 'DN')
 })
 
-test('injectSection replaces existing markers', () => {
-  const page = `<main><p>stats</p>\n${VIZ_START}\n<old/>\n${VIZ_END}\n</main>`
+test('injectSection replaces existing markers and moves before draft history', () => {
+  const page = `<main><p>stats</p>\n  <!-- DRAFT_HISTORY_START -->\n  <old-draft/>\n  <!-- DRAFT_HISTORY_END -->\n  ${VIZ_START}\n  <old-viz/>\n  ${VIZ_END}\n</main>`
   const out = injectSection(page, `${VIZ_START}\n<new/>\n${VIZ_END}`)
   assert.ok(out.includes('<new/>'))
-  assert.ok(!out.includes('<old/>'))
+  assert.ok(!out.includes('<old-viz/>'))
+  assert.ok(out.indexOf(VIZ_START) < out.indexOf('<!-- DRAFT_HISTORY_START -->'))
   assert.equal(out.match(new RegExp(VIZ_START, 'g')).length, 1)
 })
 
-test('injectSection inserts before closing main on first run', () => {
+test('injectSection inserts before draft history markers on first run', () => {
+  const page =
+    '<main><p>stats</p>\n  <!-- DRAFT_HISTORY_START -->\n  <p>drafts</p>\n  <!-- DRAFT_HISTORY_END -->\n</main>'
+  const out = injectSection(page, `${VIZ_START}<new/>${VIZ_END}`)
+  assert.ok(out.indexOf(VIZ_START) < out.indexOf('<!-- DRAFT_HISTORY_START -->'))
+  assert.ok(out.endsWith('<!-- DRAFT_HISTORY_END -->\n</main>'))
+})
+
+test('injectSection inserts before closing main if no draft history', () => {
   const page = '<main><p>stats</p></main>'
   const out = injectSection(page, `${VIZ_START}<new/>${VIZ_END}`)
   assert.ok(out.startsWith('<main><p>stats</p>'))

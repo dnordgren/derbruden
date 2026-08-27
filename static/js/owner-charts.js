@@ -55,14 +55,13 @@
 
   function renderDumbbell() {
     var rows = (data.pfpa || []).slice().sort(function (a, b) {
-      return b.season - a.season
+      return a.season - b.season
     })
     if (!rows.length) return
 
     var W = 800
-    var m = { top: 34, right: 92, bottom: 36, left: 54 }
-    var rowH = 34
-    var H = m.top + m.bottom + rows.length * rowH
+    var m = { top: 34, right: 80, bottom: 50, left: 54 }
+    var H = 400
 
     var chart = svg('#viz-pfpa', W, H)
       .append('g')
@@ -83,26 +82,29 @@
           return Math.max(d.pf, d.pa)
         }) / 200
       ) * 200
-    var x = d3.scaleLinear().domain([lo, hi]).range([0, innerW])
-    var y = d3
+
+    var x = d3
       .scalePoint()
       .domain(
         rows.map(function (d) {
           return d.season
         })
       )
-      .range([rowH / 2, innerH - rowH / 2])
+      .range([0, innerW])
+      .padding(0.3)
+
+    var y = d3.scaleLinear().domain([lo, hi]).range([innerH, 0])
 
     chart
       .append('g')
       .selectAll('line')
-      .data(x.ticks(innerW / 90))
+      .data(y.ticks(innerH / 50))
       .enter()
       .append('line')
-      .attr('x1', x)
-      .attr('x2', x)
-      .attr('y1', 0)
-      .attr('y2', innerH)
+      .attr('x1', 0)
+      .attr('x2', innerW)
+      .attr('y1', y)
+      .attr('y2', y)
       .attr('stroke', COLORS.grid)
 
     chart
@@ -111,7 +113,25 @@
       .call(
         d3
           .axisBottom(x)
-          .tickValues(x.ticks(innerW / 90))
+          .tickFormat(function (d) {
+            return shortSeason(d)
+          })
+          .tickSize(0)
+          .tickPadding(10)
+      )
+      .call(function (g) {
+        g.select('.domain').remove()
+      })
+      .selectAll('text')
+      .attr('fill', COLORS.neutral)
+      .style('font-size', '11px')
+
+    chart
+      .append('g')
+      .call(
+        d3
+          .axisLeft(y)
+          .tickValues(y.ticks(innerH / 50))
           .tickFormat(d3.format('~s'))
           .tickSize(0)
           .tickPadding(8)
@@ -126,34 +146,21 @@
     var rowG = chart.append('g').selectAll('g').data(rows).enter().append('g')
 
     rowG
-      .append('text')
-      .attr('x', -12)
-      .attr('y', function (d) {
-        return y(d.season) + 4
-      })
-      .attr('text-anchor', 'end')
-      .attr('fill', COLORS.neutral)
-      .style('font-size', '12px')
-      .text(function (d) {
-        return shortSeason(d.season)
-      })
-
-    rowG
       .append('line')
       .attr('x1', function (d) {
-        return x(Math.min(d.pf, d.pa))
+        return x(d.season)
       })
       .attr('x2', function (d) {
-        return x(Math.max(d.pf, d.pa))
+        return x(d.season)
       })
       .attr('y1', function (d) {
-        return y(d.season)
+        return y(Math.min(d.pf, d.pa))
       })
       .attr('y2', function (d) {
-        return y(d.season)
+        return y(Math.max(d.pf, d.pa))
       })
       .attr('stroke', COLORS.connector)
-      .attr('stroke-width', 7)
+      .attr('stroke-width', 6)
       .attr('stroke-linecap', 'round')
 
     function dot(key) {
@@ -176,10 +183,10 @@
       rowG
         .append('circle')
         .attr('cx', function (d) {
-          return x(d[key])
+          return x(d.season)
         })
         .attr('cy', function (d) {
-          return y(d.season)
+          return y(d[key])
         })
         .attr('r', 5.5)
         .attr('fill', key === 'pf' ? COLORS.pf : COLORS.pa)
@@ -195,9 +202,11 @@
 
     rowG
       .append('text')
-      .attr('x', innerW + 14)
+      .attr('x', function (d) {
+        return x(d.season) + 10
+      })
       .attr('y', function (d) {
-        return y(d.season) + 4
+        return y(Math.max(d.pf, d.pa)) + 4
       })
       .attr('fill', function (d) {
         return d.pf >= d.pa ? COLORS.pf : COLORS.pa

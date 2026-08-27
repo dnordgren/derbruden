@@ -538,8 +538,8 @@ export function renderPageContent(data) {
     renderH2HChartSection(data.h2h),
     renderTrophiesSection({
       champions: data.champions,
-      lowestScore: data.records.lowestScore,
-      mostPointsInALoss: data.records.mostPointsInALoss,
+      lowestScore: data.hallOfShame.lowestScore,
+      mostPointsInALoss: data.hallOfShame.mostPointsInALoss,
       droughts: data.hallOfShame.playoffDroughts,
     }),
   ].join('\n')

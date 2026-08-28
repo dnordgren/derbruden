@@ -61,7 +61,7 @@
 <p class="section-note">Every decided game, regular season and playoffs.</p>
 <div class="table-container"><table class="stats-table">
   <thead>
-    <tr><th>Record</th><th class="number">Value</th><th class="detail">Details</th></tr>
+    <tr><th scope="col">Record</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr>
   </thead>
   <tbody>
     <tr><td>Highest weekly score</td><td class="number">261</td><td class="detail">beat <a href="./jo.html">JO</a> 261-195, 2018 wk 15</td></tr>
@@ -91,6 +91,12 @@ the diagonal is lifetime points scored.</p>
 <tr><td class="owner">SHEN</td><td class="number">1-0</td><td class="number">0-1</td><td class="number">0-1</td><td class="number">1-2</td><td class="number">2-0</td><td class="number">1-0</td><td class="number">1-1</td><td class="number">0-2</td><td class="number">2-0</td><td class="number muted">&ndash;</td><td class="number diag">1850.9</td></tr>
   </tbody>
 </table></div>
+<h2>Head-to-head heat map</h2>
+<p class="section-note">Win rate for row owner vs column owner. Green means the row owner won more often.</p>
+<div class="viz-chart" id="records-h2h-chart"></div>
+<script type="application/json" id="records-h2h-data">{"owners":["CR","AN","GM","JO","IK","DM","DN","ZS","AR","JH","SHEN"],"records":{"CR":{"GM":{"wins":9,"losses":11,"ties":0},"DM":{"wins":10,"losses":2,"ties":0},"ZS":{"wins":7,"losses":4,"ties":0},"IK":{"wins":12,"losses":4,"ties":0},"AN":{"wins":6,"losses":10,"ties":0},"AR":{"wins":9,"losses":1,"ties":0},"DN":{"wins":6,"losses":7,"ties":0},"JO":{"wins":9,"losses":5,"ties":0},"SHEN":{"wins":0,"losses":1,"ties":0},"JH":{"wins":9,"losses":6,"ties":0}},"AN":{"JO":{"wins":10,"losses":9,"ties":0},"GM":{"wins":9,"losses":4,"ties":0},"DM":{"wins":9,"losses":9,"ties":0},"ZS":{"wins":7,"losses":8,"ties":0},"CR":{"wins":10,"losses":6,"ties":0},"SHEN":{"wins":1,"losses":0,"ties":0},"IK":{"wins":5,"losses":7,"ties":0},"AR":{"wins":5,"losses":3,"ties":0},"DN":{"wins":7,"losses":3,"ties":0},"JH":{"wins":3,"losses":12,"ties":0}},"GM":{"CR":{"wins":11,"losses":9,"ties":0},"AN":{"wins":4,"losses":9,"ties":0},"AR":{"wins":10,"losses":8,"ties":0},"DM":{"wins":7,"losses":11,"ties":0},"ZS":{"wins":10,"losses":5,"ties":0},"DN":{"wins":7,"losses":3,"ties":0},"JO":{"wins":7,"losses":6,"ties":0},"SHEN":{"wins":1,"losses":0,"ties":0},"IK":{"wins":5,"losses":4,"ties":0},"JH":{"wins":7,"losses":3,"ties":0}},"JO":{"AN":{"wins":9,"losses":10,"ties":0},"AR":{"wins":7,"losses":3,"ties":0},"SHEN":{"wins":2,"losses":1,"ties":0},"DN":{"wins":3,"losses":7,"ties":0},"IK":{"wins":11,"losses":5,"ties":0},"ZS":{"wins":6,"losses":4,"ties":0},"GM":{"wins":6,"losses":7,"ties":0},"CR":{"wins":5,"losses":9,"ties":0},"DM":{"wins":9,"losses":8,"ties":0},"JH":{"wins":11,"losses":5,"ties":0}},"IK":{"AR":{"wins":11,"losses":7,"ties":0},"SHEN":{"wins":0,"losses":2,"ties":0},"DN":{"wins":8,"losses":7,"ties":0},"CR":{"wins":4,"losses":12,"ties":0},"JO":{"wins":5,"losses":11,"ties":0},"DM":{"wins":6,"losses":4,"ties":0},"AN":{"wins":7,"losses":5,"ties":0},"ZS":{"wins":10,"losses":7,"ties":0},"GM":{"wins":4,"losses":5,"ties":0},"JH":{"wins":6,"losses":7,"ties":0}},"DM":{"ZS":{"wins":6,"losses":7,"ties":0},"CR":{"wins":2,"losses":10,"ties":0},"AN":{"wins":9,"losses":9,"ties":0},"GM":{"wins":11,"losses":7,"ties":0},"SHEN":{"wins":0,"losses":1,"ties":0},"IK":{"wins":4,"losses":6,"ties":0},"AR":{"wins":11,"losses":6,"ties":0},"DN":{"wins":4,"losses":8,"ties":0},"JO":{"wins":8,"losses":9,"ties":0},"JH":{"wins":3,"losses":7,"ties":0}},"DN":{"SHEN":{"wins":1,"losses":1,"ties":0},"ZS":{"wins":7,"losses":12,"ties":0},"IK":{"wins":7,"losses":8,"ties":0},"JO":{"wins":7,"losses":3,"ties":0},"AR":{"wins":16,"losses":4,"ties":0},"GM":{"wins":3,"losses":7,"ties":0},"CR":{"wins":7,"losses":6,"ties":0},"DM":{"wins":8,"losses":4,"ties":0},"AN":{"wins":3,"losses":7,"ties":0},"JH":{"wins":7,"losses":9,"ties":0}},"ZS":{"DM":{"wins":7,"losses":6,"ties":0},"DN":{"wins":12,"losses":7,"ties":0},"CR":{"wins":4,"losses":7,"ties":0},"AN":{"wins":8,"losses":7,"ties":0},"GM":{"wins":5,"losses":10,"ties":0},"JO":{"wins":4,"losses":6,"ties":0},"SHEN":{"wins":2,"losses":0,"ties":0},"IK":{"wins":7,"losses":10,"ties":0},"AR":{"wins":10,"losses":8,"ties":0},"JH":{"wins":3,"losses":5,"ties":0}},"AR":{"IK":{"wins":7,"losses":11,"ties":0},"JO":{"wins":3,"losses":7,"ties":0},"GM":{"wins":8,"losses":10,"ties":0},"SHEN":{"wins":0,"losses":2,"ties":0},"DN":{"wins":4,"losses":16,"ties":0},"CR":{"wins":1,"losses":9,"ties":0},"DM":{"wins":6,"losses":11,"ties":0},"AN":{"wins":3,"losses":5,"ties":0},"ZS":{"wins":8,"losses":10,"ties":0},"JH":{"wins":4,"losses":4,"ties":0}},"JH":{"CR":{"wins":6,"losses":9,"ties":0},"DM":{"wins":7,"losses":3,"ties":0},"JO":{"wins":5,"losses":11,"ties":0},"AN":{"wins":12,"losses":3,"ties":0},"GM":{"wins":3,"losses":7,"ties":0},"ZS":{"wins":5,"losses":3,"ties":0},"AR":{"wins":4,"losses":4,"ties":0},"IK":{"wins":7,"losses":6,"ties":0},"DN":{"wins":9,"losses":7,"ties":0}},"SHEN":{"DN":{"wins":1,"losses":1,"ties":0},"IK":{"wins":2,"losses":0,"ties":0},"JO":{"wins":1,"losses":2,"ties":0},"AR":{"wins":2,"losses":0,"ties":0},"DM":{"wins":1,"losses":0,"ties":0},"AN":{"wins":0,"losses":1,"ties":0},"ZS":{"wins":0,"losses":2,"ties":0},"GM":{"wins":0,"losses":1,"ties":0},"CR":{"wins":1,"losses":0,"ties":0}}}}</script>
+<script src="../static/js/d3.v7.min.js"></script>
+<script src="../static/js/records-h2h.js?v=1"></script>
 <h2>Trophy case</h2>
 <div class="table-container"><table class="stats-table">
   <thead><tr><th class="number">Season</th><th>Champion</th></tr></thead>
@@ -111,15 +117,15 @@ the diagonal is lifetime points scored.</p>
 </table></div>
 <h2>Hall of shame</h2>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th>Dishonor</th><th class="number">Value</th><th class="detail">Details</th></tr></thead>
+  <thead><tr><th scope="col">Dishonor</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr></thead>
   <tbody>
-    <tr><td>Lowest weekly score ever</td><td class="number">&ndash;</td><td class="detail"></td></tr>
-    <tr><td>Most points in a loss</td><td class="number">&ndash;</td><td class="detail"></td></tr>
+    <tr><td>Lowest weekly score ever</td><td class="number">8.5</td><td class="detail">lost to <a href="./an.html">AN</a> 8.5-104.4, 2023 wk 16</td></tr>
+    <tr><td>Most points in a loss</td><td class="number">212.6</td><td class="detail">lost to <a href="./ik.html">IK</a> 212.6-260.4, 2018 wk 15</td></tr>
   </tbody>
 </table></div>
 <h3>Longest playoff droughts</h3>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th>Owner</th><th class="number">Seasons out</th><th class="detail">Span</th></tr></thead>
+  <thead><tr><th scope="col">Owner</th><th class="number">Seasons out</th><th scope="col" class="detail">Span</th></tr></thead>
   <tbody>
 <tr><td><a href="./ar.html">AR</a></td><td class="number">5</td><td class="detail">2016&ndash;2020</td></tr>
 <tr><td><a href="./zs.html">ZS</a></td><td class="number">4</td><td class="detail">2017&ndash;2020</td></tr>

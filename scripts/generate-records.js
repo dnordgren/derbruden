@@ -41,9 +41,7 @@ function authHeaders() {
 }
 
 async function fetchLeague(season) {
-  const url =
-    `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` +
-    '?view=mTeam&view=mMatchupScore'
+  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` + '?view=mTeam&view=mMatchupScore'
   const res = await fetch(url, { headers: authHeaders() })
   if (!res.ok) throw new Error(`ESPN API returned ${res.status} for season ${season}`)
   return res.json()
@@ -55,12 +53,7 @@ export function extractGames(league, season) {
   const games = []
   for (const m of league.schedule || []) {
     const { home, away } = m
-    if (
-      !home ||
-      !away ||
-      typeof home.totalPoints !== 'number' ||
-      typeof away.totalPoints !== 'number'
-    ) {
+    if (!home || !away || typeof home.totalPoints !== 'number' || typeof away.totalPoints !== 'number') {
       continue
     }
     const winner = String(m.winner || '').toLowerCase()
@@ -173,8 +166,7 @@ export function computeRecords(games, ownerOf, nameOf) {
       if (s.points > s.oppPoints && (!blowout || margin > blowout.raw)) {
         blowout = { ...entry(g, s, ownerOf, nameOf), margin: round1(margin), raw: margin }
       }
-      const lost =
-        g.winner === 'tie' ? false : (g.winner === 'home') !== (s.id === g.homeId)
+      const lost = g.winner === 'tie' ? false : (g.winner === 'home') !== (s.id === g.homeId)
       if (lost && (!mostPointsInALoss || s.points > mostPointsInALoss.raw)) {
         mostPointsInALoss = { ...entry(g, s, ownerOf, nameOf), raw: s.points }
       }
@@ -199,16 +191,15 @@ export function computeRecords(games, ownerOf, nameOf) {
     mostPointsInALoss: strip(mostPointsInALoss),
     biggestBlowout: strip(blowout),
     longestWinStreak: longestWinStreak(games, ownerOf),
-    mostPointsInASeason:
-      bestSeason && {
-        owner: bestSeason.owner,
-        team: nameOf(bestSeason.season, bestSeason.teamId),
-        points: bestSeason.points,
-        season: bestSeason.season,
-        wins: bestSeason.wins,
-        losses: bestSeason.losses,
-        ties: bestSeason.ties,
-      },
+    mostPointsInASeason: bestSeason && {
+      owner: bestSeason.owner,
+      team: nameOf(bestSeason.season, bestSeason.teamId),
+      points: bestSeason.points,
+      season: bestSeason.season,
+      wins: bestSeason.wins,
+      losses: bestSeason.losses,
+      ties: bestSeason.ties,
+    },
   }
 }
 
@@ -272,8 +263,7 @@ export function computeH2H(games, ownerOf) {
       cells.set(key, { a: first, b: second, wA: 0, wB: 0, ties: 0 })
     }
     const cell = cells.get(key)
-    const winnerOwner =
-      g.winner === 'tie' ? null : ownerOf(g.winner === 'home' ? g.homeId : g.awayId)
+    const winnerOwner = g.winner === 'tie' ? null : ownerOf(g.winner === 'home' ? g.homeId : g.awayId)
     if (winnerOwner === null) cell.ties += 1
     else if (winnerOwner === cell.a) cell.wA += 1
     else cell.wB += 1
@@ -413,10 +403,7 @@ export function crossCheck(apiRows, csvRows) {
     ]) {
       if (got !== want) problems.push(`${csv.owner} ${year}: api ${label}=${got}, stats.csv ${label}=${want}`)
     }
-    if (
-      api.madePlayoffs !== csv.playoffs &&
-      !KNOWN_CSV_PLAYOFF_MISMATCH.has(`${year}|${csv.owner}`)
-    ) {
+    if (api.madePlayoffs !== csv.playoffs && !KNOWN_CSV_PLAYOFF_MISMATCH.has(`${year}|${csv.owner}`)) {
       problems.push(`${csv.owner} ${year}: api playoffs=${api.madePlayoffs}, stats.csv=${csv.playoffs}`)
     }
     if (api.champion !== csv.champion) {
@@ -455,7 +442,7 @@ export function renderRecordsSection(records) {
 <p class="section-note">Every decided game, regular season and playoffs.</p>
 <div class="table-container"><table class="stats-table">
   <thead>
-    <tr><th scope="col">Record</th><th class="number">Value</th><th class="detail">Details</th></tr>
+    <tr><th scope="col">Record</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr>
   </thead>
   <tbody>
     <tr><td>Highest weekly score</td><td class="number">${hs ? fmt(hs.points) : '&ndash;'}</td><td class="detail">${hs ? detail(hs, 'beat') : ''}</td></tr>
@@ -495,6 +482,21 @@ ${body}
 </table></div>`
 }
 
+export function renderH2HChartSection(h2h) {
+  if (!h2h.rows.length) return ''
+  const payload = {
+    owners: h2h.order,
+    records: Object.fromEntries(h2h.rows.map(r => [r.owner, r.rivals])),
+  }
+  const json = JSON.stringify(payload).replace(/<\//g, '<\\/')
+  return `<h2>Head-to-head heat map</h2>
+<p class="section-note">Win rate for row owner vs column owner. Green means the row owner won more often.</p>
+<div class="viz-chart" id="records-h2h-chart"></div>
+<script type="application/json" id="records-h2h-data">${json}</script>
+<script src="../static/js/d3.v7.min.js"></script>
+<script src="../static/js/records-h2h.js?v=1"></script>`
+}
+
 export function renderTrophiesSection({ champions, lowestScore, mostPointsInALoss, droughts }) {
   const ls = lowestScore
   const ml = mostPointsInALoss
@@ -514,7 +516,7 @@ ${champions.map(c => `<tr><td class="number">${c.season}</td><td><strong>${owner
 </table></div>
 <h2>Hall of shame</h2>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th scope="col">Dishonor</th><th class="number">Value</th><th class="detail">Details</th></tr></thead>
+  <thead><tr><th scope="col">Dishonor</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr></thead>
   <tbody>
     <tr><td>Lowest weekly score ever</td><td class="number">${ls ? fmt(ls.points) : '&ndash;'}</td><td class="detail">${ls ? detail(ls, 'lost to') : ''}</td></tr>
     <tr><td>Most points in a loss</td><td class="number">${ml ? fmt(ml.points) : '&ndash;'}</td><td class="detail">${ml ? detail(ml, 'lost to') : ''}</td></tr>
@@ -522,7 +524,7 @@ ${champions.map(c => `<tr><td class="number">${c.season}</td><td><strong>${owner
 </table></div>
 <h3>Longest playoff droughts</h3>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th scope="col">Owner</th><th class="number">Seasons out</th><th class="detail">Span</th></tr></thead>
+  <thead><tr><th scope="col">Owner</th><th class="number">Seasons out</th><th scope="col" class="detail">Span</th></tr></thead>
   <tbody>
 ${droughtRows}
   </tbody>
@@ -533,10 +535,11 @@ export function renderPageContent(data) {
   return [
     renderRecordsSection(data.records),
     renderH2HSection(data.h2h),
+    renderH2HChartSection(data.h2h),
     renderTrophiesSection({
       champions: data.champions,
-      lowestScore: data.records.lowestScore,
-      mostPointsInALoss: data.records.mostPointsInALoss,
+      lowestScore: data.hallOfShame.lowestScore,
+      mostPointsInALoss: data.hallOfShame.mostPointsInALoss,
       droughts: data.hallOfShame.playoffDroughts,
     }),
   ].join('\n')
@@ -703,9 +706,7 @@ async function main() {
     lastCompleted = csvYears.length ? Math.max(...csvYears) : API_FIRST_SEASON - 1
   }
 
-  champions.push(
-    ...preEraCsv.filter(r => r.champion).map(r => ({ season: 2000 + r.season, owner: r.owner, team: '' }))
-  )
+  champions.push(...preEraCsv.filter(r => r.champion).map(r => ({ season: 2000 + r.season, owner: r.owner, team: '' })))
   champions.sort((a, b) => a.season - b.season)
 
   const allRecords = computeRecords(allGames, ownerOf, nameOf)
@@ -737,7 +738,10 @@ async function main() {
   }
 
   if (checkOnly) {
-    const problems = crossCheck(apiRows.filter(r => completedYears.has(r.year)), csvRows)
+    const problems = crossCheck(
+      apiRows.filter(r => completedYears.has(r.year)),
+      csvRows
+    )
     if (problems.length) {
       for (const p of problems) console.error(p)
       process.exitCode = 1

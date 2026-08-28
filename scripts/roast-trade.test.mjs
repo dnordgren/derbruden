@@ -124,7 +124,7 @@ test('main researches the trade and posts the roast to Discord', async () => {
     assert.equal(code, 0)
     assert.equal(llmCalls.length, 1)
     assert.equal(llmCalls[0].auth, 'Bearer key123')
-    assert.equal(llmCalls[0].body.model, 'kimi-k3')
+    assert.equal(llmCalls[0].body.model, 'muse-spark-1.2-contributor')
     assert.match(llmCalls[0].body.messages[1].content, /Jason Myers/)
     assert.match(llmCalls[0].body.messages[1].content, /Star RB ruled out/)
     assert.equal(discordPosts.length, 1)

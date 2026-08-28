@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DerBruden.com | Waivers</title>
+
+    <!--#include file="partials/head-common.html" -->
+    <style>
+      h2 {
+        margin-bottom: 5px;
+      }
+
+      main h3 {
+        margin-top: 40px;
+        margin-bottom: 0;
+      }
+
+      .updated {
+        color: var(--muted);
+        font-size: 0.9em;
+        margin-top: 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+
+      th {
+        border-bottom: 2px solid var(--ink);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+      }
+
+      td.num,
+      th.num {
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .event-badge {
+        display: inline-block;
+        padding: 1px 8px;
+        border-radius: 10px;
+        font-size: 0.8em;
+        font-weight: 600;
+        color: var(--paper);
+        background: var(--muted);
+      }
+
+      .event-badge.waiver {
+        background: #8e44ad;
+      }
+
+      .event-badge.pending {
+        background: #f39c12;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      @media (max-width: 768px) {
+        table,
+        thead,
+        tbody,
+        tr {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        tbody tr {
+          margin-bottom: 16px;
+          border-bottom: 1px solid var(--line);
+          padding-bottom: 12px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!--#include file="partials/site-header.html" -->
+
+    <!--#include file="partials/nav.html" -->
+
+    <main>
+      <h2>Waivers</h2>
+      <p class="updated">Season <span id="season">2026</span><span id="updated-at"></span>. Order refreshes daily.</p>
+
+      <h3>Waiver Order</h3>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" class="num">#</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Team</th>
+            <th scope="col" class="num">Record</th>
+            <th scope="col" class="num">Moves</th>
+          </tr>
+        </thead>
+        <tbody id="order-rows">
+          <tr>
+            <td colspan="5">Loading...</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Recent Moves</h3>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Owner</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody id="move-rows">
+          <tr>
+            <td colspan="4">Loading...</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <!--#include file="partials/footer.html" -->
+
+    <script>
+      const escapeHtml = value =>
+        String(value).replace(
+          /[&<>"']/g,
+          c =>
+            ({
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              '"': '&quot;',
+              "'": '&#39;',
+            })[c]
+        )
+
+      const formatDate = iso => {
+        if (!iso) return ''
+        const d = new Date(iso)
+        return (
+          d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) +
+          ', ' +
+          d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+        )
+      }
+
+      const record = row => (row.wins == null ? '' : `${row.wins}-${row.losses}${row.ties ? '-' + row.ties : ''}`)
+
+      const ownerLink = row => {
+        const label = escapeHtml(row.owner || 'Team ' + row.teamId)
+        return row.owner ? '<a href="./' + row.owner.toLowerCase() + '.html">' + label + '</a>' : label
+      }
+
+      const details = move => {
+        const parts = []
+        if (move.adds.length) parts.push('added ' + move.adds.map(escapeHtml).join(', '))
+        if (move.drops.length) parts.push('dropped ' + move.drops.map(escapeHtml).join(', '))
+        if (move.bid) parts.push(`<span class="muted">$${move.bid} bid</span>`)
+        return parts.join('; ') || '&mdash;'
+      }
+
+      const render = data => {
+        if (data.season) document.getElementById('season').textContent = data.season
+        if (data.updated) document.getElementById('updated-at').textContent = ' - updated ' + formatDate(data.updated)
+
+        document.getElementById('order-rows').innerHTML =
+          data.order && data.order.length
+            ? data.order
+                .map(
+                  r =>
+                    '<tr>' +
+                    '<td class="num">' +
+                    r.rank +
+                    '</td>' +
+                    '<td>' +
+                    ownerLink(r) +
+                    '</td>' +
+                    '<td>' +
+                    escapeHtml(r.name) +
+                    '</td>' +
+                    '<td class="num">' +
+                    record(r) +
+                    '</td>' +
+                    '<td class="num">' +
+                    r.moves +
+                    '</td>' +
+                    '</tr>'
+                )
+                .join('')
+            : '<tr><td colspan="5">No waiver order available.</td></tr>'
+
+        document.getElementById('move-rows').innerHTML =
+          data.moves && data.moves.length
+            ? data.moves
+                .map(m => {
+                  const badge =
+                    '<span class="event-badge ' +
+                    (m.event === 'WAIVER' ? 'waiver' : '') +
+                    '">' +
+                    escapeHtml(m.event === 'WAIVER' ? 'Waiver' : 'Free agent') +
+                    '</span>'
+                  const pending = m.status === 'PROPOSED' ? ' <span class="event-badge pending">Pending</span>' : ''
+                  return (
+                    '<tr>' +
+                    '<td>' +
+                    escapeHtml(formatDate(m.date)) +
+                    '</td>' +
+                    '<td>' +
+                    badge +
+                    pending +
+                    '</td>' +
+                    '<td>' +
+                    ownerLink(m) +
+                    '</td>' +
+                    '<td>' +
+                    details(m) +
+                    '</td>' +
+                    '</tr>'
+                  )
+                })
+                .join('')
+            : '<tr><td colspan="4">No waiver moves yet this season.</td></tr>'
+      }
+
+      fetch('../static/data/waivers.json')
+        .then(res => res.json())
+        .then(render)
+        .catch(() => {
+          document.getElementById('order-rows').innerHTML = '<tr><td colspan="5">Could not load waiver data.</td></tr>'
+          document.getElementById('move-rows').innerHTML = '<tr><td colspan="4">Could not load waiver data.</td></tr>'
+        })
+    </script>
+  </body>
+</html>

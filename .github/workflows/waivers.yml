@@ -1,0 +1,74 @@
+name: Waivers
+
+on:
+  schedule:
+    # Daily at 9am ET. Cron runs on UTC only, so two windows cover
+    # daylight time (Mar-Oct) and standard time (Nov-Feb). GitHub cron
+    # rejects ranges that wrap the year, so list winter months out.
+    - cron: '0 13 * 3-10 *'
+    - cron: '0 14 * 11,12,1,2 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: waivers
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Generate waiver data
+        env:
+          LEAGUE_ID: '794521'
+          ESPN_S2: ${{ secrets.ESPN_S2 }}
+          SWID: ${{ secrets.SWID }}
+        run: |
+          # Season year: Aug-Dec maps to current calendar year, Jan-Jul to prior.
+          MONTH=$(date +%-m)
+          YEAR=$(date +%-Y)
+          export LEAGUE_YEAR=$(( MONTH >= 8 ? YEAR : YEAR - 1 ))
+          echo "Generating waiver data for league 794521 season ${LEAGUE_YEAR}"
+          node scripts/generate-waivers.mjs
+
+      - name: Check for changed files
+        id: status
+        run: echo "count=$(git status --porcelain static/data scripts | wc -l)" >> "$GITHUB_OUTPUT"
+
+      - name: Configure AWS credentials
+        if: steps.status.outputs.count != '0'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Build pages
+        run: node scripts/build.mjs
+
+      # Page shell and data refresh together; two invalidation paths stay
+      # far below the monthly CloudFront free tier.
+      - name: Publish page and data
+        if: steps.status.outputs.count != '0'
+        run: |
+          aws s3 cp pub/waivers.html s3://derbruden.com/waivers.html --cache-control "public, max-age=60, stale-while-revalidate=300"
+          aws s3 cp static/data/waivers.json s3://derbruden.com/static/data/waivers.json --cache-control "public, max-age=0, must-revalidate"
+          aws cloudfront create-invalidation --distribution-id E3CDWEEK40CKI2 --paths "/waivers.html" "/static/data/waivers.json"
+
+      - name: Commit updated data
+        if: steps.status.outputs.count != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/data scripts/waiver-players.json
+          git commit -m "chore: Update waiver data"
+          git push

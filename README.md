@@ -113,8 +113,60 @@ Notes:
   only hit the network for new picks.
 - The current season appears once its live draft has results. ESPN
   pre-fills empty slots with playerId `-1`; the generator filters them.
+
+### Generate owner page charts
+
+Adds three charts to every owner page: a season PF/PA dumbbell, a career
+Elo trajectory, and a head-to-head win-rate grid. Requires the same
+`ESPN_S2` cookie as power rankings.
+
+```sh
+make viz
+```
+
+or directly:
+
+```sh
+node scripts/generate-owner-viz.mjs
+```
+
+Notes:
+
+- ESPN keeps schedules back to 2018, so Elo and head-to-head cover
+  2018 on; the PF/PA dumbbell reads `scripts/stats.csv` back to 2014.
+- Head-to-head counts every decided game including playoffs and matches
+  the matrix on records.html. Elo replays regular season games only,
+  seeded from prior-season win percentage like power rankings.
+- Raw league JSON caches to git-ignored `scripts/.viz-cache/`. Use
+  `--offline` to rebuild pages from cache without network access.
+- Charts render client-side from an embedded JSON payload via
+  `static/js/owner-charts.js` on the vendored d3.
 - D/ST picks carry negative player ids shaped like `-(16000 + NFL team
 id)`; the generator resolves them to team names.
+
+### Generate waiver data
+
+Builds `static/data/waivers.json` for the
+[waivers page](https://derbruden.com/waivers.html): current waiver order and
+this season's waiver moves. Needs both `ESPN_S2` and `SWID`, like the trade
+watcher.
+
+```sh
+make waivers
+# or directly:
+node scripts/generate-waivers.mjs [--dry-run]
+```
+
+Notes:
+
+- The JSON is rebuilt from scratch every run, so only the current season is
+  ever retained. `scripts/waiver-players.json` caches resolved player names,
+  pruned to the current season; commit it.
+- A daily GitHub Action (`.github/workflows/waivers.yml`) regenerates the
+  data, publishes the page and JSON to S3 with two-path invalidation, and
+  commits when something changed. Idle runs change nothing.
+- Pending (`PROPOSED`) claims show a Pending badge until ESPN processes them;
+  declined or failed claims never appear.
 
 ### Generate all-time records
 
@@ -276,7 +328,7 @@ node scripts/watch-trades.mjs --dry-run   # confirm the trade first
 node scripts/roast-trade.mjs posted-trades.json --dry-run  # print the research packet
 ```
 
-Optional config: `ROAST_MODEL` (default `kimi-k3`) and
+Optional config: `ROAST_MODEL` (default `muse-spark-1.2-contributor`) and
 `OPENCODE_GO_BASE_URL` (default `https://opencode.ai/zen/go`). Verdicts are
 one short sentence, deliberately opaque: the oracle studies rosters,
 standings, and NFL news, then judges without explaining.

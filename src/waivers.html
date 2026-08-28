@@ -7,7 +7,7 @@
 
     <!--#include file="partials/head-common.html" -->
     <style>
-      h2 {
+      h1 {
         margin-bottom: 5px;
       }
 
@@ -98,19 +98,20 @@
 
     <!--#include file="partials/nav.html" -->
 
-    <main>
-      <h2>Waivers</h2>
+    <main id="main">
+      <h1>Waivers</h1>
       <p class="updated">Season <span id="season">2026</span><span id="updated-at"></span>. Order refreshes daily.</p>
 
       <h3>Waiver Order</h3>
       <table>
+        <caption class="visually-hidden">Waiver order</caption>
         <thead>
           <tr>
-            <th class="num">#</th>
-            <th>Owner</th>
-            <th>Team</th>
-            <th class="num">Record</th>
-            <th class="num">Moves</th>
+            <th scope="col" class="num">#</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Team</th>
+            <th scope="col" class="num">Record</th>
+            <th scope="col" class="num">Moves</th>
           </tr>
         </thead>
         <tbody id="order-rows">
@@ -122,12 +123,13 @@
 
       <h3>Recent Moves</h3>
       <table>
+        <caption class="visually-hidden">Recent waiver moves</caption>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Owner</th>
-            <th>Details</th>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Details</th>
           </tr>
         </thead>
         <tbody id="move-rows">

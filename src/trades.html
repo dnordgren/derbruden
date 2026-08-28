@@ -7,7 +7,7 @@
 
     <!--#include file="partials/head-common.html" -->
   <style>
-    h2 {
+    h1 {
       margin-bottom: 5px;
     }
 
@@ -46,11 +46,11 @@
       font-size: 0.8em;
       font-weight: 600;
       color: #fff;
-      background: #95a5a6;
+      background: #5d6d7e;
     }
 
     .event-badge.accepted {
-      background: #27ae60;
+      background: #1e7d43;
     }
 
     .event-badge.declined,
@@ -115,15 +115,16 @@
 
   <!--#include file="partials/nav.html" -->
 
-    <main>
-      <h2>Trade Log</h2>
+    <main id="main">
+      <h1>Trade Log</h1>
       <p class="updated">Season <span id="season">2026</span><span id="updated-at"></span></p>
       <table>
+        <caption class="visually-hidden">Trade log</caption>
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Details</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Details</th>
           </tr>
         </thead>
         <tbody id="trade-rows">

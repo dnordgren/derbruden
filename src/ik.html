@@ -13,160 +13,161 @@
 
   <!--#include file="partials/nav.html" -->
 
-  <main>
+  <main id="main">
     <div class="owner-logo-header">
       <img src="../static/img/owner-ik-logo.webp" alt="IK Logo" class="owner-logo-image" width="100" height="100">
       <h1>IK - Thats My God</h1>
     </div>
     <div class="table-container"><table class="stats-table">
-      <thead>
-        <tr>
-          <th class="number">Season</th>
-          <th class="number">W</th>
-          <th class="number">L</th>
-          <th class="number">Win %</th>
-          <th class="number">Final Rnk</th>
-          <th class="number">RG Rnk</th>
-          <th class="number">PF</th>
-          <th class="number">PA</th>
-          <th class="number">PDiff</th>
-          <th class="number">Playoffs</th>
-          <th class="number">Champion</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="number">25</td>
-          <td class="number">7</td>
-          <td class="number">6</td>
-          <td class="number">.538</td>
-          <td class="number">5</td>
-          <td class="number">3</td>
-          <td class="number">1,456</td>
-          <td class="number">1,473</td>
-          <td class="number">-17</td>
-          <td class="number">Y</td>
-          <td class="number"></td>
-        </tr>
-        <tr>
-          <td class="number">24</td>
-          <td class="number">3</td>
-          <td class="number">10</td>
-          <td class="number">.231</td>
-          <td class="number">9</td>
-          <td class="number">10</td>
-          <td class="number">1,256</td>
-          <td class="number">1,523</td>
-          <td class="number">-267</td>
-          <td class="number">N</td>
-          <td class="number"></td>
-        </tr>
-        <tr>
-          <td class="number">23</td>
-          <td class="number">5</td>
-          <td class="number">8</td>
-          <td class="number">.385</td>
-          <td class="number">7</td>
-          <td class="number">8</td>
-          <td class="number">1,361</td>
-          <td class="number">1,483</td>
-          <td class="number">-122</td>
-          <td class="number">N</td>
-          <td class="number"></td>
-        </tr>
-        <tr>
-          <td class="number">22</td>
-          <td class="number">5</td>
-          <td class="number">9</td>
-          <td class="number">.357</td>
-          <td class="number">8</td>
-          <td class="number">8</td>
-          <td class="number">1,406</td>
-          <td class="number">1,447</td>
-          <td class="number">-41</td>
-          <td class="number">N</td>
-          <td class="number"></td>
-        </tr>
-        <tr>
-          <td class="number">21</td>
-          <td class="number">8</td>
-          <td class="number">6</td>
-          <td class="number">.571</td>
-          <td class="number">1</td>
-          <td class="number">2</td>
-          <td class="number">1,589</td>
-          <td class="number">1,591</td>
-          <td class="number">-2</td>
-          <td class="number">Y</td>
-          <td class="number">🏆</td>
-        </tr>
-        <tr>
-          <td class="number">20</td>
-          <td class="number">4</td>
-          <td class="number">9</td>
-          <td class="number">.308</td>
-          <td class="number">8</td>
-          <td class="number">8</td>
-          <td class="number">1,376</td>
-          <td class="number">1,501</td>
-          <td class="number">-125</td>
-          <td class="number">N</td>
-          <td class="number"></td>
-        </tr>
-        <tr>
-          <td class="number">19</td>
-          <td class="number">6</td>
-          <td class="number">7</td>
-          <td class="number">.462</td>
-          <td class="number">1</td>
-          <td class="number">6</td>
-          <td class="number">1,307</td>
-          <td class="number">1,411</td>
-          <td class="number">-104</td>
-          <td class="number">Y</td>
-          <td class="number">🏆</td>
-        </tr>
-        <tr>
-          <td class="number">18</td>
-          <td class="number">9</td>
-          <td class="number">4</td>
-          <td class="number">.692</td>
-          <td class="number">3</td>
-          <td class="number">2</td>
-          <td class="number">1,647</td>
-          <td class="number">1,424</td>
-          <td class="number">223</td>
-          <td class="number">Y</td>
-          <td class="number"></td>
-        </tr>
-        <tr>
-          <td class="number">17</td>
-          <td class="number">3</td>
-          <td class="number">10</td>
-          <td class="number">.231</td>
-          <td class="number">8</td>
-          <td class="number">9</td>
-          <td class="number">1,227</td>
-          <td class="number">1,408</td>
-          <td class="number">-181</td>
-          <td class="number">N</td>
-          <td class="number"></td>
-        </tr>
-        <tr class="totals-row">
-          <td class="number">Totals</td>
-          <td class="number">50</td>
-          <td class="number">69</td>
-          <td class="number">.420</td>
-          <td class="number">-</td>
-          <td class="number">-</td>
-          <td class="number">12,625</td>
-          <td class="number">13,261</td>
-          <td class="number">-636</td>
-          <td class="number">4</td>
-          <td class="number">🏆🏆</td>
-        </tr>
-      </tbody>
-    </table></div>
+  <caption class="visually-hidden">Season-by-season record, IK</caption>
+  <thead>
+    <tr>
+      <th scope="col" class="number">Season</th>
+      <th scope="col" class="number">W</th>
+      <th scope="col" class="number">L</th>
+      <th scope="col" class="number">Win %</th>
+      <th scope="col" class="number">Final Rnk</th>
+      <th scope="col" class="number">RG Rnk</th>
+      <th scope="col" class="number">PF</th>
+      <th scope="col" class="number">PA</th>
+      <th scope="col" class="number">PDiff</th>
+      <th scope="col" class="number">Playoffs</th>
+      <th scope="col" class="number">Champion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="number">25</td>
+      <td class="number">7</td>
+      <td class="number">6</td>
+      <td class="number">.538</td>
+      <td class="number">5</td>
+      <td class="number">3</td>
+      <td class="number">1,456</td>
+      <td class="number">1,473</td>
+      <td class="number">-17</td>
+      <td class="number">Y</td>
+      <td class="number"><span class="visually-hidden">0</span></td>
+    </tr>
+    <tr>
+      <td class="number">24</td>
+      <td class="number">3</td>
+      <td class="number">10</td>
+      <td class="number">.231</td>
+      <td class="number">9</td>
+      <td class="number">10</td>
+      <td class="number">1,256</td>
+      <td class="number">1,523</td>
+      <td class="number">-267</td>
+      <td class="number">N</td>
+      <td class="number"><span class="visually-hidden">0</span></td>
+    </tr>
+    <tr>
+      <td class="number">23</td>
+      <td class="number">5</td>
+      <td class="number">8</td>
+      <td class="number">.385</td>
+      <td class="number">7</td>
+      <td class="number">8</td>
+      <td class="number">1,361</td>
+      <td class="number">1,483</td>
+      <td class="number">-122</td>
+      <td class="number">N</td>
+      <td class="number"><span class="visually-hidden">0</span></td>
+    </tr>
+    <tr>
+      <td class="number">22</td>
+      <td class="number">5</td>
+      <td class="number">9</td>
+      <td class="number">.357</td>
+      <td class="number">8</td>
+      <td class="number">8</td>
+      <td class="number">1,406</td>
+      <td class="number">1,447</td>
+      <td class="number">-41</td>
+      <td class="number">N</td>
+      <td class="number"><span class="visually-hidden">0</span></td>
+    </tr>
+    <tr>
+      <td class="number">21</td>
+      <td class="number">8</td>
+      <td class="number">6</td>
+      <td class="number">.571</td>
+      <td class="number">1</td>
+      <td class="number">2</td>
+      <td class="number">1,589</td>
+      <td class="number">1,591</td>
+      <td class="number">-2</td>
+      <td class="number">Y</td>
+      <td class="number"><span aria-hidden="true">🏆</span><span class="visually-hidden">1 championship</span></td>
+    </tr>
+    <tr>
+      <td class="number">20</td>
+      <td class="number">4</td>
+      <td class="number">9</td>
+      <td class="number">.308</td>
+      <td class="number">8</td>
+      <td class="number">8</td>
+      <td class="number">1,376</td>
+      <td class="number">1,501</td>
+      <td class="number">-125</td>
+      <td class="number">N</td>
+      <td class="number"><span class="visually-hidden">0</span></td>
+    </tr>
+    <tr>
+      <td class="number">19</td>
+      <td class="number">6</td>
+      <td class="number">7</td>
+      <td class="number">.462</td>
+      <td class="number">1</td>
+      <td class="number">6</td>
+      <td class="number">1,307</td>
+      <td class="number">1,411</td>
+      <td class="number">-104</td>
+      <td class="number">Y</td>
+      <td class="number"><span aria-hidden="true">🏆</span><span class="visually-hidden">1 championship</span></td>
+    </tr>
+    <tr>
+      <td class="number">18</td>
+      <td class="number">9</td>
+      <td class="number">4</td>
+      <td class="number">.692</td>
+      <td class="number">3</td>
+      <td class="number">2</td>
+      <td class="number">1,647</td>
+      <td class="number">1,424</td>
+      <td class="number">223</td>
+      <td class="number">Y</td>
+      <td class="number"><span class="visually-hidden">0</span></td>
+    </tr>
+    <tr>
+      <td class="number">17</td>
+      <td class="number">3</td>
+      <td class="number">10</td>
+      <td class="number">.231</td>
+      <td class="number">8</td>
+      <td class="number">9</td>
+      <td class="number">1,227</td>
+      <td class="number">1,408</td>
+      <td class="number">-181</td>
+      <td class="number">N</td>
+      <td class="number"><span class="visually-hidden">0</span></td>
+    </tr>
+    <tr class="totals-row">
+      <td class="number">Totals</td>
+      <td class="number">50</td>
+      <td class="number">69</td>
+      <td class="number">.420</td>
+      <td class="number">-</td>
+      <td class="number">-</td>
+      <td class="number">12,625</td>
+      <td class="number">13,261</td>
+      <td class="number">-636</td>
+      <td class="number">4</td>
+      <td class="number"><span aria-hidden="true">🏆🏆</span><span class="visually-hidden">2 championships</span></td>
+    </tr>
+  </tbody>
+</table></div>
   <!-- DRAFT_HISTORY_START -->
   <section class="draft-history">
     <h2>Draft Picks</h2>

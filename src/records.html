@@ -50,7 +50,7 @@
 
   <!--#include file="partials/nav.html" -->
 
-  <main>
+  <main id="main">
     <div class="owner-logo-header">
       <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
         style="border-radius: 50%; object-fit: cover;">
@@ -60,8 +60,9 @@
 <h2>All-time records</h2>
 <p class="section-note">Every decided game, regular season and playoffs.</p>
 <div class="table-container"><table class="stats-table">
+  <caption class="visually-hidden">All-time records</caption>
   <thead>
-    <tr><th>Record</th><th class="number">Value</th><th class="detail">Details</th></tr>
+    <tr><th scope="col">Record</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr>
   </thead>
   <tbody>
     <tr><td>Highest weekly score</td><td class="number">261</td><td class="detail">beat <a href="./jo.html">JO</a> 261-195, 2018 wk 15</td></tr>
@@ -74,26 +75,28 @@
 <p class="section-note">Regular season plus playoffs. Row beats column;
 the diagonal is lifetime points scored.</p>
 <div class="table-container"><table class="stats-table">
+  <caption class="visually-hidden">Head-to-head, all time</caption>
   <thead>
-    <tr><th></th><th class="number">CR</th><th class="number">AN</th><th class="number">GM</th><th class="number">JO</th><th class="number">IK</th><th class="number">DM</th><th class="number">DN</th><th class="number">ZS</th><th class="number">AR</th><th class="number">JH</th><th class="number">SHEN</th></tr>
+    <tr><th scope="col"></th><th class="number">CR</th><th scope="col" class="number">AN</th><th scope="col" class="number">GM</th><th scope="col" class="number">JO</th><th scope="col" class="number">IK</th><th scope="col" class="number">DM</th><th scope="col" class="number">DN</th><th scope="col" class="number">ZS</th><th scope="col" class="number">AR</th><th scope="col" class="number">JH</th><th scope="col" class="number">SHEN</th></tr>
   </thead>
   <tbody>
-<tr><td class="owner"><a href="./cr.html">CR</a></td><td class="number diag">15339.4</td><td class="number">6-10</td><td class="number">9-11</td><td class="number">9-5</td><td class="number">12-4</td><td class="number">10-2</td><td class="number">6-7</td><td class="number">7-4</td><td class="number">9-1</td><td class="number">9-6</td><td class="number">0-1</td></tr>
-<tr><td class="owner"><a href="./an.html">AN</a></td><td class="number">10-6</td><td class="number diag">14632.1</td><td class="number">9-4</td><td class="number">10-9</td><td class="number">5-7</td><td class="number">9-9</td><td class="number">7-3</td><td class="number">7-8</td><td class="number">5-3</td><td class="number">3-12</td><td class="number">1-0</td></tr>
-<tr><td class="owner"><a href="./gm.html">GM</a></td><td class="number">11-9</td><td class="number">4-9</td><td class="number diag">14598.8</td><td class="number">7-6</td><td class="number">5-4</td><td class="number">7-11</td><td class="number">7-3</td><td class="number">10-5</td><td class="number">10-8</td><td class="number">7-3</td><td class="number">1-0</td></tr>
-<tr><td class="owner"><a href="./jo.html">JO</a></td><td class="number">5-9</td><td class="number">9-10</td><td class="number">6-7</td><td class="number diag">14290.7</td><td class="number">11-5</td><td class="number">9-8</td><td class="number">3-7</td><td class="number">6-4</td><td class="number">7-3</td><td class="number">11-5</td><td class="number">2-1</td></tr>
-<tr><td class="owner"><a href="./ik.html">IK</a></td><td class="number">4-12</td><td class="number">7-5</td><td class="number">4-5</td><td class="number">5-11</td><td class="number diag">14234.9</td><td class="number">6-4</td><td class="number">8-7</td><td class="number">10-7</td><td class="number">11-7</td><td class="number">6-7</td><td class="number">0-2</td></tr>
-<tr><td class="owner"><a href="./dm.html">DM</a></td><td class="number">2-10</td><td class="number">9-9</td><td class="number">11-7</td><td class="number">8-9</td><td class="number">4-6</td><td class="number diag">14088.7</td><td class="number">4-8</td><td class="number">6-7</td><td class="number">11-6</td><td class="number">3-7</td><td class="number">0-1</td></tr>
-<tr><td class="owner"><a href="./dn.html">DN</a></td><td class="number">7-6</td><td class="number">3-7</td><td class="number">3-7</td><td class="number">7-3</td><td class="number">7-8</td><td class="number">8-4</td><td class="number diag">13973.6</td><td class="number">7-12</td><td class="number">16-4</td><td class="number">7-9</td><td class="number">1-1</td></tr>
-<tr><td class="owner"><a href="./zs.html">ZS</a></td><td class="number">4-7</td><td class="number">8-7</td><td class="number">5-10</td><td class="number">4-6</td><td class="number">7-10</td><td class="number">7-6</td><td class="number">12-7</td><td class="number diag">13348.9</td><td class="number">10-8</td><td class="number">3-5</td><td class="number">2-0</td></tr>
-<tr><td class="owner"><a href="./ar.html">AR</a></td><td class="number">1-9</td><td class="number">3-5</td><td class="number">8-10</td><td class="number">3-7</td><td class="number">7-11</td><td class="number">6-11</td><td class="number">4-16</td><td class="number">8-10</td><td class="number diag">13273.8</td><td class="number">4-4</td><td class="number">0-2</td></tr>
-<tr><td class="owner"><a href="./jh.html">JH</a></td><td class="number">6-9</td><td class="number">12-3</td><td class="number">3-7</td><td class="number">5-11</td><td class="number">7-6</td><td class="number">7-3</td><td class="number">9-7</td><td class="number">5-3</td><td class="number">4-4</td><td class="number diag">12065.6</td><td class="number muted">&ndash;</td></tr>
-<tr><td class="owner">SHEN</td><td class="number">1-0</td><td class="number">0-1</td><td class="number">0-1</td><td class="number">1-2</td><td class="number">2-0</td><td class="number">1-0</td><td class="number">1-1</td><td class="number">0-2</td><td class="number">2-0</td><td class="number muted">&ndash;</td><td class="number diag">1850.9</td></tr>
+<tr><th scope="row" class="owner"><a href="./cr.html">CR</a></th><td class="number diag">15339.4</td><td class="number">6-10</td><td class="number">9-11</td><td class="number">9-5</td><td class="number">12-4</td><td class="number">10-2</td><td class="number">6-7</td><td class="number">7-4</td><td class="number">9-1</td><td class="number">9-6</td><td class="number">0-1</td></tr>
+<tr><th scope="row" class="owner"><a href="./an.html">AN</a></th><td class="number">10-6</td><td class="number diag">14632.1</td><td class="number">9-4</td><td class="number">10-9</td><td class="number">5-7</td><td class="number">9-9</td><td class="number">7-3</td><td class="number">7-8</td><td class="number">5-3</td><td class="number">3-12</td><td class="number">1-0</td></tr>
+<tr><th scope="row" class="owner"><a href="./gm.html">GM</a></th><td class="number">11-9</td><td class="number">4-9</td><td class="number diag">14598.8</td><td class="number">7-6</td><td class="number">5-4</td><td class="number">7-11</td><td class="number">7-3</td><td class="number">10-5</td><td class="number">10-8</td><td class="number">7-3</td><td class="number">1-0</td></tr>
+<tr><th scope="row" class="owner"><a href="./jo.html">JO</a></th><td class="number">5-9</td><td class="number">9-10</td><td class="number">6-7</td><td class="number diag">14290.7</td><td class="number">11-5</td><td class="number">9-8</td><td class="number">3-7</td><td class="number">6-4</td><td class="number">7-3</td><td class="number">11-5</td><td class="number">2-1</td></tr>
+<tr><th scope="row" class="owner"><a href="./ik.html">IK</a></th><td class="number">4-12</td><td class="number">7-5</td><td class="number">4-5</td><td class="number">5-11</td><td class="number diag">14234.9</td><td class="number">6-4</td><td class="number">8-7</td><td class="number">10-7</td><td class="number">11-7</td><td class="number">6-7</td><td class="number">0-2</td></tr>
+<tr><th scope="row" class="owner"><a href="./dm.html">DM</a></th><td class="number">2-10</td><td class="number">9-9</td><td class="number">11-7</td><td class="number">8-9</td><td class="number">4-6</td><td class="number diag">14088.7</td><td class="number">4-8</td><td class="number">6-7</td><td class="number">11-6</td><td class="number">3-7</td><td class="number">0-1</td></tr>
+<tr><th scope="row" class="owner"><a href="./dn.html">DN</a></th><td class="number">7-6</td><td class="number">3-7</td><td class="number">3-7</td><td class="number">7-3</td><td class="number">7-8</td><td class="number">8-4</td><td class="number diag">13973.6</td><td class="number">7-12</td><td class="number">16-4</td><td class="number">7-9</td><td class="number">1-1</td></tr>
+<tr><th scope="row" class="owner"><a href="./zs.html">ZS</a></th><td class="number">4-7</td><td class="number">8-7</td><td class="number">5-10</td><td class="number">4-6</td><td class="number">7-10</td><td class="number">7-6</td><td class="number">12-7</td><td class="number diag">13348.9</td><td class="number">10-8</td><td class="number">3-5</td><td class="number">2-0</td></tr>
+<tr><th scope="row" class="owner"><a href="./ar.html">AR</a></th><td class="number">1-9</td><td class="number">3-5</td><td class="number">8-10</td><td class="number">3-7</td><td class="number">7-11</td><td class="number">6-11</td><td class="number">4-16</td><td class="number">8-10</td><td class="number diag">13273.8</td><td class="number">4-4</td><td class="number">0-2</td></tr>
+<tr><th scope="row" class="owner"><a href="./jh.html">JH</a></th><td class="number">6-9</td><td class="number">12-3</td><td class="number">3-7</td><td class="number">5-11</td><td class="number">7-6</td><td class="number">7-3</td><td class="number">9-7</td><td class="number">5-3</td><td class="number">4-4</td><td class="number diag">12065.6</td><td class="number muted">&ndash;</td></tr>
+<tr><th scope="row" class="owner">SHEN</th><td class="number">1-0</td><td class="number">0-1</td><td class="number">0-1</td><td class="number">1-2</td><td class="number">2-0</td><td class="number">1-0</td><td class="number">1-1</td><td class="number">0-2</td><td class="number">2-0</td><td class="number muted">&ndash;</td><td class="number diag">1850.9</td></tr>
   </tbody>
 </table></div>
 <h2>Trophy case</h2>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th class="number">Season</th><th>Champion</th></tr></thead>
+  <caption class="visually-hidden">Trophy case</caption>
+  <thead><tr><th scope="col" class="number">Season</th><th scope="col">Champion</th></tr></thead>
   <tbody>
 <tr><td class="number">2014</td><td><strong><a href="./dm.html">DM</a></strong></td></tr>
 <tr><td class="number">2015</td><td><strong><a href="./ar.html">AR</a></strong></td></tr>
@@ -111,7 +114,8 @@ the diagonal is lifetime points scored.</p>
 </table></div>
 <h2>Hall of shame</h2>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th>Dishonor</th><th class="number">Value</th><th class="detail">Details</th></tr></thead>
+  <caption class="visually-hidden">Hall of shame</caption>
+  <thead><tr><th scope="col">Dishonor</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr></thead>
   <tbody>
     <tr><td>Lowest weekly score ever</td><td class="number">&ndash;</td><td class="detail"></td></tr>
     <tr><td>Most points in a loss</td><td class="number">&ndash;</td><td class="detail"></td></tr>
@@ -119,13 +123,14 @@ the diagonal is lifetime points scored.</p>
 </table></div>
 <h3>Longest playoff droughts</h3>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th>Owner</th><th class="number">Seasons out</th><th class="detail">Span</th></tr></thead>
+  <caption class="visually-hidden">Longest playoff droughts</caption>
+  <thead><tr><th scope="col">Owner</th><th scope="col" class="number">Seasons out</th><th scope="col" class="detail">Span</th></tr></thead>
   <tbody>
-<tr><td><a href="./ar.html">AR</a></td><td class="number">5</td><td class="detail">2016&ndash;2020</td></tr>
-<tr><td><a href="./zs.html">ZS</a></td><td class="number">4</td><td class="detail">2017&ndash;2020</td></tr>
-<tr><td><a href="./an.html">AN</a></td><td class="number">3</td><td class="detail">2014&ndash;2016</td></tr>
-<tr><td><a href="./jo.html">JO</a></td><td class="number">3</td><td class="detail">2017&ndash;2019</td></tr>
-<tr><td><a href="./ik.html">IK</a></td><td class="number">3</td><td class="detail">2022&ndash;2024</td></tr>
+<tr><th scope="row"><a href="./ar.html">AR</a></th><td class="number">5</td><td class="detail">2016&ndash;2020</td></tr>
+<tr><th scope="row"><a href="./zs.html">ZS</a></th><td class="number">4</td><td class="detail">2017&ndash;2020</td></tr>
+<tr><th scope="row"><a href="./an.html">AN</a></th><td class="number">3</td><td class="detail">2014&ndash;2016</td></tr>
+<tr><th scope="row"><a href="./jo.html">JO</a></th><td class="number">3</td><td class="detail">2017&ndash;2019</td></tr>
+<tr><th scope="row"><a href="./ik.html">IK</a></th><td class="number">3</td><td class="detail">2022&ndash;2024</td></tr>
   </tbody>
 </table></div>
 <!-- RECORDS_END -->

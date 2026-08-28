@@ -266,9 +266,10 @@ function boardPickHtml(pick, cache, season) {
   if (info.pos === 'D/ST') name = name.replace(/ D\/ST$/, '')
   const sub = [info.pro, pos].filter(Boolean).join(' ~ ')
   const keeperAttrs = pick.keeper ? ' keeper" title="Keeper pick' : ''
+  const keeperLabel = pick.keeper ? '<span class="visually-hidden"> (keeper)</span>' : ''
   return (
     `<div class="pick ${positionClass(info.pos)}${keeperAttrs}">` +
-    `<span class="pick-name">${escapeHtml(name)}</span>` +
+    `<span class="pick-name">${escapeHtml(name)}${keeperLabel}</span>` +
     `<span class="pick-sub">${escapeHtml(sub) || '&nbsp;'}</span></div>`
   )
 }
@@ -281,7 +282,7 @@ function renderSeasonBoard(season, picks, teams, cache) {
       const team = teams && teams[teamId]
       const label = team ? escapeHtml(team.name) : mapped ? mapped.owner : `Team ${teamId}`
       const owner = mapped ? `<span class="head-owner">${mapped.owner}</span>` : ''
-      return `<th class="team-head">${label}${owner}</th>`
+      return `<th scope="col" class="team-head">${label}${owner}</th>`
     })
     .join('')
 
@@ -297,7 +298,7 @@ function renderSeasonBoard(season, picks, teams, cache) {
           return `<td class="board-cell">${body}</td>`
         })
         .join('')
-      return `<tr><th class="round-head">ROUND #${round}<span class="dir">${dir}</span></th>${cells}</tr>`
+      return `<tr><th scope="row" class="round-head">ROUND #${round}<span class="dir">${dir}</span></th>${cells}</tr>`
     })
     .join('\n')
 
@@ -305,8 +306,9 @@ function renderSeasonBoard(season, picks, teams, cache) {
     <h2>${season} Draft</h2>
     <div class="table-container">
       <table class="draft-board">
+        <caption class="visually-hidden">${season} draft board</caption>
         <thead>
-          <tr><th class="round-head"></th>${headCells}</tr>
+          <tr><th scope="col" class="round-head"></th>${headCells}</tr>
         </thead>
         <tbody>
           ${rows}
@@ -392,7 +394,7 @@ function pageTemplate(content) {
       border-collapse: separate;
       border-spacing: 2px;
       margin: 20px 0 40px;
-      font-size: 0.85em;
+      font-size: 0.9em;
     }
 
     .draft-board .round-head {
@@ -400,7 +402,7 @@ function pageTemplate(content) {
       left: 0;
       z-index: 1;
       background: #fff;
-      font-size: 0.72em;
+      font-size: 0.8em;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -416,7 +418,7 @@ function pageTemplate(content) {
     }
 
     .draft-board .team-head {
-      font-size: 0.72em;
+      font-size: 0.8em;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -429,7 +431,7 @@ function pageTemplate(content) {
 
     .draft-board .head-owner {
       display: block;
-      color: #999;
+      color: #6b7280;
       letter-spacing: 0.1em;
     }
 
@@ -509,7 +511,7 @@ function pageTemplate(content) {
 
   <!--#include file="partials/nav.html" -->
 
-  <main>
+  <main id="main">
     ${content}
   </main>
 

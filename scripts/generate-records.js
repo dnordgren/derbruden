@@ -441,8 +441,9 @@ export function renderRecordsSection(records) {
   return `<h2>All-time records</h2>
 <p class="section-note">Every decided game, regular season and playoffs.</p>
 <div class="table-container"><table class="stats-table">
+  <caption class="visually-hidden">All-time records</caption>
   <thead>
-    <tr><th>Record</th><th class="number">Value</th><th class="detail">Details</th></tr>
+    <tr><th scope="col">Record</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr>
   </thead>
   <tbody>
     <tr><td>Highest weekly score</td><td class="number">${hs ? fmt(hs.points) : '&ndash;'}</td><td class="detail">${hs ? detail(hs, 'beat') : ''}</td></tr>
@@ -455,7 +456,7 @@ export function renderRecordsSection(records) {
 
 export function renderH2HSection(h2h) {
   if (!h2h.rows.length) return ''
-  const head = h2h.order.map(o => `<th class="number">${escapeHtml(o)}</th>`).join('')
+  const head = h2h.order.map(o => `<th scope="col" class="number">${escapeHtml(o)}</th>`).join('')
   const body = h2h.rows
     .map(row => {
       const cells = h2h.order
@@ -466,15 +467,16 @@ export function renderH2HSection(h2h) {
           return `<td class="number">${c.ties ? `${c.wins}-${c.losses}-${c.ties}` : `${c.wins}-${c.losses}`}</td>`
         })
         .join('')
-      return `<tr><td class="owner">${ownerLink(row.owner)}</td>${cells}</tr>`
+      return `<tr><th scope="row" class="owner">${ownerLink(row.owner)}</th>${cells}</tr>`
     })
     .join('\n')
   return `<h2>Head-to-head, all time</h2>
 <p class="section-note">Regular season plus playoffs. Row beats column;
 the diagonal is lifetime points scored.</p>
 <div class="table-container"><table class="stats-table">
+  <caption class="visually-hidden">Head-to-head, all time</caption>
   <thead>
-    <tr><th></th>${head}</tr>
+    <tr><th scope="col"></th>${head}</tr>
   </thead>
   <tbody>
 ${body}
@@ -504,19 +506,21 @@ export function renderTrophiesSection({ champions, lowestScore, mostPointsInALos
     .slice(0, 5)
     .map(
       d =>
-        `<tr><td>${ownerLink(d.owner)}</td><td class="number">${d.length}</td><td class="detail">${d.startYear}&ndash;${d.endYear}${d.active ? ' (active)' : ''}</td></tr>`
+        `<tr><th scope="row">${ownerLink(d.owner)}</th><td class="number">${d.length}</td><td class="detail">${d.startYear}&ndash;${d.endYear}${d.active ? ' (active)' : ''}</td></tr>`
     )
     .join('\n')
   return `<h2>Trophy case</h2>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th class="number">Season</th><th>Champion</th></tr></thead>
+  <caption class="visually-hidden">Trophy case</caption>
+  <thead><tr><th scope="col" class="number">Season</th><th scope="col">Champion</th></tr></thead>
   <tbody>
 ${champions.map(c => `<tr><td class="number">${c.season}</td><td><strong>${ownerLink(c.owner)}</strong>${c.team ? ` <span class="muted">${escapeHtml(c.team)}</span>` : ''}</td></tr>`).join('\n')}
   </tbody>
 </table></div>
-<h2>Hall of shame</h2>
+ <h2>Hall of shame</h2>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th>Dishonor</th><th class="number">Value</th><th class="detail">Details</th></tr></thead>
+  <caption class="visually-hidden">Hall of shame</caption>
+  <thead><tr><th scope="col">Dishonor</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr></thead>
   <tbody>
     <tr><td>Lowest weekly score ever</td><td class="number">${ls ? fmt(ls.points) : '&ndash;'}</td><td class="detail">${ls ? detail(ls, 'lost to') : ''}</td></tr>
     <tr><td>Most points in a loss</td><td class="number">${ml ? fmt(ml.points) : '&ndash;'}</td><td class="detail">${ml ? detail(ml, 'lost to') : ''}</td></tr>
@@ -524,7 +528,8 @@ ${champions.map(c => `<tr><td class="number">${c.season}</td><td><strong>${owner
 </table></div>
 <h3>Longest playoff droughts</h3>
 <div class="table-container"><table class="stats-table">
-  <thead><tr><th>Owner</th><th class="number">Seasons out</th><th class="detail">Span</th></tr></thead>
+  <caption class="visually-hidden">Longest playoff droughts</caption>
+  <thead><tr><th scope="col">Owner</th><th scope="col" class="number">Seasons out</th><th scope="col" class="detail">Span</th></tr></thead>
   <tbody>
 ${droughtRows}
   </tbody>
@@ -619,7 +624,7 @@ function pageTemplate(content) {
 
   <!--#include file="partials/nav.html" -->
 
-  <main>
+  <main id="main">
     <div class="owner-logo-header">
       <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
         style="border-radius: 50%; object-fit: cover;">

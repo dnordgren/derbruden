@@ -13,7 +13,7 @@
 
   <!--#include file="partials/nav.html" -->
 
-  <main id="main">
+  <main>
     <div class="owner-logo-header">
       <img src="../static/img/owner-zs-logo.webp" alt="ZS Logo" class="owner-logo-image" width="100" height="100">
       <h1>ZS - Tomato Toes</h1>
@@ -207,6 +207,24 @@
     </tr>
   </tbody>
 </table></div>
+  
+  
+  <!-- OWNER_VIZ_START -->
+  <section class="owner-viz">
+    <h2>Points For vs Points Against</h2>
+    <p class="viz-note">Each dot pair shows one season. Green is points scored, red is points allowed.</p>
+    <div class="viz-chart" id="viz-pfpa"></div>
+    <h2>Elo Trajectory</h2>
+    <p class="viz-note">Weekly Elo rating, 1500 is league average.</p>
+    <div class="viz-chart" id="viz-elo"></div>
+    <h2>Career Head-to-Head</h2>
+    <p class="viz-note">This owner's record against every other owner. Green means winning record, red means losing.</p>
+    <div class="viz-chart viz-chart-h2h" id="viz-h2h"></div>
+    <script type="application/json" id="owner-viz-data">{"generated":"2026-08-27","owner":"ZS","pfpa":[{"season":2014,"pf":1645,"pa":1700},{"season":2015,"pf":2082,"pa":2186},{"season":2016,"pf":1236,"pa":1183},{"season":2017,"pf":1229,"pa":1321},{"season":2018,"pf":1266,"pa":1407},{"season":2019,"pf":1207,"pa":1469},{"season":2020,"pf":1296,"pa":1475},{"season":2021,"pf":1561,"pa":1596},{"season":2022,"pf":1374,"pa":1494},{"season":2023,"pf":1355,"pa":1262},{"season":2024,"pf":1553,"pa":1365},{"season":2025,"pf":1320,"pa":1361}],"elo":{"seasonStarts":[[0,2018],[14,2019],[28,2020],[42,2021],[57,2022],[72,2023],[86,2024],[100,2025]],"points":[[0,1488],[1,1473],[2,1480],[3,1468],[4,1468],[5,1455],[6,1453],[7,1454],[8,1443],[9,1431],[10,1447],[11,1456],[12,1456],[13,1459],[14,1488],[15,1468],[16,1456],[17,1443],[18,1452],[19,1462],[20,1454],[21,1466],[22,1465],[23,1448],[24,1439],[25,1455],[26,1440],[27,1426],[28,1481],[29,1468],[30,1451],[31,1446],[32,1451],[33,1447],[34,1455],[35,1473],[36,1468],[37,1450],[38,1436],[39,1425],[40,1439],[41,1452],[42,1488],[43,1477],[44,1466],[45,1467],[46,1463],[47,1452],[48,1457],[49,1475],[50,1481],[51,1475],[52,1488],[53,1476],[54,1482],[55,1467],[56,1484],[57,1500],[58,1488],[59,1481],[60,1478],[61,1462],[62,1470],[63,1487],[64,1476],[65,1481],[66,1469],[67,1457],[68,1470],[69,1478],[70,1465],[71,1457],[72,1486],[73,1495],[74,1495],[75,1507],[76,1515],[77,1532],[78,1541],[79,1547],[80,1542],[81,1550],[82,1533],[83,1514],[84,1511],[85,1522],[86,1519],[87,1529],[88,1535],[89,1544],[90,1556],[91,1549],[92,1537],[93,1554],[94,1550],[95,1551],[96,1562],[97,1559],[98,1567],[99,1574],[100,1519],[101,1511],[102,1496],[103,1481],[104,1499],[105,1499],[106,1506],[107,1495],[108,1488],[109,1507],[110,1485],[111,1491],[112,1496],[113,1484]]},"h2h":{"owners":["AN","AR","CR","DM","DN","GM","IK","JH","JO","ZS"],"row":{"AN":{"w":8,"l":7,"t":0,"pf":1628.52,"pa":1688.18},"AR":{"w":10,"l":8,"t":0,"pf":1853.5999999999997,"pa":1822.3200000000002},"CR":{"w":4,"l":7,"t":0,"pf":1199.1999999999998,"pa":1300.5},"DM":{"w":7,"l":6,"t":0,"pf":1266.02,"pa":1304.78},"DN":{"w":12,"l":7,"t":0,"pf":2037.14,"pa":1985.6399999999999},"GM":{"w":5,"l":10,"t":0,"pf":1491.24,"pa":1697.9600000000005},"IK":{"w":7,"l":10,"t":0,"pf":1779.74,"pa":1882.6200000000001},"JH":{"w":3,"l":5,"t":0,"pf":833.56,"pa":895.4399999999998},"JO":{"w":4,"l":6,"t":0,"pf":934.0799999999999,"pa":970.9000000000001}}}}</script>
+  </section>
+  <script src="../static/js/d3.v7.min.js"></script>
+  <script src="../static/js/owner-charts.js?v=3"></script>
+  <!-- OWNER_VIZ_END -->
   <!-- DRAFT_HISTORY_START -->
   <section class="draft-history">
     <h2>Draft Picks</h2>
@@ -220,6 +238,7 @@
     <p><strong>2018:</strong> R1P5 (5 overall): Leonard Fournette (RB, JAX); R2P6 (16 overall): LeSean McCoy (RB, BUF); R3P5 (25 overall): Zach Ertz; R4P6 (36 overall): T.Y. Hilton; R5P5 (45 overall): Derrick Henry (RB, TEN); R6P6 (56 overall): Tevin Coleman (RB, ATL); R7P5 (65 overall): William Fuller V (WR, HOU); R8P6 (76 overall): Julian Edelman (WR, NE); R9P5 (85 overall): Tyler Eifert (TE, CIN); R10P6 (96 overall): Duke Johnson (RB, CLE); R11P5 (105 overall): Allen Hurns (WR, DAL); R12P6 (116 overall): Ty Montgomery II (WR, BAL); R13P5 (125 overall): Nelson Agholor (WR, PHI); R14P6 (136 overall): Derek Carr (QB, OAK); R15P5 (145 overall): Adam Vinatieri (PK, IND); R16P6 (156 overall): New England Patriots D/ST (D/ST, NE)</p>
   </section>
   <!-- DRAFT_HISTORY_END -->
+  
   </main>
 
   <!--#include file="partials/footer.html" -->

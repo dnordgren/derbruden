@@ -268,6 +268,45 @@ nav a:hover {
 }
 /* END table styles */
 
+/* Owner page charts */
+.owner-viz {
+  margin-top: 30px;
+}
+
+.owner-viz h2 {
+  margin-bottom: 4px;
+}
+
+.viz-note {
+  color: #666;
+  font-size: 0.85em;
+  margin-top: 0;
+}
+
+.viz-chart {
+  max-width: 820px;
+  margin: 10px 0 30px;
+}
+
+.viz-chart svg {
+  display: block;
+  overflow: visible;
+}
+
+.viz-tooltip {
+  position: fixed;
+  display: none;
+  padding: 6px 9px;
+  background: #eceff4;
+  border: 1px solid #2e3440;
+  border-radius: 4px;
+  pointer-events: none;
+  font-size: 12px;
+  line-height: 1.45;
+  z-index: 10;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .header-container {

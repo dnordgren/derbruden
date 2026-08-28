@@ -94,8 +94,9 @@ No framework; shared page chunks are inlined at build time by
 - Roast agent: right after a trade post, the workflow runs
   `scripts/roast-trade.mjs <posted-trades.json>`. It reads the handoff file
   the watcher wrote to `$RUNNER_TEMP`, pulls rosters, standings, traded-player
-  news, and NFL headlines from ESPN, then asks OpenCode Go (`kimi-k3` by
-  default, `ROAST_MODEL` to override) for one pithy, evidence-free verdict on
+  news, and NFL headlines from ESPN, then asks OpenCode Go
+  (`muse-spark-1.2-contributor` by default, `ROAST_MODEL` to override) for one
+  pithy, evidence-free verdict on
   the losing owner and posts it as a second Discord message. The step is
   `continue-on-error`; LLM failures never block ledger commit or S3 publish.
 - Local roast dry run: `LEAGUE_ID=794521 LEAGUE_YEAR=2026 node scripts/
@@ -178,6 +179,26 @@ No framework; shared page chunks are inlined at build time by
 - Tests: `node --test scripts/generate-records.test.mjs`.
 - Rerun after each week or whenever records change; no scheduled
   action exists.
+
+## Owner viz charts
+
+- `make viz` (`scripts/generate-owner-viz.mjs`) injects an
+  `<!-- OWNER_VIZ_START/END -->` section into every owner page: PF/PA
+  dumbbell, Elo trajectory, head-to-head grid. Same `scripts/.env`
+  `ESPN_S2` as power rankings; `--offline` rebuilds from cache only.
+- Data embeds per page as `<script type="application/json"
+  id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
+  on vendored d3. Bump its `?v=` in `renderSection` when it changes.
+- ESPN schedules survive back to 2018 (like drafts); 2014-2017 404.
+  Elo replays the power-rankings algorithm over regular season games,
+  reseeded each season from prior stats.csv win pct. Regression anchors:
+  final 2025 ratings JO 1564 and DM 1440 must hold.
+- H2H counts all decided games including playoffs to match the matrix on
+  records.html; games vs former franchises (not in TEAM_OWNERS) are
+  skipped. Raw league JSON caches under git-ignored
+  `scripts/.viz-cache/`.
+- A 2018 schedule entry can lack `home`/`away`; extractGames guards it.
+- Tests: `node --test scripts/generate-owner-viz.test.mjs`.
 
 ## Team name sync
 

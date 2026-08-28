@@ -11,6 +11,7 @@ import {
   longestWinStreak,
   makeOwnerLookup,
   parseStatsCsv,
+  renderH2HChartSection,
   seasonSummaries,
 } from './generate-records.js'
 
@@ -35,7 +36,12 @@ test('extractGames keeps decided games and drops unplayed ones', () => {
   const games = extractGames(
     league([
       matchup({ winner: 'HOME' }),
-      matchup({ matchupPeriodId: 2, winner: 'UNDECIDED', home: { teamId: 1, totalPoints: 0 }, away: { teamId: 2, totalPoints: 0 } }),
+      matchup({
+        matchupPeriodId: 2,
+        winner: 'UNDECIDED',
+        home: { teamId: 1, totalPoints: 0 },
+        away: { teamId: 2, totalPoints: 0 },
+      }),
     ]),
     2024
   )
@@ -54,20 +60,47 @@ test('extractGames flags playoff tiers and keeps lowercase ties', () => {
         home: { teamId: 1, totalPoints: 88.5 },
         away: { teamId: 2, totalPoints: 88.5 },
       }),
-      matchup({ matchupPeriodId: 3, playoffTierType: 'LOSERS_CONSOLATION_LADDER', winner: 'AWAY', home: { teamId: 1, totalPoints: 70 }, away: { teamId: 2, totalPoints: 99 } }),
+      matchup({
+        matchupPeriodId: 3,
+        playoffTierType: 'LOSERS_CONSOLATION_LADDER',
+        winner: 'AWAY',
+        home: { teamId: 1, totalPoints: 70 },
+        away: { teamId: 2, totalPoints: 99 },
+      }),
     ]),
     2024
   )
   assert.equal(games.length, 3)
-  assert.deepEqual(games.map(g => g.winnersBracket), [true, false, false])
+  assert.deepEqual(
+    games.map(g => g.winnersBracket),
+    [true, false, false]
+  )
   assert.equal(games[1].winner, 'tie')
 })
 
 test('detectChampion takes the latest winners-bracket game only', () => {
   const l = league([
-    matchup({ matchupPeriodId: 14, playoffTierType: 'WINNERS_BRACKET', winner: 'AWAY', home: { teamId: 1, totalPoints: 10 }, away: { teamId: 2, totalPoints: 20 } }),
-    matchup({ matchupPeriodId: 15, playoffTierType: 'LOSERS_CONSOLATION_LADDER', winner: 'HOME', home: { teamId: 3, totalPoints: 30 }, away: { teamId: 4, totalPoints: 5 } }),
-    matchup({ matchupPeriodId: 15, playoffTierType: 'WINNERS_BRACKET', winner: 'HOME', home: { teamId: 9, totalPoints: 55 }, away: { teamId: 2, totalPoints: 40 } }),
+    matchup({
+      matchupPeriodId: 14,
+      playoffTierType: 'WINNERS_BRACKET',
+      winner: 'AWAY',
+      home: { teamId: 1, totalPoints: 10 },
+      away: { teamId: 2, totalPoints: 20 },
+    }),
+    matchup({
+      matchupPeriodId: 15,
+      playoffTierType: 'LOSERS_CONSOLATION_LADDER',
+      winner: 'HOME',
+      home: { teamId: 3, totalPoints: 30 },
+      away: { teamId: 4, totalPoints: 5 },
+    }),
+    matchup({
+      matchupPeriodId: 15,
+      playoffTierType: 'WINNERS_BRACKET',
+      winner: 'HOME',
+      home: { teamId: 9, totalPoints: 55 },
+      away: { teamId: 2, totalPoints: 40 },
+    }),
   ])
   assert.equal(detectChampion(l), 9)
   assert.equal(detectChampion(league([matchup({ winner: 'UNDECIDED' })])), null)
@@ -146,9 +179,27 @@ test('computeH2H tallies both directions plus ties', () => {
 test('seasonSummaries counts only regular-season W-L and winners-bracket playoffs', () => {
   const l = league([
     matchup({ matchupPeriodId: 1, winner: 'HOME' }),
-    matchup({ matchupPeriodId: 14, playoffTierType: 'LOSERS_CONSOLATION_LADDER', winner: 'HOME', home: { teamId: 1, totalPoints: 80 }, away: { teamId: 2, totalPoints: 60 } }),
-    matchup({ matchupPeriodId: 15, playoffTierType: 'WINNERS_BRACKET', winner: 'AWAY', home: { teamId: 3, totalPoints: 80 }, away: { teamId: 2, totalPoints: 95 } }),
-    matchup({ matchupPeriodId: 16, playoffTierType: 'WINNERS_BRACKET', winner: 'AWAY', home: { teamId: 2, totalPoints: 95 }, away: { teamId: 4, totalPoints: 90 } }),
+    matchup({
+      matchupPeriodId: 14,
+      playoffTierType: 'LOSERS_CONSOLATION_LADDER',
+      winner: 'HOME',
+      home: { teamId: 1, totalPoints: 80 },
+      away: { teamId: 2, totalPoints: 60 },
+    }),
+    matchup({
+      matchupPeriodId: 15,
+      playoffTierType: 'WINNERS_BRACKET',
+      winner: 'AWAY',
+      home: { teamId: 3, totalPoints: 80 },
+      away: { teamId: 2, totalPoints: 95 },
+    }),
+    matchup({
+      matchupPeriodId: 16,
+      playoffTierType: 'WINNERS_BRACKET',
+      winner: 'AWAY',
+      home: { teamId: 2, totalPoints: 95 },
+      away: { teamId: 4, totalPoints: 90 },
+    }),
   ])
   const { summaries, championTeamId } = seasonSummaries(l, 2024, ownerOf)
   const t1 = summaries.find(s => s.owner === 'O1')
@@ -177,7 +228,14 @@ test('computeDroughts spans csv into api history and marks active runs', () => {
   const history = csvHistory(parseStatsCsv(CSV))
   history.get('AB').set(2020, true)
   history.get('AB').set(2021, false)
-  history.set('CD', new Map([[2019, true], [2020, false], [2021, false]]))
+  history.set(
+    'CD',
+    new Map([
+      [2019, true],
+      [2020, false],
+      [2021, false],
+    ])
+  )
   const d = computeDroughts(history, 2021)
   const ab = d.find(x => x.owner === 'AB')
   assert.equal(ab.length, 1)
@@ -191,7 +249,14 @@ test('computeDroughts spans csv into api history and marks active runs', () => {
 
 test('computeDroughts skips seasons an owner sat out entirely', () => {
   const history = new Map()
-  history.set('EF', new Map([[2018, false], [2020, false], [2021, false]]))
+  history.set(
+    'EF',
+    new Map([
+      [2018, false],
+      [2020, false],
+      [2021, false],
+    ])
+  )
   const d = computeDroughts(history, 2021)
   assert.equal(d[0].length, 2)
   assert.equal(d[0].startYear, 2020)
@@ -225,4 +290,26 @@ test('makeOwnerLookup falls back to first-seen abbreviations', () => {
     2025: { 100: { id: 100, abbrev: 'RENAMED', name: 'Renamed' } },
   })
   assert.equal(lookup(100), 'NEW')
+})
+
+test('renderH2HChartSection embeds matrix payload and script tags', () => {
+  const html = renderH2HChartSection({
+    order: ['AA', 'BB'],
+    rows: [
+      { owner: 'AA', rivals: { BB: { wins: 3, losses: 1, ties: 0 } } },
+      { owner: 'BB', rivals: { AA: { wins: 1, losses: 3, ties: 0 } } },
+    ],
+  })
+  assert.ok(html.includes('id="records-h2h-chart"'))
+  assert.ok(html.includes('id="records-h2h-data"'))
+  assert.ok(html.includes('records-h2h.js?v=1'))
+  const match = html.match(/id="records-h2h-data">([\s\S]*?)<\/script>/)
+  assert.ok(match)
+  const parsed = JSON.parse(match[1])
+  assert.deepEqual(parsed.owners, ['AA', 'BB'])
+  assert.deepEqual(parsed.records.AA.BB, { wins: 3, losses: 1, ties: 0 })
+})
+
+test('renderH2HChartSection returns empty string when no rows', () => {
+  assert.equal(renderH2HChartSection({ order: [], rows: [] }), '')
 })

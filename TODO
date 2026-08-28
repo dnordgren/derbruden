@@ -4,25 +4,18 @@ Website changes
 
 * Create merch section in About page with prior-year stickers. Press page?
 
-CI/CD and tooling improvements
-
-* Set up Raspberry Pi with tailscale for remote deployment environment
-
 NOW
 
 * Reduce font size on owner updates. Use Berkeley Mono in tables. #wip
 * Add PF from regular season and full season. Compute diff in dedicated column to showcase playoff differential.
-* Create D3.js SVG charts for scoring by season against wins for all owners. Include draft pick number as bar. Signify bar with color if made playoffs. Use D3 to generate visualizations from same dataset as table.
 
 LATER
 
 * Make tables sortable.
-* Learn Emacs web-mode
 * Add Press Releases
   * Text file posted per owner with date. I allow some self-service posting. Email? Markdown? Social media preview used - "from the desk of", subject included. Publish an RSS feed that IFTTT posts to Discord. Whatever process builds the site also has to: look for posts for an owner to add a new entry; update the RSS .atom
 * Export league stats to Excel
   * https://www.reddit.com/r/fantasyfootball/comments/w4loig/dont_know_who_needs_this_but_i_made_an_excel_tool/
-* Generate stat D3.js charts for owner pages
 * Embed keepers sheet
 * PLACEHOLDER
 * Move Discord scores bots to Raspberry Pi

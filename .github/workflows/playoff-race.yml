@@ -1,0 +1,87 @@
+name: Playoff Race
+
+on:
+  schedule:
+    # Mondays 9pm ET after MNF. Cron runs UTC; two windows cover DST.
+    # 01:00 UTC Tue = 9pm Mon EDT (Mar-Oct)
+    # 02:00 UTC Tue = 9pm Mon EST (Nov-Feb)
+    - cron: '0 1 * 3-10 2'
+    - cron: '0 2 * 11,12,1,2 2'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: playoff-race
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: scripts/package-lock.json
+
+      - name: Install dependencies
+        run: npm install --prefix scripts
+
+      - name: Configure league auth
+        run: |
+          {
+            echo "ESPN_S2=${{ secrets.ESPN_S2 }}"
+            echo "SWID=${{ secrets.SWID }}"
+          } > scripts/.env
+
+      - name: Generate playoff race
+        run: node scripts/generate-playoff-race.mjs
+
+      - name: Build pages
+        run: node scripts/build.mjs
+
+      - name: Check for changed files
+        id: status
+        run: echo "count=$(git status --porcelain static/data src/playoff-race.html | wc -l)" >> "$GITHUB_OUTPUT"
+
+      - name: Configure AWS credentials
+        if: steps.status.outputs.count != '0'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # Publish page and data together; two invalidation paths stay
+      # within CloudFront free tier. Data uses no-cache; HTML is short TTL.
+      - name: Publish page and data
+        if: steps.status.outputs.count != '0'
+        run: |
+          aws s3 cp pub/playoff-race.html s3://derbruden.com/playoff-race.html --cache-control "public, max-age=60, stale-while-revalidate=300"
+          aws s3 cp static/data/playoff-race.json s3://derbruden.com/static/data/playoff-race.json --cache-control "public, max-age=0, must-revalidate"
+          aws cloudfront create-invalidation --distribution-id E3CDWEEK40CKI2 --paths "/playoff-race.html" "/static/data/playoff-race.json"
+
+      - name: Notify Discord
+        if: steps.status.outputs.count != '0'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_PLAYOFFRACE }}
+        run: node scripts/post-playoff-discord.mjs
+
+      - name: Commit updated data and page
+        if: steps.status.outputs.count != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/data/playoff-race.json src/playoff-race.html
+          # Only commit if the data changed; HTML is derived from it.
+          if git diff --cached --quiet; then
+            echo "No changes since last publish."
+          else
+            git commit -m "chore: Weekly playoff race update"
+            git push
+          fi

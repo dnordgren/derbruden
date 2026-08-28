@@ -17,12 +17,3 @@ LATER
 * Export league stats to Excel
   * https://www.reddit.com/r/fantasyfootball/comments/w4loig/dont_know_who_needs_this_but_i_made_an_excel_tool/
 * Embed keepers sheet
-* PLACEHOLDER
-* Move Discord scores bots to Raspberry Pi
-  * https://github.com/dtcarls/fantasy_football_chat_bot
-* Add draft recap and final standings projection screenshots
-* Configure ESPN trades emails or webhooks to Discord
-  * https://github.com/dtcarls/fantasy_football_chat_bot
-  * https://github.com/mkreiser/ESPN-Fantasy-Football-API
-  * Email forwarding rule+IFTTT for trade emails from ESPN
-  * Attachment: image.jpg (https://files.todoist.com/user_upload/v2/2219179831/file.jpg)

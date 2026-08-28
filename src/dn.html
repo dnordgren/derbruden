@@ -6,6 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DerBruden.com | DN</title>
   <!--#include file="partials/head-common.html" -->
+  <style>
+    /* D3 chart styles */
+    .axis-label {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .line {
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .bar {
+      fill: #012f69;
+    }
+
+    #tooltip {
+      position: absolute;
+      display: none;
+      padding: 5px;
+      background: #eceff4;
+      border: 1px solid #2e3440;
+      border-radius: 4px;
+      pointer-events: none;
+      font-size: 12px;
+    }
+
+    #chart-container,
+    .chart-title {
+      font-family: monospace;
+      margin-bottom: 40px;
+    }
+
+    .chart-title {
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .export-btn {
+      display: block;
+      margin: 10px auto;
+      font-family: monospace;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -13,12 +61,13 @@
 
   <!--#include file="partials/nav.html" -->
 
-  <main>
+  <main id="main">
     <div class="owner-logo-header">
       <img src="../static/img/owner-dn-logo.webp" alt="DN Logo" class="owner-logo-image" width="100" height="100">
       <h1>DN - Washington Redskins</h1>
     </div>
     <div class="table-container"><table class="stats-table">
+  <caption class="visually-hidden">Season-by-season record, DN</caption>
   <thead>
     <tr>
       <th scope="col" class="number">Season</th>
@@ -46,7 +95,7 @@
       <td class="number">1,378</td>
       <td class="number">-70</td>
       <td class="number">N</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">24</td>
@@ -59,7 +108,7 @@
       <td class="number">1,404</td>
       <td class="number">6</td>
       <td class="number">N</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">23</td>
@@ -72,7 +121,7 @@
       <td class="number">1,504</td>
       <td class="number">-219</td>
       <td class="number">N</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">22</td>
@@ -85,7 +134,7 @@
       <td class="number">1,360</td>
       <td class="number">160</td>
       <td class="number">Y</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">21</td>
@@ -98,7 +147,7 @@
       <td class="number">1,512</td>
       <td class="number">145</td>
       <td class="number">Y</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">20</td>
@@ -111,7 +160,7 @@
       <td class="number">1,445</td>
       <td class="number">-137</td>
       <td class="number">N</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">19</td>
@@ -124,7 +173,7 @@
       <td class="number">1,249</td>
       <td class="number">281</td>
       <td class="number">Y</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">18</td>
@@ -137,7 +186,7 @@
       <td class="number">1,517</td>
       <td class="number">-20</td>
       <td class="number">Y</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">17</td>
@@ -150,7 +199,7 @@
       <td class="number">1,361</td>
       <td class="number">-85</td>
       <td class="number">N</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">16</td>
@@ -163,7 +212,7 @@
       <td class="number">1,235</td>
       <td class="number">-117</td>
       <td class="number">N</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">15</td>
@@ -176,7 +225,7 @@
       <td class="number">1,915</td>
       <td class="number">102</td>
       <td class="number">Y</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr>
       <td class="number">14</td>
@@ -189,7 +238,7 @@
       <td class="number">1,501</td>
       <td class="number">-3</td>
       <td class="number">Y</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
     <tr class="totals-row">
       <td class="number">Totals</td>
@@ -202,12 +251,13 @@
       <td class="number">17,381</td>
       <td class="number">43</td>
       <td class="number">6</td>
-      <td class="number"></td>
+      <td class="number"><span class="visually-hidden">0</span></td>
     </tr>
   </tbody>
 </table></div>
-  
-  
+    <h2>DN - Points and Wins by Season</h2>
+    <div id="chart-container"></div>
+    <div id="tooltip" aria-hidden="true"></div>
   <!-- OWNER_VIZ_START -->
   <section class="owner-viz">
     <h2>Points For vs Points Against</h2>
@@ -237,8 +287,227 @@
     <p><strong>2018:</strong> R1P6 (6 overall): Antonio Brown (WR, PIT); R2P5 (15 overall): A.J. Green (WR, ARI); R3P6 (26 overall): Davante Adams (WR, GB); R4P5 (35 overall): Joe Mixon (RB, CIN); R5P6 (46 overall): Kenyan Drake (RB, MIA); R6P5 (55 overall): Cam Newton (QB, CAR); R7P6 (66 overall): Robert Woods (WR, LAR); R8P5 (75 overall): Dion Lewis (RB, TEN); R9P6 (86 overall): Devin Funchess (TE, CAR); R10P5 (95 overall): Jack Doyle (TE, IND); R11P6 (106 overall): Matthew Stafford (QB, DET); R12P5 (115 overall): Mohamed Sanu (WR, ATL); R13P6 (126 overall): Baltimore Ravens D/ST (D/ST, BAL); R14P5 (135 overall): Tyler Lockett (WR, SEA); R15P6 (146 overall): James White; R16P5 (155 overall): Jake Elliott (PK, PHI)</p>
   </section>
   <!-- DRAFT_HISTORY_END -->
-  
-  </main>
+  </main>  <script>
+    const teamsData = [
+      {
+        teamName: "McAfee's Faithful",
+        data: [
+          { season: '2014', points_scored: 1498, points_against: 1501, wins: 6 },
+          { season: '2015', points_scored: 2017, points_against: 1915, wins: 6 },
+          { season: '2016', points_scored: 1118, points_against: 1235, wins: 4 },
+          { season: '2017', points_scored: 1276, points_against: 1361, wins: 7 },
+          { season: '2018', points_scored: 1497, points_against: 1517, wins: 5 },
+          { season: '2019', points_scored: 1530, points_against: 1249, wins: 10 },
+          { season: '2020', points_scored: 1308, points_against: 1445, wins: 4 },
+          { season: '2021', points_scored: 1657, points_against: 1512, wins: 9 },
+          { season: '2022', points_scored: 1520, points_against: 1360, wins: 9 },
+          { season: '2023', points_scored: 1285, points_against: 1504, wins: 5 },
+        ]
+      },
+    ];
+
+    function renderChart(team) {
+      const container = document.getElementById("chart-container");
+      const section = document.createElement("div");
+      section.className = "chart-section";
+      container.appendChild(section);
+
+      const title = document.createElement("div");
+      title.className = "chart-title";
+      title.textContent = team.teamName;
+      section.appendChild(title);
+
+      const NS = "http://www.w3.org/2000/svg";
+      const svg = document.createElementNS(NS, "svg");
+      svg.setAttribute("viewBox", "0 0 800 400");
+      svg.setAttribute("preserveAspectRatio", "xMinYMid meet");
+      svg.setAttribute("role", "img");
+      svg.setAttribute("aria-label", "DN points scored, points allowed, and wins by season, 2014 to 2023");
+      svg.style.width = "100%";
+      svg.style.height = "auto";
+      section.appendChild(svg);
+
+      const margin = { top: 20, right: 60, bottom: 40, left: 60 };
+      const plotW = 800 - margin.left - margin.right;
+      const plotH = 400 - margin.top - margin.bottom;
+
+      const g = document.createElementNS(NS, "g");
+      g.setAttribute("transform", `translate(${margin.left},${margin.top})`);
+      svg.appendChild(g);
+
+      const step = plotW / team.data.length;
+      const barW = step * 0.5;
+      function xPos(i) { return i * step + step * 0.25; }
+      function yLeft(v) { return plotH - (v / 2400) * plotH; }
+      function yRight(v) { return plotH - (v / 14) * plotH; }
+      function xCenter(i) { return xPos(i) + barW / 2; }
+
+      const tooltip = document.getElementById("tooltip");
+      function showTooltip(event, d) {
+        tooltip.style.display = "block";
+        tooltip.innerHTML = `<strong>Season:</strong> ${d.season}<br><strong>Points Scored:</strong> ${d.points_scored}<br><strong>Points Against:</strong> ${d.points_against}<br><strong>Wins:</strong> ${d.wins}`;
+        tooltip.style.left = (event.pageX + 10) + "px";
+        tooltip.style.top = (event.pageY - 28) + "px";
+      }
+      function hideTooltip() { tooltip.style.display = "none"; }
+
+      // Grid and axes
+      const xAxisLine = document.createElementNS(NS, "line");
+      xAxisLine.setAttribute("x1", 0); xAxisLine.setAttribute("y1", plotH); xAxisLine.setAttribute("x2", plotW); xAxisLine.setAttribute("y2", plotH); xAxisLine.setAttribute("stroke", "#000");
+      g.appendChild(xAxisLine);
+      const yLeftLine = document.createElementNS(NS, "line");
+      yLeftLine.setAttribute("x1", 0); yLeftLine.setAttribute("y1", 0); yLeftLine.setAttribute("x2", 0); yLeftLine.setAttribute("y2", plotH); yLeftLine.setAttribute("stroke", "#000");
+      g.appendChild(yLeftLine);
+      const yRightLine = document.createElementNS(NS, "line");
+      yRightLine.setAttribute("x1", plotW); yRightLine.setAttribute("y1", 0); yRightLine.setAttribute("x2", plotW); yRightLine.setAttribute("y2", plotH); yRightLine.setAttribute("stroke", "#000");
+      g.appendChild(yRightLine);
+
+      // Left ticks and grid
+      [0, 800, 1600, 2400].forEach(v => {
+        const y = yLeft(v);
+        if (v !== 0) {
+          const grid = document.createElementNS(NS, "line");
+          grid.setAttribute("x1", 0); grid.setAttribute("y1", y); grid.setAttribute("x2", plotW); grid.setAttribute("y2", y); grid.setAttribute("stroke", "#eee");
+          g.appendChild(grid);
+        }
+        const tick = document.createElementNS(NS, "line");
+        tick.setAttribute("x1", -5); tick.setAttribute("y1", y); tick.setAttribute("x2", 0); tick.setAttribute("y2", y); tick.setAttribute("stroke", "#000");
+        g.appendChild(tick);
+        const label = document.createElementNS(NS, "text");
+        label.setAttribute("x", -8); label.setAttribute("y", y + 4); label.setAttribute("text-anchor", "end"); label.setAttribute("font-size", "10px");
+        label.textContent = v;
+        g.appendChild(label);
+      });
+
+      const yLeftLabel = document.createElementNS(NS, "text");
+      yLeftLabel.setAttribute("class", "axis-label");
+      yLeftLabel.setAttribute("transform", "rotate(-90)");
+      yLeftLabel.setAttribute("y", -40);
+      yLeftLabel.setAttribute("x", -plotH / 2);
+      yLeftLabel.setAttribute("dy", "1em");
+      yLeftLabel.style.textAnchor = "middle";
+      yLeftLabel.textContent = "Points Scored and Points Against";
+      g.appendChild(yLeftLabel);
+
+      // Right ticks
+      [0, 7, 14].forEach(v => {
+        const y = yRight(v);
+        const tick = document.createElementNS(NS, "line");
+        tick.setAttribute("x1", plotW); tick.setAttribute("y1", y); tick.setAttribute("x2", plotW + 5); tick.setAttribute("y2", y); tick.setAttribute("stroke", "#000");
+        g.appendChild(tick);
+        const label = document.createElementNS(NS, "text");
+        label.setAttribute("x", plotW + 8); label.setAttribute("y", y + 4); label.setAttribute("text-anchor", "start"); label.setAttribute("font-size", "10px");
+        label.textContent = v;
+        g.appendChild(label);
+      });
+
+      const rightG = document.createElementNS(NS, "g");
+      rightG.setAttribute("transform", `translate(${plotW},0)`);
+      g.appendChild(rightG);
+      const yRightLabel = document.createElementNS(NS, "text");
+      yRightLabel.setAttribute("class", "axis-label");
+      yRightLabel.setAttribute("transform", "rotate(-90)");
+      yRightLabel.setAttribute("y", 40);
+      yRightLabel.setAttribute("x", plotH / 2);
+      yRightLabel.setAttribute("dy", "-1em");
+      yRightLabel.style.textAnchor = "middle";
+      yRightLabel.textContent = "Wins";
+      rightG.appendChild(yRightLabel);
+
+      // Season labels and ticks
+      team.data.forEach((d, i) => {
+        const cx = xCenter(i);
+        const label = document.createElementNS(NS, "text");
+        label.setAttribute("x", cx); label.setAttribute("y", plotH + 15); label.setAttribute("text-anchor", "middle"); label.setAttribute("font-size", "10px");
+        label.textContent = d.season;
+        g.appendChild(label);
+        const tick = document.createElementNS(NS, "line");
+        tick.setAttribute("x1", cx); tick.setAttribute("y1", plotH); tick.setAttribute("x2", cx); tick.setAttribute("y2", plotH + 5); tick.setAttribute("stroke", "#000");
+        g.appendChild(tick);
+      });
+
+      const xLabel = document.createElementNS(NS, "text");
+      xLabel.setAttribute("class", "axis-label");
+      xLabel.setAttribute("x", plotW / 2); xLabel.setAttribute("y", plotH + 35); xLabel.style.textAnchor = "middle";
+      xLabel.textContent = "Season";
+      g.appendChild(xLabel);
+
+      // Bars
+      team.data.forEach((d, i) => {
+        const rect = document.createElementNS(NS, "rect");
+        rect.setAttribute("class", "bar");
+        rect.setAttribute("x", xPos(i));
+        rect.setAttribute("y", yRight(d.wins));
+        rect.setAttribute("width", barW);
+        rect.setAttribute("height", plotH - yRight(d.wins));
+        rect.setAttribute("fill", "#012f69");
+        rect.addEventListener("mouseover", e => showTooltip(e, d));
+        rect.addEventListener("mousemove", e => showTooltip(e, d));
+        rect.addEventListener("mouseout", hideTooltip);
+        g.appendChild(rect);
+      });
+
+      // Lines
+      function pointsFor(key) {
+        return team.data.map((d, i) => `${xCenter(i)},${yLeft(d[key])}`).join(" ");
+      }
+      const polyScored = document.createElementNS(NS, "polyline");
+      polyScored.setAttribute("points", pointsFor("points_scored"));
+      polyScored.setAttribute("fill", "none");
+      polyScored.setAttribute("stroke", "#008f00");
+      polyScored.setAttribute("stroke-width", "2");
+      g.appendChild(polyScored);
+
+      const polyAgainst = document.createElementNS(NS, "polyline");
+      polyAgainst.setAttribute("points", pointsFor("points_against"));
+      polyAgainst.setAttribute("fill", "none");
+      polyAgainst.setAttribute("stroke", "#d60303");
+      polyAgainst.setAttribute("stroke-width", "2");
+      g.appendChild(polyAgainst);
+
+      // Circles for both series (fix: all 10 points each)
+      team.data.forEach(d => {
+        const i = team.data.indexOf(d);
+        const c = document.createElementNS(NS, "circle");
+        c.setAttribute("cx", xCenter(i)); c.setAttribute("cy", yLeft(d.points_scored)); c.setAttribute("r", 5); c.setAttribute("fill", "blue");
+        c.addEventListener("mouseover", e => showTooltip(e, d));
+        c.addEventListener("mousemove", e => showTooltip(e, d));
+        c.addEventListener("mouseout", hideTooltip);
+        g.appendChild(c);
+      });
+      team.data.forEach(d => {
+        const i = team.data.indexOf(d);
+        const c = document.createElementNS(NS, "circle");
+        c.setAttribute("cx", xCenter(i)); c.setAttribute("cy", yLeft(d.points_against)); c.setAttribute("r", 5); c.setAttribute("fill", "red");
+        c.addEventListener("mouseover", e => showTooltip(e, d));
+        c.addEventListener("mousemove", e => showTooltip(e, d));
+        c.addEventListener("mouseout", hideTooltip);
+        g.appendChild(c);
+      });
+
+      // Legend
+      const legendData = [
+        { label: "Points Scored", color: "#008f00" },
+        { label: "Points Against", color: "#d60303" },
+        { label: "Wins", color: "#012f69" }
+      ];
+      const legend = document.createElementNS(NS, "g");
+      legend.setAttribute("transform", `translate(${plotW - 150},${-margin.top})`);
+      legend.setAttribute("class", "legend");
+      g.appendChild(legend);
+      legendData.forEach((d, i) => {
+        const r = document.createElementNS(NS, "rect");
+        r.setAttribute("x", 0); r.setAttribute("y", i * 20); r.setAttribute("width", 10); r.setAttribute("height", 10); r.setAttribute("fill", d.color);
+        legend.appendChild(r);
+        const t = document.createElementNS(NS, "text");
+        t.setAttribute("x", 15); t.setAttribute("y", i * 20 + 9); t.setAttribute("font-size", "12px");
+        t.textContent = d.label;
+        legend.appendChild(t);
+      });
+    }
+
+    teamsData.forEach(renderChart);
+  </script>
 
   <!--#include file="partials/footer.html" -->
 </body>

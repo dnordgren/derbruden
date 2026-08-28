@@ -5,8 +5,6 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const champStars = n => (n ? `<span class="trophies">${'\u2605'.repeat(n)}</span>` : '')
-
 function generateStatsIndex(data) {
   const stats = data
     .filter(row => row.Owner && row.Owner !== 'null')
@@ -42,7 +40,11 @@ function generateStatsIndex(data) {
     .filter(stat => stat.games >= 75)
     .sort((a, b) => b.winPct - a.winPct);
 
-  const tableRows = ownerStats.map(stat => `<tr>
+  const tableRows = ownerStats.map(stat => {
+    const champ = stat.championships
+      ? `<span class="trophies" aria-hidden="true">${'★'.repeat(stat.championships)}</span><span class="visually-hidden">${stat.championships} championship${stat.championships > 1 ? 's' : ''}</span>`
+      : '<span class="visually-hidden">0</span>';
+    return `<tr>
       <td class="owner"><a href="./${stat.owner.toLowerCase()}.html">${stat.owner}</a></td>
       <td class="number">${stat.games}</td>
       <td class="number">${stat.wins}</td>
@@ -52,10 +54,12 @@ function generateStatsIndex(data) {
       <td class="number">${stat.rgpa.toLocaleString()}</td>
       <td class="number">${stat.pointsDiff.toLocaleString()}</td>
       <td class="number">${stat.playoffs}</td>
-      <td class="number">${stat.championships ? champStars(stat.championships) : ''}</td>
-    </tr>`).join('\n    ');
+      <td class="number">${champ}</td>
+    </tr>`;
+  }).join('\n    ');
 
   return `<div class="table-container"><table class="stats-table">
+  <caption class="visually-hidden">League totals, all owners</caption>
   <thead>
     <tr>
       <th scope="col">Owner</th>
@@ -90,7 +94,11 @@ function generateOwnerStats(data, owner) {
     championships: acc.championships + (row.Champ === 'Y' ? 1 : 0)
   }), { wins: 0, losses: 0, rgpf: 0, rgpa: 0, playoffs: 0, championships: 0 });
 
-  const tableRows = ownerData.map(row => `<tr>
+  const tableRows = ownerData.map(row => {
+    const champ = row.Champ === 'Y'
+      ? '<span class="trophies" aria-hidden="true">★</span><span class="visually-hidden">1 championship</span>'
+      : '<span class="visually-hidden">0</span>';
+    return `<tr>
       <td class="number">${row.Season}</td>
       <td class="number">${row.W}</td>
       <td class="number">${row.L}</td>
@@ -101,12 +109,17 @@ function generateOwnerStats(data, owner) {
       <td class="number">${row.RGPA.toLocaleString()}</td>
       <td class="number">${(row.RGPF - row.RGPA).toLocaleString()}</td>
       <td class="number">${row['PO?']}</td>
-      <td class="number">${row.Champ === 'Y' ? champStars(1) : ''}</td>
-    </tr>`).join('\n    ');
+      <td class="number">${champ}</td>
+    </tr>`;
+  }).join('\n    ');
 
   const winPct = totals.wins / (totals.wins + totals.losses);
+  const totalChamp = totals.championships
+    ? `<span class="trophies" aria-hidden="true">${'★'.repeat(totals.championships)}</span><span class="visually-hidden">${totals.championships} championship${totals.championships > 1 ? 's' : ''}</span>`
+    : '<span class="visually-hidden">0</span>';
 
   return `<div class="table-container"><table class="stats-table">
+  <caption class="visually-hidden">Season-by-season record, ${owner}</caption>
   <thead>
     <tr>
       <th scope="col" class="number">Season</th>
@@ -135,7 +148,7 @@ function generateOwnerStats(data, owner) {
       <td class="number">${totals.rgpa.toLocaleString()}</td>
       <td class="number">${(totals.rgpf - totals.rgpa).toLocaleString()}</td>
       <td class="number">${totals.playoffs}</td>
-      <td class="number">${totals.championships ? champStars(totals.championships) : ''}</td>
+      <td class="number">${totalChamp}</td>
     </tr>
   </tbody>
 </table></div>`;

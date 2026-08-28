@@ -7,12 +7,12 @@
 
     <!--#include file="partials/head-common.html" -->
   <style>
-    h2 {
+    h1 {
       margin-bottom: 5px;
     }
 
     .updated {
-      color: var(--muted);
+      color: #666;
       font-size: 0.9em;
       margin-top: 0;
     }
@@ -27,16 +27,16 @@
     td {
       text-align: left;
       padding: 10px 12px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid #eee;
       vertical-align: top;
     }
 
     th {
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 2px solid #eee;
       font-size: 0.85em;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--muted);
+      color: #666;
     }
 
     .event-badge {
@@ -45,17 +45,17 @@
       border-radius: 10px;
       font-size: 0.8em;
       font-weight: 600;
-      color: var(--paper);
-      background: var(--muted);
+      color: #fff;
+      background: #5d6d7e;
     }
 
     .event-badge.accepted {
-      background: var(--accent);
+      background: #1e7d43;
     }
 
     .event-badge.declined,
     .event-badge.vetoed {
-      background: var(--down);
+      background: #c0392b;
     }
 
     .side {
@@ -78,7 +78,7 @@
 
       tbody tr {
         margin-bottom: 16px;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid #eee;
         padding-bottom: 12px;
       }
 
@@ -91,7 +91,7 @@
         font-size: 0.75em;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: var(--muted);
+        color: #666;
         margin-bottom: 2px;
       }
 
@@ -115,10 +115,11 @@
 
   <!--#include file="partials/nav.html" -->
 
-    <main>
-      <h2>Trade Log</h2>
+    <main id="main">
+      <h1>Trade Log</h1>
       <p class="updated">Season <span id="season">2026</span><span id="updated-at"></span></p>
       <table>
+        <caption class="visually-hidden">Trade log</caption>
         <thead>
           <tr>
             <th scope="col">Date</th>

@@ -266,9 +266,10 @@ function boardPickHtml(pick, cache, season) {
   if (info.pos === 'D/ST') name = name.replace(/ D\/ST$/, '')
   const sub = [info.pro, pos].filter(Boolean).join(' ~ ')
   const keeperAttrs = pick.keeper ? ' keeper" title="Keeper pick' : ''
+  const keeperLabel = pick.keeper ? '<span class="visually-hidden"> (keeper)</span>' : ''
   return (
     `<div class="pick ${positionClass(info.pos)}${keeperAttrs}">` +
-    `<span class="pick-name">${escapeHtml(name)}</span>` +
+    `<span class="pick-name">${escapeHtml(name)}${keeperLabel}</span>` +
     `<span class="pick-sub">${escapeHtml(sub) || '&nbsp;'}</span></div>`
   )
 }
@@ -305,6 +306,7 @@ function renderSeasonBoard(season, picks, teams, cache) {
     <h2>${season} Draft</h2>
     <div class="table-container">
       <table class="draft-board">
+        <caption class="visually-hidden">${season} draft board</caption>
         <thead>
           <tr><th scope="col" class="round-head"></th>${headCells}</tr>
         </thead>
@@ -327,7 +329,8 @@ function renderContent(draftsBySeason, teamsBySeason, cache, meta) {
     .join('\n')
 
   return `<div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="386" height="400" />
+      <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
+        style="border-radius: 50%; object-fit: cover;" />
       <h1>Draft History</h1>
     </div>
     <p class="draft-meta">${seasons[seasons.length - 1]}&ndash;${seasons[0]} drafts &middot; generated ${meta.generated}</p>
@@ -391,7 +394,7 @@ function pageTemplate(content) {
       border-collapse: separate;
       border-spacing: 2px;
       margin: 20px 0 40px;
-      font-size: 0.85em;
+      font-size: 0.9em;
     }
 
     .draft-board .round-head {
@@ -399,7 +402,7 @@ function pageTemplate(content) {
       left: 0;
       z-index: 1;
       background: var(--surface);
-      font-size: 0.72em;
+      font-size: 0.8em;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -415,7 +418,7 @@ function pageTemplate(content) {
     }
 
     .draft-board .team-head {
-      font-size: 0.72em;
+      font-size: 0.8em;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -508,7 +511,7 @@ function pageTemplate(content) {
 
   <!--#include file="partials/nav.html" -->
 
-  <main>
+  <main id="main">
     ${content}
   </main>
 

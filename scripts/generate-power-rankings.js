@@ -271,6 +271,7 @@ function renderTable(rankings, meta) {
 
   return `<p class="pr-meta">${meta.season} season &middot; through week ${meta.throughWeek} &middot; generated ${meta.generated}</p>
   <div class="table-container"><table class="stats-table">
+  <caption class="visually-hidden">${meta.season} Elo power rankings</caption>
   <thead>
     <tr>
       <th scope="col" class="number">&Delta;</th>
@@ -318,7 +319,7 @@ function pageTemplate(content) {
 
   <!--#include file="partials/nav.html" -->
 
-  <main>
+  <main id="main">
     <div class="owner-logo-header">
       <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="386" height="400">
       <h1>Power Rankings</h1>

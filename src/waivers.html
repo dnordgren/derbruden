@@ -7,7 +7,7 @@
 
     <!--#include file="partials/head-common.html" -->
     <style>
-      h2 {
+      h1 {
         margin-bottom: 5px;
       }
 
@@ -17,7 +17,7 @@
       }
 
       .updated {
-        color: var(--muted);
+        color: #666;
         font-size: 0.9em;
         margin-top: 0;
       }
@@ -32,18 +32,16 @@
       td {
         text-align: left;
         padding: 10px 12px;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 1px solid #eee;
         vertical-align: top;
       }
 
       th {
-        border-bottom: 2px solid var(--ink);
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.07em;
+        border-bottom: 2px solid #eee;
+        font-size: 0.85em;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: var(--muted);
+        color: #666;
       }
 
       td.num,
@@ -58,8 +56,8 @@
         border-radius: 10px;
         font-size: 0.8em;
         font-weight: 600;
-        color: var(--paper);
-        background: var(--muted);
+        color: #fff;
+        background: #95a5a6;
       }
 
       .event-badge.waiver {
@@ -71,7 +69,7 @@
       }
 
       .muted {
-        color: var(--muted);
+        color: #666;
       }
 
       @media (max-width: 768px) {
@@ -88,7 +86,7 @@
 
         tbody tr {
           margin-bottom: 16px;
-          border-bottom: 1px solid var(--line);
+          border-bottom: 1px solid #eee;
           padding-bottom: 12px;
         }
       }
@@ -100,12 +98,13 @@
 
     <!--#include file="partials/nav.html" -->
 
-    <main>
-      <h2>Waivers</h2>
+    <main id="main">
+      <h1>Waivers</h1>
       <p class="updated">Season <span id="season">2026</span><span id="updated-at"></span>. Order refreshes daily.</p>
 
       <h3>Waiver Order</h3>
       <table>
+        <caption class="visually-hidden">Waiver order</caption>
         <thead>
           <tr>
             <th scope="col" class="num">#</th>
@@ -124,12 +123,13 @@
 
       <h3>Recent Moves</h3>
       <table>
+        <caption class="visually-hidden">Recent waiver moves</caption>
         <thead>
           <tr>
             <th scope="col">Date</th>
             <th scope="col">Type</th>
             <th scope="col">Owner</th>
-            <th>Details</th>
+            <th scope="col">Details</th>
           </tr>
         </thead>
         <tbody id="move-rows">

@@ -9,12 +9,17 @@
   var records = data.records
   if (!owners || !owners.length || !records) return
 
+  function cssVar(name, fallback) {
+    var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim()
+    return v || fallback
+  }
+
   var COLORS = {
-    win: '#008f00',
-    loss: '#d60303',
-    neutral: '#5a6572',
-    grid: '#e6eaef',
-    diag: '#ededeb',
+    win: cssVar('--chart-pf', '#1a7f37'),
+    loss: cssVar('--chart-pa', '#c0392b'),
+    neutral: cssVar('--chart-neutral', '#5a6572'),
+    grid: cssVar('--chart-grid', '#e6eaef'),
+    diag: cssVar('--chart-diag', '#f0f0ef'),
   }
 
   var tooltip = d3.select('body').append('div').attr('class', 'viz-tooltip')
@@ -51,7 +56,7 @@
     return games ? (c.wins + c.ties * 0.5) / games : 0.5
   }
 
-  var color = d3.scaleLinear().domain([0, 0.5, 1]).range([COLORS.loss, '#f4f4f1', COLORS.win]).clamp(true)
+  var color = d3.scaleLinear().domain([0, 0.5, 1]).range([COLORS.loss, COLORS.diag, COLORS.win]).clamp(true)
 
   chart
     .selectAll('.col-label')
@@ -103,7 +108,7 @@
           .attr('x', j * cell + cell / 2)
           .attr('y', i * cell + cell / 2 + 4)
           .attr('text-anchor', 'middle')
-          .attr('fill', '#a5adb6')
+          .attr('fill', COLORS.neutral)
           .style('font-size', '10px')
           .text(r)
         return
@@ -117,7 +122,9 @@
           .attr('width', cell)
           .attr('height', cell)
           .attr('rx', 4)
-          .attr('fill', '#fafafa')
+          .attr('fill', cssVar('--surface', '#fafafa'))
+          .attr('stroke', cssVar('--line', '#e5e7eb'))
+          .attr('stroke-width', 0.5)
         return
       }
       var rRate = rate(rec)
@@ -158,7 +165,7 @@
         .attr('x', j * cell + (cell - 2) / 2)
         .attr('y', i * cell + (cell - 2) / 2 + 4)
         .attr('text-anchor', 'middle')
-        .attr('fill', strong ? '#fff' : '#2e3440')
+        .attr('fill', strong ? '#fff' : cssVar('--ink', '#2e3440'))
         .style('font-size', '10px')
         .style('font-weight', 600)
         .style('pointer-events', 'none')

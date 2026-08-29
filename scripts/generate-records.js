@@ -496,7 +496,7 @@ export function renderH2HChartSection(h2h) {
 <div class="viz-chart" id="records-h2h-chart"></div>
 <script type="application/json" id="records-h2h-data">${json}</script>
 <script src="../static/js/d3.v7.min.js"></script>
-<script src="../static/js/records-h2h.js?v=1"></script>`
+<script src="../static/js/records-h2h.js?v=2"></script>`
 }
 
 export function renderTrophiesSection({ champions, lowestScore, mostPointsInALoss, droughts }) {

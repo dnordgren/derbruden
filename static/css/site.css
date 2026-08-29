@@ -368,6 +368,9 @@ nav a[aria-current='page'] {
 
 .stats-table .leader-row td {
   background: var(--stripe);
+}
+
+.stats-table .leader-row td:first-child {
   box-shadow: inset 4px 0 0 var(--accent);
 }
 

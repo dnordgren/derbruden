@@ -10,6 +10,16 @@ Deploys to S3 + CloudFront with `make deploy` (profile `derbruden`).
 No framework; shared page chunks are inlined at build time by
 `scripts/build.mjs` into git-ignored `pub/`.
 
+- Shared design system: `static/css/site.css` holds the palette
+  variables, dark mode, type scale, tables, nav, and badge styles.
+  Pages link it and keep only page-specific rules inline. Archivo is
+  self-hosted in `static/fonts/`. Shared chrome (head links, header,
+  nav + sponsor ribbon, footer) lives in `src/partials/` — change it
+  there, not per page; the two full-page generator templates
+  (`generate-power-rankings.js`, `generate-drafts.js`) emit the same
+  includes and must stay in sync. Bump `site.css?v=N` in
+  `partials/head-common.html` whenever site.css changes.
+
 ## Commands
 
 - `make build` — inline `<!--#include -->` directives from `src/*.html`

@@ -256,7 +256,7 @@ function renderTable(rankings, meta) {
       const ownerCell = mapped
         ? `<td class="owner"><a href="./${mapped.page}">${mapped.owner}</a></td>`
         : `<td class="owner">${row.abbrev}</td>`
-      return `<tr>
+      return `<tr${row.rank === 1 ? ' class="leader-row"' : ''}>
       ${deltaCell(row, previousRanks)}
       <td class="number">${row.rank}</td>
       ${ownerCell}
@@ -312,26 +312,6 @@ function pageTemplate(content) {
   <meta name="twitter:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
   <!--#include file="partials/head-common.html" -->
-  <style>
-    .pr-meta {
-      color: #666;
-      font-size: 0.9em;
-    }
-
-    .delta.up {
-      color: #1a7f37;
-    }
-
-    .delta.down {
-      color: #c0392b;
-    }
-
-    .methodology {
-      margin-top: 30px;
-      font-size: 0.85em;
-      color: #666;
-    }
-  </style>
 </head>
 
 <body>
@@ -341,8 +321,7 @@ function pageTemplate(content) {
 
   <main id="main">
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
-        style="border-radius: 50%; object-fit: cover;">
+      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="386" height="400">
       <h1>Power Rankings</h1>
     </div>
     ${content}

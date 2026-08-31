@@ -302,7 +302,7 @@ test('renderH2HChartSection embeds matrix payload and script tags', () => {
   })
   assert.ok(html.includes('id="records-h2h-chart"'))
   assert.ok(html.includes('id="records-h2h-data"'))
-  assert.ok(html.includes('records-h2h.js?v=1'))
+  assert.ok(html.includes('records-h2h.js?v=2'))
   const match = html.match(/id="records-h2h-data">([\s\S]*?)<\/script>/)
   assert.ok(match)
   const parsed = JSON.parse(match[1])

@@ -219,7 +219,7 @@ test('renderSection embeds JSON payload and chart mounts', () => {
   assert.ok(html.includes('id="viz-elo"'))
   assert.ok(html.includes('id="viz-h2h"'))
   assert.ok(html.includes('type="application/json" id="owner-viz-data"'))
-  assert.ok(html.includes('owner-charts.js?v=3'))
+  assert.ok(html.includes('owner-charts.js?v=4'))
   const match = html.match(/<script type="application\/json" id="owner-viz-data">([\s\S]*?)<\/script>/)
   assert.ok(match)
   const parsed = JSON.parse(match[1])

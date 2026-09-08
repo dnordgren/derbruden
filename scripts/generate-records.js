@@ -427,9 +427,7 @@ function ownerLink(owner) {
 }
 
 function detail(entry, result) {
-  return `${result} ${ownerLink(entry.opponent)} ${fmt(entry.points)}-${fmt(
-    entry.opponentPoints
-  )}, ${entry.season} wk ${entry.week}`
+  return `${ownerLink(entry.owner)} ${fmt(entry.points)} ${result} ${ownerLink(entry.opponent)} ${fmt(entry.opponentPoints)}, ${entry.season} wk ${entry.week}`
 }
 
 export function renderRecordsSection(records) {
@@ -496,7 +494,7 @@ export function renderH2HChartSection(h2h) {
 <div class="viz-chart" id="records-h2h-chart"></div>
 <script type="application/json" id="records-h2h-data">${json}</script>
 <script src="../static/js/d3.v7.min.js"></script>
-<script src="../static/js/records-h2h.js?v=1"></script>`
+<script src="../static/js/records-h2h.js?v=2"></script>`
 }
 
 export function renderTrophiesSection({ champions, lowestScore, mostPointsInALoss, droughts }) {
@@ -591,7 +589,7 @@ function pageTemplate(content) {
   <!--#include file="partials/head-common.html" -->
   <style>
     .section-note {
-      color: #666;
+      color: var(--muted);
       font-size: 0.9em;
     }
 
@@ -600,7 +598,7 @@ function pageTemplate(content) {
     }
 
     .stats-table .detail {
-      color: #555;
+      color: var(--muted);
       font-size: 0.95em;
     }
 
@@ -610,11 +608,11 @@ function pageTemplate(content) {
     }
 
     .stats-table .diag {
-      color: #999;
+      color: var(--muted);
     }
 
     .stats-table .muted {
-      color: #999;
+      color: var(--muted);
     }
   </style>
 </head>

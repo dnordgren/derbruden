@@ -306,7 +306,7 @@ export function renderSection(payload) {
     <script type="application/json" id="owner-viz-data">${json}</script>
   </section>
   <script src="../static/js/d3.v7.min.js"></script>
-  <script src="../static/js/owner-charts.js?v=3"></script>
+  <script src="../static/js/owner-charts.js?v=4"></script>
   ${VIZ_END}`
 }
 

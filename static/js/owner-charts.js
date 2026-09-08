@@ -6,14 +6,19 @@
 
   var data = JSON.parse(dataEl.textContent)
 
+  function cssVar(name, fallback) {
+    var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim()
+    return v || fallback
+  }
+
   var COLORS = {
-    pf: '#008f00',
-    pa: '#d60303',
-    elo: '#012f69',
-    neutral: '#5a6572',
-    grid: '#e6eaef',
-    connector: '#dbe2ea',
-    diag: '#ededeb',
+    pf: cssVar('--chart-pf', '#1a7f37'),
+    pa: cssVar('--chart-pa', '#c0392b'),
+    elo: cssVar('--chart-elo', '#1a3a5a'),
+    neutral: cssVar('--chart-neutral', '#5a6572'),
+    grid: cssVar('--chart-grid', '#e6eaef'),
+    connector: cssVar('--chart-connector', '#dbe2ea'),
+    diag: cssVar('--chart-diag', '#f0f0ef'),
   }
 
   var tooltip = d3.select('body').append('div').attr('class', 'viz-tooltip')
@@ -454,7 +459,7 @@
       var games = c.w + c.l + c.t
       return games ? (c.w + c.t * 0.5) / games : 0.5
     }
-    var color = d3.scaleLinear().domain([0, 0.5, 1]).range(['#d60303', '#f4f4f1', '#008f00']).clamp(true)
+    var color = d3.scaleLinear().domain([0, 0.5, 1]).range([COLORS.pa, COLORS.diag, COLORS.pf]).clamp(true)
 
     var x = d3
       .scaleBand()
@@ -489,7 +494,9 @@
           .attr('width', x.bandwidth())
           .attr('height', x.bandwidth())
           .attr('rx', 4)
-          .attr('fill', '#fafafa')
+          .attr('fill', cssVar('--surface', '#fafafa'))
+          .attr('stroke', cssVar('--line', '#e5e7eb'))
+          .attr('stroke-width', 0.5)
         return
       }
       var rRate = rate(rec)
@@ -527,7 +534,7 @@
         .attr('x', x(opp) + x.bandwidth() / 2)
         .attr('y', x.bandwidth() / 2 + 4)
         .attr('text-anchor', 'middle')
-        .attr('fill', strong ? '#fff' : '#2e3440')
+        .attr('fill', strong ? '#fff' : cssVar('--ink', '#2e3440'))
         .style('font-size', '12px')
         .style('font-weight', 700)
         .style('pointer-events', 'none')

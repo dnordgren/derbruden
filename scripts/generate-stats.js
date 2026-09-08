@@ -42,7 +42,7 @@ function generateStatsIndex(data) {
 
   const tableRows = ownerStats.map(stat => {
     const champ = stat.championships
-      ? `<span aria-hidden="true">${'🏆'.repeat(stat.championships)}</span><span class="visually-hidden">${stat.championships} championship${stat.championships > 1 ? 's' : ''}</span>`
+      ? `<span class="trophies" aria-hidden="true">${'★'.repeat(stat.championships)}</span><span class="visually-hidden">${stat.championships} championship${stat.championships > 1 ? 's' : ''}</span>`
       : '<span class="visually-hidden">0</span>';
     return `<tr>
       <td class="owner"><a href="./${stat.owner.toLowerCase()}.html">${stat.owner}</a></td>
@@ -96,7 +96,7 @@ function generateOwnerStats(data, owner) {
 
   const tableRows = ownerData.map(row => {
     const champ = row.Champ === 'Y'
-      ? '<span aria-hidden="true">🏆</span><span class="visually-hidden">1 championship</span>'
+      ? '<span class="trophies" aria-hidden="true">★</span><span class="visually-hidden">1 championship</span>'
       : '<span class="visually-hidden">0</span>';
     return `<tr>
       <td class="number">${row.Season}</td>
@@ -115,7 +115,7 @@ function generateOwnerStats(data, owner) {
 
   const winPct = totals.wins / (totals.wins + totals.losses);
   const totalChamp = totals.championships
-    ? `<span aria-hidden="true">${'🏆'.repeat(totals.championships)}</span><span class="visually-hidden">${totals.championships} championship${totals.championships > 1 ? 's' : ''}</span>`
+    ? `<span class="trophies" aria-hidden="true">${'★'.repeat(totals.championships)}</span><span class="visually-hidden">${totals.championships} championship${totals.championships > 1 ? 's' : ''}</span>`
     : '<span class="visually-hidden">0</span>';
 
   return `<div class="table-container"><table class="stats-table">

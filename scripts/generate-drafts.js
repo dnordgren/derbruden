@@ -367,7 +367,7 @@ function pageTemplate(content) {
       align-items: center;
       flex-wrap: wrap;
       gap: 6px;
-      color: #666;
+      color: var(--muted);
       font-size: 0.8em;
       margin-bottom: 10px;
     }
@@ -386,8 +386,8 @@ function pageTemplate(content) {
     .chip.k { background: #f6bd7a; }
     .chip.dst { background: #c9d2da; }
     .chip.keeper-chip {
-      background: linear-gradient(135deg, transparent 0 50%, #00000055 50% 100%), #fff;
-      border: 1px solid #ddd;
+      background: linear-gradient(135deg, transparent 0 50%, #00000055 50% 100%), var(--paper);
+      border: 1px solid var(--line);
     }
 
     .draft-board {
@@ -401,7 +401,7 @@ function pageTemplate(content) {
       position: sticky;
       left: 0;
       z-index: 1;
-      background: #fff;
+      background: var(--surface);
       font-size: 0.8em;
       font-weight: 600;
       text-transform: uppercase;
@@ -431,7 +431,7 @@ function pageTemplate(content) {
 
     .draft-board .head-owner {
       display: block;
-      color: #6b7280;
+      color: var(--muted);
       letter-spacing: 0.1em;
     }
 
@@ -484,12 +484,12 @@ function pageTemplate(content) {
 
     .draft-meta,
     .season-links {
-      color: #666;
+      color: var(--muted);
       font-size: 0.9em;
     }
 
     .season-links a {
-      color: #00429f;
+      color: var(--accent);
       text-decoration: underline;
       margin-right: 8px;
     }
@@ -501,7 +501,7 @@ function pageTemplate(content) {
     .methodology {
       margin-top: 30px;
       font-size: 0.85em;
-      color: #666;
+      color: var(--muted);
     }
   </style>
 </head>

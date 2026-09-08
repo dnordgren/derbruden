@@ -8,4 +8,14 @@
     <li><a href="./drafts.html">Drafts</a></li>
     <li><a href="./waivers.html">Waivers</a></li>
   </ul>
+  <script>
+    ;(function () {
+      const here = location.pathname.split('/').pop()
+      document.querySelectorAll('nav a').forEach(a => {
+        if (a.getAttribute('href') === './' + here) a.setAttribute('aria-current', 'page')
+      })
+    })()
+  </script>
 </nav>
+
+<!--#include file="partials/sponsor-ribbon.html" -->

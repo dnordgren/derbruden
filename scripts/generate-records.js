@@ -427,9 +427,7 @@ function ownerLink(owner) {
 }
 
 function detail(entry, result) {
-  return `${result} ${ownerLink(entry.opponent)} ${fmt(entry.points)}-${fmt(
-    entry.opponentPoints
-  )}, ${entry.season} wk ${entry.week}`
+  return `${ownerLink(entry.owner)} ${fmt(entry.points)} ${result} ${ownerLink(entry.opponent)} ${fmt(entry.opponentPoints)}, ${entry.season} wk ${entry.week}`
 }
 
 export function renderRecordsSection(records) {

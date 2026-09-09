@@ -205,6 +205,49 @@ Notes:
   the API wins.
 - Tests: `node --test scripts/generate-records.test.mjs`.
 
+### Generate playoff race
+
+Builds [playoff-race.html](https://derbruden.com/playoff-race.html): current
+standings, clinched/ eliminated flags, remaining games, and Monday-night
+hypotheticals (if current leaders hold vs if underdogs rally). Data lands in
+`static/data/playoff-race.json` with no-cache deploys like the other JSON
+feeds.
+
+```sh
+make playoff
+# or directly:
+node scripts/generate-playoff-race.mjs [--dry-run] [--start-week=N] [season]
+node scripts/post-playoff-discord.mjs [--dry-run]  # preview Discord payload
+```
+
+Notes:
+
+- Regular season is 13 weeks, top 6 make playoffs, tiebreak is total points
+  scored (`playoffSeedingRule: TOTAL_POINTS_SCORED`). Clinch math enumerates
+  all 2<sup>n</sup> outcomes for the remaining regular-season games (capped at
+  20, head-to-head conflicts respected) to find wins-only guarantees. Future
+  points are ignored for tiebreak — a clinch means even if every tied team
+  wins the tiebreak, the team still finishes top 6; an elimination means even
+  with tiebreak help the team cannot reach top 6.
+- Late-season gate: `DEFAULT_START_WEEK = 11` (configurable via
+  `--start-week` or `PLAYOFF_START_WEEK`). With 13 weeks, the first clinch
+  in 2025 was week 10 (JH 8-2) and the first elimination was week 12 (DM).
+  Starting at 11 gives three weeks of signal (11, 12, 13) without early
+  noise; use 10 if you want the earliest possible clinch. Before the gate
+  the generator still writes the page but Discord posting is skipped.
+- Monday hypotheticals: on Monday nights while games are live,
+  `currentLeaderForGame` uses live scores to project "hold" (leaders hold)
+  vs "flip" (underdogs rally) for the current week, then re-enumerates the
+  rest of the season for each scenario.
+- A weekly GitHub Action (`.github/workflows/playoff-race.yml`) runs
+  Monday nights 9pm ET (01:00 UTC Tue in EDT, 02:00 UTC Tue in EST, two
+  crons cover DST) in season, publishes `playoff-race.html` + `playoff-
+  race.json` with a two-path invalidation, and commits when files changed.
+  Manual dispatch is available. Repo secrets: `ESPN_S2`, `SWID`,
+  `DISCORD_WEBHOOK_PLAYOFFRACE`, `AWS_ACCESS_KEY_ID`,
+  `AWS_SECRET_ACCESS_KEY`.
+- Tests: `node --test scripts/playoff-race.test.mjs`.
+
 ### Weekly update
 
 Regenerate and publish in one pass:

@@ -38,6 +38,9 @@ No framework; shared page chunks are inlined at build time by
   "All-time records" below.
 - `node scripts/sync-team-names.js [--dry-run] [season]` — sync ESPN
   team names into owner page headers.
+- `make playoff` — regenerate `src/playoff-race.html` and
+  `static/data/playoff-race.json` (playoff clinch/elimination scenarios)
+  from the ESPN API. See "Playoff race" below.
 - `AWS_PROFILE=derbruden make deploy` — S3 sync + CloudFront invalidation.
   The apt `aws` binary is broken on the dev machine (old pyOpenSSL clash).
   `~/.zshenv` pins PATH to the working `~/.venvs/awscli` install, so fresh
@@ -209,6 +212,42 @@ No framework; shared page chunks are inlined at build time by
   `scripts/.viz-cache/`.
 - A 2018 schedule entry can lack `home`/`away`; extractGames guards it.
 - Tests: `node --test scripts/generate-owner-viz.test.mjs`.
+
+## Playoff race
+
+- `scripts/generate-playoff-race.mjs` fetches `view=mSettings` (for
+  `playoffTeamCount` and `matchupPeriodCount`) + `view=mTeam` /
+  `view=mMatchupScore` and writes `static/data/playoff-race.json` plus the
+  body of `src/playoff-race.html` between `<!-- PLAYOFF_RACE_START -->` /
+  `<!-- PLAYOFF_RACE_END -->` markers (template emits partial includes).
+- Requires `ESPN_S2`; `SWID` optional like power rankings. Same season
+  selection (Aug-Dec → current year, Jan-Jul → prior) with one-year
+  fallback.
+- Algorithm: regular season only (`playoffTierType === 'NONE'`). Standings
+  sort by wins + 0.5×ties, then PF (the league's
+  `playoffSeedingRule: TOTAL_POINTS_SCORED`). Clinch/elimination enumerate
+  all 2^n remaining-game outcomes (head-to-head respected, capped at
+  n=20); clinched = worst rank ≤6 even losing tiebreaks, eliminated =
+  best rank >6 even winning tiebreaks. When n=0, final PF order decides.
+  Future points are ignored for tiebreak — conservative wins-only groups.
+- Late-season gate: `DEFAULT_START_WEEK = 11` for a 13-week season (first
+  2025 clinch was week 10, first elimination week 12). The generator still
+  writes the page pre-gate but `isLateSeason` is false and Discord posting
+  skips. Override with `--start-week=N` or `PLAYOFF_START_WEEK`.
+- Monday hypotheticals: while the current week's games are live,
+  `currentLeaderForGame` (live score leader) builds "hold" (leaders hold)
+  vs "flip" (underdogs rally) for that week, then re-enumerates the rest
+  of the season for each. Rendered side-by-side and in the Discord embed.
+- Weekly GitHub Action (`.github/workflows/playoff-race.yml`) runs Mondays
+  9pm ET (01:00 UTC Tue in EDT, 02:00 UTC Tue in EST; two crons cover DST)
+  in season. Publishes `playoff-race.html` + `playoff-race.json` with a
+  two-path invalidation and commits when changed. Secrets: `ESPN_S2`,
+  `SWID`, `DISCORD_WEBHOOK_PLAYOFFRACE`, `AWS_ACCESS_KEY_ID`,
+  `AWS_SECRET_ACCESS_KEY`. `scripts/post-playoff-discord.mjs` posts the
+  embed (`--dry-run` previews, `--force` ignores the gate).
+- `deploy-static` excludes `data/playoff-race.json` like the other JSON
+  feeds so full deploys never delete it or give it immutable caching.
+- Tests: `node --test scripts/playoff-race.test.mjs`.
 
 ## Team name sync
 

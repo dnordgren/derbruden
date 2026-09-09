@@ -441,14 +441,14 @@ function pageTemplate(content) {
       height: 1px;
     }
 
-    /* overflow-x:auto computes overflow-y to auto; keep vertical
-       scrolling page-level so the board never grows its own v-bar. */
-    .draft-season .table-container {
-      overflow-y: hidden;
-    }
-
     .draft-board .board-cell .pick + .pick {
       margin-top: 2px;
+    }
+
+    /* Sole picks fill stretched cells; stacked picks size to content
+       so multi-pick cells never overflow their row. */
+    .draft-board .board-cell .pick:only-child {
+      height: 100%;
     }
 
     .draft-board .board-cell:empty {
@@ -464,7 +464,7 @@ function pageTemplate(content) {
       border-radius: 3px;
       padding: 8px 10px;
       min-height: 52px;
-      height: 100%;
+      height: auto;
       box-sizing: border-box;
       overflow-wrap: anywhere;
       word-break: break-word;

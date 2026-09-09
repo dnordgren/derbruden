@@ -465,12 +465,17 @@ function pageTemplate(content) {
       padding: 8px 10px;
       min-height: 52px;
       height: 100%;
+      box-sizing: border-box;
+      overflow-wrap: anywhere;
+      word-break: break-word;
       color: #1f2937;
     }
 
     .pick-name {
       font-weight: 700;
       line-height: 1.25;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .pick-sub {

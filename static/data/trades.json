@@ -1,8 +1,50 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-08-23T19:30:43.184Z",
+  "updated": "2026-09-09T06:21:32.732Z",
   "trades": [
+    {
+      "id": "e82f5fd9-e636-4d86-8bcd-1dcff8cae6cf",
+      "event": "TRADE_ACCEPT",
+      "date": "2026-09-09T02:01:13.707Z",
+      "teams": [
+        {
+          "teamId": 4,
+          "name": "El Fusilado",
+          "gives": [
+            "Daniel Jones"
+          ]
+        },
+        {
+          "teamId": 11,
+          "name": "Thats My God",
+          "gives": [
+            "Jaylen Warren"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "3fab3cbd-b8bc-4787-a1cb-8721e7deab00",
+      "event": "TRADE_ACCEPT",
+      "date": "2026-09-09T01:59:55.592Z",
+      "teams": [
+        {
+          "teamId": 2,
+          "name": "Cracked Unc",
+          "gives": [
+            "Tee Higgins"
+          ]
+        },
+        {
+          "teamId": 4,
+          "name": "El Fusilado",
+          "gives": [
+            "Dalton Kincaid"
+          ]
+        }
+      ]
+    },
     {
       "id": "b4f8f7af-cb66-4b32-95d0-7040cf565023",
       "event": "TRADE_ACCEPT",

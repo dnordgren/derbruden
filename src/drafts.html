@@ -86,6 +86,21 @@
       height: 1px;
     }
 
+    /* overflow-x:auto computes overflow-y to auto; keep vertical
+       scrolling page-level so the board never grows its own v-bar. */
+    .draft-season .table-container {
+      overflow-y: hidden;
+    }
+
+    .draft-board .board-cell .pick + .pick {
+      margin-top: 2px;
+    }
+
+    .draft-board .board-cell:empty {
+      background: rgba(127, 127, 127, 0.12);
+      border-radius: 3px;
+    }
+
     .pick {
       position: relative;
       display: flex;

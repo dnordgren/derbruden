@@ -441,6 +441,21 @@ function pageTemplate(content) {
       height: 1px;
     }
 
+    .draft-board .board-cell .pick + .pick {
+      margin-top: 2px;
+    }
+
+    /* Sole picks fill stretched cells; stacked picks size to content
+       so multi-pick cells never overflow their row. */
+    .draft-board .board-cell .pick:only-child {
+      height: 100%;
+    }
+
+    .draft-board .board-cell:empty {
+      background: rgba(127, 127, 127, 0.12);
+      border-radius: 3px;
+    }
+
     .pick {
       position: relative;
       display: flex;
@@ -449,13 +464,18 @@ function pageTemplate(content) {
       border-radius: 3px;
       padding: 8px 10px;
       min-height: 52px;
-      height: 100%;
+      height: auto;
+      box-sizing: border-box;
+      overflow-wrap: anywhere;
+      word-break: break-word;
       color: #1f2937;
     }
 
     .pick-name {
       font-weight: 700;
       line-height: 1.25;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .pick-sub {

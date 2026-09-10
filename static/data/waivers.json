@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-09T17:03:01.315Z",
+  "updated": "2026-09-10T16:54:17.785Z",
   "order": [
     {
       "rank": 1,
@@ -15,16 +15,6 @@
     },
     {
       "rank": 2,
-      "teamId": 1,
-      "owner": "GM",
-      "name": "Toe Burrows Ice Box",
-      "wins": 0,
-      "losses": 0,
-      "ties": 0,
-      "moves": 0
-    },
-    {
-      "rank": 3,
       "teamId": 9,
       "owner": "JO",
       "name": "Adam's Revenge",
@@ -34,7 +24,7 @@
       "moves": 0
     },
     {
-      "rank": 4,
+      "rank": 3,
       "teamId": 12,
       "owner": "JH",
       "name": "ORACLE AI",
@@ -44,7 +34,7 @@
       "moves": 0
     },
     {
-      "rank": 5,
+      "rank": 4,
       "teamId": 11,
       "owner": "IK",
       "name": "Thats My God",
@@ -54,7 +44,7 @@
       "moves": 0
     },
     {
-      "rank": 6,
+      "rank": 5,
       "teamId": 5,
       "owner": "AR",
       "name": "Give 'er The Beans ",
@@ -64,7 +54,7 @@
       "moves": 0
     },
     {
-      "rank": 7,
+      "rank": 6,
       "teamId": 4,
       "owner": "AN",
       "name": "El Fusilado",
@@ -74,7 +64,7 @@
       "moves": 0
     },
     {
-      "rank": 8,
+      "rank": 7,
       "teamId": 10,
       "owner": "ZS",
       "name": "Tomato Toes",
@@ -84,7 +74,7 @@
       "moves": 0
     },
     {
-      "rank": 9,
+      "rank": 8,
       "teamId": 8,
       "owner": "DN",
       "name": "Washington Redskins",
@@ -94,15 +84,52 @@
       "moves": 0
     },
     {
-      "rank": 10,
+      "rank": 9,
       "teamId": 2,
       "owner": "DM",
       "name": "Cracked Unc",
       "wins": 0,
       "losses": 0,
       "ties": 0,
-      "moves": 0
+      "moves": 1
+    },
+    {
+      "rank": 10,
+      "teamId": 1,
+      "owner": "GM",
+      "name": "Toe Burrows Ice Box",
+      "wins": 0,
+      "losses": 0,
+      "ties": 0,
+      "moves": 1
     }
   ],
-  "moves": []
+  "moves": [
+    {
+      "id": "ba9bb403-be7f-4327-b842-d458a1cef4c5",
+      "date": "2026-09-10T13:04:06.607Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Player 4383429"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "bf10d81d-51d2-4c6f-af04-8f61efa165e5",
+      "date": "2026-09-10T07:26:20.823Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 1,
+      "owner": "GM",
+      "adds": [
+        "Player 3052587"
+      ],
+      "drops": [],
+      "bid": null
+    }
+  ]
 }

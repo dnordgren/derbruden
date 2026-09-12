@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-11T16:55:37.791Z",
+  "updated": "2026-09-12T16:00:57.563Z",
   "order": [
     {
       "rank": 1,
@@ -41,7 +41,7 @@
       "wins": 0,
       "losses": 0,
       "ties": 0,
-      "moves": 0
+      "moves": 1
     },
     {
       "rank": 5,
@@ -105,6 +105,19 @@
     }
   ],
   "moves": [
+    {
+      "id": "fac8107e-55cc-40c4-8f92-80f646284fb5",
+      "date": "2026-09-12T13:48:40.350Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 11,
+      "owner": "IK",
+      "adds": [
+        "Player 4429086"
+      ],
+      "drops": [],
+      "bid": null
+    },
     {
       "id": "ba9bb403-be7f-4327-b842-d458a1cef4c5",
       "date": "2026-09-10T13:04:06.607Z",

@@ -103,9 +103,8 @@ body {
   color: var(--ink);
   margin: 0 auto;
   padding: clamp(14px, 3vw, 28px);
-  max-width: 1200px;
+  max-width: min(1200px, 100vw);
   width: 100%;
-  max-width: 100vw;
   overflow-x: hidden;
   position: relative;
 }
@@ -132,7 +131,6 @@ main code {
 }
 
 main img {
-  max-width: 100%;
   height: auto;
 }
 
@@ -309,9 +307,6 @@ nav a[aria-current='page'] {
 
 .stats-table {
   min-width: 620px;
-}
-
-.stats-table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
@@ -453,11 +448,6 @@ nav a[aria-current='page'] {
   margin-bottom: 40px;
 }
 
-.championship-post .post-image {
-  max-width: 100%;
-  height: auto;
-}
-
 .post-date,
 .post-category {
   color: var(--muted);
@@ -468,6 +458,16 @@ nav a[aria-current='page'] {
 .draft-meta {
   color: var(--muted);
   font-size: 0.9em;
+}
+
+.updated {
+  color: var(--muted);
+  font-size: 0.9em;
+  margin-top: 0;
+}
+
+.muted {
+  color: var(--muted);
 }
 
 .delta.up {
@@ -620,7 +620,6 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .sponsor-box,
   .sponsor-ribbon {
     min-width: 0;
   }

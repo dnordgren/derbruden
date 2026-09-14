@@ -241,22 +241,10 @@ export function buildBoard(picks) {
 }
 
 // Board color group for a fantasy position.
+const POSITION_CLASSES = { QB: 'qb', TE: 'te', K: 'k', 'D/ST': 'dst', RB: 'skill', WR: 'skill' }
+
 export function positionClass(pos) {
-  switch (pos) {
-    case 'QB':
-      return 'qb'
-    case 'TE':
-      return 'te'
-    case 'K':
-      return 'k'
-    case 'D/ST':
-      return 'dst'
-    case 'RB':
-    case 'WR':
-      return 'skill'
-    default:
-      return 'unknown'
-  }
+  return POSITION_CLASSES[pos] ?? 'unknown'
 }
 
 function boardPickHtml(pick, cache, season) {
@@ -265,7 +253,7 @@ function boardPickHtml(pick, cache, season) {
   const pos = info.pos === 'D/ST' ? 'DST' : info.pos
   if (info.pos === 'D/ST') name = name.replace(/ D\/ST$/, '')
   const sub = [info.pro, pos].filter(Boolean).join(' ~ ')
-  const keeperAttrs = pick.keeper ? ' keeper" title="Keeper pick' : ''
+  const keeperAttrs = pick.keeper ? ' keeper' : ''
   const keeperLabel = pick.keeper ? '<span class="visually-hidden"> (keeper)</span>' : ''
   return (
     `<div class="pick ${positionClass(info.pos)}${keeperAttrs}">` +
@@ -329,8 +317,7 @@ function renderContent(draftsBySeason, teamsBySeason, cache, meta) {
     .join('\n')
 
   return `<div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
-        style="border-radius: 50%; object-fit: cover;" />
+      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="100" height="100" />
       <h1>Draft History</h1>
     </div>
     <p class="draft-meta">${seasons[seasons.length - 1]}&ndash;${seasons[0]} drafts &middot; generated ${meta.generated}</p>
@@ -380,11 +367,11 @@ function pageTemplate(content) {
       margin-left: 10px;
     }
 
-    .chip.skill { background: #b5e0ae; }
-    .chip.qb { background: #cdb9f5; }
-    .chip.te { background: #f49e9e; }
-    .chip.k { background: #f6bd7a; }
-    .chip.dst { background: #c9d2da; }
+    .chip.skill, .pick.skill { background: #b5e0ae; }
+    .chip.qb, .pick.qb { background: #cdb9f5; }
+    .chip.te, .pick.te { background: #f49e9e; }
+    .chip.k, .pick.k { background: #f6bd7a; }
+    .chip.dst, .pick.dst { background: #c9d2da; }
     .chip.keeper-chip {
       background: linear-gradient(135deg, transparent 0 50%, #00000055 50% 100%), var(--paper);
       border: 1px solid var(--line);
@@ -484,11 +471,6 @@ function pageTemplate(content) {
       white-space: nowrap;
     }
 
-    .pick.skill { background: #b5e0ae; }
-    .pick.qb { background: #cdb9f5; }
-    .pick.te { background: #f49e9e; }
-    .pick.k { background: #f6bd7a; }
-    .pick.dst { background: #c9d2da; }
     .pick.unknown { background: #ececec; }
 
     .pick.keeper::after {
@@ -502,7 +484,6 @@ function pageTemplate(content) {
       border-top-right-radius: 3px;
     }
 
-    .draft-meta,
     .season-links {
       color: var(--muted);
       font-size: 0.9em;
@@ -516,12 +497,6 @@ function pageTemplate(content) {
 
     .draft-season h2 {
       margin-bottom: 0;
-    }
-
-    .methodology {
-      margin-top: 30px;
-      font-size: 0.85em;
-      color: var(--muted);
     }
   </style>
 </head>

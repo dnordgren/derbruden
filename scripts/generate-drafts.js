@@ -253,7 +253,7 @@ function boardPickHtml(pick, cache, season) {
   const pos = info.pos === 'D/ST' ? 'DST' : info.pos
   if (info.pos === 'D/ST') name = name.replace(/ D\/ST$/, '')
   const sub = [info.pro, pos].filter(Boolean).join(' ~ ')
-  const keeperAttrs = pick.keeper ? ' keeper" title="Keeper pick' : ''
+  const keeperAttrs = pick.keeper ? ' keeper' : ''
   const keeperLabel = pick.keeper ? '<span class="visually-hidden"> (keeper)</span>' : ''
   return (
     `<div class="pick ${positionClass(info.pos)}${keeperAttrs}">` +

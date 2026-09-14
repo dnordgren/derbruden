@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-13T16:50:42.108Z",
+  "updated": "2026-09-14T18:21:43.609Z",
   "order": [
     {
       "rank": 1,
@@ -81,7 +81,7 @@
       "wins": 0,
       "losses": 0,
       "ties": 0,
-      "moves": 1
+      "moves": 2
     },
     {
       "rank": 9,
@@ -91,7 +91,7 @@
       "wins": 0,
       "losses": 0,
       "ties": 0,
-      "moves": 1
+      "moves": 2
     },
     {
       "rank": 10,
@@ -106,6 +106,36 @@
   ],
   "moves": [
     {
+      "id": "c8802cfc-512a-4274-bc46-89ed81e28e4b",
+      "date": "2026-09-13T18:45:37.190Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Tyler Allgeier"
+      ],
+      "drops": [
+        "Minnesota Vikings D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "8fa1c1fe-5ebd-4270-bcbf-f06bf9da01b4",
+      "date": "2026-09-13T16:55:45.686Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Malachi Fields"
+      ],
+      "drops": [
+        "Trevor Lawrence"
+      ],
+      "bid": null
+    },
+    {
       "id": "dede75f1-65c8-49a3-a292-aa28a662c882",
       "date": "2026-09-13T14:44:50.704Z",
       "event": "FREEAGENT",
@@ -113,7 +143,7 @@
       "teamId": 8,
       "owner": "DN",
       "adds": [
-        "Player -16024"
+        "Los Angeles Chargers D/ST"
       ],
       "drops": [],
       "bid": null
@@ -126,10 +156,10 @@
       "teamId": 10,
       "owner": "ZS",
       "adds": [
-        "Player -16030"
+        "Jacksonville Jaguars D/ST"
       ],
       "drops": [
-        "Player -16008"
+        "Detroit Lions D/ST"
       ],
       "bid": null
     },
@@ -141,7 +171,7 @@
       "teamId": 11,
       "owner": "IK",
       "adds": [
-        "Player 4429086"
+        "Michael Mayer"
       ],
       "drops": [],
       "bid": null
@@ -154,7 +184,7 @@
       "teamId": 2,
       "owner": "DM",
       "adds": [
-        "Player 4383429"
+        "Jacob Saylors"
       ],
       "drops": [],
       "bid": null
@@ -167,7 +197,7 @@
       "teamId": 1,
       "owner": "GM",
       "adds": [
-        "Player 3052587"
+        "Baker Mayfield"
       ],
       "drops": [],
       "bid": null

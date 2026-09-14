@@ -1,12 +1,16 @@
 {
   "season": 2026,
-  "updated": "2026-09-13T16:50:42.108Z",
+  "updated": "2026-09-14T18:21:43.609Z",
   "players": {
     "2026:3052587": "Baker Mayfield",
     "2026:4383429": "Jacob Saylors",
     "2026:4429086": "Michael Mayer",
     "2026:-16030": "Jacksonville Jaguars D/ST",
     "2026:-16008": "Detroit Lions D/ST",
-    "2026:-16024": "Los Angeles Chargers D/ST"
+    "2026:-16024": "Los Angeles Chargers D/ST",
+    "2026:4373626": "Tyler Allgeier",
+    "2026:-16016": "Minnesota Vikings D/ST",
+    "2026:4682648": "Malachi Fields",
+    "2026:4360310": "Trevor Lawrence"
   }
 }

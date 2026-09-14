@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DerBruden.com | Luck & All-Play</title>
+  <meta property="og:title" content="DerBruden.com | Luck & All-Play">
+  <meta property="og:description" content="All-Play standings and Luck Index for the Der Bruden fantasy football league: who was good, who was lucky, and who got screwed by the schedule.">
+  <meta property="og:url" content="https://derbruden.com/luck.html">
+  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DerBruden.com | Luck & All-Play">
+  <meta name="twitter:description" content="All-Play standings and Luck Index for the Der Bruden fantasy football league.">
+  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
+  <!--#include file="partials/head-common.html" -->
+  <style>
+    .section-note {
+      color: #666;
+      font-size: 0.9em;
+    }
+    h2 { margin-top: 40px; }
+    h3 { margin-top: 32px; }
+    .stats-table .detail {
+      color: #555;
+      font-size: 0.95em;
+    }
+    .stats-table td.owner {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .luck-controls {
+      margin: 12px 0;
+    }
+    select {
+      font-size: 0.95em;
+      padding: 4px 8px;
+    }
+    .methodology {
+      margin-top: 30px;
+      font-size: 0.85em;
+      color: #666;
+    }
+    .methodology code {
+      background: #f4f4f4;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <!--#include file="partials/site-header.html" -->
+
+  <!--#include file="partials/nav.html" -->
+
+  <main id="main">
+    <div class="owner-logo-header">
+      <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
+        style="border-radius: 50%; object-fit: cover;">
+      <h1>Luck &amp; All-Play</h1>
+    </div>
+    <!-- LUCK_START -->
+<h2>All-Play Standings</h2>
+<p class="section-note">Every team plays every other team each week. A 10-team league produces nine All-Play results per week. This strips schedule luck and shows who was actually strong. Regular season only, 2018 on.</p>
+<p class="section-note"><label for="allplay-season-select">Season: </label><select id="allplay-season-select"><option value="2026" >2026</option>
+<option value="2025" selected>2025</option>
+<option value="2024" >2024</option>
+<option value="2023" >2023</option>
+<option value="2022" >2022</option>
+<option value="2021" >2021</option>
+<option value="2020" >2020</option>
+<option value="2019" >2019</option>
+<option value="2018" >2018</option></select></p>
+<div id="allplay-table-wrap">
+<div class="table-container"><table class="stats-table">
+    <caption class="visually-hidden">2025 All-Play Standings</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="number">AP Rank</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Team</th>
+        <th scope="col" class="number">Record</th>
+        <th scope="col" class="number">PF</th>
+        <th scope="col" class="number">All-Play</th>
+        <th scope="col" class="number">AP %</th>
+        <th scope="col" class="number">Luck (W-AP)</th>
+        <th scope="col">Schedule</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr>
+        <td class="number">1</td>
+        <td class="owner"><a href="./jo.html">JO</a></td>
+        <td>Adam's Revenge</td>
+        <td class="number">8-5</td>
+        <td class="number">1531.8</td>
+        <td class="number">72-45</td>
+        <td class="number">61.5%</td>
+        <td class="number">0</td>
+        <td class="detail">As expected</td>
+      </tr>
+<tr>
+        <td class="number">2</td>
+        <td class="owner"><a href="./ar.html">AR</a></td>
+        <td>Give 'er The Beans </td>
+        <td class="number">6-7</td>
+        <td class="number">1474.8</td>
+        <td class="number">65-52</td>
+        <td class="number">55.6%</td>
+        <td class="number">-1.2</td>
+        <td class="detail">Tough schedule</td>
+      </tr>
+<tr>
+        <td class="number">3</td>
+        <td class="owner"><a href="./ik.html">IK</a></td>
+        <td>Thats My God</td>
+        <td class="number">7-6</td>
+        <td class="number">1455.6</td>
+        <td class="number">63-54</td>
+        <td class="number">53.8%</td>
+        <td class="number">0</td>
+        <td class="detail">As expected</td>
+      </tr>
+<tr>
+        <td class="number">4</td>
+        <td class="owner"><a href="./gm.html">GM</a></td>
+        <td>Toe Burrows Ice Box</td>
+        <td class="number">6-7</td>
+        <td class="number">1454.4</td>
+        <td class="number">61-56</td>
+        <td class="number">52.1%</td>
+        <td class="number">-0.8</td>
+        <td class="detail">As expected</td>
+      </tr>
+<tr>
+        <td class="number">5</td>
+        <td class="owner"><a href="./cr.html">CR</a></td>
+        <td>Significant Figures</td>
+        <td class="number">7-6</td>
+        <td class="number">1410</td>
+        <td class="number">61-56</td>
+        <td class="number">52.1%</td>
+        <td class="number">+0.2</td>
+        <td class="detail">As expected</td>
+      </tr>
+<tr>
+        <td class="number">6</td>
+        <td class="owner"><a href="./an.html">AN</a></td>
+        <td>El Fusilado</td>
+        <td class="number">6-7</td>
+        <td class="number">1386.7</td>
+        <td class="number">59-58</td>
+        <td class="number">50.4%</td>
+        <td class="number">-0.6</td>
+        <td class="detail">As expected</td>
+      </tr>
+<tr>
+        <td class="number">7</td>
+        <td class="owner"><a href="./dm.html">DM</a></td>
+        <td>Feel It In My Plums</td>
+        <td class="number">5-8</td>
+        <td class="number">1372</td>
+        <td class="number">57-60</td>
+        <td class="number">48.7%</td>
+        <td class="number">-1.3</td>
+        <td class="detail">Tough schedule</td>
+      </tr>
+<tr>
+        <td class="number">8</td>
+        <td class="owner"><a href="./jh.html">JH</a></td>
+        <td>ORACLE AI</td>
+        <td class="number">8-5</td>
+        <td class="number">1362.5</td>
+        <td class="number">51-66</td>
+        <td class="number">43.6%</td>
+        <td class="number">+2.3</td>
+        <td class="detail">Benefited from schedule</td>
+      </tr>
+<tr>
+        <td class="number">9</td>
+        <td class="owner"><a href="./dn.html">DN</a></td>
+        <td>Washington Redskins</td>
+        <td class="number">6-7</td>
+        <td class="number">1307.6</td>
+        <td class="number">50-67</td>
+        <td class="number">42.7%</td>
+        <td class="number">+0.4</td>
+        <td class="detail">As expected</td>
+      </tr>
+<tr>
+        <td class="number">10</td>
+        <td class="owner"><a href="./zs.html">ZS</a></td>
+        <td>Tomato Toes</td>
+        <td class="number">6-7</td>
+        <td class="number">1320.4</td>
+        <td class="number">46-71</td>
+        <td class="number">39.3%</td>
+        <td class="number">+0.9</td>
+        <td class="detail">As expected</td>
+      </tr>
+    </tbody>
+  </table></div>
+</div>
+<h3>All-Time All-Play (2018–2026)</h3>
+<p class="section-note">Aggregate All-Play record across every regular-season week since ESPN.</p>
+<div class="table-container"><table class="stats-table">
+    <caption class="visually-hidden">All-Time All-Play</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="number">AP Rank</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Team</th>
+        <th scope="col" class="number">Record</th>
+        <th scope="col" class="number">PF</th>
+        <th scope="col" class="number">All-Play</th>
+        <th scope="col" class="number">AP %</th>
+        <th scope="col" class="number">Luck (W-AP)</th>
+        <th scope="col">Schedule</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr>
+        <td class="number">1</td>
+        <td class="owner"><a href="./cr.html">CR</a></td>
+        <td>Significant Figures</td>
+        <td class="number">62-44</td>
+        <td class="number">12353.2</td>
+        <td class="number">572-382</td>
+        <td class="number">60.0%</td>
+        <td class="number">-1.6</td>
+        <td class="detail">Tough schedule</td>
+      </tr>
+<tr>
+        <td class="number">2</td>
+        <td class="owner"><a href="./gm.html">GM</a></td>
+        <td>Toe Burrows Ice Box</td>
+        <td class="number">58-48</td>
+        <td class="number">12196.9</td>
+        <td class="number">550-402-2</td>
+        <td class="number">57.8%</td>
+        <td class="number">-3.2</td>
+        <td class="detail">Hurt by schedule</td>
+      </tr>
+<tr>
+        <td class="number">3</td>
+        <td class="owner"><a href="./an.html">AN</a></td>
+        <td>El Fusilado</td>
+        <td class="number">57-49</td>
+        <td class="number">12234.4</td>
+        <td class="number">541-413</td>
+        <td class="number">56.7%</td>
+        <td class="number">-3.1</td>
+        <td class="detail">Hurt by schedule</td>
+      </tr>
+<tr>
+        <td class="number">4</td>
+        <td class="owner"><a href="./jh.html">JH</a></td>
+        <td>ORACLE AI</td>
+        <td class="number">51-42</td>
+        <td class="number">10155.9</td>
+        <td class="number">442-395</td>
+        <td class="number">52.8%</td>
+        <td class="number">+1.9</td>
+        <td class="detail">Slightly lucky schedule</td>
+      </tr>
+<tr>
+        <td class="number">5</td>
+        <td class="owner">SHEN</td>
+        <td>Team GuiceBox</td>
+        <td class="number">7-6</td>
+        <td class="number">1477</td>
+        <td class="number">61-56</td>
+        <td class="number">52.1%</td>
+        <td class="number">+0.2</td>
+        <td class="detail">As expected</td>
+      </tr>
+<tr>
+        <td class="number">6</td>
+        <td class="owner"><a href="./jo.html">JO</a></td>
+        <td>Adam's Revenge</td>
+        <td class="number">56-50</td>
+        <td class="number">11838.9</td>
+        <td class="number">484-469-1</td>
+        <td class="number">50.8%</td>
+        <td class="number">+2.2</td>
+        <td class="detail">Benefited from schedule</td>
+      </tr>
+<tr>
+        <td class="number">7</td>
+        <td class="owner"><a href="./dm.html">DM</a></td>
+        <td>Feel It In My Plums</td>
+        <td class="number">50-56</td>
+        <td class="number">11571.7</td>
+        <td class="number">463-491</td>
+        <td class="number">48.5%</td>
+        <td class="number">-1.4</td>
+        <td class="detail">Tough schedule</td>
+      </tr>
+<tr>
+        <td class="number">8</td>
+        <td class="owner"><a href="./dn.html">DN</a></td>
+        <td>Washington Redskins</td>
+        <td class="number">52-54</td>
+        <td class="number">11517.7</td>
+        <td class="number">446-508</td>
+        <td class="number">46.8%</td>
+        <td class="number">+2.4</td>
+        <td class="detail">Benefited from schedule</td>
+      </tr>
+<tr>
+        <td class="number">9</td>
+        <td class="owner"><a href="./ik.html">IK</a></td>
+        <td>Thats My God</td>
+        <td class="number">47-59</td>
+        <td class="number">11399.3</td>
+        <td class="number">441-512-1</td>
+        <td class="number">46.3%</td>
+        <td class="number">-2.1</td>
+        <td class="detail">Hurt by schedule</td>
+      </tr>
+<tr>
+        <td class="number">10</td>
+        <td class="owner"><a href="./zs.html">ZS</a></td>
+        <td>Tomato Toes</td>
+        <td class="number">50-56</td>
+        <td class="number">10934.4</td>
+        <td class="number">385-569</td>
+        <td class="number">40.4%</td>
+        <td class="number">+7.2</td>
+        <td class="detail">Benefited from schedule</td>
+      </tr>
+<tr>
+        <td class="number">11</td>
+        <td class="owner"><a href="./ar.html">AR</a></td>
+        <td>Give 'er The Beans </td>
+        <td class="number">40-66</td>
+        <td class="number">10919.5</td>
+        <td class="number">383-571</td>
+        <td class="number">40.1%</td>
+        <td class="number">-2.6</td>
+        <td class="detail">Hurt by schedule</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+<h2>Luck Index</h2>
+<p class="section-note">Close games (&lt;10 pts) flip on a few points. Luck Index shows close-game record against points-for rank. High PF rank with a bad close record is unlucky; low PF rank with a great close record is lucky. Regular season only.</p>
+<p class="section-note"><label for="luck-season-select">Season: </label><select id="luck-season-select"><option value="2026" >2026</option>
+<option value="2025" selected>2025</option>
+<option value="2024" >2024</option>
+<option value="2023" >2023</option>
+<option value="2022" >2022</option>
+<option value="2021" >2021</option>
+<option value="2020" >2020</option>
+<option value="2019" >2019</option>
+<option value="2018" >2018</option></select></p>
+<div id="luck-table-wrap">
+<div class="table-container"><table class="stats-table">
+    <caption class="visually-hidden">2025 Luck Index</caption>
+    <thead>
+      <tr>
+        <th scope="col">Owner</th>
+        <th scope="col">Team</th>
+        <th scope="col" class="number">PF</th>
+        <th scope="col" class="number">PF Rank</th>
+        <th scope="col" class="number">Close &lt;10</th>
+        <th scope="col" class="number">Close %</th>
+        <th scope="col" class="number">Luck (PF−Close)</th>
+        <th scope="col">Verdict</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr>
+        <td class="owner"><a href="./zs.html">ZS</a></td>
+        <td>Tomato Toes</td>
+        <td class="number">1320.4</td>
+        <td class="number">9</td>
+        <td class="number">4-0</td>
+        <td class="number">100%</td>
+        <td class="number">+8</td>
+        <td class="detail">🍀 Very Lucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./jh.html">JH</a></td>
+        <td>ORACLE AI</td>
+        <td class="number">1362.5</td>
+        <td class="number">8</td>
+        <td class="number">2-0</td>
+        <td class="number">100%</td>
+        <td class="number">+6</td>
+        <td class="detail">Small sample</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./dn.html">DN</a></td>
+        <td>Washington Redskins</td>
+        <td class="number">1307.6</td>
+        <td class="number">10</td>
+        <td class="number">1-2</td>
+        <td class="number">33%</td>
+        <td class="number">+3</td>
+        <td class="detail">🍀 Lucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./dm.html">DM</a></td>
+        <td>Feel It In My Plums</td>
+        <td class="number">1372</td>
+        <td class="number">7</td>
+        <td class="number">2-2</td>
+        <td class="number">50%</td>
+        <td class="number">+2</td>
+        <td class="detail">🍀 Lucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./ar.html">AR</a></td>
+        <td>Give 'er The Beans </td>
+        <td class="number">1474.8</td>
+        <td class="number">2</td>
+        <td class="number">1-0</td>
+        <td class="number">100%</td>
+        <td class="number">-1</td>
+        <td class="detail">Small sample</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./ik.html">IK</a></td>
+        <td>Thats My God</td>
+        <td class="number">1455.6</td>
+        <td class="number">3</td>
+        <td class="number">3-2</td>
+        <td class="number">60%</td>
+        <td class="number">-1</td>
+        <td class="detail">Neutral</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./cr.html">CR</a></td>
+        <td>Significant Figures</td>
+        <td class="number">1410</td>
+        <td class="number">5</td>
+        <td class="number">1-2</td>
+        <td class="number">33%</td>
+        <td class="number">-1</td>
+        <td class="detail">Neutral</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./gm.html">GM</a></td>
+        <td>Toe Burrows Ice Box</td>
+        <td class="number">1454.4</td>
+        <td class="number">4</td>
+        <td class="number">1-2</td>
+        <td class="number">33%</td>
+        <td class="number">-4</td>
+        <td class="detail">💀 Very Unlucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./an.html">AN</a></td>
+        <td>El Fusilado</td>
+        <td class="number">1386.7</td>
+        <td class="number">6</td>
+        <td class="number">0-4</td>
+        <td class="number">0%</td>
+        <td class="number">-4</td>
+        <td class="detail">💀 Very Unlucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./jo.html">JO</a></td>
+        <td>Adam's Revenge</td>
+        <td class="number">1531.8</td>
+        <td class="number">1</td>
+        <td class="number">1-2</td>
+        <td class="number">33%</td>
+        <td class="number">-8</td>
+        <td class="detail">💀 Very Unlucky</td>
+      </tr>
+    </tbody>
+  </table></div>
+</div>
+<h3>All-Time Luck Index (2018–2026)</h3>
+<p class="section-note">Cumulative close-game record versus total PF rank since 2018.</p>
+<div class="table-container"><table class="stats-table">
+    <caption class="visually-hidden">All-Time Luck Index</caption>
+    <thead>
+      <tr>
+        <th scope="col">Owner</th>
+        <th scope="col">Team</th>
+        <th scope="col" class="number">PF</th>
+        <th scope="col" class="number">PF Rank</th>
+        <th scope="col" class="number">Close &lt;10</th>
+        <th scope="col" class="number">Close %</th>
+        <th scope="col" class="number">Luck (PF−Close)</th>
+        <th scope="col">Verdict</th>
+      </tr>
+    </thead>
+    <tbody>
+<tr>
+        <td class="owner"><a href="./jh.html">JH</a></td>
+        <td>ORACLE AI</td>
+        <td class="number">10155.9</td>
+        <td class="number">10</td>
+        <td class="number">13-10</td>
+        <td class="number">56%</td>
+        <td class="number">+8</td>
+        <td class="detail">🍀 Very Lucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./ik.html">IK</a></td>
+        <td>Thats My God</td>
+        <td class="number">11399.3</td>
+        <td class="number">7</td>
+        <td class="number">18-12</td>
+        <td class="number">60%</td>
+        <td class="number">+6</td>
+        <td class="detail">🍀 Very Lucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./dm.html">DM</a></td>
+        <td>Feel It In My Plums</td>
+        <td class="number">11571.7</td>
+        <td class="number">5</td>
+        <td class="number">15-13</td>
+        <td class="number">54%</td>
+        <td class="number">+2</td>
+        <td class="detail">🍀 Lucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./zs.html">ZS</a></td>
+        <td>Tomato Toes</td>
+        <td class="number">10934.4</td>
+        <td class="number">8</td>
+        <td class="number">17-16</td>
+        <td class="number">52%</td>
+        <td class="number">+2</td>
+        <td class="detail">🍀 Lucky</td>
+      </tr>
+<tr>
+        <td class="owner">SHEN</td>
+        <td>Team GuiceBox</td>
+        <td class="number">1477</td>
+        <td class="number">11</td>
+        <td class="number">2-3</td>
+        <td class="number">40%</td>
+        <td class="number">+2</td>
+        <td class="detail">🍀 Lucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./jo.html">JO</a></td>
+        <td>Adam's Revenge</td>
+        <td class="number">11838.9</td>
+        <td class="number">4</td>
+        <td class="number">15-13</td>
+        <td class="number">54%</td>
+        <td class="number">0</td>
+        <td class="detail">Neutral</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./dn.html">DN</a></td>
+        <td>Washington Redskins</td>
+        <td class="number">11517.7</td>
+        <td class="number">6</td>
+        <td class="number">12-16</td>
+        <td class="number">43%</td>
+        <td class="number">-2</td>
+        <td class="detail">💀 Unlucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./ar.html">AR</a></td>
+        <td>Give 'er The Beans </td>
+        <td class="number">10919.5</td>
+        <td class="number">9</td>
+        <td class="number">8-13</td>
+        <td class="number">38%</td>
+        <td class="number">-2</td>
+        <td class="detail">💀 Unlucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./cr.html">CR</a></td>
+        <td>Significant Figures</td>
+        <td class="number">12353.2</td>
+        <td class="number">1</td>
+        <td class="number">14-13</td>
+        <td class="number">52%</td>
+        <td class="number">-4</td>
+        <td class="detail">💀 Very Unlucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./gm.html">GM</a></td>
+        <td>Toe Burrows Ice Box</td>
+        <td class="number">12196.9</td>
+        <td class="number">3</td>
+        <td class="number">13-13</td>
+        <td class="number">50%</td>
+        <td class="number">-4</td>
+        <td class="detail">💀 Very Unlucky</td>
+      </tr>
+<tr>
+        <td class="owner"><a href="./an.html">AN</a></td>
+        <td>El Fusilado</td>
+        <td class="number">12234.4</td>
+        <td class="number">2</td>
+        <td class="number">9-14</td>
+        <td class="number">39%</td>
+        <td class="number">-8</td>
+        <td class="detail">💀 Very Unlucky</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+<script type="application/json" id="luck-data">{"generated":"2026-08-28","leagueId":"794521","seasons":[2018,2019,2020,2021,2022,2023,2024,2025,2026],"defaultSeason":2025,"scopeNote":"Regular-season weeks only, 2018 on. All-Play replays each week as if every team played every other team. Luck Index contrasts <10 pt close record with points-for rank.","perSeason":{"2018":{"season":2018,"gameCount":65,"allPlay":[{"owner":"GM","team":"Fat Joe Hit Hard","teamId":1,"actualW":9,"actualL":4,"actualT":0,"pf":1871.7,"pa":1531.1,"ppg":144,"allPlayW":94,"allPlayL":23,"allPlayT":0,"allPlayPct":0.803,"actualPct":0.692,"expectedWins":10.4,"delta":-1.4,"allPlayRank":1,"pfRank":1,"actualRank":1},{"owner":"IK","team":"Saquon Deez Nuts","teamId":11,"actualW":9,"actualL":4,"actualT":0,"pf":1647.6,"pa":1424.4,"ppg":126.7,"allPlayW":73,"allPlayL":44,"allPlayT":0,"allPlayPct":0.624,"actualPct":0.692,"expectedWins":8.1,"delta":0.9,"allPlayRank":2,"pfRank":2,"actualRank":2},{"owner":"CR","team":"U.S. Space Force","teamId":7,"actualW":8,"actualL":5,"actualT":0,"pf":1561.1,"pa":1430.6,"ppg":120.1,"allPlayW":66,"allPlayL":51,"allPlayT":0,"allPlayPct":0.564,"actualPct":0.615,"expectedWins":7.3,"delta":0.7,"allPlayRank":3,"pfRank":3,"actualRank":3},{"owner":"DN","team":"Lady Killers","teamId":8,"actualW":5,"actualL":8,"actualT":0,"pf":1497.2,"pa":1517.7,"ppg":115.2,"allPlayW":62,"allPlayL":55,"allPlayT":0,"allPlayPct":0.53,"actualPct":0.385,"expectedWins":6.9,"delta":-1.9,"allPlayRank":4,"pfRank":4,"actualRank":7},{"owner":"SHEN","team":"Team GuiceBox","teamId":6,"actualW":7,"actualL":6,"actualT":0,"pf":1477,"pa":1460,"ppg":113.6,"allPlayW":61,"allPlayL":56,"allPlayT":0,"allPlayPct":0.521,"actualPct":0.538,"expectedWins":6.8,"delta":0.2,"allPlayRank":5,"pfRank":5,"actualRank":6},{"owner":"JO","team":"Starr Struck","teamId":9,"actualW":8,"actualL":5,"actualT":0,"pf":1451.1,"pa":1374.8,"ppg":111.6,"allPlayW":60,"allPlayL":57,"allPlayT":0,"allPlayPct":0.513,"actualPct":0.615,"expectedWins":6.7,"delta":1.3,"allPlayRank":6,"pfRank":8,"actualRank":5},{"owner":"DM","team":"The Raunch","teamId":2,"actualW":4,"actualL":9,"actualT":0,"pf":1468.1,"pa":1624.2,"ppg":112.9,"allPlayW":55,"allPlayL":62,"allPlayT":0,"allPlayPct":0.47,"actualPct":0.308,"expectedWins":6.1,"delta":-2.1,"allPlayRank":7,"pfRank":6,"actualRank":9},{"owner":"AN","team":"Talk S*** Get Kareemed","teamId":4,"actualW":8,"actualL":5,"actualT":0,"pf":1466.6,"pa":1568.8,"ppg":112.8,"allPlayW":53,"allPlayL":64,"allPlayT":0,"allPlayPct":0.453,"actualPct":0.615,"expectedWins":5.9,"delta":2.1,"allPlayRank":8,"pfRank":7,"actualRank":4},{"owner":"ZS","team":"Little Rocket Man","teamId":10,"actualW":5,"actualL":8,"actualT":0,"pf":1266.8,"pa":1407.5,"ppg":97.4,"allPlayW":37,"allPlayL":80,"allPlayT":0,"allPlayPct":0.316,"actualPct":0.385,"expectedWins":4.1,"delta":0.9,"allPlayRank":9,"pfRank":9,"actualRank":8},{"owner":"AR","team":"Baby Birds","teamId":5,"actualW":2,"actualL":11,"actualT":0,"pf":1185,"pa":1552.9,"ppg":91.2,"allPlayW":24,"allPlayL":93,"allPlayT":0,"allPlayPct":0.205,"actualPct":0.154,"expectedWins":2.7,"delta":-0.7,"allPlayRank":10,"pfRank":10,"actualRank":10}],"luck":[{"owner":"JO","team":"Starr Struck","teamId":9,"pf":1451.1,"pfRank":8,"closeW":3,"closeL":0,"closeT":0,"closeGames":3,"closePct":1,"closeRank":1,"luckDiff":7,"luckLabel":"🍀 Very Lucky"},{"owner":"AN","team":"Talk S*** Get Kareemed","teamId":4,"pf":1466.6,"pfRank":7,"closeW":4,"closeL":1,"closeT":0,"closeGames":5,"closePct":0.8,"closeRank":2,"luckDiff":5,"luckLabel":"🍀 Very Lucky"},{"owner":"ZS","team":"Little Rocket Man","teamId":10,"pf":1266.8,"pfRank":9,"closeW":3,"closeL":3,"closeT":0,"closeGames":6,"closePct":0.5,"closeRank":4,"luckDiff":5,"luckLabel":"🍀 Very Lucky"},{"owner":"DM","team":"The Raunch","teamId":2,"pf":1468.1,"pfRank":6,"closeW":3,"closeL":2,"closeT":0,"closeGames":5,"closePct":0.6,"closeRank":3,"luckDiff":3,"luckLabel":"🍀 Lucky"},{"owner":"AR","team":"Baby Birds","teamId":5,"pf":1185,"pfRank":10,"closeW":0,"closeL":2,"closeT":0,"closeGames":2,"closePct":0,"closeRank":7,"luckDiff":3,"luckLabel":"Small sample"},{"owner":"SHEN","team":"Team GuiceBox","teamId":6,"pf":1477,"pfRank":5,"closeW":2,"closeL":3,"closeT":0,"closeGames":5,"closePct":0.4,"closeRank":6,"luckDiff":-1,"luckLabel":"Neutral"},{"owner":"CR","team":"U.S. Space Force","teamId":7,"pf":1561.1,"pfRank":3,"closeW":1,"closeL":1,"closeT":0,"closeGames":2,"closePct":0.5,"closeRank":5,"luckDiff":-2,"luckLabel":"Small sample"},{"owner":"DN","team":"Lady Killers","teamId":8,"pf":1497.2,"pfRank":4,"closeW":0,"closeL":3,"closeT":0,"closeGames":3,"closePct":0,"closeRank":8,"luckDiff":-4,"luckLabel":"💀 Very Unlucky"},{"owner":"GM","team":"Fat Joe Hit Hard","teamId":1,"pf":1871.7,"pfRank":1,"closeW":0,"closeL":1,"closeT":0,"closeGames":1,"closePct":0,"closeRank":9,"luckDiff":-8,"luckLabel":"Small sample"},{"owner":"IK","team":"Saquon Deez Nuts","teamId":11,"pf":1647.6,"pfRank":2,"closeW":0,"closeL":0,"closeT":0,"closeGames":0,"closePct":null,"closeRank":null,"luckDiff":null,"luckLabel":"No close games"}]},"2019":{"season":2019,"gameCount":65,"allPlay":[{"owner":"AN","team":"McCaFREE NAPS","teamId":4,"actualW":11,"actualL":2,"actualT":0,"pf":1914,"pa":1411.3,"ppg":147.2,"allPlayW":107,"allPlayL":10,"allPlayT":0,"allPlayPct":0.915,"actualPct":0.846,"expectedWins":11.9,"delta":-0.9,"allPlayRank":1,"pfRank":1,"actualRank":1},{"owner":"DN","team":"Lady Killers","teamId":8,"actualW":10,"actualL":3,"actualT":0,"pf":1530.3,"pa":1249.5,"ppg":117.7,"allPlayW":77,"allPlayL":40,"allPlayT":0,"allPlayPct":0.658,"actualPct":0.769,"expectedWins":8.6,"delta":1.4,"allPlayRank":2,"pfRank":2,"actualRank":2},{"owner":"CR","team":"Juggalo Mahomies","teamId":7,"actualW":8,"actualL":5,"actualT":0,"pf":1403,"pa":1322.4,"ppg":107.9,"allPlayW":61,"allPlayL":56,"allPlayT":0,"allPlayPct":0.521,"actualPct":0.615,"expectedWins":6.8,"delta":1.2,"allPlayRank":3,"pfRank":3,"actualRank":3},{"owner":"JH","team":"Houston Spoilers","teamId":12,"actualW":6,"actualL":7,"actualT":0,"pf":1339.2,"pa":1550.4,"ppg":103,"allPlayW":58,"allPlayL":59,"allPlayT":0,"allPlayPct":0.496,"actualPct":0.462,"expectedWins":6.4,"delta":-0.4,"allPlayRank":4,"pfRank":7,"actualRank":5},{"owner":"DM","team":"The Raunch","teamId":2,"actualW":7,"actualL":6,"actualT":0,"pf":1367.8,"pa":1333.7,"ppg":105.2,"allPlayW":56,"allPlayL":61,"allPlayT":0,"allPlayPct":0.479,"actualPct":0.538,"expectedWins":6.2,"delta":0.8,"allPlayRank":5,"pfRank":4,"actualRank":4},{"owner":"GM","team":"Dad Joe","teamId":1,"actualW":4,"actualL":9,"actualT":0,"pf":1361.1,"pa":1441.4,"ppg":104.7,"allPlayW":53,"allPlayL":64,"allPlayT":0,"allPlayPct":0.453,"actualPct":0.308,"expectedWins":5.9,"delta":-1.9,"allPlayRank":6,"pfRank":5,"actualRank":8},{"owner":"AR","team":"Squanto’s Nut Butter","teamId":5,"actualW":5,"actualL":8,"actualT":0,"pf":1332.7,"pa":1480.2,"ppg":102.5,"allPlayW":49,"allPlayL":68,"allPlayT":0,"allPlayPct":0.419,"actualPct":0.385,"expectedWins":5.4,"delta":-0.4,"allPlayRank":7,"pfRank":8,"actualRank":7},{"owner":"IK","team":"Booger's Left Hand","teamId":11,"actualW":6,"actualL":7,"actualT":0,"pf":1307.1,"pa":1411.5,"ppg":100.5,"allPlayW":47,"allPlayL":70,"allPlayT":0,"allPlayPct":0.402,"actualPct":0.462,"expectedWins":5.2,"delta":0.8,"allPlayRank":8,"pfRank":9,"actualRank":6},{"owner":"JO","team":"Alvin and the Dick Dunks","teamId":9,"actualW":4,"actualL":9,"actualT":0,"pf":1348.8,"pa":1442.3,"ppg":103.8,"allPlayW":43,"allPlayL":74,"allPlayT":0,"allPlayPct":0.368,"actualPct":0.308,"expectedWins":4.8,"delta":-0.8,"allPlayRank":9,"pfRank":6,"actualRank":9},{"owner":"ZS","team":"Small Town Shanahan","teamId":10,"actualW":4,"actualL":9,"actualT":0,"pf":1207.6,"pa":1469,"ppg":92.9,"allPlayW":34,"allPlayL":83,"allPlayT":0,"allPlayPct":0.291,"actualPct":0.308,"expectedWins":3.8,"delta":0.2,"allPlayRank":10,"pfRank":10,"actualRank":10}],"luck":[{"owner":"IK","team":"Booger's Left Hand","teamId":11,"pf":1307.1,"pfRank":9,"closeW":3,"closeL":1,"closeT":0,"closeGames":4,"closePct":0.75,"closeRank":1,"luckDiff":8,"luckLabel":"🍀 Very Lucky"},{"owner":"CR","team":"Juggalo Mahomies","teamId":7,"pf":1403,"pfRank":3,"closeW":2,"closeL":1,"closeT":0,"closeGames":3,"closePct":0.667,"closeRank":2,"luckDiff":1,"luckLabel":"Neutral"},{"owner":"GM","team":"Dad Joe","teamId":1,"pf":1361.1,"pfRank":5,"closeW":2,"closeL":2,"closeT":0,"closeGames":4,"closePct":0.5,"closeRank":4,"luckDiff":1,"luckLabel":"Neutral"},{"owner":"JH","team":"Houston Spoilers","teamId":12,"pf":1339.2,"pfRank":7,"closeW":1,"closeL":1,"closeT":0,"closeGames":2,"closePct":0.5,"closeRank":6,"luckDiff":1,"luckLabel":"Small sample"},{"owner":"ZS","team":"Small Town Shanahan","teamId":10,"pf":1207.6,"pfRank":10,"closeW":0,"closeL":2,"closeT":0,"closeGames":2,"closePct":0,"closeRank":9,"luckDiff":1,"luckLabel":"Small sample"},{"owner":"AR","team":"Squanto’s Nut Butter","teamId":5,"pf":1332.7,"pfRank":8,"closeW":0,"closeL":1,"closeT":0,"closeGames":1,"closePct":0,"closeRank":8,"luckDiff":0,"luckLabel":"Small sample"},{"owner":"DN","team":"Lady Killers","teamId":8,"pf":1530.3,"pfRank":2,"closeW":2,"closeL":2,"closeT":0,"closeGames":4,"closePct":0.5,"closeRank":3,"luckDiff":-1,"luckLabel":"Neutral"},{"owner":"DM","team":"The Raunch","teamId":2,"pf":1367.8,"pfRank":4,"closeW":1,"closeL":1,"closeT":0,"closeGames":2,"closePct":0.5,"closeRank":5,"luckDiff":-1,"luckLabel":"Small sample"},{"owner":"JO","team":"Alvin and the Dick Dunks","teamId":9,"pf":1348.8,"pfRank":6,"closeW":1,"closeL":1,"closeT":0,"closeGames":2,"closePct":0.5,"closeRank":7,"luckDiff":-1,"luckLabel":"Small sample"},{"owner":"AN","team":"McCaFREE NAPS","teamId":4,"pf":1914,"pfRank":1,"closeW":0,"closeL":0,"closeT":0,"closeGames":0,"closePct":null,"closeRank":null,"luckDiff":null,"luckLabel":"No close games"}]},"2020":{"season":2020,"gameCount":65,"allPlay":[{"owner":"AN","team":"The KylerMurray Wine Mixer","teamId":4,"actualW":8,"actualL":5,"actualT":0,"pf":1588.6,"pa":1441.5,"ppg":122.2,"allPlayW":81,"allPlayL":36,"allPlayT":0,"allPlayPct":0.692,"actualPct":0.615,"expectedWins":9,"delta":-1,"allPlayRank":1,"pfRank":1,"actualRank":2},{"owner":"JO","team":"Points R' USS","teamId":9,"actualW":8,"actualL":5,"actualT":0,"pf":1581.2,"pa":1507.9,"ppg":121.6,"allPlayW":78,"allPlayL":38,"allPlayT":1,"allPlayPct":0.671,"actualPct":0.615,"expectedWins":8.7,"delta":-0.7,"allPlayRank":2,"pfRank":2,"actualRank":3},{"owner":"CR","team":"Down Yonder Cheetahoochies","teamId":7,"actualW":8,"actualL":5,"actualT":0,"pf":1573.7,"pa":1482.7,"ppg":121.1,"allPlayW":76,"allPlayL":41,"allPlayT":0,"allPlayPct":0.65,"actualPct":0.615,"expectedWins":8.4,"delta":-0.4,"allPlayRank":3,"pfRank":3,"actualRank":4},{"owner":"JH","team":"Midnight in Montgomery","teamId":12,"actualW":10,"actualL":3,"actualT":0,"pf":1555.5,"pa":1339.1,"ppg":119.7,"allPlayW":73,"allPlayL":44,"allPlayT":0,"allPlayPct":0.624,"actualPct":0.769,"expectedWins":8.1,"delta":1.9,"allPlayRank":4,"pfRank":4,"actualRank":1},{"owner":"GM","team":"Dad Joe","teamId":1,"actualW":8,"actualL":5,"actualT":0,"pf":1436,"pa":1354.8,"ppg":110.5,"allPlayW":59,"allPlayL":57,"allPlayT":1,"allPlayPct":0.509,"actualPct":0.615,"expectedWins":6.6,"delta":1.4,"allPlayRank":5,"pfRank":5,"actualRank":5},{"owner":"DM","team":"Rudy's Favorite Son","teamId":2,"actualW":7,"actualL":6,"actualT":0,"pf":1400.4,"pa":1445.4,"ppg":107.7,"allPlayW":51,"allPlayL":66,"allPlayT":0,"allPlayPct":0.436,"actualPct":0.538,"expectedWins":5.7,"delta":1.3,"allPlayRank":6,"pfRank":6,"actualRank":6},{"owner":"IK","team":"Sleepy Joe (Mixon)","teamId":11,"actualW":4,"actualL":9,"actualT":0,"pf":1376.6,"pa":1501.4,"ppg":105.9,"allPlayW":48,"allPlayL":69,"allPlayT":0,"allPlayPct":0.41,"actualPct":0.308,"expectedWins":5.3,"delta":-1.3,"allPlayRank":7,"pfRank":7,"actualRank":8},{"owner":"ZS","team":"China  Virus ","teamId":10,"actualW":5,"actualL":8,"actualT":0,"pf":1296.2,"pa":1475.8,"ppg":99.7,"allPlayW":42,"allPlayL":75,"allPlayT":0,"allPlayPct":0.359,"actualPct":0.385,"expectedWins":4.7,"delta":0.3,"allPlayRank":8,"pfRank":10,"actualRank":7},{"owner":"DN","team":"Lady Killers","teamId":8,"actualW":4,"actualL":9,"actualT":0,"pf":1308.3,"pa":1445.1,"ppg":100.6,"allPlayW":39,"allPlayL":78,"allPlayT":0,"allPlayPct":0.333,"actualPct":0.308,"expectedWins":4.3,"delta":-0.3,"allPlayRank":9,"pfRank":8,"actualRank":9},{"owner":"AR","team":"Taysom Hill Gang","teamId":5,"actualW":3,"actualL":10,"actualT":0,"pf":1301.5,"pa":1424.2,"ppg":100.1,"allPlayW":37,"allPlayL":80,"allPlayT":0,"allPlayPct":0.316,"actualPct":0.231,"expectedWins":4.1,"delta":-1.1,"allPlayRank":10,"pfRank":9,"actualRank":10}],"luck":[{"owner":"IK","team":"Sleepy Joe (Mixon)","teamId":11,"pf":1376.6,"pfRank":7,"closeW":2,"closeL":0,"closeT":0,"closeGames":2,"closePct":1,"closeRank":1,"luckDiff":6,"luckLabel":"Small sample"},{"owner":"DM","team":"Rudy's Favorite Son","teamId":2,"pf":1400.4,"pfRank":6,"closeW":2,"closeL":1,"closeT":0,"closeGames":3,"closePct":0.667,"closeRank":4,"luckDiff":2,"luckLabel":"🍀 Lucky"},{"owner":"ZS","team":"China  Virus ","teamId":10,"pf":1296.2,"pfRank":10,"closeW":2,"closeL":3,"closeT":0,"closeGames":5,"closePct":0.4,"closeRank":8,"luckDiff":2,"luckLabel":"🍀 Lucky"},{"owner":"JH","team":"Midnight in Montgomery","teamId":12,"pf":1555.5,"pfRank":4,"closeW":1,"closeL":0,"closeT":0,"closeGames":1,"closePct":1,"closeRank":3,"luckDiff":1,"luckLabel":"Small sample"},{"owner":"JO","team":"Points R' USS","teamId":9,"pf":1581.2,"pfRank":2,"closeW":2,"closeL":0,"closeT":0,"closeGames":2,"closePct":1,"closeRank":2,"luckDiff":0,"luckLabel":"Small sample"},{"owner":"AR","team":"Taysom Hill Gang","teamId":5,"pf":1301.5,"pfRank":9,"closeW":0,"closeL":2,"closeT":0,"closeGames":2,"closePct":0,"closeRank":9,"luckDiff":0,"luckLabel":"Small sample"},{"owner":"CR","team":"Down Yonder Cheetahoochies","teamId":7,"pf":1573.7,"pfRank":3,"closeW":3,"closeL":2,"closeT":0,"closeGames":5,"closePct":0.6,"closeRank":5,"luckDiff":-2,"luckLabel":"💀 Unlucky"},{"owner":"GM","team":"Dad Joe","teamId":1,"pf":1436,"pfRank":5,"closeW":2,"closeL":3,"closeT":0,"closeGames":5,"closePct":0.4,"closeRank":7,"luckDiff":-2,"luckLabel":"💀 Unlucky"},{"owner":"DN","team":"Lady Killers","teamId":8,"pf":1308.3,"pfRank":8,"closeW":0,"closeL":3,"closeT":0,"closeGames":3,"closePct":0,"closeRank":10,"luckDiff":-2,"luckLabel":"💀 Unlucky"},{"owner":"AN","team":"The KylerMurray Wine Mixer","teamId":4,"pf":1588.6,"pfRank":1,"closeW":1,"closeL":1,"closeT":0,"closeGames":2,"closePct":0.5,"closeRank":6,"luckDiff":-5,"luckLabel":"Small sample"}]},"2021":{"season":2021,"gameCount":70,"allPlay":[{"owner":"CR","team":"Mr Mojo Risin","teamId":7,"actualW":5,"actualL":9,"actualT":0,"pf":1669.5,"pa":1679.4,"ppg":119.2,"allPlayW":77,"allPlayL":49,"allPlayT":0,"allPlayPct":0.611,"actualPct":0.357,"expectedWins":8.6,"delta":-3.6,"allPlayRank":1,"pfRank":1,"actualRank":9},{"owner":"AR","team":"Diaper King","teamId":5,"actualW":8,"actualL":6,"actualT":0,"pf":1580.6,"pa":1538.3,"ppg":112.9,"allPlayW":72,"allPlayL":54,"allPlayT":0,"allPlayPct":0.571,"actualPct":0.571,"expectedWins":8,"delta":0,"allPlayRank":2,"pfRank":6,"actualRank":3},{"owner":"IK","team":"King Henry","teamId":11,"actualW":8,"actualL":6,"actualT":0,"pf":1589.5,"pa":1591.3,"ppg":113.5,"allPlayW":68,"allPlayL":57,"allPlayT":1,"allPlayPct":0.544,"actualPct":0.571,"expectedWins":7.6,"delta":0.4,"allPlayRank":3,"pfRank":5,"actualRank":2},{"owner":"DN","team":"McAfee's Faithful","teamId":8,"actualW":9,"actualL":5,"actualT":0,"pf":1657.5,"pa":1512.8,"ppg":118.4,"allPlayW":68,"allPlayL":58,"allPlayT":0,"allPlayPct":0.54,"actualPct":0.643,"expectedWins":7.6,"delta":1.4,"allPlayRank":4,"pfRank":2,"actualRank":1},{"owner":"JH","team":"The Aaron Jones Show","teamId":12,"actualW":5,"actualL":9,"actualT":0,"pf":1602.4,"pa":1576.8,"ppg":114.5,"allPlayW":67,"allPlayL":59,"allPlayT":0,"allPlayPct":0.532,"actualPct":0.357,"expectedWins":7.4,"delta":-2.4,"allPlayRank":5,"pfRank":4,"actualRank":10},{"owner":"GM","team":"Dad Joe","teamId":1,"actualW":8,"actualL":6,"actualT":0,"pf":1448.9,"pa":1577.9,"ppg":103.5,"allPlayW":59,"allPlayL":66,"allPlayT":1,"allPlayPct":0.472,"actualPct":0.571,"expectedWins":6.6,"delta":1.4,"allPlayRank":6,"pfRank":10,"actualRank":5},{"owner":"DM","team":"Last of the  Meheecans","teamId":2,"actualW":6,"actualL":8,"actualT":0,"pf":1604.6,"pa":1586.7,"ppg":114.6,"allPlayW":59,"allPlayL":67,"allPlayT":0,"allPlayPct":0.468,"actualPct":0.429,"expectedWins":6.6,"delta":-0.6,"allPlayRank":7,"pfRank":3,"actualRank":7},{"owner":"ZS","team":"Sixually  Transmitted TDs","teamId":10,"actualW":7,"actualL":7,"actualT":0,"pf":1561.8,"pa":1596,"ppg":111.6,"allPlayW":56,"allPlayL":70,"allPlayT":0,"allPlayPct":0.444,"actualPct":0.5,"expectedWins":6.2,"delta":0.8,"allPlayRank":8,"pfRank":7,"actualRank":6},{"owner":"JO","team":"Dak Me' Up","teamId":9,"actualW":8,"actualL":6,"actualT":0,"pf":1507.6,"pa":1574.8,"ppg":107.7,"allPlayW":52,"allPlayL":74,"allPlayT":0,"allPlayPct":0.413,"actualPct":0.571,"expectedWins":5.8,"delta":2.2,"allPlayRank":9,"pfRank":9,"actualRank":4},{"owner":"AN","team":"Havana (Few Beers) Syndrome","teamId":4,"actualW":6,"actualL":8,"actualT":0,"pf":1531.5,"pa":1519.7,"ppg":109.4,"allPlayW":51,"allPlayL":75,"allPlayT":0,"allPlayPct":0.405,"actualPct":0.429,"expectedWins":5.7,"delta":0.3,"allPlayRank":10,"pfRank":8,"actualRank":8}],"luck":[{"owner":"JO","team":"Dak Me' Up","teamId":9,"pf":1507.6,"pfRank":9,"closeW":4,"closeL":1,"closeT":0,"closeGames":5,"closePct":0.8,"closeRank":1,"luckDiff":8,"luckLabel":"🍀 Very Lucky"},{"owner":"GM","team":"Dad Joe","teamId":1,"pf":1448.9,"pfRank":10,"closeW":2,"closeL":1,"closeT":0,"closeGames":3,"closePct":0.667,"closeRank":4,"luckDiff":6,"luckLabel":"🍀 Very Lucky"},{"owner":"ZS","team":"Sixually  Transmitted TDs","teamId":10,"pf":1561.8,"pfRank":7,"closeW":4,"closeL":2,"closeT":0,"closeGames":6,"closePct":0.667,"closeRank":3,"luckDiff":4,"luckLabel":"🍀 Very Lucky"},{"owner":"DN","team":"McAfee's Faithful","teamId":8,"pf":1657.5,"pfRank":2,"closeW":4,"closeL":2,"closeT":0,"closeGames":6,"closePct":0.667,"closeRank":2,"luckDiff":0,"luckLabel":"Neutral"},{"owner":"IK","team":"King Henry","teamId":11,"pf":1589.5,"pfRank":5,"closeW":5,"closeL":4,"closeT":0,"closeGames":9,"closePct":0.556,"closeRank":5,"luckDiff":0,"luckLabel":"Neutral"},{"owner":"AR","team":"Diaper King","teamId":5,"pf":1580.6,"pfRank":6,"closeW":3,"closeL":3,"closeT":0,"closeGames":6,"closePct":0.5,"closeRank":6,"luckDiff":0,"luckLabel":"Neutral"},{"owner":"AN","team":"Havana (Few Beers) Syndrome","teamId":4,"pf":1531.5,"pfRank":8,"closeW":0,"closeL":2,"closeT":0,"closeGames":2,"closePct":0,"closeRank":10,"luckDiff":-2,"luckLabel":"Small sample"},{"owner":"DM","team":"Last of the  Meheecans","teamId":2,"pf":1604.6,"pfRank":3,"closeW":2,"closeL":2,"closeT":0,"closeGames":4,"closePct":0.5,"closeRank":7,"luckDiff":-4,"luckLabel":"💀 Very Unlucky"},{"owner":"JH","team":"The Aaron Jones Show","teamId":12,"pf":1602.4,"pfRank":4,"closeW":1,"closeL":7,"closeT":0,"closeGames":8,"closePct":0.125,"closeRank":9,"luckDiff":-5,"luckLabel":"💀 Very Unlucky"},{"owner":"CR","team":"Mr Mojo Risin","teamId":7,"pf":1669.5,"pfRank":1,"closeW":3,"closeL":4,"closeT":0,"closeGames":7,"closePct":0.429,"closeRank":8,"luckDiff":-7,"luckLabel":"💀 Very Unlucky"}]},"2022":{"season":2022,"gameCount":70,"allPlay":[{"owner":"CR","team":"Christian Fundamentalists","teamId":7,"actualW":8,"actualL":6,"actualT":0,"pf":1699.9,"pa":1521,"ppg":121.4,"allPlayW":87,"allPlayL":39,"allPlayT":0,"allPlayPct":0.69,"actualPct":0.571,"expectedWins":9.7,"delta":-1.7,"allPlayRank":1,"pfRank":1,"actualRank":4},{"owner":"GM","team":"Dad Joe","teamId":1,"actualW":9,"actualL":5,"actualT":0,"pf":1586.5,"pa":1531,"ppg":113.3,"allPlayW":77,"allPlayL":49,"allPlayT":0,"allPlayPct":0.611,"actualPct":0.643,"expectedWins":8.6,"delta":0.4,"allPlayRank":2,"pfRank":2,"actualRank":2},{"owner":"JH","team":"Big Gabey Davis","teamId":12,"actualW":7,"actualL":7,"actualT":0,"pf":1457.7,"pa":1572.8,"ppg":104.1,"allPlayW":74,"allPlayL":52,"allPlayT":0,"allPlayPct":0.587,"actualPct":0.5,"expectedWins":8.2,"delta":-1.2,"allPlayRank":3,"pfRank":6,"actualRank":5},{"owner":"DM","team":"Cōn Queso","teamId":2,"actualW":10,"actualL":4,"actualT":0,"pf":1519.9,"pa":1358,"ppg":108.6,"allPlayW":68,"allPlayL":58,"allPlayT":0,"allPlayPct":0.54,"actualPct":0.714,"expectedWins":7.6,"delta":2.4,"allPlayRank":4,"pfRank":4,"actualRank":1},{"owner":"AN","team":"Bert n' Ekelie","teamId":4,"actualW":4,"actualL":10,"actualT":0,"pf":1445.1,"pa":1675.5,"ppg":103.2,"allPlayW":65,"allPlayL":61,"allPlayT":0,"allPlayPct":0.516,"actualPct":0.286,"expectedWins":7.2,"delta":-3.2,"allPlayRank":5,"pfRank":7,"actualRank":10},{"owner":"DN","team":"McAfee's Faithful","teamId":8,"actualW":9,"actualL":5,"actualT":0,"pf":1520.7,"pa":1360.1,"ppg":108.6,"allPlayW":56,"allPlayL":70,"allPlayT":0,"allPlayPct":0.444,"actualPct":0.643,"expectedWins":6.2,"delta":2.8,"allPlayRank":6,"pfRank":3,"actualRank":3},{"owner":"IK","team":"Super Bowl Rings Only","teamId":11,"actualW":5,"actualL":9,"actualT":0,"pf":1406.6,"pa":1447.4,"ppg":100.5,"allPlayW":55,"allPlayL":71,"allPlayT":0,"allPlayPct":0.437,"actualPct":0.357,"expectedWins":6.1,"delta":-1.1,"allPlayRank":7,"pfRank":9,"actualRank":8},{"owner":"AR","team":"Diaper King","teamId":5,"actualW":7,"actualL":7,"actualT":0,"pf":1407,"pa":1411.1,"ppg":100.5,"allPlayW":54,"allPlayL":72,"allPlayT":0,"allPlayPct":0.429,"actualPct":0.5,"expectedWins":6,"delta":1,"allPlayRank":8,"pfRank":8,"actualRank":6},{"owner":"JO","team":"Dak Me' Up","teamId":9,"actualW":6,"actualL":8,"actualT":0,"pf":1491.1,"pa":1537.6,"ppg":106.5,"allPlayW":52,"allPlayL":74,"allPlayT":0,"allPlayPct":0.413,"actualPct":0.429,"expectedWins":5.8,"delta":0.2,"allPlayRank":9,"pfRank":5,"actualRank":7},{"owner":"ZS","team":"\"D\" Kupps","teamId":10,"actualW":5,"actualL":9,"actualT":0,"pf":1374.3,"pa":1494.1,"ppg":98.2,"allPlayW":42,"allPlayL":84,"allPlayT":0,"allPlayPct":0.333,"actualPct":0.357,"expectedWins":4.7,"delta":0.3,"allPlayRank":10,"pfRank":10,"actualRank":9}],"luck":[{"owner":"ZS","team":"\"D\" Kupps","teamId":10,"pf":1374.3,"pfRank":10,"closeW":2,"closeL":1,"closeT":0,"closeGames":3,"closePct":0.667,"closeRank":4,"luckDiff":6,"luckLabel":"🍀 Very Lucky"},{"owner":"AR","team":"Diaper King","teamId":5,"pf":1407,"pfRank":8,"closeW":2,"closeL":1,"closeT":0,"closeGames":3,"closePct":0.667,"closeRank":3,"luckDiff":5,"luckLabel":"🍀 Very Lucky"},{"owner":"DM","team":"Cōn Queso","teamId":2,"pf":1519.9,"pfRank":4,"closeW":3,"closeL":0,"closeT":0,"closeGames":3,"closePct":1,"closeRank":1,"luckDiff":3,"luckLabel":"🍀 Lucky"},{"owner":"IK","team":"Super Bowl Rings Only","teamId":11,"pf":1406.6,"pfRank":9,"closeW":1,"closeL":1,"closeT":0,"closeGames":2,"closePct":0.5,"closeRank":6,"luckDiff":3,"luckLabel":"Small sample"},{"owner":"GM","team":"Dad Joe","teamId":1,"pf":1586.5,"pfRank":2,"closeW":3,"closeL":1,"closeT":0,"closeGames":4,"closePct":0.75,"closeRank":2,"luckDiff":0,"luckLabel":"🍀 Lucky"},{"owner":"JH","team":"Big Gabey Davis","teamId":12,"pf":1457.7,"pfRank":6,"closeW":1,"closeL":1,"closeT":0,"closeGames":2,"closePct":0.5,"closeRank":7,"luckDiff":-1,"luckLabel":"Small sample"},{"owner":"DN","team":"McAfee's Faithful","teamId":8,"pf":1520.7,"pfRank":3,"closeW":3,"closeL":3,"closeT":0,"closeGames":6,"closePct":0.5,"closeRank":5,"luckDiff":-2,"luckLabel":"💀 Unlucky"},{"owner":"AN","team":"Bert n' Ekelie","teamId":4,"pf":1445.1,"pfRank":7,"closeW":0,"closeL":2,"closeT":0,"closeGames":2,"closePct":0,"closeRank":9,"luckDiff":-2,"luckLabel":"Small sample"},{"owner":"JO","team":"Dak Me' Up","teamId":9,"pf":1491.1,"pfRank":5,"closeW":1,"closeL":3,"closeT":0,"closeGames":4,"closePct":0.25,"closeRank":8,"luckDiff":-3,"luckLabel":"💀 Unlucky"},{"owner":"CR","team":"Christian Fundamentalists","teamId":7,"pf":1699.9,"pfRank":1,"closeW":0,"closeL":3,"closeT":0,"closeGames":3,"closePct":0,"closeRank":10,"luckDiff":-9,"luckLabel":"💀 Very Unlucky"}]},"2023":{"season":2023,"gameCount":65,"allPlay":[{"owner":"CR","team":"Who's Colesdad?","teamId":7,"actualW":11,"actualL":2,"actualT":0,"pf":1675.9,"pa":1373.9,"ppg":128.9,"allPlayW":93,"allPlayL":24,"allPlayT":0,"allPlayPct":0.795,"actualPct":0.846,"expectedWins":10.3,"delta":0.7,"allPlayRank":1,"pfRank":1,"actualRank":1},{"owner":"AN","team":"Bert n' Ekelie","teamId":4,"actualW":7,"actualL":6,"actualT":0,"pf":1443.3,"pa":1392.8,"ppg":111,"allPlayW":65,"allPlayL":52,"allPlayT":0,"allPlayPct":0.556,"actualPct":0.538,"expectedWins":7.2,"delta":-0.2,"allPlayRank":2,"pfRank":2,"actualRank":4},{"owner":"DM","team":"Don Threesel ","teamId":2,"actualW":8,"actualL":5,"actualT":0,"pf":1438.1,"pa":1382,"ppg":110.6,"allPlayW":64,"allPlayL":53,"allPlayT":0,"allPlayPct":0.547,"actualPct":0.615,"expectedWins":7.1,"delta":0.9,"allPlayRank":3,"pfRank":3,"actualRank":3},{"owner":"JO","team":"Dak Me' Up","teamId":9,"actualW":6,"actualL":7,"actualT":0,"pf":1433.9,"pa":1429,"ppg":110.3,"allPlayW":61,"allPlayL":56,"allPlayT":0,"allPlayPct":0.521,"actualPct":0.462,"expectedWins":6.8,"delta":-0.8,"allPlayRank":4,"pfRank":4,"actualRank":5},{"owner":"GM","team":"Dad Joe Jo's dad","teamId":1,"actualW":5,"actualL":8,"actualT":0,"pf":1417.7,"pa":1395.2,"ppg":109.1,"allPlayW":59,"allPlayL":58,"allPlayT":0,"allPlayPct":0.504,"actualPct":0.385,"expectedWins":6.6,"delta":-1.6,"allPlayRank":5,"pfRank":5,"actualRank":6},{"owner":"JH","team":"ORACLE AI","teamId":12,"actualW":5,"actualL":8,"actualT":0,"pf":1387.8,"pa":1448.3,"ppg":106.8,"allPlayW":54,"allPlayL":63,"allPlayT":0,"allPlayPct":0.462,"actualPct":0.385,"expectedWins":6,"delta":-1,"allPlayRank":6,"pfRank":6,"actualRank":7},{"owner":"IK","team":"Wilson!","teamId":11,"actualW":5,"actualL":8,"actualT":0,"pf":1361.1,"pa":1483,"ppg":104.7,"allPlayW":54,"allPlayL":63,"allPlayT":0,"allPlayPct":0.462,"actualPct":0.385,"expectedWins":6,"delta":-1,"allPlayRank":7,"pfRank":7,"actualRank":8},{"owner":"ZS","team":"No Diggity ","teamId":10,"actualW":9,"actualL":4,"actualT":0,"pf":1354.6,"pa":1261.8,"ppg":104.2,"allPlayW":52,"allPlayL":65,"allPlayT":0,"allPlayPct":0.444,"actualPct":0.692,"expectedWins":5.8,"delta":3.2,"allPlayRank":8,"pfRank":8,"actualRank":2},{"owner":"AR","team":"The Diaper King","teamId":5,"actualW":4,"actualL":9,"actualT":0,"pf":1323.1,"pa":1450.9,"ppg":101.8,"allPlayW":42,"allPlayL":75,"allPlayT":0,"allPlayPct":0.359,"actualPct":0.308,"expectedWins":4.7,"delta":-0.7,"allPlayRank":9,"pfRank":9,"actualRank":10},{"owner":"DN","team":"McAfee's Faithful","teamId":8,"actualW":5,"actualL":8,"actualT":0,"pf":1285.5,"pa":1504.1,"ppg":98.9,"allPlayW":41,"allPlayL":76,"allPlayT":0,"allPlayPct":0.35,"actualPct":0.385,"expectedWins":4.6,"delta":0.4,"allPlayRank":10,"pfRank":10,"actualRank":9}],"luck":[{"owner":"DN","team":"McAfee's Faithful","teamId":8,"pf":1285.5,"pfRank":10,"closeW":2,"closeL":0,"closeT":0,"closeGames":2,"closePct":1,"closeRank":1,"luckDiff":9,"luckLabel":"Small sample"},{"owner":"JH","team":"ORACLE AI","teamId":12,"pf":1387.8,"pfRank":6,"closeW":1,"closeL":0,"closeT":0,"closeGames":1,"closePct":1,"closeRank":3,"luckDiff":3,"luckLabel":"Small sample"},{"owner":"IK","team":"Wilson!","teamId":11,"pf":1361.1,"pfRank":7,"closeW":2,"closeL":2,"closeT":0,"closeGames":4,"closePct":0.5,"closeRank":6,"luckDiff":1,"luckLabel":"Neutral"},{"owner":"CR","team":"Who's Colesdad?","teamId":7,"pf":1675.9,"pfRank":1,"closeW":1,"closeL":0,"closeT":0,"closeGames":1,"closePct":1,"closeRank":2,"luckDiff":-1,"luckLabel":"Small sample"},{"owner":"DM","team":"Don Threesel ","teamId":2,"pf":1438.1,"pfRank":3,"closeW":2,"closeL":1,"closeT":0,"closeGames":3,"closePct":0.667,"closeRank":4,"luckDiff":-1,"luckLabel":"Neutral"},{"owner":"ZS","team":"No Diggity ","teamId":10,"pf":1354.6,"pfRank":8,"closeW":1,"closeL":2,"closeT":0,"closeGames":3,"closePct":0.333,"closeRank":9,"luckDiff":-1,"luckLabel":"Neutral"},{"owner":"AR","team":"The Diaper King","teamId":5,"pf":1323.1,"pfRank":9,"closeW":0,"closeL":3,"closeT":0,"closeGames":3,"closePct":0,"closeRank":10,"luckDiff":-1,"luckLabel":"💀 Unlucky"},{"owner":"GM","team":"Dad Joe Jo's dad","teamId":1,"pf":1417.7,"pfRank":5,"closeW":1,"closeL":1,"closeT":0,"closeGames":2,"closePct":0.5,"closeRank":7,"luckDiff":-2,"luckLabel":"Small sample"},{"owner":"AN","team":"Bert n' Ekelie","teamId":4,"pf":1443.3,"pfRank":2,"closeW":2,"closeL":2,"closeT":0,"closeGames":4,"closePct":0.5,"closeRank":5,"luckDiff":-3,"luckLabel":"💀 Unlucky"},{"owner":"JO","team":"Dak Me' Up","teamId":9,"pf":1433.9,"pfRank":4,"closeW":1,"closeL":2,"closeT":0,"closeGames":3,"closePct":0.333,"closeRank":8,"luckDiff":-4,"luckLabel":"💀 Very Unlucky"}]},"2024":{"season":2024,"gameCount":65,"allPlay":[{"owner":"GM","team":"Ice Box","teamId":1,"actualW":9,"actualL":4,"actualT":0,"pf":1620.7,"pa":1466.2,"ppg":124.7,"allPlayW":88,"allPlayL":29,"allPlayT":0,"allPlayPct":0.752,"actualPct":0.692,"expectedWins":9.8,"delta":-0.8,"allPlayRank":1,"pfRank":1,"actualRank":2},{"owner":"ZS","team":"Tomato Toes","teamId":10,"actualW":9,"actualL":4,"actualT":0,"pf":1552.7,"pa":1363.7,"ppg":119.4,"allPlayW":76,"allPlayL":41,"allPlayT":0,"allPlayPct":0.65,"actualPct":0.692,"expectedWins":8.4,"delta":0.6,"allPlayRank":2,"pfRank":2,"actualRank":3},{"owner":"JO","team":"Dak Be' Down","teamId":9,"actualW":8,"actualL":5,"actualT":0,"pf":1493.4,"pa":1400.4,"ppg":114.9,"allPlayW":66,"allPlayL":51,"allPlayT":0,"allPlayPct":0.564,"actualPct":0.615,"expectedWins":7.3,"delta":0.7,"allPlayRank":3,"pfRank":3,"actualRank":4},{"owner":"JH","team":"ORACLE AI","teamId":12,"actualW":10,"actualL":3,"actualT":0,"pf":1450.8,"pa":1414.2,"ppg":111.6,"allPlayW":65,"allPlayL":52,"allPlayT":0,"allPlayPct":0.556,"actualPct":0.769,"expectedWins":7.2,"delta":2.8,"allPlayRank":4,"pfRank":5,"actualRank":1},{"owner":"AN","team":"The Diabolical Liars","teamId":4,"actualW":7,"actualL":6,"actualT":0,"pf":1458.5,"pa":1383.3,"ppg":112.2,"allPlayW":60,"allPlayL":57,"allPlayT":0,"allPlayPct":0.513,"actualPct":0.538,"expectedWins":6.7,"delta":0.3,"allPlayRank":5,"pfRank":4,"actualRank":5},{"owner":"DN","team":"Washington Redskins","teamId":8,"actualW":4,"actualL":9,"actualT":0,"pf":1410.5,"pa":1403.2,"ppg":108.5,"allPlayW":53,"allPlayL":64,"allPlayT":0,"allPlayPct":0.453,"actualPct":0.308,"expectedWins":5.9,"delta":-1.9,"allPlayRank":6,"pfRank":6,"actualRank":8},{"owner":"DM","team":"Public Enemy #2","teamId":2,"actualW":3,"actualL":10,"actualT":0,"pf":1400.8,"pa":1426.5,"ppg":107.8,"allPlayW":53,"allPlayL":64,"allPlayT":0,"allPlayPct":0.453,"actualPct":0.231,"expectedWins":5.9,"delta":-2.9,"allPlayRank":7,"pfRank":7,"actualRank":9},{"owner":"CR","team":"Unburdened By What Has Been","teamId":7,"actualW":7,"actualL":6,"actualT":0,"pf":1360.3,"pa":1432.4,"ppg":104.6,"allPlayW":51,"allPlayL":66,"allPlayT":0,"allPlayPct":0.436,"actualPct":0.538,"expectedWins":5.7,"delta":1.3,"allPlayRank":8,"pfRank":8,"actualRank":6},{"owner":"AR","team":"diapIR king ","teamId":5,"actualW":5,"actualL":8,"actualT":0,"pf":1314.8,"pa":1504,"ppg":101.1,"allPlayW":40,"allPlayL":77,"allPlayT":0,"allPlayPct":0.342,"actualPct":0.385,"expectedWins":4.4,"delta":0.6,"allPlayRank":9,"pfRank":9,"actualRank":7},{"owner":"IK","team":"Bathtub Collard Greens","teamId":11,"actualW":3,"actualL":10,"actualT":0,"pf":1255.2,"pa":1523.8,"ppg":96.6,"allPlayW":33,"allPlayL":84,"allPlayT":0,"allPlayPct":0.282,"actualPct":0.231,"expectedWins":3.7,"delta":-0.7,"allPlayRank":10,"pfRank":10,"actualRank":10}],"luck":[{"owner":"CR","team":"Unburdened By What Has Been","teamId":7,"pf":1360.3,"pfRank":8,"closeW":3,"closeL":0,"closeT":0,"closeGames":3,"closePct":1,"closeRank":1,"luckDiff":7,"luckLabel":"🍀 Very Lucky"},{"owner":"AR","team":"diapIR king ","teamId":5,"pf":1314.8,"pfRank":9,"closeW":2,"closeL":1,"closeT":0,"closeGames":3,"closePct":0.667,"closeRank":3,"luckDiff":6,"luckLabel":"🍀 Very Lucky"},{"owner":"IK","team":"Bathtub Collard Greens","teamId":11,"pf":1255.2,"pfRank":10,"closeW":2,"closeL":2,"closeT":0,"closeGames":4,"closePct":0.5,"closeRank":6,"luckDiff":4,"luckLabel":"🍀 Very Lucky"},{"owner":"JH","team":"ORACLE AI","teamId":12,"pf":1450.8,"pfRank":5,"closeW":6,"closeL":1,"closeT":0,"closeGames":7,"closePct":0.857,"closeRank":2,"luckDiff":3,"luckLabel":"🍀 Lucky"},{"owner":"AN","team":"The Diabolical Liars","teamId":4,"pf":1458.5,"pfRank":4,"closeW":2,"closeL":2,"closeT":0,"closeGames":4,"closePct":0.5,"closeRank":4,"luckDiff":0,"luckLabel":"Neutral"},{"owner":"DM","team":"Public Enemy #2","teamId":2,"pf":1400.8,"pfRank":7,"closeW":0,"closeL":4,"closeT":0,"closeGames":4,"closePct":0,"closeRank":9,"luckDiff":-2,"luckLabel":"💀 Unlucky"},{"owner":"GM","team":"Ice Box","teamId":1,"pf":1620.7,"pfRank":1,"closeW":2,"closeL":2,"closeT":0,"closeGames":4,"closePct":0.5,"closeRank":5,"luckDiff":-4,"luckLabel":"💀 Very Unlucky"},{"owner":"JO","team":"Dak Be' Down","teamId":9,"pf":1493.4,"pfRank":3,"closeW":2,"closeL":4,"closeT":0,"closeGames":6,"closePct":0.333,"closeRank":7,"luckDiff":-4,"luckLabel":"💀 Very Unlucky"},{"owner":"DN","team":"Washington Redskins","teamId":8,"pf":1410.5,"pfRank":6,"closeW":0,"closeL":1,"closeT":0,"closeGames":1,"closePct":0,"closeRank":10,"luckDiff":-4,"luckLabel":"Small sample"},{"owner":"ZS","team":"Tomato Toes","teamId":10,"pf":1552.7,"pfRank":2,"closeW":1,"closeL":3,"closeT":0,"closeGames":4,"closePct":0.25,"closeRank":8,"luckDiff":-6,"luckLabel":"💀 Very Unlucky"}]},"2025":{"season":2025,"gameCount":65,"allPlay":[{"owner":"JO","team":"Adam's Revenge","teamId":9,"actualW":8,"actualL":5,"actualT":0,"pf":1531.8,"pa":1326.9,"ppg":117.8,"allPlayW":72,"allPlayL":45,"allPlayT":0,"allPlayPct":0.615,"actualPct":0.615,"expectedWins":8,"delta":0,"allPlayRank":1,"pfRank":1,"actualRank":1},{"owner":"AR","team":"Give 'er The Beans ","teamId":5,"actualW":6,"actualL":7,"actualT":0,"pf":1474.8,"pa":1430.8,"ppg":113.4,"allPlayW":65,"allPlayL":52,"allPlayT":0,"allPlayPct":0.556,"actualPct":0.462,"expectedWins":7.2,"delta":-1.2,"allPlayRank":2,"pfRank":2,"actualRank":5},{"owner":"IK","team":"Thats My God","teamId":11,"actualW":7,"actualL":6,"actualT":0,"pf":1455.6,"pa":1472.9,"ppg":112,"allPlayW":63,"allPlayL":54,"allPlayT":0,"allPlayPct":0.538,"actualPct":0.538,"expectedWins":7,"delta":0,"allPlayRank":3,"pfRank":3,"actualRank":3},{"owner":"GM","team":"Toe Burrows Ice Box","teamId":1,"actualW":6,"actualL":7,"actualT":0,"pf":1454.4,"pa":1477.6,"ppg":111.9,"allPlayW":61,"allPlayL":56,"allPlayT":0,"allPlayPct":0.521,"actualPct":0.462,"expectedWins":6.8,"delta":-0.8,"allPlayRank":4,"pfRank":4,"actualRank":6},{"owner":"CR","team":"Significant Figures","teamId":7,"actualW":7,"actualL":6,"actualT":0,"pf":1410,"pa":1412,"ppg":108.5,"allPlayW":61,"allPlayL":56,"allPlayT":0,"allPlayPct":0.521,"actualPct":0.538,"expectedWins":6.8,"delta":0.2,"allPlayRank":5,"pfRank":5,"actualRank":4},{"owner":"AN","team":"El Fusilado","teamId":4,"actualW":6,"actualL":7,"actualT":0,"pf":1386.7,"pa":1294.6,"ppg":106.7,"allPlayW":59,"allPlayL":58,"allPlayT":0,"allPlayPct":0.504,"actualPct":0.462,"expectedWins":6.6,"delta":-0.6,"allPlayRank":6,"pfRank":6,"actualRank":7},{"owner":"DM","team":"Feel It In My Plums","teamId":2,"actualW":5,"actualL":8,"actualT":0,"pf":1372,"pa":1513.8,"ppg":105.5,"allPlayW":57,"allPlayL":60,"allPlayT":0,"allPlayPct":0.487,"actualPct":0.385,"expectedWins":6.3,"delta":-1.3,"allPlayRank":7,"pfRank":7,"actualRank":10},{"owner":"JH","team":"ORACLE AI","teamId":12,"actualW":8,"actualL":5,"actualT":0,"pf":1362.5,"pa":1407.6,"ppg":104.8,"allPlayW":51,"allPlayL":66,"allPlayT":0,"allPlayPct":0.436,"actualPct":0.615,"expectedWins":5.7,"delta":2.3,"allPlayRank":8,"pfRank":8,"actualRank":2},{"owner":"DN","team":"Washington Redskins","teamId":8,"actualW":6,"actualL":7,"actualT":0,"pf":1307.6,"pa":1377.8,"ppg":100.6,"allPlayW":50,"allPlayL":67,"allPlayT":0,"allPlayPct":0.427,"actualPct":0.462,"expectedWins":5.6,"delta":0.4,"allPlayRank":9,"pfRank":10,"actualRank":9},{"owner":"ZS","team":"Tomato Toes","teamId":10,"actualW":6,"actualL":7,"actualT":0,"pf":1320.4,"pa":1361.8,"ppg":101.6,"allPlayW":46,"allPlayL":71,"allPlayT":0,"allPlayPct":0.393,"actualPct":0.462,"expectedWins":5.1,"delta":0.9,"allPlayRank":10,"pfRank":9,"actualRank":8}],"luck":[{"owner":"ZS","team":"Tomato Toes","teamId":10,"pf":1320.4,"pfRank":9,"closeW":4,"closeL":0,"closeT":0,"closeGames":4,"closePct":1,"closeRank":1,"luckDiff":8,"luckLabel":"🍀 Very Lucky"},{"owner":"JH","team":"ORACLE AI","teamId":12,"pf":1362.5,"pfRank":8,"closeW":2,"closeL":0,"closeT":0,"closeGames":2,"closePct":1,"closeRank":2,"luckDiff":6,"luckLabel":"Small sample"},{"owner":"DN","team":"Washington Redskins","teamId":8,"pf":1307.6,"pfRank":10,"closeW":1,"closeL":2,"closeT":0,"closeGames":3,"closePct":0.333,"closeRank":7,"luckDiff":3,"luckLabel":"🍀 Lucky"},{"owner":"DM","team":"Feel It In My Plums","teamId":2,"pf":1372,"pfRank":7,"closeW":2,"closeL":2,"closeT":0,"closeGames":4,"closePct":0.5,"closeRank":5,"luckDiff":2,"luckLabel":"🍀 Lucky"},{"owner":"AR","team":"Give 'er The Beans ","teamId":5,"pf":1474.8,"pfRank":2,"closeW":1,"closeL":0,"closeT":0,"closeGames":1,"closePct":1,"closeRank":3,"luckDiff":-1,"luckLabel":"Small sample"},{"owner":"IK","team":"Thats My God","teamId":11,"pf":1455.6,"pfRank":3,"closeW":3,"closeL":2,"closeT":0,"closeGames":5,"closePct":0.6,"closeRank":4,"luckDiff":-1,"luckLabel":"Neutral"},{"owner":"CR","team":"Significant Figures","teamId":7,"pf":1410,"pfRank":5,"closeW":1,"closeL":2,"closeT":0,"closeGames":3,"closePct":0.333,"closeRank":6,"luckDiff":-1,"luckLabel":"Neutral"},{"owner":"GM","team":"Toe Burrows Ice Box","teamId":1,"pf":1454.4,"pfRank":4,"closeW":1,"closeL":2,"closeT":0,"closeGames":3,"closePct":0.333,"closeRank":8,"luckDiff":-4,"luckLabel":"💀 Very Unlucky"},{"owner":"AN","team":"El Fusilado","teamId":4,"pf":1386.7,"pfRank":6,"closeW":0,"closeL":4,"closeT":0,"closeGames":4,"closePct":0,"closeRank":10,"luckDiff":-4,"luckLabel":"💀 Very Unlucky"},{"owner":"JO","team":"Adam's Revenge","teamId":9,"pf":1531.8,"pfRank":1,"closeW":1,"closeL":2,"closeT":0,"closeGames":3,"closePct":0.333,"closeRank":9,"luckDiff":-8,"luckLabel":"💀 Very Unlucky"}]},"2026":{"season":2026,"gameCount":0,"allPlay":[],"luck":[]}},"allTime":{"allPlay":[{"owner":"CR","team":"Significant Figures","teamId":7,"actualW":62,"actualL":44,"actualT":0,"pf":12353.2,"pa":11654.4,"ppg":116.5,"allPlayW":572,"allPlayL":382,"allPlayT":0,"allPlayPct":0.6,"actualPct":0.585,"expectedWins":63.6,"delta":-1.6,"allPlayRank":1,"pfRank":1,"actualRank":1},{"owner":"GM","team":"Toe Burrows Ice Box","teamId":1,"actualW":58,"actualL":48,"actualT":0,"pf":12196.9,"pa":11775.3,"ppg":115.1,"allPlayW":550,"allPlayL":402,"allPlayT":2,"allPlayPct":0.578,"actualPct":0.547,"expectedWins":61.2,"delta":-3.2,"allPlayRank":2,"pfRank":3,"actualRank":2},{"owner":"AN","team":"El Fusilado","teamId":4,"actualW":57,"actualL":49,"actualT":0,"pf":12234.4,"pa":11687.7,"ppg":115.4,"allPlayW":541,"allPlayL":413,"allPlayT":0,"allPlayPct":0.567,"actualPct":0.538,"expectedWins":60.1,"delta":-3.1,"allPlayRank":3,"pfRank":2,"actualRank":3},{"owner":"JH","team":"ORACLE AI","teamId":12,"actualW":51,"actualL":42,"actualT":0,"pf":10155.9,"pa":10309.3,"ppg":109.2,"allPlayW":442,"allPlayL":395,"allPlayT":0,"allPlayPct":0.528,"actualPct":0.548,"expectedWins":49.1,"delta":1.9,"allPlayRank":4,"pfRank":10,"actualRank":6},{"owner":"SHEN","team":"Team GuiceBox","teamId":6,"actualW":7,"actualL":6,"actualT":0,"pf":1477,"pa":1460,"ppg":113.6,"allPlayW":61,"allPlayL":56,"allPlayT":0,"allPlayPct":0.521,"actualPct":0.538,"expectedWins":6.8,"delta":0.2,"allPlayRank":5,"pfRank":11,"actualRank":11},{"owner":"JO","team":"Adam's Revenge","teamId":9,"actualW":56,"actualL":50,"actualT":0,"pf":11838.9,"pa":11593.7,"ppg":111.7,"allPlayW":484,"allPlayL":469,"allPlayT":1,"allPlayPct":0.508,"actualPct":0.528,"expectedWins":53.8,"delta":2.2,"allPlayRank":6,"pfRank":4,"actualRank":4},{"owner":"DM","team":"Feel It In My Plums","teamId":2,"actualW":50,"actualL":56,"actualT":0,"pf":11571.7,"pa":11670.3,"ppg":109.2,"allPlayW":463,"allPlayL":491,"allPlayT":0,"allPlayPct":0.485,"actualPct":0.472,"expectedWins":51.4,"delta":-1.4,"allPlayRank":7,"pfRank":5,"actualRank":7},{"owner":"DN","team":"Washington Redskins","teamId":8,"actualW":52,"actualL":54,"actualT":0,"pf":11517.7,"pa":11370.4,"ppg":108.7,"allPlayW":446,"allPlayL":508,"allPlayT":0,"allPlayPct":0.468,"actualPct":0.491,"expectedWins":49.6,"delta":2.4,"allPlayRank":8,"pfRank":6,"actualRank":5},{"owner":"IK","team":"Thats My God","teamId":11,"actualW":47,"actualL":59,"actualT":0,"pf":11399.3,"pa":11855.7,"ppg":107.5,"allPlayW":441,"allPlayL":512,"allPlayT":1,"allPlayPct":0.463,"actualPct":0.443,"expectedWins":49.1,"delta":-2.1,"allPlayRank":9,"pfRank":7,"actualRank":9},{"owner":"ZS","team":"Tomato Toes","teamId":10,"actualW":50,"actualL":56,"actualT":0,"pf":10934.4,"pa":11429.7,"ppg":103.2,"allPlayW":385,"allPlayL":569,"allPlayT":0,"allPlayPct":0.404,"actualPct":0.472,"expectedWins":42.8,"delta":7.2,"allPlayRank":10,"pfRank":8,"actualRank":8},{"owner":"AR","team":"Give 'er The Beans ","teamId":5,"actualW":40,"actualL":66,"actualT":0,"pf":10919.5,"pa":11792.4,"ppg":103,"allPlayW":383,"allPlayL":571,"allPlayT":0,"allPlayPct":0.401,"actualPct":0.377,"expectedWins":42.6,"delta":-2.6,"allPlayRank":11,"pfRank":9,"actualRank":10}],"luck":[{"owner":"JH","team":"ORACLE AI","teamId":12,"pf":10155.9,"pfRank":10,"closeW":13,"closeL":10,"closeT":0,"closeGames":23,"closePct":0.565,"closeRank":2,"luckDiff":8,"luckLabel":"🍀 Very Lucky"},{"owner":"IK","team":"Thats My God","teamId":11,"pf":11399.3,"pfRank":7,"closeW":18,"closeL":12,"closeT":0,"closeGames":30,"closePct":0.6,"closeRank":1,"luckDiff":6,"luckLabel":"🍀 Very Lucky"},{"owner":"DM","team":"Feel It In My Plums","teamId":2,"pf":11571.7,"pfRank":5,"closeW":15,"closeL":13,"closeT":0,"closeGames":28,"closePct":0.536,"closeRank":3,"luckDiff":2,"luckLabel":"🍀 Lucky"},{"owner":"ZS","team":"Tomato Toes","teamId":10,"pf":10934.4,"pfRank":8,"closeW":17,"closeL":16,"closeT":0,"closeGames":33,"closePct":0.515,"closeRank":6,"luckDiff":2,"luckLabel":"🍀 Lucky"},{"owner":"SHEN","team":"Team GuiceBox","teamId":6,"pf":1477,"pfRank":11,"closeW":2,"closeL":3,"closeT":0,"closeGames":5,"closePct":0.4,"closeRank":9,"luckDiff":2,"luckLabel":"🍀 Lucky"},{"owner":"JO","team":"Adam's Revenge","teamId":9,"pf":11838.9,"pfRank":4,"closeW":15,"closeL":13,"closeT":0,"closeGames":28,"closePct":0.536,"closeRank":4,"luckDiff":0,"luckLabel":"Neutral"},{"owner":"DN","team":"Washington Redskins","teamId":8,"pf":11517.7,"pfRank":6,"closeW":12,"closeL":16,"closeT":0,"closeGames":28,"closePct":0.429,"closeRank":8,"luckDiff":-2,"luckLabel":"💀 Unlucky"},{"owner":"AR","team":"Give 'er The Beans ","teamId":5,"pf":10919.5,"pfRank":9,"closeW":8,"closeL":13,"closeT":0,"closeGames":21,"closePct":0.381,"closeRank":11,"luckDiff":-2,"luckLabel":"💀 Unlucky"},{"owner":"CR","team":"Significant Figures","teamId":7,"pf":12353.2,"pfRank":1,"closeW":14,"closeL":13,"closeT":0,"closeGames":27,"closePct":0.519,"closeRank":5,"luckDiff":-4,"luckLabel":"💀 Very Unlucky"},{"owner":"GM","team":"Toe Burrows Ice Box","teamId":1,"pf":12196.9,"pfRank":3,"closeW":13,"closeL":13,"closeT":0,"closeGames":26,"closePct":0.5,"closeRank":7,"luckDiff":-4,"luckLabel":"💀 Very Unlucky"},{"owner":"AN","team":"El Fusilado","teamId":4,"pf":12234.4,"pfRank":2,"closeW":9,"closeL":14,"closeT":0,"closeGames":23,"closePct":0.391,"closeRank":10,"luckDiff":-8,"luckLabel":"💀 Very Unlucky"}]}}</script>
+<script src="../static/js/luck.js?v=1"></script>
+<!-- LUCK_END -->
+    <details class="methodology">
+      <summary>How these numbers work</summary>
+      <p><strong>All-Play:</strong> Each week every team plays every other team. In a 10-team league that is 9 All-Play games per team per week. We tally All-Play W-L across the regular season. Comparing actual wins to All-Play wins exposes schedule luck: a team with 8 actual wins but 65 All-Play wins faced an easy slate; a team with 5 actual wins but 80 All-Play wins got screwed.</p>
+      <p><strong>Luck Index:</strong> Close games are those decided by &lt;10 points. Close win % versus points-for rank defines luck. Example: a team ranked 9th in PF but 1st in close win % is lucky; a team ranked 1st in PF but 9th in close win % is unlucky. Luck diff = PF rank − close rank. Positive means lucky, negative means unlucky. Teams with fewer than three close games show Small sample.</p>
+      <p>Both tables cover regular-season weeks only and start in 2018 when the league joined ESPN. Weekly scores before 2018 are not available.</p>
+      <p>Regenerate with <code>make luck</code>.</p>
+    </details>
+  </main>
+
+  <!--#include file="partials/footer.html" -->
+</body>
+
+</html>

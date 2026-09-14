@@ -12,31 +12,9 @@
     }
 
     .updated {
-      color: #666;
+      color: var(--muted);
       font-size: 0.9em;
       margin-top: 0;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    th,
-    td {
-      text-align: left;
-      padding: 10px 12px;
-      border-bottom: 1px solid #eee;
-      vertical-align: top;
-    }
-
-    th {
-      border-bottom: 2px solid #eee;
-      font-size: 0.85em;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #666;
     }
 
     .event-badge {
@@ -62,51 +40,6 @@
       white-space: nowrap;
       font-weight: 600;
     }
-
-    @media (max-width: 768px) {
-      table,
-      thead,
-      tbody,
-      tr,
-      td {
-        display: block;
-      }
-
-      thead {
-        display: none;
-      }
-
-      tbody tr {
-        margin-bottom: 16px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 12px;
-      }
-
-      td[colspan]::before {
-        content: none;
-      }
-
-      td::before {
-        display: block;
-        font-size: 0.75em;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: #666;
-        margin-bottom: 2px;
-      }
-
-      td:nth-child(1)::before {
-        content: 'Date';
-      }
-
-      td:nth-child(2)::before {
-        content: 'Status';
-      }
-
-      td:nth-child(3)::before {
-        content: 'Details';
-      }
-    }
   </style>
 </head>
 
@@ -117,8 +50,9 @@
 
     <main id="main">
       <h1>Trade Log</h1>
-      <p class="updated">Season <span id="season">2026</span><span id="updated-at"></span></p>
-      <table>
+      <p class="updated" aria-live="polite">Season <span id="season">2026</span><span id="updated-at"></span></p>
+      <div class="table-container" tabindex="0" role="region" aria-label="Trade log table, scroll horizontally to see all columns">
+      <table class="stats-table">
         <caption class="visually-hidden">Trade log</caption>
         <thead>
           <tr>
@@ -133,6 +67,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </main>
 
   <!--#include file="partials/footer.html" -->

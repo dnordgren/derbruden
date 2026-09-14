@@ -270,7 +270,7 @@ function renderTable(rankings, meta) {
     .join('\n')
 
   return `<p class="pr-meta">${meta.season} season &middot; through week ${meta.throughWeek} &middot; generated ${meta.generated}</p>
-  <div class="table-container"><table class="stats-table">
+  <div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">${meta.season} Elo power rankings</caption>
   <thead>
     <tr>
@@ -321,7 +321,7 @@ function pageTemplate(content) {
 
   <main id="main">
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="386" height="400">
+      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="100" height="100">
       <h1>Power Rankings</h1>
     </div>
     ${content}
@@ -351,7 +351,7 @@ function updatePage(rendered) {
   let content = fs.readFileSync(PAGE_PATH, 'utf8')
 
   const metaRegex = /<p class="pr-meta">[\s\S]*?<\/p>/
-  const tableRegex = /<div class="table-container">[\s\S]*?<\/div>/
+  const tableRegex = /<div class="table-container"[^>]*>[\s\S]*?<\/div>/
 
   if (metaRegex.test(content)) {
     content = content.replace(metaRegex, rendered.split('\n')[0])

@@ -304,11 +304,11 @@ function renderSeasonBoard(season, picks, teams, cache) {
 
   return `<section class="draft-season" id="draft-${season}">
     <h2>${season} Draft</h2>
-    <div class="table-container">
+    <div class="table-container" tabindex="0">
       <table class="draft-board">
         <caption class="visually-hidden">${season} draft board</caption>
         <thead>
-          <tr><th scope="col" class="round-head"></th>${headCells}</tr>
+          <tr><th scope="col" class="round-head"><span class="visually-hidden">Round</span></th>${headCells}</tr>
         </thead>
         <tbody>
           ${rows}
@@ -489,6 +489,9 @@ function pageTemplate(content) {
     }
 
     .season-links a {
+      display: inline-block;
+      min-height: 44px;
+      line-height: 44px;
       color: var(--accent);
       text-decoration: underline;
       margin-right: 8px;

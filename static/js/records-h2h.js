@@ -24,17 +24,24 @@
 
   var tooltip = d3.select('body').append('div').attr('class', 'viz-tooltip')
 
-  function showTip(event, html) {
+  function showTipAt(x, y, html) {
     tooltip
       .style('display', 'block')
       .html(html)
-      .style('left', Math.min(event.clientX + 14, window.innerWidth - 200) + 'px')
-      .style('top', event.clientY - 12 + 'px')
+      .style('left', Math.max(8, Math.min(x + 14, window.innerWidth - 200)) + 'px')
+      .style('top', Math.max(8, y - 12) + 'px')
+  }
+
+  function showTip(event, html) {
+    showTipAt(event.clientX, event.clientY, html)
   }
 
   function hideTip() {
     tooltip.style('display', 'none')
   }
+
+  // A fixed tooltip would float over scrolled content on mobile.
+  document.addEventListener('scroll', hideTip, { capture: true, passive: true })
 
   var cell = 44
   var m = { top: 44, right: 12, bottom: 14, left: 44 }
@@ -48,6 +55,8 @@
     .attr('viewBox', '0 0 ' + W + ' ' + H)
     .attr('width', '100%')
     .attr('role', 'img')
+    .attr('aria-label', 'Head-to-head win rate heat map. Row owner versus column owner; same data as the table above.')
+  svgSel.append('title').text('Head-to-head win rate heat map')
 
   var chart = svgSel.append('g').attr('transform', 'translate(' + m.left + ',' + m.top + ')')
 
@@ -130,24 +139,24 @@
       var rRate = rate(rec)
       var strong = Math.abs(rRate - 0.5) > 0.32
       var games = rec.wins + rec.losses + rec.ties
+      var recordLabel = rec.wins + '-' + rec.losses + (rec.ties ? '-' + rec.ties : '')
+      var tip =
+        '<strong>' +
+        r +
+        ' vs ' +
+        c +
+        '</strong><br>' +
+        recordLabel +
+        ' (' +
+        d3.format('.3f')(rRate).replace('0.', '.') +
+        ')<br>' +
+        'Games: ' +
+        games
+      // No per-cell tab stops: this heat map repeats the data table
+      // above (see the chart container label), and 110 stops would
+      // trap keyboard users. Taps still get tooltips via click.
       function handle(event) {
-        showTip(
-          event,
-          '<strong>' +
-            r +
-            ' vs ' +
-            c +
-            '</strong><br>' +
-            rec.wins +
-            '-' +
-            rec.losses +
-            (rec.ties ? '-' + rec.ties : '') +
-            ' (' +
-            d3.format('.3f')(rRate).replace('0.', '.') +
-            ')<br>' +
-            'Games: ' +
-            games
-        )
+        showTip(event, tip)
       }
       chart
         .append('rect')
@@ -160,6 +169,7 @@
         .on('mouseover', handle)
         .on('mousemove', handle)
         .on('mouseout', hideTip)
+        .on('click', handle)
       chart
         .append('text')
         .attr('x', j * cell + (cell - 2) / 2)

@@ -92,7 +92,7 @@
 }
 
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
 
@@ -106,6 +106,7 @@ body {
   max-width: min(1200px, 100vw);
   width: 100%;
   overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
 }
 
@@ -113,12 +114,21 @@ main {
   min-width: 0;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+
+/* Fallback for browsers without :focus-visible (older mobile Safari):
+   keyboard users still get a visible indicator. */
+@supports not selector(:focus-visible) {
+  :focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 }
 
 main img,
@@ -505,6 +515,14 @@ footer {
   font-size: 0.9rem;
 }
 
+/* Footer links meet the 44px touch target guideline on mobile. */
+footer a {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding: 0 8px;
+}
+
 /* Skip link - hidden until focused */
 .skip-link {
   position: absolute;
@@ -551,7 +569,7 @@ footer {
   margin-top: 30px;
   min-width: 0;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .owner-viz h2 {

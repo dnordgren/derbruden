@@ -66,7 +66,7 @@ function generateStatsIndex(data) {
     </tr>`;
   }).join('\n    ');
 
-  return `<div class="table-container"><table class="stats-table">
+  return `<div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">League totals, all owners</caption>
   <thead>
     <tr>
@@ -121,7 +121,7 @@ function generateOwnerStats(data, owner) {
 
   const totalChamp = champCells(totals.championships);
 
-  return `<div class="table-container"><table class="stats-table">
+  return `<div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">Season-by-season record, ${owner}</caption>
   <thead>
     <tr>
@@ -182,7 +182,7 @@ async function main() {
     }
 
     let content = fs.readFileSync(filePath, 'utf8');
-    const regex = /<div class="table-container">[\s\S]*?<\/div>/;
+    const regex = /<div class="table-container"[^>]*>[\s\S]*?<\/div>/;
 
     if (regex.test(content)) {
       content = content.replace(regex, newContent);

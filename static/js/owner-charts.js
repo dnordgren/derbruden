@@ -23,17 +23,30 @@
 
   var tooltip = d3.select('body').append('div').attr('class', 'viz-tooltip')
 
-  function showTip(event, html) {
+  function showTipAt(x, y, html) {
     tooltip
       .style('display', 'block')
       .html(html)
-      .style('left', Math.min(event.clientX + 14, window.innerWidth - 180) + 'px')
-      .style('top', event.clientY - 12 + 'px')
+      .style('left', Math.max(8, Math.min(x + 14, window.innerWidth - 180)) + 'px')
+      .style('top', Math.max(8, y - 12) + 'px')
+  }
+
+  function showTip(event, html) {
+    showTipAt(event.clientX, event.clientY, html)
+  }
+
+  // Touch and keyboard have no pointer position: anchor to the element.
+  function showTipForElement(el, html) {
+    var r = el.getBoundingClientRect()
+    showTipAt(r.left + r.width / 2, r.top, html)
   }
 
   function hideTip() {
     tooltip.style('display', 'none')
   }
+
+  // A fixed tooltip would float over scrolled content on mobile.
+  document.addEventListener('scroll', hideTip, { capture: true, passive: true })
 
   function shortSeason(year) {
     return "'" + String(year).slice(2)
@@ -48,14 +61,19 @@
     return n > 0 ? '+' + fmt(n) : fmt(n)
   }
 
-  function svg(mountId, width, height) {
+  function svg(mountId, width, height, label) {
     var mount = d3.select(mountId)
     mount.selectAll('*').remove()
-    return mount
+    var node = mount
       .append('svg')
       .attr('viewBox', '0 0 ' + width + ' ' + height)
       .attr('width', '100%')
       .attr('role', 'img')
+    if (label) {
+      node.attr('aria-label', label)
+      node.append('title').text(label)
+    }
+    return node
   }
 
   function renderDumbbell() {
@@ -68,7 +86,12 @@
     var m = { top: 34, right: 80, bottom: 50, left: 54 }
     var H = 400
 
-    var chart = svg('#viz-pfpa', W, H)
+    var chart = svg(
+      '#viz-pfpa',
+      W,
+      H,
+      'Points for versus points against by season. Green dots are points scored, red dots are points allowed.'
+    )
       .append('g')
       .attr('transform', 'translate(' + m.left + ',' + m.top + ')')
 
@@ -168,24 +191,44 @@
       .attr('stroke-width', 6)
       .attr('stroke-linecap', 'round')
 
-    function dot(key) {
+    function tipHtml(d) {
+      return (
+        '<strong>' +
+        d.season +
+        '</strong><br>' +
+        'PF: ' +
+        fmt(d.pf) +
+        '<br>PA: ' +
+        fmt(d.pa) +
+        '<br>' +
+        'Diff: <strong>' +
+        signedFmt(d.pf - d.pa) +
+        '</strong>'
+      )
+    }
+
+    function dotAria(d) {
+      return (
+        d.season +
+        ': points for ' +
+        fmt(d.pf) +
+        ', points against ' +
+        fmt(d.pa) +
+        ', differential ' +
+        signedFmt(d.pf - d.pa)
+      )
+    }
+
+    // Only the PF series is tabbable so keyboard users get one stop per
+    // season; its label carries both values. Taps work on both series.
+    function dot(key, keyboard) {
       function handle(event, d) {
-        showTip(
-          event,
-          '<strong>' +
-            d.season +
-            '</strong><br>' +
-            'PF: ' +
-            fmt(d.pf) +
-            '<br>PA: ' +
-            fmt(d.pa) +
-            '<br>' +
-            'Diff: <strong>' +
-            signedFmt(d.pf - d.pa) +
-            '</strong>'
-        )
+        showTip(event, tipHtml(d))
       }
-      rowG
+      function handleFocus(event, d) {
+        showTipForElement(this, tipHtml(d))
+      }
+      var circles = rowG
         .append('circle')
         .attr('cx', function (d) {
           return x(d.season)
@@ -197,13 +240,21 @@
         .attr('fill', key === 'pf' ? COLORS.pf : COLORS.pa)
         .attr('stroke', '#fff')
         .attr('stroke-width', 1.5)
+        .attr('role', 'img')
+        .attr('aria-label', function (d) {
+          return dotAria(d)
+        })
         .on('mouseover', handle)
         .on('mousemove', handle)
         .on('mouseout', hideTip)
+        .on('click', handle)
+      if (keyboard) {
+        circles.attr('tabindex', '0').on('focus', handleFocus).on('blur', hideTip)
+      }
     }
 
-    dot('pa')
-    dot('pf')
+    dot('pa', false)
+    dot('pf', true)
 
     rowG
       .append('text')
@@ -252,7 +303,7 @@
     var W = 800
     var H = 250
     var m = { top: 16, right: 60, bottom: 30, left: 50 }
-    var chart = svg('#viz-elo', W, H)
+    var chart = svg('#viz-elo', W, H, 'Elo rating trajectory by week. 1500 is league average.')
       .append('g')
       .attr('transform', 'translate(' + m.left + ',' + m.top + ')')
 
@@ -393,6 +444,27 @@
       .attr('stroke', '#fff')
       .style('display', 'none')
 
+    // Text alternative for keyboard and screen-reader users:
+    // the hover tooltip is pointer-only.
+    function eloSummary(pts) {
+      var vals = pts.map(function (p) {
+        return p[1]
+      })
+      return (
+        'Elo trajectory over ' +
+        pts.length +
+        ' games. Start ' +
+        Math.round(vals[0]) +
+        ', now ' +
+        Math.round(vals[vals.length - 1]) +
+        ', high ' +
+        Math.round(Math.max.apply(null, vals)) +
+        ', low ' +
+        Math.round(Math.min.apply(null, vals)) +
+        '. 1500 is league average.'
+      )
+    }
+
     function locate(idxValue) {
       return points.reduce(function (best, p) {
         return Math.abs(p[0] - idxValue) < Math.abs(best[0] - idxValue) ? p : best
@@ -404,6 +476,9 @@
       .attr('width', innerW)
       .attr('height', innerH)
       .attr('fill', 'transparent')
+      .attr('tabindex', '0')
+      .attr('role', 'img')
+      .attr('aria-label', eloSummary(points))
       .on('mousemove', function (event) {
         var coords = d3.pointer(event)
         var p = locate(x.invert(coords[0]))
@@ -452,7 +527,7 @@
     var W = m.left + opponents.length * cell + m.right
     var H = 140
 
-    var svgSel = svg('#viz-h2h', W, H)
+    var svgSel = svg('#viz-h2h', W, H, 'Career head-to-head record against each other owner.')
     var chart = svgSel.append('g').attr('transform', 'translate(' + m.left + ',' + m.top + ')')
 
     var rate = function (c) {
@@ -501,24 +576,24 @@
       }
       var rRate = rate(rec)
       var strong = Math.abs(rRate - 0.5) > 0.32
+      var recordLabel = rec.w + '-' + rec.l + (rec.t ? '-' + rec.t : '')
+      var tip =
+        '<strong>vs ' +
+        opp +
+        '</strong><br>' +
+        recordLabel +
+        ' (' +
+        d3.format('.3f')(rRate).replace('0.', '.') +
+        ')<br>' +
+        'PF: ' +
+        fmt(rec.pf) +
+        ' · PA: ' +
+        fmt(rec.pa)
       function handle(event) {
-        showTip(
-          event,
-          '<strong>vs ' +
-            opp +
-            '</strong><br>' +
-            rec.w +
-            '-' +
-            rec.l +
-            (rec.t ? '-' + rec.t : '') +
-            ' (' +
-            d3.format('.3f')(rRate).replace('0.', '.') +
-            ')<br>' +
-            'PF: ' +
-            fmt(rec.pf) +
-            ' · PA: ' +
-            fmt(rec.pa)
-        )
+        showTip(event, tip)
+      }
+      function handleFocus() {
+        showTipForElement(this, tip)
       }
       g.append('rect')
         .attr('x', x(opp))
@@ -527,9 +602,15 @@
         .attr('height', x.bandwidth())
         .attr('rx', 4)
         .attr('fill', color(rRate))
+        .attr('tabindex', '0')
+        .attr('role', 'img')
+        .attr('aria-label', 'Versus ' + opp + ': ' + recordLabel + ', win rate ' + d3.format('.3f')(rRate))
         .on('mouseover', handle)
         .on('mousemove', handle)
         .on('mouseout', hideTip)
+        .on('click', handle)
+        .on('focus', handleFocus)
+        .on('blur', hideTip)
       g.append('text')
         .attr('x', x(opp) + x.bandwidth() / 2)
         .attr('y', x.bandwidth() / 2 + 4)

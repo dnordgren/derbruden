@@ -35,15 +35,13 @@ build:
 deploy-html: build
 	@echo "make deploy-html : Started"
 	@echo "Deploying HTML to bucket derbruden.com..."
-	@aws s3 rm s3://$(BUCKET)/ --recursive --exclude "*" --include "*.html"
 	@aws s3 sync pub/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=60, stale-while-revalidate=300"
 	@echo "make deploy-html : Finished"
 
 deploy-static:
 	@echo "make deploy-static : Started"
 	@echo "Deploying static assets to bucket derbruden.com..."
-	@aws s3 rm s3://$(BUCKET)/static/ --recursive --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --exclude "data/luck.json"
-	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --exclude "data/luck.json" --cache-control "public, max-age=31536000, immutable"
+	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --exclude "data/luck.json" --exclude "data/games.json" --cache-control "public, max-age=31536000, immutable"
 	@aws s3 cp static/data/trades.json s3://$(BUCKET)/static/data/trades.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/alltime-records.json s3://$(BUCKET)/static/data/alltime-records.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/waivers.json s3://$(BUCKET)/static/data/waivers.json --cache-control "public, max-age=0, must-revalidate"

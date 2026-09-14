@@ -624,8 +624,7 @@ function pageTemplate(content) {
 
   <main id="main">
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
-        style="border-radius: 50%; object-fit: cover;">
+      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="100" height="100">
       <h1>All-Time Records</h1>
     </div>
     <!-- RECORDS_START -->

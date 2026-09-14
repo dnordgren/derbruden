@@ -321,7 +321,7 @@ function pageTemplate(content) {
 
   <main id="main">
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="386" height="400">
+      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="100" height="100">
       <h1>Power Rankings</h1>
     </div>
     ${content}

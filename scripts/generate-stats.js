@@ -5,6 +5,16 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+function fmtPct(wins, losses) {
+  return (wins / (wins + losses)).toFixed(3).replace('0.', '.');
+}
+
+function champCells(count) {
+  return count
+    ? `<span class="trophies" aria-hidden="true">${'★'.repeat(count)}</span><span class="visually-hidden">${count} championship${count > 1 ? 's' : ''}</span>`
+    : '<span class="visually-hidden">0</span>';
+}
+
 function generateStatsIndex(data) {
   const stats = data
     .filter(row => row.Owner && row.Owner !== 'null')
@@ -41,15 +51,13 @@ function generateStatsIndex(data) {
     .sort((a, b) => b.winPct - a.winPct);
 
   const tableRows = ownerStats.map(stat => {
-    const champ = stat.championships
-      ? `<span class="trophies" aria-hidden="true">${'★'.repeat(stat.championships)}</span><span class="visually-hidden">${stat.championships} championship${stat.championships > 1 ? 's' : ''}</span>`
-      : '<span class="visually-hidden">0</span>';
+    const champ = champCells(stat.championships);
     return `<tr>
       <td class="owner"><a href="./${stat.owner.toLowerCase()}.html">${stat.owner}</a></td>
       <td class="number">${stat.games}</td>
       <td class="number">${stat.wins}</td>
       <td class="number">${stat.losses}</td>
-      <td class="number">${stat.winPct.toFixed(3).replace('0.', '.')}</td>
+      <td class="number">${fmtPct(stat.wins, stat.losses)}</td>
       <td class="number">${stat.rgpf.toLocaleString()}</td>
       <td class="number">${stat.rgpa.toLocaleString()}</td>
       <td class="number">${stat.pointsDiff.toLocaleString()}</td>
@@ -95,14 +103,12 @@ function generateOwnerStats(data, owner) {
   }), { wins: 0, losses: 0, rgpf: 0, rgpa: 0, playoffs: 0, championships: 0 });
 
   const tableRows = ownerData.map(row => {
-    const champ = row.Champ === 'Y'
-      ? '<span class="trophies" aria-hidden="true">★</span><span class="visually-hidden">1 championship</span>'
-      : '<span class="visually-hidden">0</span>';
+    const champ = champCells(row.Champ === 'Y' ? 1 : 0);
     return `<tr>
       <td class="number">${row.Season}</td>
       <td class="number">${row.W}</td>
       <td class="number">${row.L}</td>
-      <td class="number">${(row.W / (row.W + row.L)).toFixed(3).replace('0.', '.')}</td>
+      <td class="number">${fmtPct(row.W, row.L)}</td>
       <td class="number">${row.PORnk}</td>
       <td class="number">${row.RGRnk}</td>
       <td class="number">${row.RGPF.toLocaleString()}</td>
@@ -113,10 +119,7 @@ function generateOwnerStats(data, owner) {
     </tr>`;
   }).join('\n    ');
 
-  const winPct = totals.wins / (totals.wins + totals.losses);
-  const totalChamp = totals.championships
-    ? `<span class="trophies" aria-hidden="true">${'★'.repeat(totals.championships)}</span><span class="visually-hidden">${totals.championships} championship${totals.championships > 1 ? 's' : ''}</span>`
-    : '<span class="visually-hidden">0</span>';
+  const totalChamp = champCells(totals.championships);
 
   return `<div class="table-container"><table class="stats-table">
   <caption class="visually-hidden">Season-by-season record, ${owner}</caption>
@@ -141,7 +144,7 @@ function generateOwnerStats(data, owner) {
       <td class="number">Totals</td>
       <td class="number">${totals.wins}</td>
       <td class="number">${totals.losses}</td>
-      <td class="number">${winPct.toFixed(3).replace('0.', '.')}</td>
+      <td class="number">${fmtPct(totals.wins, totals.losses)}</td>
       <td class="number">-</td>
       <td class="number">-</td>
       <td class="number">${totals.rgpf.toLocaleString()}</td>

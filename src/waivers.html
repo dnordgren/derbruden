@@ -16,12 +16,6 @@
         margin-bottom: 0;
       }
 
-      .updated {
-        color: #666;
-        font-size: 0.9em;
-        margin-top: 0;
-      }
-
       table {
         width: 100%;
         border-collapse: collapse;
@@ -32,16 +26,16 @@
       td {
         text-align: left;
         padding: 10px 12px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--line);
         vertical-align: top;
       }
 
       th {
-        border-bottom: 2px solid #eee;
+        border-bottom: 2px solid var(--line);
         font-size: 0.85em;
         text-transform: uppercase;
         letter-spacing: 0.05em;
-        color: #666;
+        color: var(--muted);
       }
 
       td.num,
@@ -68,10 +62,6 @@
         background: #f39c12;
       }
 
-      .muted {
-        color: #666;
-      }
-
       @media (max-width: 768px) {
         table,
         thead,
@@ -86,7 +76,7 @@
 
         tbody tr {
           margin-bottom: 16px;
-          border-bottom: 1px solid #eee;
+          border-bottom: 1px solid var(--line);
           padding-bottom: 12px;
         }
       }
@@ -142,30 +132,8 @@
 
     <!--#include file="partials/footer.html" -->
 
+    <script src="../static/js/site-utils.js?v=1"></script>
     <script>
-      const escapeHtml = value =>
-        String(value).replace(
-          /[&<>"']/g,
-          c =>
-            ({
-              '&': '&amp;',
-              '<': '&lt;',
-              '>': '&gt;',
-              '"': '&quot;',
-              "'": '&#39;',
-            })[c]
-        )
-
-      const formatDate = iso => {
-        if (!iso) return ''
-        const d = new Date(iso)
-        return (
-          d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) +
-          ', ' +
-          d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
-        )
-      }
-
       const record = row => (row.wins == null ? '' : `${row.wins}-${row.losses}${row.ties ? '-' + row.ties : ''}`)
 
       const ownerLink = row => {

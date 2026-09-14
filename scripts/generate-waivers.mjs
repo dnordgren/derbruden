@@ -127,8 +127,10 @@ function ownerFor(teamId) {
 }
 
 // Turn one raw transaction into a move record, or null when it should not
-// appear on the page (other statuses, malformed payloads).
-export function mapMove(tx, playerNames) {
+// appear on the page (other statuses, malformed payloads). The player-name
+// cache is keyed "<season>:<playerId>", so season must be passed to resolve
+// names; bare "<playerId>" keys still work as a fallback (tests, old caches).
+export function mapMove(tx, playerNames, season) {
   if (!KEPT_STATUSES.has(tx.status)) return null
   const items = Array.isArray(tx.items) ? tx.items : []
   const adds = []
@@ -141,7 +143,8 @@ export function mapMove(tx, playerNames) {
     const playerId = item.playerId ?? item.player?.id
     if (!playerId || playerId === -1) continue
     const fallback = [item.firstName, item.lastName].filter(Boolean).join(' ')
-    const name = playerNames[`${playerId}`] ?? playerNames[playerId] ?? (fallback || `Player ${playerId}`)
+    const scoped = season != null ? playerNames[`${season}:${playerId}`] : undefined
+    const name = scoped ?? playerNames[`${playerId}`] ?? playerNames[playerId] ?? (fallback || `Player ${playerId}`)
     if (item.type === 'ADD') {
       adds.push(name)
       const value = Number(item.totalValue)
@@ -215,8 +218,14 @@ async function resolvePlayerName(fetchImpl, season, playerId, players) {
       name = data.displayName || data.fullName || `Player ${playerId}`
     }
   } catch {
-    name = `Player ${playerId}`
+    // Do not cache failures: a "Player N" placeholder would stick in
+    // waiver-players.json and block retries on the next run. mapMove falls
+    // back to the same placeholder for uncached ids.
+    return `Player ${playerId}`
   }
+  // Same guard for thin records with no usable name: leave uncached so a
+  // later run can retry once ESPN fills the record in.
+  if (name === `Player ${playerId}`) return name
   players[key] = name
   return name
 }
@@ -280,7 +289,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   }
 
   const withNames = kept
-    .map(tx => mapMove(tx, players))
+    .map(tx => mapMove(tx, players, season))
     .filter(Boolean)
     .sort((a, b) => new Date(b.date ?? 0) - new Date(a.date ?? 0))
     .slice(0, MAX_MOVES)

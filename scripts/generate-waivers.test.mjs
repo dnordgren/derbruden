@@ -24,7 +24,7 @@ test('dslNflTeamId decodes D/ST ids and ignores players', () => {
   assert.equal(dslNflTeamId(4040715), null)
 })
 
-const NAMES = { 4040715: 'Jason Myers', '-16005': 'Seahawks D/ST' }
+const NAMES = { '2026:4040715': 'Jason Myers', '2026:-16005': 'Seahawks D/ST' }
 
 test('mapMove groups adds and drops with owner and bid', () => {
   const move = mapMove(
@@ -39,13 +39,52 @@ test('mapMove groups adds and drops with owner and bid', () => {
         { type: 'DROP', playerId: -16005 },
       ],
     },
-    NAMES
+    NAMES,
+    2026
   )
   assert.equal(move.owner, 'JO')
   assert.deepEqual(move.adds, ['Jason Myers'])
   assert.deepEqual(move.drops, ['Seahawks D/ST'])
   assert.equal(move.bid, 3)
   assert.equal(move.date, new Date(1756000000000).toISOString())
+})
+
+test('mapMove resolves season-scoped cache entries (no Player N placeholders)', () => {
+  // Regression: production cache keys are "<season>:<playerId>". mapMove
+  // once ignored the prefix and rendered "added Player 4429086".
+  const cache = { '2026:4429086': 'Kayshon Boutte', '2026:-16024': 'Broncos D/ST' }
+  const move = mapMove(
+    {
+      id: '1',
+      type: 'FREEAGENT',
+      status: 'EXECUTED',
+      teamId: 8,
+      processDate: 1757833440000,
+      items: [
+        { type: 'ADD', playerId: 4429086 },
+        { type: 'DROP', playerId: -16024 },
+      ],
+    },
+    cache,
+    2026
+  )
+  assert.deepEqual(move.adds, ['Kayshon Boutte'])
+  assert.deepEqual(move.drops, ['Broncos D/ST'])
+})
+
+test('mapMove still honours bare player ids without a season', () => {
+  const move = mapMove(
+    {
+      id: 'bare',
+      type: 'WAIVER',
+      status: 'EXECUTED',
+      teamId: 9,
+      processDate: 1756000000000,
+      items: [{ type: 'ADD', playerId: 4040715 }],
+    },
+    { 4040715: 'Jason Myers' }
+  )
+  assert.deepEqual(move.adds, ['Jason Myers'])
 })
 
 test('mapMove falls back to item names then placeholders', () => {

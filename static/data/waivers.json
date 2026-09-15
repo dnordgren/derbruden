@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-14T18:21:43.609Z",
+  "updated": "2026-09-15T17:29:38.532Z",
   "order": [
     {
       "rank": 1,
@@ -9,7 +9,7 @@
       "owner": "CR",
       "name": "Significant Figures",
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "moves": 0
     },
@@ -18,7 +18,7 @@
       "teamId": 9,
       "owner": "JO",
       "name": "Adam's Revenge",
-      "wins": 0,
+      "wins": 1,
       "losses": 0,
       "ties": 0,
       "moves": 0
@@ -29,7 +29,7 @@
       "owner": "JH",
       "name": "ORACLE AI",
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "moves": 0
     },
@@ -38,10 +38,10 @@
       "teamId": 11,
       "owner": "IK",
       "name": "Thats My God",
-      "wins": 0,
+      "wins": 1,
       "losses": 0,
       "ties": 0,
-      "moves": 1
+      "moves": 0
     },
     {
       "rank": 5,
@@ -49,7 +49,7 @@
       "owner": "AR",
       "name": "Give 'er The Beans ",
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "moves": 0
     },
@@ -59,7 +59,7 @@
       "owner": "AN",
       "name": "El Fusilado",
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "moves": 0
     },
@@ -69,138 +69,40 @@
       "owner": "ZS",
       "name": "Tomato Toes",
       "wins": 0,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
-      "moves": 1
+      "moves": 0
     },
     {
       "rank": 8,
       "teamId": 8,
       "owner": "DN",
       "name": "Washington Redskins",
-      "wins": 0,
+      "wins": 1,
       "losses": 0,
       "ties": 0,
-      "moves": 2
+      "moves": 0
     },
     {
       "rank": 9,
       "teamId": 2,
       "owner": "DM",
       "name": "Cracked Unc",
-      "wins": 0,
+      "wins": 1,
       "losses": 0,
       "ties": 0,
-      "moves": 2
+      "moves": 0
     },
     {
       "rank": 10,
       "teamId": 1,
       "owner": "GM",
       "name": "Gabe",
-      "wins": 0,
+      "wins": 1,
       "losses": 0,
       "ties": 0,
-      "moves": 1
+      "moves": 0
     }
   ],
-  "moves": [
-    {
-      "id": "c8802cfc-512a-4274-bc46-89ed81e28e4b",
-      "date": "2026-09-13T18:45:37.190Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 8,
-      "owner": "DN",
-      "adds": [
-        "Tyler Allgeier"
-      ],
-      "drops": [
-        "Minnesota Vikings D/ST"
-      ],
-      "bid": null
-    },
-    {
-      "id": "8fa1c1fe-5ebd-4270-bcbf-f06bf9da01b4",
-      "date": "2026-09-13T16:55:45.686Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 2,
-      "owner": "DM",
-      "adds": [
-        "Malachi Fields"
-      ],
-      "drops": [
-        "Trevor Lawrence"
-      ],
-      "bid": null
-    },
-    {
-      "id": "dede75f1-65c8-49a3-a292-aa28a662c882",
-      "date": "2026-09-13T14:44:50.704Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 8,
-      "owner": "DN",
-      "adds": [
-        "Los Angeles Chargers D/ST"
-      ],
-      "drops": [],
-      "bid": null
-    },
-    {
-      "id": "ffdfdcde-4417-4847-811a-b2399b7bdbb1",
-      "date": "2026-09-13T12:31:18.678Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 10,
-      "owner": "ZS",
-      "adds": [
-        "Jacksonville Jaguars D/ST"
-      ],
-      "drops": [
-        "Detroit Lions D/ST"
-      ],
-      "bid": null
-    },
-    {
-      "id": "fac8107e-55cc-40c4-8f92-80f646284fb5",
-      "date": "2026-09-12T13:48:40.350Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 11,
-      "owner": "IK",
-      "adds": [
-        "Michael Mayer"
-      ],
-      "drops": [],
-      "bid": null
-    },
-    {
-      "id": "ba9bb403-be7f-4327-b842-d458a1cef4c5",
-      "date": "2026-09-10T13:04:06.607Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 2,
-      "owner": "DM",
-      "adds": [
-        "Jacob Saylors"
-      ],
-      "drops": [],
-      "bid": null
-    },
-    {
-      "id": "bf10d81d-51d2-4c6f-af04-8f61efa165e5",
-      "date": "2026-09-10T07:26:20.823Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 1,
-      "owner": "GM",
-      "adds": [
-        "Baker Mayfield"
-      ],
-      "drops": [],
-      "bid": null
-    }
-  ]
+  "moves": []
 }

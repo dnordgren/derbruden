@@ -1,10 +1,20 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-16T17:29:41.143Z",
+  "updated": "2026-09-15T17:29:38.532Z",
   "order": [
     {
       "rank": 1,
+      "teamId": 7,
+      "owner": "CR",
+      "name": "Significant Figures",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "moves": 0
+    },
+    {
+      "rank": 2,
       "teamId": 9,
       "owner": "JO",
       "name": "Adam's Revenge",
@@ -14,7 +24,7 @@
       "moves": 0
     },
     {
-      "rank": 2,
+      "rank": 3,
       "teamId": 12,
       "owner": "JH",
       "name": "ORACLE AI",
@@ -24,7 +34,7 @@
       "moves": 0
     },
     {
-      "rank": 3,
+      "rank": 4,
       "teamId": 11,
       "owner": "IK",
       "name": "Thats My God",
@@ -34,7 +44,7 @@
       "moves": 0
     },
     {
-      "rank": 4,
+      "rank": 5,
       "teamId": 5,
       "owner": "AR",
       "name": "Give 'er The Beans ",
@@ -44,7 +54,17 @@
       "moves": 0
     },
     {
-      "rank": 5,
+      "rank": 6,
+      "teamId": 4,
+      "owner": "AN",
+      "name": "El Fusilado",
+      "wins": 0,
+      "losses": 1,
+      "ties": 0,
+      "moves": 0
+    },
+    {
+      "rank": 7,
       "teamId": 10,
       "owner": "ZS",
       "name": "Tomato Toes",
@@ -54,7 +74,7 @@
       "moves": 0
     },
     {
-      "rank": 6,
+      "rank": 8,
       "teamId": 8,
       "owner": "DN",
       "name": "Washington Redskins",
@@ -64,26 +84,6 @@
       "moves": 0
     },
     {
-      "rank": 7,
-      "teamId": 7,
-      "owner": "CR",
-      "name": "Significant Figures",
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "moves": 1
-    },
-    {
-      "rank": 8,
-      "teamId": 4,
-      "owner": "AN",
-      "name": "El Fusilado",
-      "wins": 0,
-      "losses": 1,
-      "ties": 0,
-      "moves": 1
-    },
-    {
       "rank": 9,
       "teamId": 2,
       "owner": "DM",
@@ -91,7 +91,7 @@
       "wins": 1,
       "losses": 0,
       "ties": 0,
-      "moves": 1
+      "moves": 0
     },
     {
       "rank": 10,
@@ -101,82 +101,8 @@
       "wins": 1,
       "losses": 0,
       "ties": 0,
-      "moves": 2
+      "moves": 0
     }
   ],
-  "moves": [
-    {
-      "id": "61f35b81-e277-418d-9093-1780a901683e",
-      "date": "2026-09-16T13:59:29.698Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 1,
-      "owner": "GM",
-      "adds": [
-        "Tampa Bay Buccaneers D/ST"
-      ],
-      "drops": [
-        "Baker Mayfield"
-      ],
-      "bid": null
-    },
-    {
-      "id": "25a94efc-c944-4235-98aa-adf01d0cf50d",
-      "date": "2026-09-16T07:24:51.942Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 2,
-      "owner": "DM",
-      "adds": [
-        "Dontayvion Wicks"
-      ],
-      "drops": [
-        "Jacob Saylors"
-      ],
-      "bid": null
-    },
-    {
-      "id": "08b78e38-d226-463c-829a-8e41f5fdd879",
-      "date": "2026-09-16T07:24:51.942Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 4,
-      "owner": "AN",
-      "adds": [
-        "Pat Freiermuth"
-      ],
-      "drops": [],
-      "bid": null
-    },
-    {
-      "id": "1347c2c6-77bb-4017-bb7d-2f818718fd7c",
-      "date": "2026-09-16T07:24:51.942Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 1,
-      "owner": "GM",
-      "adds": [
-        "Devaughn Vele"
-      ],
-      "drops": [
-        "Tyrone Tracy Jr."
-      ],
-      "bid": null
-    },
-    {
-      "id": "5737956b-bd50-46a2-9dd5-e6a97ca6fa53",
-      "date": "2026-09-16T07:24:51.940Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 7,
-      "owner": "CR",
-      "adds": [
-        "Jalen Coker"
-      ],
-      "drops": [
-        "Wan'Dale Robinson"
-      ],
-      "bid": null
-    }
-  ]
+  "moves": []
 }

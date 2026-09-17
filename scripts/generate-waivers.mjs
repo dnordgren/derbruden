@@ -187,13 +187,41 @@ export function buildOrder(teams, movesByTeam) {
   return rows
 }
 
-function loadPlayerCache() {
+function loadPlayerCache(file) {
   try {
-    const parsed = JSON.parse(fs.readFileSync(PLAYERS_FILE, 'utf8'))
+    const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))
     return parsed.players ?? {}
   } catch {
     return {}
   }
+}
+
+// Transactions only accumulate within a season, so a run that comes back
+// with no moves while the published file has some is a stale or partial ESPN
+// response, not real deletions. Publishing it would wipe the page, so refuse
+// and let a later run retry.
+function loadPreviousMoves(file, season) {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))
+    if (parsed.season !== season || !Array.isArray(parsed.moves)) return null
+    return parsed.moves
+  } catch {
+    return null
+  }
+}
+
+// Merge one run's transactions into the season ledger, keyed by transaction
+// id (fresh records win, so a PROPOSED claim that later executes updates in
+// place). ESPN's transaction feed only covers the current scoring week, so
+// rebuilding the file from scratch each run would drop every prior week;
+// the ledger keeps the season's history. Newest first, capped at maxMoves.
+export function mergeMoves(previous, fresh, maxMoves = MAX_MOVES) {
+  const byId = new Map()
+  for (const m of previous ?? []) if (m?.id != null) byId.set(String(m.id), m)
+  for (const m of fresh ?? []) if (m?.id != null) byId.set(String(m.id), m)
+  return [...byId.values()]
+    .sort((a, b) => new Date(b.date ?? 0) - new Date(a.date ?? 0))
+    .slice(0, maxMoves)
 }
 
 // Only the current season stays in the cache file.
@@ -268,7 +296,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
   const season = Number(env.LEAGUE_YEAR)
   const dataFile = paths.dataFile ?? env.WAIVERS_FILE ?? DATA_FILE
-  const players = prunePlayers(loadPlayerCache(), season)
+  const playersFile = paths.playersFile ?? PLAYERS_FILE
+  const players = prunePlayers(loadPlayerCache(playersFile), season)
 
   const url = leagueUrl(env)
   const [teams, raw] = await Promise.all([fetchTeams(fetchImpl, url, env), fetchMovesRaw(fetchImpl, url, env)])
@@ -292,10 +321,22 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     .map(tx => mapMove(tx, players, season))
     .filter(Boolean)
     .sort((a, b) => new Date(b.date ?? 0) - new Date(a.date ?? 0))
-    .slice(0, MAX_MOVES)
+
+  // ESPN's transaction feed only covers the current scoring week, so the
+  // published file is a season ledger: merge this run's moves into it
+  // instead of replacing it. A quiet run (no new transactions) leaves the
+  // ledger untouched.
+  const previousMoves = loadPreviousMoves(dataFile, season) ?? []
+  if (withNames.length === 0 && previousMoves.length > 0) {
+    console.warn(
+      `ESPN returned no waiver transactions for season ${season}; ` +
+        `keeping the ${previousMoves.length} previously published moves.`
+    )
+  }
+  const moves = mergeMoves(previousMoves, withNames)
 
   const movesByTeam = {}
-  for (const move of withNames) {
+  for (const move of moves) {
     if (move.status !== 'EXECUTED') continue
     movesByTeam[move.teamId] = (movesByTeam[move.teamId] ?? 0) + 1
   }
@@ -307,17 +348,17 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     season,
     updated: new Date().toISOString(),
     order,
-    moves: withNames,
+    moves,
   }
 
   if (args.dryRun) {
-    console.log(`[dry-run] season ${season}: ${order.length} teams, ${withNames.length} moves`)
+    console.log(`[dry-run] season ${season}: ${order.length} teams, ${moves.length} moves`)
     console.log(JSON.stringify(output, null, 2))
     return 0
   }
 
   writeJsonAtomic(dataFile, output)
-  writeJsonAtomic(PLAYERS_FILE, { season, updated: output.updated, players })
+  writeJsonAtomic(playersFile, { season, updated: output.updated, players })
   console.log(
     `Wrote ${dataFile} (${order.length} teams, ${withNames.length} moves); ` +
       `cache holds ${Object.keys(players).length} names for ${season}.`

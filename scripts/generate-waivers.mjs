@@ -196,10 +196,9 @@ function loadPlayerCache(file) {
   }
 }
 
-// Transactions only accumulate within a season, so a run that comes back
-// with no moves while the published file has some is a stale or partial ESPN
-// response, not real deletions. Publishing it would wipe the page, so refuse
-// and let a later run retry.
+// Load the previously published moves for this season, if any. They form
+// the season ledger that each run's fresh transactions merge into (see
+// mergeMoves). Returns null when there is no usable prior file.
 function loadPreviousMoves(file, season) {
   try {
     const parsed = JSON.parse(fs.readFileSync(file, 'utf8'))
@@ -219,9 +218,7 @@ export function mergeMoves(previous, fresh, maxMoves = MAX_MOVES) {
   const byId = new Map()
   for (const m of previous ?? []) if (m?.id != null) byId.set(String(m.id), m)
   for (const m of fresh ?? []) if (m?.id != null) byId.set(String(m.id), m)
-  return [...byId.values()]
-    .sort((a, b) => new Date(b.date ?? 0) - new Date(a.date ?? 0))
-    .slice(0, maxMoves)
+  return [...byId.values()].sort((a, b) => new Date(b.date ?? 0) - new Date(a.date ?? 0)).slice(0, maxMoves)
 }
 
 // Only the current season stays in the cache file.

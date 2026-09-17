@@ -3,7 +3,16 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import { dslNflTeamId, mapMove, buildOrder, prunePlayers, parseArgs, defaultSeason, mergeMoves, main } from './generate-waivers.mjs'
+import {
+  dslNflTeamId,
+  mapMove,
+  buildOrder,
+  prunePlayers,
+  parseArgs,
+  defaultSeason,
+  mergeMoves,
+  main,
+} from './generate-waivers.mjs'
 
 test('defaultSeason maps Aug-Dec to the current year', () => {
   assert.equal(defaultSeason(new Date('2026-08-25')), 2026)

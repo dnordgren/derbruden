@@ -146,9 +146,14 @@ No framework; shared page chunks are inlined at build time by
 
 - `scripts/generate-waivers.mjs` fetches `view=mTeam` (teams carry
   `waiverRank`, lower is better priority) and waiver transactions
-  (`view=mTransactions2`, filter types `FREEAGENT` + `WAIVER`) and rewrites
-  `static/data/waivers.json` from scratch. Only the current season is ever
-  retained; there is no ledger or dedupe state.
+  (`view=mTransactions2`, filter types `FREEAGENT` + `WAIVER`) and merges them
+  into a season ledger in `static/data/waivers.json`, keyed by transaction id
+  (fresh records win, so a PROPOSED claim that later executes updates in
+  place). ESPN's transaction feed only covers the current scoring week, so
+  rebuilding the file from scratch each run would drop every prior week;
+  the ledger keeps the season's history, newest first, capped at 150 moves.
+  A run whose fetch comes back empty keeps the existing ledger and only
+  logs a warning.
 - Needs BOTH `ESPN_S2` and `SWID` (same auth quirk as trades). Player names
   resolve from `sports.core.api.espn.com`; cache lives in
   `scripts/waiver-players.json` keyed `<season>:<playerId>`, pruned to the

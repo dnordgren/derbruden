@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-17T03:41:47.678Z",
+  "updated": "2026-09-17T17:30:00.359Z",
   "order": [
     {
       "rank": 1,
@@ -51,7 +51,7 @@
       "wins": 0,
       "losses": 1,
       "ties": 0,
-      "moves": 1
+      "moves": 2
     },
     {
       "rank": 6,
@@ -61,7 +61,7 @@
       "wins": 1,
       "losses": 0,
       "ties": 0,
-      "moves": 2
+      "moves": 3
     },
     {
       "rank": 7,
@@ -105,6 +105,36 @@
     }
   ],
   "moves": [
+    {
+      "id": "7ac17f1b-647a-4e94-957a-41b4f8cf6168",
+      "date": "2026-09-17T13:46:30.079Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "San Francisco 49ers D/ST"
+      ],
+      "drops": [
+        "Jacksonville Jaguars D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "0450c20b-228a-46d3-893f-34916787f206",
+      "date": "2026-09-17T04:49:28.814Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Caleb Douglas"
+      ],
+      "drops": [
+        "Jayden Reed"
+      ],
+      "bid": null
+    },
     {
       "id": "61f35b81-e277-418d-9093-1780a901683e",
       "date": "2026-09-16T13:59:29.698Z",

@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-17T17:30:00.359Z",
+  "updated": "2026-09-18T16:57:43.055Z",
   "order": [
     {
       "rank": 1,
@@ -91,7 +91,7 @@
       "wins": 1,
       "losses": 0,
       "ties": 0,
-      "moves": 3
+      "moves": 4
     },
     {
       "rank": 10,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "4f2922cf-c194-4589-9099-6b394c6fc4c5",
+      "date": "2026-09-18T11:56:56.125Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Jayden Reed"
+      ],
+      "drops": [
+        "Tre Tucker"
+      ],
+      "bid": null
+    },
     {
       "id": "7ac17f1b-647a-4e94-957a-41b4f8cf6168",
       "date": "2026-09-17T13:46:30.079Z",

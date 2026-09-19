@@ -53,6 +53,14 @@ No framework; shared page chunks are inlined at build time by
   Deploy invalidation intentionally stays a wildcard (`/*`): it costs
   one path regardless of count and avoids missing newly added pages;
   versioned asset names are what actually protect browser caches.
+  Images under `static/img/` and `static/ico/` carry `?v=N` like CSS/JS
+  (owner logos were resized to 200px in Sep 2026 once versioned).
+- CDN notes (verified Sep 2026 with `curl`, no CloudFront read access on
+  the deploy user). Compression is on: `d3.v7.min.js` serves gzip
+  (280KB to 93KB) and brotli, as does `drafts.html` (239KB to 18KB).
+  Query strings are not part of the CloudFront cache key (a never-used
+  `?v=` value still returns `Hit from cloudfront`), so `?v=` bumps
+  protect browser caches only and the wildcard invalidation must stay.
 - Shared page CSS lives in `static/css/site.css`. Pages link it and keep
   only page-specific rules in a small inline `<style>`.
 - Shared page chunks (head links, site header, sponsor box, nav, footer)

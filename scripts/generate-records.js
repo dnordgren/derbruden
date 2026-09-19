@@ -580,12 +580,12 @@ function pageTemplate(content) {
   <meta property="og:title" content="DerBruden.com | All-Time Records">
   <meta property="og:description" content="Every record that matters in the Der Bruden fantasy football league: weekly highs, blowouts, streaks, lifetime head-to-head, and the hall of shame.">
   <meta property="og:url" content="https://derbruden.com/records.html">
-  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp">
+  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="DerBruden.com | All-Time Records">
   <meta name="twitter:description" content="Records, rivalries, and the hall of shame for the Der Bruden fantasy football league.">
-  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
+  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
   <style>
     .section-note {
@@ -624,7 +624,7 @@ function pageTemplate(content) {
 
   <main id="main">
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="100" height="100">
+      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" class="owner-logo-image" width="100" height="100">
       <h1>All-Time Records</h1>
     </div>
     <!-- RECORDS_START -->

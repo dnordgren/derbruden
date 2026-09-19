@@ -31,6 +31,10 @@
         margin-top: 20px;
       }
 
+      table.order {
+        max-width: 640px;
+      }
+
       th,
       td {
         text-align: left;
@@ -72,64 +76,40 @@
       }
 
       @media (max-width: 768px) {
-        table,
-        thead,
-        tbody,
-        tr,
-        td {
+        table.moves,
+        table.moves thead,
+        table.moves tbody,
+        table.moves tr,
+        table.moves td {
           display: block;
         }
 
-        thead {
+        table.moves thead {
           display: none;
         }
 
-        tbody tr {
+        table.moves tbody tr {
           margin-bottom: 16px;
           border-bottom: 1px solid var(--line);
           padding-bottom: 12px;
         }
 
-        td {
+        table.moves td {
           border-bottom: none;
           padding: 4px 12px;
         }
 
-        td.num {
-          text-align: left;
-        }
-
-        td[colspan]::before {
+        table.moves td[colspan]::before {
           content: none;
         }
 
-        td::before {
+        table.moves td::before {
           display: block;
           font-size: 0.75em;
           text-transform: uppercase;
           letter-spacing: 0.05em;
           color: var(--muted);
           margin-bottom: 2px;
-        }
-
-        #order-rows td:nth-child(1)::before {
-          content: '#';
-        }
-
-        #order-rows td:nth-child(2)::before {
-          content: 'Owner';
-        }
-
-        #order-rows td:nth-child(3)::before {
-          content: 'Team';
-        }
-
-        #order-rows td:nth-child(4)::before {
-          content: 'Record';
-        }
-
-        #order-rows td:nth-child(5)::before {
-          content: 'Moves';
         }
 
         #move-rows td:nth-child(1)::before {
@@ -161,26 +141,25 @@
       <p class="updated">Season <span id="season">2026</span><span id="updated-at"></span>. Order refreshes daily.</p>
 
       <h3>Waiver Order</h3>
-      <table>
+      <table class="order">
         <caption class="visually-hidden">Waiver order</caption>
         <thead>
           <tr>
             <th scope="col" class="num">#</th>
             <th scope="col">Owner</th>
-            <th scope="col">Team</th>
             <th scope="col" class="num">Record</th>
             <th scope="col" class="num">Moves</th>
           </tr>
         </thead>
         <tbody id="order-rows">
           <tr>
-            <td colspan="5">Loading...</td>
+            <td colspan="4">Loading...</td>
           </tr>
         </tbody>
       </table>
 
       <h3>Recent Moves</h3>
-      <table>
+      <table class="moves">
         <caption class="visually-hidden">Recent waiver moves</caption>
         <thead>
           <tr>
@@ -233,9 +212,6 @@
                     '<td>' +
                     ownerLink(r) +
                     '</td>' +
-                    '<td>' +
-                    escapeHtml(r.name) +
-                    '</td>' +
                     '<td class="num">' +
                     record(r) +
                     '</td>' +
@@ -245,7 +221,7 @@
                     '</tr>'
                 )
                 .join('')
-            : '<tr><td colspan="5">No waiver order available.</td></tr>'
+            : '<tr><td colspan="4">No waiver order available.</td></tr>'
 
         document.getElementById('move-rows').innerHTML =
           data.moves && data.moves.length
@@ -284,7 +260,7 @@
         .then(res => res.json())
         .then(render)
         .catch(() => {
-          document.getElementById('order-rows').innerHTML = '<tr><td colspan="5">Could not load waiver data.</td></tr>'
+          document.getElementById('order-rows').innerHTML = '<tr><td colspan="4">Could not load waiver data.</td></tr>'
           document.getElementById('move-rows').innerHTML = '<tr><td colspan="4">Could not load waiver data.</td></tr>'
         })
     </script>

@@ -305,12 +305,12 @@ function pageTemplate(content) {
   <meta property="og:title" content="DerBruden.com | Power Rankings">
   <meta property="og:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league. Margin-of-victory adjusted, seeded from league history.">
   <meta property="og:url" content="https://derbruden.com/power-rankings.html">
-  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp">
+  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="DerBruden.com | Power Rankings">
   <meta name="twitter:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league.">
-  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
+  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
 </head>
 
@@ -321,7 +321,7 @@ function pageTemplate(content) {
 
   <main id="main">
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="100" height="100">
+      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" class="owner-logo-image" width="100" height="100">
       <h1>Power Rankings</h1>
     </div>
     ${content}

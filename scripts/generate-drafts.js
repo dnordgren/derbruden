@@ -317,7 +317,7 @@ function renderContent(draftsBySeason, teamsBySeason, cache, meta) {
     .join('\n')
 
   return `<div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" class="owner-logo-image" width="100" height="100" />
+      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" class="owner-logo-image" width="100" height="100" />
       <h1>Draft History</h1>
     </div>
     <p class="draft-meta">${seasons[seasons.length - 1]}&ndash;${seasons[0]} drafts &middot; generated ${meta.generated}</p>

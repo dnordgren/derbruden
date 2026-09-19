@@ -236,3 +236,23 @@ seasons/<year>/segments/0/leagues/794521`. The older
 - Future matchups carry numeric `totalPoints: 0` and `winner:
 UNDECIDED`. Filter on decided winners only or phantom ties appear.
 - Team abbreviations change year to year; team `id`s do not.
+
+## Working agreements
+
+Derek's standing rules for any agent working in this repo. These outrank
+convenience; when in doubt, stop and ask.
+
+- Always work in a git worktree, never in the main checkout.
+  `git worktree add ~/workspace/repos/derbruden-<task> -b fix/<task>`
+  The main checkout at `~/workspace/repos/derbruden` stays on `master`.
+- When the task is complete: commit on the branch, push it, and open a PR.
+  `gh` is already authenticated as dnordgren. Then stop and wait.
+- Never merge a PR without Derek's explicit instruction. He reviews every PR.
+- Never run `make deploy` without explicit instruction. Merging does not
+  deploy; site deploys are manual (`AWS_PROFILE=derbruden make deploy`).
+- No git identity is configured on the dev machine. Before committing, set it
+  in the worktree:
+  `git config user.name "Derek Nordgren"`
+  `git config user.email "dnordgren@users.noreply.github.com"`
+- Remove a worktree after its PR merges (`git worktree remove <path>`) so
+  stale checkouts don't pile up.

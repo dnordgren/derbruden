@@ -183,9 +183,11 @@ h2 {
 }
 
 .site-title {
+  margin: 0;
   font-size: 1.35rem;
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  line-height: 1.1;
 }
 
 /* Layout containment — prevent horizontal page scroll on mobile */
@@ -211,6 +213,10 @@ main,
   min-width: 0;
 }
 
+.header > div {
+  min-width: 0;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -221,10 +227,11 @@ main,
 .logo {
   width: 84px;
   height: auto;
+  flex-shrink: 0;
 }
 
 .tagline {
-  margin: 0;
+  margin: 2px 0 0;
   color: var(--muted);
   font-size: 0.85rem;
 }

@@ -471,7 +471,7 @@ export function renderH2HSection(h2h) {
   return `<h2>Head-to-head, all time</h2>
 <p class="section-note">Regular season plus playoffs. Row beats column;
 the diagonal is lifetime points scored.</p>
-<div class="table-container" tabindex="0"><table class="stats-table">
+<div class="table-container" tabindex="0"><table class="stats-table h2h-matrix">
   <caption class="visually-hidden">Head-to-head, all time</caption>
   <thead>
     <tr><th scope="col"><span class="visually-hidden">Owner</span></th>${head}</tr>
@@ -600,6 +600,23 @@ function pageTemplate(content) {
     .stats-table .detail {
       color: var(--muted);
       font-size: 0.95em;
+    }
+
+    /* Narrow tables fit the viewport instead of forcing a scroll. */
+    .stats-table {
+      min-width: 0;
+    }
+
+    /* The head-to-head matrix is genuinely wide; keep its scroll. */
+    .stats-table.h2h-matrix {
+      min-width: 560px;
+    }
+
+    @media (max-width: 720px) {
+      .stats-table th,
+      .stats-table td {
+        padding: 8px;
+      }
     }
 
     .stats-table td.owner {

@@ -438,7 +438,7 @@ export function renderRecordsSection(records) {
   const ms = r.mostPointsInASeason
   return `<h2>All-time records</h2>
 <p class="section-note">Every decided game, regular season and playoffs.</p>
-<div class="table-container"><table class="stats-table">
+<div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">All-time records</caption>
   <thead>
     <tr><th scope="col">Record</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr>
@@ -471,10 +471,10 @@ export function renderH2HSection(h2h) {
   return `<h2>Head-to-head, all time</h2>
 <p class="section-note">Regular season plus playoffs. Row beats column;
 the diagonal is lifetime points scored.</p>
-<div class="table-container"><table class="stats-table">
+<div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">Head-to-head, all time</caption>
   <thead>
-    <tr><th scope="col"></th>${head}</tr>
+    <tr><th scope="col"><span class="visually-hidden">Owner</span></th>${head}</tr>
   </thead>
   <tbody>
 ${body}
@@ -491,10 +491,10 @@ export function renderH2HChartSection(h2h) {
   const json = JSON.stringify(payload).replace(/<\//g, '<\\/')
   return `<h2>Head-to-head heat map</h2>
 <p class="section-note">Win rate for row owner vs column owner. Green means the row owner won more often.</p>
-<div class="viz-chart" id="records-h2h-chart"></div>
+<div class="viz-chart" id="records-h2h-chart" tabindex="0" role="region" aria-label="Head-to-head heat map chart. It repeats the table above: row owner win rate versus column owner."></div>
 <script type="application/json" id="records-h2h-data">${json}</script>
-<script src="../static/js/d3.v7.min.js"></script>
-<script src="../static/js/records-h2h.js?v=2"></script>`
+<script src="../static/js/d3.v7.min.js" defer></script>
+<script src="../static/js/records-h2h.js?v=3" defer></script>`
 }
 
 export function renderTrophiesSection({ champions, lowestScore, mostPointsInALoss, droughts }) {
@@ -508,7 +508,7 @@ export function renderTrophiesSection({ champions, lowestScore, mostPointsInALos
     )
     .join('\n')
   return `<h2>Trophy case</h2>
-<div class="table-container"><table class="stats-table">
+<div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">Trophy case</caption>
   <thead><tr><th scope="col" class="number">Season</th><th scope="col">Champion</th></tr></thead>
   <tbody>
@@ -516,7 +516,7 @@ ${champions.map(c => `<tr><td class="number">${c.season}</td><td><strong>${owner
   </tbody>
 </table></div>
  <h2>Hall of shame</h2>
-<div class="table-container"><table class="stats-table">
+<div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">Hall of shame</caption>
   <thead><tr><th scope="col">Dishonor</th><th scope="col" class="number">Value</th><th scope="col" class="detail">Details</th></tr></thead>
   <tbody>
@@ -525,7 +525,7 @@ ${champions.map(c => `<tr><td class="number">${c.season}</td><td><strong>${owner
   </tbody>
 </table></div>
 <h3>Longest playoff droughts</h3>
-<div class="table-container"><table class="stats-table">
+<div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">Longest playoff droughts</caption>
   <thead><tr><th scope="col">Owner</th><th scope="col" class="number">Seasons out</th><th scope="col" class="detail">Span</th></tr></thead>
   <tbody>

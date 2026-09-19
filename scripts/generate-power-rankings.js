@@ -270,7 +270,7 @@ function renderTable(rankings, meta) {
     .join('\n')
 
   return `<p class="pr-meta">${meta.season} season &middot; through week ${meta.throughWeek} &middot; generated ${meta.generated}</p>
-  <div class="table-container"><table class="stats-table">
+  <div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">${meta.season} Elo power rankings</caption>
   <thead>
     <tr>
@@ -351,7 +351,7 @@ function updatePage(rendered) {
   let content = fs.readFileSync(PAGE_PATH, 'utf8')
 
   const metaRegex = /<p class="pr-meta">[\s\S]*?<\/p>/
-  const tableRegex = /<div class="table-container">[\s\S]*?<\/div>/
+  const tableRegex = /<div class="table-container"[^>]*>[\s\S]*?<\/div>/
 
   if (metaRegex.test(content)) {
     content = content.replace(metaRegex, rendered.split('\n')[0])

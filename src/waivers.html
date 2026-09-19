@@ -75,7 +75,8 @@
         table,
         thead,
         tbody,
-        tr {
+        tr,
+        td {
           display: block;
         }
 
@@ -87,6 +88,64 @@
           margin-bottom: 16px;
           border-bottom: 1px solid var(--line);
           padding-bottom: 12px;
+        }
+
+        td {
+          border-bottom: none;
+          padding: 4px 12px;
+        }
+
+        td.num {
+          text-align: left;
+        }
+
+        td[colspan]::before {
+          content: none;
+        }
+
+        td::before {
+          display: block;
+          font-size: 0.75em;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: var(--muted);
+          margin-bottom: 2px;
+        }
+
+        #order-rows td:nth-child(1)::before {
+          content: '#';
+        }
+
+        #order-rows td:nth-child(2)::before {
+          content: 'Owner';
+        }
+
+        #order-rows td:nth-child(3)::before {
+          content: 'Team';
+        }
+
+        #order-rows td:nth-child(4)::before {
+          content: 'Record';
+        }
+
+        #order-rows td:nth-child(5)::before {
+          content: 'Moves';
+        }
+
+        #move-rows td:nth-child(1)::before {
+          content: 'Date';
+        }
+
+        #move-rows td:nth-child(2)::before {
+          content: 'Type';
+        }
+
+        #move-rows td:nth-child(3)::before {
+          content: 'Owner';
+        }
+
+        #move-rows td:nth-child(4)::before {
+          content: 'Details';
         }
       }
     </style>

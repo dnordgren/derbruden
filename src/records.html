@@ -30,6 +30,23 @@
       font-size: 0.95em;
     }
 
+    /* Narrow tables fit the viewport instead of forcing a scroll. */
+    .stats-table {
+      min-width: 0;
+    }
+
+    /* The head-to-head matrix is genuinely wide; keep its scroll. */
+    .stats-table.h2h-matrix {
+      min-width: 560px;
+    }
+
+    @media (max-width: 720px) {
+      .stats-table th,
+      .stats-table td {
+        padding: 8px;
+      }
+    }
+
     .stats-table td.owner {
       font-weight: 500;
       white-space: nowrap;
@@ -73,7 +90,7 @@
 <h2>Head-to-head, all time</h2>
 <p class="section-note">Regular season plus playoffs. Row beats column;
 the diagonal is lifetime points scored.</p>
-<div class="table-container" tabindex="0"><table class="stats-table">
+<div class="table-container" tabindex="0"><table class="stats-table h2h-matrix">
   <caption class="visually-hidden">Head-to-head, all time</caption>
   <thead>
     <tr><th scope="col"><span class="visually-hidden">Owner</span></th><th scope="col" class="number">CR</th><th scope="col" class="number">AN</th><th scope="col" class="number">GM</th><th scope="col" class="number">JO</th><th scope="col" class="number">IK</th><th scope="col" class="number">DM</th><th scope="col" class="number">DN</th><th scope="col" class="number">ZS</th><th scope="col" class="number">AR</th><th scope="col" class="number">JH</th><th scope="col" class="number">SHEN</th></tr>

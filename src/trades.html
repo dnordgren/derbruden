@@ -43,6 +43,64 @@
       white-space: nowrap;
       font-weight: 600;
     }
+
+    @media (max-width: 768px) {
+      table.moves {
+        min-width: 0;
+      }
+
+      table.moves,
+      table.moves thead,
+      table.moves tbody,
+      table.moves tr,
+      table.moves td {
+        display: block;
+      }
+
+      table.moves thead {
+        display: none;
+      }
+
+      table.moves tbody tr {
+        margin-bottom: 16px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 12px;
+      }
+
+      table.moves td {
+        border-bottom: none;
+        padding: 4px 12px;
+      }
+
+      table.moves td[colspan]::before {
+        content: none;
+      }
+
+      table.moves td::before {
+        display: block;
+        font-size: 0.75em;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        margin-bottom: 2px;
+      }
+
+      #trade-rows td:nth-child(1)::before {
+        content: 'Date';
+      }
+
+      #trade-rows td:nth-child(2)::before {
+        content: 'Status';
+      }
+
+      #trade-rows td:nth-child(3)::before {
+        content: 'Details';
+      }
+
+      table.moves .side {
+        white-space: normal;
+      }
+    }
   </style>
 </head>
 
@@ -55,7 +113,7 @@
       <h1>Trade Log</h1>
       <p class="updated" aria-live="polite">Season <span id="season">2026</span><span id="updated-at"></span></p>
       <div class="table-container" tabindex="0" role="region" aria-label="Trade log table, scroll horizontally to see all columns">
-      <table class="stats-table">
+      <table class="stats-table moves">
         <caption class="visually-hidden">Trade log</caption>
         <thead>
           <tr>

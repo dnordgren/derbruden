@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-18T16:57:43.055Z",
+  "updated": "2026-09-19T16:15:38.784Z",
   "order": [
     {
       "rank": 1,
@@ -81,7 +81,7 @@
       "wins": 0,
       "losses": 1,
       "ties": 0,
-      "moves": 1
+      "moves": 2
     },
     {
       "rank": 9,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "fa95b00a-b40c-4cdb-b95a-345532343f00",
+      "date": "2026-09-18T17:30:47.203Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Romeo Doubs"
+      ],
+      "drops": [
+        "De'Zhaun Stribling"
+      ],
+      "bid": null
+    },
     {
       "id": "4f2922cf-c194-4589-9099-6b394c6fc4c5",
       "date": "2026-09-18T11:56:56.125Z",

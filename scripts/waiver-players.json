@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-09-18T16:57:43.055Z",
+  "updated": "2026-09-19T16:15:38.784Z",
   "players": {
     "2026:3052587": "Baker Mayfield",
     "2026:4383429": "Jacob Saylors",
@@ -22,6 +22,8 @@
     "2026:4869645": "Caleb Douglas",
     "2026:4362249": "Jayden Reed",
     "2026:-16025": "San Francisco 49ers D/ST",
-    "2026:4428718": "Tre Tucker"
+    "2026:4428718": "Tre Tucker",
+    "2026:4361432": "Romeo Doubs",
+    "2026:4710714": "De'Zhaun Stribling"
   }
 }

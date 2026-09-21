@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-20T16:41:52.148Z",
+  "updated": "2026-09-21T18:29:58.961Z",
   "order": [
     {
       "rank": 1,
@@ -91,7 +91,7 @@
       "wins": 1,
       "losses": 0,
       "ties": 0,
-      "moves": 4
+      "moves": 5
     },
     {
       "rank": 10,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "e18a457e-5413-408b-a554-0cf9cf169db2",
+      "date": "2026-09-20T19:48:40.088Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Trevor Lawrence"
+      ],
+      "drops": [
+        "Malachi Fields"
+      ],
+      "bid": null
+    },
     {
       "id": "b9bd47e3-647d-4beb-8eca-2cb01192c9f3",
       "date": "2026-09-20T16:06:46.428Z",

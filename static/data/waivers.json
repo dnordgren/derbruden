@@ -1,14 +1,14 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-21T18:29:58.961Z",
+  "updated": "2026-09-22T17:32:07.012Z",
   "order": [
     {
       "rank": 1,
       "teamId": 9,
       "owner": "JO",
       "name": "Adam's Revenge",
-      "wins": 1,
+      "wins": 2,
       "losses": 0,
       "ties": 0,
       "moves": 0
@@ -18,7 +18,7 @@
       "teamId": 12,
       "owner": "JH",
       "name": "ORACLE AI",
-      "wins": 0,
+      "wins": 1,
       "losses": 1,
       "ties": 0,
       "moves": 0
@@ -29,7 +29,7 @@
       "owner": "IK",
       "name": "Thats My God",
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "moves": 2
     },
@@ -38,7 +38,7 @@
       "teamId": 5,
       "owner": "AR",
       "name": "Give 'er The Beans ",
-      "wins": 0,
+      "wins": 1,
       "losses": 1,
       "ties": 0,
       "moves": 0
@@ -49,7 +49,7 @@
       "owner": "ZS",
       "name": "Tomato Toes",
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "moves": 2
     },
@@ -59,7 +59,7 @@
       "owner": "DN",
       "name": "Washington Redskins",
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "moves": 3
     },
@@ -68,7 +68,7 @@
       "teamId": 7,
       "owner": "CR",
       "name": "Significant Figures",
-      "wins": 0,
+      "wins": 1,
       "losses": 1,
       "ties": 0,
       "moves": 1
@@ -79,7 +79,7 @@
       "owner": "AN",
       "name": "El Fusilado",
       "wins": 0,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "moves": 3
     },
@@ -89,7 +89,7 @@
       "owner": "DM",
       "name": "Cracked Unc",
       "wins": 1,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "moves": 5
     },
@@ -98,7 +98,7 @@
       "teamId": 1,
       "owner": "GM",
       "name": "Gabe",
-      "wins": 1,
+      "wins": 2,
       "losses": 0,
       "ties": 0,
       "moves": 3

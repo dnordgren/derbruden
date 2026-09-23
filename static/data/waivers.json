@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-22T17:32:07.012Z",
+  "updated": "2026-09-23T17:44:08.725Z",
   "order": [
     {
       "rank": 1,
@@ -11,7 +11,7 @@
       "wins": 2,
       "losses": 0,
       "ties": 0,
-      "moves": 0
+      "moves": 1
     },
     {
       "rank": 2,
@@ -25,26 +25,6 @@
     },
     {
       "rank": 3,
-      "teamId": 11,
-      "owner": "IK",
-      "name": "Thats My God",
-      "wins": 1,
-      "losses": 1,
-      "ties": 0,
-      "moves": 2
-    },
-    {
-      "rank": 4,
-      "teamId": 5,
-      "owner": "AR",
-      "name": "Give 'er The Beans ",
-      "wins": 1,
-      "losses": 1,
-      "ties": 0,
-      "moves": 0
-    },
-    {
-      "rank": 5,
       "teamId": 10,
       "owner": "ZS",
       "name": "Tomato Toes",
@@ -54,17 +34,7 @@
       "moves": 2
     },
     {
-      "rank": 6,
-      "teamId": 8,
-      "owner": "DN",
-      "name": "Washington Redskins",
-      "wins": 1,
-      "losses": 1,
-      "ties": 0,
-      "moves": 3
-    },
-    {
-      "rank": 7,
+      "rank": 4,
       "teamId": 7,
       "owner": "CR",
       "name": "Significant Figures",
@@ -74,6 +44,36 @@
       "moves": 1
     },
     {
+      "rank": 5,
+      "teamId": 11,
+      "owner": "IK",
+      "name": "Thats My God",
+      "wins": 1,
+      "losses": 1,
+      "ties": 0,
+      "moves": 3
+    },
+    {
+      "rank": 6,
+      "teamId": 5,
+      "owner": "AR",
+      "name": "Give 'er The Beans ",
+      "wins": 1,
+      "losses": 1,
+      "ties": 0,
+      "moves": 1
+    },
+    {
+      "rank": 7,
+      "teamId": 8,
+      "owner": "DN",
+      "name": "Washington Redskins",
+      "wins": 1,
+      "losses": 1,
+      "ties": 0,
+      "moves": 5
+    },
+    {
       "rank": 8,
       "teamId": 4,
       "owner": "AN",
@@ -81,7 +81,7 @@
       "wins": 0,
       "losses": 2,
       "ties": 0,
-      "moves": 3
+      "moves": 5
     },
     {
       "rank": 9,
@@ -91,7 +91,7 @@
       "wins": 1,
       "losses": 1,
       "ties": 0,
-      "moves": 5
+      "moves": 7
     },
     {
       "rank": 10,
@@ -101,10 +101,186 @@
       "wins": 2,
       "losses": 0,
       "ties": 0,
-      "moves": 3
+      "moves": 6
     }
   ],
   "moves": [
+    {
+      "id": "a6231f82-8e2e-46fd-8d17-2b5ce2cb4776",
+      "date": "2026-09-23T16:57:08.556Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Cincinnati Bengals D/ST"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "6bb74752-2959-45a9-8751-0c230ecc7e6a",
+      "date": "2026-09-23T13:14:27.116Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 9,
+      "owner": "JO",
+      "adds": [
+        "Darren Waller"
+      ],
+      "drops": [
+        "Makai Lemon"
+      ],
+      "bid": null
+    },
+    {
+      "id": "12a8f906-bafe-44a9-be50-9d0fe103172b",
+      "date": "2026-09-23T12:06:01.294Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 1,
+      "owner": "GM",
+      "adds": [
+        "Tank Bigsby"
+      ],
+      "drops": [
+        "Alec Pierce"
+      ],
+      "bid": null
+    },
+    {
+      "id": "b777d4cc-d669-4c46-86cd-6423ce10c448",
+      "date": "2026-09-23T07:34:37.173Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Carolina Panthers D/ST"
+      ],
+      "drops": [
+        "Los Angeles Chargers D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "25821642-3b29-4e29-8f23-93dfb2024c12",
+      "date": "2026-09-23T07:20:02.705Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 1,
+      "owner": "GM",
+      "adds": [
+        "Evan McPherson"
+      ],
+      "drops": [
+        "Chris Boswell"
+      ],
+      "bid": null
+    },
+    {
+      "id": "a4a92063-303c-4b42-9803-b484a98cd866",
+      "date": "2026-09-23T07:20:02.704Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Josh Downs"
+      ],
+      "drops": [
+        "MarShawn Lloyd"
+      ],
+      "bid": null
+    },
+    {
+      "id": "0c544136-9838-443a-a559-6d1419ee3273",
+      "date": "2026-09-23T07:20:02.703Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Minnesota Vikings D/ST"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "56c564d5-bbf0-49d5-91f2-0d4916367c50",
+      "date": "2026-09-23T07:20:02.703Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 1,
+      "owner": "GM",
+      "adds": [
+        "Jonah Coleman"
+      ],
+      "drops": [
+        "Tampa Bay Buccaneers D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "7e7514c6-5c22-41f4-a186-6a98f44b1176",
+      "date": "2026-09-23T07:20:02.686Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 5,
+      "owner": "AR",
+      "adds": [
+        "Bryce Young"
+      ],
+      "drops": [
+        "Kyler Murray"
+      ],
+      "bid": null
+    },
+    {
+      "id": "5a9f575f-f158-4a07-8911-9d5f71e26e70",
+      "date": "2026-09-23T07:20:02.686Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Denzel Boston"
+      ],
+      "drops": [
+        "Tyler Allgeier"
+      ],
+      "bid": null
+    },
+    {
+      "id": "3bcc73a5-a76d-4a3c-aef5-3ba03f108bd0",
+      "date": "2026-09-23T07:20:02.686Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Tyler Shough"
+      ],
+      "drops": [
+        "Devin Singletary"
+      ],
+      "bid": null
+    },
+    {
+      "id": "16511eca-09fb-438c-bdbe-3711b9d951f3",
+      "date": "2026-09-23T07:20:02.685Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 11,
+      "owner": "IK",
+      "adds": [
+        "Dalton Schultz"
+      ],
+      "drops": [
+        "Michael Mayer"
+      ],
+      "bid": null
+    },
     {
       "id": "e18a457e-5413-408b-a554-0cf9cf169db2",
       "date": "2026-09-20T19:48:40.088Z",

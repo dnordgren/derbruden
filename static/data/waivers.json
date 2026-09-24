@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-23T17:44:08.725Z",
+  "updated": "2026-09-24T17:45:34.592Z",
   "order": [
     {
       "rank": 1,
@@ -85,16 +85,6 @@
     },
     {
       "rank": 9,
-      "teamId": 2,
-      "owner": "DM",
-      "name": "Cracked Unc",
-      "wins": 1,
-      "losses": 1,
-      "ties": 0,
-      "moves": 7
-    },
-    {
-      "rank": 10,
       "teamId": 1,
       "owner": "GM",
       "name": "Gabe",
@@ -102,9 +92,32 @@
       "losses": 0,
       "ties": 0,
       "moves": 6
+    },
+    {
+      "rank": 10,
+      "teamId": 2,
+      "owner": "DM",
+      "name": "Cracked Unc",
+      "wins": 1,
+      "losses": 1,
+      "ties": 0,
+      "moves": 8
     }
   ],
   "moves": [
+    {
+      "id": "612e8f57-0088-4bd8-a0cf-a75e87d986ca",
+      "date": "2026-09-24T07:38:42.974Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Kyler Murray"
+      ],
+      "drops": [],
+      "bid": null
+    },
     {
       "id": "a6231f82-8e2e-46fd-8d17-2b5ce2cb4776",
       "date": "2026-09-23T16:57:08.556Z",

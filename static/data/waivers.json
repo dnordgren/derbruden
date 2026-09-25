@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-24T17:45:34.592Z",
+  "updated": "2026-09-25T17:47:21.002Z",
   "order": [
     {
       "rank": 1,
@@ -31,7 +31,7 @@
       "wins": 0,
       "losses": 2,
       "ties": 0,
-      "moves": 2
+      "moves": 3
     },
     {
       "rank": 4,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "25e814ac-a175-4437-b497-8e2680cc02b6",
+      "date": "2026-09-25T13:41:24.368Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Harrison Butker"
+      ],
+      "drops": [
+        "Cameron Dicker"
+      ],
+      "bid": null
+    },
     {
       "id": "612e8f57-0088-4bd8-a0cf-a75e87d986ca",
       "date": "2026-09-24T07:38:42.974Z",

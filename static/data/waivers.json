@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-25T17:47:21.002Z",
+  "updated": "2026-09-26T16:52:56.932Z",
   "order": [
     {
       "rank": 1,
@@ -81,7 +81,7 @@
       "wins": 0,
       "losses": 2,
       "ties": 0,
-      "moves": 5
+      "moves": 6
     },
     {
       "rank": 9,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "209b41f2-b392-491e-9714-66e873e1a537",
+      "date": "2026-09-26T00:28:03.856Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Chase McLaughlin"
+      ],
+      "drops": [
+        "Eddy Pineiro"
+      ],
+      "bid": null
+    },
     {
       "id": "25e814ac-a175-4437-b497-8e2680cc02b6",
       "date": "2026-09-25T13:41:24.368Z",

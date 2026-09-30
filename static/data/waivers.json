@@ -1,30 +1,10 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-29T18:28:20.155Z",
+  "updated": "2026-09-30T18:17:12.181Z",
   "order": [
     {
       "rank": 1,
-      "teamId": 9,
-      "owner": "JO",
-      "name": "Adam's Revenge",
-      "wins": 3,
-      "losses": 0,
-      "ties": 0,
-      "moves": 1
-    },
-    {
-      "rank": 2,
-      "teamId": 12,
-      "owner": "JH",
-      "name": "ORACLE AI",
-      "wins": 2,
-      "losses": 1,
-      "ties": 0,
-      "moves": 0
-    },
-    {
-      "rank": 3,
       "teamId": 10,
       "owner": "ZS",
       "name": "Tomato Toes",
@@ -34,57 +14,37 @@
       "moves": 3
     },
     {
-      "rank": 4,
-      "teamId": 7,
-      "owner": "CR",
-      "name": "Significant Figures",
-      "wins": 1,
-      "losses": 2,
-      "ties": 0,
-      "moves": 1
-    },
-    {
-      "rank": 5,
-      "teamId": 11,
-      "owner": "IK",
-      "name": "Thats My God",
-      "wins": 1,
-      "losses": 2,
-      "ties": 0,
-      "moves": 5
-    },
-    {
-      "rank": 6,
+      "rank": 2,
       "teamId": 5,
       "owner": "AR",
       "name": "Give 'er The Beans ",
       "wins": 2,
       "losses": 1,
       "ties": 0,
-      "moves": 1
+      "moves": 2
     },
     {
-      "rank": 7,
+      "rank": 3,
       "teamId": 8,
       "owner": "DN",
       "name": "Washington Redskins",
       "wins": 1,
       "losses": 2,
       "ties": 0,
-      "moves": 5
+      "moves": 7
     },
     {
-      "rank": 8,
+      "rank": 4,
       "teamId": 4,
       "owner": "AN",
       "name": "El Fusilado",
       "wins": 0,
       "losses": 3,
       "ties": 0,
-      "moves": 6
+      "moves": 7
     },
     {
-      "rank": 9,
+      "rank": 5,
       "teamId": 1,
       "owner": "GM",
       "name": "Gabe",
@@ -94,7 +54,7 @@
       "moves": 7
     },
     {
-      "rank": 10,
+      "rank": 6,
       "teamId": 2,
       "owner": "DM",
       "name": "Cracked Unc",
@@ -102,9 +62,193 @@
       "losses": 1,
       "ties": 0,
       "moves": 9
+    },
+    {
+      "rank": 7,
+      "teamId": 9,
+      "owner": "JO",
+      "name": "Adam's Revenge",
+      "wins": 3,
+      "losses": 0,
+      "ties": 0,
+      "moves": 2
+    },
+    {
+      "rank": 8,
+      "teamId": 7,
+      "owner": "CR",
+      "name": "Significant Figures",
+      "wins": 1,
+      "losses": 2,
+      "ties": 0,
+      "moves": 3
+    },
+    {
+      "rank": 9,
+      "teamId": 11,
+      "owner": "IK",
+      "name": "Thats My God",
+      "wins": 1,
+      "losses": 2,
+      "ties": 0,
+      "moves": 6
+    },
+    {
+      "rank": 10,
+      "teamId": 12,
+      "owner": "JH",
+      "name": "ORACLE AI",
+      "wins": 2,
+      "losses": 1,
+      "ties": 0,
+      "moves": 2
     }
   ],
   "moves": [
+    {
+      "id": "06f5a9ab-4624-4fef-b96d-aa373963ce79",
+      "date": "2026-09-30T17:53:27.878Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 5,
+      "owner": "AR",
+      "adds": [
+        "AJ Dillon"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "9199a8fe-835d-4a18-ab6e-d9c7d153ad9f",
+      "date": "2026-09-30T15:01:01.376Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Khalil Shakir"
+      ],
+      "drops": [
+        "Denzel Boston"
+      ],
+      "bid": null
+    },
+    {
+      "id": "8870cad1-ea02-4122-aa4d-235c788dbc85",
+      "date": "2026-09-30T15:01:00.880Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Green Bay Packers D/ST"
+      ],
+      "drops": [
+        "Carolina Panthers D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "5e8d15ce-1342-4ae5-bd3b-6e348a2b1a4f",
+      "date": "2026-09-30T11:36:17.783Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 7,
+      "owner": "CR",
+      "adds": [
+        "Buffalo Bills D/ST"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "94d4cd84-bf1b-4986-9295-ed5085b30323",
+      "date": "2026-09-30T11:07:03.361Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Kalif Raymond"
+      ],
+      "drops": [
+        "Pat Freiermuth"
+      ],
+      "bid": null
+    },
+    {
+      "id": "41016e06-1183-45c4-872a-2cb79eac9b67",
+      "date": "2026-09-30T07:00:10.988Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 12,
+      "owner": "JH",
+      "adds": [
+        "Sam Darnold"
+      ],
+      "drops": [
+        "Kaelon Black"
+      ],
+      "bid": null
+    },
+    {
+      "id": "3ef7cb77-f938-4a49-ba05-b2ad6dd9441f",
+      "date": "2026-09-30T07:00:10.987Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 11,
+      "owner": "IK",
+      "adds": [
+        "Spencer Shrader"
+      ],
+      "drops": [
+        "Jake Bates"
+      ],
+      "bid": null
+    },
+    {
+      "id": "5c9ed301-4f8f-4e04-89a9-5c12b82b831b",
+      "date": "2026-09-30T07:00:10.987Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 7,
+      "owner": "CR",
+      "adds": [
+        "Braelon Allen"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "3b935eec-94ff-4fe0-9082-af7b7e609565",
+      "date": "2026-09-30T07:00:10.986Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 9,
+      "owner": "JO",
+      "adds": [
+        "Ollie Gordon II"
+      ],
+      "drops": [
+        "Darren Waller"
+      ],
+      "bid": null
+    },
+    {
+      "id": "d691c317-6660-4fbc-b511-bc6fba553448",
+      "date": "2026-09-30T07:00:10.986Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 12,
+      "owner": "JH",
+      "adds": [
+        "Juwan Johnson"
+      ],
+      "drops": [
+        "Rashid Shaheed"
+      ],
+      "bid": null
+    },
     {
       "id": "b523c8aa-53a1-45eb-9f65-09bb6317b621",
       "date": "2026-09-27T16:36:13.251Z",

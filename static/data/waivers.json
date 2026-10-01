@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-30T18:17:12.181Z",
+  "updated": "2026-10-01T18:42:37.349Z",
   "order": [
     {
       "rank": 1,
@@ -91,7 +91,7 @@
       "wins": 1,
       "losses": 2,
       "ties": 0,
-      "moves": 6
+      "moves": 7
     },
     {
       "rank": 10,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "9cdd1a0c-0687-4a60-a905-44105e5aeedc",
+      "date": "2026-10-01T04:22:09.615Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 11,
+      "owner": "IK",
+      "adds": [
+        "Alvin Kamara"
+      ],
+      "drops": [
+        "Kansas City Chiefs D/ST"
+      ],
+      "bid": null
+    },
     {
       "id": "06f5a9ab-4624-4fef-b96d-aa373963ce79",
       "date": "2026-09-30T17:53:27.878Z",

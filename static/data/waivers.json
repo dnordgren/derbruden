@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-02T18:13:51.920Z",
+  "updated": "2026-10-03T17:00:04.424Z",
   "order": [
     {
       "rank": 1,
@@ -61,7 +61,7 @@
       "wins": 2,
       "losses": 1,
       "ties": 0,
-      "moves": 9
+      "moves": 10
     },
     {
       "rank": 7,
@@ -105,6 +105,19 @@
     }
   ],
   "moves": [
+    {
+      "id": "bb045322-bdb5-47af-85ee-ad3077dae325",
+      "date": "2026-10-02T19:08:43.228Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Kenyon Sadiq"
+      ],
+      "drops": [],
+      "bid": null
+    },
     {
       "id": "9cdd1a0c-0687-4a60-a905-44105e5aeedc",
       "date": "2026-10-01T04:22:09.615Z",

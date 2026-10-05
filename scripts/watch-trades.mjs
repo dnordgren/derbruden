@@ -157,24 +157,31 @@ export function mapTransaction(tx, teamNames, playerNames) {
     const playerId = item.playerId ?? item.player?.id
     const joined = [item.firstName, item.lastName].filter(Boolean).join(' ')
     let name
+    let asset
     if (!playerId && item.type === 'DRAFT_TRADE') {
-      name = item.overallPickNumber > 0 ? `Draft pick #${item.overallPickNumber}` : 'Draft pick'
+      const pick = item.overallPickNumber > 0 ? item.overallPickNumber : null
+      name = pick ? `Draft pick #${pick}` : 'Draft pick'
+      asset = { name, playerId: null, overallPickNumber: pick }
     } else if (!playerId) {
       continue
     } else {
       name = playerNames[playerId] || item.player?.fullName || joined || `Player ${playerId}`
+      asset = { name, playerId, overallPickNumber: null }
     }
 
     let from = item.fromTeamId
     if (from == null && item.type === 'DROP') from = item.teamId
-    if (from != null) pushPlayer(sides, from, name)
+    if (from != null) pushPlayer(sides, from, name, asset)
   }
 
   const teams = [...sides.entries()]
-    .map(([teamId, players]) => ({
+    .map(([teamId, side]) => ({
       teamId,
       name: teamNames[teamId] ?? `Team ${teamId}`,
-      gives: players
+      gives: side.names,
+      // Machine-readable terms for the trade grader. `gives` stays plain
+      // strings so the web page and Discord embeds render unchanged.
+      assets: side.assets
     }))
     .sort((a, b) => a.teamId - b.teamId)
 
@@ -186,10 +193,11 @@ export function mapTransaction(tx, teamNames, playerNames) {
   }
 }
 
-function pushPlayer(sides, teamId, player) {
-  const list = sides.get(teamId) ?? []
-  list.push(player)
-  sides.set(teamId, list)
+function pushPlayer(sides, teamId, player, asset) {
+  const side = sides.get(teamId) ?? { names: [], assets: [] }
+  side.names.push(player)
+  side.assets.push(asset)
+  sides.set(teamId, side)
 }
 
 export function buildEmbed(record) {

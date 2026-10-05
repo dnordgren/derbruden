@@ -131,6 +131,28 @@ No framework; shared page chunks are inlined at build time by
 - GitHub disables schedules after 60 days without commits; re-enable each
   offseason when the notice email arrives.
 
+## Trade grades
+
+- `make trade-grades` (`scripts/generate-trade-grades.mjs`) replays every
+  post-trade week with optimal lineups and ranks deals in
+  `src/trade-grades.html` + `static/data/trade-grades.json`. Same
+  `scripts/.env` `ESPN_S2` + `SWID` as the trade watcher; `--offline`
+  is not supported (roster history is too large to commit).
+- Method: each side's actual optimal starters versus a no-trade
+  counterfactual (received players out, given players back at actual
+  weekly scores). Rank by net points, show wins flipped. Window is every
+  decided week after execution, regular season and playoffs.
+- Draft picks credit weekly round values calibrated from 2024-2025
+  drafts (isotonic round means minus median replacement, over 17 weeks).
+- ESPN drops old transaction item detail, so only trades with surviving
+  terms grade (2024 on). The watcher persists `assets` (playerId,
+  overallPickNumber) in `trades.json` so future trades grade
+  automatically; pre-asset ledger entries resolve names via season
+  rosters. Raw weekly JSON caches under git-ignored
+  `scripts/.trade-cache/`; resolved names cache in committed
+  `scripts/trade-players.json`.
+- Tests: `node --test scripts/generate-trade-grades.test.mjs`.
+
 ## Draft history
 
 - `scripts/generate-drafts.js` fetches `view=mDraftDetail` per season

@@ -10,6 +10,9 @@ scripts/.env*
 # ESPN league JSON cache for owner viz generator
 scripts/.viz-cache/
 
+# ESPN transaction/roster cache for trade grades generator
+scripts/.trade-cache/
+
 # trade watcher runtime state
 /data/
 

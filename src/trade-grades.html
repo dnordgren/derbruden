@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DerBruden.com | Trade Grades</title>
+  <meta property="og:title" content="DerBruden.com | Trade Grades">
+  <meta property="og:description" content="Every graded trade in Der Bruden fantasy football history, replayed week by week with optimal lineups: who won, who lost, and by how much.">
+  <meta property="og:url" content="https://derbruden.com/trade-grades.html">
+  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DerBruden.com | Trade Grades">
+  <meta name="twitter:description" content="Trade grades for the Der Bruden fantasy football league: optimal-lineup replays of every deal.">
+  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
+  <!--#include file="partials/head-common.html" -->
+  <style>
+    .section-note {
+      color: var(--muted);
+      font-size: 0.9em;
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    .stats-table .detail {
+      color: var(--muted);
+      font-size: 0.95em;
+    }
+
+    .stats-table td.owner {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .stats-table .muted {
+      color: var(--muted);
+    }
+
+    .stats-table.pick-values {
+      min-width: 0;
+      max-width: 420px;
+    }
+
+    select {
+      font-size: 0.95em;
+      padding: 4px 8px;
+    }
+
+    .methodology {
+      margin-top: 30px;
+      font-size: 0.85em;
+      color: var(--muted);
+    }
+
+    .methodology code {
+      background: var(--code-bg, #f4f4f4);
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <!--#include file="partials/site-header.html" -->
+
+  <!--#include file="partials/nav.html" -->
+
+  <main id="main">
+    <div class="owner-logo-header">
+      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" class="owner-logo-image" width="100" height="100">
+      <h1>Trade Grades</h1>
+    </div>
+    <!-- TRADE_GRADES_START -->
+<h2>Ranked trades</h2>
+<p class="section-note">Net optimal points for the winning side, regular season and playoffs after the trade. Gained shows each side's points versus the no-trade world; wins flip counts head-to-head results that would change (for/against).</p>
+<p class="section-note"><label for="grades-season-select">Season: </label><select id="grades-season-select"><option value="all">All seasons</option><option value="2024">2024</option><option value="2025">2025</option><option value="2026">2026</option></select></p>
+<div id="grades-table-wrap">
+<div class="table-container" tabindex="0"><table class="stats-table">
+    <caption class="visually-hidden">Trade grades ranked by net optimal points</caption>
+    <thead>
+      <tr><th scope="col" class="number">#</th><th scope="col" class="number">Season</th><th scope="col">Date</th><th scope="col">Winner</th><th scope="col" class="number">Net pts</th><th scope="col" class="number">Gained</th><th scope="col" class="number">Wins flip</th><th scope="col" class="detail">Terms</th></tr>
+    </thead>
+    <tbody>
+<tr>
+        <td class="number">1</td>
+        <td class="number">2024</td>
+        <td>2024-09-11</td>
+        <td><strong><a href="./gm.html">GM</a></strong><br><span class="muted">beats DM</span></td>
+        <td class="number"><strong>+58.5</strong></td>
+        <td class="number">0<br><span class="muted">-58.5</span></td>
+        <td class="number">—<br><span class="muted">3F/0A</span></td>
+        <td class="detail"><strong>GM</strong> sends <em>nothing tracked</em><br><strong>DM</strong> sends Jaxon Smith-Njigba<br><span class="muted">Partial data: a moved player has no recorded score in some weeks.</span></td>
+      </tr>
+<tr>
+        <td class="number">2</td>
+        <td class="number">2024</td>
+        <td>2024-10-29</td>
+        <td><strong><a href="./dm.html">DM</a></strong><br><span class="muted">beats DN</span></td>
+        <td class="number"><strong>+49.6</strong></td>
+        <td class="number">+32.8<br><span class="muted">-16.8</span></td>
+        <td class="number">—<br><span class="muted">—</span></td>
+        <td class="detail"><strong>DM</strong> sends Tim Patrick<br><strong>DN</strong> sends Tyrone Tracy Jr.<br><span class="muted">Partial data: a moved player has no recorded score in some weeks.</span></td>
+      </tr>
+<tr>
+        <td class="number">3</td>
+        <td class="number">2026</td>
+        <td>2026-09-09</td>
+        <td><strong><a href="./an.html">AN</a></strong><br><span class="muted">beats IK</span></td>
+        <td class="number"><strong>+25.1</strong></td>
+        <td class="number">+14.1<br><span class="muted">-11</span></td>
+        <td class="number">—<br><span class="muted">—</span></td>
+        <td class="detail"><strong>AN</strong> sends Daniel Jones<br><strong>IK</strong> sends Jaylen Warren<br><span class="muted">Partial data: a moved player has no recorded score in some weeks.</span></td>
+      </tr>
+<tr>
+        <td class="number">4</td>
+        <td class="number">2026</td>
+        <td>2026-09-09</td>
+        <td><strong><a href="./dm.html">DM</a></strong><br><span class="muted">beats AN</span></td>
+        <td class="number"><strong>+9.3</strong></td>
+        <td class="number">+4.3<br><span class="muted">-5</span></td>
+        <td class="number">—<br><span class="muted">1F/0A</span></td>
+        <td class="detail"><strong>DM</strong> sends Tee Higgins<br><strong>AN</strong> sends Dalton Kincaid</td>
+      </tr>
+<tr>
+        <td class="number">5</td>
+        <td class="number">2026</td>
+        <td>2026-07-09</td>
+        <td><strong><a href="./an.html">AN</a></strong><br><span class="muted">beats IK</span></td>
+        <td class="number"><strong>+1.3</strong></td>
+        <td class="number">-2.3<br><span class="muted">-3.6</span></td>
+        <td class="number">—<br><span class="muted">—</span></td>
+        <td class="detail"><strong>AN</strong> sends Jason Myers<br><strong>IK</strong> sends Ka'imi Fairbairn, Pick #67 (R7)</td>
+      </tr>
+<tr>
+        <td class="number">6</td>
+        <td class="number">2026</td>
+        <td>2026-07-09</td>
+        <td><strong><a href="./dm.html">DM</a></strong><br><span class="muted">beats AN</span></td>
+        <td class="number"><strong>0</strong></td>
+        <td class="number">0<br><span class="muted">0</span></td>
+        <td class="number">—<br><span class="muted">—</span></td>
+        <td class="detail"><strong>DM</strong> sends Pick #41 (R5)<br><strong>AN</strong> sends Pick #117 (R12)</td>
+      </tr>
+<tr>
+        <td class="number">7</td>
+        <td class="number">2025</td>
+        <td>2025-10-28</td>
+        <td><strong><a href="./dm.html">DM</a></strong><br><span class="muted">beats CR</span></td>
+        <td class="number"><strong>0</strong></td>
+        <td class="number">0<br><span class="muted">0</span></td>
+        <td class="number">—<br><span class="muted">—</span></td>
+        <td class="detail"><strong>DM</strong> sends <em>nothing tracked</em><br><strong>CR</strong> sends Minnesota Vikings D/ST<br><span class="muted">Partial data: a moved player has no recorded score in some weeks.</span></td>
+      </tr>
+<tr>
+        <td class="number">8</td>
+        <td class="number">2024</td>
+        <td>2024-10-10</td>
+        <td><strong><a href="./gm.html">GM</a></strong><br><span class="muted">beats CR</span></td>
+        <td class="number"><strong>0</strong></td>
+        <td class="number">0<br><span class="muted">0</span></td>
+        <td class="number">—<br><span class="muted">—</span></td>
+        <td class="detail"><strong>GM</strong> sends <em>nothing tracked</em><br><strong>CR</strong> sends Justice Hill<br><span class="muted">Partial data: a moved player has no recorded score in some weeks.</span></td>
+      </tr>
+    </tbody>
+  </table></div>
+</div>
+<h2>Draft pick values</h2>
+<p class="section-note">A traded pick credits its new owner every graded week. Values come from 2024–2025 drafts: mean season points by round, smoothed so later rounds never outrank earlier ones, minus the median drafted player (replacement level), spread over a 17-week season.</p>
+<div class="table-container" tabindex="0"><table class="stats-table pick-values">
+    <caption class="visually-hidden">Draft pick values per week</caption>
+    <thead><tr><th scope="col" class="number">Pick round</th><th scope="col" class="number">Credit</th></tr></thead>
+    <tbody><tr><td class="number">Round 1</td><td class="number">3.8/wk</td></tr>
+<tr><td class="number">Round 2</td><td class="number">3.8/wk</td></tr>
+<tr><td class="number">Round 3</td><td class="number">1.7/wk</td></tr>
+<tr><td class="number">Round 4</td><td class="number">0.8/wk</td></tr>
+<tr><td class="number">Round 5</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 6</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 7</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 8</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 9</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 10</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 11</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 12</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 13</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 14</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 15</td><td class="number">0.0/wk</td></tr>
+<tr><td class="number">Round 16</td><td class="number">0.0/wk</td></tr></tbody>
+  </table></div>
+<script type="application/json" id="trade-grades-data">{"generated":"2026-10-05","leagueId":"794521","seasons":[2024,2025,2026],"scopeNote":"Optimal-lineup replay of graded trades, 2024 on. Window covers every decided week after execution, regular season and playoffs.","pickValues":{"perRound":{"1":3.8,"2":3.8,"3":1.7,"4":0.8,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0,"13":0,"14":0,"15":0,"16":0},"replacement":176.4,"rounds":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]},"playerNames":{"2473037":"Jason Myers","2971573":"Ka'imi Fairbairn","3134353":"Tim Patrick","3917792":"Daniel Jones","4038441":"Justice Hill","4239993":"Tee Higgins","4360516":"Tyrone Tracy Jr.","4385690":"Dalton Kincaid","4430878":"Jaxon Smith-Njigba","4569987":"Jaylen Warren","-16016":"Minnesota Vikings D/ST"},"trades":[{"id":"1185af4d-626a-4f57-880f-7f6639ce88dd","season":2024,"date":"2024-09-11T14:26:56.749Z","execWeek":2,"gradedWeeks":[3,4,5,6,7,8,9,10,11,12,13,14,15,16],"source":"espn","incomplete":true,"unresolved":[],"net":58.5,"sides":[{"teamId":1,"owner":"GM","gives":[],"receives":[],"gained":0,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Ice Box"},{"teamId":2,"owner":"DM","gives":[{"kind":"player","playerId":4430878,"fromTeamId":2,"toTeamId":null,"partial":true}],"receives":[{"kind":"player","playerId":4430878,"fromTeamId":2,"toTeamId":null,"partial":true,"unknownDestination":true}],"gained":-58.5,"pickCredit":0,"winsFlippedFor":3,"winsFlippedAgainst":0,"team":"Public Enemy #2"}]},{"id":"8c72c143-c587-4ca8-a8f9-85b5abe6ad88","season":2024,"date":"2024-10-29T02:29:15.777Z","execWeek":8,"gradedWeeks":[9,10,11,12,13,14,15,16],"source":"espn","incomplete":true,"unresolved":[],"net":49.6,"sides":[{"teamId":2,"owner":"DM","gives":[{"kind":"player","playerId":3134353,"fromTeamId":2,"toTeamId":8}],"receives":[{"kind":"player","playerId":4360516,"fromTeamId":8,"toTeamId":2}],"gained":32.8,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Public Enemy #2"},{"teamId":8,"owner":"DN","gives":[{"kind":"player","playerId":4360516,"fromTeamId":8,"toTeamId":2}],"receives":[{"kind":"player","playerId":3134353,"fromTeamId":2,"toTeamId":8}],"gained":-16.8,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Washington Redskins"}]},{"id":"e82f5fd9-e636-4d86-8bcd-1dcff8cae6cf","season":2026,"date":"2026-09-09T02:01:13.707Z","execWeek":0,"gradedWeeks":[1,2,3],"source":"ledger","incomplete":true,"unresolved":[],"net":25.1,"sides":[{"teamId":4,"owner":"AN","gives":[{"kind":"player","playerId":3917792,"name":"Daniel Jones","fromTeamId":4,"toTeamId":11}],"receives":[{"kind":"player","playerId":4569987,"name":"Jaylen Warren","fromTeamId":11,"toTeamId":4}],"gained":14.1,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"El Fusilado"},{"teamId":11,"owner":"IK","gives":[{"kind":"player","playerId":4569987,"name":"Jaylen Warren","fromTeamId":11,"toTeamId":4}],"receives":[{"kind":"player","playerId":3917792,"name":"Daniel Jones","fromTeamId":4,"toTeamId":11}],"gained":-11,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Thats My God"}]},{"id":"3fab3cbd-b8bc-4787-a1cb-8721e7deab00","season":2026,"date":"2026-09-09T01:59:55.592Z","execWeek":0,"gradedWeeks":[1,2,3],"source":"ledger","incomplete":false,"unresolved":[],"net":9.3,"sides":[{"teamId":2,"owner":"DM","gives":[{"kind":"player","playerId":4239993,"name":"Tee Higgins","fromTeamId":2,"toTeamId":4}],"receives":[{"kind":"player","playerId":4385690,"name":"Dalton Kincaid","fromTeamId":4,"toTeamId":2}],"gained":4.3,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Cracked Unc"},{"teamId":4,"owner":"AN","gives":[{"kind":"player","playerId":4385690,"name":"Dalton Kincaid","fromTeamId":4,"toTeamId":2}],"receives":[{"kind":"player","playerId":4239993,"name":"Tee Higgins","fromTeamId":2,"toTeamId":4}],"gained":-5,"pickCredit":0,"winsFlippedFor":1,"winsFlippedAgainst":0,"team":"El Fusilado"}]},{"id":"b4f8f7af-cb66-4b32-95d0-7040cf565023","season":2026,"date":"2026-07-09T17:12:11.690Z","execWeek":0,"gradedWeeks":[1,2,3],"source":"ledger","incomplete":false,"unresolved":[],"net":1.3,"sides":[{"teamId":4,"owner":"AN","gives":[{"kind":"player","playerId":2473037,"name":"Jason Myers","fromTeamId":4,"toTeamId":11}],"receives":[{"kind":"player","playerId":2971573,"name":"Ka'imi Fairbairn","fromTeamId":11,"toTeamId":4},{"kind":"pick","overallPickNumber":67,"name":"Draft pick #67","fromTeamId":11,"toTeamId":4}],"gained":-2.3,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"El Fusilado"},{"teamId":11,"owner":"IK","gives":[{"kind":"player","playerId":2971573,"name":"Ka'imi Fairbairn","fromTeamId":11,"toTeamId":4},{"kind":"pick","overallPickNumber":67,"name":"Draft pick #67","fromTeamId":11,"toTeamId":4}],"receives":[{"kind":"player","playerId":2473037,"name":"Jason Myers","fromTeamId":4,"toTeamId":11}],"gained":-3.6,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Thats My God"}]},{"id":"ea2ba579-4807-403f-801c-338e0bf1f336","season":2026,"date":"2026-07-09T17:10:32.653Z","execWeek":0,"gradedWeeks":[1,2,3],"source":"ledger","incomplete":false,"unresolved":[],"net":0,"sides":[{"teamId":2,"owner":"DM","gives":[{"kind":"pick","overallPickNumber":41,"name":"Draft pick #41","fromTeamId":2,"toTeamId":4}],"receives":[{"kind":"pick","overallPickNumber":117,"name":"Draft pick #117","fromTeamId":4,"toTeamId":2}],"gained":0,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Girthquake"},{"teamId":4,"owner":"AN","gives":[{"kind":"pick","overallPickNumber":117,"name":"Draft pick #117","fromTeamId":4,"toTeamId":2}],"receives":[{"kind":"pick","overallPickNumber":41,"name":"Draft pick #41","fromTeamId":2,"toTeamId":4}],"gained":0,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"El Fusilado"}]},{"id":"64b3fa56-7c4c-466c-8720-15197772cf5b","season":2025,"date":"2025-10-28T18:51:26.845Z","execWeek":9,"gradedWeeks":[10,11,12,13,14,15,16],"source":"espn","incomplete":true,"unresolved":[],"net":0,"sides":[{"teamId":2,"owner":"DM","gives":[],"receives":[],"gained":0,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Feel It In My Plums"},{"teamId":7,"owner":"CR","gives":[{"kind":"player","playerId":-16016,"fromTeamId":7,"toTeamId":null,"partial":true}],"receives":[{"kind":"player","playerId":-16016,"fromTeamId":7,"toTeamId":null,"partial":true,"unknownDestination":true}],"gained":0,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Significant Figures"}]},{"id":"4483892c-f185-4fed-99bd-2f277c870d5f","season":2024,"date":"2024-10-10T00:57:47.414Z","execWeek":6,"gradedWeeks":[7,8,9,10,11,12,13,14,15,16],"source":"espn","incomplete":true,"unresolved":[],"net":0,"sides":[{"teamId":1,"owner":"GM","gives":[],"receives":[],"gained":0,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Ice Box"},{"teamId":7,"owner":"CR","gives":[{"kind":"player","playerId":4038441,"fromTeamId":7,"toTeamId":null,"partial":true}],"receives":[{"kind":"player","playerId":4038441,"fromTeamId":7,"toTeamId":null,"partial":true,"unknownDestination":true}],"gained":0,"pickCredit":0,"winsFlippedFor":0,"winsFlippedAgainst":0,"team":"Unburdened By What Has Been"}]}]}</script>
+<script>
+;(function () {
+  const data = JSON.parse(document.getElementById('trade-grades-data').textContent)
+  const select = document.getElementById('grades-season-select')
+  const wrap = document.getElementById('grades-table-wrap')
+  const names = data.playerNames
+  const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  const fmtN = n => { const r = Math.round(n * 10) / 10; return (r > 0 ? '+' : '') + (Number.isInteger(r) ? String(r) : r.toFixed(1)) }
+  select.addEventListener('change', () => {
+    const v = select.value
+    const rows = data.trades.filter(t => v === 'all' || String(t.season) === v)
+    if (!rows.length) { wrap.innerHTML = '<p class="section-note">No graded trades for this season.</p>'; return }
+    wrap.innerHTML = '<div class="table-container" tabindex="0"><table class="stats-table"><caption class="visually-hidden">Trade grades</caption><thead><tr><th scope="col" class="number">#</th><th scope="col" class="number">Season</th><th scope="col">Date</th><th scope="col">Winner</th><th scope="col" class="number">Net pts</th><th scope="col" class="number">Gained</th><th scope="col" class="number">Wins flip</th><th scope="col" class="detail">Terms</th></tr></thead><tbody>' +
+      rows.map((t, i) => {
+        const a = t.sides[0], b = t.sides[1]
+        const net = Math.round((a.gained - (b ? b.gained : 0)) * 10) / 10
+        const winner = !b || a.gained >= b.gained ? a : b
+        const loser = !b || a.gained >= b.gained ? b : a
+        const flip = s => (s.winsFlippedFor || s.winsFlippedAgainst) ? (s.winsFlippedFor + 'F/' + s.winsFlippedAgainst + 'A') : '—'
+        const label = g => g.kind === 'pick' ? 'Pick #' + g.overallPickNumber + ' (R' + Math.ceil(g.overallPickNumber / 10) + ')' : esc(names[g.playerId] || g.name || ('Player ' + g.playerId))
+        const detail = t.sides.map(s => '<strong>' + esc(s.owner) + '</strong> sends ' + (s.gives.length ? s.gives.map(label).join(', ') : '<em>nothing tracked</em>')).join('<br>')
+        return '<tr><td class="number">' + (i + 1) + '</td><td class="number">' + t.season + '</td><td>' + esc((t.date || '').slice(0, 10)) + '</td><td><strong>' + esc(winner.owner) + '</strong><br><span class="muted">beats ' + (loser ? esc(loser.owner) : '—') + '</span></td><td class="number"><strong>' + fmtN(net) + '</strong></td><td class="number">' + fmtN(a.gained) + (b ? '<br><span class="muted">' + fmtN(b.gained) + '</span>' : '') + '</td><td class="number">' + flip(a) + (b ? '<br><span class="muted">' + flip(b) + '</span>' : '') + '</td><td class="detail">' + detail + '</td></tr>'
+      }).join('') + '</tbody></table></div>'
+  })
+})()
+</script>
+<!-- TRADE_GRADES_END -->
+    <details class="methodology">
+      <summary>How these grades work</summary>
+      <p><strong>Window:</strong> every decided week after the trade executes, regular season and playoffs. Preseason deals grade from week 1.</p>
+      <p><strong>Points:</strong> each week, each side's actual roster is scored with its optimal lineup (best starters at QB, 2 RB, 2 WR, TE, FLEX, D/ST, K). The counterfactual swaps the deal back: received players leave, given players return at their actual weekly scores. Gained is actual minus counterfactual, summed over the window.</p>
+      <p><strong>Wins flip:</strong> the official head-to-head result stands unless swapping actual for counterfactual team points changes it. Manager start/sit skill is held constant; only the trade effect moves.</p>
+      <p><strong>Picks:</strong> a traded draft pick credits its new owner every graded week at the round value above.</p>
+      <p><strong>Limits:</strong> ESPN drops old transaction detail, so only trades with surviving terms grade. Regenerate with <code>make trade-grades</code>.</p>
+    </details>
+  </main>
+
+  <!--#include file="partials/footer.html" -->
+</body>
+
+</html>

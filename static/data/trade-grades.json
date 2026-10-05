@@ -1,0 +1,624 @@
+{
+  "generated": "2026-10-05",
+  "leagueId": "794521",
+  "seasons": [
+    2024,
+    2025,
+    2026
+  ],
+  "scopeNote": "Optimal-lineup replay of graded trades, 2024 on. Window covers every decided week after execution, regular season and playoffs.",
+  "pickValues": {
+    "perRound": {
+      "1": 3.8,
+      "2": 3.8,
+      "3": 1.7,
+      "4": 0.8,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0
+    },
+    "replacement": 176.4,
+    "rounds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16
+    ]
+  },
+  "playerNames": {
+    "2473037": "Jason Myers",
+    "2971573": "Ka'imi Fairbairn",
+    "3134353": "Tim Patrick",
+    "3917792": "Daniel Jones",
+    "4038441": "Justice Hill",
+    "4239993": "Tee Higgins",
+    "4360516": "Tyrone Tracy Jr.",
+    "4385690": "Dalton Kincaid",
+    "4430878": "Jaxon Smith-Njigba",
+    "4569987": "Jaylen Warren",
+    "-16016": "Minnesota Vikings D/ST"
+  },
+  "trades": [
+    {
+      "id": "1185af4d-626a-4f57-880f-7f6639ce88dd",
+      "season": 2024,
+      "date": "2024-09-11T14:26:56.749Z",
+      "execWeek": 2,
+      "gradedWeeks": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "source": "espn",
+      "incomplete": true,
+      "unresolved": [],
+      "net": 58.5,
+      "sides": [
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "gives": [],
+          "receives": [],
+          "gained": 0,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Ice Box"
+        },
+        {
+          "teamId": 2,
+          "owner": "DM",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 4430878,
+              "fromTeamId": 2,
+              "toTeamId": null,
+              "partial": true
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 4430878,
+              "fromTeamId": 2,
+              "toTeamId": null,
+              "partial": true,
+              "unknownDestination": true
+            }
+          ],
+          "gained": -58.5,
+          "pickCredit": 0,
+          "winsFlippedFor": 3,
+          "winsFlippedAgainst": 0,
+          "team": "Public Enemy #2"
+        }
+      ]
+    },
+    {
+      "id": "8c72c143-c587-4ca8-a8f9-85b5abe6ad88",
+      "season": 2024,
+      "date": "2024-10-29T02:29:15.777Z",
+      "execWeek": 8,
+      "gradedWeeks": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "source": "espn",
+      "incomplete": true,
+      "unresolved": [],
+      "net": 49.6,
+      "sides": [
+        {
+          "teamId": 2,
+          "owner": "DM",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 3134353,
+              "fromTeamId": 2,
+              "toTeamId": 8
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 4360516,
+              "fromTeamId": 8,
+              "toTeamId": 2
+            }
+          ],
+          "gained": 32.8,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Public Enemy #2"
+        },
+        {
+          "teamId": 8,
+          "owner": "DN",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 4360516,
+              "fromTeamId": 8,
+              "toTeamId": 2
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 3134353,
+              "fromTeamId": 2,
+              "toTeamId": 8
+            }
+          ],
+          "gained": -16.8,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Washington Redskins"
+        }
+      ]
+    },
+    {
+      "id": "e82f5fd9-e636-4d86-8bcd-1dcff8cae6cf",
+      "season": 2026,
+      "date": "2026-09-09T02:01:13.707Z",
+      "execWeek": 0,
+      "gradedWeeks": [
+        1,
+        2,
+        3
+      ],
+      "source": "ledger",
+      "incomplete": true,
+      "unresolved": [],
+      "net": 25.1,
+      "sides": [
+        {
+          "teamId": 4,
+          "owner": "AN",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 3917792,
+              "name": "Daniel Jones",
+              "fromTeamId": 4,
+              "toTeamId": 11
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 4569987,
+              "name": "Jaylen Warren",
+              "fromTeamId": 11,
+              "toTeamId": 4
+            }
+          ],
+          "gained": 14.1,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "El Fusilado"
+        },
+        {
+          "teamId": 11,
+          "owner": "IK",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 4569987,
+              "name": "Jaylen Warren",
+              "fromTeamId": 11,
+              "toTeamId": 4
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 3917792,
+              "name": "Daniel Jones",
+              "fromTeamId": 4,
+              "toTeamId": 11
+            }
+          ],
+          "gained": -11,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Thats My God"
+        }
+      ]
+    },
+    {
+      "id": "3fab3cbd-b8bc-4787-a1cb-8721e7deab00",
+      "season": 2026,
+      "date": "2026-09-09T01:59:55.592Z",
+      "execWeek": 0,
+      "gradedWeeks": [
+        1,
+        2,
+        3
+      ],
+      "source": "ledger",
+      "incomplete": false,
+      "unresolved": [],
+      "net": 9.3,
+      "sides": [
+        {
+          "teamId": 2,
+          "owner": "DM",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 4239993,
+              "name": "Tee Higgins",
+              "fromTeamId": 2,
+              "toTeamId": 4
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 4385690,
+              "name": "Dalton Kincaid",
+              "fromTeamId": 4,
+              "toTeamId": 2
+            }
+          ],
+          "gained": 4.3,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Cracked Unc"
+        },
+        {
+          "teamId": 4,
+          "owner": "AN",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 4385690,
+              "name": "Dalton Kincaid",
+              "fromTeamId": 4,
+              "toTeamId": 2
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 4239993,
+              "name": "Tee Higgins",
+              "fromTeamId": 2,
+              "toTeamId": 4
+            }
+          ],
+          "gained": -5,
+          "pickCredit": 0,
+          "winsFlippedFor": 1,
+          "winsFlippedAgainst": 0,
+          "team": "El Fusilado"
+        }
+      ]
+    },
+    {
+      "id": "b4f8f7af-cb66-4b32-95d0-7040cf565023",
+      "season": 2026,
+      "date": "2026-07-09T17:12:11.690Z",
+      "execWeek": 0,
+      "gradedWeeks": [
+        1,
+        2,
+        3
+      ],
+      "source": "ledger",
+      "incomplete": false,
+      "unresolved": [],
+      "net": 1.3,
+      "sides": [
+        {
+          "teamId": 4,
+          "owner": "AN",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 2473037,
+              "name": "Jason Myers",
+              "fromTeamId": 4,
+              "toTeamId": 11
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 2971573,
+              "name": "Ka'imi Fairbairn",
+              "fromTeamId": 11,
+              "toTeamId": 4
+            },
+            {
+              "kind": "pick",
+              "overallPickNumber": 67,
+              "name": "Draft pick #67",
+              "fromTeamId": 11,
+              "toTeamId": 4
+            }
+          ],
+          "gained": -2.3,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "El Fusilado"
+        },
+        {
+          "teamId": 11,
+          "owner": "IK",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 2971573,
+              "name": "Ka'imi Fairbairn",
+              "fromTeamId": 11,
+              "toTeamId": 4
+            },
+            {
+              "kind": "pick",
+              "overallPickNumber": 67,
+              "name": "Draft pick #67",
+              "fromTeamId": 11,
+              "toTeamId": 4
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 2473037,
+              "name": "Jason Myers",
+              "fromTeamId": 4,
+              "toTeamId": 11
+            }
+          ],
+          "gained": -3.6,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Thats My God"
+        }
+      ]
+    },
+    {
+      "id": "ea2ba579-4807-403f-801c-338e0bf1f336",
+      "season": 2026,
+      "date": "2026-07-09T17:10:32.653Z",
+      "execWeek": 0,
+      "gradedWeeks": [
+        1,
+        2,
+        3
+      ],
+      "source": "ledger",
+      "incomplete": false,
+      "unresolved": [],
+      "net": 0,
+      "sides": [
+        {
+          "teamId": 2,
+          "owner": "DM",
+          "gives": [
+            {
+              "kind": "pick",
+              "overallPickNumber": 41,
+              "name": "Draft pick #41",
+              "fromTeamId": 2,
+              "toTeamId": 4
+            }
+          ],
+          "receives": [
+            {
+              "kind": "pick",
+              "overallPickNumber": 117,
+              "name": "Draft pick #117",
+              "fromTeamId": 4,
+              "toTeamId": 2
+            }
+          ],
+          "gained": 0,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Girthquake"
+        },
+        {
+          "teamId": 4,
+          "owner": "AN",
+          "gives": [
+            {
+              "kind": "pick",
+              "overallPickNumber": 117,
+              "name": "Draft pick #117",
+              "fromTeamId": 4,
+              "toTeamId": 2
+            }
+          ],
+          "receives": [
+            {
+              "kind": "pick",
+              "overallPickNumber": 41,
+              "name": "Draft pick #41",
+              "fromTeamId": 2,
+              "toTeamId": 4
+            }
+          ],
+          "gained": 0,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "El Fusilado"
+        }
+      ]
+    },
+    {
+      "id": "64b3fa56-7c4c-466c-8720-15197772cf5b",
+      "season": 2025,
+      "date": "2025-10-28T18:51:26.845Z",
+      "execWeek": 9,
+      "gradedWeeks": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "source": "espn",
+      "incomplete": true,
+      "unresolved": [],
+      "net": 0,
+      "sides": [
+        {
+          "teamId": 2,
+          "owner": "DM",
+          "gives": [],
+          "receives": [],
+          "gained": 0,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Feel It In My Plums"
+        },
+        {
+          "teamId": 7,
+          "owner": "CR",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": -16016,
+              "fromTeamId": 7,
+              "toTeamId": null,
+              "partial": true
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": -16016,
+              "fromTeamId": 7,
+              "toTeamId": null,
+              "partial": true,
+              "unknownDestination": true
+            }
+          ],
+          "gained": 0,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Significant Figures"
+        }
+      ]
+    },
+    {
+      "id": "4483892c-f185-4fed-99bd-2f277c870d5f",
+      "season": 2024,
+      "date": "2024-10-10T00:57:47.414Z",
+      "execWeek": 6,
+      "gradedWeeks": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "source": "espn",
+      "incomplete": true,
+      "unresolved": [],
+      "net": 0,
+      "sides": [
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "gives": [],
+          "receives": [],
+          "gained": 0,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Ice Box"
+        },
+        {
+          "teamId": 7,
+          "owner": "CR",
+          "gives": [
+            {
+              "kind": "player",
+              "playerId": 4038441,
+              "fromTeamId": 7,
+              "toTeamId": null,
+              "partial": true
+            }
+          ],
+          "receives": [
+            {
+              "kind": "player",
+              "playerId": 4038441,
+              "fromTeamId": 7,
+              "toTeamId": null,
+              "partial": true,
+              "unknownDestination": true
+            }
+          ],
+          "gained": 0,
+          "pickCredit": 0,
+          "winsFlippedFor": 0,
+          "winsFlippedAgainst": 0,
+          "team": "Unburdened By What Has Been"
+        }
+      ]
+    }
+  ]
+}

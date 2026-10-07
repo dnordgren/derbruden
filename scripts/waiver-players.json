@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-10-06T18:48:24.129Z",
+  "updated": "2026-10-07T19:13:16.980Z",
   "players": {
     "2026:3052587": "Baker Mayfield",
     "2026:4383429": "Jacob Saylors",
@@ -66,6 +66,12 @@
     "2026:4032473": "Rashid Shaheed",
     "2026:3054850": "Alvin Kamara",
     "2026:5083315": "Kenyon Sadiq",
-    "2026:4429835": "George Holani"
+    "2026:4429835": "George Holani",
+    "2026:-16011": "Indianapolis Colts D/ST",
+    "2026:4635008": "Keon Coleman",
+    "2026:3116385": "Joe Mixon",
+    "2026:3116164": "Mike Gesicki",
+    "2026:4036133": "T.J. Hockenson",
+    "2026:4912274": "Sione Vaki"
   }
 }

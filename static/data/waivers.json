@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-07T19:13:16.980Z",
+  "updated": "2026-10-08T19:09:38.541Z",
   "order": [
     {
       "rank": 1,
@@ -51,7 +51,7 @@
       "wins": 1,
       "losses": 3,
       "ties": 0,
-      "moves": 3
+      "moves": 4
     },
     {
       "rank": 6,
@@ -71,7 +71,7 @@
       "wins": 3,
       "losses": 1,
       "ties": 0,
-      "moves": 3
+      "moves": 4
     },
     {
       "rank": 8,
@@ -105,6 +105,34 @@
     }
   ],
   "moves": [
+    {
+      "id": "983bb70d-94a0-42b0-b24d-5ff75d61ade7",
+      "date": "2026-10-08T12:25:00.825Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 5,
+      "owner": "AR",
+      "adds": [
+        "Will Shipley"
+      ],
+      "drops": [
+        "Joe Mixon"
+      ],
+      "bid": null
+    },
+    {
+      "id": "c9681d0c-6f7a-47c1-aec1-90dca3135fbd",
+      "date": "2026-10-08T00:17:13.909Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 7,
+      "owner": "CR",
+      "adds": [
+        "Jacksonville Jaguars D/ST"
+      ],
+      "drops": [],
+      "bid": null
+    },
     {
       "id": "83d30806-8406-47bf-ad76-c1910091206c",
       "date": "2026-10-07T15:01:00.315Z",

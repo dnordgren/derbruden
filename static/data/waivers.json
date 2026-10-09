@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-08T19:09:38.541Z",
+  "updated": "2026-10-09T18:40:05.732Z",
   "order": [
     {
       "rank": 1,
@@ -61,7 +61,7 @@
       "wins": 2,
       "losses": 2,
       "ties": 0,
-      "moves": 2
+      "moves": 3
     },
     {
       "rank": 7,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "7c35c78f-226b-46d8-b0d0-c6d894307f84",
+      "date": "2026-10-09T00:51:22.515Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 12,
+      "owner": "JH",
+      "adds": [
+        "Matt Gay"
+      ],
+      "drops": [
+        "Kyle Pitts Sr."
+      ],
+      "bid": null
+    },
     {
       "id": "983bb70d-94a0-42b0-b24d-5ff75d61ade7",
       "date": "2026-10-08T12:25:00.825Z",

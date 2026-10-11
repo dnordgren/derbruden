@@ -36,6 +36,10 @@ export const SITSTART_END = '<!-- SITSTART_END -->'
 // Two scores that differ only by float dust or sub-cent display rounding
 // count as a perfect week.
 export const PERFECT_EPS = 0.005
+// Former owners removed from sit/start tables (kicked out of the league).
+// Filtered in both aggregate functions so season rows, ranks, and career
+// all stay consistent. Add future removals here.
+export const EXCLUDED_OWNERS = new Set(['SHEN'])
 
 export function defaultSeason() {
   const now = new Date()
@@ -265,6 +269,7 @@ export function aggregateSeason(ownerWeekRows) {
   // ownerWeekRows: [{ owner, team, teamId, week, actual, optimal, perfect }]
   const byOwner = new Map()
   for (const r of ownerWeekRows) {
+    if (EXCLUDED_OWNERS.has(r.owner)) continue
     if (!byOwner.has(r.owner)) {
       byOwner.set(r.owner, {
         owner: r.owner,
@@ -300,6 +305,7 @@ export function aggregateCareer(perSeasonRows) {
   const byOwner = new Map()
   for (const [season, rows] of Object.entries(perSeasonRows)) {
     for (const r of rows) {
+      if (EXCLUDED_OWNERS.has(r.owner)) continue
       if (!byOwner.has(r.owner)) {
         byOwner.set(r.owner, {
           owner: r.owner,

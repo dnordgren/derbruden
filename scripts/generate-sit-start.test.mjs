@@ -5,6 +5,7 @@ import {
   aggregateCareer,
   aggregateSeason,
   efficiencyOf,
+  EXCLUDED_OWNERS,
   optimalLineup,
   rosterWeek,
   scoreTeamWeek,
@@ -185,4 +186,20 @@ test('aggregateCareer weights by totals, not by averaging efficiencies', () => {
 test('STARTER_SLOTS covers the nine starting positions', () => {
   for (const s of [0, 2, 4, 6, 16, 17, 23]) assert.ok(STARTER_SLOTS.has(s))
   assert.ok(!STARTER_SLOTS.has(20) && !STARTER_SLOTS.has(21))
+})
+
+test('excluded owners never appear in season or career aggregates', () => {
+  assert.ok(EXCLUDED_OWNERS.has('SHEN'))
+  const weekRows = [
+    { owner: 'SHEN', team: 'GuiceBox', teamId: 6, week: 1, actual: 100, optimal: 110, perfect: false },
+    { owner: 'DN', team: 'T', teamId: 8, week: 1, actual: 90, optimal: 100, perfect: false },
+  ]
+  const season = aggregateSeason(weekRows)
+  assert.ok(!season.some(r => r.owner === 'SHEN'))
+  assert.deepEqual(
+    season.map(r => r.owner),
+    ['DN']
+  )
+  const career = aggregateCareer({ 2018: season })
+  assert.ok(!career.some(r => r.owner === 'SHEN'))
 })

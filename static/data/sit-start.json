@@ -56,18 +56,6 @@
           "rank": 3
         },
         {
-          "owner": "SHEN",
-          "team": "Team GuiceBox",
-          "teamId": 6,
-          "weeks": 13,
-          "actual": 1477,
-          "optimal": 1644.8,
-          "perfectWeeks": 1,
-          "efficiency": 0.898,
-          "perfectPct": 0.077,
-          "rank": 4
-        },
-        {
           "owner": "CR",
           "team": "U.S. Space Force",
           "teamId": 7,
@@ -77,7 +65,7 @@
           "perfectWeeks": 1,
           "efficiency": 0.891,
           "perfectPct": 0.077,
-          "rank": 5
+          "rank": 4
         },
         {
           "owner": "DN",
@@ -89,7 +77,7 @@
           "perfectWeeks": 1,
           "efficiency": 0.886,
           "perfectPct": 0.077,
-          "rank": 6
+          "rank": 5
         },
         {
           "owner": "AR",
@@ -101,7 +89,7 @@
           "perfectWeeks": 0,
           "efficiency": 0.862,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 6
         },
         {
           "owner": "DM",
@@ -113,7 +101,7 @@
           "perfectWeeks": 0,
           "efficiency": 0.855,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 7
         },
         {
           "owner": "ZS",
@@ -125,7 +113,7 @@
           "perfectWeeks": 1,
           "efficiency": 0.854,
           "perfectPct": 0.077,
-          "rank": 9
+          "rank": 8
         },
         {
           "owner": "AN",
@@ -137,7 +125,7 @@
           "perfectWeeks": 0,
           "efficiency": 0.849,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 9
         }
       ]
     },
@@ -1165,7 +1153,7 @@
           "perfectWeeks": 1,
           "efficiency": 0.886,
           "perfectPct": 0.077,
-          "rank": 6
+          "rank": 5
         },
         "2019": {
           "owner": "DN",
@@ -1279,7 +1267,7 @@
           "perfectWeeks": 0,
           "efficiency": 0.862,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 6
         },
         "2019": {
           "owner": "AR",
@@ -1495,7 +1483,7 @@
           "perfectWeeks": 1,
           "efficiency": 0.854,
           "perfectPct": 0.077,
-          "rank": 9
+          "rank": 8
         },
         "2019": {
           "owner": "ZS",
@@ -1837,7 +1825,7 @@
           "perfectWeeks": 0,
           "efficiency": 0.849,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 9
         },
         "2019": {
           "owner": "AN",
@@ -1951,7 +1939,7 @@
           "perfectWeeks": 1,
           "efficiency": 0.891,
           "perfectPct": 0.077,
-          "rank": 5
+          "rank": 4
         },
         "2019": {
           "owner": "CR",
@@ -2179,7 +2167,7 @@
           "perfectWeeks": 0,
           "efficiency": 0.855,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 7
         },
         "2019": {
           "owner": "DM",
@@ -2278,40 +2266,9 @@
           "rank": 10
         }
       }
-    },
-    "SHEN": {
-      "owner": "SHEN",
-      "page": null,
-      "seasons": {
-        "2018": {
-          "owner": "SHEN",
-          "team": "Team GuiceBox",
-          "teamId": 6,
-          "weeks": 13,
-          "actual": 1477,
-          "optimal": 1644.8,
-          "perfectWeeks": 1,
-          "efficiency": 0.898,
-          "perfectPct": 0.077,
-          "rank": 4
-        }
-      }
     }
   },
   "career": [
-    {
-      "owner": "SHEN",
-      "team": "Team GuiceBox",
-      "teamId": 6,
-      "seasons": 1,
-      "weeks": 13,
-      "actual": 1477,
-      "optimal": 1644.8,
-      "perfectWeeks": 1,
-      "efficiency": 0.898,
-      "perfectPct": 0.077,
-      "rank": 1
-    },
     {
       "owner": "JH",
       "team": "ORACLE AI",
@@ -2323,7 +2280,7 @@
       "perfectWeeks": 7,
       "efficiency": 0.887,
       "perfectPct": 0.072,
-      "rank": 2
+      "rank": 1
     },
     {
       "owner": "CR",
@@ -2336,7 +2293,7 @@
       "perfectWeeks": 6,
       "efficiency": 0.885,
       "perfectPct": 0.055,
-      "rank": 3
+      "rank": 2
     },
     {
       "owner": "JO",
@@ -2349,7 +2306,7 @@
       "perfectWeeks": 9,
       "efficiency": 0.875,
       "perfectPct": 0.082,
-      "rank": 4
+      "rank": 3
     },
     {
       "owner": "AN",
@@ -2362,7 +2319,7 @@
       "perfectWeeks": 8,
       "efficiency": 0.874,
       "perfectPct": 0.073,
-      "rank": 5
+      "rank": 4
     },
     {
       "owner": "GM",
@@ -2375,7 +2332,7 @@
       "perfectWeeks": 3,
       "efficiency": 0.871,
       "perfectPct": 0.027,
-      "rank": 6
+      "rank": 5
     },
     {
       "owner": "IK",
@@ -2388,7 +2345,7 @@
       "perfectWeeks": 7,
       "efficiency": 0.869,
       "perfectPct": 0.064,
-      "rank": 7
+      "rank": 6
     },
     {
       "owner": "AR",
@@ -2401,7 +2358,7 @@
       "perfectWeeks": 6,
       "efficiency": 0.868,
       "perfectPct": 0.055,
-      "rank": 8
+      "rank": 7
     },
     {
       "owner": "DN",
@@ -2414,7 +2371,7 @@
       "perfectWeeks": 4,
       "efficiency": 0.858,
       "perfectPct": 0.036,
-      "rank": 9
+      "rank": 8
     },
     {
       "owner": "DM",
@@ -2427,7 +2384,7 @@
       "perfectWeeks": 4,
       "efficiency": 0.853,
       "perfectPct": 0.036,
-      "rank": 10
+      "rank": 9
     },
     {
       "owner": "ZS",
@@ -2440,7 +2397,7 @@
       "perfectWeeks": 8,
       "efficiency": 0.853,
       "perfectPct": 0.073,
-      "rank": 11
+      "rank": 10
     }
   ]
 }

@@ -247,6 +247,28 @@
         .on('mouseleave', hideTip)
     })
     if (legend) {
+      var chips = {}
+      function setOwner(o, hide) {
+        hidden[o] = hide
+        chips[o].setAttribute('aria-pressed', hide ? 'false' : 'true')
+        chips[o].classList.toggle('off', hide)
+        paths[o].style('display', hide ? 'none' : null)
+        dots[o].style('display', hide ? 'none' : null)
+      }
+      var allBtn = document.createElement('button')
+      allBtn.type = 'button'
+      allBtn.className = 'legend-chip legend-all'
+      allBtn.textContent = 'All off'
+      allBtn.addEventListener('click', function () {
+        var anyVisible = owners.some(function (o) {
+          return !hidden[o]
+        })
+        owners.forEach(function (o) {
+          setOwner(o, anyVisible)
+        })
+        allBtn.textContent = anyVisible ? 'All on' : 'All off'
+      })
+      legend.appendChild(allBtn)
       owners.forEach(function (o) {
         var btn = document.createElement('button')
         btn.type = 'button'
@@ -254,12 +276,13 @@
         btn.setAttribute('aria-pressed', 'true')
         btn.innerHTML = '<span class="swatch" style="background:' + color(o) + '"></span>' + escapeHtml(o)
         btn.addEventListener('click', function () {
-          hidden[o] = !hidden[o]
-          btn.setAttribute('aria-pressed', hidden[o] ? 'false' : 'true')
-          btn.classList.toggle('off', !!hidden[o])
-          paths[o].style('display', hidden[o] ? 'none' : null)
-          dots[o].style('display', hidden[o] ? 'none' : null)
+          setOwner(o, !hidden[o])
+          var anyVisible = owners.some(function (x) {
+            return !hidden[x]
+          })
+          allBtn.textContent = anyVisible ? 'All off' : 'All on'
         })
+        chips[o] = btn
         legend.appendChild(btn)
       })
     }

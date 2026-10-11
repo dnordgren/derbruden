@@ -451,7 +451,7 @@ ${renderSeasonTable(currentRows, `${data.defaultSeason} sit-start efficiency`)}
 </div>
 <script type="application/json" id="sitstart-data">${json}</script>
 <script src="../static/js/d3.v7.min.js" defer></script>
-<script src="../static/js/sit-start.js?v=2"></script>`
+<script src="../static/js/sit-start.js?v=3"></script>`
 }
 
 function pageTemplate(content) {
@@ -512,6 +512,9 @@ function pageTemplate(content) {
     }
     .legend-chip.off {
       opacity: 0.45;
+    }
+    .legend-chip.legend-all {
+      font-weight: 700;
     }
     .methodology {
       margin-top: 30px;

@@ -474,7 +474,7 @@ export function renderPageContent(data) {
 <p class="section-note">Actual starter points divided by optimal starter points across every decided regular-season week since 2018. A perfect week means the manager started the highest-scoring legal lineup. Regular season only.</p>
 ${renderCareerTable(data.career)}
 <h2>Efficiency Trend</h2>
-<p class="section-note">Season-by-season efficiency for every owner. Y-axis starts at 75% so the gaps are visible. Select an owner below to toggle their line; isolate a single owner to overlay their win% (dashed, right axis).</p>
+<p class="section-note">Season-by-season efficiency for every owner. Y-axis starts at 75% so the gaps are visible. Select an owner below to toggle their line; isolate a single owner to overlay their win% (dashed, right axis). Starts with one random owner isolated.</p>
 <div class="legend-row" id="sitstart-legend"></div>
 <div class="viz-chart" id="sitstart-chart" tabindex="0" role="region" aria-label="Season-by-season sit-start efficiency by owner, percent. Y-axis starts at 75 percent."></div>
 <h2>By Season</h2>
@@ -484,7 +484,7 @@ ${renderSeasonTable(currentRows, `${data.defaultSeason} sit-start efficiency`)}
 </div>
 <script type="application/json" id="sitstart-data">${json}</script>
 <script src="../static/js/d3.v7.min.js" defer></script>
-<script src="../static/js/sit-start.js?v=4"></script>`
+<script src="../static/js/sit-start.js?v=5"></script>`
 }
 
 function pageTemplate(content) {

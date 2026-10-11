@@ -396,6 +396,14 @@
         chips[o] = btn
         legend.appendChild(btn)
       })
+      // Start with a single random owner isolated so the win% overlay
+      // shows immediately; All on is one press away.
+      var first = owners[Math.floor(Math.random() * owners.length)]
+      owners.forEach(function (o) {
+        if (o !== first) setOwner(o, true)
+      })
+      refreshWinLine()
+      allBtn.textContent = 'All on'
     }
   })
 })()

@@ -369,14 +369,12 @@
       allBtn.className = 'legend-chip legend-all'
       allBtn.textContent = 'All off'
       allBtn.addEventListener('click', function () {
-        var anyVisible = owners.some(function (o) {
-          return !hidden[o]
-        })
+        var showAll = allBtn.textContent === 'All on'
         owners.forEach(function (o) {
-          setOwner(o, anyVisible)
+          setOwner(o, !showAll)
         })
         refreshWinLine()
-        allBtn.textContent = anyVisible ? 'All on' : 'All off'
+        allBtn.textContent = showAll ? 'All off' : 'All on'
       })
       legend.appendChild(allBtn)
       owners.forEach(function (o) {
@@ -388,10 +386,10 @@
         btn.addEventListener('click', function () {
           setOwner(o, !hidden[o])
           refreshWinLine()
-          var anyVisible = owners.some(function (x) {
+          var allVisible = owners.every(function (x) {
             return !hidden[x]
           })
-          allBtn.textContent = anyVisible ? 'All off' : 'All on'
+          allBtn.textContent = allVisible ? 'All off' : 'All on'
         })
         chips[o] = btn
         legend.appendChild(btn)

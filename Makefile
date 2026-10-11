@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -41,11 +41,12 @@ deploy-html: build
 deploy-static:
 	@echo "make deploy-static : Started"
 	@echo "Deploying static assets to bucket derbruden.com..."
-	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --exclude "data/luck.json" --exclude "data/games.json" --cache-control "public, max-age=31536000, immutable"
+	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --exclude "data/luck.json" --exclude "data/sit-start.json" --exclude "data/games.json" --cache-control "public, max-age=31536000, immutable"
 	@aws s3 cp static/data/trades.json s3://$(BUCKET)/static/data/trades.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/alltime-records.json s3://$(BUCKET)/static/data/alltime-records.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/waivers.json s3://$(BUCKET)/static/data/waivers.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/luck.json s3://$(BUCKET)/static/data/luck.json --cache-control "public, max-age=0, must-revalidate"
+	@aws s3 cp static/data/sit-start.json s3://$(BUCKET)/static/data/sit-start.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/ico/header-icon-32.png s3://$(BUCKET)/favicon.ico --cache-control "public, max-age=31536000, immutable"
 	@echo "make deploy-static : Finished"
 
@@ -96,3 +97,8 @@ luck:
 	@echo "Generating Luck & All-Play ..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-luck.mjs
 	@echo "make luck : Finished"
+sitstart:
+	@echo "make sitstart : Started"
+	@echo "Generating sit/start efficiency ..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-sit-start.mjs
+	@echo "make sitstart : Finished"

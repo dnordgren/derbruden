@@ -224,3 +224,17 @@ test('upsertOwnerPage places sit/start ahead of draft history', async () => {
   assert.ok(out.indexOf(SITSTART_START) < out.indexOf('<!-- DRAFT_HISTORY_START -->'))
   assert.equal(out.indexOf(SITSTART_START), out.lastIndexOf(SITSTART_START))
 })
+
+test('loadWinPct maps two-digit csv seasons to full years', async () => {
+  const { mkdtempSync, writeFileSync } = await import('node:fs')
+  const { tmpdir } = await import('node:os')
+  const { join } = await import('node:path')
+  const { loadWinPct } = await import('./generate-sit-start.mjs')
+  const dir = mkdtempSync(join(tmpdir(), 'winpct-'))
+  const csv = join(dir, 'stats.csv')
+  writeFileSync(csv, 'Season,Owner,W,L\n25,DN,8,5\n24,DN,4,9\n')
+  const map = loadWinPct(csv)
+  assert.deepEqual(map.DN[2025], { wins: 8, losses: 5, winPct: 0.615 })
+  assert.deepEqual(map.DN[2024], { wins: 4, losses: 9, winPct: 0.308 })
+  assert.equal(map.DN[2026], undefined)
+})

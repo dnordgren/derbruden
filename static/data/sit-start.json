@@ -29,7 +29,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.923,
           "perfectPct": 0,
-          "rank": 1
+          "rank": 1,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         {
           "owner": "JO",
@@ -41,7 +44,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.922,
           "perfectPct": 0.077,
-          "rank": 2
+          "rank": 2,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "IK",
@@ -53,7 +59,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.91,
           "perfectPct": 0.077,
-          "rank": 3
+          "rank": 3,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         {
           "owner": "CR",
@@ -65,7 +74,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.891,
           "perfectPct": 0.077,
-          "rank": 4
+          "rank": 4,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "DN",
@@ -77,7 +89,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.886,
           "perfectPct": 0.077,
-          "rank": 5
+          "rank": 5,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         {
           "owner": "AR",
@@ -89,7 +104,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.862,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": 2,
+          "losses": 11,
+          "winPct": 0.154
         },
         {
           "owner": "DM",
@@ -101,7 +119,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.855,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         {
           "owner": "ZS",
@@ -113,7 +134,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.854,
           "perfectPct": 0.077,
-          "rank": 8
+          "rank": 8,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         {
           "owner": "AN",
@@ -125,7 +149,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.849,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         }
       ]
     },
@@ -143,7 +170,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.928,
           "perfectPct": 0.154,
-          "rank": 1
+          "rank": 1,
+          "wins": 11,
+          "losses": 2,
+          "winPct": 0.846
         },
         {
           "owner": "CR",
@@ -155,7 +185,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.901,
           "perfectPct": 0.077,
-          "rank": 2
+          "rank": 2,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "JO",
@@ -167,7 +200,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.876,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         {
           "owner": "IK",
@@ -179,7 +215,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.873,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         {
           "owner": "DN",
@@ -191,7 +230,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.869,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": 10,
+          "losses": 3,
+          "winPct": 0.769
         },
         {
           "owner": "AR",
@@ -203,7 +245,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.867,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         {
           "owner": "JH",
@@ -215,7 +260,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.839,
           "perfectPct": 0.154,
-          "rank": 7
+          "rank": 7,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         {
           "owner": "GM",
@@ -227,7 +275,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.816,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         {
           "owner": "ZS",
@@ -239,7 +290,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.811,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         {
           "owner": "DM",
@@ -251,7 +305,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.802,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         }
       ]
     },
@@ -269,7 +326,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.918,
           "perfectPct": 0,
-          "rank": 1
+          "rank": 1,
+          "wins": 10,
+          "losses": 3,
+          "winPct": 0.769
         },
         {
           "owner": "IK",
@@ -281,7 +341,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.883,
           "perfectPct": 0.077,
-          "rank": 2
+          "rank": 2,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         {
           "owner": "JO",
@@ -293,7 +356,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.877,
           "perfectPct": 0.077,
-          "rank": 3
+          "rank": 3,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "GM",
@@ -305,7 +371,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.872,
           "perfectPct": 0.077,
-          "rank": 4
+          "rank": 4,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "CR",
@@ -317,7 +386,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.865,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "DM",
@@ -329,7 +401,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.861,
           "perfectPct": 0.077,
-          "rank": 6
+          "rank": 6,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         {
           "owner": "AN",
@@ -341,7 +416,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.854,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "AR",
@@ -353,7 +431,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.837,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": 3,
+          "losses": 10,
+          "winPct": 0.231
         },
         {
           "owner": "ZS",
@@ -365,7 +446,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.832,
           "perfectPct": 0.154,
-          "rank": 9
+          "rank": 9,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         {
           "owner": "DN",
@@ -377,7 +461,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.798,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         }
       ]
     },
@@ -395,7 +482,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.911,
           "perfectPct": 0.143,
-          "rank": 1
+          "rank": 1,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         {
           "owner": "CR",
@@ -407,7 +497,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.896,
           "perfectPct": 0,
-          "rank": 2
+          "rank": 2,
+          "wins": 5,
+          "losses": 9,
+          "winPct": 0.357
         },
         {
           "owner": "JH",
@@ -419,7 +512,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.891,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": 5,
+          "losses": 9,
+          "winPct": 0.357
         },
         {
           "owner": "IK",
@@ -431,7 +527,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.88,
           "perfectPct": 0.071,
-          "rank": 4
+          "rank": 4,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         {
           "owner": "ZS",
@@ -443,7 +542,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.879,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": 7,
+          "losses": 7,
+          "winPct": 0.5
         },
         {
           "owner": "DN",
@@ -455,7 +557,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.863,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": 9,
+          "losses": 5,
+          "winPct": 0.643
         },
         {
           "owner": "DM",
@@ -467,7 +572,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.863,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 6,
+          "losses": 8,
+          "winPct": 0.429
         },
         {
           "owner": "GM",
@@ -479,7 +587,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.861,
           "perfectPct": 0.071,
-          "rank": 8
+          "rank": 8,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         {
           "owner": "JO",
@@ -491,7 +602,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.853,
           "perfectPct": 0.071,
-          "rank": 9
+          "rank": 9,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         {
           "owner": "AN",
@@ -503,7 +617,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.83,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 6,
+          "losses": 8,
+          "winPct": 0.429
         }
       ]
     },
@@ -521,7 +638,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.893,
           "perfectPct": 0.143,
-          "rank": 1
+          "rank": 1,
+          "wins": 7,
+          "losses": 7,
+          "winPct": 0.5
         },
         {
           "owner": "DN",
@@ -533,7 +653,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.881,
           "perfectPct": 0.143,
-          "rank": 2
+          "rank": 2,
+          "wins": 9,
+          "losses": 5,
+          "winPct": 0.643
         },
         {
           "owner": "AN",
@@ -545,7 +668,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.881,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": 4,
+          "losses": 10,
+          "winPct": 0.286
         },
         {
           "owner": "ZS",
@@ -557,7 +683,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.877,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": 5,
+          "losses": 9,
+          "winPct": 0.357
         },
         {
           "owner": "DM",
@@ -569,7 +698,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.874,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": 10,
+          "losses": 4,
+          "winPct": 0.714
         },
         {
           "owner": "JO",
@@ -581,7 +713,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.86,
           "perfectPct": 0.071,
-          "rank": 6
+          "rank": 6,
+          "wins": 6,
+          "losses": 8,
+          "winPct": 0.429
         },
         {
           "owner": "CR",
@@ -593,7 +728,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.858,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         {
           "owner": "IK",
@@ -605,7 +743,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.842,
           "perfectPct": 0.143,
-          "rank": 8
+          "rank": 8,
+          "wins": 5,
+          "losses": 9,
+          "winPct": 0.357
         },
         {
           "owner": "AR",
@@ -617,7 +758,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.842,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": 7,
+          "losses": 7,
+          "winPct": 0.5
         },
         {
           "owner": "GM",
@@ -629,7 +773,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.834,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 9,
+          "losses": 5,
+          "winPct": 0.643
         }
       ]
     },
@@ -647,7 +794,10 @@
           "perfectWeeks": 4,
           "efficiency": 0.939,
           "perfectPct": 0.308,
-          "rank": 1
+          "rank": 1,
+          "wins": 11,
+          "losses": 2,
+          "winPct": 0.846
         },
         {
           "owner": "AR",
@@ -659,7 +809,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.903,
           "perfectPct": 0.154,
-          "rank": 2
+          "rank": 2,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         {
           "owner": "DM",
@@ -671,7 +824,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.877,
           "perfectPct": 0.077,
-          "rank": 3
+          "rank": 3,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "AN",
@@ -683,7 +839,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.872,
           "perfectPct": 0.154,
-          "rank": 4
+          "rank": 4,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         {
           "owner": "JO",
@@ -695,7 +854,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.872,
           "perfectPct": 0.077,
-          "rank": 5
+          "rank": 5,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         {
           "owner": "GM",
@@ -707,7 +869,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.871,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         {
           "owner": "JH",
@@ -719,7 +884,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.858,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         {
           "owner": "DN",
@@ -731,7 +899,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.857,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         {
           "owner": "ZS",
@@ -743,7 +914,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.841,
           "perfectPct": 0.154,
-          "rank": 9
+          "rank": 9,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         {
           "owner": "IK",
@@ -755,7 +929,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.819,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         }
       ]
     },
@@ -773,7 +950,10 @@
           "perfectWeeks": 3,
           "efficiency": 0.926,
           "perfectPct": 0.231,
-          "rank": 1
+          "rank": 1,
+          "wins": 10,
+          "losses": 3,
+          "winPct": 0.769
         },
         {
           "owner": "CR",
@@ -785,7 +965,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.897,
           "perfectPct": 0,
-          "rank": 2
+          "rank": 2,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         {
           "owner": "GM",
@@ -797,7 +980,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.895,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         {
           "owner": "IK",
@@ -809,7 +995,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.893,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": 3,
+          "losses": 10,
+          "winPct": 0.231
         },
         {
           "owner": "AN",
@@ -821,7 +1010,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.886,
           "perfectPct": 0.154,
-          "rank": 5
+          "rank": 5,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         {
           "owner": "DM",
@@ -833,7 +1025,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.885,
           "perfectPct": 0.077,
-          "rank": 6
+          "rank": 6,
+          "wins": 3,
+          "losses": 10,
+          "winPct": 0.231
         },
         {
           "owner": "JO",
@@ -845,7 +1040,10 @@
           "perfectWeeks": 3,
           "efficiency": 0.88,
           "perfectPct": 0.231,
-          "rank": 7
+          "rank": 7,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "AR",
@@ -857,7 +1055,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.852,
           "perfectPct": 0.077,
-          "rank": 8
+          "rank": 8,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         {
           "owner": "ZS",
@@ -869,7 +1070,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.842,
           "perfectPct": 0.077,
-          "rank": 9
+          "rank": 9,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         {
           "owner": "DN",
@@ -881,7 +1085,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.823,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         }
       ]
     },
@@ -899,7 +1106,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.917,
           "perfectPct": 0.077,
-          "rank": 1
+          "rank": 1,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         {
           "owner": "AN",
@@ -911,7 +1121,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.908,
           "perfectPct": 0.154,
-          "rank": 2
+          "rank": 2,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         {
           "owner": "ZS",
@@ -923,7 +1136,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.882,
           "perfectPct": 0.154,
-          "rank": 3
+          "rank": 3,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         {
           "owner": "JH",
@@ -935,7 +1151,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.88,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "IK",
@@ -947,7 +1166,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.871,
           "perfectPct": 0.154,
-          "rank": 5
+          "rank": 5,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         {
           "owner": "JO",
@@ -959,7 +1181,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.869,
           "perfectPct": 0.077,
-          "rank": 6
+          "rank": 6,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         {
           "owner": "DN",
@@ -971,7 +1196,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.859,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         {
           "owner": "CR",
@@ -983,7 +1211,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.858,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         {
           "owner": "AR",
@@ -995,7 +1226,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.852,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         {
           "owner": "DM",
@@ -1007,7 +1241,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.843,
           "perfectPct": 0.077,
-          "rank": 10
+          "rank": 10,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         }
       ]
     },
@@ -1025,7 +1262,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.93,
           "perfectPct": 0.25,
-          "rank": 1
+          "rank": 1,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         },
         {
           "owner": "AR",
@@ -1037,7 +1277,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.913,
           "perfectPct": 0.25,
-          "rank": 2
+          "rank": 2,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         },
         {
           "owner": "JH",
@@ -1049,7 +1292,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.888,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         },
         {
           "owner": "ZS",
@@ -1061,7 +1307,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.869,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         },
         {
           "owner": "JO",
@@ -1073,7 +1322,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.853,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         },
         {
           "owner": "IK",
@@ -1085,7 +1337,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.835,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         },
         {
           "owner": "AN",
@@ -1097,7 +1352,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.826,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         },
         {
           "owner": "CR",
@@ -1109,7 +1367,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.816,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         },
         {
           "owner": "GM",
@@ -1121,7 +1382,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.797,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         },
         {
           "owner": "DM",
@@ -1133,7 +1397,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.756,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       ]
     }
@@ -1153,7 +1420,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.886,
           "perfectPct": 0.077,
-          "rank": 5
+          "rank": 5,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2019": {
           "owner": "DN",
@@ -1165,7 +1435,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.869,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": 10,
+          "losses": 3,
+          "winPct": 0.769
         },
         "2020": {
           "owner": "DN",
@@ -1177,7 +1450,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.798,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         "2021": {
           "owner": "DN",
@@ -1189,7 +1465,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.863,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": 9,
+          "losses": 5,
+          "winPct": 0.643
         },
         "2022": {
           "owner": "DN",
@@ -1201,7 +1480,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.881,
           "perfectPct": 0.143,
-          "rank": 2
+          "rank": 2,
+          "wins": 9,
+          "losses": 5,
+          "winPct": 0.643
         },
         "2023": {
           "owner": "DN",
@@ -1213,7 +1495,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.857,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2024": {
           "owner": "DN",
@@ -1225,7 +1510,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.823,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         "2025": {
           "owner": "DN",
@@ -1237,7 +1525,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.859,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         "2026": {
           "owner": "DN",
@@ -1249,7 +1540,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.93,
           "perfectPct": 0.25,
-          "rank": 1
+          "rank": 1,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     },
@@ -1267,7 +1561,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.862,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": 2,
+          "losses": 11,
+          "winPct": 0.154
         },
         "2019": {
           "owner": "AR",
@@ -1279,7 +1576,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.867,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2020": {
           "owner": "AR",
@@ -1291,7 +1591,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.837,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": 3,
+          "losses": 10,
+          "winPct": 0.231
         },
         "2021": {
           "owner": "AR",
@@ -1303,7 +1606,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.911,
           "perfectPct": 0.143,
-          "rank": 1
+          "rank": 1,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         "2022": {
           "owner": "AR",
@@ -1315,7 +1621,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.842,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": 7,
+          "losses": 7,
+          "winPct": 0.5
         },
         "2023": {
           "owner": "AR",
@@ -1327,7 +1636,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.903,
           "perfectPct": 0.154,
-          "rank": 2
+          "rank": 2,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         "2024": {
           "owner": "AR",
@@ -1339,7 +1651,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.852,
           "perfectPct": 0.077,
-          "rank": 8
+          "rank": 8,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2025": {
           "owner": "AR",
@@ -1351,7 +1666,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.852,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         "2026": {
           "owner": "AR",
@@ -1363,7 +1681,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.913,
           "perfectPct": 0.25,
-          "rank": 2
+          "rank": 2,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     },
@@ -1381,7 +1702,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.839,
           "perfectPct": 0.154,
-          "rank": 7
+          "rank": 7,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         "2020": {
           "owner": "JH",
@@ -1393,7 +1717,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.918,
           "perfectPct": 0,
-          "rank": 1
+          "rank": 1,
+          "wins": 10,
+          "losses": 3,
+          "winPct": 0.769
         },
         "2021": {
           "owner": "JH",
@@ -1405,7 +1732,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.891,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": 5,
+          "losses": 9,
+          "winPct": 0.357
         },
         "2022": {
           "owner": "JH",
@@ -1417,7 +1747,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.893,
           "perfectPct": 0.143,
-          "rank": 1
+          "rank": 1,
+          "wins": 7,
+          "losses": 7,
+          "winPct": 0.5
         },
         "2023": {
           "owner": "JH",
@@ -1429,7 +1762,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.858,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2024": {
           "owner": "JH",
@@ -1441,7 +1777,10 @@
           "perfectWeeks": 3,
           "efficiency": 0.926,
           "perfectPct": 0.231,
-          "rank": 1
+          "rank": 1,
+          "wins": 10,
+          "losses": 3,
+          "winPct": 0.769
         },
         "2025": {
           "owner": "JH",
@@ -1453,7 +1792,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.88,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2026": {
           "owner": "JH",
@@ -1465,7 +1807,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.888,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     },
@@ -1483,7 +1828,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.854,
           "perfectPct": 0.077,
-          "rank": 8
+          "rank": 8,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2019": {
           "owner": "ZS",
@@ -1495,7 +1843,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.811,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         "2020": {
           "owner": "ZS",
@@ -1507,7 +1858,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.832,
           "perfectPct": 0.154,
-          "rank": 9
+          "rank": 9,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2021": {
           "owner": "ZS",
@@ -1519,7 +1873,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.879,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": 7,
+          "losses": 7,
+          "winPct": 0.5
         },
         "2022": {
           "owner": "ZS",
@@ -1531,7 +1888,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.877,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": 5,
+          "losses": 9,
+          "winPct": 0.357
         },
         "2023": {
           "owner": "ZS",
@@ -1543,7 +1903,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.841,
           "perfectPct": 0.154,
-          "rank": 9
+          "rank": 9,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         "2024": {
           "owner": "ZS",
@@ -1555,7 +1918,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.842,
           "perfectPct": 0.077,
-          "rank": 9
+          "rank": 9,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         "2025": {
           "owner": "ZS",
@@ -1567,7 +1933,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.882,
           "perfectPct": 0.154,
-          "rank": 3
+          "rank": 3,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         "2026": {
           "owner": "ZS",
@@ -1579,7 +1948,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.869,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     },
@@ -1597,7 +1969,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.922,
           "perfectPct": 0.077,
-          "rank": 2
+          "rank": 2,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2019": {
           "owner": "JO",
@@ -1609,7 +1984,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.876,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         "2020": {
           "owner": "JO",
@@ -1621,7 +1999,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.877,
           "perfectPct": 0.077,
-          "rank": 3
+          "rank": 3,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2021": {
           "owner": "JO",
@@ -1633,7 +2014,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.853,
           "perfectPct": 0.071,
-          "rank": 9
+          "rank": 9,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         "2022": {
           "owner": "JO",
@@ -1645,7 +2029,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.86,
           "perfectPct": 0.071,
-          "rank": 6
+          "rank": 6,
+          "wins": 6,
+          "losses": 8,
+          "winPct": 0.429
         },
         "2023": {
           "owner": "JO",
@@ -1657,7 +2044,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.872,
           "perfectPct": 0.077,
-          "rank": 5
+          "rank": 5,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         "2024": {
           "owner": "JO",
@@ -1669,7 +2059,10 @@
           "perfectWeeks": 3,
           "efficiency": 0.88,
           "perfectPct": 0.231,
-          "rank": 7
+          "rank": 7,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2025": {
           "owner": "JO",
@@ -1681,7 +2074,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.869,
           "perfectPct": 0.077,
-          "rank": 6
+          "rank": 6,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2026": {
           "owner": "JO",
@@ -1693,7 +2089,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.853,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     },
@@ -1711,7 +2110,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.91,
           "perfectPct": 0.077,
-          "rank": 3
+          "rank": 3,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         "2019": {
           "owner": "IK",
@@ -1723,7 +2125,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.873,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         "2020": {
           "owner": "IK",
@@ -1735,7 +2140,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.883,
           "perfectPct": 0.077,
-          "rank": 2
+          "rank": 2,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         "2021": {
           "owner": "IK",
@@ -1747,7 +2155,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.88,
           "perfectPct": 0.071,
-          "rank": 4
+          "rank": 4,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         "2022": {
           "owner": "IK",
@@ -1759,7 +2170,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.842,
           "perfectPct": 0.143,
-          "rank": 8
+          "rank": 8,
+          "wins": 5,
+          "losses": 9,
+          "winPct": 0.357
         },
         "2023": {
           "owner": "IK",
@@ -1771,7 +2185,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.819,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2024": {
           "owner": "IK",
@@ -1783,7 +2200,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.893,
           "perfectPct": 0,
-          "rank": 4
+          "rank": 4,
+          "wins": 3,
+          "losses": 10,
+          "winPct": 0.231
         },
         "2025": {
           "owner": "IK",
@@ -1795,7 +2215,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.871,
           "perfectPct": 0.154,
-          "rank": 5
+          "rank": 5,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         "2026": {
           "owner": "IK",
@@ -1807,7 +2230,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.835,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     },
@@ -1825,7 +2251,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.849,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2019": {
           "owner": "AN",
@@ -1837,7 +2266,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.928,
           "perfectPct": 0.154,
-          "rank": 1
+          "rank": 1,
+          "wins": 11,
+          "losses": 2,
+          "winPct": 0.846
         },
         "2020": {
           "owner": "AN",
@@ -1849,7 +2281,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.854,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2021": {
           "owner": "AN",
@@ -1861,7 +2296,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.83,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 6,
+          "losses": 8,
+          "winPct": 0.429
         },
         "2022": {
           "owner": "AN",
@@ -1873,7 +2311,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.881,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": 4,
+          "losses": 10,
+          "winPct": 0.286
         },
         "2023": {
           "owner": "AN",
@@ -1885,7 +2326,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.872,
           "perfectPct": 0.154,
-          "rank": 4
+          "rank": 4,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         "2024": {
           "owner": "AN",
@@ -1897,7 +2341,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.886,
           "perfectPct": 0.154,
-          "rank": 5
+          "rank": 5,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         "2025": {
           "owner": "AN",
@@ -1909,7 +2356,10 @@
           "perfectWeeks": 2,
           "efficiency": 0.908,
           "perfectPct": 0.154,
-          "rank": 2
+          "rank": 2,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         "2026": {
           "owner": "AN",
@@ -1921,7 +2371,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.826,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     },
@@ -1939,7 +2392,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.891,
           "perfectPct": 0.077,
-          "rank": 4
+          "rank": 4,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2019": {
           "owner": "CR",
@@ -1951,7 +2407,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.901,
           "perfectPct": 0.077,
-          "rank": 2
+          "rank": 2,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2020": {
           "owner": "CR",
@@ -1963,7 +2422,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.865,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2021": {
           "owner": "CR",
@@ -1975,7 +2437,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.896,
           "perfectPct": 0,
-          "rank": 2
+          "rank": 2,
+          "wins": 5,
+          "losses": 9,
+          "winPct": 0.357
         },
         "2022": {
           "owner": "CR",
@@ -1987,7 +2452,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.858,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         "2023": {
           "owner": "CR",
@@ -1999,7 +2467,10 @@
           "perfectWeeks": 4,
           "efficiency": 0.939,
           "perfectPct": 0.308,
-          "rank": 1
+          "rank": 1,
+          "wins": 11,
+          "losses": 2,
+          "winPct": 0.846
         },
         "2024": {
           "owner": "CR",
@@ -2011,7 +2482,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.897,
           "perfectPct": 0,
-          "rank": 2
+          "rank": 2,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         "2025": {
           "owner": "CR",
@@ -2023,7 +2497,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.858,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         "2026": {
           "owner": "CR",
@@ -2035,7 +2512,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.816,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     },
@@ -2053,7 +2533,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.923,
           "perfectPct": 0,
-          "rank": 1
+          "rank": 1,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         "2019": {
           "owner": "GM",
@@ -2065,7 +2548,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.816,
           "perfectPct": 0,
-          "rank": 8
+          "rank": 8,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         "2020": {
           "owner": "GM",
@@ -2077,7 +2563,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.872,
           "perfectPct": 0.077,
-          "rank": 4
+          "rank": 4,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2021": {
           "owner": "GM",
@@ -2089,7 +2578,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.861,
           "perfectPct": 0.071,
-          "rank": 8
+          "rank": 8,
+          "wins": 8,
+          "losses": 6,
+          "winPct": 0.571
         },
         "2022": {
           "owner": "GM",
@@ -2101,7 +2593,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.834,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 9,
+          "losses": 5,
+          "winPct": 0.643
         },
         "2023": {
           "owner": "GM",
@@ -2113,7 +2608,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.871,
           "perfectPct": 0,
-          "rank": 6
+          "rank": 6,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2024": {
           "owner": "GM",
@@ -2125,7 +2623,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.895,
           "perfectPct": 0,
-          "rank": 3
+          "rank": 3,
+          "wins": 9,
+          "losses": 4,
+          "winPct": 0.692
         },
         "2025": {
           "owner": "GM",
@@ -2137,7 +2638,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.917,
           "perfectPct": 0.077,
-          "rank": 1
+          "rank": 1,
+          "wins": 6,
+          "losses": 7,
+          "winPct": 0.462
         },
         "2026": {
           "owner": "GM",
@@ -2149,7 +2653,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.797,
           "perfectPct": 0,
-          "rank": 9
+          "rank": 9,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     },
@@ -2167,7 +2674,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.855,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 4,
+          "losses": 9,
+          "winPct": 0.308
         },
         "2019": {
           "owner": "DM",
@@ -2179,7 +2689,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.802,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         "2020": {
           "owner": "DM",
@@ -2191,7 +2704,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.861,
           "perfectPct": 0.077,
-          "rank": 6
+          "rank": 6,
+          "wins": 7,
+          "losses": 6,
+          "winPct": 0.538
         },
         "2021": {
           "owner": "DM",
@@ -2203,7 +2719,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.863,
           "perfectPct": 0,
-          "rank": 7
+          "rank": 7,
+          "wins": 6,
+          "losses": 8,
+          "winPct": 0.429
         },
         "2022": {
           "owner": "DM",
@@ -2215,7 +2734,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.874,
           "perfectPct": 0,
-          "rank": 5
+          "rank": 5,
+          "wins": 10,
+          "losses": 4,
+          "winPct": 0.714
         },
         "2023": {
           "owner": "DM",
@@ -2227,7 +2749,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.877,
           "perfectPct": 0.077,
-          "rank": 3
+          "rank": 3,
+          "wins": 8,
+          "losses": 5,
+          "winPct": 0.615
         },
         "2024": {
           "owner": "DM",
@@ -2239,7 +2764,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.885,
           "perfectPct": 0.077,
-          "rank": 6
+          "rank": 6,
+          "wins": 3,
+          "losses": 10,
+          "winPct": 0.231
         },
         "2025": {
           "owner": "DM",
@@ -2251,7 +2779,10 @@
           "perfectWeeks": 1,
           "efficiency": 0.843,
           "perfectPct": 0.077,
-          "rank": 10
+          "rank": 10,
+          "wins": 5,
+          "losses": 8,
+          "winPct": 0.385
         },
         "2026": {
           "owner": "DM",
@@ -2263,7 +2794,10 @@
           "perfectWeeks": 0,
           "efficiency": 0.756,
           "perfectPct": 0,
-          "rank": 10
+          "rank": 10,
+          "wins": null,
+          "losses": null,
+          "winPct": null
         }
       }
     }
@@ -2280,7 +2814,10 @@
       "perfectWeeks": 7,
       "efficiency": 0.887,
       "perfectPct": 0.072,
-      "rank": 1
+      "rank": 1,
+      "wins": 51,
+      "losses": 42,
+      "winPct": 0.548
     },
     {
       "owner": "CR",
@@ -2293,7 +2830,10 @@
       "perfectWeeks": 6,
       "efficiency": 0.885,
       "perfectPct": 0.055,
-      "rank": 2
+      "rank": 2,
+      "wins": 62,
+      "losses": 44,
+      "winPct": 0.585
     },
     {
       "owner": "JO",
@@ -2306,7 +2846,10 @@
       "perfectWeeks": 9,
       "efficiency": 0.875,
       "perfectPct": 0.082,
-      "rank": 3
+      "rank": 3,
+      "wins": 56,
+      "losses": 50,
+      "winPct": 0.528
     },
     {
       "owner": "AN",
@@ -2319,7 +2862,10 @@
       "perfectWeeks": 8,
       "efficiency": 0.874,
       "perfectPct": 0.073,
-      "rank": 4
+      "rank": 4,
+      "wins": 57,
+      "losses": 49,
+      "winPct": 0.538
     },
     {
       "owner": "GM",
@@ -2332,7 +2878,10 @@
       "perfectWeeks": 3,
       "efficiency": 0.871,
       "perfectPct": 0.027,
-      "rank": 5
+      "rank": 5,
+      "wins": 58,
+      "losses": 48,
+      "winPct": 0.547
     },
     {
       "owner": "IK",
@@ -2345,7 +2894,10 @@
       "perfectWeeks": 7,
       "efficiency": 0.869,
       "perfectPct": 0.064,
-      "rank": 6
+      "rank": 6,
+      "wins": 47,
+      "losses": 59,
+      "winPct": 0.443
     },
     {
       "owner": "AR",
@@ -2358,7 +2910,10 @@
       "perfectWeeks": 6,
       "efficiency": 0.868,
       "perfectPct": 0.055,
-      "rank": 7
+      "rank": 7,
+      "wins": 40,
+      "losses": 66,
+      "winPct": 0.377
     },
     {
       "owner": "DN",
@@ -2371,7 +2926,10 @@
       "perfectWeeks": 4,
       "efficiency": 0.858,
       "perfectPct": 0.036,
-      "rank": 8
+      "rank": 8,
+      "wins": 52,
+      "losses": 54,
+      "winPct": 0.491
     },
     {
       "owner": "DM",
@@ -2384,7 +2942,10 @@
       "perfectWeeks": 4,
       "efficiency": 0.853,
       "perfectPct": 0.036,
-      "rank": 9
+      "rank": 9,
+      "wins": 50,
+      "losses": 56,
+      "winPct": 0.472
     },
     {
       "owner": "ZS",
@@ -2397,7 +2958,10 @@
       "perfectWeeks": 8,
       "efficiency": 0.853,
       "perfectPct": 0.073,
-      "rank": 10
+      "rank": 10,
+      "wins": 50,
+      "losses": 56,
+      "winPct": 0.472
     }
   ]
 }

@@ -34,6 +34,14 @@
   function fmt(n) {
     return Number.isInteger(n) ? String(n) : n.toFixed(1)
   }
+  function winCell(r) {
+    if (r.winPct == null) return '\u2014'
+    return r.winPct.toFixed(3).replace('0.', '.')
+  }
+  function winTitle(r) {
+    if (r.winPct == null) return 'No final record yet'
+    return r.wins + '-' + r.losses
+  }
 
   function renderSeasonTable(rows, season) {
     if (!rows || !rows.length) return '<p class="section-note">No decided regular-season games for this season.</p>'
@@ -62,6 +70,11 @@
           '<td class="number">' +
           (r.efficiency * 100).toFixed(1) +
           '%</td>' +
+          '<td class="number" title="' +
+          winTitle(r) +
+          '">' +
+          winCell(r) +
+          '</td>' +
           '<td class="number">' +
           r.perfectWeeks +
           '</td>' +
@@ -82,6 +95,7 @@
       '<th scope="col" class="number">Actual</th>' +
       '<th scope="col" class="number">Optimal</th>' +
       '<th scope="col" class="number">Eff%</th>' +
+      '<th scope="col" class="number">Win%</th>' +
       '<th scope="col" class="number">Perfect</th>' +
       '</tr></thead>' +
       '<tbody>' +
@@ -115,12 +129,20 @@
     })
     if (!owners.length) return
     var effByOwnerSeason = {}
+    var winByOwnerSeason = {}
+    var wlByOwnerSeason = {}
     owners.forEach(function (o) {
       effByOwnerSeason[o] = {}
+      winByOwnerSeason[o] = {}
+      wlByOwnerSeason[o] = {}
     })
     seasons.forEach(function (s) {
       ;(perSeason[s].rows || []).forEach(function (r) {
         if (effByOwnerSeason[r.owner]) effByOwnerSeason[r.owner][s] = r.efficiency * 100
+        if (r.winPct != null && winByOwnerSeason[r.owner]) {
+          winByOwnerSeason[r.owner][s] = r.winPct * 100
+          wlByOwnerSeason[r.owner][s] = r.wins + '-' + r.losses
+        }
       })
     })
     var allVals = []
@@ -159,6 +181,7 @@
       .attr('transform', 'translate(' + m.left + ',' + m.top + ')')
     var x = d3.scalePoint().domain(seasons).range([0, innerW]).padding(0.5)
     var y = d3.scaleLinear().domain([floor, 100]).range([innerH, 0])
+    var yWin = d3.scaleLinear().domain([0, 100]).range([innerH, 0])
     chart
       .append('g')
       .attr('transform', 'translate(0,' + innerH + ')')
@@ -188,6 +211,92 @@
       tip.style('display', 'none')
     }
     document.addEventListener('scroll', hideTip, { capture: true, passive: true })
+    // Win% overlay (dashed, right axis): only when exactly one owner is
+    // visible, so the second axis never muddies a multi-owner view.
+    function visibleOwners() {
+      return owners.filter(function (o) {
+        return !hidden[o]
+      })
+    }
+    function refreshWinLine() {
+      chart.selectAll('.win-group').remove()
+      var vis = visibleOwners()
+      if (vis.length !== 1) return
+      var o = vis[0]
+      var pts = seasons.filter(function (s) {
+        return winByOwnerSeason[o][s] != null
+      })
+      if (!pts.length) return
+      var g = chart.append('g').attr('class', 'win-group')
+      g.append('g')
+        .attr('transform', 'translate(' + innerW + ',0)')
+        .call(
+          d3
+            .axisRight(yWin)
+            .ticks(5)
+            .tickFormat(function (d) {
+              return d + '%'
+            })
+        )
+      g.append('text')
+        .attr('x', innerW + 8)
+        .attr('y', -6)
+        .attr('fill', 'currentColor')
+        .attr('opacity', 0.65)
+        .style('font-size', '10px')
+        .text('win%')
+      g.append('path')
+        .datum(seasons)
+        .attr('fill', 'none')
+        .attr('stroke', color(o))
+        .attr('stroke-width', 2)
+        .attr('stroke-dasharray', '5 4')
+        .attr(
+          'd',
+          d3
+            .line()
+            .defined(function (s) {
+              return winByOwnerSeason[o][s] != null
+            })
+            .x(function (s) {
+              return x(s)
+            })
+            .y(function (s) {
+              return yWin(winByOwnerSeason[o][s])
+            })
+        )
+      g.selectAll('.win-dot')
+        .data(pts)
+        .enter()
+        .append('rect')
+        .attr('x', function (s) {
+          return x(s) - 3.5
+        })
+        .attr('y', function (s) {
+          return yWin(winByOwnerSeason[o][s]) - 3.5
+        })
+        .attr('width', 7)
+        .attr('height', 7)
+        .attr('fill', color(o))
+        .on('mouseenter', function (event, s) {
+          tip
+            .style('display', 'block')
+            .html(
+              '<strong>' +
+                escapeHtml(o) +
+                ' \u2019' +
+                shortSeason(s) +
+                ' win</strong><br>' +
+                winByOwnerSeason[o][s].toFixed(1) +
+                '% (' +
+                escapeHtml(wlByOwnerSeason[o][s]) +
+                ')'
+            )
+            .style('left', Math.max(8, Math.min(event.clientX + 14, window.innerWidth - 180)) + 'px')
+            .style('top', Math.max(8, event.clientY - 12) + 'px')
+        })
+        .on('mouseleave', hideTip)
+    }
     var hidden = {}
     var paths = {}
     var dots = {}
@@ -266,6 +375,7 @@
         owners.forEach(function (o) {
           setOwner(o, anyVisible)
         })
+        refreshWinLine()
         allBtn.textContent = anyVisible ? 'All on' : 'All off'
       })
       legend.appendChild(allBtn)
@@ -277,6 +387,7 @@
         btn.innerHTML = '<span class="swatch" style="background:' + color(o) + '"></span>' + escapeHtml(o)
         btn.addEventListener('click', function () {
           setOwner(o, !hidden[o])
+          refreshWinLine()
           var anyVisible = owners.some(function (x) {
             return !hidden[x]
           })

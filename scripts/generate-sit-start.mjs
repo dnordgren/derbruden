@@ -12,6 +12,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import Papa from 'papaparse'
 import { TEAM_OWNERS } from './team-owners.js'
 import { extractRegularSeasonGames, makeOwnerLookup, seasonTeamMeta } from './generate-luck.mjs'
 
@@ -36,6 +37,34 @@ export const SITSTART_END = '<!-- SITSTART_END -->'
 // Two scores that differ only by float dust or sub-cent display rounding
 // count as a perfect week.
 export const PERFECT_EPS = 0.005
+// Regular-season W-L per owner per full year, from stats.csv (seasons are
+// two-digit there: 25 -> 2025). The in-progress season has no row yet.
+export function loadWinPct(csvPath = path.join(__dirname, 'stats.csv')) {
+  const parsed = Papa.parse(fs.readFileSync(csvPath, 'utf8'), {
+    header: true,
+    dynamicTyping: true,
+    skipEmptyLines: true,
+  }).data
+  const out = {}
+  for (const row of parsed) {
+    if (!row.Owner || row.W == null || row.L == null) continue
+    const year = 2000 + Number(row.Season)
+    const w = Number(row.W)
+    const l = Number(row.L)
+    if (!Number.isFinite(year) || !Number.isFinite(w) || !Number.isFinite(l) || w + l === 0) continue
+    if (!out[row.Owner]) out[row.Owner] = {}
+    out[row.Owner][year] = { wins: w, losses: l, winPct: Math.round((w / (w + l)) * 1000) / 1000 }
+  }
+  return out
+}
+function fmtWinPct(r) {
+  if (r.winPct == null) return '\u2014'
+  return r.winPct.toFixed(3).replace('0.', '.')
+}
+function winPctTitle(r) {
+  if (r.winPct == null) return 'No final record yet'
+  return `${r.wins}-${r.losses}`
+}
 // Former owners removed from sit/start tables (kicked out of the league).
 // Filtered in both aggregate functions so season rows, ranks, and career
 // all stay consistent. Add future removals here.
@@ -357,6 +386,7 @@ function renderCareerTable(rows) {
         <td class="number">${fmt(r.actual)}</td>
         <td class="number">${fmt(r.optimal)}</td>
         <td class="number">${(r.efficiency * 100).toFixed(1)}%</td>
+        <td class="number" title="${winPctTitle(r)}">${fmtWinPct(r)}</td>
         <td class="number">${r.perfectWeeks}</td>
         <td class="number">${(r.perfectPct * 100).toFixed(0)}%</td>
       </tr>`
@@ -374,6 +404,7 @@ function renderCareerTable(rows) {
         <th scope="col" class="number">Actual</th>
         <th scope="col" class="number">Optimal</th>
         <th scope="col" class="number">Eff%</th>
+        <th scope="col" class="number">Win%</th>
         <th scope="col" class="number">Perfect</th>
         <th scope="col" class="number">Perfect%</th>
       </tr>
@@ -396,6 +427,7 @@ function renderSeasonTable(rows, caption) {
         <td class="number">${fmt(r.actual)}</td>
         <td class="number">${fmt(r.optimal)}</td>
         <td class="number">${(r.efficiency * 100).toFixed(1)}%</td>
+        <td class="number" title="${winPctTitle(r)}">${fmtWinPct(r)}</td>
         <td class="number">${r.perfectWeeks}</td>
       </tr>`
     )
@@ -411,6 +443,7 @@ function renderSeasonTable(rows, caption) {
         <th scope="col" class="number">Actual</th>
         <th scope="col" class="number">Optimal</th>
         <th scope="col" class="number">Eff%</th>
+        <th scope="col" class="number">Win%</th>
         <th scope="col" class="number">Perfect</th>
       </tr>
     </thead>
@@ -441,7 +474,7 @@ export function renderPageContent(data) {
 <p class="section-note">Actual starter points divided by optimal starter points across every decided regular-season week since 2018. A perfect week means the manager started the highest-scoring legal lineup. Regular season only.</p>
 ${renderCareerTable(data.career)}
 <h2>Efficiency Trend</h2>
-<p class="section-note">Season-by-season efficiency for every owner. Y-axis starts at 75% so the gaps are visible. Select an owner below to toggle their line.</p>
+<p class="section-note">Season-by-season efficiency for every owner. Y-axis starts at 75% so the gaps are visible. Select an owner below to toggle their line; isolate a single owner to overlay their win% (dashed, right axis).</p>
 <div class="legend-row" id="sitstart-legend"></div>
 <div class="viz-chart" id="sitstart-chart" tabindex="0" role="region" aria-label="Season-by-season sit-start efficiency by owner, percent. Y-axis starts at 75 percent."></div>
 <h2>By Season</h2>
@@ -451,7 +484,7 @@ ${renderSeasonTable(currentRows, `${data.defaultSeason} sit-start efficiency`)}
 </div>
 <script type="application/json" id="sitstart-data">${json}</script>
 <script src="../static/js/d3.v7.min.js" defer></script>
-<script src="../static/js/sit-start.js?v=3"></script>`
+<script src="../static/js/sit-start.js?v=4"></script>`
 }
 
 function pageTemplate(content) {
@@ -588,6 +621,7 @@ export function renderOwnerSection(ownerRows, careerRow) {
         <td class="number">${fmt(r.actual)}</td>
         <td class="number">${fmt(r.optimal)}</td>
         <td class="number">${(r.efficiency * 100).toFixed(1)}%</td>
+        <td class="number" title="${winPctTitle(r)}">${fmtWinPct(r)}</td>
         <td class="number">${r.perfectWeeks}</td>
       </tr>`
     )
@@ -599,6 +633,7 @@ export function renderOwnerSection(ownerRows, careerRow) {
         <td class="number">${fmt(careerRow.actual)}</td>
         <td class="number">${fmt(careerRow.optimal)}</td>
         <td class="number">${(careerRow.efficiency * 100).toFixed(1)}%</td>
+        <td class="number" title="${winPctTitle(careerRow)}">${fmtWinPct(careerRow)}</td>
         <td class="number">${careerRow.perfectWeeks}</td>
       </tr>`
     : ''
@@ -615,6 +650,7 @@ export function renderOwnerSection(ownerRows, careerRow) {
       <th scope="col" class="number">Actual</th>
       <th scope="col" class="number">Optimal</th>
       <th scope="col" class="number">Eff%</th>
+      <th scope="col" class="number">Win%</th>
       <th scope="col" class="number">Perfect</th>
     </tr>
   </thead>
@@ -666,6 +702,7 @@ async function main() {
   const metaBySeason = {}
   const perSeason = {}
   const ownerSeasons = {} // owner -> { owner, page, seasons: { season: row } }
+  const winPct = loadWinPct()
 
   for (let season = current; season >= API_FIRST_SEASON; season--) {
     let league
@@ -718,6 +755,10 @@ async function main() {
     perSeason[season] = { season, weeks: weeks.length, rows }
     console.log(`Season ${season}: ${weeks.length} weeks, ${weekRows.length} team-weeks`)
     for (const r of rows) {
+      const wl = winPct[r.owner]?.[season]
+      r.wins = wl?.wins ?? null
+      r.losses = wl?.losses ?? null
+      r.winPct = wl?.winPct ?? null
       const page = Object.values(TEAM_OWNERS).find(m => m.owner === r.owner)?.page || null
       if (!ownerSeasons[r.owner]) ownerSeasons[r.owner] = { owner: r.owner, page, seasons: {} }
       ownerSeasons[r.owner].seasons[season] = { ...r }
@@ -733,6 +774,19 @@ async function main() {
   if (!perSeason[defaultYear]) defaultYear = seasonKeys[seasonKeys.length - 1]
 
   const career = aggregateCareer(Object.fromEntries(seasonKeys.map(s => [s, perSeason[s].rows])))
+  for (const c of career) {
+    let w = 0
+    let l = 0
+    for (const s of seasonKeys) {
+      const wl = winPct[c.owner]?.[s]
+      if (!wl) continue
+      w += wl.wins
+      l += wl.losses
+    }
+    c.wins = w + l ? w : null
+    c.losses = w + l ? l : null
+    c.winPct = w + l ? Math.round((w / (w + l)) * 1000) / 1000 : null
+  }
   const careerByOwner = Object.fromEntries(career.map(r => [r.owner, r]))
 
   const data = {

@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-10-10T17:39:41.755Z",
+  "updated": "2026-10-11T17:54:48.771Z",
   "players": {
     "2026:3052587": "Baker Mayfield",
     "2026:4383429": "Jacob Saylors",
@@ -75,6 +75,9 @@
     "2026:4912274": "Sione Vaki",
     "2026:4431545": "Will Shipley",
     "2026:4249087": "Matt Gay",
-    "2026:4360248": "Kyle Pitts Sr."
+    "2026:4360248": "Kyle Pitts Sr.",
+    "2026:2578570": "Jacoby Brissett",
+    "2026:4429096": "Blake Corum",
+    "2026:-16003": "Chicago Bears D/ST"
   }
 }

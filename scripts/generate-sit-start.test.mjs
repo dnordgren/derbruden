@@ -203,3 +203,24 @@ test('excluded owners never appear in season or career aggregates', () => {
   const career = aggregateCareer({ 2018: season })
   assert.ok(!career.some(r => r.owner === 'SHEN'))
 })
+
+test('upsertOwnerPage places sit/start ahead of draft history', async () => {
+  const { mkdtempSync, writeFileSync, readFileSync } = await import('node:fs')
+  const { tmpdir } = await import('node:os')
+  const { join } = await import('node:path')
+  const { renderOwnerSection, upsertOwnerPage, SITSTART_START, SITSTART_END } = await import('./generate-sit-start.mjs')
+  const dir = mkdtempSync(join(tmpdir(), 'sitstart-'))
+  const page = join(dir, 'dn.html')
+  const section = renderOwnerSection(
+    [{ season: 2025, weeks: 13, actual: 100, optimal: 110, perfectWeeks: 1, efficiency: 0.909, perfectPct: 0.077 }],
+    { weeks: 13, actual: 100, optimal: 110, perfectWeeks: 1, efficiency: 0.909, perfectPct: 0.077 }
+  )
+  // Existing section sits after drafts: upsert must move it ahead.
+  writeFileSync(page, '<main><!-- DRAFT_HISTORY_START -->drafts<!-- DRAFT_HISTORY_END -->' + section + '</main>')
+  const status = upsertOwnerPage(page, section)
+  assert.equal(status, 'moved')
+  const out = readFileSync(page, 'utf8')
+  assert.ok(out.indexOf(SITSTART_START) !== -1 && out.indexOf(SITSTART_END) !== -1)
+  assert.ok(out.indexOf(SITSTART_START) < out.indexOf('<!-- DRAFT_HISTORY_START -->'))
+  assert.equal(out.indexOf(SITSTART_START), out.lastIndexOf(SITSTART_START))
+})

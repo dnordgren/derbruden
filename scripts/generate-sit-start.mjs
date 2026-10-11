@@ -628,19 +628,19 @@ ${career}
 }
 
 export function upsertOwnerPage(pagePath, sectionHtml) {
-  const content = fs.readFileSync(pagePath, 'utf8')
+  let content = fs.readFileSync(pagePath, 'utf8')
   const startIdx = content.indexOf(SITSTART_START)
   const endIdx = content.indexOf(SITSTART_END)
-  if (startIdx !== -1 && endIdx !== -1) {
-    fs.writeFileSync(pagePath, content.slice(0, startIdx) + sectionHtml + content.slice(endIdx + SITSTART_END.length))
-    return 'updated'
+  const hadSection = startIdx !== -1 && endIdx !== -1
+  if (hadSection) {
+    content = content.slice(0, startIdx) + content.slice(endIdx + SITSTART_END.length)
   }
-  const anchor = '<!-- DRAFT_HISTORY_END -->'
+  // Sit/start sits ahead of historical drafts on owner pages.
+  const anchor = '<!-- DRAFT_HISTORY_START -->'
   const anchorIdx = content.indexOf(anchor)
   if (anchorIdx !== -1) {
-    const insertAt = anchorIdx + anchor.length
-    fs.writeFileSync(pagePath, content.slice(0, insertAt) + '\n  ' + sectionHtml + content.slice(insertAt))
-    return 'inserted'
+    fs.writeFileSync(pagePath, content.slice(0, anchorIdx) + sectionHtml + '\n  ' + content.slice(anchorIdx))
+    return hadSection ? 'moved' : 'inserted'
   }
   const mainClose = content.lastIndexOf('</main>')
   if (mainClose !== -1) {

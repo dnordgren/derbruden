@@ -440,13 +440,18 @@ export function renderPageContent(data) {
   return `<h2>Career Efficiency</h2>
 <p class="section-note">Actual starter points divided by optimal starter points across every decided regular-season week since 2018. A perfect week means the manager started the highest-scoring legal lineup. Regular season only.</p>
 ${renderCareerTable(data.career)}
+<h2>Efficiency Trend</h2>
+<p class="section-note">Season-by-season efficiency for every owner. Y-axis starts at 75% so the gaps are visible. Select an owner below to toggle their line.</p>
+<div class="legend-row" id="sitstart-legend"></div>
+<div class="viz-chart" id="sitstart-chart" tabindex="0" role="region" aria-label="Season-by-season sit-start efficiency by owner, percent. Y-axis starts at 75 percent."></div>
 <h2>By Season</h2>
 ${selector}
 <div id="sitstart-table-wrap">
 ${renderSeasonTable(currentRows, `${data.defaultSeason} sit-start efficiency`)}
 </div>
 <script type="application/json" id="sitstart-data">${json}</script>
-<script src="../static/js/sit-start.js?v=1"></script>`
+<script src="../static/js/d3.v7.min.js" defer></script>
+<script src="../static/js/sit-start.js?v=2"></script>`
 }
 
 function pageTemplate(content) {
@@ -480,6 +485,33 @@ function pageTemplate(content) {
     select {
       font-size: 0.95em;
       padding: 4px 8px;
+    }
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0 4px;
+    }
+    .legend-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85em;
+      padding: 3px 10px 3px 6px;
+      border: 1px solid var(--line, #ddd);
+      border-radius: 999px;
+      background: var(--surface, #fff);
+      color: inherit;
+      cursor: pointer;
+    }
+    .legend-chip .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .legend-chip.off {
+      opacity: 0.45;
     }
     .methodology {
       margin-top: 30px;

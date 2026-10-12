@@ -124,6 +124,18 @@ roast-trade.mjs posted-trades.json --dry-run` prints the research packet;
 - Transaction IDs are UUIDs; dedupe state lives in
   `static/data/trades-state.json`. Empty state seeds silently on first run
   and never back-posts.
+- Trade terms are persisted machine-readably: each ledger side carries an
+  `assets` array (playerId / overallPickNumber) alongside the display
+  names, so grading never needs ESPN's aging transaction detail.
+- Roster snapshots: `scripts/capture-rosters.mjs` (weekly, piggybacked on
+  `weekly-publish.yml`, `make capture-rosters` locally) commits slim
+  team→playerId maps per scoring period to
+  `static/data/roster-snapshots.json`. Diffing consecutive weeks recovers
+  trade terms when ESPN has dropped them: reciprocal hops are confident
+  trades, one-way hops need a human check (could be a waiver claim).
+  Idempotent merge; `--backfill` fills missing weeks, `--week N` targets
+  one, `--dry-run` prints without writing.
+- Tests: `node --test scripts/watch-trades.test.mjs scripts/roast-trade.test.mjs scripts/capture-rosters.test.mjs`.
 - ESPN auth quirk: transactions need BOTH `ESPN_S2` and `SWID` from one
   login session, served from `lm-api-reads.fantasy.espn.com`. The
   `fantasy.espn.com` host 302s everything now. Player names resolve from
@@ -131,6 +143,16 @@ roast-trade.mjs posted-trades.json --dry-run` prints the research packet;
 - Tests: `node --test scripts/watch-trades.test.mjs scripts/roast-trade.test.mjs`.
 - GitHub disables schedules after 60 days without commits; re-enable each
   offseason when the notice email arrives.
+
+## Trade grades (branch in progress)
+
+- The optimal-lineup replay engine (grade every post-trade week, rank by
+  net points) currently lives on `feat/trade-grades-backfill` — parked,
+  not merged. It grades only trades with surviving ESPN terms (2024 on,
+  3 of 17), so it ships later alongside a backfill that reconstructs
+  history from roster-snapshot diffs, the league Discord, and archived
+  trade emails. First-party `assets` + weekly roster snapshots mean new
+  trades never need the backfill path.
 
 ## Draft history
 

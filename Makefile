@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -102,3 +102,9 @@ sitstart:
 	@echo "Generating sit/start efficiency ..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-sit-start.mjs
 	@echo "make sitstart : Finished"
+
+capture-rosters:
+	@echo "make capture-rosters : Started"
+	@echo "Capturing weekly roster snapshots ..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" LEAGUE_ID="$$LEAGUE_ID" LEAGUE_YEAR="$$LEAGUE_YEAR" node scripts/capture-rosters.mjs
+	@echo "make capture-rosters : Finished"

@@ -41,6 +41,19 @@ jobs:
       - name: Generate sit-start efficiency
         run: make sitstart
 
+      # First-party roster record for trade reconstruction: ESPN ages
+      # transaction terms out, but weekly roster snapshots let us diff
+      # team->player maps and recover who went where. Tuesdays 14:00 UTC
+      # means the prior scoring period is final before this runs.
+      - name: Capture roster snapshots
+        env:
+          LEAGUE_ID: '794521'
+        run: |
+          MONTH=$(date +%-m)
+          YEAR=$(date +%-Y)
+          export LEAGUE_YEAR=$(( MONTH >= 8 ? YEAR : YEAR - 1 ))
+          node scripts/capture-rosters.mjs
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -60,7 +73,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/power-rankings.html scripts/power-rankings-state.json src/sit-start.html static/data/sit-start.json src/an.html src/ar.html src/cr.html src/dm.html src/dn.html src/gm.html src/ik.html src/jh.html src/jo.html src/zs.html
+          git add src/power-rankings.html scripts/power-rankings-state.json src/sit-start.html static/data/sit-start.json static/data/roster-snapshots.json src/an.html src/ar.html src/cr.html src/dm.html src/dn.html src/gm.html src/ik.html src/jh.html src/jo.html src/zs.html
           if git diff --cached --quiet; then
             echo "No changes since last publish."
           else

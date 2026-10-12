@@ -236,11 +236,20 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   for 0. Career efficiency weights by point totals, not by averaging
   per-season efficiencies.
 - Writes `static/data/sit-start.json`, renders `src/sit-start.html`
-  (`<!-- SITSTART_START/END -->` markers, season selector via
-  `static/js/sit-start.js`), injects a season-by-season section into
-  each owner page after the draft-history block, and adds the nav link
-  in `src/partials/nav.html`. Same `scripts/.env` `ESPN_S2` as luck;
+  (`<!-- SITSTART_START/END -->` markers, season selector plus a d3
+  season-over-season trend chart via `static/js/sit-start.js`), injects
+  a season-by-season section into each owner page ahead of the
+  draft-history block, and adds the nav link in
+  `src/partials/nav.html`. Same `scripts/.env` `ESPN_S2` as luck;
   `--offline` rebuilds from git-ignored `scripts/.sitstart-cache/`.
+- Win% (regular-season W-L from `stats.csv`, two-digit seasons mapped
+  to full years) joins every table and overlays as a dashed line on a
+  second axis when exactly one owner is isolated on the chart. Seasons
+  with no csv row yet (in-progress) show a dash. Excluded former
+  owners live in `EXCLUDED_OWNERS` (SHEN, kicked out).
+- A weekly GitHub Action (`.github/workflows/sitstart.yml`, same
+  Tuesday schedule and secrets as power rankings) regenerates,
+  deploys, and commits the page, data, and owner sections in season.
 - Real slot counts come from `mSettings` `lineupSlotCounts`; fallback
   is QB1/RB2/WR2/TE1/FLEX1/DST1/K1. Bye/injured players have no actual
   split and score 0 on both sides.

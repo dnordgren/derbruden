@@ -70,8 +70,21 @@ test('mapTransaction groups directional items under the sending team', () => {
   assert.equal(record.event, 'TRADE_ACCEPT')
   assert.equal(record.date, new Date(1755086400000).toISOString())
   assert.deepEqual(record.teams, [
-    { teamId: 5, name: 'Team 5', gives: ['Player One'] },
-    { teamId: 8, name: 'Team 8', gives: ['Player Two', 'Player Three'] }
+    {
+      teamId: 5,
+      name: 'Team 5',
+      gives: ['Player One'],
+      assets: [{ name: 'Player One', playerId: 111, overallPickNumber: null }]
+    },
+    {
+      teamId: 8,
+      name: 'Team 8',
+      gives: ['Player Two', 'Player Three'],
+      assets: [
+        { name: 'Player Two', playerId: 222, overallPickNumber: null },
+        { name: 'Player Three', playerId: 333, overallPickNumber: null }
+      ]
+    }
   ])
 })
 
@@ -90,8 +103,18 @@ test('mapTransaction supports ADD/DROP style items', () => {
   const record = mapTransaction(tx, {}, {})
   assert.equal(record.event, 'TRADE_PROPOSAL')
   assert.deepEqual(record.teams, [
-    { teamId: 5, name: 'Team 5', gives: ['Player 555'] },
-    { teamId: 8, name: 'Team 8', gives: ['Player 444'] }
+    {
+      teamId: 5,
+      name: 'Team 5',
+      gives: ['Player 555'],
+      assets: [{ name: 'Player 555', playerId: 555, overallPickNumber: null }]
+    },
+    {
+      teamId: 8,
+      name: 'Team 8',
+      gives: ['Player 444'],
+      assets: [{ name: 'Player 444', playerId: 444, overallPickNumber: null }]
+    }
   ])
 })
 
@@ -109,8 +132,18 @@ test('mapTransaction attributes draft picks and skips non-player items', () => {
   assert.equal(record.id, 'b4f8f7af-cb66-4b32-95d0-7040cf565023')
   assert.equal(record.date, new Date(1783617131690).toISOString())
   assert.deepEqual(record.teams, [
-    { teamId: 4, name: 'Team 4', gives: ['Player 2473037'] },
-    { teamId: 11, name: 'Team 11', gives: ['Draft pick #67'] }
+    {
+      teamId: 4,
+      name: 'Team 4',
+      gives: ['Player 2473037'],
+      assets: [{ name: 'Player 2473037', playerId: 2473037, overallPickNumber: null }]
+    },
+    {
+      teamId: 11,
+      name: 'Team 11',
+      gives: ['Draft pick #67'],
+      assets: [{ name: 'Draft pick #67', playerId: null, overallPickNumber: 67 }]
+    }
   ])
 })
 

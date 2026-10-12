@@ -118,7 +118,7 @@ No framework; shared page chunks are inlined at build time by
   the losing owner and posts it as a second Discord message. The step is
   `continue-on-error`; LLM failures never block ledger commit or S3 publish.
 - Local roast dry run: `LEAGUE_ID=794521 LEAGUE_YEAR=2026 node scripts/
-  roast-trade.mjs posted-trades.json --dry-run` prints the research packet;
+roast-trade.mjs posted-trades.json --dry-run` prints the research packet;
   no API key needed.
 - Transaction IDs are UUIDs; dedupe state lives in
   `static/data/trades-state.json`. Empty state seeds silently on first run
@@ -210,7 +210,7 @@ No framework; shared page chunks are inlined at build time by
   dumbbell, Elo trajectory, head-to-head grid. Same `scripts/.env`
   `ESPN_S2` as power rankings; `--offline` rebuilds from cache only.
 - Data embeds per page as `<script type="application/json"
-  id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
+id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   on vendored d3. Bump its `?v=` in `renderSection` when it changes.
 - ESPN schedules survive back to 2018 (like drafts); 2014-2017 404.
   Elo replays the power-rankings algorithm over regular season games,
@@ -222,6 +222,29 @@ No framework; shared page chunks are inlined at build time by
   `scripts/.viz-cache/`.
 - A 2018 schedule entry can lack `home`/`away`; extractGames guards it.
 - Tests: `node --test scripts/generate-owner-viz.test.mjs`.
+
+## Sit/start efficiency
+
+- `make sitstart` (`scripts/generate-sit-start.mjs`) compares actual
+  starter points (ESPN `lineupSlotId` at fetch time) against the optimal
+  legal lineup from the same weekly roster (backtracking over eligible
+  slots, same approach as the trade-grades `optimalLineup`).
+- Regular-season decided weeks only, 2018 on (same convention as luck).
+  Efficiency = actual / optimal; a perfect week is actual == optimal
+  within 0.005. Actual keeps negative starter scores (e.g. D/ST) so
+  season actuals match official PF exactly; optimal benches negatives
+  for 0. Career efficiency weights by point totals, not by averaging
+  per-season efficiencies.
+- Writes `static/data/sit-start.json`, renders `src/sit-start.html`
+  (`<!-- SITSTART_START/END -->` markers, season selector via
+  `static/js/sit-start.js`), injects a season-by-season section into
+  each owner page after the draft-history block, and adds the nav link
+  in `src/partials/nav.html`. Same `scripts/.env` `ESPN_S2` as luck;
+  `--offline` rebuilds from git-ignored `scripts/.sitstart-cache/`.
+- Real slot counts come from `mSettings` `lineupSlotCounts`; fallback
+  is QB1/RB2/WR2/TE1/FLEX1/DST1/K1. Bye/injured players have no actual
+  split and score 0 on both sides.
+- Tests: `node --test scripts/generate-sit-start.test.mjs`.
 
 ## Team name sync
 

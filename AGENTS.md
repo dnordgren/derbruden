@@ -78,8 +78,9 @@ No framework; shared page chunks are inlined at build time by
 - Requires `scripts/.env` with `ESPN_S2=<cookie>` (git ignored). `SWID`
   is not required. Cookie expires periodically; re-grab from any signed-in
   browser. See README "Generate power rankings".
-- A weekly GitHub Action (`.github/workflows/power-rankings.yml`) runs
-  Tuesday mornings in season. It needs repo secrets `ESPN_S2`, `SWID`,
+- A weekly GitHub Action (`.github/workflows/weekly-publish.yml`)
+  runs Tuesday mornings in season: power rankings, then sit-start,
+  one deploy, one commit. It needs repo secrets `ESPN_S2`, `SWID`,
   `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`,
   `DISCORD_WEBHOOK_POWERRANKINGS`. Rotate the ESPN secret when the
   action starts failing with 302s.
@@ -247,9 +248,9 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   second axis when exactly one owner is isolated on the chart. Seasons
   with no csv row yet (in-progress) show a dash. Excluded former
   owners live in `EXCLUDED_OWNERS` (SHEN, kicked out).
-- A weekly GitHub Action (`.github/workflows/sitstart.yml`, same
-  Tuesday schedule and secrets as power rankings) regenerates,
-  deploys, and commits the page, data, and owner sections in season.
+- A weekly GitHub Action (`.github/workflows/weekly-publish.yml`, same
+  Tuesday run as power rankings: generate, deploy, commit) keeps the
+  page, data, and owner sections fresh in season.
 - Real slot counts come from `mSettings` `lineupSlotCounts`; fallback
   is QB1/RB2/WR2/TE1/FLEX1/DST1/K1. Bye/injured players have no actual
   split and score 0 on both sides.

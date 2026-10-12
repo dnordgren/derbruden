@@ -355,6 +355,40 @@
         })
         .on('mouseleave', hideTip)
     })
+    // End-of-line owner labels at each line's latest season, nudged
+    // apart so bunched lines stay readable on small screens.
+    var labels = {}
+    ;(function renderLabels() {
+      var items = []
+      owners.forEach(function (o) {
+        var last = null
+        seasons.forEach(function (s) {
+          if (effByOwnerSeason[o][s] != null) last = s
+        })
+        if (last == null) return
+        items.push({ o: o, s: last, val: y(effByOwnerSeason[o][last]) })
+      })
+      items.sort(function (a, b) {
+        return a.val - b.val
+      })
+      for (var i = 1; i < items.length; i++) {
+        if (items[i].val - items[i - 1].val < 11) items[i].val = items[i - 1].val + 11
+      }
+      var surface = (getComputedStyle(document.documentElement).getPropertyValue('--surface') || '').trim() || '#fff'
+      items.forEach(function (it) {
+        labels[it.o] = chart
+          .append('text')
+          .attr('x', x(it.s) + 6)
+          .attr('y', it.val + 3.5)
+          .attr('fill', color(it.o))
+          .attr('stroke', surface)
+          .attr('stroke-width', 3)
+          .style('paint-order', 'stroke')
+          .style('font-size', '10px')
+          .style('font-weight', '700')
+          .text(it.o)
+      })
+    })()
     if (legend) {
       var chips = {}
       function setOwner(o, hide) {
@@ -363,6 +397,7 @@
         chips[o].classList.toggle('off', hide)
         paths[o].style('display', hide ? 'none' : null)
         dots[o].style('display', hide ? 'none' : null)
+        if (labels[o]) labels[o].style('display', hide ? 'none' : null)
       }
       var allBtn = document.createElement('button')
       allBtn.type = 'button'

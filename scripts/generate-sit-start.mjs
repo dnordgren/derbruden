@@ -484,7 +484,7 @@ ${renderSeasonTable(currentRows, `${data.defaultSeason} sit-start efficiency`)}
 </div>
 <script type="application/json" id="sitstart-data">${json}</script>
 <script src="../static/js/d3.v7.min.js" defer></script>
-<script src="../static/js/sit-start.js?v=6"></script>`
+<script src="../static/js/sit-start.js?v=7"></script>`
 }
 
 function pageTemplate(content) {

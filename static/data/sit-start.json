@@ -30,8 +30,6 @@
           "efficiency": 0.923,
           "perfectPct": 0,
           "rank": 1,
-          "winnable": 1,
-          "decidedLosses": 4,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -50,8 +48,6 @@
           "efficiency": 0.922,
           "perfectPct": 0.077,
           "rank": 2,
-          "winnable": 0,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -70,8 +66,6 @@
           "efficiency": 0.91,
           "perfectPct": 0.077,
           "rank": 3,
-          "winnable": 2,
-          "decidedLosses": 4,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -90,8 +84,6 @@
           "efficiency": 0.891,
           "perfectPct": 0.077,
           "rank": 4,
-          "winnable": 2,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -110,8 +102,6 @@
           "efficiency": 0.886,
           "perfectPct": 0.077,
           "rank": 5,
-          "winnable": 2,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -130,8 +120,6 @@
           "efficiency": 0.862,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 2,
-          "decidedLosses": 11,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -150,8 +138,6 @@
           "efficiency": 0.855,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 7,
-          "decidedLosses": 9,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -170,8 +156,6 @@
           "efficiency": 0.854,
           "perfectPct": 0.077,
           "rank": 8,
-          "winnable": 3,
-          "decidedLosses": 8,
           "stolen": 2,
           "avoidable": 1,
           "mwa": 1,
@@ -190,8 +174,6 @@
           "efficiency": 0.849,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -216,8 +198,6 @@
           "efficiency": 0.928,
           "perfectPct": 0.154,
           "rank": 1,
-          "winnable": 1,
-          "decidedLosses": 2,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -236,8 +216,6 @@
           "efficiency": 0.901,
           "perfectPct": 0.077,
           "rank": 2,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -256,8 +234,6 @@
           "efficiency": 0.876,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 2,
-          "decidedLosses": 9,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -276,8 +252,6 @@
           "efficiency": 0.873,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 1,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -296,8 +270,6 @@
           "efficiency": 0.869,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 2,
-          "decidedLosses": 3,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -316,8 +288,6 @@
           "efficiency": 0.867,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 2,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -336,8 +306,6 @@
           "efficiency": 0.839,
           "perfectPct": 0.154,
           "rank": 7,
-          "winnable": 2,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -356,8 +324,6 @@
           "efficiency": 0.816,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 4,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -376,8 +342,6 @@
           "efficiency": 0.811,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 2,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -396,8 +360,6 @@
           "efficiency": 0.802,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 3,
-          "decidedLosses": 6,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -422,8 +384,6 @@
           "efficiency": 0.918,
           "perfectPct": 0,
           "rank": 1,
-          "winnable": 0,
-          "decidedLosses": 3,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -442,8 +402,6 @@
           "efficiency": 0.883,
           "perfectPct": 0.077,
           "rank": 2,
-          "winnable": 3,
-          "decidedLosses": 9,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -462,8 +420,6 @@
           "efficiency": 0.877,
           "perfectPct": 0.077,
           "rank": 3,
-          "winnable": 3,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -482,8 +438,6 @@
           "efficiency": 0.872,
           "perfectPct": 0.077,
           "rank": 4,
-          "winnable": 3,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -502,8 +456,6 @@
           "efficiency": 0.865,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 2,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -522,8 +474,6 @@
           "efficiency": 0.861,
           "perfectPct": 0.077,
           "rank": 6,
-          "winnable": 1,
-          "decidedLosses": 6,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -542,8 +492,6 @@
           "efficiency": 0.854,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 2,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -562,8 +510,6 @@
           "efficiency": 0.837,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 5,
-          "decidedLosses": 10,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -582,8 +528,6 @@
           "efficiency": 0.832,
           "perfectPct": 0.154,
           "rank": 9,
-          "winnable": 1,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -602,8 +546,6 @@
           "efficiency": 0.798,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 4,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 3,
           "mwa": -3,
@@ -628,8 +570,6 @@
           "efficiency": 0.911,
           "perfectPct": 0.143,
           "rank": 1,
-          "winnable": 4,
-          "decidedLosses": 6,
           "stolen": 2,
           "avoidable": 1,
           "mwa": 1,
@@ -648,8 +588,6 @@
           "efficiency": 0.896,
           "perfectPct": 0,
           "rank": 2,
-          "winnable": 5,
-          "decidedLosses": 9,
           "stolen": 2,
           "avoidable": 2,
           "mwa": 0,
@@ -668,8 +606,6 @@
           "efficiency": 0.891,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 5,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -688,8 +624,6 @@
           "efficiency": 0.88,
           "perfectPct": 0.071,
           "rank": 4,
-          "winnable": 4,
-          "decidedLosses": 6,
           "stolen": 3,
           "avoidable": 1,
           "mwa": 2,
@@ -708,8 +642,6 @@
           "efficiency": 0.879,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 3,
-          "decidedLosses": 7,
           "stolen": 2,
           "avoidable": 2,
           "mwa": 0,
@@ -728,8 +660,6 @@
           "efficiency": 0.863,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 4,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -748,8 +678,6 @@
           "efficiency": 0.863,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 4,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -768,8 +696,6 @@
           "efficiency": 0.861,
           "perfectPct": 0.071,
           "rank": 8,
-          "winnable": 1,
-          "decidedLosses": 6,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -788,8 +714,6 @@
           "efficiency": 0.853,
           "perfectPct": 0.071,
           "rank": 9,
-          "winnable": 1,
-          "decidedLosses": 6,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -808,8 +732,6 @@
           "efficiency": 0.83,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 5,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -834,8 +756,6 @@
           "efficiency": 0.893,
           "perfectPct": 0.143,
           "rank": 1,
-          "winnable": 1,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -854,8 +774,6 @@
           "efficiency": 0.881,
           "perfectPct": 0.143,
           "rank": 2,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -874,8 +792,6 @@
           "efficiency": 0.881,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 4,
-          "decidedLosses": 10,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -894,8 +810,6 @@
           "efficiency": 0.877,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 3,
-          "decidedLosses": 9,
           "stolen": 3,
           "avoidable": 1,
           "mwa": 2,
@@ -914,8 +828,6 @@
           "efficiency": 0.874,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 0,
-          "decidedLosses": 4,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -934,8 +846,6 @@
           "efficiency": 0.86,
           "perfectPct": 0.071,
           "rank": 6,
-          "winnable": 4,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 4,
           "mwa": -4,
@@ -954,8 +864,6 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 4,
-          "decidedLosses": 6,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -974,8 +882,6 @@
           "efficiency": 0.842,
           "perfectPct": 0.143,
           "rank": 8,
-          "winnable": 3,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -994,8 +900,6 @@
           "efficiency": 0.842,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 4,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1014,8 +918,6 @@
           "efficiency": 0.834,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 4,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1040,8 +942,6 @@
           "efficiency": 0.939,
           "perfectPct": 0.308,
           "rank": 1,
-          "winnable": 0,
-          "decidedLosses": 2,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1060,8 +960,6 @@
           "efficiency": 0.903,
           "perfectPct": 0.154,
           "rank": 2,
-          "winnable": 3,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1080,8 +978,6 @@
           "efficiency": 0.877,
           "perfectPct": 0.077,
           "rank": 3,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1100,8 +996,6 @@
           "efficiency": 0.872,
           "perfectPct": 0.154,
           "rank": 4,
-          "winnable": 1,
-          "decidedLosses": 6,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -1120,8 +1014,6 @@
           "efficiency": 0.872,
           "perfectPct": 0.077,
           "rank": 5,
-          "winnable": 3,
-          "decidedLosses": 7,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1140,8 +1032,6 @@
           "efficiency": 0.871,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 3,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1160,8 +1050,6 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 2,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -1180,8 +1068,6 @@
           "efficiency": 0.857,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 2,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1200,8 +1086,6 @@
           "efficiency": 0.841,
           "perfectPct": 0.154,
           "rank": 9,
-          "winnable": 2,
-          "decidedLosses": 4,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1220,8 +1104,6 @@
           "efficiency": 0.819,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 4,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -1246,8 +1128,6 @@
           "efficiency": 0.926,
           "perfectPct": 0.231,
           "rank": 1,
-          "winnable": 1,
-          "decidedLosses": 3,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1266,8 +1146,6 @@
           "efficiency": 0.897,
           "perfectPct": 0,
           "rank": 2,
-          "winnable": 0,
-          "decidedLosses": 6,
           "stolen": 2,
           "avoidable": 0,
           "mwa": 2,
@@ -1286,8 +1164,6 @@
           "efficiency": 0.895,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 3,
-          "decidedLosses": 4,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1306,8 +1182,6 @@
           "efficiency": 0.893,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 2,
-          "decidedLosses": 10,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -1326,8 +1200,6 @@
           "efficiency": 0.886,
           "perfectPct": 0.154,
           "rank": 5,
-          "winnable": 4,
-          "decidedLosses": 6,
           "stolen": 2,
           "avoidable": 2,
           "mwa": 0,
@@ -1346,8 +1218,6 @@
           "efficiency": 0.885,
           "perfectPct": 0.077,
           "rank": 6,
-          "winnable": 5,
-          "decidedLosses": 10,
           "stolen": 0,
           "avoidable": 3,
           "mwa": -3,
@@ -1366,8 +1236,6 @@
           "efficiency": 0.88,
           "perfectPct": 0.231,
           "rank": 7,
-          "winnable": 3,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 2,
           "mwa": -1,
@@ -1386,8 +1254,6 @@
           "efficiency": 0.852,
           "perfectPct": 0.077,
           "rank": 8,
-          "winnable": 3,
-          "decidedLosses": 8,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1406,8 +1272,6 @@
           "efficiency": 0.842,
           "perfectPct": 0.077,
           "rank": 9,
-          "winnable": 4,
-          "decidedLosses": 4,
           "stolen": 1,
           "avoidable": 2,
           "mwa": -1,
@@ -1426,8 +1290,6 @@
           "efficiency": 0.823,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 5,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 3,
           "mwa": -3,
@@ -1452,8 +1314,6 @@
           "efficiency": 0.917,
           "perfectPct": 0.077,
           "rank": 1,
-          "winnable": 2,
-          "decidedLosses": 7,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1472,8 +1332,6 @@
           "efficiency": 0.908,
           "perfectPct": 0.154,
           "rank": 2,
-          "winnable": 3,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1492,8 +1350,6 @@
           "efficiency": 0.882,
           "perfectPct": 0.154,
           "rank": 3,
-          "winnable": 2,
-          "decidedLosses": 7,
           "stolen": 2,
           "avoidable": 0,
           "mwa": 2,
@@ -1512,8 +1368,6 @@
           "efficiency": 0.88,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 2,
           "avoidable": 0,
           "mwa": 2,
@@ -1532,8 +1386,6 @@
           "efficiency": 0.871,
           "perfectPct": 0.154,
           "rank": 5,
-          "winnable": 3,
-          "decidedLosses": 6,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -1552,8 +1404,6 @@
           "efficiency": 0.869,
           "perfectPct": 0.077,
           "rank": 6,
-          "winnable": 3,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1572,8 +1422,6 @@
           "efficiency": 0.859,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 3,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1592,8 +1440,6 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 3,
-          "decidedLosses": 6,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -1612,8 +1458,6 @@
           "efficiency": 0.852,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 4,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -1632,8 +1476,6 @@
           "efficiency": 0.843,
           "perfectPct": 0.077,
           "rank": 10,
-          "winnable": 3,
-          "decidedLosses": 8,
           "stolen": 2,
           "avoidable": 1,
           "mwa": 1,
@@ -1658,8 +1500,6 @@
           "efficiency": 0.93,
           "perfectPct": 0.25,
           "rank": 1,
-          "winnable": 0,
-          "decidedLosses": 2,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1678,8 +1518,6 @@
           "efficiency": 0.913,
           "perfectPct": 0.25,
           "rank": 2,
-          "winnable": 0,
-          "decidedLosses": 1,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1698,8 +1536,6 @@
           "efficiency": 0.888,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 1,
-          "decidedLosses": 2,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -1718,8 +1554,6 @@
           "efficiency": 0.869,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 3,
-          "decidedLosses": 3,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1738,8 +1572,6 @@
           "efficiency": 0.853,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 0,
-          "decidedLosses": 0,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -1758,8 +1590,6 @@
           "efficiency": 0.835,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 3,
-          "decidedLosses": 3,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1778,8 +1608,6 @@
           "efficiency": 0.826,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 1,
-          "decidedLosses": 3,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1798,8 +1626,6 @@
           "efficiency": 0.816,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 1,
-          "decidedLosses": 3,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1818,8 +1644,6 @@
           "efficiency": 0.797,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 1,
-          "decidedLosses": 2,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -1838,8 +1662,6 @@
           "efficiency": 0.756,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 1,
-          "decidedLosses": 1,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -1866,8 +1688,6 @@
           "efficiency": 0.886,
           "perfectPct": 0.077,
           "rank": 5,
-          "winnable": 2,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1886,8 +1706,6 @@
           "efficiency": 0.869,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 2,
-          "decidedLosses": 3,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -1906,8 +1724,6 @@
           "efficiency": 0.798,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 4,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 3,
           "mwa": -3,
@@ -1926,8 +1742,6 @@
           "efficiency": 0.863,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 4,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -1946,8 +1760,6 @@
           "efficiency": 0.881,
           "perfectPct": 0.143,
           "rank": 2,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -1966,8 +1778,6 @@
           "efficiency": 0.857,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 2,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -1986,8 +1796,6 @@
           "efficiency": 0.823,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 5,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 3,
           "mwa": -3,
@@ -2006,8 +1814,6 @@
           "efficiency": 0.859,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 3,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -2026,8 +1832,6 @@
           "efficiency": 0.93,
           "perfectPct": 0.25,
           "rank": 1,
-          "winnable": 0,
-          "decidedLosses": 2,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2052,8 +1856,6 @@
           "efficiency": 0.862,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 2,
-          "decidedLosses": 11,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -2072,8 +1874,6 @@
           "efficiency": 0.867,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 2,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -2092,8 +1892,6 @@
           "efficiency": 0.837,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 5,
-          "decidedLosses": 10,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -2112,8 +1910,6 @@
           "efficiency": 0.911,
           "perfectPct": 0.143,
           "rank": 1,
-          "winnable": 4,
-          "decidedLosses": 6,
           "stolen": 2,
           "avoidable": 1,
           "mwa": 1,
@@ -2132,8 +1928,6 @@
           "efficiency": 0.842,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 4,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -2152,8 +1946,6 @@
           "efficiency": 0.903,
           "perfectPct": 0.154,
           "rank": 2,
-          "winnable": 3,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -2172,8 +1964,6 @@
           "efficiency": 0.852,
           "perfectPct": 0.077,
           "rank": 8,
-          "winnable": 3,
-          "decidedLosses": 8,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2192,8 +1982,6 @@
           "efficiency": 0.852,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 4,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -2212,8 +2000,6 @@
           "efficiency": 0.913,
           "perfectPct": 0.25,
           "rank": 2,
-          "winnable": 0,
-          "decidedLosses": 1,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2238,8 +2024,6 @@
           "efficiency": 0.839,
           "perfectPct": 0.154,
           "rank": 7,
-          "winnable": 2,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -2258,8 +2042,6 @@
           "efficiency": 0.918,
           "perfectPct": 0,
           "rank": 1,
-          "winnable": 0,
-          "decidedLosses": 3,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2278,8 +2060,6 @@
           "efficiency": 0.891,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 5,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -2298,8 +2078,6 @@
           "efficiency": 0.893,
           "perfectPct": 0.143,
           "rank": 1,
-          "winnable": 1,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -2318,8 +2096,6 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 2,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -2338,8 +2114,6 @@
           "efficiency": 0.926,
           "perfectPct": 0.231,
           "rank": 1,
-          "winnable": 1,
-          "decidedLosses": 3,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2358,8 +2132,6 @@
           "efficiency": 0.88,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 2,
           "avoidable": 0,
           "mwa": 2,
@@ -2378,8 +2150,6 @@
           "efficiency": 0.888,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 1,
-          "decidedLosses": 2,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -2404,8 +2174,6 @@
           "efficiency": 0.854,
           "perfectPct": 0.077,
           "rank": 8,
-          "winnable": 3,
-          "decidedLosses": 8,
           "stolen": 2,
           "avoidable": 1,
           "mwa": 1,
@@ -2424,8 +2192,6 @@
           "efficiency": 0.811,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 2,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -2444,8 +2210,6 @@
           "efficiency": 0.832,
           "perfectPct": 0.154,
           "rank": 9,
-          "winnable": 1,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -2464,8 +2228,6 @@
           "efficiency": 0.879,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 3,
-          "decidedLosses": 7,
           "stolen": 2,
           "avoidable": 2,
           "mwa": 0,
@@ -2484,8 +2246,6 @@
           "efficiency": 0.877,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 3,
-          "decidedLosses": 9,
           "stolen": 3,
           "avoidable": 1,
           "mwa": 2,
@@ -2504,8 +2264,6 @@
           "efficiency": 0.841,
           "perfectPct": 0.154,
           "rank": 9,
-          "winnable": 2,
-          "decidedLosses": 4,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2524,8 +2282,6 @@
           "efficiency": 0.842,
           "perfectPct": 0.077,
           "rank": 9,
-          "winnable": 4,
-          "decidedLosses": 4,
           "stolen": 1,
           "avoidable": 2,
           "mwa": -1,
@@ -2544,8 +2300,6 @@
           "efficiency": 0.882,
           "perfectPct": 0.154,
           "rank": 3,
-          "winnable": 2,
-          "decidedLosses": 7,
           "stolen": 2,
           "avoidable": 0,
           "mwa": 2,
@@ -2564,8 +2318,6 @@
           "efficiency": 0.869,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 3,
-          "decidedLosses": 3,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2590,8 +2342,6 @@
           "efficiency": 0.922,
           "perfectPct": 0.077,
           "rank": 2,
-          "winnable": 0,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2610,8 +2360,6 @@
           "efficiency": 0.876,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 2,
-          "decidedLosses": 9,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2630,8 +2378,6 @@
           "efficiency": 0.877,
           "perfectPct": 0.077,
           "rank": 3,
-          "winnable": 3,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2650,8 +2396,6 @@
           "efficiency": 0.853,
           "perfectPct": 0.071,
           "rank": 9,
-          "winnable": 1,
-          "decidedLosses": 6,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2670,8 +2414,6 @@
           "efficiency": 0.86,
           "perfectPct": 0.071,
           "rank": 6,
-          "winnable": 4,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 4,
           "mwa": -4,
@@ -2690,8 +2432,6 @@
           "efficiency": 0.872,
           "perfectPct": 0.077,
           "rank": 5,
-          "winnable": 3,
-          "decidedLosses": 7,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2710,8 +2450,6 @@
           "efficiency": 0.88,
           "perfectPct": 0.231,
           "rank": 7,
-          "winnable": 3,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 2,
           "mwa": -1,
@@ -2730,8 +2468,6 @@
           "efficiency": 0.869,
           "perfectPct": 0.077,
           "rank": 6,
-          "winnable": 3,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -2750,8 +2486,6 @@
           "efficiency": 0.853,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 0,
-          "decidedLosses": 0,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2776,8 +2510,6 @@
           "efficiency": 0.91,
           "perfectPct": 0.077,
           "rank": 3,
-          "winnable": 2,
-          "decidedLosses": 4,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -2796,8 +2528,6 @@
           "efficiency": 0.873,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 1,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -2816,8 +2546,6 @@
           "efficiency": 0.883,
           "perfectPct": 0.077,
           "rank": 2,
-          "winnable": 3,
-          "decidedLosses": 9,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -2836,8 +2564,6 @@
           "efficiency": 0.88,
           "perfectPct": 0.071,
           "rank": 4,
-          "winnable": 4,
-          "decidedLosses": 6,
           "stolen": 3,
           "avoidable": 1,
           "mwa": 2,
@@ -2856,8 +2582,6 @@
           "efficiency": 0.842,
           "perfectPct": 0.143,
           "rank": 8,
-          "winnable": 3,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -2876,8 +2600,6 @@
           "efficiency": 0.819,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 4,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -2896,8 +2618,6 @@
           "efficiency": 0.893,
           "perfectPct": 0,
           "rank": 4,
-          "winnable": 2,
-          "decidedLosses": 10,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -2916,8 +2636,6 @@
           "efficiency": 0.871,
           "perfectPct": 0.154,
           "rank": 5,
-          "winnable": 3,
-          "decidedLosses": 6,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -2936,8 +2654,6 @@
           "efficiency": 0.835,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 3,
-          "decidedLosses": 3,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -2962,8 +2678,6 @@
           "efficiency": 0.849,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -2982,8 +2696,6 @@
           "efficiency": 0.928,
           "perfectPct": 0.154,
           "rank": 1,
-          "winnable": 1,
-          "decidedLosses": 2,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -3002,8 +2714,6 @@
           "efficiency": 0.854,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 2,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -3022,8 +2732,6 @@
           "efficiency": 0.83,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 5,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -3042,8 +2750,6 @@
           "efficiency": 0.881,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 4,
-          "decidedLosses": 10,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -3062,8 +2768,6 @@
           "efficiency": 0.872,
           "perfectPct": 0.154,
           "rank": 4,
-          "winnable": 1,
-          "decidedLosses": 6,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -3082,8 +2786,6 @@
           "efficiency": 0.886,
           "perfectPct": 0.154,
           "rank": 5,
-          "winnable": 4,
-          "decidedLosses": 6,
           "stolen": 2,
           "avoidable": 2,
           "mwa": 0,
@@ -3102,8 +2804,6 @@
           "efficiency": 0.908,
           "perfectPct": 0.154,
           "rank": 2,
-          "winnable": 3,
-          "decidedLosses": 7,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -3122,8 +2822,6 @@
           "efficiency": 0.826,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 1,
-          "decidedLosses": 3,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -3148,8 +2846,6 @@
           "efficiency": 0.891,
           "perfectPct": 0.077,
           "rank": 4,
-          "winnable": 2,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -3168,8 +2864,6 @@
           "efficiency": 0.901,
           "perfectPct": 0.077,
           "rank": 2,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -3188,8 +2882,6 @@
           "efficiency": 0.865,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 2,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -3208,8 +2900,6 @@
           "efficiency": 0.896,
           "perfectPct": 0,
           "rank": 2,
-          "winnable": 5,
-          "decidedLosses": 9,
           "stolen": 2,
           "avoidable": 2,
           "mwa": 0,
@@ -3228,8 +2918,6 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 4,
-          "decidedLosses": 6,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -3248,8 +2936,6 @@
           "efficiency": 0.939,
           "perfectPct": 0.308,
           "rank": 1,
-          "winnable": 0,
-          "decidedLosses": 2,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -3268,8 +2954,6 @@
           "efficiency": 0.897,
           "perfectPct": 0,
           "rank": 2,
-          "winnable": 0,
-          "decidedLosses": 6,
           "stolen": 2,
           "avoidable": 0,
           "mwa": 2,
@@ -3288,8 +2972,6 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 3,
-          "decidedLosses": 6,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -3308,8 +2990,6 @@
           "efficiency": 0.816,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 1,
-          "decidedLosses": 3,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -3334,8 +3014,6 @@
           "efficiency": 0.923,
           "perfectPct": 0,
           "rank": 1,
-          "winnable": 1,
-          "decidedLosses": 4,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -3354,8 +3032,6 @@
           "efficiency": 0.816,
           "perfectPct": 0,
           "rank": 8,
-          "winnable": 4,
-          "decidedLosses": 9,
           "stolen": 0,
           "avoidable": 2,
           "mwa": -2,
@@ -3374,8 +3050,6 @@
           "efficiency": 0.872,
           "perfectPct": 0.077,
           "rank": 4,
-          "winnable": 3,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -3394,8 +3068,6 @@
           "efficiency": 0.861,
           "perfectPct": 0.071,
           "rank": 8,
-          "winnable": 1,
-          "decidedLosses": 6,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -3414,8 +3086,6 @@
           "efficiency": 0.834,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 4,
-          "decidedLosses": 5,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -3434,8 +3104,6 @@
           "efficiency": 0.871,
           "perfectPct": 0,
           "rank": 6,
-          "winnable": 3,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -3454,8 +3122,6 @@
           "efficiency": 0.895,
           "perfectPct": 0,
           "rank": 3,
-          "winnable": 3,
-          "decidedLosses": 4,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -3474,8 +3140,6 @@
           "efficiency": 0.917,
           "perfectPct": 0.077,
           "rank": 1,
-          "winnable": 2,
-          "decidedLosses": 7,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -3494,8 +3158,6 @@
           "efficiency": 0.797,
           "perfectPct": 0,
           "rank": 9,
-          "winnable": 1,
-          "decidedLosses": 2,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -3520,8 +3182,6 @@
           "efficiency": 0.855,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 7,
-          "decidedLosses": 9,
           "stolen": 1,
           "avoidable": 1,
           "mwa": 0,
@@ -3540,8 +3200,6 @@
           "efficiency": 0.802,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 3,
-          "decidedLosses": 6,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -3560,8 +3218,6 @@
           "efficiency": 0.861,
           "perfectPct": 0.077,
           "rank": 6,
-          "winnable": 1,
-          "decidedLosses": 6,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -3580,8 +3236,6 @@
           "efficiency": 0.863,
           "perfectPct": 0,
           "rank": 7,
-          "winnable": 4,
-          "decidedLosses": 8,
           "stolen": 0,
           "avoidable": 1,
           "mwa": -1,
@@ -3600,8 +3254,6 @@
           "efficiency": 0.874,
           "perfectPct": 0,
           "rank": 5,
-          "winnable": 0,
-          "decidedLosses": 4,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -3620,8 +3272,6 @@
           "efficiency": 0.877,
           "perfectPct": 0.077,
           "rank": 3,
-          "winnable": 1,
-          "decidedLosses": 5,
           "stolen": 1,
           "avoidable": 0,
           "mwa": 1,
@@ -3640,8 +3290,6 @@
           "efficiency": 0.885,
           "perfectPct": 0.077,
           "rank": 6,
-          "winnable": 5,
-          "decidedLosses": 10,
           "stolen": 0,
           "avoidable": 3,
           "mwa": -3,
@@ -3660,8 +3308,6 @@
           "efficiency": 0.843,
           "perfectPct": 0.077,
           "rank": 10,
-          "winnable": 3,
-          "decidedLosses": 8,
           "stolen": 2,
           "avoidable": 1,
           "mwa": 1,
@@ -3680,8 +3326,6 @@
           "efficiency": 0.756,
           "perfectPct": 0,
           "rank": 10,
-          "winnable": 1,
-          "decidedLosses": 1,
           "stolen": 0,
           "avoidable": 0,
           "mwa": 0,
@@ -3708,8 +3352,6 @@
       "wins": 51,
       "losses": 42,
       "winPct": 0.548,
-      "winnable": 13,
-      "decidedLosses": 44,
       "stolen": 4,
       "avoidable": 4,
       "mwa": 0
@@ -3729,8 +3371,6 @@
       "wins": 62,
       "losses": 44,
       "winPct": 0.585,
-      "winnable": 18,
-      "decidedLosses": 47,
       "stolen": 8,
       "avoidable": 7,
       "mwa": 1
@@ -3750,8 +3390,6 @@
       "wins": 56,
       "losses": 50,
       "winPct": 0.528,
-      "winnable": 19,
-      "decidedLosses": 50,
       "stolen": 7,
       "avoidable": 7,
       "mwa": 0
@@ -3771,8 +3409,6 @@
       "wins": 57,
       "losses": 49,
       "winPct": 0.538,
-      "winnable": 22,
-      "decidedLosses": 52,
       "stolen": 6,
       "avoidable": 8,
       "mwa": -2
@@ -3792,8 +3428,6 @@
       "wins": 58,
       "losses": 48,
       "winPct": 0.547,
-      "winnable": 22,
-      "decidedLosses": 50,
       "stolen": 2,
       "avoidable": 5,
       "mwa": -3
@@ -3813,8 +3447,6 @@
       "wins": 47,
       "losses": 59,
       "winPct": 0.443,
-      "winnable": 25,
-      "decidedLosses": 62,
       "stolen": 5,
       "avoidable": 7,
       "mwa": -2
@@ -3834,8 +3466,6 @@
       "wins": 40,
       "losses": 66,
       "winPct": 0.377,
-      "winnable": 27,
-      "decidedLosses": 67,
       "stolen": 4,
       "avoidable": 5,
       "mwa": -1
@@ -3855,8 +3485,6 @@
       "wins": 52,
       "losses": 54,
       "winPct": 0.491,
-      "winnable": 23,
-      "decidedLosses": 56,
       "stolen": 3,
       "avoidable": 11,
       "mwa": -8
@@ -3876,8 +3504,6 @@
       "wins": 50,
       "losses": 56,
       "winPct": 0.472,
-      "winnable": 25,
-      "decidedLosses": 57,
       "stolen": 5,
       "avoidable": 7,
       "mwa": -2
@@ -3897,4826 +3523,11 @@
       "wins": 50,
       "losses": 56,
       "winPct": 0.472,
-      "winnable": 23,
-      "decidedLosses": 59,
       "stolen": 12,
       "avoidable": 8,
       "mwa": 4
     }
   ],
-  "winnableLosses": {
-    "scopeNote": "Decided regular-season losses since 2018 where the loser's optimal lineup outscores the winner's actual score. Ties excluded; playoffs excluded.",
-    "perSeason": {
-      "2018": {
-        "season": 2018,
-        "weeks": 13,
-        "rows": [
-          {
-            "owner": "DM",
-            "team": "The Raunch",
-            "teamId": 2,
-            "losses": 9,
-            "winnable": 7,
-            "winnablePct": 0.778,
-            "games": [
-              {
-                "week": 2,
-                "opp": "CR",
-                "actual": 109.2,
-                "optimal": 130.58,
-                "oppScore": 121.54
-              },
-              {
-                "week": 3,
-                "opp": "AN",
-                "actual": 117.06,
-                "optimal": 145.56,
-                "oppScore": 123.34
-              },
-              {
-                "week": 5,
-                "opp": "SHEN",
-                "actual": 124.18,
-                "optimal": 136.88,
-                "oppScore": 125.64
-              },
-              {
-                "week": 6,
-                "opp": "IK",
-                "actual": 105,
-                "optimal": 143.4,
-                "oppScore": 138.6
-              },
-              {
-                "week": 7,
-                "opp": "AR",
-                "actual": 86.36,
-                "optimal": 124.86,
-                "oppScore": 98.22
-              },
-              {
-                "week": 9,
-                "opp": "JO",
-                "actual": 112.6,
-                "optimal": 132.4,
-                "oppScore": 131.66
-              },
-              {
-                "week": 12,
-                "opp": "AN",
-                "actual": 118.12,
-                "optimal": 134.42,
-                "oppScore": 128.8
-              }
-            ],
-            "rank": 1
-          },
-          {
-            "owner": "ZS",
-            "team": "Little Rocket Man",
-            "teamId": 10,
-            "losses": 8,
-            "winnable": 3,
-            "winnablePct": 0.375,
-            "games": [
-              {
-                "week": 4,
-                "opp": "AN",
-                "actual": 99.82,
-                "optimal": 107.62,
-                "oppScore": 99.84
-              },
-              {
-                "week": 6,
-                "opp": "JO",
-                "actual": 81.86,
-                "optimal": 109.56,
-                "oppScore": 85.5
-              },
-              {
-                "week": 12,
-                "opp": "CR",
-                "actual": 128.26,
-                "optimal": 142.76,
-                "oppScore": 128.58
-              }
-            ],
-            "rank": 2
-          },
-          {
-            "owner": "AR",
-            "team": "Baby Birds",
-            "teamId": 5,
-            "losses": 11,
-            "winnable": 2,
-            "winnablePct": 0.182,
-            "games": [
-              {
-                "week": 4,
-                "opp": "SHEN",
-                "actual": 113.56,
-                "optimal": 122.96,
-                "oppScore": 120.08
-              },
-              {
-                "week": 10,
-                "opp": "JO",
-                "actual": 127,
-                "optimal": 135.1,
-                "oppScore": 134.2
-              }
-            ],
-            "rank": 3
-          },
-          {
-            "owner": "DN",
-            "team": "Lady Killers",
-            "teamId": 8,
-            "losses": 8,
-            "winnable": 2,
-            "winnablePct": 0.25,
-            "games": [
-              {
-                "week": 8,
-                "opp": "DM",
-                "actual": 140.26,
-                "optimal": 149.96,
-                "oppScore": 144.66
-              },
-              {
-                "week": 10,
-                "opp": "AN",
-                "actual": 109.82,
-                "optimal": 123.36,
-                "oppScore": 114.02
-              }
-            ],
-            "rank": 4
-          },
-          {
-            "owner": "CR",
-            "team": "U.S. Space Force",
-            "teamId": 7,
-            "losses": 5,
-            "winnable": 2,
-            "winnablePct": 0.4,
-            "games": [
-              {
-                "week": 7,
-                "opp": "DN",
-                "actual": 82.7,
-                "optimal": 120.1,
-                "oppScore": 114.06
-              },
-              {
-                "week": 11,
-                "opp": "DM",
-                "actual": 99.74,
-                "optimal": 127.2,
-                "oppScore": 106.04
-              }
-            ],
-            "rank": 5
-          },
-          {
-            "owner": "IK",
-            "team": "Saquon Deez Nuts",
-            "teamId": 11,
-            "losses": 4,
-            "winnable": 2,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 2,
-                "opp": "SHEN",
-                "actual": 102.44,
-                "optimal": 124.44,
-                "oppScore": 120.7
-              },
-              {
-                "week": 4,
-                "opp": "CR",
-                "actual": 139.22,
-                "optimal": 156,
-                "oppScore": 153.18
-              }
-            ],
-            "rank": 6
-          },
-          {
-            "owner": "AN",
-            "team": "Talk S*** Get Kareemed",
-            "teamId": 4,
-            "losses": 5,
-            "winnable": 1,
-            "winnablePct": 0.2,
-            "games": [
-              {
-                "week": 13,
-                "opp": "ZS",
-                "actual": 73.88,
-                "optimal": 119.7,
-                "oppScore": 76.36
-              }
-            ],
-            "rank": 7
-          },
-          {
-            "owner": "GM",
-            "team": "Fat Joe Hit Hard",
-            "teamId": 1,
-            "losses": 4,
-            "winnable": 1,
-            "winnablePct": 0.25,
-            "games": [
-              {
-                "week": 4,
-                "opp": "DM",
-                "actual": 128.56,
-                "optimal": 146.46,
-                "oppScore": 135.66
-              }
-            ],
-            "rank": 8
-          },
-          {
-            "owner": "JO",
-            "team": "Starr Struck",
-            "teamId": 9,
-            "losses": 5,
-            "winnable": 0,
-            "winnablePct": 0,
-            "games": [],
-            "rank": 9
-          }
-        ]
-      },
-      "2019": {
-        "season": 2019,
-        "weeks": 13,
-        "rows": [
-          {
-            "owner": "GM",
-            "team": "Dad Joe",
-            "teamId": 1,
-            "losses": 9,
-            "winnable": 4,
-            "winnablePct": 0.444,
-            "games": [
-              {
-                "week": 6,
-                "opp": "DM",
-                "actual": 95.22,
-                "optimal": 126.86,
-                "oppScore": 112.24
-              },
-              {
-                "week": 9,
-                "opp": "JH",
-                "actual": 94.86,
-                "optimal": 113.06,
-                "oppScore": 109.54
-              },
-              {
-                "week": 12,
-                "opp": "IK",
-                "actual": 80.38,
-                "optimal": 125.58,
-                "oppScore": 82.14
-              },
-              {
-                "week": 13,
-                "opp": "CR",
-                "actual": 82.92,
-                "optimal": 123.66,
-                "oppScore": 89.5
-              }
-            ],
-            "rank": 1
-          },
-          {
-            "owner": "DM",
-            "team": "The Raunch",
-            "teamId": 2,
-            "losses": 6,
-            "winnable": 3,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 3,
-                "opp": "IK",
-                "actual": 101.66,
-                "optimal": 128.96,
-                "oppScore": 106.22
-              },
-              {
-                "week": 4,
-                "opp": "ZS",
-                "actual": 83.7,
-                "optimal": 112,
-                "oppScore": 95.08
-              },
-              {
-                "week": 13,
-                "opp": "DN",
-                "actual": 87.88,
-                "optimal": 120.54,
-                "oppScore": 106.22
-              }
-            ],
-            "rank": 2
-          },
-          {
-            "owner": "JO",
-            "team": "Alvin and the Dick Dunks",
-            "teamId": 9,
-            "losses": 9,
-            "winnable": 2,
-            "winnablePct": 0.222,
-            "games": [
-              {
-                "week": 4,
-                "opp": "IK",
-                "actual": 82,
-                "optimal": 112.28,
-                "oppScore": 109.48
-              },
-              {
-                "week": 10,
-                "opp": "GM",
-                "actual": 91.08,
-                "optimal": 106.28,
-                "oppScore": 100.88
-              }
-            ],
-            "rank": 3
-          },
-          {
-            "owner": "ZS",
-            "team": "Small Town Shanahan",
-            "teamId": 10,
-            "losses": 9,
-            "winnable": 2,
-            "winnablePct": 0.222,
-            "games": [
-              {
-                "week": 6,
-                "opp": "JH",
-                "actual": 102.82,
-                "optimal": 123.02,
-                "oppScore": 112.5
-              },
-              {
-                "week": 8,
-                "opp": "JO",
-                "actual": 83.4,
-                "optimal": 102.1,
-                "oppScore": 84.58
-              }
-            ],
-            "rank": 4
-          },
-          {
-            "owner": "AR",
-            "team": "Squanto’s Nut Butter",
-            "teamId": 5,
-            "losses": 8,
-            "winnable": 2,
-            "winnablePct": 0.25,
-            "games": [
-              {
-                "week": 10,
-                "opp": "IK",
-                "actual": 120.42,
-                "optimal": 133.02,
-                "oppScore": 131.58
-              },
-              {
-                "week": 12,
-                "opp": "DN",
-                "actual": 100.7,
-                "optimal": 106.2,
-                "oppScore": 102.12
-              }
-            ],
-            "rank": 5
-          },
-          {
-            "owner": "JH",
-            "team": "Houston Spoilers",
-            "teamId": 12,
-            "losses": 7,
-            "winnable": 2,
-            "winnablePct": 0.286,
-            "games": [
-              {
-                "week": 1,
-                "opp": "CR",
-                "actual": 92.14,
-                "optimal": 139.04,
-                "oppScore": 97.42
-              },
-              {
-                "week": 4,
-                "opp": "AN",
-                "actual": 118.88,
-                "optimal": 161.44,
-                "oppScore": 154.18
-              }
-            ],
-            "rank": 6
-          },
-          {
-            "owner": "DN",
-            "team": "Lady Killers",
-            "teamId": 8,
-            "losses": 3,
-            "winnable": 2,
-            "winnablePct": 0.667,
-            "games": [
-              {
-                "week": 3,
-                "opp": "GM",
-                "actual": 130.44,
-                "optimal": 155.44,
-                "oppScore": 131.22
-              },
-              {
-                "week": 8,
-                "opp": "AN",
-                "actual": 135.16,
-                "optimal": 150.16,
-                "oppScore": 149.9
-              }
-            ],
-            "rank": 7
-          },
-          {
-            "owner": "IK",
-            "team": "Booger's Left Hand",
-            "teamId": 11,
-            "losses": 7,
-            "winnable": 1,
-            "winnablePct": 0.143,
-            "games": [
-              {
-                "week": 11,
-                "opp": "DM",
-                "actual": 97.32,
-                "optimal": 103.52,
-                "oppScore": 99.84
-              }
-            ],
-            "rank": 8
-          },
-          {
-            "owner": "CR",
-            "team": "Juggalo Mahomies",
-            "teamId": 7,
-            "losses": 5,
-            "winnable": 1,
-            "winnablePct": 0.2,
-            "games": [
-              {
-                "week": 7,
-                "opp": "DN",
-                "actual": 86.74,
-                "optimal": 92.34,
-                "oppScore": 88.52
-              }
-            ],
-            "rank": 9
-          },
-          {
-            "owner": "AN",
-            "team": "McCaFREE NAPS",
-            "teamId": 4,
-            "losses": 2,
-            "winnable": 1,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 13,
-                "opp": "JH",
-                "actual": 96,
-                "optimal": 116,
-                "oppScore": 107.06
-              }
-            ],
-            "rank": 10
-          }
-        ]
-      },
-      "2020": {
-        "season": 2020,
-        "weeks": 13,
-        "rows": [
-          {
-            "owner": "AR",
-            "team": "Taysom Hill Gang",
-            "teamId": 5,
-            "losses": 10,
-            "winnable": 5,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 1,
-                "opp": "CR",
-                "actual": 113.5,
-                "optimal": 131.8,
-                "oppScore": 114.4
-              },
-              {
-                "week": 2,
-                "opp": "GM",
-                "actual": 111.96,
-                "optimal": 160.08,
-                "oppScore": 126.08
-              },
-              {
-                "week": 3,
-                "opp": "IK",
-                "actual": 106.78,
-                "optimal": 148.34,
-                "oppScore": 129.88
-              },
-              {
-                "week": 4,
-                "opp": "ZS",
-                "actual": 103.92,
-                "optimal": 109.92,
-                "oppScore": 109.64
-              },
-              {
-                "week": 8,
-                "opp": "DN",
-                "actual": 66.92,
-                "optimal": 94.52,
-                "oppScore": 94.44
-              }
-            ],
-            "rank": 1
-          },
-          {
-            "owner": "DN",
-            "team": "Lady Killers",
-            "teamId": 8,
-            "losses": 9,
-            "winnable": 4,
-            "winnablePct": 0.444,
-            "games": [
-              {
-                "week": 4,
-                "opp": "JH",
-                "actual": 94.9,
-                "optimal": 116.7,
-                "oppScore": 98.5
-              },
-              {
-                "week": 5,
-                "opp": "GM",
-                "actual": 93.14,
-                "optimal": 133.56,
-                "oppScore": 113.3
-              },
-              {
-                "week": 6,
-                "opp": "ZS",
-                "actual": 105.28,
-                "optimal": 160.74,
-                "oppScore": 113.54
-              },
-              {
-                "week": 12,
-                "opp": "ZS",
-                "actual": 94.84,
-                "optimal": 116.9,
-                "oppScore": 116.5
-              }
-            ],
-            "rank": 2
-          },
-          {
-            "owner": "IK",
-            "team": "Sleepy Joe (Mixon)",
-            "teamId": 11,
-            "losses": 9,
-            "winnable": 3,
-            "winnablePct": 0.333,
-            "games": [
-              {
-                "week": 1,
-                "opp": "DN",
-                "actual": 91.24,
-                "optimal": 133.34,
-                "oppScore": 127
-              },
-              {
-                "week": 2,
-                "opp": "CR",
-                "actual": 133.1,
-                "optimal": 158.3,
-                "oppScore": 152.1
-              },
-              {
-                "week": 6,
-                "opp": "JH",
-                "actual": 101.94,
-                "optimal": 123.74,
-                "oppScore": 117.98
-              }
-            ],
-            "rank": 3
-          },
-          {
-            "owner": "GM",
-            "team": "Dad Joe",
-            "teamId": 1,
-            "losses": 5,
-            "winnable": 3,
-            "winnablePct": 0.6,
-            "games": [
-              {
-                "week": 4,
-                "opp": "JO",
-                "actual": 110.8,
-                "optimal": 121.84,
-                "oppScore": 110.8
-              },
-              {
-                "week": 7,
-                "opp": "IK",
-                "actual": 96.1,
-                "optimal": 134.14,
-                "oppScore": 103.4
-              },
-              {
-                "week": 9,
-                "opp": "DM",
-                "actual": 101.58,
-                "optimal": 110.68,
-                "oppScore": 102.8
-              }
-            ],
-            "rank": 4
-          },
-          {
-            "owner": "JO",
-            "team": "Points R' USS",
-            "teamId": 9,
-            "losses": 5,
-            "winnable": 3,
-            "winnablePct": 0.6,
-            "games": [
-              {
-                "week": 8,
-                "opp": "CR",
-                "actual": 112.84,
-                "optimal": 134.44,
-                "oppScore": 130.36
-              },
-              {
-                "week": 10,
-                "opp": "AN",
-                "actual": 93.82,
-                "optimal": 121.18,
-                "oppScore": 116.1
-              },
-              {
-                "week": 13,
-                "opp": "GM",
-                "actual": 132.82,
-                "optimal": 146.82,
-                "oppScore": 144.72
-              }
-            ],
-            "rank": 5
-          },
-          {
-            "owner": "AN",
-            "team": "The KylerMurray Wine Mixer",
-            "teamId": 4,
-            "losses": 5,
-            "winnable": 2,
-            "winnablePct": 0.4,
-            "games": [
-              {
-                "week": 1,
-                "opp": "JO",
-                "actual": 121.8,
-                "optimal": 141.5,
-                "oppScore": 135.58
-              },
-              {
-                "week": 6,
-                "opp": "DM",
-                "actual": 92.32,
-                "optimal": 130.22,
-                "oppScore": 94.4
-              }
-            ],
-            "rank": 6
-          },
-          {
-            "owner": "CR",
-            "team": "Down Yonder Cheetahoochies",
-            "teamId": 7,
-            "losses": 5,
-            "winnable": 2,
-            "winnablePct": 0.4,
-            "games": [
-              {
-                "week": 3,
-                "opp": "AN",
-                "actual": 136.34,
-                "optimal": 147.04,
-                "oppScore": 137.3
-              },
-              {
-                "week": 12,
-                "opp": "AN",
-                "actual": 122.58,
-                "optimal": 142.7,
-                "oppScore": 132.8
-              }
-            ],
-            "rank": 7
-          },
-          {
-            "owner": "ZS",
-            "team": "China  Virus ",
-            "teamId": 10,
-            "losses": 8,
-            "winnable": 1,
-            "winnablePct": 0.125,
-            "games": [
-              {
-                "week": 5,
-                "opp": "JO",
-                "actual": 111.72,
-                "optimal": 143.28,
-                "oppScore": 117.78
-              }
-            ],
-            "rank": 8
-          },
-          {
-            "owner": "DM",
-            "team": "Rudy's Favorite Son",
-            "teamId": 2,
-            "losses": 6,
-            "winnable": 1,
-            "winnablePct": 0.167,
-            "games": [
-              {
-                "week": 2,
-                "opp": "JO",
-                "actual": 118.38,
-                "optimal": 154.46,
-                "oppScore": 130.9
-              }
-            ],
-            "rank": 9
-          },
-          {
-            "owner": "JH",
-            "team": "Midnight in Montgomery",
-            "teamId": 12,
-            "losses": 3,
-            "winnable": 0,
-            "winnablePct": 0,
-            "games": [],
-            "rank": 10
-          }
-        ]
-      },
-      "2021": {
-        "season": 2021,
-        "weeks": 14,
-        "rows": [
-          {
-            "owner": "CR",
-            "team": "Mr Mojo Risin",
-            "teamId": 7,
-            "losses": 9,
-            "winnable": 5,
-            "winnablePct": 0.556,
-            "games": [
-              {
-                "week": 1,
-                "opp": "GM",
-                "actual": 121.86,
-                "optimal": 151.26,
-                "oppScore": 133.38
-              },
-              {
-                "week": 3,
-                "opp": "IK",
-                "actual": 118.74,
-                "optimal": 138.14,
-                "oppScore": 127.34
-              },
-              {
-                "week": 5,
-                "opp": "JO",
-                "actual": 141.06,
-                "optimal": 151.78,
-                "oppScore": 151.58
-              },
-              {
-                "week": 8,
-                "opp": "ZS",
-                "actual": 89.46,
-                "optimal": 119.16,
-                "oppScore": 97.46
-              },
-              {
-                "week": 14,
-                "opp": "JO",
-                "actual": 112.34,
-                "optimal": 136.24,
-                "oppScore": 114.34
-              }
-            ],
-            "rank": 1
-          },
-          {
-            "owner": "JH",
-            "team": "The Aaron Jones Show",
-            "teamId": 12,
-            "losses": 9,
-            "winnable": 5,
-            "winnablePct": 0.556,
-            "games": [
-              {
-                "week": 1,
-                "opp": "DN",
-                "actual": 113.96,
-                "optimal": 137.06,
-                "oppScore": 122.68
-              },
-              {
-                "week": 4,
-                "opp": "JO",
-                "actual": 108.86,
-                "optimal": 144.3,
-                "oppScore": 113.72
-              },
-              {
-                "week": 6,
-                "opp": "CR",
-                "actual": 126.88,
-                "optimal": 146.14,
-                "oppScore": 134.3
-              },
-              {
-                "week": 8,
-                "opp": "AR",
-                "actual": 109.5,
-                "optimal": 125.5,
-                "oppScore": 118.86
-              },
-              {
-                "week": 11,
-                "opp": "IK",
-                "actual": 114.98,
-                "optimal": 123.38,
-                "oppScore": 115.28
-              }
-            ],
-            "rank": 2
-          },
-          {
-            "owner": "AN",
-            "team": "Havana (Few Beers) Syndrome",
-            "teamId": 4,
-            "losses": 8,
-            "winnable": 5,
-            "winnablePct": 0.625,
-            "games": [
-              {
-                "week": 1,
-                "opp": "DM",
-                "actual": 80.2,
-                "optimal": 128.22,
-                "oppScore": 117.56
-              },
-              {
-                "week": 3,
-                "opp": "JH",
-                "actual": 86.48,
-                "optimal": 132.88,
-                "oppScore": 120.18
-              },
-              {
-                "week": 6,
-                "opp": "AR",
-                "actual": 93.98,
-                "optimal": 121.78,
-                "oppScore": 107.12
-              },
-              {
-                "week": 12,
-                "opp": "JH",
-                "actual": 77.8,
-                "optimal": 126.82,
-                "oppScore": 117.24
-              },
-              {
-                "week": 13,
-                "opp": "CR",
-                "actual": 95.62,
-                "optimal": 111,
-                "oppScore": 105.36
-              }
-            ],
-            "rank": 3
-          },
-          {
-            "owner": "DM",
-            "team": "Last of the  Meheecans",
-            "teamId": 2,
-            "losses": 8,
-            "winnable": 4,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 2,
-                "opp": "AR",
-                "actual": 106.2,
-                "optimal": 144.8,
-                "oppScore": 117.06
-              },
-              {
-                "week": 4,
-                "opp": "GM",
-                "actual": 99.42,
-                "optimal": 116.62,
-                "oppScore": 110.22
-              },
-              {
-                "week": 8,
-                "opp": "IK",
-                "actual": 95.96,
-                "optimal": 112.78,
-                "oppScore": 103.72
-              },
-              {
-                "week": 14,
-                "opp": "JH",
-                "actual": 138.62,
-                "optimal": 155.42,
-                "oppScore": 152.52
-              }
-            ],
-            "rank": 4
-          },
-          {
-            "owner": "AR",
-            "team": "Diaper King",
-            "teamId": 5,
-            "losses": 6,
-            "winnable": 4,
-            "winnablePct": 0.667,
-            "games": [
-              {
-                "week": 3,
-                "opp": "GM",
-                "actual": 94.12,
-                "optimal": 112.92,
-                "oppScore": 96.5
-              },
-              {
-                "week": 9,
-                "opp": "CR",
-                "actual": 101.36,
-                "optimal": 111.44,
-                "oppScore": 101.54
-              },
-              {
-                "week": 11,
-                "opp": "DM",
-                "actual": 83.06,
-                "optimal": 99.16,
-                "oppScore": 93.82
-              },
-              {
-                "week": 13,
-                "opp": "DN",
-                "actual": 111.2,
-                "optimal": 122.6,
-                "oppScore": 119.02
-              }
-            ],
-            "rank": 5
-          },
-          {
-            "owner": "IK",
-            "team": "King Henry",
-            "teamId": 11,
-            "losses": 6,
-            "winnable": 4,
-            "winnablePct": 0.667,
-            "games": [
-              {
-                "week": 1,
-                "opp": "JO",
-                "actual": 102.78,
-                "optimal": 119.24,
-                "oppScore": 105.72
-              },
-              {
-                "week": 2,
-                "opp": "JH",
-                "actual": 128.32,
-                "optimal": 145.02,
-                "oppScore": 138.04
-              },
-              {
-                "week": 5,
-                "opp": "AR",
-                "actual": 151.12,
-                "optimal": 175.62,
-                "oppScore": 153.2
-              },
-              {
-                "week": 10,
-                "opp": "JO",
-                "actual": 90,
-                "optimal": 125.5,
-                "oppScore": 122.54
-              }
-            ],
-            "rank": 6
-          },
-          {
-            "owner": "DN",
-            "team": "McAfee's Faithful",
-            "teamId": 8,
-            "losses": 5,
-            "winnable": 4,
-            "winnablePct": 0.8,
-            "games": [
-              {
-                "week": 3,
-                "opp": "ZS",
-                "actual": 111.54,
-                "optimal": 134.38,
-                "oppScore": 112.02
-              },
-              {
-                "week": 8,
-                "opp": "AN",
-                "actual": 95.62,
-                "optimal": 126.5,
-                "oppScore": 111.86
-              },
-              {
-                "week": 12,
-                "opp": "ZS",
-                "actual": 95.96,
-                "optimal": 118.32,
-                "oppScore": 102.08
-              },
-              {
-                "week": 14,
-                "opp": "GM",
-                "actual": 87.14,
-                "optimal": 119.14,
-                "oppScore": 118.02
-              }
-            ],
-            "rank": 7
-          },
-          {
-            "owner": "ZS",
-            "team": "Sixually  Transmitted TDs",
-            "teamId": 10,
-            "losses": 7,
-            "winnable": 3,
-            "winnablePct": 0.429,
-            "games": [
-              {
-                "week": 1,
-                "opp": "AR",
-                "actual": 107.06,
-                "optimal": 135.56,
-                "oppScore": 126
-              },
-              {
-                "week": 4,
-                "opp": "IK",
-                "actual": 105.06,
-                "optimal": 133.56,
-                "oppScore": 109.68
-              },
-              {
-                "week": 9,
-                "opp": "DM",
-                "actual": 87.86,
-                "optimal": 122.34,
-                "oppScore": 95
-              }
-            ],
-            "rank": 8
-          },
-          {
-            "owner": "GM",
-            "team": "Dad Joe",
-            "teamId": 1,
-            "losses": 6,
-            "winnable": 1,
-            "winnablePct": 0.167,
-            "games": [
-              {
-                "week": 6,
-                "opp": "IK",
-                "actual": 120.48,
-                "optimal": 132.38,
-                "oppScore": 121.7
-              }
-            ],
-            "rank": 9
-          },
-          {
-            "owner": "JO",
-            "team": "Dak Me' Up",
-            "teamId": 9,
-            "losses": 6,
-            "winnable": 1,
-            "winnablePct": 0.167,
-            "games": [
-              {
-                "week": 6,
-                "opp": "ZS",
-                "actual": 119.9,
-                "optimal": 141.32,
-                "oppScore": 124.78
-              }
-            ],
-            "rank": 10
-          }
-        ]
-      },
-      "2022": {
-        "season": 2022,
-        "weeks": 14,
-        "rows": [
-          {
-            "owner": "AN",
-            "team": "Bert n' Ekelie",
-            "teamId": 4,
-            "losses": 10,
-            "winnable": 4,
-            "winnablePct": 0.4,
-            "games": [
-              {
-                "week": 3,
-                "opp": "JH",
-                "actual": 89.08,
-                "optimal": 101.48,
-                "oppScore": 94.38
-              },
-              {
-                "week": 5,
-                "opp": "ZS",
-                "actual": 115.02,
-                "optimal": 128.06,
-                "oppScore": 127.2
-              },
-              {
-                "week": 6,
-                "opp": "AR",
-                "actual": 93.42,
-                "optimal": 115.92,
-                "oppScore": 98.96
-              },
-              {
-                "week": 12,
-                "opp": "JH",
-                "actual": 100.9,
-                "optimal": 130.86,
-                "oppScore": 124.2
-              }
-            ],
-            "rank": 1
-          },
-          {
-            "owner": "JO",
-            "team": "Dak Me' Up",
-            "teamId": 9,
-            "losses": 8,
-            "winnable": 4,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 3,
-                "opp": "DM",
-                "actual": 87.42,
-                "optimal": 115.32,
-                "oppScore": 93
-              },
-              {
-                "week": 5,
-                "opp": "CR",
-                "actual": 95.34,
-                "optimal": 143.64,
-                "oppScore": 113.96
-              },
-              {
-                "week": 7,
-                "opp": "AR",
-                "actual": 93.08,
-                "optimal": 114.88,
-                "oppScore": 98.52
-              },
-              {
-                "week": 8,
-                "opp": "GM",
-                "actual": 133.6,
-                "optimal": 158.1,
-                "oppScore": 139.48
-              }
-            ],
-            "rank": 2
-          },
-          {
-            "owner": "AR",
-            "team": "Diaper King",
-            "teamId": 5,
-            "losses": 7,
-            "winnable": 4,
-            "winnablePct": 0.571,
-            "games": [
-              {
-                "week": 9,
-                "opp": "CR",
-                "actual": 94.2,
-                "optimal": 113.2,
-                "oppScore": 107.92
-              },
-              {
-                "week": 11,
-                "opp": "DM",
-                "actual": 77.08,
-                "optimal": 103.38,
-                "oppScore": 96.8
-              },
-              {
-                "week": 12,
-                "opp": "GM",
-                "actual": 101.62,
-                "optimal": 137.22,
-                "oppScore": 120.86
-              },
-              {
-                "week": 13,
-                "opp": "DN",
-                "actual": 94.32,
-                "optimal": 97.32,
-                "oppScore": 96.9
-              }
-            ],
-            "rank": 3
-          },
-          {
-            "owner": "CR",
-            "team": "Christian Fundamentalists",
-            "teamId": 7,
-            "losses": 6,
-            "winnable": 4,
-            "winnablePct": 0.667,
-            "games": [
-              {
-                "week": 1,
-                "opp": "GM",
-                "actual": 108.52,
-                "optimal": 134.12,
-                "oppScore": 112.12
-              },
-              {
-                "week": 2,
-                "opp": "DN",
-                "actual": 110.82,
-                "optimal": 167.82,
-                "oppScore": 120.26
-              },
-              {
-                "week": 6,
-                "opp": "JH",
-                "actual": 90.7,
-                "optimal": 108.4,
-                "oppScore": 104.52
-              },
-              {
-                "week": 11,
-                "opp": "DN",
-                "actual": 93.1,
-                "optimal": 109.6,
-                "oppScore": 105.4
-              }
-            ],
-            "rank": 4
-          },
-          {
-            "owner": "GM",
-            "team": "Dad Joe",
-            "teamId": 1,
-            "losses": 5,
-            "winnable": 4,
-            "winnablePct": 0.8,
-            "games": [
-              {
-                "week": 4,
-                "opp": "DM",
-                "actual": 84.06,
-                "optimal": 137.08,
-                "oppScore": 110.24
-              },
-              {
-                "week": 5,
-                "opp": "DN",
-                "actual": 96.56,
-                "optimal": 128.98,
-                "oppScore": 113.26
-              },
-              {
-                "week": 7,
-                "opp": "AN",
-                "actual": 101.2,
-                "optimal": 144.94,
-                "oppScore": 139.42
-              },
-              {
-                "week": 13,
-                "opp": "DM",
-                "actual": 97.44,
-                "optimal": 118.46,
-                "oppScore": 101.44
-              }
-            ],
-            "rank": 5
-          },
-          {
-            "owner": "IK",
-            "team": "Super Bowl Rings Only",
-            "teamId": 11,
-            "losses": 9,
-            "winnable": 3,
-            "winnablePct": 0.333,
-            "games": [
-              {
-                "week": 1,
-                "opp": "JO",
-                "actual": 83.98,
-                "optimal": 120.48,
-                "oppScore": 88.86
-              },
-              {
-                "week": 3,
-                "opp": "CR",
-                "actual": 91.14,
-                "optimal": 126.24,
-                "oppScore": 110.2
-              },
-              {
-                "week": 14,
-                "opp": "AR",
-                "actual": 59.92,
-                "optimal": 104.02,
-                "oppScore": 76.48
-              }
-            ],
-            "rank": 6
-          },
-          {
-            "owner": "ZS",
-            "team": "\"D\" Kupps",
-            "teamId": 10,
-            "losses": 9,
-            "winnable": 3,
-            "winnablePct": 0.333,
-            "games": [
-              {
-                "week": 2,
-                "opp": "GM",
-                "actual": 94.88,
-                "optimal": 129.38,
-                "oppScore": 105.92
-              },
-              {
-                "week": 3,
-                "opp": "DN",
-                "actual": 79.96,
-                "optimal": 96.86,
-                "oppScore": 83.24
-              },
-              {
-                "week": 14,
-                "opp": "AN",
-                "actual": 78.76,
-                "optimal": 100.32,
-                "oppScore": 88.86
-              }
-            ],
-            "rank": 7
-          },
-          {
-            "owner": "JH",
-            "team": "Big Gabey Davis",
-            "teamId": 12,
-            "losses": 7,
-            "winnable": 1,
-            "winnablePct": 0.143,
-            "games": [
-              {
-                "week": 11,
-                "opp": "IK",
-                "actual": 118.76,
-                "optimal": 136.26,
-                "oppScore": 125.02
-              }
-            ],
-            "rank": 8
-          },
-          {
-            "owner": "DN",
-            "team": "McAfee's Faithful",
-            "teamId": 8,
-            "losses": 5,
-            "winnable": 1,
-            "winnablePct": 0.2,
-            "games": [
-              {
-                "week": 14,
-                "opp": "GM",
-                "actual": 97.8,
-                "optimal": 112.46,
-                "oppScore": 107.6
-              }
-            ],
-            "rank": 9
-          },
-          {
-            "owner": "DM",
-            "team": "Cōn Queso",
-            "teamId": 2,
-            "losses": 4,
-            "winnable": 0,
-            "winnablePct": 0,
-            "games": [],
-            "rank": 10
-          }
-        ]
-      },
-      "2023": {
-        "season": 2023,
-        "weeks": 13,
-        "rows": [
-          {
-            "owner": "IK",
-            "team": "Wilson!",
-            "teamId": 11,
-            "losses": 8,
-            "winnable": 4,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 4,
-                "opp": "ZS",
-                "actual": 96.26,
-                "optimal": 117.78,
-                "oppScore": 109.44
-              },
-              {
-                "week": 6,
-                "opp": "GM",
-                "actual": 62.04,
-                "optimal": 91.84,
-                "oppScore": 70.02
-              },
-              {
-                "week": 8,
-                "opp": "DM",
-                "actual": 141.56,
-                "optimal": 150.16,
-                "oppScore": 145.98
-              },
-              {
-                "week": 13,
-                "opp": "ZS",
-                "actual": 82.1,
-                "optimal": 149.44,
-                "oppScore": 109.22
-              }
-            ],
-            "rank": 1
-          },
-          {
-            "owner": "AR",
-            "team": "The Diaper King",
-            "teamId": 5,
-            "losses": 9,
-            "winnable": 3,
-            "winnablePct": 0.333,
-            "games": [
-              {
-                "week": 1,
-                "opp": "ZS",
-                "actual": 83.68,
-                "optimal": 130.6,
-                "oppScore": 98.06
-              },
-              {
-                "week": 6,
-                "opp": "AN",
-                "actual": 111.7,
-                "optimal": 114.72,
-                "oppScore": 113.98
-              },
-              {
-                "week": 7,
-                "opp": "JO",
-                "actual": 105.26,
-                "optimal": 117.66,
-                "oppScore": 113.86
-              }
-            ],
-            "rank": 2
-          },
-          {
-            "owner": "GM",
-            "team": "Dad Joe Jo's dad",
-            "teamId": 1,
-            "losses": 8,
-            "winnable": 3,
-            "winnablePct": 0.375,
-            "games": [
-              {
-                "week": 2,
-                "opp": "ZS",
-                "actual": 93.14,
-                "optimal": 113.52,
-                "oppScore": 93.18
-              },
-              {
-                "week": 3,
-                "opp": "AR",
-                "actual": 97.06,
-                "optimal": 114.76,
-                "oppScore": 107.92
-              },
-              {
-                "week": 4,
-                "opp": "DM",
-                "actual": 72.38,
-                "optimal": 106.5,
-                "oppScore": 90.66
-              }
-            ],
-            "rank": 3
-          },
-          {
-            "owner": "JO",
-            "team": "Dak Me' Up",
-            "teamId": 9,
-            "losses": 7,
-            "winnable": 3,
-            "winnablePct": 0.429,
-            "games": [
-              {
-                "week": 1,
-                "opp": "IK",
-                "actual": 105.92,
-                "optimal": 117.88,
-                "oppScore": 113.84
-              },
-              {
-                "week": 9,
-                "opp": "DN",
-                "actual": 89.26,
-                "optimal": 102.56,
-                "oppScore": 96.78
-              },
-              {
-                "week": 12,
-                "opp": "DM",
-                "actual": 106.44,
-                "optimal": 140.34,
-                "oppScore": 124.58
-              }
-            ],
-            "rank": 4
-          },
-          {
-            "owner": "DN",
-            "team": "McAfee's Faithful",
-            "teamId": 8,
-            "losses": 8,
-            "winnable": 2,
-            "winnablePct": 0.25,
-            "games": [
-              {
-                "week": 2,
-                "opp": "CR",
-                "actual": 128.04,
-                "optimal": 152.14,
-                "oppScore": 140.46
-              },
-              {
-                "week": 3,
-                "opp": "ZS",
-                "actual": 90.78,
-                "optimal": 129,
-                "oppScore": 114.58
-              }
-            ],
-            "rank": 5
-          },
-          {
-            "owner": "JH",
-            "team": "ORACLE AI",
-            "teamId": 12,
-            "losses": 8,
-            "winnable": 2,
-            "winnablePct": 0.25,
-            "games": [
-              {
-                "week": 2,
-                "opp": "IK",
-                "actual": 79,
-                "optimal": 122.02,
-                "oppScore": 98.54
-              },
-              {
-                "week": 7,
-                "opp": "ZS",
-                "actual": 101.46,
-                "optimal": 129.86,
-                "oppScore": 111.78
-              }
-            ],
-            "rank": 6
-          },
-          {
-            "owner": "ZS",
-            "team": "No Diggity ",
-            "teamId": 10,
-            "losses": 4,
-            "winnable": 2,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 8,
-                "opp": "CR",
-                "actual": 109.28,
-                "optimal": 121.08,
-                "oppScore": 116.16
-              },
-              {
-                "week": 11,
-                "opp": "GM",
-                "actual": 79.76,
-                "optimal": 128.76,
-                "oppScore": 120.64
-              }
-            ],
-            "rank": 7
-          },
-          {
-            "owner": "AN",
-            "team": "Bert n' Ekelie",
-            "teamId": 4,
-            "losses": 6,
-            "winnable": 1,
-            "winnablePct": 0.167,
-            "games": [
-              {
-                "week": 12,
-                "opp": "JH",
-                "actual": 107.08,
-                "optimal": 145.48,
-                "oppScore": 114.12
-              }
-            ],
-            "rank": 8
-          },
-          {
-            "owner": "DM",
-            "team": "Don Threesel ",
-            "teamId": 2,
-            "losses": 5,
-            "winnable": 1,
-            "winnablePct": 0.2,
-            "games": [
-              {
-                "week": 9,
-                "opp": "ZS",
-                "actual": 97.7,
-                "optimal": 121.7,
-                "oppScore": 111.78
-              }
-            ],
-            "rank": 9
-          },
-          {
-            "owner": "CR",
-            "team": "Who's Colesdad?",
-            "teamId": 7,
-            "losses": 2,
-            "winnable": 0,
-            "winnablePct": 0,
-            "games": [],
-            "rank": 10
-          }
-        ]
-      },
-      "2024": {
-        "season": 2024,
-        "weeks": 13,
-        "rows": [
-          {
-            "owner": "DM",
-            "team": "Public Enemy #2",
-            "teamId": 2,
-            "losses": 10,
-            "winnable": 5,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 2,
-                "opp": "AR",
-                "actual": 118.9,
-                "optimal": 140.4,
-                "oppScore": 130
-              },
-              {
-                "week": 5,
-                "opp": "JH",
-                "actual": 109.44,
-                "optimal": 132.04,
-                "oppScore": 112.94
-              },
-              {
-                "week": 7,
-                "opp": "CR",
-                "actual": 99.98,
-                "optimal": 120.1,
-                "oppScore": 117.12
-              },
-              {
-                "week": 11,
-                "opp": "AR",
-                "actual": 83.3,
-                "optimal": 124.28,
-                "oppScore": 98.34
-              },
-              {
-                "week": 12,
-                "opp": "JO",
-                "actual": 112.36,
-                "optimal": 133.26,
-                "oppScore": 114.88
-              }
-            ],
-            "rank": 1
-          },
-          {
-            "owner": "DN",
-            "team": "Washington Redskins",
-            "teamId": 8,
-            "losses": 9,
-            "winnable": 5,
-            "winnablePct": 0.556,
-            "games": [
-              {
-                "week": 3,
-                "opp": "ZS",
-                "actual": 100.46,
-                "optimal": 117.46,
-                "oppScore": 116.88
-              },
-              {
-                "week": 5,
-                "opp": "GM",
-                "actual": 104.42,
-                "optimal": 141.52,
-                "oppScore": 115.94
-              },
-              {
-                "week": 8,
-                "opp": "AN",
-                "actual": 125.3,
-                "optimal": 183.04,
-                "oppScore": 148.84
-              },
-              {
-                "week": 11,
-                "opp": "CR",
-                "actual": 139.94,
-                "optimal": 166.84,
-                "oppScore": 153.08
-              },
-              {
-                "week": 12,
-                "opp": "ZS",
-                "actual": 93.5,
-                "optimal": 139.8,
-                "oppScore": 114.98
-              }
-            ],
-            "rank": 2
-          },
-          {
-            "owner": "AN",
-            "team": "The Diabolical Liars",
-            "teamId": 4,
-            "losses": 6,
-            "winnable": 4,
-            "winnablePct": 0.667,
-            "games": [
-              {
-                "week": 1,
-                "opp": "DM",
-                "actual": 90.42,
-                "optimal": 136.18,
-                "oppScore": 112.26
-              },
-              {
-                "week": 3,
-                "opp": "JH",
-                "actual": 87.44,
-                "optimal": 102.44,
-                "oppScore": 97.68
-              },
-              {
-                "week": 6,
-                "opp": "AR",
-                "actual": 116.86,
-                "optimal": 129.66,
-                "oppScore": 118.52
-              },
-              {
-                "week": 12,
-                "opp": "JH",
-                "actual": 97.56,
-                "optimal": 116.66,
-                "oppScore": 106.36
-              }
-            ],
-            "rank": 3
-          },
-          {
-            "owner": "ZS",
-            "team": "Tomato Toes",
-            "teamId": 10,
-            "losses": 4,
-            "winnable": 4,
-            "winnablePct": 1,
-            "games": [
-              {
-                "week": 5,
-                "opp": "AN",
-                "actual": 123.32,
-                "optimal": 146.42,
-                "oppScore": 131.96
-              },
-              {
-                "week": 6,
-                "opp": "JO",
-                "actual": 104.62,
-                "optimal": 125.32,
-                "oppScore": 124.1
-              },
-              {
-                "week": 8,
-                "opp": "CR",
-                "actual": 95.56,
-                "optimal": 130.06,
-                "oppScore": 100.02
-              },
-              {
-                "week": 11,
-                "opp": "GM",
-                "actual": 108.28,
-                "optimal": 141.78,
-                "oppScore": 111.64
-              }
-            ],
-            "rank": 4
-          },
-          {
-            "owner": "AR",
-            "team": "diapIR king ",
-            "teamId": 5,
-            "losses": 8,
-            "winnable": 3,
-            "winnablePct": 0.375,
-            "games": [
-              {
-                "week": 1,
-                "opp": "ZS",
-                "actual": 88.5,
-                "optimal": 123.56,
-                "oppScore": 109.02
-              },
-              {
-                "week": 7,
-                "opp": "JO",
-                "actual": 91,
-                "optimal": 120.9,
-                "oppScore": 118.88
-              },
-              {
-                "week": 9,
-                "opp": "CR",
-                "actual": 102.3,
-                "optimal": 113.18,
-                "oppScore": 108.3
-              }
-            ],
-            "rank": 5
-          },
-          {
-            "owner": "JO",
-            "team": "Dak Be' Down",
-            "teamId": 9,
-            "losses": 5,
-            "winnable": 3,
-            "winnablePct": 0.6,
-            "games": [
-              {
-                "week": 2,
-                "opp": "AN",
-                "actual": 97.02,
-                "optimal": 103.36,
-                "oppScore": 98.82
-              },
-              {
-                "week": 8,
-                "opp": "GM",
-                "actual": 111.3,
-                "optimal": 143.5,
-                "oppScore": 117.46
-              },
-              {
-                "week": 13,
-                "opp": "JH",
-                "actual": 100.46,
-                "optimal": 141.36,
-                "oppScore": 104.14
-              }
-            ],
-            "rank": 6
-          },
-          {
-            "owner": "GM",
-            "team": "Ice Box",
-            "teamId": 1,
-            "losses": 4,
-            "winnable": 3,
-            "winnablePct": 0.75,
-            "games": [
-              {
-                "week": 1,
-                "opp": "CR",
-                "actual": 119.86,
-                "optimal": 134.18,
-                "oppScore": 119.98
-              },
-              {
-                "week": 2,
-                "opp": "ZS",
-                "actual": 138.2,
-                "optimal": 157.72,
-                "oppScore": 148.48
-              },
-              {
-                "week": 6,
-                "opp": "IK",
-                "actual": 109.42,
-                "optimal": 114.72,
-                "oppScore": 110.96
-              }
-            ],
-            "rank": 7
-          },
-          {
-            "owner": "IK",
-            "team": "Bathtub Collard Greens",
-            "teamId": 11,
-            "losses": 10,
-            "winnable": 2,
-            "winnablePct": 0.2,
-            "games": [
-              {
-                "week": 1,
-                "opp": "JO",
-                "actual": 89.08,
-                "optimal": 103.38,
-                "oppScore": 98.76
-              },
-              {
-                "week": 5,
-                "opp": "AR",
-                "actual": 93.4,
-                "optimal": 113.6,
-                "oppScore": 113.16
-              }
-            ],
-            "rank": 8
-          },
-          {
-            "owner": "JH",
-            "team": "ORACLE AI",
-            "teamId": 12,
-            "losses": 3,
-            "winnable": 1,
-            "winnablePct": 0.333,
-            "games": [
-              {
-                "week": 8,
-                "opp": "AR",
-                "actual": 111.08,
-                "optimal": 116.68,
-                "oppScore": 114.54
-              }
-            ],
-            "rank": 9
-          },
-          {
-            "owner": "CR",
-            "team": "Unburdened By What Has Been",
-            "teamId": 7,
-            "losses": 6,
-            "winnable": 0,
-            "winnablePct": 0,
-            "games": [],
-            "rank": 10
-          }
-        ]
-      },
-      "2025": {
-        "season": 2025,
-        "weeks": 13,
-        "rows": [
-          {
-            "owner": "AR",
-            "team": "Give 'er The Beans ",
-            "teamId": 5,
-            "losses": 7,
-            "winnable": 4,
-            "winnablePct": 0.571,
-            "games": [
-              {
-                "week": 2,
-                "opp": "DM",
-                "actual": 73.18,
-                "optimal": 106.3,
-                "oppScore": 101.42
-              },
-              {
-                "week": 6,
-                "opp": "AN",
-                "actual": 73.14,
-                "optimal": 108.94,
-                "oppScore": 104.64
-              },
-              {
-                "week": 8,
-                "opp": "JH",
-                "actual": 108.64,
-                "optimal": 130.92,
-                "oppScore": 123.56
-              },
-              {
-                "week": 13,
-                "opp": "DN",
-                "actual": 104.66,
-                "optimal": 131.14,
-                "oppScore": 119.04
-              }
-            ],
-            "rank": 1
-          },
-          {
-            "owner": "DM",
-            "team": "Feel It In My Plums",
-            "teamId": 2,
-            "losses": 8,
-            "winnable": 3,
-            "winnablePct": 0.375,
-            "games": [
-              {
-                "week": 4,
-                "opp": "GM",
-                "actual": 131.56,
-                "optimal": 153.28,
-                "oppScore": 132.52
-              },
-              {
-                "week": 6,
-                "opp": "DN",
-                "actual": 94.9,
-                "optimal": 131.9,
-                "oppScore": 107.74
-              },
-              {
-                "week": 12,
-                "opp": "JO",
-                "actual": 79.92,
-                "optimal": 116.36,
-                "oppScore": 111.58
-              }
-            ],
-            "rank": 2
-          },
-          {
-            "owner": "AN",
-            "team": "El Fusilado",
-            "teamId": 4,
-            "losses": 7,
-            "winnable": 3,
-            "winnablePct": 0.429,
-            "games": [
-              {
-                "week": 5,
-                "opp": "ZS",
-                "actual": 91.62,
-                "optimal": 109.22,
-                "oppScore": 91.98
-              },
-              {
-                "week": 9,
-                "opp": "IK",
-                "actual": 101.26,
-                "optimal": 108.16,
-                "oppScore": 107.96
-              },
-              {
-                "week": 10,
-                "opp": "DM",
-                "actual": 108.6,
-                "optimal": 122.2,
-                "oppScore": 111.2
-              }
-            ],
-            "rank": 3
-          },
-          {
-            "owner": "DN",
-            "team": "Washington Redskins",
-            "teamId": 8,
-            "losses": 7,
-            "winnable": 3,
-            "winnablePct": 0.429,
-            "games": [
-              {
-                "week": 7,
-                "opp": "IK",
-                "actual": 109.64,
-                "optimal": 132.42,
-                "oppScore": 120.98
-              },
-              {
-                "week": 11,
-                "opp": "CR",
-                "actual": 113.16,
-                "optimal": 113.96,
-                "oppScore": 113.34
-              },
-              {
-                "week": 12,
-                "opp": "ZS",
-                "actual": 81.04,
-                "optimal": 102.54,
-                "oppScore": 88.86
-              }
-            ],
-            "rank": 4
-          },
-          {
-            "owner": "CR",
-            "team": "Significant Figures",
-            "teamId": 7,
-            "losses": 6,
-            "winnable": 3,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 1,
-                "opp": "GM",
-                "actual": 95.02,
-                "optimal": 112.12,
-                "oppScore": 109.22
-              },
-              {
-                "week": 3,
-                "opp": "IK",
-                "actual": 103.7,
-                "optimal": 134,
-                "oppScore": 111.52
-              },
-              {
-                "week": 6,
-                "opp": "JH",
-                "actual": 106.26,
-                "optimal": 122.36,
-                "oppScore": 111.54
-              }
-            ],
-            "rank": 5
-          },
-          {
-            "owner": "IK",
-            "team": "Thats My God",
-            "teamId": 11,
-            "losses": 6,
-            "winnable": 3,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 1,
-                "opp": "JO",
-                "actual": 91.58,
-                "optimal": 122.4,
-                "oppScore": 95.62
-              },
-              {
-                "week": 5,
-                "opp": "AR",
-                "actual": 123.28,
-                "optimal": 135.48,
-                "oppScore": 130.42
-              },
-              {
-                "week": 12,
-                "opp": "CR",
-                "actual": 101.52,
-                "optimal": 140.56,
-                "oppScore": 131.16
-              }
-            ],
-            "rank": 6
-          },
-          {
-            "owner": "JO",
-            "team": "Adam's Revenge",
-            "teamId": 9,
-            "losses": 5,
-            "winnable": 3,
-            "winnablePct": 0.6,
-            "games": [
-              {
-                "week": 4,
-                "opp": "JH",
-                "actual": 109.5,
-                "optimal": 136.6,
-                "oppScore": 123.3
-              },
-              {
-                "week": 9,
-                "opp": "DN",
-                "actual": 90.5,
-                "optimal": 125.4,
-                "oppScore": 94.88
-              },
-              {
-                "week": 11,
-                "opp": "AN",
-                "actual": 94.74,
-                "optimal": 120.44,
-                "oppScore": 118.54
-              }
-            ],
-            "rank": 7
-          },
-          {
-            "owner": "GM",
-            "team": "Toe Burrows Ice Box",
-            "teamId": 1,
-            "losses": 7,
-            "winnable": 2,
-            "winnablePct": 0.286,
-            "games": [
-              {
-                "week": 9,
-                "opp": "JH",
-                "actual": 106.72,
-                "optimal": 113.72,
-                "oppScore": 107.74
-              },
-              {
-                "week": 11,
-                "opp": "ZS",
-                "actual": 90.78,
-                "optimal": 104.98,
-                "oppScore": 97.9
-              }
-            ],
-            "rank": 8
-          },
-          {
-            "owner": "ZS",
-            "team": "Tomato Toes",
-            "teamId": 10,
-            "losses": 7,
-            "winnable": 2,
-            "winnablePct": 0.286,
-            "games": [
-              {
-                "week": 1,
-                "opp": "AR",
-                "actual": 92.34,
-                "optimal": 109.32,
-                "oppScore": 103.28
-              },
-              {
-                "week": 2,
-                "opp": "GM",
-                "actual": 79.34,
-                "optimal": 122.54,
-                "oppScore": 118.14
-              }
-            ],
-            "rank": 9
-          },
-          {
-            "owner": "JH",
-            "team": "ORACLE AI",
-            "teamId": 12,
-            "losses": 5,
-            "winnable": 1,
-            "winnablePct": 0.2,
-            "games": [
-              {
-                "week": 1,
-                "opp": "DN",
-                "actual": 81.98,
-                "optimal": 109.38,
-                "oppScore": 101.12
-              }
-            ],
-            "rank": 10
-          }
-        ]
-      },
-      "2026": {
-        "season": 2026,
-        "weeks": 4,
-        "rows": [
-          {
-            "owner": "IK",
-            "team": "Olave Garden Breadsticks",
-            "teamId": 11,
-            "losses": 3,
-            "winnable": 3,
-            "winnablePct": 1,
-            "games": [
-              {
-                "week": 2,
-                "opp": "AR",
-                "actual": 135.26,
-                "optimal": 149.36,
-                "oppScore": 149.22
-              },
-              {
-                "week": 3,
-                "opp": "JH",
-                "actual": 100.02,
-                "optimal": 134.68,
-                "oppScore": 116.84
-              },
-              {
-                "week": 4,
-                "opp": "DN",
-                "actual": 120.48,
-                "optimal": 173.82,
-                "oppScore": 149.72
-              }
-            ],
-            "rank": 1
-          },
-          {
-            "owner": "ZS",
-            "team": "Tomato Toes",
-            "teamId": 10,
-            "losses": 3,
-            "winnable": 3,
-            "winnablePct": 1,
-            "games": [
-              {
-                "week": 1,
-                "opp": "GM",
-                "actual": 119.86,
-                "optimal": 130.66,
-                "oppScore": 129.16
-              },
-              {
-                "week": 2,
-                "opp": "JO",
-                "actual": 86.1,
-                "optimal": 113.18,
-                "oppScore": 104.56
-              },
-              {
-                "week": 4,
-                "opp": "AR",
-                "actual": 101.48,
-                "optimal": 127.58,
-                "oppScore": 118.56
-              }
-            ],
-            "rank": 2
-          },
-          {
-            "owner": "AN",
-            "team": "El Fusilado",
-            "teamId": 4,
-            "losses": 3,
-            "winnable": 1,
-            "winnablePct": 0.333,
-            "games": [
-              {
-                "week": 1,
-                "opp": "JO",
-                "actual": 114.8,
-                "optimal": 149.5,
-                "oppScore": 118.8
-              }
-            ],
-            "rank": 3
-          },
-          {
-            "owner": "CR",
-            "team": "Apes Together Strong",
-            "teamId": 7,
-            "losses": 3,
-            "winnable": 1,
-            "winnablePct": 0.333,
-            "games": [
-              {
-                "week": 3,
-                "opp": "ZS",
-                "actual": 132.68,
-                "optimal": 155.08,
-                "oppScore": 132.74
-              }
-            ],
-            "rank": 4
-          },
-          {
-            "owner": "GM",
-            "team": "Gabe",
-            "teamId": 1,
-            "losses": 2,
-            "winnable": 1,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 3,
-                "opp": "JO",
-                "actual": 103.96,
-                "optimal": 128.64,
-                "oppScore": 120.64
-              }
-            ],
-            "rank": 5
-          },
-          {
-            "owner": "JH",
-            "team": "ORACLE AI",
-            "teamId": 12,
-            "losses": 2,
-            "winnable": 1,
-            "winnablePct": 0.5,
-            "games": [
-              {
-                "week": 1,
-                "opp": "DN",
-                "actual": 126.66,
-                "optimal": 140.84,
-                "oppScore": 136.36
-              }
-            ],
-            "rank": 6
-          },
-          {
-            "owner": "DM",
-            "team": "Cracked Unc",
-            "teamId": 2,
-            "losses": 1,
-            "winnable": 1,
-            "winnablePct": 1,
-            "games": [
-              {
-                "week": 2,
-                "opp": "JH",
-                "actual": 98.62,
-                "optimal": 144.18,
-                "oppScore": 132.58
-              }
-            ],
-            "rank": 7
-          },
-          {
-            "owner": "DN",
-            "team": "Washington Redskins",
-            "teamId": 8,
-            "losses": 2,
-            "winnable": 0,
-            "winnablePct": 0,
-            "games": [],
-            "rank": 8
-          },
-          {
-            "owner": "AR",
-            "team": "Give 'er The Beans ",
-            "teamId": 5,
-            "losses": 1,
-            "winnable": 0,
-            "winnablePct": 0,
-            "games": [],
-            "rank": 9
-          }
-        ]
-      }
-    },
-    "career": [
-      {
-        "owner": "AR",
-        "team": "Give 'er The Beans ",
-        "teamId": 5,
-        "seasons": 9,
-        "losses": 67,
-        "winnable": 27,
-        "winnablePct": 0.403,
-        "rank": 1
-      },
-      {
-        "owner": "IK",
-        "team": "Olave Garden Breadsticks",
-        "teamId": 11,
-        "seasons": 9,
-        "losses": 62,
-        "winnable": 25,
-        "winnablePct": 0.403,
-        "rank": 2
-      },
-      {
-        "owner": "DM",
-        "team": "Cracked Unc",
-        "teamId": 2,
-        "seasons": 9,
-        "losses": 57,
-        "winnable": 25,
-        "winnablePct": 0.439,
-        "rank": 3
-      },
-      {
-        "owner": "ZS",
-        "team": "Tomato Toes",
-        "teamId": 10,
-        "seasons": 9,
-        "losses": 59,
-        "winnable": 23,
-        "winnablePct": 0.39,
-        "rank": 4
-      },
-      {
-        "owner": "DN",
-        "team": "Washington Redskins",
-        "teamId": 8,
-        "seasons": 9,
-        "losses": 56,
-        "winnable": 23,
-        "winnablePct": 0.411,
-        "rank": 5
-      },
-      {
-        "owner": "AN",
-        "team": "El Fusilado",
-        "teamId": 4,
-        "seasons": 9,
-        "losses": 52,
-        "winnable": 22,
-        "winnablePct": 0.423,
-        "rank": 6
-      },
-      {
-        "owner": "GM",
-        "team": "Gabe",
-        "teamId": 1,
-        "seasons": 9,
-        "losses": 50,
-        "winnable": 22,
-        "winnablePct": 0.44,
-        "rank": 7
-      },
-      {
-        "owner": "JO",
-        "team": "Adam's Revenge",
-        "teamId": 9,
-        "seasons": 8,
-        "losses": 50,
-        "winnable": 19,
-        "winnablePct": 0.38,
-        "rank": 8
-      },
-      {
-        "owner": "CR",
-        "team": "Apes Together Strong",
-        "teamId": 7,
-        "seasons": 9,
-        "losses": 47,
-        "winnable": 18,
-        "winnablePct": 0.383,
-        "rank": 9
-      },
-      {
-        "owner": "JH",
-        "team": "ORACLE AI",
-        "teamId": 12,
-        "seasons": 8,
-        "losses": 44,
-        "winnable": 13,
-        "winnablePct": 0.295,
-        "rank": 10
-      }
-    ],
-    "details": [
-      {
-        "season": 2018,
-        "week": 2,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "CR",
-        "actual": 109.2,
-        "optimal": 130.58,
-        "oppScore": 121.54
-      },
-      {
-        "season": 2018,
-        "week": 2,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "SHEN",
-        "actual": 102.44,
-        "optimal": 124.44,
-        "oppScore": 120.7
-      },
-      {
-        "season": 2018,
-        "week": 3,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "AN",
-        "actual": 117.06,
-        "optimal": 145.56,
-        "oppScore": 123.34
-      },
-      {
-        "season": 2018,
-        "week": 4,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "CR",
-        "actual": 139.22,
-        "optimal": 156,
-        "oppScore": 153.18
-      },
-      {
-        "season": 2018,
-        "week": 4,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "DM",
-        "actual": 128.56,
-        "optimal": 146.46,
-        "oppScore": 135.66
-      },
-      {
-        "season": 2018,
-        "week": 4,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "SHEN",
-        "actual": 113.56,
-        "optimal": 122.96,
-        "oppScore": 120.08
-      },
-      {
-        "season": 2018,
-        "week": 4,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "AN",
-        "actual": 99.82,
-        "optimal": 107.62,
-        "oppScore": 99.84
-      },
-      {
-        "season": 2018,
-        "week": 5,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "SHEN",
-        "actual": 124.18,
-        "optimal": 136.88,
-        "oppScore": 125.64
-      },
-      {
-        "season": 2018,
-        "week": 6,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "JO",
-        "actual": 81.86,
-        "optimal": 109.56,
-        "oppScore": 85.5
-      },
-      {
-        "season": 2018,
-        "week": 6,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "IK",
-        "actual": 105,
-        "optimal": 143.4,
-        "oppScore": 138.6
-      },
-      {
-        "season": 2018,
-        "week": 7,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "DN",
-        "actual": 82.7,
-        "optimal": 120.1,
-        "oppScore": 114.06
-      },
-      {
-        "season": 2018,
-        "week": 7,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "AR",
-        "actual": 86.36,
-        "optimal": 124.86,
-        "oppScore": 98.22
-      },
-      {
-        "season": 2018,
-        "week": 8,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "DM",
-        "actual": 140.26,
-        "optimal": 149.96,
-        "oppScore": 144.66
-      },
-      {
-        "season": 2018,
-        "week": 9,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "JO",
-        "actual": 112.6,
-        "optimal": 132.4,
-        "oppScore": 131.66
-      },
-      {
-        "season": 2018,
-        "week": 10,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "AN",
-        "actual": 109.82,
-        "optimal": 123.36,
-        "oppScore": 114.02
-      },
-      {
-        "season": 2018,
-        "week": 10,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "JO",
-        "actual": 127,
-        "optimal": 135.1,
-        "oppScore": 134.2
-      },
-      {
-        "season": 2018,
-        "week": 11,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "DM",
-        "actual": 99.74,
-        "optimal": 127.2,
-        "oppScore": 106.04
-      },
-      {
-        "season": 2018,
-        "week": 12,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "CR",
-        "actual": 128.26,
-        "optimal": 142.76,
-        "oppScore": 128.58
-      },
-      {
-        "season": 2018,
-        "week": 12,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "AN",
-        "actual": 118.12,
-        "optimal": 134.42,
-        "oppScore": 128.8
-      },
-      {
-        "season": 2018,
-        "week": 13,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "ZS",
-        "actual": 73.88,
-        "optimal": 119.7,
-        "oppScore": 76.36
-      },
-      {
-        "season": 2019,
-        "week": 1,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "CR",
-        "actual": 92.14,
-        "optimal": 139.04,
-        "oppScore": 97.42
-      },
-      {
-        "season": 2019,
-        "week": 3,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "GM",
-        "actual": 130.44,
-        "optimal": 155.44,
-        "oppScore": 131.22
-      },
-      {
-        "season": 2019,
-        "week": 3,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "IK",
-        "actual": 101.66,
-        "optimal": 128.96,
-        "oppScore": 106.22
-      },
-      {
-        "season": 2019,
-        "week": 4,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "IK",
-        "actual": 82,
-        "optimal": 112.28,
-        "oppScore": 109.48
-      },
-      {
-        "season": 2019,
-        "week": 4,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "AN",
-        "actual": 118.88,
-        "optimal": 161.44,
-        "oppScore": 154.18
-      },
-      {
-        "season": 2019,
-        "week": 4,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "ZS",
-        "actual": 83.7,
-        "optimal": 112,
-        "oppScore": 95.08
-      },
-      {
-        "season": 2019,
-        "week": 6,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "JH",
-        "actual": 102.82,
-        "optimal": 123.02,
-        "oppScore": 112.5
-      },
-      {
-        "season": 2019,
-        "week": 6,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "DM",
-        "actual": 95.22,
-        "optimal": 126.86,
-        "oppScore": 112.24
-      },
-      {
-        "season": 2019,
-        "week": 7,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "DN",
-        "actual": 86.74,
-        "optimal": 92.34,
-        "oppScore": 88.52
-      },
-      {
-        "season": 2019,
-        "week": 8,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "JO",
-        "actual": 83.4,
-        "optimal": 102.1,
-        "oppScore": 84.58
-      },
-      {
-        "season": 2019,
-        "week": 8,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "AN",
-        "actual": 135.16,
-        "optimal": 150.16,
-        "oppScore": 149.9
-      },
-      {
-        "season": 2019,
-        "week": 9,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "JH",
-        "actual": 94.86,
-        "optimal": 113.06,
-        "oppScore": 109.54
-      },
-      {
-        "season": 2019,
-        "week": 10,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "GM",
-        "actual": 91.08,
-        "optimal": 106.28,
-        "oppScore": 100.88
-      },
-      {
-        "season": 2019,
-        "week": 10,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "IK",
-        "actual": 120.42,
-        "optimal": 133.02,
-        "oppScore": 131.58
-      },
-      {
-        "season": 2019,
-        "week": 11,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "DM",
-        "actual": 97.32,
-        "optimal": 103.52,
-        "oppScore": 99.84
-      },
-      {
-        "season": 2019,
-        "week": 12,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "IK",
-        "actual": 80.38,
-        "optimal": 125.58,
-        "oppScore": 82.14
-      },
-      {
-        "season": 2019,
-        "week": 12,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "DN",
-        "actual": 100.7,
-        "optimal": 106.2,
-        "oppScore": 102.12
-      },
-      {
-        "season": 2019,
-        "week": 13,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "CR",
-        "actual": 82.92,
-        "optimal": 123.66,
-        "oppScore": 89.5
-      },
-      {
-        "season": 2019,
-        "week": 13,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JH",
-        "actual": 96,
-        "optimal": 116,
-        "oppScore": 107.06
-      },
-      {
-        "season": 2019,
-        "week": 13,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "DN",
-        "actual": 87.88,
-        "optimal": 120.54,
-        "oppScore": 106.22
-      },
-      {
-        "season": 2020,
-        "week": 1,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "CR",
-        "actual": 113.5,
-        "optimal": 131.8,
-        "oppScore": 114.4
-      },
-      {
-        "season": 2020,
-        "week": 1,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "DN",
-        "actual": 91.24,
-        "optimal": 133.34,
-        "oppScore": 127
-      },
-      {
-        "season": 2020,
-        "week": 1,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JO",
-        "actual": 121.8,
-        "optimal": 141.5,
-        "oppScore": 135.58
-      },
-      {
-        "season": 2020,
-        "week": 2,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "GM",
-        "actual": 111.96,
-        "optimal": 160.08,
-        "oppScore": 126.08
-      },
-      {
-        "season": 2020,
-        "week": 2,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "CR",
-        "actual": 133.1,
-        "optimal": 158.3,
-        "oppScore": 152.1
-      },
-      {
-        "season": 2020,
-        "week": 2,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "JO",
-        "actual": 118.38,
-        "optimal": 154.46,
-        "oppScore": 130.9
-      },
-      {
-        "season": 2020,
-        "week": 3,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "IK",
-        "actual": 106.78,
-        "optimal": 148.34,
-        "oppScore": 129.88
-      },
-      {
-        "season": 2020,
-        "week": 3,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "AN",
-        "actual": 136.34,
-        "optimal": 147.04,
-        "oppScore": 137.3
-      },
-      {
-        "season": 2020,
-        "week": 4,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "ZS",
-        "actual": 103.92,
-        "optimal": 109.92,
-        "oppScore": 109.64
-      },
-      {
-        "season": 2020,
-        "week": 4,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "JO",
-        "actual": 110.8,
-        "optimal": 121.84,
-        "oppScore": 110.8
-      },
-      {
-        "season": 2020,
-        "week": 4,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "JH",
-        "actual": 94.9,
-        "optimal": 116.7,
-        "oppScore": 98.5
-      },
-      {
-        "season": 2020,
-        "week": 5,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "JO",
-        "actual": 111.72,
-        "optimal": 143.28,
-        "oppScore": 117.78
-      },
-      {
-        "season": 2020,
-        "week": 5,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "GM",
-        "actual": 93.14,
-        "optimal": 133.56,
-        "oppScore": 113.3
-      },
-      {
-        "season": 2020,
-        "week": 6,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "DM",
-        "actual": 92.32,
-        "optimal": 130.22,
-        "oppScore": 94.4
-      },
-      {
-        "season": 2020,
-        "week": 6,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "ZS",
-        "actual": 105.28,
-        "optimal": 160.74,
-        "oppScore": 113.54
-      },
-      {
-        "season": 2020,
-        "week": 6,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "JH",
-        "actual": 101.94,
-        "optimal": 123.74,
-        "oppScore": 117.98
-      },
-      {
-        "season": 2020,
-        "week": 7,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "IK",
-        "actual": 96.1,
-        "optimal": 134.14,
-        "oppScore": 103.4
-      },
-      {
-        "season": 2020,
-        "week": 8,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "DN",
-        "actual": 66.92,
-        "optimal": 94.52,
-        "oppScore": 94.44
-      },
-      {
-        "season": 2020,
-        "week": 8,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "CR",
-        "actual": 112.84,
-        "optimal": 134.44,
-        "oppScore": 130.36
-      },
-      {
-        "season": 2020,
-        "week": 9,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "DM",
-        "actual": 101.58,
-        "optimal": 110.68,
-        "oppScore": 102.8
-      },
-      {
-        "season": 2020,
-        "week": 10,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "AN",
-        "actual": 93.82,
-        "optimal": 121.18,
-        "oppScore": 116.1
-      },
-      {
-        "season": 2020,
-        "week": 12,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "ZS",
-        "actual": 94.84,
-        "optimal": 116.9,
-        "oppScore": 116.5
-      },
-      {
-        "season": 2020,
-        "week": 12,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "AN",
-        "actual": 122.58,
-        "optimal": 142.7,
-        "oppScore": 132.8
-      },
-      {
-        "season": 2020,
-        "week": 13,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "GM",
-        "actual": 132.82,
-        "optimal": 146.82,
-        "oppScore": 144.72
-      },
-      {
-        "season": 2021,
-        "week": 1,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "DM",
-        "actual": 80.2,
-        "optimal": 128.22,
-        "oppScore": 117.56
-      },
-      {
-        "season": 2021,
-        "week": 1,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "AR",
-        "actual": 107.06,
-        "optimal": 135.56,
-        "oppScore": 126
-      },
-      {
-        "season": 2021,
-        "week": 1,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "JO",
-        "actual": 102.78,
-        "optimal": 119.24,
-        "oppScore": 105.72
-      },
-      {
-        "season": 2021,
-        "week": 1,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "GM",
-        "actual": 121.86,
-        "optimal": 151.26,
-        "oppScore": 133.38
-      },
-      {
-        "season": 2021,
-        "week": 1,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "DN",
-        "actual": 113.96,
-        "optimal": 137.06,
-        "oppScore": 122.68
-      },
-      {
-        "season": 2021,
-        "week": 2,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "AR",
-        "actual": 106.2,
-        "optimal": 144.8,
-        "oppScore": 117.06
-      },
-      {
-        "season": 2021,
-        "week": 2,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "JH",
-        "actual": 128.32,
-        "optimal": 145.02,
-        "oppScore": 138.04
-      },
-      {
-        "season": 2021,
-        "week": 3,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "GM",
-        "actual": 94.12,
-        "optimal": 112.92,
-        "oppScore": 96.5
-      },
-      {
-        "season": 2021,
-        "week": 3,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JH",
-        "actual": 86.48,
-        "optimal": 132.88,
-        "oppScore": 120.18
-      },
-      {
-        "season": 2021,
-        "week": 3,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "ZS",
-        "actual": 111.54,
-        "optimal": 134.38,
-        "oppScore": 112.02
-      },
-      {
-        "season": 2021,
-        "week": 3,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "IK",
-        "actual": 118.74,
-        "optimal": 138.14,
-        "oppScore": 127.34
-      },
-      {
-        "season": 2021,
-        "week": 4,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "GM",
-        "actual": 99.42,
-        "optimal": 116.62,
-        "oppScore": 110.22
-      },
-      {
-        "season": 2021,
-        "week": 4,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "JO",
-        "actual": 108.86,
-        "optimal": 144.3,
-        "oppScore": 113.72
-      },
-      {
-        "season": 2021,
-        "week": 4,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "IK",
-        "actual": 105.06,
-        "optimal": 133.56,
-        "oppScore": 109.68
-      },
-      {
-        "season": 2021,
-        "week": 5,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "JO",
-        "actual": 141.06,
-        "optimal": 151.78,
-        "oppScore": 151.58
-      },
-      {
-        "season": 2021,
-        "week": 5,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "AR",
-        "actual": 151.12,
-        "optimal": 175.62,
-        "oppScore": 153.2
-      },
-      {
-        "season": 2021,
-        "week": 6,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "CR",
-        "actual": 126.88,
-        "optimal": 146.14,
-        "oppScore": 134.3
-      },
-      {
-        "season": 2021,
-        "week": 6,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "IK",
-        "actual": 120.48,
-        "optimal": 132.38,
-        "oppScore": 121.7
-      },
-      {
-        "season": 2021,
-        "week": 6,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "ZS",
-        "actual": 119.9,
-        "optimal": 141.32,
-        "oppScore": 124.78
-      },
-      {
-        "season": 2021,
-        "week": 6,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "AR",
-        "actual": 93.98,
-        "optimal": 121.78,
-        "oppScore": 107.12
-      },
-      {
-        "season": 2021,
-        "week": 8,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "IK",
-        "actual": 95.96,
-        "optimal": 112.78,
-        "oppScore": 103.72
-      },
-      {
-        "season": 2021,
-        "week": 8,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "ZS",
-        "actual": 89.46,
-        "optimal": 119.16,
-        "oppScore": 97.46
-      },
-      {
-        "season": 2021,
-        "week": 8,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "AN",
-        "actual": 95.62,
-        "optimal": 126.5,
-        "oppScore": 111.86
-      },
-      {
-        "season": 2021,
-        "week": 8,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "AR",
-        "actual": 109.5,
-        "optimal": 125.5,
-        "oppScore": 118.86
-      },
-      {
-        "season": 2021,
-        "week": 9,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "DM",
-        "actual": 87.86,
-        "optimal": 122.34,
-        "oppScore": 95
-      },
-      {
-        "season": 2021,
-        "week": 9,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "CR",
-        "actual": 101.36,
-        "optimal": 111.44,
-        "oppScore": 101.54
-      },
-      {
-        "season": 2021,
-        "week": 10,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "JO",
-        "actual": 90,
-        "optimal": 125.5,
-        "oppScore": 122.54
-      },
-      {
-        "season": 2021,
-        "week": 11,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "DM",
-        "actual": 83.06,
-        "optimal": 99.16,
-        "oppScore": 93.82
-      },
-      {
-        "season": 2021,
-        "week": 11,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "IK",
-        "actual": 114.98,
-        "optimal": 123.38,
-        "oppScore": 115.28
-      },
-      {
-        "season": 2021,
-        "week": 12,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JH",
-        "actual": 77.8,
-        "optimal": 126.82,
-        "oppScore": 117.24
-      },
-      {
-        "season": 2021,
-        "week": 12,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "ZS",
-        "actual": 95.96,
-        "optimal": 118.32,
-        "oppScore": 102.08
-      },
-      {
-        "season": 2021,
-        "week": 13,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "DN",
-        "actual": 111.2,
-        "optimal": 122.6,
-        "oppScore": 119.02
-      },
-      {
-        "season": 2021,
-        "week": 13,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "CR",
-        "actual": 95.62,
-        "optimal": 111,
-        "oppScore": 105.36
-      },
-      {
-        "season": 2021,
-        "week": 14,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "JH",
-        "actual": 138.62,
-        "optimal": 155.42,
-        "oppScore": 152.52
-      },
-      {
-        "season": 2021,
-        "week": 14,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "GM",
-        "actual": 87.14,
-        "optimal": 119.14,
-        "oppScore": 118.02
-      },
-      {
-        "season": 2021,
-        "week": 14,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "JO",
-        "actual": 112.34,
-        "optimal": 136.24,
-        "oppScore": 114.34
-      },
-      {
-        "season": 2022,
-        "week": 1,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "JO",
-        "actual": 83.98,
-        "optimal": 120.48,
-        "oppScore": 88.86
-      },
-      {
-        "season": 2022,
-        "week": 1,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "GM",
-        "actual": 108.52,
-        "optimal": 134.12,
-        "oppScore": 112.12
-      },
-      {
-        "season": 2022,
-        "week": 2,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "GM",
-        "actual": 94.88,
-        "optimal": 129.38,
-        "oppScore": 105.92
-      },
-      {
-        "season": 2022,
-        "week": 2,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "DN",
-        "actual": 110.82,
-        "optimal": 167.82,
-        "oppScore": 120.26
-      },
-      {
-        "season": 2022,
-        "week": 3,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "DM",
-        "actual": 87.42,
-        "optimal": 115.32,
-        "oppScore": 93
-      },
-      {
-        "season": 2022,
-        "week": 3,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JH",
-        "actual": 89.08,
-        "optimal": 101.48,
-        "oppScore": 94.38
-      },
-      {
-        "season": 2022,
-        "week": 3,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "DN",
-        "actual": 79.96,
-        "optimal": 96.86,
-        "oppScore": 83.24
-      },
-      {
-        "season": 2022,
-        "week": 3,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "CR",
-        "actual": 91.14,
-        "optimal": 126.24,
-        "oppScore": 110.2
-      },
-      {
-        "season": 2022,
-        "week": 4,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "DM",
-        "actual": 84.06,
-        "optimal": 137.08,
-        "oppScore": 110.24
-      },
-      {
-        "season": 2022,
-        "week": 5,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "DN",
-        "actual": 96.56,
-        "optimal": 128.98,
-        "oppScore": 113.26
-      },
-      {
-        "season": 2022,
-        "week": 5,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "CR",
-        "actual": 95.34,
-        "optimal": 143.64,
-        "oppScore": 113.96
-      },
-      {
-        "season": 2022,
-        "week": 5,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "ZS",
-        "actual": 115.02,
-        "optimal": 128.06,
-        "oppScore": 127.2
-      },
-      {
-        "season": 2022,
-        "week": 6,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "JH",
-        "actual": 90.7,
-        "optimal": 108.4,
-        "oppScore": 104.52
-      },
-      {
-        "season": 2022,
-        "week": 6,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "AR",
-        "actual": 93.42,
-        "optimal": 115.92,
-        "oppScore": 98.96
-      },
-      {
-        "season": 2022,
-        "week": 7,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "AN",
-        "actual": 101.2,
-        "optimal": 144.94,
-        "oppScore": 139.42
-      },
-      {
-        "season": 2022,
-        "week": 7,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "AR",
-        "actual": 93.08,
-        "optimal": 114.88,
-        "oppScore": 98.52
-      },
-      {
-        "season": 2022,
-        "week": 8,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "GM",
-        "actual": 133.6,
-        "optimal": 158.1,
-        "oppScore": 139.48
-      },
-      {
-        "season": 2022,
-        "week": 9,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "CR",
-        "actual": 94.2,
-        "optimal": 113.2,
-        "oppScore": 107.92
-      },
-      {
-        "season": 2022,
-        "week": 11,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "DM",
-        "actual": 77.08,
-        "optimal": 103.38,
-        "oppScore": 96.8
-      },
-      {
-        "season": 2022,
-        "week": 11,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "IK",
-        "actual": 118.76,
-        "optimal": 136.26,
-        "oppScore": 125.02
-      },
-      {
-        "season": 2022,
-        "week": 11,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "DN",
-        "actual": 93.1,
-        "optimal": 109.6,
-        "oppScore": 105.4
-      },
-      {
-        "season": 2022,
-        "week": 12,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "GM",
-        "actual": 101.62,
-        "optimal": 137.22,
-        "oppScore": 120.86
-      },
-      {
-        "season": 2022,
-        "week": 12,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JH",
-        "actual": 100.9,
-        "optimal": 130.86,
-        "oppScore": 124.2
-      },
-      {
-        "season": 2022,
-        "week": 13,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "DM",
-        "actual": 97.44,
-        "optimal": 118.46,
-        "oppScore": 101.44
-      },
-      {
-        "season": 2022,
-        "week": 13,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "DN",
-        "actual": 94.32,
-        "optimal": 97.32,
-        "oppScore": 96.9
-      },
-      {
-        "season": 2022,
-        "week": 14,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "GM",
-        "actual": 97.8,
-        "optimal": 112.46,
-        "oppScore": 107.6
-      },
-      {
-        "season": 2022,
-        "week": 14,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "AR",
-        "actual": 59.92,
-        "optimal": 104.02,
-        "oppScore": 76.48
-      },
-      {
-        "season": 2022,
-        "week": 14,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "AN",
-        "actual": 78.76,
-        "optimal": 100.32,
-        "oppScore": 88.86
-      },
-      {
-        "season": 2023,
-        "week": 1,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "ZS",
-        "actual": 83.68,
-        "optimal": 130.6,
-        "oppScore": 98.06
-      },
-      {
-        "season": 2023,
-        "week": 1,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "IK",
-        "actual": 105.92,
-        "optimal": 117.88,
-        "oppScore": 113.84
-      },
-      {
-        "season": 2023,
-        "week": 2,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "ZS",
-        "actual": 93.14,
-        "optimal": 113.52,
-        "oppScore": 93.18
-      },
-      {
-        "season": 2023,
-        "week": 2,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "IK",
-        "actual": 79,
-        "optimal": 122.02,
-        "oppScore": 98.54
-      },
-      {
-        "season": 2023,
-        "week": 2,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "CR",
-        "actual": 128.04,
-        "optimal": 152.14,
-        "oppScore": 140.46
-      },
-      {
-        "season": 2023,
-        "week": 3,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "AR",
-        "actual": 97.06,
-        "optimal": 114.76,
-        "oppScore": 107.92
-      },
-      {
-        "season": 2023,
-        "week": 3,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "ZS",
-        "actual": 90.78,
-        "optimal": 129,
-        "oppScore": 114.58
-      },
-      {
-        "season": 2023,
-        "week": 4,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "DM",
-        "actual": 72.38,
-        "optimal": 106.5,
-        "oppScore": 90.66
-      },
-      {
-        "season": 2023,
-        "week": 4,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "ZS",
-        "actual": 96.26,
-        "optimal": 117.78,
-        "oppScore": 109.44
-      },
-      {
-        "season": 2023,
-        "week": 6,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "GM",
-        "actual": 62.04,
-        "optimal": 91.84,
-        "oppScore": 70.02
-      },
-      {
-        "season": 2023,
-        "week": 6,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "AN",
-        "actual": 111.7,
-        "optimal": 114.72,
-        "oppScore": 113.98
-      },
-      {
-        "season": 2023,
-        "week": 7,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "ZS",
-        "actual": 101.46,
-        "optimal": 129.86,
-        "oppScore": 111.78
-      },
-      {
-        "season": 2023,
-        "week": 7,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "JO",
-        "actual": 105.26,
-        "optimal": 117.66,
-        "oppScore": 113.86
-      },
-      {
-        "season": 2023,
-        "week": 8,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "DM",
-        "actual": 141.56,
-        "optimal": 150.16,
-        "oppScore": 145.98
-      },
-      {
-        "season": 2023,
-        "week": 8,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "CR",
-        "actual": 109.28,
-        "optimal": 121.08,
-        "oppScore": 116.16
-      },
-      {
-        "season": 2023,
-        "week": 9,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "ZS",
-        "actual": 97.7,
-        "optimal": 121.7,
-        "oppScore": 111.78
-      },
-      {
-        "season": 2023,
-        "week": 9,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "DN",
-        "actual": 89.26,
-        "optimal": 102.56,
-        "oppScore": 96.78
-      },
-      {
-        "season": 2023,
-        "week": 11,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "GM",
-        "actual": 79.76,
-        "optimal": 128.76,
-        "oppScore": 120.64
-      },
-      {
-        "season": 2023,
-        "week": 12,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "DM",
-        "actual": 106.44,
-        "optimal": 140.34,
-        "oppScore": 124.58
-      },
-      {
-        "season": 2023,
-        "week": 12,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JH",
-        "actual": 107.08,
-        "optimal": 145.48,
-        "oppScore": 114.12
-      },
-      {
-        "season": 2023,
-        "week": 13,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "ZS",
-        "actual": 82.1,
-        "optimal": 149.44,
-        "oppScore": 109.22
-      },
-      {
-        "season": 2024,
-        "week": 1,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "DM",
-        "actual": 90.42,
-        "optimal": 136.18,
-        "oppScore": 112.26
-      },
-      {
-        "season": 2024,
-        "week": 1,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "ZS",
-        "actual": 88.5,
-        "optimal": 123.56,
-        "oppScore": 109.02
-      },
-      {
-        "season": 2024,
-        "week": 1,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "JO",
-        "actual": 89.08,
-        "optimal": 103.38,
-        "oppScore": 98.76
-      },
-      {
-        "season": 2024,
-        "week": 1,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "CR",
-        "actual": 119.86,
-        "optimal": 134.18,
-        "oppScore": 119.98
-      },
-      {
-        "season": 2024,
-        "week": 2,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "AR",
-        "actual": 118.9,
-        "optimal": 140.4,
-        "oppScore": 130
-      },
-      {
-        "season": 2024,
-        "week": 2,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "AN",
-        "actual": 97.02,
-        "optimal": 103.36,
-        "oppScore": 98.82
-      },
-      {
-        "season": 2024,
-        "week": 2,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "ZS",
-        "actual": 138.2,
-        "optimal": 157.72,
-        "oppScore": 148.48
-      },
-      {
-        "season": 2024,
-        "week": 3,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JH",
-        "actual": 87.44,
-        "optimal": 102.44,
-        "oppScore": 97.68
-      },
-      {
-        "season": 2024,
-        "week": 3,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "ZS",
-        "actual": 100.46,
-        "optimal": 117.46,
-        "oppScore": 116.88
-      },
-      {
-        "season": 2024,
-        "week": 5,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "JH",
-        "actual": 109.44,
-        "optimal": 132.04,
-        "oppScore": 112.94
-      },
-      {
-        "season": 2024,
-        "week": 5,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "GM",
-        "actual": 104.42,
-        "optimal": 141.52,
-        "oppScore": 115.94
-      },
-      {
-        "season": 2024,
-        "week": 5,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "AR",
-        "actual": 93.4,
-        "optimal": 113.6,
-        "oppScore": 113.16
-      },
-      {
-        "season": 2024,
-        "week": 5,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "AN",
-        "actual": 123.32,
-        "optimal": 146.42,
-        "oppScore": 131.96
-      },
-      {
-        "season": 2024,
-        "week": 6,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "IK",
-        "actual": 109.42,
-        "optimal": 114.72,
-        "oppScore": 110.96
-      },
-      {
-        "season": 2024,
-        "week": 6,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "JO",
-        "actual": 104.62,
-        "optimal": 125.32,
-        "oppScore": 124.1
-      },
-      {
-        "season": 2024,
-        "week": 6,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "AR",
-        "actual": 116.86,
-        "optimal": 129.66,
-        "oppScore": 118.52
-      },
-      {
-        "season": 2024,
-        "week": 7,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "CR",
-        "actual": 99.98,
-        "optimal": 120.1,
-        "oppScore": 117.12
-      },
-      {
-        "season": 2024,
-        "week": 7,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "JO",
-        "actual": 91,
-        "optimal": 120.9,
-        "oppScore": 118.88
-      },
-      {
-        "season": 2024,
-        "week": 8,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "CR",
-        "actual": 95.56,
-        "optimal": 130.06,
-        "oppScore": 100.02
-      },
-      {
-        "season": 2024,
-        "week": 8,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "AN",
-        "actual": 125.3,
-        "optimal": 183.04,
-        "oppScore": 148.84
-      },
-      {
-        "season": 2024,
-        "week": 8,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "AR",
-        "actual": 111.08,
-        "optimal": 116.68,
-        "oppScore": 114.54
-      },
-      {
-        "season": 2024,
-        "week": 8,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "GM",
-        "actual": 111.3,
-        "optimal": 143.5,
-        "oppScore": 117.46
-      },
-      {
-        "season": 2024,
-        "week": 9,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "CR",
-        "actual": 102.3,
-        "optimal": 113.18,
-        "oppScore": 108.3
-      },
-      {
-        "season": 2024,
-        "week": 11,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "AR",
-        "actual": 83.3,
-        "optimal": 124.28,
-        "oppScore": 98.34
-      },
-      {
-        "season": 2024,
-        "week": 11,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "GM",
-        "actual": 108.28,
-        "optimal": 141.78,
-        "oppScore": 111.64
-      },
-      {
-        "season": 2024,
-        "week": 11,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "CR",
-        "actual": 139.94,
-        "optimal": 166.84,
-        "oppScore": 153.08
-      },
-      {
-        "season": 2024,
-        "week": 12,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "JO",
-        "actual": 112.36,
-        "optimal": 133.26,
-        "oppScore": 114.88
-      },
-      {
-        "season": 2024,
-        "week": 12,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JH",
-        "actual": 97.56,
-        "optimal": 116.66,
-        "oppScore": 106.36
-      },
-      {
-        "season": 2024,
-        "week": 12,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "ZS",
-        "actual": 93.5,
-        "optimal": 139.8,
-        "oppScore": 114.98
-      },
-      {
-        "season": 2024,
-        "week": 13,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "JH",
-        "actual": 100.46,
-        "optimal": 141.36,
-        "oppScore": 104.14
-      },
-      {
-        "season": 2025,
-        "week": 1,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "AR",
-        "actual": 92.34,
-        "optimal": 109.32,
-        "oppScore": 103.28
-      },
-      {
-        "season": 2025,
-        "week": 1,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "JO",
-        "actual": 91.58,
-        "optimal": 122.4,
-        "oppScore": 95.62
-      },
-      {
-        "season": 2025,
-        "week": 1,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "GM",
-        "actual": 95.02,
-        "optimal": 112.12,
-        "oppScore": 109.22
-      },
-      {
-        "season": 2025,
-        "week": 1,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "DN",
-        "actual": 81.98,
-        "optimal": 109.38,
-        "oppScore": 101.12
-      },
-      {
-        "season": 2025,
-        "week": 2,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "DM",
-        "actual": 73.18,
-        "optimal": 106.3,
-        "oppScore": 101.42
-      },
-      {
-        "season": 2025,
-        "week": 2,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "GM",
-        "actual": 79.34,
-        "optimal": 122.54,
-        "oppScore": 118.14
-      },
-      {
-        "season": 2025,
-        "week": 3,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "IK",
-        "actual": 103.7,
-        "optimal": 134,
-        "oppScore": 111.52
-      },
-      {
-        "season": 2025,
-        "week": 4,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "GM",
-        "actual": 131.56,
-        "optimal": 153.28,
-        "oppScore": 132.52
-      },
-      {
-        "season": 2025,
-        "week": 4,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "JH",
-        "actual": 109.5,
-        "optimal": 136.6,
-        "oppScore": 123.3
-      },
-      {
-        "season": 2025,
-        "week": 5,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "AR",
-        "actual": 123.28,
-        "optimal": 135.48,
-        "oppScore": 130.42
-      },
-      {
-        "season": 2025,
-        "week": 5,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "ZS",
-        "actual": 91.62,
-        "optimal": 109.22,
-        "oppScore": 91.98
-      },
-      {
-        "season": 2025,
-        "week": 6,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "DN",
-        "actual": 94.9,
-        "optimal": 131.9,
-        "oppScore": 107.74
-      },
-      {
-        "season": 2025,
-        "week": 6,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "JH",
-        "actual": 106.26,
-        "optimal": 122.36,
-        "oppScore": 111.54
-      },
-      {
-        "season": 2025,
-        "week": 6,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "AN",
-        "actual": 73.14,
-        "optimal": 108.94,
-        "oppScore": 104.64
-      },
-      {
-        "season": 2025,
-        "week": 7,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "IK",
-        "actual": 109.64,
-        "optimal": 132.42,
-        "oppScore": 120.98
-      },
-      {
-        "season": 2025,
-        "week": 8,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "JH",
-        "actual": 108.64,
-        "optimal": 130.92,
-        "oppScore": 123.56
-      },
-      {
-        "season": 2025,
-        "week": 9,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "IK",
-        "actual": 101.26,
-        "optimal": 108.16,
-        "oppScore": 107.96
-      },
-      {
-        "season": 2025,
-        "week": 9,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "DN",
-        "actual": 90.5,
-        "optimal": 125.4,
-        "oppScore": 94.88
-      },
-      {
-        "season": 2025,
-        "week": 9,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "JH",
-        "actual": 106.72,
-        "optimal": 113.72,
-        "oppScore": 107.74
-      },
-      {
-        "season": 2025,
-        "week": 10,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "DM",
-        "actual": 108.6,
-        "optimal": 122.2,
-        "oppScore": 111.2
-      },
-      {
-        "season": 2025,
-        "week": 11,
-        "owner": "JO",
-        "teamId": 9,
-        "opp": "AN",
-        "actual": 94.74,
-        "optimal": 120.44,
-        "oppScore": 118.54
-      },
-      {
-        "season": 2025,
-        "week": 11,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "ZS",
-        "actual": 90.78,
-        "optimal": 104.98,
-        "oppScore": 97.9
-      },
-      {
-        "season": 2025,
-        "week": 11,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "CR",
-        "actual": 113.16,
-        "optimal": 113.96,
-        "oppScore": 113.34
-      },
-      {
-        "season": 2025,
-        "week": 12,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "JO",
-        "actual": 79.92,
-        "optimal": 116.36,
-        "oppScore": 111.58
-      },
-      {
-        "season": 2025,
-        "week": 12,
-        "owner": "DN",
-        "teamId": 8,
-        "opp": "ZS",
-        "actual": 81.04,
-        "optimal": 102.54,
-        "oppScore": 88.86
-      },
-      {
-        "season": 2025,
-        "week": 12,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "CR",
-        "actual": 101.52,
-        "optimal": 140.56,
-        "oppScore": 131.16
-      },
-      {
-        "season": 2025,
-        "week": 13,
-        "owner": "AR",
-        "teamId": 5,
-        "opp": "DN",
-        "actual": 104.66,
-        "optimal": 131.14,
-        "oppScore": 119.04
-      },
-      {
-        "season": 2026,
-        "week": 1,
-        "owner": "JH",
-        "teamId": 12,
-        "opp": "DN",
-        "actual": 126.66,
-        "optimal": 140.84,
-        "oppScore": 136.36
-      },
-      {
-        "season": 2026,
-        "week": 1,
-        "owner": "AN",
-        "teamId": 4,
-        "opp": "JO",
-        "actual": 114.8,
-        "optimal": 149.5,
-        "oppScore": 118.8
-      },
-      {
-        "season": 2026,
-        "week": 1,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "GM",
-        "actual": 119.86,
-        "optimal": 130.66,
-        "oppScore": 129.16
-      },
-      {
-        "season": 2026,
-        "week": 2,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "AR",
-        "actual": 135.26,
-        "optimal": 149.36,
-        "oppScore": 149.22
-      },
-      {
-        "season": 2026,
-        "week": 2,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "JO",
-        "actual": 86.1,
-        "optimal": 113.18,
-        "oppScore": 104.56
-      },
-      {
-        "season": 2026,
-        "week": 2,
-        "owner": "DM",
-        "teamId": 2,
-        "opp": "JH",
-        "actual": 98.62,
-        "optimal": 144.18,
-        "oppScore": 132.58
-      },
-      {
-        "season": 2026,
-        "week": 3,
-        "owner": "GM",
-        "teamId": 1,
-        "opp": "JO",
-        "actual": 103.96,
-        "optimal": 128.64,
-        "oppScore": 120.64
-      },
-      {
-        "season": 2026,
-        "week": 3,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "JH",
-        "actual": 100.02,
-        "optimal": 134.68,
-        "oppScore": 116.84
-      },
-      {
-        "season": 2026,
-        "week": 3,
-        "owner": "CR",
-        "teamId": 7,
-        "opp": "ZS",
-        "actual": 132.68,
-        "optimal": 155.08,
-        "oppScore": 132.74
-      },
-      {
-        "season": 2026,
-        "week": 4,
-        "owner": "ZS",
-        "teamId": 10,
-        "opp": "AR",
-        "actual": 101.48,
-        "optimal": 127.58,
-        "oppScore": 118.56
-      },
-      {
-        "season": 2026,
-        "week": 4,
-        "owner": "IK",
-        "teamId": 11,
-        "opp": "DN",
-        "actual": 120.48,
-        "optimal": 173.82,
-        "oppScore": 149.72
-      }
-    ]
-  },
   "managerWinsAdded": {
     "scopeNote": "Stolen wins minus avoidable losses since 2018. Expected = optimal lineup times the league-week-average efficiency (total actual over total optimal across included owners that week, reusing the same per-team actual/optimal as sit-start). Strict inequalities; ties excluded; playoffs excluded.",
     "perSeason": {

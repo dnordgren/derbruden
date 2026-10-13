@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-12",
+  "generated": "2026-10-13",
   "leagueId": "794521",
   "seasons": [
     2018,
@@ -30,6 +30,9 @@
           "efficiency": 0.923,
           "perfectPct": 0,
           "rank": 1,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -45,6 +48,9 @@
           "efficiency": 0.922,
           "perfectPct": 0.077,
           "rank": 2,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -60,6 +66,9 @@
           "efficiency": 0.91,
           "perfectPct": 0.077,
           "rank": 3,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -75,6 +84,9 @@
           "efficiency": 0.891,
           "perfectPct": 0.077,
           "rank": 4,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -90,6 +102,9 @@
           "efficiency": 0.886,
           "perfectPct": 0.077,
           "rank": 5,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -105,6 +120,9 @@
           "efficiency": 0.862,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 2,
           "losses": 11,
           "winPct": 0.154
@@ -120,6 +138,9 @@
           "efficiency": 0.855,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -135,6 +156,9 @@
           "efficiency": 0.854,
           "perfectPct": 0.077,
           "rank": 8,
+          "stolen": 2,
+          "avoidable": 1,
+          "mwa": 1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -150,6 +174,9 @@
           "efficiency": 0.849,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -171,6 +198,9 @@
           "efficiency": 0.928,
           "perfectPct": 0.154,
           "rank": 1,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 11,
           "losses": 2,
           "winPct": 0.846
@@ -186,6 +216,9 @@
           "efficiency": 0.901,
           "perfectPct": 0.077,
           "rank": 2,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -201,6 +234,9 @@
           "efficiency": 0.876,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -216,6 +252,9 @@
           "efficiency": 0.873,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -231,6 +270,9 @@
           "efficiency": 0.869,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 10,
           "losses": 3,
           "winPct": 0.769
@@ -246,6 +288,9 @@
           "efficiency": 0.867,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -261,6 +306,9 @@
           "efficiency": 0.839,
           "perfectPct": 0.154,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -276,6 +324,9 @@
           "efficiency": 0.816,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -291,6 +342,9 @@
           "efficiency": 0.811,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -306,6 +360,9 @@
           "efficiency": 0.802,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -327,6 +384,9 @@
           "efficiency": 0.918,
           "perfectPct": 0,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 10,
           "losses": 3,
           "winPct": 0.769
@@ -342,6 +402,9 @@
           "efficiency": 0.883,
           "perfectPct": 0.077,
           "rank": 2,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -357,6 +420,9 @@
           "efficiency": 0.877,
           "perfectPct": 0.077,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -372,6 +438,9 @@
           "efficiency": 0.872,
           "perfectPct": 0.077,
           "rank": 4,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -387,6 +456,9 @@
           "efficiency": 0.865,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -402,6 +474,9 @@
           "efficiency": 0.861,
           "perfectPct": 0.077,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -417,6 +492,9 @@
           "efficiency": 0.854,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -432,6 +510,9 @@
           "efficiency": 0.837,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 3,
           "losses": 10,
           "winPct": 0.231
@@ -447,6 +528,9 @@
           "efficiency": 0.832,
           "perfectPct": 0.154,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -462,6 +546,9 @@
           "efficiency": 0.798,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 3,
+          "mwa": -3,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -483,6 +570,9 @@
           "efficiency": 0.911,
           "perfectPct": 0.143,
           "rank": 1,
+          "stolen": 2,
+          "avoidable": 1,
+          "mwa": 1,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -498,6 +588,9 @@
           "efficiency": 0.896,
           "perfectPct": 0,
           "rank": 2,
+          "stolen": 2,
+          "avoidable": 2,
+          "mwa": 0,
           "wins": 5,
           "losses": 9,
           "winPct": 0.357
@@ -513,6 +606,9 @@
           "efficiency": 0.891,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 9,
           "winPct": 0.357
@@ -528,6 +624,9 @@
           "efficiency": 0.88,
           "perfectPct": 0.071,
           "rank": 4,
+          "stolen": 3,
+          "avoidable": 1,
+          "mwa": 2,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -543,6 +642,9 @@
           "efficiency": 0.879,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 2,
+          "avoidable": 2,
+          "mwa": 0,
           "wins": 7,
           "losses": 7,
           "winPct": 0.5
@@ -558,6 +660,9 @@
           "efficiency": 0.863,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 9,
           "losses": 5,
           "winPct": 0.643
@@ -573,6 +678,9 @@
           "efficiency": 0.863,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 6,
           "losses": 8,
           "winPct": 0.429
@@ -588,6 +696,9 @@
           "efficiency": 0.861,
           "perfectPct": 0.071,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -603,6 +714,9 @@
           "efficiency": 0.853,
           "perfectPct": 0.071,
           "rank": 9,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -618,6 +732,9 @@
           "efficiency": 0.83,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 6,
           "losses": 8,
           "winPct": 0.429
@@ -639,6 +756,9 @@
           "efficiency": 0.893,
           "perfectPct": 0.143,
           "rank": 1,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 7,
           "losses": 7,
           "winPct": 0.5
@@ -654,6 +774,9 @@
           "efficiency": 0.881,
           "perfectPct": 0.143,
           "rank": 2,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 9,
           "losses": 5,
           "winPct": 0.643
@@ -669,6 +792,9 @@
           "efficiency": 0.881,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 4,
           "losses": 10,
           "winPct": 0.286
@@ -684,6 +810,9 @@
           "efficiency": 0.877,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 3,
+          "avoidable": 1,
+          "mwa": 2,
           "wins": 5,
           "losses": 9,
           "winPct": 0.357
@@ -699,6 +828,9 @@
           "efficiency": 0.874,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 10,
           "losses": 4,
           "winPct": 0.714
@@ -714,6 +846,9 @@
           "efficiency": 0.86,
           "perfectPct": 0.071,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 4,
+          "mwa": -4,
           "wins": 6,
           "losses": 8,
           "winPct": 0.429
@@ -729,6 +864,9 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -744,6 +882,9 @@
           "efficiency": 0.842,
           "perfectPct": 0.143,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 5,
           "losses": 9,
           "winPct": 0.357
@@ -759,6 +900,9 @@
           "efficiency": 0.842,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 7,
           "losses": 7,
           "winPct": 0.5
@@ -774,6 +918,9 @@
           "efficiency": 0.834,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 9,
           "losses": 5,
           "winPct": 0.643
@@ -795,6 +942,9 @@
           "efficiency": 0.939,
           "perfectPct": 0.308,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 11,
           "losses": 2,
           "winPct": 0.846
@@ -810,6 +960,9 @@
           "efficiency": 0.903,
           "perfectPct": 0.154,
           "rank": 2,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -825,6 +978,9 @@
           "efficiency": 0.877,
           "perfectPct": 0.077,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -840,6 +996,9 @@
           "efficiency": 0.872,
           "perfectPct": 0.154,
           "rank": 4,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -855,6 +1014,9 @@
           "efficiency": 0.872,
           "perfectPct": 0.077,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -870,6 +1032,9 @@
           "efficiency": 0.871,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -885,6 +1050,9 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -900,6 +1068,9 @@
           "efficiency": 0.857,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -915,6 +1086,9 @@
           "efficiency": 0.841,
           "perfectPct": 0.154,
           "rank": 9,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -930,6 +1104,9 @@
           "efficiency": 0.819,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -951,6 +1128,9 @@
           "efficiency": 0.926,
           "perfectPct": 0.231,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 10,
           "losses": 3,
           "winPct": 0.769
@@ -966,6 +1146,9 @@
           "efficiency": 0.897,
           "perfectPct": 0,
           "rank": 2,
+          "stolen": 2,
+          "avoidable": 0,
+          "mwa": 2,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -981,6 +1164,9 @@
           "efficiency": 0.895,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -996,6 +1182,9 @@
           "efficiency": 0.893,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 3,
           "losses": 10,
           "winPct": 0.231
@@ -1011,6 +1200,9 @@
           "efficiency": 0.886,
           "perfectPct": 0.154,
           "rank": 5,
+          "stolen": 2,
+          "avoidable": 2,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -1026,6 +1218,9 @@
           "efficiency": 0.885,
           "perfectPct": 0.077,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 3,
+          "mwa": -3,
           "wins": 3,
           "losses": 10,
           "winPct": 0.231
@@ -1041,6 +1236,9 @@
           "efficiency": 0.88,
           "perfectPct": 0.231,
           "rank": 7,
+          "stolen": 1,
+          "avoidable": 2,
+          "mwa": -1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -1056,6 +1254,9 @@
           "efficiency": 0.852,
           "perfectPct": 0.077,
           "rank": 8,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -1071,6 +1272,9 @@
           "efficiency": 0.842,
           "perfectPct": 0.077,
           "rank": 9,
+          "stolen": 1,
+          "avoidable": 2,
+          "mwa": -1,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -1086,6 +1290,9 @@
           "efficiency": 0.823,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 3,
+          "mwa": -3,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -1107,6 +1314,9 @@
           "efficiency": 0.917,
           "perfectPct": 0.077,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -1122,6 +1332,9 @@
           "efficiency": 0.908,
           "perfectPct": 0.154,
           "rank": 2,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -1137,6 +1350,9 @@
           "efficiency": 0.882,
           "perfectPct": 0.154,
           "rank": 3,
+          "stolen": 2,
+          "avoidable": 0,
+          "mwa": 2,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -1152,6 +1368,9 @@
           "efficiency": 0.88,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 2,
+          "avoidable": 0,
+          "mwa": 2,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -1167,6 +1386,9 @@
           "efficiency": 0.871,
           "perfectPct": 0.154,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -1182,6 +1404,9 @@
           "efficiency": 0.869,
           "perfectPct": 0.077,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -1197,6 +1422,9 @@
           "efficiency": 0.859,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -1212,6 +1440,9 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -1227,6 +1458,9 @@
           "efficiency": 0.852,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -1242,6 +1476,9 @@
           "efficiency": 0.843,
           "perfectPct": 0.077,
           "rank": 10,
+          "stolen": 2,
+          "avoidable": 1,
+          "mwa": 1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -1263,6 +1500,9 @@
           "efficiency": 0.93,
           "perfectPct": 0.25,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1278,6 +1518,9 @@
           "efficiency": 0.913,
           "perfectPct": 0.25,
           "rank": 2,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1293,6 +1536,9 @@
           "efficiency": 0.888,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1308,6 +1554,9 @@
           "efficiency": 0.869,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1323,6 +1572,9 @@
           "efficiency": 0.853,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1338,6 +1590,9 @@
           "efficiency": 0.835,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1353,6 +1608,9 @@
           "efficiency": 0.826,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1368,6 +1626,9 @@
           "efficiency": 0.816,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1383,6 +1644,9 @@
           "efficiency": 0.797,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1398,6 +1662,9 @@
           "efficiency": 0.756,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1421,6 +1688,9 @@
           "efficiency": 0.886,
           "perfectPct": 0.077,
           "rank": 5,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -1436,6 +1706,9 @@
           "efficiency": 0.869,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 10,
           "losses": 3,
           "winPct": 0.769
@@ -1451,6 +1724,9 @@
           "efficiency": 0.798,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 3,
+          "mwa": -3,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -1466,6 +1742,9 @@
           "efficiency": 0.863,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 9,
           "losses": 5,
           "winPct": 0.643
@@ -1481,6 +1760,9 @@
           "efficiency": 0.881,
           "perfectPct": 0.143,
           "rank": 2,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 9,
           "losses": 5,
           "winPct": 0.643
@@ -1496,6 +1778,9 @@
           "efficiency": 0.857,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -1511,6 +1796,9 @@
           "efficiency": 0.823,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 3,
+          "mwa": -3,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -1526,6 +1814,9 @@
           "efficiency": 0.859,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -1541,6 +1832,9 @@
           "efficiency": 0.93,
           "perfectPct": 0.25,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1562,6 +1856,9 @@
           "efficiency": 0.862,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 2,
           "losses": 11,
           "winPct": 0.154
@@ -1577,6 +1874,9 @@
           "efficiency": 0.867,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -1592,6 +1892,9 @@
           "efficiency": 0.837,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 3,
           "losses": 10,
           "winPct": 0.231
@@ -1607,6 +1910,9 @@
           "efficiency": 0.911,
           "perfectPct": 0.143,
           "rank": 1,
+          "stolen": 2,
+          "avoidable": 1,
+          "mwa": 1,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -1622,6 +1928,9 @@
           "efficiency": 0.842,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 7,
           "losses": 7,
           "winPct": 0.5
@@ -1637,6 +1946,9 @@
           "efficiency": 0.903,
           "perfectPct": 0.154,
           "rank": 2,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -1652,6 +1964,9 @@
           "efficiency": 0.852,
           "perfectPct": 0.077,
           "rank": 8,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -1667,6 +1982,9 @@
           "efficiency": 0.852,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -1682,6 +2000,9 @@
           "efficiency": 0.913,
           "perfectPct": 0.25,
           "rank": 2,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1703,6 +2024,9 @@
           "efficiency": 0.839,
           "perfectPct": 0.154,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -1718,6 +2042,9 @@
           "efficiency": 0.918,
           "perfectPct": 0,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 10,
           "losses": 3,
           "winPct": 0.769
@@ -1733,6 +2060,9 @@
           "efficiency": 0.891,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 9,
           "winPct": 0.357
@@ -1748,6 +2078,9 @@
           "efficiency": 0.893,
           "perfectPct": 0.143,
           "rank": 1,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 7,
           "losses": 7,
           "winPct": 0.5
@@ -1763,6 +2096,9 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -1778,6 +2114,9 @@
           "efficiency": 0.926,
           "perfectPct": 0.231,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 10,
           "losses": 3,
           "winPct": 0.769
@@ -1793,6 +2132,9 @@
           "efficiency": 0.88,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 2,
+          "avoidable": 0,
+          "mwa": 2,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -1808,6 +2150,9 @@
           "efficiency": 0.888,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1829,6 +2174,9 @@
           "efficiency": 0.854,
           "perfectPct": 0.077,
           "rank": 8,
+          "stolen": 2,
+          "avoidable": 1,
+          "mwa": 1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -1844,6 +2192,9 @@
           "efficiency": 0.811,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -1859,6 +2210,9 @@
           "efficiency": 0.832,
           "perfectPct": 0.154,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -1874,6 +2228,9 @@
           "efficiency": 0.879,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 2,
+          "avoidable": 2,
+          "mwa": 0,
           "wins": 7,
           "losses": 7,
           "winPct": 0.5
@@ -1889,6 +2246,9 @@
           "efficiency": 0.877,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 3,
+          "avoidable": 1,
+          "mwa": 2,
           "wins": 5,
           "losses": 9,
           "winPct": 0.357
@@ -1904,6 +2264,9 @@
           "efficiency": 0.841,
           "perfectPct": 0.154,
           "rank": 9,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -1919,6 +2282,9 @@
           "efficiency": 0.842,
           "perfectPct": 0.077,
           "rank": 9,
+          "stolen": 1,
+          "avoidable": 2,
+          "mwa": -1,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -1934,6 +2300,9 @@
           "efficiency": 0.882,
           "perfectPct": 0.154,
           "rank": 3,
+          "stolen": 2,
+          "avoidable": 0,
+          "mwa": 2,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -1949,6 +2318,9 @@
           "efficiency": 0.869,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -1970,6 +2342,9 @@
           "efficiency": 0.922,
           "perfectPct": 0.077,
           "rank": 2,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -1985,6 +2360,9 @@
           "efficiency": 0.876,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -2000,6 +2378,9 @@
           "efficiency": 0.877,
           "perfectPct": 0.077,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2015,6 +2396,9 @@
           "efficiency": 0.853,
           "perfectPct": 0.071,
           "rank": 9,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -2030,6 +2414,9 @@
           "efficiency": 0.86,
           "perfectPct": 0.071,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 4,
+          "mwa": -4,
           "wins": 6,
           "losses": 8,
           "winPct": 0.429
@@ -2045,6 +2432,9 @@
           "efficiency": 0.872,
           "perfectPct": 0.077,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -2060,6 +2450,9 @@
           "efficiency": 0.88,
           "perfectPct": 0.231,
           "rank": 7,
+          "stolen": 1,
+          "avoidable": 2,
+          "mwa": -1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2075,6 +2468,9 @@
           "efficiency": 0.869,
           "perfectPct": 0.077,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2090,6 +2486,9 @@
           "efficiency": 0.853,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -2111,6 +2510,9 @@
           "efficiency": 0.91,
           "perfectPct": 0.077,
           "rank": 3,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -2126,6 +2528,9 @@
           "efficiency": 0.873,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -2141,6 +2546,9 @@
           "efficiency": 0.883,
           "perfectPct": 0.077,
           "rank": 2,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -2156,6 +2564,9 @@
           "efficiency": 0.88,
           "perfectPct": 0.071,
           "rank": 4,
+          "stolen": 3,
+          "avoidable": 1,
+          "mwa": 2,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -2171,6 +2582,9 @@
           "efficiency": 0.842,
           "perfectPct": 0.143,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 5,
           "losses": 9,
           "winPct": 0.357
@@ -2186,6 +2600,9 @@
           "efficiency": 0.819,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -2201,6 +2618,9 @@
           "efficiency": 0.893,
           "perfectPct": 0,
           "rank": 4,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 3,
           "losses": 10,
           "winPct": 0.231
@@ -2216,6 +2636,9 @@
           "efficiency": 0.871,
           "perfectPct": 0.154,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -2231,6 +2654,9 @@
           "efficiency": 0.835,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -2252,6 +2678,9 @@
           "efficiency": 0.849,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2267,6 +2696,9 @@
           "efficiency": 0.928,
           "perfectPct": 0.154,
           "rank": 1,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 11,
           "losses": 2,
           "winPct": 0.846
@@ -2282,6 +2714,9 @@
           "efficiency": 0.854,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2297,6 +2732,9 @@
           "efficiency": 0.83,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 6,
           "losses": 8,
           "winPct": 0.429
@@ -2312,6 +2750,9 @@
           "efficiency": 0.881,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 4,
           "losses": 10,
           "winPct": 0.286
@@ -2327,6 +2768,9 @@
           "efficiency": 0.872,
           "perfectPct": 0.154,
           "rank": 4,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -2342,6 +2786,9 @@
           "efficiency": 0.886,
           "perfectPct": 0.154,
           "rank": 5,
+          "stolen": 2,
+          "avoidable": 2,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -2357,6 +2804,9 @@
           "efficiency": 0.908,
           "perfectPct": 0.154,
           "rank": 2,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -2372,6 +2822,9 @@
           "efficiency": 0.826,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -2393,6 +2846,9 @@
           "efficiency": 0.891,
           "perfectPct": 0.077,
           "rank": 4,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2408,6 +2864,9 @@
           "efficiency": 0.901,
           "perfectPct": 0.077,
           "rank": 2,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2423,6 +2882,9 @@
           "efficiency": 0.865,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2438,6 +2900,9 @@
           "efficiency": 0.896,
           "perfectPct": 0,
           "rank": 2,
+          "stolen": 2,
+          "avoidable": 2,
+          "mwa": 0,
           "wins": 5,
           "losses": 9,
           "winPct": 0.357
@@ -2453,6 +2918,9 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -2468,6 +2936,9 @@
           "efficiency": 0.939,
           "perfectPct": 0.308,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 11,
           "losses": 2,
           "winPct": 0.846
@@ -2483,6 +2954,9 @@
           "efficiency": 0.897,
           "perfectPct": 0,
           "rank": 2,
+          "stolen": 2,
+          "avoidable": 0,
+          "mwa": 2,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -2498,6 +2972,9 @@
           "efficiency": 0.858,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -2513,6 +2990,9 @@
           "efficiency": 0.816,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -2534,6 +3014,9 @@
           "efficiency": 0.923,
           "perfectPct": 0,
           "rank": 1,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -2549,6 +3032,9 @@
           "efficiency": 0.816,
           "perfectPct": 0,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 2,
+          "mwa": -2,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -2564,6 +3050,9 @@
           "efficiency": 0.872,
           "perfectPct": 0.077,
           "rank": 4,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2579,6 +3068,9 @@
           "efficiency": 0.861,
           "perfectPct": 0.071,
           "rank": 8,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 8,
           "losses": 6,
           "winPct": 0.571
@@ -2594,6 +3086,9 @@
           "efficiency": 0.834,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 9,
           "losses": 5,
           "winPct": 0.643
@@ -2609,6 +3104,9 @@
           "efficiency": 0.871,
           "perfectPct": 0,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -2624,6 +3122,9 @@
           "efficiency": 0.895,
           "perfectPct": 0,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 9,
           "losses": 4,
           "winPct": 0.692
@@ -2639,6 +3140,9 @@
           "efficiency": 0.917,
           "perfectPct": 0.077,
           "rank": 1,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 6,
           "losses": 7,
           "winPct": 0.462
@@ -2654,6 +3158,9 @@
           "efficiency": 0.797,
           "perfectPct": 0,
           "rank": 9,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -2675,6 +3182,9 @@
           "efficiency": 0.855,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 1,
+          "avoidable": 1,
+          "mwa": 0,
           "wins": 4,
           "losses": 9,
           "winPct": 0.308
@@ -2690,6 +3200,9 @@
           "efficiency": 0.802,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -2705,6 +3218,9 @@
           "efficiency": 0.861,
           "perfectPct": 0.077,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": 7,
           "losses": 6,
           "winPct": 0.538
@@ -2720,6 +3236,9 @@
           "efficiency": 0.863,
           "perfectPct": 0,
           "rank": 7,
+          "stolen": 0,
+          "avoidable": 1,
+          "mwa": -1,
           "wins": 6,
           "losses": 8,
           "winPct": 0.429
@@ -2735,6 +3254,9 @@
           "efficiency": 0.874,
           "perfectPct": 0,
           "rank": 5,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 10,
           "losses": 4,
           "winPct": 0.714
@@ -2750,6 +3272,9 @@
           "efficiency": 0.877,
           "perfectPct": 0.077,
           "rank": 3,
+          "stolen": 1,
+          "avoidable": 0,
+          "mwa": 1,
           "wins": 8,
           "losses": 5,
           "winPct": 0.615
@@ -2765,6 +3290,9 @@
           "efficiency": 0.885,
           "perfectPct": 0.077,
           "rank": 6,
+          "stolen": 0,
+          "avoidable": 3,
+          "mwa": -3,
           "wins": 3,
           "losses": 10,
           "winPct": 0.231
@@ -2780,6 +3308,9 @@
           "efficiency": 0.843,
           "perfectPct": 0.077,
           "rank": 10,
+          "stolen": 2,
+          "avoidable": 1,
+          "mwa": 1,
           "wins": 5,
           "losses": 8,
           "winPct": 0.385
@@ -2795,6 +3326,9 @@
           "efficiency": 0.756,
           "perfectPct": 0,
           "rank": 10,
+          "stolen": 0,
+          "avoidable": 0,
+          "mwa": 0,
           "wins": null,
           "losses": null,
           "winPct": null
@@ -2817,7 +3351,10 @@
       "rank": 1,
       "wins": 51,
       "losses": 42,
-      "winPct": 0.548
+      "winPct": 0.548,
+      "stolen": 4,
+      "avoidable": 4,
+      "mwa": 0
     },
     {
       "owner": "CR",
@@ -2833,7 +3370,10 @@
       "rank": 2,
       "wins": 62,
       "losses": 44,
-      "winPct": 0.585
+      "winPct": 0.585,
+      "stolen": 8,
+      "avoidable": 7,
+      "mwa": 1
     },
     {
       "owner": "JO",
@@ -2849,7 +3389,10 @@
       "rank": 3,
       "wins": 56,
       "losses": 50,
-      "winPct": 0.528
+      "winPct": 0.528,
+      "stolen": 7,
+      "avoidable": 7,
+      "mwa": 0
     },
     {
       "owner": "AN",
@@ -2865,7 +3408,10 @@
       "rank": 4,
       "wins": 57,
       "losses": 49,
-      "winPct": 0.538
+      "winPct": 0.538,
+      "stolen": 6,
+      "avoidable": 8,
+      "mwa": -2
     },
     {
       "owner": "GM",
@@ -2881,7 +3427,10 @@
       "rank": 5,
       "wins": 58,
       "losses": 48,
-      "winPct": 0.547
+      "winPct": 0.547,
+      "stolen": 2,
+      "avoidable": 5,
+      "mwa": -3
     },
     {
       "owner": "IK",
@@ -2897,7 +3446,10 @@
       "rank": 6,
       "wins": 47,
       "losses": 59,
-      "winPct": 0.443
+      "winPct": 0.443,
+      "stolen": 5,
+      "avoidable": 7,
+      "mwa": -2
     },
     {
       "owner": "AR",
@@ -2913,7 +3465,10 @@
       "rank": 7,
       "wins": 40,
       "losses": 66,
-      "winPct": 0.377
+      "winPct": 0.377,
+      "stolen": 4,
+      "avoidable": 5,
+      "mwa": -1
     },
     {
       "owner": "DN",
@@ -2929,7 +3484,10 @@
       "rank": 8,
       "wins": 52,
       "losses": 54,
-      "winPct": 0.491
+      "winPct": 0.491,
+      "stolen": 3,
+      "avoidable": 11,
+      "mwa": -8
     },
     {
       "owner": "DM",
@@ -2945,7 +3503,10 @@
       "rank": 9,
       "wins": 50,
       "losses": 56,
-      "winPct": 0.472
+      "winPct": 0.472,
+      "stolen": 5,
+      "avoidable": 7,
+      "mwa": -2
     },
     {
       "owner": "ZS",
@@ -2961,7 +3522,3609 @@
       "rank": 10,
       "wins": 50,
       "losses": 56,
-      "winPct": 0.472
+      "winPct": 0.472,
+      "stolen": 12,
+      "avoidable": 8,
+      "mwa": 4
     }
-  ]
+  ],
+  "managerWinsAdded": {
+    "scopeNote": "Stolen wins minus avoidable losses since 2018. Expected = optimal lineup times the league-week-average efficiency (total actual over total optimal across included owners that week, reusing the same per-team actual/optimal as sit-start). Strict inequalities; ties excluded; playoffs excluded.",
+    "perSeason": {
+      "2018": {
+        "season": 2018,
+        "weeks": 13,
+        "rows": [
+          {
+            "owner": "ZS",
+            "team": "Little Rocket Man",
+            "teamId": 10,
+            "games": 13,
+            "stolen": 2,
+            "avoidable": 1,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 119.94,
+                "expected": 109.06,
+                "oppScore": 110.8
+              },
+              {
+                "week": 6,
+                "opp": "JO",
+                "result": "avoidable",
+                "actual": 81.86,
+                "expected": 93.9,
+                "oppScore": 85.5
+              },
+              {
+                "week": 7,
+                "opp": "SHEN",
+                "result": "stolen",
+                "actual": 108.06,
+                "expected": 105.81,
+                "oppScore": 106.94
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "owner": "JO",
+            "team": "Starr Struck",
+            "teamId": 9,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 11,
+                "opp": "SHEN",
+                "result": "stolen",
+                "actual": 118.62,
+                "expected": 115.5,
+                "oppScore": 116.88
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "owner": "AN",
+            "team": "Talk S*** Get Kareemed",
+            "teamId": 4,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "DM",
+                "result": "stolen",
+                "actual": 123.34,
+                "expected": 110.34,
+                "oppScore": 117.06
+              },
+              {
+                "week": 13,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 73.88,
+                "expected": 101.41,
+                "oppScore": 76.36
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "owner": "CR",
+            "team": "U.S. Space Force",
+            "teamId": 7,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 11,
+                "opp": "DM",
+                "result": "avoidable",
+                "actual": 99.74,
+                "expected": 119.43,
+                "oppScore": 106.04
+              },
+              {
+                "week": 12,
+                "opp": "ZS",
+                "result": "stolen",
+                "actual": 128.58,
+                "expected": 116.8,
+                "oppScore": 128.26
+              }
+            ],
+            "rank": 4
+          },
+          {
+            "owner": "DM",
+            "team": "The Raunch",
+            "teamId": 2,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 7,
+                "opp": "AR",
+                "result": "avoidable",
+                "actual": 86.36,
+                "expected": 105.73,
+                "oppScore": 98.22
+              },
+              {
+                "week": 8,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 144.66,
+                "expected": 132.16,
+                "oppScore": 140.26
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "owner": "AR",
+            "team": "Baby Birds",
+            "teamId": 5,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 6
+          },
+          {
+            "owner": "GM",
+            "team": "Fat Joe Hit Hard",
+            "teamId": 1,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 7
+          },
+          {
+            "owner": "IK",
+            "team": "Saquon Deez Nuts",
+            "teamId": 11,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 8
+          },
+          {
+            "owner": "DN",
+            "team": "Lady Killers",
+            "teamId": 8,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 10,
+                "opp": "AN",
+                "result": "avoidable",
+                "actual": 109.82,
+                "expected": 114.5,
+                "oppScore": 114.02
+              }
+            ],
+            "rank": 9
+          }
+        ]
+      },
+      "2019": {
+        "season": 2019,
+        "weeks": 13,
+        "rows": [
+          {
+            "owner": "JO",
+            "team": "Alvin and the Dick Dunks",
+            "teamId": 9,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 8,
+                "opp": "ZS",
+                "result": "stolen",
+                "actual": 84.58,
+                "expected": 78.55,
+                "oppScore": 83.4
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "owner": "DN",
+            "team": "Lady Killers",
+            "teamId": 8,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 130.44,
+                "expected": 137.8,
+                "oppScore": 131.22
+              },
+              {
+                "week": 12,
+                "opp": "AR",
+                "result": "stolen",
+                "actual": 102.12,
+                "expected": 93.82,
+                "oppScore": 100.7
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "owner": "AN",
+            "team": "McCaFREE NAPS",
+            "teamId": 4,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 3
+          },
+          {
+            "owner": "AR",
+            "team": "Squanto’s Nut Butter",
+            "teamId": 5,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 4
+          },
+          {
+            "owner": "CR",
+            "team": "Juggalo Mahomies",
+            "teamId": 7,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 5
+          },
+          {
+            "owner": "IK",
+            "team": "Booger's Left Hand",
+            "teamId": 11,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 6
+          },
+          {
+            "owner": "DM",
+            "team": "The Raunch",
+            "teamId": 2,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "IK",
+                "result": "avoidable",
+                "actual": 101.66,
+                "expected": 114.32,
+                "oppScore": 106.22
+              }
+            ],
+            "rank": 7
+          },
+          {
+            "owner": "JH",
+            "team": "Houston Spoilers",
+            "teamId": 12,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "CR",
+                "result": "avoidable",
+                "actual": 92.14,
+                "expected": 110.85,
+                "oppScore": 97.42
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "owner": "ZS",
+            "team": "Small Town Shanahan",
+            "teamId": 10,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 8,
+                "opp": "JO",
+                "result": "avoidable",
+                "actual": 83.4,
+                "expected": 90.95,
+                "oppScore": 84.58
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "owner": "GM",
+            "team": "Dad Joe",
+            "teamId": 1,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 2,
+            "mwa": -2,
+            "plays": [
+              {
+                "week": 12,
+                "opp": "IK",
+                "result": "avoidable",
+                "actual": 80.38,
+                "expected": 109.98,
+                "oppScore": 82.14
+              },
+              {
+                "week": 13,
+                "opp": "CR",
+                "result": "avoidable",
+                "actual": 82.92,
+                "expected": 98.39,
+                "oppScore": 89.5
+              }
+            ],
+            "rank": 10
+          }
+        ]
+      },
+      "2020": {
+        "season": 2020,
+        "weeks": 13,
+        "rows": [
+          {
+            "owner": "CR",
+            "team": "Down Yonder Cheetahoochies",
+            "teamId": 7,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "IK",
+                "result": "stolen",
+                "actual": 152.1,
+                "expected": 129.61,
+                "oppScore": 133.1
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "owner": "IK",
+            "team": "Sleepy Joe (Mixon)",
+            "teamId": 11,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 7,
+                "opp": "GM",
+                "result": "stolen",
+                "actual": 103.4,
+                "expected": 93.74,
+                "oppScore": 96.1
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "owner": "JH",
+            "team": "Midnight in Montgomery",
+            "teamId": 12,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 4,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 98.5,
+                "expected": 94.83,
+                "oppScore": 94.9
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "owner": "JO",
+            "team": "Points R' USS",
+            "teamId": 9,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "AN",
+                "result": "stolen",
+                "actual": 135.58,
+                "expected": 119.08,
+                "oppScore": 121.8
+              }
+            ],
+            "rank": 4
+          },
+          {
+            "owner": "AN",
+            "team": "The KylerMurray Wine Mixer",
+            "teamId": 4,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "CR",
+                "result": "stolen",
+                "actual": 137.3,
+                "expected": 133.91,
+                "oppScore": 136.34
+              },
+              {
+                "week": 6,
+                "opp": "DM",
+                "result": "avoidable",
+                "actual": 92.32,
+                "expected": 106.26,
+                "oppScore": 94.4
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "owner": "DM",
+            "team": "Rudy's Favorite Son",
+            "teamId": 2,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 6
+          },
+          {
+            "owner": "GM",
+            "team": "Dad Joe",
+            "teamId": 1,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 7,
+                "opp": "IK",
+                "result": "avoidable",
+                "actual": 96.1,
+                "expected": 115.79,
+                "oppScore": 103.4
+              }
+            ],
+            "rank": 7
+          },
+          {
+            "owner": "ZS",
+            "team": "China  Virus ",
+            "teamId": 10,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 5,
+                "opp": "JO",
+                "result": "avoidable",
+                "actual": 111.72,
+                "expected": 126.57,
+                "oppScore": 117.78
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "owner": "AR",
+            "team": "Taysom Hill Gang",
+            "teamId": 5,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 2,
+            "mwa": -2,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 111.96,
+                "expected": 131.4,
+                "oppScore": 126.08
+              },
+              {
+                "week": 3,
+                "opp": "IK",
+                "result": "avoidable",
+                "actual": 106.78,
+                "expected": 131.99,
+                "oppScore": 129.88
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "owner": "DN",
+            "team": "Lady Killers",
+            "teamId": 8,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 3,
+            "mwa": -3,
+            "plays": [
+              {
+                "week": 4,
+                "opp": "JH",
+                "result": "avoidable",
+                "actual": 94.9,
+                "expected": 102.38,
+                "oppScore": 98.5
+              },
+              {
+                "week": 5,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 93.14,
+                "expected": 117.99,
+                "oppScore": 113.3
+              },
+              {
+                "week": 6,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 105.28,
+                "expected": 131.16,
+                "oppScore": 113.54
+              }
+            ],
+            "rank": 10
+          }
+        ]
+      },
+      "2021": {
+        "season": 2021,
+        "weeks": 14,
+        "rows": [
+          {
+            "owner": "IK",
+            "team": "King Henry",
+            "teamId": 11,
+            "games": 14,
+            "stolen": 3,
+            "avoidable": 1,
+            "mwa": 2,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "CR",
+                "result": "stolen",
+                "actual": 127.34,
+                "expected": 117.96,
+                "oppScore": 118.74
+              },
+              {
+                "week": 4,
+                "opp": "ZS",
+                "result": "stolen",
+                "actual": 109.68,
+                "expected": 92.46,
+                "oppScore": 105.06
+              },
+              {
+                "week": 5,
+                "opp": "AR",
+                "result": "avoidable",
+                "actual": 151.12,
+                "expected": 154.76,
+                "oppScore": 153.2
+              },
+              {
+                "week": 11,
+                "opp": "JH",
+                "result": "stolen",
+                "actual": 115.28,
+                "expected": 112.18,
+                "oppScore": 114.98
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "owner": "AR",
+            "team": "Diaper King",
+            "teamId": 5,
+            "games": 14,
+            "stolen": 2,
+            "avoidable": 1,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 94.12,
+                "expected": 96.64,
+                "oppScore": 96.5
+              },
+              {
+                "week": 5,
+                "opp": "IK",
+                "result": "stolen",
+                "actual": 153.2,
+                "expected": 135,
+                "oppScore": 151.12
+              },
+              {
+                "week": 8,
+                "opp": "JH",
+                "result": "stolen",
+                "actual": 118.86,
+                "expected": 100.89,
+                "oppScore": 109.5
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "owner": "JO",
+            "team": "Dak Me' Up",
+            "teamId": 9,
+            "games": 14,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 5,
+                "opp": "CR",
+                "result": "stolen",
+                "actual": 151.58,
+                "expected": 135.51,
+                "oppScore": 141.06
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "owner": "CR",
+            "team": "Mr Mojo Risin",
+            "teamId": 7,
+            "games": 14,
+            "stolen": 2,
+            "avoidable": 2,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 6,
+                "opp": "JH",
+                "result": "stolen",
+                "actual": 134.3,
+                "expected": 121.8,
+                "oppScore": 126.88
+              },
+              {
+                "week": 8,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 89.46,
+                "expected": 101.15,
+                "oppScore": 97.46
+              },
+              {
+                "week": 9,
+                "opp": "AR",
+                "result": "stolen",
+                "actual": 101.54,
+                "expected": 97.78,
+                "oppScore": 101.36
+              },
+              {
+                "week": 14,
+                "opp": "JO",
+                "result": "avoidable",
+                "actual": 112.34,
+                "expected": 122.48,
+                "oppScore": 114.34
+              }
+            ],
+            "rank": 4
+          },
+          {
+            "owner": "ZS",
+            "team": "Sixually  Transmitted TDs",
+            "teamId": 10,
+            "games": 14,
+            "stolen": 2,
+            "avoidable": 2,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 4,
+                "opp": "IK",
+                "result": "avoidable",
+                "actual": 105.06,
+                "expected": 112.6,
+                "oppScore": 109.68
+              },
+              {
+                "week": 6,
+                "opp": "JO",
+                "result": "stolen",
+                "actual": 124.78,
+                "expected": 117.74,
+                "oppScore": 119.9
+              },
+              {
+                "week": 9,
+                "opp": "DM",
+                "result": "avoidable",
+                "actual": 87.86,
+                "expected": 108.21,
+                "oppScore": 95
+              },
+              {
+                "week": 12,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 102.08,
+                "expected": 92.68,
+                "oppScore": 95.96
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "owner": "DN",
+            "team": "McAfee's Faithful",
+            "teamId": 8,
+            "games": 14,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "CR",
+                "result": "stolen",
+                "actual": 126.38,
+                "expected": 113.81,
+                "oppScore": 122.7
+              },
+              {
+                "week": 3,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 111.54,
+                "expected": 115,
+                "oppScore": 112.02
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "owner": "AN",
+            "team": "Havana (Few Beers) Syndrome",
+            "teamId": 4,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 7
+          },
+          {
+            "owner": "GM",
+            "team": "Dad Joe",
+            "teamId": 1,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 8
+          },
+          {
+            "owner": "DM",
+            "team": "Last of the  Meheecans",
+            "teamId": 2,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "AR",
+                "result": "avoidable",
+                "actual": 106.2,
+                "expected": 125.43,
+                "oppScore": 117.06
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "owner": "JH",
+            "team": "The Aaron Jones Show",
+            "teamId": 12,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 4,
+                "opp": "JO",
+                "result": "avoidable",
+                "actual": 108.86,
+                "expected": 121.65,
+                "oppScore": 113.72
+              }
+            ],
+            "rank": 10
+          }
+        ]
+      },
+      "2022": {
+        "season": 2022,
+        "weeks": 14,
+        "rows": [
+          {
+            "owner": "ZS",
+            "team": "\"D\" Kupps",
+            "teamId": 10,
+            "games": 14,
+            "stolen": 3,
+            "avoidable": 1,
+            "mwa": 2,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 94.88,
+                "expected": 110.7,
+                "oppScore": 105.92
+              },
+              {
+                "week": 5,
+                "opp": "AN",
+                "result": "stolen",
+                "actual": 127.2,
+                "expected": 109.42,
+                "oppScore": 115.02
+              },
+              {
+                "week": 8,
+                "opp": "CR",
+                "result": "stolen",
+                "actual": 155.52,
+                "expected": 139.12,
+                "oppScore": 150.16
+              },
+              {
+                "week": 12,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 95.04,
+                "expected": 85.43,
+                "oppScore": 86.46
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "owner": "DM",
+            "team": "Cōn Queso",
+            "teamId": 2,
+            "games": 14,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 6,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 97.14,
+                "expected": 85.66,
+                "oppScore": 89.08
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "owner": "AN",
+            "team": "Bert n' Ekelie",
+            "teamId": 4,
+            "games": 14,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 6,
+                "opp": "AR",
+                "result": "avoidable",
+                "actual": 93.42,
+                "expected": 101.18,
+                "oppScore": 98.96
+              },
+              {
+                "week": 14,
+                "opp": "ZS",
+                "result": "stolen",
+                "actual": 88.86,
+                "expected": 75.93,
+                "oppScore": 78.76
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "owner": "DN",
+            "team": "McAfee's Faithful",
+            "teamId": 8,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 4
+          },
+          {
+            "owner": "JH",
+            "team": "Big Gabey Davis",
+            "teamId": 12,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 5
+          },
+          {
+            "owner": "AR",
+            "team": "Diaper King",
+            "teamId": 5,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 12,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 101.62,
+                "expected": 121.68,
+                "oppScore": 120.86
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "owner": "GM",
+            "team": "Dad Joe",
+            "teamId": 1,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 13,
+                "opp": "DM",
+                "result": "avoidable",
+                "actual": 97.44,
+                "expected": 103.63,
+                "oppScore": 101.44
+              }
+            ],
+            "rank": 7
+          },
+          {
+            "owner": "CR",
+            "team": "Christian Fundamentalists",
+            "teamId": 7,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 2,
+            "mwa": -2,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 108.52,
+                "expected": 115.25,
+                "oppScore": 112.12
+              },
+              {
+                "week": 2,
+                "opp": "DN",
+                "result": "avoidable",
+                "actual": 110.82,
+                "expected": 143.6,
+                "oppScore": 120.26
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "owner": "IK",
+            "team": "Super Bowl Rings Only",
+            "teamId": 11,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 2,
+            "mwa": -2,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "JO",
+                "result": "avoidable",
+                "actual": 83.98,
+                "expected": 103.53,
+                "oppScore": 88.86
+              },
+              {
+                "week": 14,
+                "opp": "AR",
+                "result": "avoidable",
+                "actual": 59.92,
+                "expected": 86.05,
+                "oppScore": 76.48
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "owner": "JO",
+            "team": "Dak Me' Up",
+            "teamId": 9,
+            "games": 14,
+            "stolen": 0,
+            "avoidable": 4,
+            "mwa": -4,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "DM",
+                "result": "avoidable",
+                "actual": 87.42,
+                "expected": 94.34,
+                "oppScore": 93
+              },
+              {
+                "week": 5,
+                "opp": "CR",
+                "result": "avoidable",
+                "actual": 95.34,
+                "expected": 121.55,
+                "oppScore": 113.96
+              },
+              {
+                "week": 7,
+                "opp": "AR",
+                "result": "avoidable",
+                "actual": 93.08,
+                "expected": 101.04,
+                "oppScore": 98.52
+              },
+              {
+                "week": 8,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 133.6,
+                "expected": 141.23,
+                "oppScore": 139.48
+              }
+            ],
+            "rank": 10
+          }
+        ]
+      },
+      "2023": {
+        "season": 2023,
+        "weeks": 13,
+        "rows": [
+          {
+            "owner": "CR",
+            "team": "Who's Colesdad?",
+            "teamId": 7,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 140.46,
+                "expected": 117.52,
+                "oppScore": 128.04
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "owner": "DM",
+            "team": "Don Threesel ",
+            "teamId": 2,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 8,
+                "opp": "IK",
+                "result": "stolen",
+                "actual": 145.98,
+                "expected": 135.98,
+                "oppScore": 141.56
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "owner": "JO",
+            "team": "Dak Me' Up",
+            "teamId": 9,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 4,
+                "opp": "JH",
+                "result": "stolen",
+                "actual": 117.22,
+                "expected": 95.73,
+                "oppScore": 98.72
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "owner": "ZS",
+            "team": "No Diggity ",
+            "teamId": 10,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 7,
+                "opp": "JH",
+                "result": "stolen",
+                "actual": 111.78,
+                "expected": 99.7,
+                "oppScore": 101.46
+              }
+            ],
+            "rank": 4
+          },
+          {
+            "owner": "AN",
+            "team": "Bert n' Ekelie",
+            "teamId": 4,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 6,
+                "opp": "AR",
+                "result": "stolen",
+                "actual": 113.98,
+                "expected": 106.06,
+                "oppScore": 111.7
+              },
+              {
+                "week": 12,
+                "opp": "JH",
+                "result": "avoidable",
+                "actual": 107.08,
+                "expected": 126.3,
+                "oppScore": 114.12
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "owner": "AR",
+            "team": "The Diaper King",
+            "teamId": 5,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 83.68,
+                "expected": 110.32,
+                "oppScore": 98.06
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "owner": "DN",
+            "team": "McAfee's Faithful",
+            "teamId": 8,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 90.78,
+                "expected": 115.6,
+                "oppScore": 114.58
+              }
+            ],
+            "rank": 7
+          },
+          {
+            "owner": "GM",
+            "team": "Dad Joe Jo's dad",
+            "teamId": 1,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 93.14,
+                "expected": 94.98,
+                "oppScore": 93.18
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "owner": "IK",
+            "team": "Wilson!",
+            "teamId": 11,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 2,
+            "mwa": -2,
+            "plays": [
+              {
+                "week": 6,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 62.04,
+                "expected": 80.51,
+                "oppScore": 70.02
+              },
+              {
+                "week": 13,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 82.1,
+                "expected": 131.08,
+                "oppScore": 109.22
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "owner": "JH",
+            "team": "ORACLE AI",
+            "teamId": 12,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 2,
+            "mwa": -2,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "IK",
+                "result": "avoidable",
+                "actual": 79,
+                "expected": 102.09,
+                "oppScore": 98.54
+              },
+              {
+                "week": 7,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 101.46,
+                "expected": 115.83,
+                "oppScore": 111.78
+              }
+            ],
+            "rank": 10
+          }
+        ]
+      },
+      "2024": {
+        "season": 2024,
+        "weeks": 13,
+        "rows": [
+          {
+            "owner": "CR",
+            "team": "Unburdened By What Has Been",
+            "teamId": 7,
+            "games": 13,
+            "stolen": 2,
+            "avoidable": 0,
+            "mwa": 2,
+            "plays": [
+              {
+                "week": 9,
+                "opp": "AR",
+                "result": "stolen",
+                "actual": 108.3,
+                "expected": 99.94,
+                "oppScore": 102.3
+              },
+              {
+                "week": 11,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 153.08,
+                "expected": 136.83,
+                "oppScore": 139.94
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "owner": "AR",
+            "team": "diapIR king ",
+            "teamId": 5,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 6,
+                "opp": "AN",
+                "result": "stolen",
+                "actual": 118.52,
+                "expected": 110.86,
+                "oppScore": 116.86
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "owner": "GM",
+            "team": "Ice Box",
+            "teamId": 1,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 8,
+                "opp": "JO",
+                "result": "stolen",
+                "actual": 117.46,
+                "expected": 108.92,
+                "oppScore": 111.3
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "owner": "JH",
+            "team": "ORACLE AI",
+            "teamId": 12,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 4,
+                "opp": "JO",
+                "result": "stolen",
+                "actual": 121.9,
+                "expected": 109.37,
+                "oppScore": 117.34
+              }
+            ],
+            "rank": 4
+          },
+          {
+            "owner": "AN",
+            "team": "The Diabolical Liars",
+            "teamId": 4,
+            "games": 13,
+            "stolen": 2,
+            "avoidable": 2,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "DM",
+                "result": "avoidable",
+                "actual": 90.42,
+                "expected": 114.49,
+                "oppScore": 112.26
+              },
+              {
+                "week": 5,
+                "opp": "ZS",
+                "result": "stolen",
+                "actual": 131.96,
+                "expected": 113.17,
+                "oppScore": 123.32
+              },
+              {
+                "week": 6,
+                "opp": "AR",
+                "result": "avoidable",
+                "actual": 116.86,
+                "expected": 120.89,
+                "oppScore": 118.52
+              },
+              {
+                "week": 13,
+                "opp": "CR",
+                "result": "stolen",
+                "actual": 122.02,
+                "expected": 104.76,
+                "oppScore": 107.32
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "owner": "IK",
+            "team": "Bathtub Collard Greens",
+            "teamId": 11,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 6
+          },
+          {
+            "owner": "JO",
+            "team": "Dak Be' Down",
+            "teamId": 9,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 2,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "IK",
+                "result": "stolen",
+                "actual": 98.76,
+                "expected": 85.3,
+                "oppScore": 89.08
+              },
+              {
+                "week": 8,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 111.3,
+                "expected": 121.57,
+                "oppScore": 117.46
+              },
+              {
+                "week": 13,
+                "opp": "JH",
+                "result": "avoidable",
+                "actual": 100.46,
+                "expected": 119.51,
+                "oppScore": 104.14
+              }
+            ],
+            "rank": 7
+          },
+          {
+            "owner": "ZS",
+            "team": "Tomato Toes",
+            "teamId": 10,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 2,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "GM",
+                "result": "stolen",
+                "actual": 148.48,
+                "expected": 136.62,
+                "oppScore": 138.2
+              },
+              {
+                "week": 8,
+                "opp": "CR",
+                "result": "avoidable",
+                "actual": 95.56,
+                "expected": 110.19,
+                "oppScore": 100.02
+              },
+              {
+                "week": 11,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 108.28,
+                "expected": 120.29,
+                "oppScore": 111.64
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "owner": "DM",
+            "team": "Public Enemy #2",
+            "teamId": 2,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 3,
+            "mwa": -3,
+            "plays": [
+              {
+                "week": 5,
+                "opp": "JH",
+                "result": "avoidable",
+                "actual": 109.44,
+                "expected": 113.24,
+                "oppScore": 112.94
+              },
+              {
+                "week": 11,
+                "opp": "AR",
+                "result": "avoidable",
+                "actual": 83.3,
+                "expected": 105.44,
+                "oppScore": 98.34
+              },
+              {
+                "week": 12,
+                "opp": "JO",
+                "result": "avoidable",
+                "actual": 112.36,
+                "expected": 115.93,
+                "oppScore": 114.88
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "owner": "DN",
+            "team": "Washington Redskins",
+            "teamId": 8,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 3,
+            "mwa": -3,
+            "plays": [
+              {
+                "week": 5,
+                "opp": "GM",
+                "result": "avoidable",
+                "actual": 104.42,
+                "expected": 121.37,
+                "oppScore": 115.94
+              },
+              {
+                "week": 8,
+                "opp": "AN",
+                "result": "avoidable",
+                "actual": 125.3,
+                "expected": 155.07,
+                "oppScore": 148.84
+              },
+              {
+                "week": 12,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 93.5,
+                "expected": 121.62,
+                "oppScore": 114.98
+              }
+            ],
+            "rank": 10
+          }
+        ]
+      },
+      "2025": {
+        "season": 2025,
+        "weeks": 13,
+        "rows": [
+          {
+            "owner": "JH",
+            "team": "ORACLE AI",
+            "teamId": 12,
+            "games": 13,
+            "stolen": 2,
+            "avoidable": 0,
+            "mwa": 2,
+            "plays": [
+              {
+                "week": 6,
+                "opp": "CR",
+                "result": "stolen",
+                "actual": 111.54,
+                "expected": 97.09,
+                "oppScore": 106.26
+              },
+              {
+                "week": 9,
+                "opp": "GM",
+                "result": "stolen",
+                "actual": 107.74,
+                "expected": 104.06,
+                "oppScore": 106.72
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "owner": "ZS",
+            "team": "Tomato Toes",
+            "teamId": 10,
+            "games": 13,
+            "stolen": 2,
+            "avoidable": 0,
+            "mwa": 2,
+            "plays": [
+              {
+                "week": 5,
+                "opp": "AN",
+                "result": "stolen",
+                "actual": 91.98,
+                "expected": 89.33,
+                "oppScore": 91.62
+              },
+              {
+                "week": 12,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 88.86,
+                "expected": 79.56,
+                "oppScore": 81.04
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "owner": "DM",
+            "team": "Feel It In My Plums",
+            "teamId": 2,
+            "games": 13,
+            "stolen": 2,
+            "avoidable": 1,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "AN",
+                "result": "stolen",
+                "actual": 122.46,
+                "expected": 118.35,
+                "oppScore": 121.96
+              },
+              {
+                "week": 6,
+                "opp": "DN",
+                "result": "avoidable",
+                "actual": 94.9,
+                "expected": 113.19,
+                "oppScore": 107.74
+              },
+              {
+                "week": 10,
+                "opp": "AN",
+                "result": "stolen",
+                "actual": 111.2,
+                "expected": 102.09,
+                "oppScore": 108.6
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "owner": "GM",
+            "team": "Toe Burrows Ice Box",
+            "teamId": 1,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 4,
+                "opp": "DM",
+                "result": "stolen",
+                "actual": 132.52,
+                "expected": 114.13,
+                "oppScore": 131.56
+              }
+            ],
+            "rank": 4
+          },
+          {
+            "owner": "CR",
+            "team": "Significant Figures",
+            "teamId": 7,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "IK",
+                "result": "avoidable",
+                "actual": 103.7,
+                "expected": 116.44,
+                "oppScore": 111.52
+              },
+              {
+                "week": 11,
+                "opp": "DN",
+                "result": "stolen",
+                "actual": 113.34,
+                "expected": 104.24,
+                "oppScore": 113.16
+              }
+            ],
+            "rank": 5
+          },
+          {
+            "owner": "IK",
+            "team": "Thats My God",
+            "teamId": 11,
+            "games": 13,
+            "stolen": 1,
+            "avoidable": 1,
+            "mwa": 0,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "JO",
+                "result": "avoidable",
+                "actual": 91.58,
+                "expected": 101.05,
+                "oppScore": 95.62
+              },
+              {
+                "week": 8,
+                "opp": "DM",
+                "result": "stolen",
+                "actual": 139.9,
+                "expected": 127.52,
+                "oppScore": 130.82
+              }
+            ],
+            "rank": 6
+          },
+          {
+            "owner": "AR",
+            "team": "Give 'er The Beans ",
+            "teamId": 5,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 7
+          },
+          {
+            "owner": "AN",
+            "team": "El Fusilado",
+            "teamId": 4,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 5,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 91.62,
+                "expected": 99.47,
+                "oppScore": 91.98
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "owner": "DN",
+            "team": "Washington Redskins",
+            "teamId": 8,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 12,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 81.04,
+                "expected": 91.81,
+                "oppScore": 88.86
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "owner": "JO",
+            "team": "Adam's Revenge",
+            "teamId": 9,
+            "games": 13,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 9,
+                "opp": "DN",
+                "result": "avoidable",
+                "actual": 90.5,
+                "expected": 111.97,
+                "oppScore": 94.88
+              }
+            ],
+            "rank": 10
+          }
+        ]
+      },
+      "2026": {
+        "season": 2026,
+        "weeks": 4,
+        "rows": [
+          {
+            "owner": "AR",
+            "team": "Give 'er The Beans ",
+            "teamId": 5,
+            "games": 4,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 2,
+                "opp": "IK",
+                "result": "stolen",
+                "actual": 149.22,
+                "expected": 123.25,
+                "oppScore": 135.26
+              }
+            ],
+            "rank": 1
+          },
+          {
+            "owner": "DN",
+            "team": "Washington Redskins",
+            "teamId": 8,
+            "games": 4,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "JH",
+                "result": "stolen",
+                "actual": 136.36,
+                "expected": 125.54,
+                "oppScore": 126.66
+              }
+            ],
+            "rank": 2
+          },
+          {
+            "owner": "JO",
+            "team": "Adam's Revenge",
+            "teamId": 9,
+            "games": 4,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "AN",
+                "result": "stolen",
+                "actual": 118.8,
+                "expected": 110.78,
+                "oppScore": 114.8
+              }
+            ],
+            "rank": 3
+          },
+          {
+            "owner": "ZS",
+            "team": "Tomato Toes",
+            "teamId": 10,
+            "games": 4,
+            "stolen": 1,
+            "avoidable": 0,
+            "mwa": 1,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "CR",
+                "result": "stolen",
+                "actual": 132.74,
+                "expected": 119.34,
+                "oppScore": 132.68
+              }
+            ],
+            "rank": 4
+          },
+          {
+            "owner": "DM",
+            "team": "Cracked Unc",
+            "teamId": 2,
+            "games": 4,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 5
+          },
+          {
+            "owner": "GM",
+            "team": "Gabe",
+            "teamId": 1,
+            "games": 4,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 6
+          },
+          {
+            "owner": "JH",
+            "team": "ORACLE AI",
+            "teamId": 12,
+            "games": 4,
+            "stolen": 0,
+            "avoidable": 0,
+            "mwa": 0,
+            "plays": [],
+            "rank": 7
+          },
+          {
+            "owner": "AN",
+            "team": "El Fusilado",
+            "teamId": 4,
+            "games": 4,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 1,
+                "opp": "JO",
+                "result": "avoidable",
+                "actual": 114.8,
+                "expected": 127.5,
+                "oppScore": 118.8
+              }
+            ],
+            "rank": 8
+          },
+          {
+            "owner": "CR",
+            "team": "Apes Together Strong",
+            "teamId": 7,
+            "games": 4,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "ZS",
+                "result": "avoidable",
+                "actual": 132.68,
+                "expected": 136.85,
+                "oppScore": 132.74
+              }
+            ],
+            "rank": 9
+          },
+          {
+            "owner": "IK",
+            "team": "Olave Garden Breadsticks",
+            "teamId": 11,
+            "games": 4,
+            "stolen": 0,
+            "avoidable": 1,
+            "mwa": -1,
+            "plays": [
+              {
+                "week": 3,
+                "opp": "JH",
+                "result": "avoidable",
+                "actual": 100.02,
+                "expected": 118.84,
+                "oppScore": 116.84
+              }
+            ],
+            "rank": 10
+          }
+        ]
+      }
+    },
+    "career": [
+      {
+        "owner": "ZS",
+        "team": "Tomato Toes",
+        "teamId": 10,
+        "seasons": 9,
+        "games": 110,
+        "stolen": 12,
+        "avoidable": 8,
+        "mwa": 4,
+        "rank": 1
+      },
+      {
+        "owner": "CR",
+        "team": "Apes Together Strong",
+        "teamId": 7,
+        "seasons": 9,
+        "games": 110,
+        "stolen": 8,
+        "avoidable": 7,
+        "mwa": 1,
+        "rank": 2
+      },
+      {
+        "owner": "JO",
+        "team": "Adam's Revenge",
+        "teamId": 9,
+        "seasons": 9,
+        "games": 110,
+        "stolen": 7,
+        "avoidable": 7,
+        "mwa": 0,
+        "rank": 3
+      },
+      {
+        "owner": "JH",
+        "team": "ORACLE AI",
+        "teamId": 12,
+        "seasons": 8,
+        "games": 97,
+        "stolen": 4,
+        "avoidable": 4,
+        "mwa": 0,
+        "rank": 4
+      },
+      {
+        "owner": "AR",
+        "team": "Give 'er The Beans ",
+        "teamId": 5,
+        "seasons": 9,
+        "games": 110,
+        "stolen": 4,
+        "avoidable": 5,
+        "mwa": -1,
+        "rank": 5
+      },
+      {
+        "owner": "AN",
+        "team": "El Fusilado",
+        "teamId": 4,
+        "seasons": 9,
+        "games": 110,
+        "stolen": 6,
+        "avoidable": 8,
+        "mwa": -2,
+        "rank": 6
+      },
+      {
+        "owner": "DM",
+        "team": "Cracked Unc",
+        "teamId": 2,
+        "seasons": 9,
+        "games": 110,
+        "stolen": 5,
+        "avoidable": 7,
+        "mwa": -2,
+        "rank": 7
+      },
+      {
+        "owner": "IK",
+        "team": "Olave Garden Breadsticks",
+        "teamId": 11,
+        "seasons": 9,
+        "games": 110,
+        "stolen": 5,
+        "avoidable": 7,
+        "mwa": -2,
+        "rank": 8
+      },
+      {
+        "owner": "GM",
+        "team": "Gabe",
+        "teamId": 1,
+        "seasons": 9,
+        "games": 110,
+        "stolen": 2,
+        "avoidable": 5,
+        "mwa": -3,
+        "rank": 9
+      },
+      {
+        "owner": "DN",
+        "team": "Washington Redskins",
+        "teamId": 8,
+        "seasons": 9,
+        "games": 110,
+        "stolen": 3,
+        "avoidable": 11,
+        "mwa": -8,
+        "rank": 10
+      }
+    ],
+    "details": [
+      {
+        "season": 2018,
+        "week": 2,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "DN",
+        "actual": 119.94,
+        "expected": 109.06,
+        "oppScore": 110.8,
+        "result": "stolen"
+      },
+      {
+        "season": 2018,
+        "week": 3,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "DM",
+        "actual": 123.34,
+        "expected": 110.34,
+        "oppScore": 117.06,
+        "result": "stolen"
+      },
+      {
+        "season": 2018,
+        "week": 6,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "JO",
+        "actual": 81.86,
+        "expected": 93.9,
+        "oppScore": 85.5,
+        "result": "avoidable"
+      },
+      {
+        "season": 2018,
+        "week": 7,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "AR",
+        "actual": 86.36,
+        "expected": 105.73,
+        "oppScore": 98.22,
+        "result": "avoidable"
+      },
+      {
+        "season": 2018,
+        "week": 7,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "SHEN",
+        "actual": 108.06,
+        "expected": 105.81,
+        "oppScore": 106.94,
+        "result": "stolen"
+      },
+      {
+        "season": 2018,
+        "week": 8,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "DN",
+        "actual": 144.66,
+        "expected": 132.16,
+        "oppScore": 140.26,
+        "result": "stolen"
+      },
+      {
+        "season": 2018,
+        "week": 10,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "AN",
+        "actual": 109.82,
+        "expected": 114.5,
+        "oppScore": 114.02,
+        "result": "avoidable"
+      },
+      {
+        "season": 2018,
+        "week": 11,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "DM",
+        "actual": 99.74,
+        "expected": 119.43,
+        "oppScore": 106.04,
+        "result": "avoidable"
+      },
+      {
+        "season": 2018,
+        "week": 11,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "SHEN",
+        "actual": 118.62,
+        "expected": 115.5,
+        "oppScore": 116.88,
+        "result": "stolen"
+      },
+      {
+        "season": 2018,
+        "week": 12,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "ZS",
+        "actual": 128.58,
+        "expected": 116.8,
+        "oppScore": 128.26,
+        "result": "stolen"
+      },
+      {
+        "season": 2018,
+        "week": 13,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "ZS",
+        "actual": 73.88,
+        "expected": 101.41,
+        "oppScore": 76.36,
+        "result": "avoidable"
+      },
+      {
+        "season": 2019,
+        "week": 1,
+        "owner": "JH",
+        "teamId": 12,
+        "opp": "CR",
+        "actual": 92.14,
+        "expected": 110.85,
+        "oppScore": 97.42,
+        "result": "avoidable"
+      },
+      {
+        "season": 2019,
+        "week": 3,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "GM",
+        "actual": 130.44,
+        "expected": 137.8,
+        "oppScore": 131.22,
+        "result": "avoidable"
+      },
+      {
+        "season": 2019,
+        "week": 3,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "IK",
+        "actual": 101.66,
+        "expected": 114.32,
+        "oppScore": 106.22,
+        "result": "avoidable"
+      },
+      {
+        "season": 2019,
+        "week": 8,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "JO",
+        "actual": 83.4,
+        "expected": 90.95,
+        "oppScore": 84.58,
+        "result": "avoidable"
+      },
+      {
+        "season": 2019,
+        "week": 8,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "ZS",
+        "actual": 84.58,
+        "expected": 78.55,
+        "oppScore": 83.4,
+        "result": "stolen"
+      },
+      {
+        "season": 2019,
+        "week": 12,
+        "owner": "GM",
+        "teamId": 1,
+        "opp": "IK",
+        "actual": 80.38,
+        "expected": 109.98,
+        "oppScore": 82.14,
+        "result": "avoidable"
+      },
+      {
+        "season": 2019,
+        "week": 12,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "AR",
+        "actual": 102.12,
+        "expected": 93.82,
+        "oppScore": 100.7,
+        "result": "stolen"
+      },
+      {
+        "season": 2019,
+        "week": 13,
+        "owner": "GM",
+        "teamId": 1,
+        "opp": "CR",
+        "actual": 82.92,
+        "expected": 98.39,
+        "oppScore": 89.5,
+        "result": "avoidable"
+      },
+      {
+        "season": 2020,
+        "week": 1,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "AN",
+        "actual": 135.58,
+        "expected": 119.08,
+        "oppScore": 121.8,
+        "result": "stolen"
+      },
+      {
+        "season": 2020,
+        "week": 2,
+        "owner": "AR",
+        "teamId": 5,
+        "opp": "GM",
+        "actual": 111.96,
+        "expected": 131.4,
+        "oppScore": 126.08,
+        "result": "avoidable"
+      },
+      {
+        "season": 2020,
+        "week": 2,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "IK",
+        "actual": 152.1,
+        "expected": 129.61,
+        "oppScore": 133.1,
+        "result": "stolen"
+      },
+      {
+        "season": 2020,
+        "week": 3,
+        "owner": "AR",
+        "teamId": 5,
+        "opp": "IK",
+        "actual": 106.78,
+        "expected": 131.99,
+        "oppScore": 129.88,
+        "result": "avoidable"
+      },
+      {
+        "season": 2020,
+        "week": 3,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "CR",
+        "actual": 137.3,
+        "expected": 133.91,
+        "oppScore": 136.34,
+        "result": "stolen"
+      },
+      {
+        "season": 2020,
+        "week": 4,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "JH",
+        "actual": 94.9,
+        "expected": 102.38,
+        "oppScore": 98.5,
+        "result": "avoidable"
+      },
+      {
+        "season": 2020,
+        "week": 4,
+        "owner": "JH",
+        "teamId": 12,
+        "opp": "DN",
+        "actual": 98.5,
+        "expected": 94.83,
+        "oppScore": 94.9,
+        "result": "stolen"
+      },
+      {
+        "season": 2020,
+        "week": 5,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "JO",
+        "actual": 111.72,
+        "expected": 126.57,
+        "oppScore": 117.78,
+        "result": "avoidable"
+      },
+      {
+        "season": 2020,
+        "week": 5,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "GM",
+        "actual": 93.14,
+        "expected": 117.99,
+        "oppScore": 113.3,
+        "result": "avoidable"
+      },
+      {
+        "season": 2020,
+        "week": 6,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "DM",
+        "actual": 92.32,
+        "expected": 106.26,
+        "oppScore": 94.4,
+        "result": "avoidable"
+      },
+      {
+        "season": 2020,
+        "week": 6,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "ZS",
+        "actual": 105.28,
+        "expected": 131.16,
+        "oppScore": 113.54,
+        "result": "avoidable"
+      },
+      {
+        "season": 2020,
+        "week": 7,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "GM",
+        "actual": 103.4,
+        "expected": 93.74,
+        "oppScore": 96.1,
+        "result": "stolen"
+      },
+      {
+        "season": 2020,
+        "week": 7,
+        "owner": "GM",
+        "teamId": 1,
+        "opp": "IK",
+        "actual": 96.1,
+        "expected": 115.79,
+        "oppScore": 103.4,
+        "result": "avoidable"
+      },
+      {
+        "season": 2021,
+        "week": 2,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "AR",
+        "actual": 106.2,
+        "expected": 125.43,
+        "oppScore": 117.06,
+        "result": "avoidable"
+      },
+      {
+        "season": 2021,
+        "week": 2,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "CR",
+        "actual": 126.38,
+        "expected": 113.81,
+        "oppScore": 122.7,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 3,
+        "owner": "AR",
+        "teamId": 5,
+        "opp": "GM",
+        "actual": 94.12,
+        "expected": 96.64,
+        "oppScore": 96.5,
+        "result": "avoidable"
+      },
+      {
+        "season": 2021,
+        "week": 3,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "ZS",
+        "actual": 111.54,
+        "expected": 115,
+        "oppScore": 112.02,
+        "result": "avoidable"
+      },
+      {
+        "season": 2021,
+        "week": 3,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "CR",
+        "actual": 127.34,
+        "expected": 117.96,
+        "oppScore": 118.74,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 4,
+        "owner": "JH",
+        "teamId": 12,
+        "opp": "JO",
+        "actual": 108.86,
+        "expected": 121.65,
+        "oppScore": 113.72,
+        "result": "avoidable"
+      },
+      {
+        "season": 2021,
+        "week": 4,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "ZS",
+        "actual": 109.68,
+        "expected": 92.46,
+        "oppScore": 105.06,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 4,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "IK",
+        "actual": 105.06,
+        "expected": 112.6,
+        "oppScore": 109.68,
+        "result": "avoidable"
+      },
+      {
+        "season": 2021,
+        "week": 5,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "CR",
+        "actual": 151.58,
+        "expected": 135.51,
+        "oppScore": 141.06,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 5,
+        "owner": "AR",
+        "teamId": 5,
+        "opp": "IK",
+        "actual": 153.2,
+        "expected": 135,
+        "oppScore": 151.12,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 5,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "AR",
+        "actual": 151.12,
+        "expected": 154.76,
+        "oppScore": 153.2,
+        "result": "avoidable"
+      },
+      {
+        "season": 2021,
+        "week": 6,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "JH",
+        "actual": 134.3,
+        "expected": 121.8,
+        "oppScore": 126.88,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 6,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "JO",
+        "actual": 124.78,
+        "expected": 117.74,
+        "oppScore": 119.9,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 8,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "ZS",
+        "actual": 89.46,
+        "expected": 101.15,
+        "oppScore": 97.46,
+        "result": "avoidable"
+      },
+      {
+        "season": 2021,
+        "week": 8,
+        "owner": "AR",
+        "teamId": 5,
+        "opp": "JH",
+        "actual": 118.86,
+        "expected": 100.89,
+        "oppScore": 109.5,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 9,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "DM",
+        "actual": 87.86,
+        "expected": 108.21,
+        "oppScore": 95,
+        "result": "avoidable"
+      },
+      {
+        "season": 2021,
+        "week": 9,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "AR",
+        "actual": 101.54,
+        "expected": 97.78,
+        "oppScore": 101.36,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 11,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "JH",
+        "actual": 115.28,
+        "expected": 112.18,
+        "oppScore": 114.98,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 12,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "DN",
+        "actual": 102.08,
+        "expected": 92.68,
+        "oppScore": 95.96,
+        "result": "stolen"
+      },
+      {
+        "season": 2021,
+        "week": 14,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "JO",
+        "actual": 112.34,
+        "expected": 122.48,
+        "oppScore": 114.34,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 1,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "JO",
+        "actual": 83.98,
+        "expected": 103.53,
+        "oppScore": 88.86,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 1,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "GM",
+        "actual": 108.52,
+        "expected": 115.25,
+        "oppScore": 112.12,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 2,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "GM",
+        "actual": 94.88,
+        "expected": 110.7,
+        "oppScore": 105.92,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 2,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "DN",
+        "actual": 110.82,
+        "expected": 143.6,
+        "oppScore": 120.26,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 3,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "DM",
+        "actual": 87.42,
+        "expected": 94.34,
+        "oppScore": 93,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 5,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "CR",
+        "actual": 95.34,
+        "expected": 121.55,
+        "oppScore": 113.96,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 5,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "AN",
+        "actual": 127.2,
+        "expected": 109.42,
+        "oppScore": 115.02,
+        "result": "stolen"
+      },
+      {
+        "season": 2022,
+        "week": 6,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "DN",
+        "actual": 97.14,
+        "expected": 85.66,
+        "oppScore": 89.08,
+        "result": "stolen"
+      },
+      {
+        "season": 2022,
+        "week": 6,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "AR",
+        "actual": 93.42,
+        "expected": 101.18,
+        "oppScore": 98.96,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 7,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "AR",
+        "actual": 93.08,
+        "expected": 101.04,
+        "oppScore": 98.52,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 8,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "CR",
+        "actual": 155.52,
+        "expected": 139.12,
+        "oppScore": 150.16,
+        "result": "stolen"
+      },
+      {
+        "season": 2022,
+        "week": 8,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "GM",
+        "actual": 133.6,
+        "expected": 141.23,
+        "oppScore": 139.48,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 12,
+        "owner": "AR",
+        "teamId": 5,
+        "opp": "GM",
+        "actual": 101.62,
+        "expected": 121.68,
+        "oppScore": 120.86,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 12,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "DN",
+        "actual": 95.04,
+        "expected": 85.43,
+        "oppScore": 86.46,
+        "result": "stolen"
+      },
+      {
+        "season": 2022,
+        "week": 13,
+        "owner": "GM",
+        "teamId": 1,
+        "opp": "DM",
+        "actual": 97.44,
+        "expected": 103.63,
+        "oppScore": 101.44,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 14,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "AR",
+        "actual": 59.92,
+        "expected": 86.05,
+        "oppScore": 76.48,
+        "result": "avoidable"
+      },
+      {
+        "season": 2022,
+        "week": 14,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "ZS",
+        "actual": 88.86,
+        "expected": 75.93,
+        "oppScore": 78.76,
+        "result": "stolen"
+      },
+      {
+        "season": 2023,
+        "week": 1,
+        "owner": "AR",
+        "teamId": 5,
+        "opp": "ZS",
+        "actual": 83.68,
+        "expected": 110.32,
+        "oppScore": 98.06,
+        "result": "avoidable"
+      },
+      {
+        "season": 2023,
+        "week": 2,
+        "owner": "GM",
+        "teamId": 1,
+        "opp": "ZS",
+        "actual": 93.14,
+        "expected": 94.98,
+        "oppScore": 93.18,
+        "result": "avoidable"
+      },
+      {
+        "season": 2023,
+        "week": 2,
+        "owner": "JH",
+        "teamId": 12,
+        "opp": "IK",
+        "actual": 79,
+        "expected": 102.09,
+        "oppScore": 98.54,
+        "result": "avoidable"
+      },
+      {
+        "season": 2023,
+        "week": 2,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "DN",
+        "actual": 140.46,
+        "expected": 117.52,
+        "oppScore": 128.04,
+        "result": "stolen"
+      },
+      {
+        "season": 2023,
+        "week": 3,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "ZS",
+        "actual": 90.78,
+        "expected": 115.6,
+        "oppScore": 114.58,
+        "result": "avoidable"
+      },
+      {
+        "season": 2023,
+        "week": 4,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "JH",
+        "actual": 117.22,
+        "expected": 95.73,
+        "oppScore": 98.72,
+        "result": "stolen"
+      },
+      {
+        "season": 2023,
+        "week": 6,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "GM",
+        "actual": 62.04,
+        "expected": 80.51,
+        "oppScore": 70.02,
+        "result": "avoidable"
+      },
+      {
+        "season": 2023,
+        "week": 6,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "AR",
+        "actual": 113.98,
+        "expected": 106.06,
+        "oppScore": 111.7,
+        "result": "stolen"
+      },
+      {
+        "season": 2023,
+        "week": 7,
+        "owner": "JH",
+        "teamId": 12,
+        "opp": "ZS",
+        "actual": 101.46,
+        "expected": 115.83,
+        "oppScore": 111.78,
+        "result": "avoidable"
+      },
+      {
+        "season": 2023,
+        "week": 7,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "JH",
+        "actual": 111.78,
+        "expected": 99.7,
+        "oppScore": 101.46,
+        "result": "stolen"
+      },
+      {
+        "season": 2023,
+        "week": 8,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "IK",
+        "actual": 145.98,
+        "expected": 135.98,
+        "oppScore": 141.56,
+        "result": "stolen"
+      },
+      {
+        "season": 2023,
+        "week": 12,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "JH",
+        "actual": 107.08,
+        "expected": 126.3,
+        "oppScore": 114.12,
+        "result": "avoidable"
+      },
+      {
+        "season": 2023,
+        "week": 13,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "ZS",
+        "actual": 82.1,
+        "expected": 131.08,
+        "oppScore": 109.22,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 1,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "DM",
+        "actual": 90.42,
+        "expected": 114.49,
+        "oppScore": 112.26,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 1,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "IK",
+        "actual": 98.76,
+        "expected": 85.3,
+        "oppScore": 89.08,
+        "result": "stolen"
+      },
+      {
+        "season": 2024,
+        "week": 2,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "GM",
+        "actual": 148.48,
+        "expected": 136.62,
+        "oppScore": 138.2,
+        "result": "stolen"
+      },
+      {
+        "season": 2024,
+        "week": 4,
+        "owner": "JH",
+        "teamId": 12,
+        "opp": "JO",
+        "actual": 121.9,
+        "expected": 109.37,
+        "oppScore": 117.34,
+        "result": "stolen"
+      },
+      {
+        "season": 2024,
+        "week": 5,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "JH",
+        "actual": 109.44,
+        "expected": 113.24,
+        "oppScore": 112.94,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 5,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "GM",
+        "actual": 104.42,
+        "expected": 121.37,
+        "oppScore": 115.94,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 5,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "ZS",
+        "actual": 131.96,
+        "expected": 113.17,
+        "oppScore": 123.32,
+        "result": "stolen"
+      },
+      {
+        "season": 2024,
+        "week": 6,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "AR",
+        "actual": 116.86,
+        "expected": 120.89,
+        "oppScore": 118.52,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 6,
+        "owner": "AR",
+        "teamId": 5,
+        "opp": "AN",
+        "actual": 118.52,
+        "expected": 110.86,
+        "oppScore": 116.86,
+        "result": "stolen"
+      },
+      {
+        "season": 2024,
+        "week": 8,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "CR",
+        "actual": 95.56,
+        "expected": 110.19,
+        "oppScore": 100.02,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 8,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "AN",
+        "actual": 125.3,
+        "expected": 155.07,
+        "oppScore": 148.84,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 8,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "GM",
+        "actual": 111.3,
+        "expected": 121.57,
+        "oppScore": 117.46,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 8,
+        "owner": "GM",
+        "teamId": 1,
+        "opp": "JO",
+        "actual": 117.46,
+        "expected": 108.92,
+        "oppScore": 111.3,
+        "result": "stolen"
+      },
+      {
+        "season": 2024,
+        "week": 9,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "AR",
+        "actual": 108.3,
+        "expected": 99.94,
+        "oppScore": 102.3,
+        "result": "stolen"
+      },
+      {
+        "season": 2024,
+        "week": 11,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "AR",
+        "actual": 83.3,
+        "expected": 105.44,
+        "oppScore": 98.34,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 11,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "GM",
+        "actual": 108.28,
+        "expected": 120.29,
+        "oppScore": 111.64,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 11,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "DN",
+        "actual": 153.08,
+        "expected": 136.83,
+        "oppScore": 139.94,
+        "result": "stolen"
+      },
+      {
+        "season": 2024,
+        "week": 12,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "JO",
+        "actual": 112.36,
+        "expected": 115.93,
+        "oppScore": 114.88,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 12,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "ZS",
+        "actual": 93.5,
+        "expected": 121.62,
+        "oppScore": 114.98,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 13,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "JH",
+        "actual": 100.46,
+        "expected": 119.51,
+        "oppScore": 104.14,
+        "result": "avoidable"
+      },
+      {
+        "season": 2024,
+        "week": 13,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "CR",
+        "actual": 122.02,
+        "expected": 104.76,
+        "oppScore": 107.32,
+        "result": "stolen"
+      },
+      {
+        "season": 2025,
+        "week": 1,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "AN",
+        "actual": 122.46,
+        "expected": 118.35,
+        "oppScore": 121.96,
+        "result": "stolen"
+      },
+      {
+        "season": 2025,
+        "week": 1,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "JO",
+        "actual": 91.58,
+        "expected": 101.05,
+        "oppScore": 95.62,
+        "result": "avoidable"
+      },
+      {
+        "season": 2025,
+        "week": 3,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "IK",
+        "actual": 103.7,
+        "expected": 116.44,
+        "oppScore": 111.52,
+        "result": "avoidable"
+      },
+      {
+        "season": 2025,
+        "week": 4,
+        "owner": "GM",
+        "teamId": 1,
+        "opp": "DM",
+        "actual": 132.52,
+        "expected": 114.13,
+        "oppScore": 131.56,
+        "result": "stolen"
+      },
+      {
+        "season": 2025,
+        "week": 5,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "ZS",
+        "actual": 91.62,
+        "expected": 99.47,
+        "oppScore": 91.98,
+        "result": "avoidable"
+      },
+      {
+        "season": 2025,
+        "week": 5,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "AN",
+        "actual": 91.98,
+        "expected": 89.33,
+        "oppScore": 91.62,
+        "result": "stolen"
+      },
+      {
+        "season": 2025,
+        "week": 6,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "DN",
+        "actual": 94.9,
+        "expected": 113.19,
+        "oppScore": 107.74,
+        "result": "avoidable"
+      },
+      {
+        "season": 2025,
+        "week": 6,
+        "owner": "JH",
+        "teamId": 12,
+        "opp": "CR",
+        "actual": 111.54,
+        "expected": 97.09,
+        "oppScore": 106.26,
+        "result": "stolen"
+      },
+      {
+        "season": 2025,
+        "week": 8,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "DM",
+        "actual": 139.9,
+        "expected": 127.52,
+        "oppScore": 130.82,
+        "result": "stolen"
+      },
+      {
+        "season": 2025,
+        "week": 9,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "DN",
+        "actual": 90.5,
+        "expected": 111.97,
+        "oppScore": 94.88,
+        "result": "avoidable"
+      },
+      {
+        "season": 2025,
+        "week": 9,
+        "owner": "JH",
+        "teamId": 12,
+        "opp": "GM",
+        "actual": 107.74,
+        "expected": 104.06,
+        "oppScore": 106.72,
+        "result": "stolen"
+      },
+      {
+        "season": 2025,
+        "week": 10,
+        "owner": "DM",
+        "teamId": 2,
+        "opp": "AN",
+        "actual": 111.2,
+        "expected": 102.09,
+        "oppScore": 108.6,
+        "result": "stolen"
+      },
+      {
+        "season": 2025,
+        "week": 11,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "DN",
+        "actual": 113.34,
+        "expected": 104.24,
+        "oppScore": 113.16,
+        "result": "stolen"
+      },
+      {
+        "season": 2025,
+        "week": 12,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "ZS",
+        "actual": 81.04,
+        "expected": 91.81,
+        "oppScore": 88.86,
+        "result": "avoidable"
+      },
+      {
+        "season": 2025,
+        "week": 12,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "DN",
+        "actual": 88.86,
+        "expected": 79.56,
+        "oppScore": 81.04,
+        "result": "stolen"
+      },
+      {
+        "season": 2026,
+        "week": 1,
+        "owner": "DN",
+        "teamId": 8,
+        "opp": "JH",
+        "actual": 136.36,
+        "expected": 125.54,
+        "oppScore": 126.66,
+        "result": "stolen"
+      },
+      {
+        "season": 2026,
+        "week": 1,
+        "owner": "AN",
+        "teamId": 4,
+        "opp": "JO",
+        "actual": 114.8,
+        "expected": 127.5,
+        "oppScore": 118.8,
+        "result": "avoidable"
+      },
+      {
+        "season": 2026,
+        "week": 1,
+        "owner": "JO",
+        "teamId": 9,
+        "opp": "AN",
+        "actual": 118.8,
+        "expected": 110.78,
+        "oppScore": 114.8,
+        "result": "stolen"
+      },
+      {
+        "season": 2026,
+        "week": 2,
+        "owner": "AR",
+        "teamId": 5,
+        "opp": "IK",
+        "actual": 149.22,
+        "expected": 123.25,
+        "oppScore": 135.26,
+        "result": "stolen"
+      },
+      {
+        "season": 2026,
+        "week": 3,
+        "owner": "IK",
+        "teamId": 11,
+        "opp": "JH",
+        "actual": 100.02,
+        "expected": 118.84,
+        "oppScore": 116.84,
+        "result": "avoidable"
+      },
+      {
+        "season": 2026,
+        "week": 3,
+        "owner": "ZS",
+        "teamId": 10,
+        "opp": "CR",
+        "actual": 132.74,
+        "expected": 119.34,
+        "oppScore": 132.68,
+        "result": "stolen"
+      },
+      {
+        "season": 2026,
+        "week": 3,
+        "owner": "CR",
+        "teamId": 7,
+        "opp": "ZS",
+        "actual": 132.68,
+        "expected": 136.85,
+        "oppScore": 132.74,
+        "result": "avoidable"
+      }
+    ]
+  }
 }

@@ -99,7 +99,7 @@ luck:
 	@echo "make luck : Finished"
 sitstart:
 	@echo "make sitstart : Started"
-	@echo "Generating sit/start efficiency ..."
+	@echo "Generating sit/start efficiency and Manager Wins Added ..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-sit-start.mjs
 	@echo "make sitstart : Finished"
 

@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-12T21:34:45.939Z",
+  "updated": "2026-10-13T19:45:40.489Z",
   "order": [
     {
       "rank": 1,
@@ -9,7 +9,7 @@
       "owner": "ZS",
       "name": "Tomato Toes",
       "wins": 1,
-      "losses": 3,
+      "losses": 4,
       "ties": 0,
       "moves": 6
     },
@@ -18,7 +18,7 @@
       "teamId": 8,
       "owner": "DN",
       "name": "Washington Redskins",
-      "wins": 2,
+      "wins": 3,
       "losses": 2,
       "ties": 0,
       "moves": 9
@@ -29,7 +29,7 @@
       "owner": "AN",
       "name": "El Fusilado",
       "wins": 1,
-      "losses": 3,
+      "losses": 4,
       "ties": 0,
       "moves": 8
     },
@@ -39,7 +39,7 @@
       "owner": "JO",
       "name": "Adam's Revenge",
       "wins": 4,
-      "losses": 0,
+      "losses": 1,
       "ties": 0,
       "moves": 2
     },
@@ -48,7 +48,7 @@
       "teamId": 7,
       "owner": "CR",
       "name": "Apes Together Strong",
-      "wins": 1,
+      "wins": 2,
       "losses": 3,
       "ties": 0,
       "moves": 4
@@ -58,7 +58,7 @@
       "teamId": 12,
       "owner": "JH",
       "name": "ORACLE AI",
-      "wins": 2,
+      "wins": 3,
       "losses": 2,
       "ties": 0,
       "moves": 3
@@ -68,7 +68,7 @@
       "teamId": 5,
       "owner": "AR",
       "name": "Give 'er The Beans ",
-      "wins": 3,
+      "wins": 4,
       "losses": 1,
       "ties": 0,
       "moves": 4
@@ -79,7 +79,7 @@
       "owner": "GM",
       "name": "Gabe",
       "wins": 2,
-      "losses": 2,
+      "losses": 3,
       "ties": 0,
       "moves": 8
     },
@@ -88,7 +88,7 @@
       "teamId": 2,
       "owner": "DM",
       "name": "Cracked Unc",
-      "wins": 3,
+      "wins": 4,
       "losses": 1,
       "ties": 0,
       "moves": 13
@@ -99,7 +99,7 @@
       "owner": "IK",
       "name": "Olave Garden Breadsticks",
       "wins": 1,
-      "losses": 3,
+      "losses": 4,
       "ties": 0,
       "moves": 8
     }

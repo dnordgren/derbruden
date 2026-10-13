@@ -472,6 +472,191 @@ export function aggregateWinnableSeason(details, games, ownerOf, nameOf) {
   return sortWinnableRows([...byOwner.values()])
 }
 
+// ---------------------------------------------------------------------------
+// Manager Wins Added (stolen wins vs avoidable losses)
+// ---------------------------------------------------------------------------
+
+// League-week-average efficiency: sum(actual) / sum(optimal) across included
+// owners for one (season, week). Built from the same per-team actual/optimal
+// already computed in the season pass, so bye/injured-zero handling matches
+// sit-start exactly (those players score 0 on both sides via rosterWeek).
+// SHEN team-weeks are excluded for consistency with the other tables.
+// Returns Map `${season}:${week}` -> average efficiency (float).
+export function computeWeekAvg(weekRows) {
+  const sums = new Map()
+  for (const r of weekRows) {
+    if (EXCLUDED_OWNERS.has(r.owner)) continue
+    const key = `${r.season}:${r.week}`
+    if (!sums.has(key)) sums.set(key, { actual: 0, optimal: 0 })
+    const s = sums.get(key)
+    s.actual += r.actual
+    s.optimal += r.optimal
+  }
+  const out = new Map()
+  for (const [key, s] of sums) {
+    out.set(key, s.optimal > 0 ? s.actual / s.optimal : 0)
+  }
+  return out
+}
+
+function round2(n) {
+  return Math.round(n * 100) / 100
+}
+
+// Classify every decided non-tie regular-season game from each team's side:
+// expected = team's optimal x league-week-average efficiency.
+// Stolen win (+1): won (actual > opp actual) but an average manager loses
+//   (expected < opp actual). Avoidable loss (-1): lost (actual < opp actual)
+//   but an average manager wins (expected > opp actual). Strict inequalities
+//   throughout: ties (actual == opp actual) classify as neither, and an
+//   expected exactly equal to the opponent's score is neutral either way.
+//
+// games: extractRegularSeasonGames rows.
+// scoreByKey: Map `${season}:${week}:${teamId}` -> { actual, optimal } (the
+//   same optimalByKey map the winnable pass already builds).
+// weekAvgByKey: computeWeekAvg output.
+// Returns details:
+//   [{ season, week, owner, teamId, opp, actual, expected, oppScore, result }]
+// where result is 'stolen' or 'avoidable'.
+export function findManagerWinsAdded(games, scoreByKey, weekAvgByKey, ownerOf) {
+  const details = []
+  for (const g of games) {
+    if (g.winner === 'tie') continue
+    if (g.winner !== 'home' && g.winner !== 'away') continue
+    const sides = [
+      { teamId: g.homeId, oppId: g.awayId, actual: g.homeScore, oppScore: g.awayScore },
+      { teamId: g.awayId, oppId: g.homeId, actual: g.awayScore, oppScore: g.homeScore },
+    ]
+    for (const s of sides) {
+      const owner = ownerOf(s.teamId)
+      if (EXCLUDED_OWNERS.has(owner)) continue
+      const score = scoreByKey.get(`${g.season}:${g.week}:${s.teamId}`)
+      const avg = weekAvgByKey.get(`${g.season}:${g.week}`)
+      if (!score || !(avg > 0)) continue
+      const expected = round2(score.optimal * avg)
+      if (s.actual > s.oppScore && expected < s.oppScore) {
+        details.push({
+          season: g.season,
+          week: g.week,
+          owner,
+          teamId: s.teamId,
+          opp: ownerOf(s.oppId),
+          actual: s.actual,
+          expected,
+          oppScore: s.oppScore,
+          result: 'stolen',
+        })
+      } else if (s.actual < s.oppScore && expected > s.oppScore) {
+        details.push({
+          season: g.season,
+          week: g.week,
+          owner,
+          teamId: s.teamId,
+          opp: ownerOf(s.oppId),
+          actual: s.actual,
+          expected,
+          oppScore: s.oppScore,
+          result: 'avoidable',
+        })
+      }
+    }
+  }
+  return details
+}
+
+function sortMwaRows(rows) {
+  // Best managers first: highest net wins added tops the table.
+  rows.sort((a, b) => b.mwa - a.mwa || b.stolen - a.stolen || a.owner.localeCompare(b.owner))
+  rows.forEach((r, i) => (r.rank = i + 1))
+  return rows
+}
+
+// One season: every owner that played a decided game gets a row, even with
+// zero stolen/avoids. nameOf maps a teamId to that season's team name.
+export function aggregateMwaSeason(details, games, ownerOf, nameOf) {
+  const byOwner = new Map()
+  const ensure = teamId => {
+    const owner = ownerOf(teamId)
+    if (EXCLUDED_OWNERS.has(owner)) return null
+    if (!byOwner.has(owner)) {
+      byOwner.set(owner, {
+        owner,
+        team: nameOf(teamId) || '',
+        teamId,
+        games: 0,
+        stolen: 0,
+        avoidable: 0,
+        mwa: 0,
+        plays: [],
+      })
+    }
+    return byOwner.get(owner)
+  }
+  for (const g of games) {
+    if (g.winner === 'tie') continue
+    if (g.winner !== 'home' && g.winner !== 'away') continue
+    for (const teamId of [g.homeId, g.awayId]) {
+      const rec = ensure(teamId)
+      if (rec) {
+        rec.games += 1
+        rec.team = nameOf(teamId) || rec.team
+      }
+    }
+  }
+  for (const d of details) {
+    const rec = ensure(d.teamId)
+    if (rec) {
+      if (d.result === 'stolen') rec.stolen += 1
+      else if (d.result === 'avoidable') rec.avoidable += 1
+      rec.team = nameOf(d.teamId) || rec.team
+      rec.plays.push({
+        week: d.week,
+        opp: d.opp,
+        result: d.result,
+        actual: d.actual,
+        expected: d.expected,
+        oppScore: d.oppScore,
+      })
+    }
+  }
+  for (const rec of byOwner.values()) {
+    rec.mwa = rec.stolen - rec.avoidable
+    rec.plays.sort((a, b) => a.week - b.week)
+  }
+  return sortMwaRows([...byOwner.values()])
+}
+
+// Career: sum season rows. Seasons with no decided games simply add nothing.
+export function aggregateMwaCareer(perSeasonMwa) {
+  const byOwner = new Map()
+  for (const [season, entry] of Object.entries(perSeasonMwa)) {
+    for (const r of entry.rows || []) {
+      if (EXCLUDED_OWNERS.has(r.owner)) continue
+      if (!byOwner.has(r.owner)) {
+        byOwner.set(r.owner, {
+          owner: r.owner,
+          team: r.team,
+          teamId: r.teamId,
+          seasons: 0,
+          games: 0,
+          stolen: 0,
+          avoidable: 0,
+          mwa: 0,
+        })
+      }
+      const c = byOwner.get(r.owner)
+      c.team = r.team || c.team
+      c.seasons += 1
+      c.games += r.games
+      c.stolen += r.stolen
+      c.avoidable += r.avoidable
+      void season
+    }
+  }
+  for (const c of byOwner.values()) c.mwa = c.stolen - c.avoidable
+  return sortMwaRows([...byOwner.values()])
+}
+
 // Career: sum season rows. Seasons with no decided losses simply add nothing.
 export function aggregateWinnableCareer(perSeasonWinnable) {
   const byOwner = new Map()
@@ -665,6 +850,85 @@ ${body}
   </table></div>`
 }
 
+function mwaTitle(r) {
+  return `${r.stolen} stolen wins, ${r.avoidable} avoidable losses`
+}
+
+function fmtSigned(n) {
+  if (n > 0) return `+${n}`
+  return String(n)
+}
+
+function renderMwaCareerTable(rows) {
+  if (!rows.length) return `<p class="section-note">No decided regular-season games yet.</p>`
+  const body = rows
+    .map(
+      r => `<tr>
+        <td class="number">${r.rank}</td>
+        <td class="owner">${ownerLink(r.owner)}</td>
+        <td>${escapeHtml(r.team)}</td>
+        <td class="number">${r.seasons}</td>
+        <td class="number">${r.games}</td>
+        <td class="number">${r.stolen}</td>
+        <td class="number">${r.avoidable}</td>
+        <td class="number" title="${mwaTitle(r)}">${fmtSigned(r.mwa)}</td>
+      </tr>`
+    )
+    .join('\n')
+  return `<div class="table-container"><table class="stats-table">
+    <caption class="visually-hidden">Career manager wins added</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="number">Rank</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Team</th>
+        <th scope="col" class="number">Seasons</th>
+        <th scope="col" class="number">Games</th>
+        <th scope="col" class="number">Stolen</th>
+        <th scope="col" class="number">Avoidable</th>
+        <th scope="col" class="number">MWA</th>
+      </tr>
+    </thead>
+    <tbody>
+${body}
+    </tbody>
+  </table></div>`
+}
+
+function renderMwaSeasonTable(rows, caption) {
+  if (!rows.length) return `<p class="section-note">No decided regular-season games for this season.</p>`
+  const body = rows
+    .map(
+      r => `<tr>
+        <td class="number">${r.rank}</td>
+        <td class="owner">${ownerLink(r.owner)}</td>
+        <td>${escapeHtml(r.team)}</td>
+        <td class="number">${r.games}</td>
+        <td class="number">${r.stolen}</td>
+        <td class="number">${r.avoidable}</td>
+        <td class="number" title="${mwaTitle(r)}">${fmtSigned(r.mwa)}</td>
+      </tr>`
+    )
+    .join('\n')
+  return `<div class="table-container"><table class="stats-table">
+    <caption class="visually-hidden">${escapeHtml(caption)}</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="number">Rank</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Team</th>
+        <th scope="col" class="number">Games</th>
+        <th scope="col" class="number">Stolen</th>
+        <th scope="col" class="number">Avoidable</th>
+        <th scope="col" class="number">MWA</th>
+      </tr>
+    </thead>
+    <tbody>
+${body}
+    </tbody>
+  </table></div>`
+}
+
 export function renderPageContent(data) {
   const seasons = Object.keys(data.perSeason)
     .map(Number)
@@ -674,6 +938,9 @@ export function renderPageContent(data) {
   const winnable = data.winnableLosses || { perSeason: {}, career: [] }
   const winnableRows = winnable.perSeason[data.defaultSeason]?.rows || []
   const winnableSelector = renderSeasonSelector(seasons, data.defaultSeason, 'winnable-season-select')
+  const mwa = data.managerWinsAdded || { perSeason: {}, career: [] }
+  const mwaRows = mwa.perSeason[data.defaultSeason]?.rows || []
+  const mwaSelector = renderSeasonSelector(seasons, data.defaultSeason, 'mwa-season-select')
   const json = JSON.stringify(data).replace(/<\//g, '<\\/')
   return `<h2>Career Efficiency</h2>
 <p class="section-note">Actual starter points divided by optimal starter points across every decided regular-season week since 2018. A perfect week means the manager started the highest-scoring legal lineup. Regular season only.</p>
@@ -695,9 +962,17 @@ ${winnableSelector}
 <div id="winnable-table-wrap">
 ${renderWinnableSeasonTable(winnableRows, `${data.defaultSeason} winnable games lost`)}
 </div>
+<h2>Manager Wins Added</h2>
+<p class="section-note">Stolen wins minus avoidable losses since 2018. Each decided regular-season week gets a league-average efficiency (actual points over optimal points across every team); a team's expected score is its optimal lineup times that average. Stole a win: won a game an average manager loses. Avoidable loss: lost a game an average manager wins. Ties don't count; playoffs excluded.</p>
+${renderMwaCareerTable(mwa.career || [])}
+<h3>By Season</h3>
+${mwaSelector}
+<div id="mwa-table-wrap">
+${renderMwaSeasonTable(mwaRows, `${data.defaultSeason} manager wins added`)}
+</div>
 <script type="application/json" id="sitstart-data">${json}</script>
 <script src="../static/js/d3.v7.min.js" defer></script>
-<script src="../static/js/sit-start.js?v=8"></script>`
+<script src="../static/js/sit-start.js?v=9"></script>`
 }
 
 function pageTemplate(content) {
@@ -795,6 +1070,7 @@ ${SITSTART_END}
       <p><strong>Optimal:</strong> the highest-scoring legal lineup chosen from the same week's rostered players (backtracking over eligible slots; empty slots score 0).</p>
       <p><strong>Efficiency</strong> = actual / optimal. <strong>Perfect</strong> weeks are weeks where actual equals optimal. Regular-season decided weeks only, 2018 on.</p>
       <p><strong>Winnable games lost:</strong> a decided regular-season loss counts as winnable when the loser's optimal lineup outscores the winner's actual score. Ties don't count.</p>
+      <p><strong>Manager wins added (MWA):</strong> stolen wins minus avoidable losses. Expected score = optimal lineup times the league-week-average efficiency (total actual over total optimal that week). A win is stolen when expected trails the opponent's actual score; a loss is avoidable when expected beats it. Strict inequalities, so ties and exact-equals weeks are neutral.</p>
       <p>Regenerate with <code>make sitstart</code>.</p>
     </details>
   </main>
@@ -836,6 +1112,22 @@ function winnableCellTitle(r) {
   return `${r.winnable} of ${r.decidedLosses} losses were winnable`
 }
 
+function mwaCell(r) {
+  if (r.mwa == null) return '\u2014'
+  if (r.mwa > 0) return `+${r.mwa}`
+  return String(r.mwa)
+}
+
+function mwaCellTitle(r) {
+  if (r.stolen == null || r.avoidable == null) return 'Manager wins added'
+  return `${r.stolen} stolen wins, ${r.avoidable} avoidable losses`
+}
+
+function mwaCountCell(r, key) {
+  if (r[key] == null) return '\u2014'
+  return String(r[key])
+}
+
 export function renderOwnerSection(ownerRows, careerRow) {
   const body = ownerRows
     .map(
@@ -848,6 +1140,9 @@ export function renderOwnerSection(ownerRows, careerRow) {
         <td class="number" title="${winPctTitle(r)}">${fmtWinPct(r)}</td>
         <td class="number">${r.perfectWeeks}</td>
         <td class="number" title="${winnableCellTitle(r)}">${winnableCell(r)}</td>
+        <td class="number" title="${mwaCellTitle(r)}">${mwaCountCell(r, 'stolen')}</td>
+        <td class="number" title="${mwaCellTitle(r)}">${mwaCountCell(r, 'avoidable')}</td>
+        <td class="number" title="${mwaCellTitle(r)}">${mwaCell(r)}</td>
       </tr>`
     )
     .join('\n')
@@ -861,12 +1156,15 @@ export function renderOwnerSection(ownerRows, careerRow) {
         <td class="number" title="${winPctTitle(careerRow)}">${fmtWinPct(careerRow)}</td>
         <td class="number">${careerRow.perfectWeeks}</td>
         <td class="number" title="${winnableCellTitle(careerRow)}">${winnableCell(careerRow)}</td>
+        <td class="number" title="${mwaCellTitle(careerRow)}">${mwaCountCell(careerRow, 'stolen')}</td>
+        <td class="number" title="${mwaCellTitle(careerRow)}">${mwaCountCell(careerRow, 'avoidable')}</td>
+        <td class="number" title="${mwaCellTitle(careerRow)}">${mwaCell(careerRow)}</td>
       </tr>`
     : ''
   return `${SITSTART_START}
   <section class="sit-start">
     <h2>Sit/Start Efficiency</h2>
-    <p class="section-note">Actual starter points versus the best legal lineup from the same roster. Winnable = decided losses the optimal lineup would have flipped. <a href="./sit-start.html">League leaderboard</a>.</p>
+    <p class="section-note">Actual starter points versus the best legal lineup from the same roster. Winnable = decided losses the optimal lineup would have flipped. MWA = stolen wins minus avoidable losses. <a href="./sit-start.html">League leaderboard</a>.</p>
     <div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">Season-by-season sit-start efficiency</caption>
   <thead>
@@ -879,6 +1177,9 @@ export function renderOwnerSection(ownerRows, careerRow) {
       <th scope="col" class="number">Win%</th>
       <th scope="col" class="number">Perfect</th>
       <th scope="col" class="number">Winnable</th>
+      <th scope="col" class="number">Stolen</th>
+      <th scope="col" class="number">Avoidable</th>
+      <th scope="col" class="number">MWA</th>
     </tr>
   </thead>
   <tbody>
@@ -929,7 +1230,9 @@ async function main() {
   const metaBySeason = {}
   const perSeason = {}
   const winnableBySeason = {}
+  const mwaBySeason = {}
   const allFlipDetails = []
+  const allMwaDetails = []
   const ownerSeasons = {} // owner -> { owner, page, seasons: { season: row } }
   const winPct = loadWinPct()
 
@@ -973,6 +1276,7 @@ async function main() {
           owner: ownerOf(tid),
           team: nameOf(season, tid) || metaBySeason[season]?.[tid]?.name || '',
           teamId: tid,
+          season,
           week,
           actual,
           optimal,
@@ -993,9 +1297,20 @@ async function main() {
     const winnableRows = aggregateWinnableSeason(flipDetails, games, ownerOf, teamId => nameOf(season, teamId))
     winnableBySeason[season] = { season, weeks: weeks.length, rows: winnableRows }
     const winnableByOwner = Object.fromEntries(winnableRows.map(r => [r.owner, r]))
+    // Manager Wins Added: expected = optimal x league-week-average efficiency
+    // (same weekRows, so bye/injured-zero handling matches sit-start).
+    const weekAvg = computeWeekAvg(weekRows)
+    const mwaDetails = findManagerWinsAdded(games, optimalByKey, weekAvg, ownerOf)
+    allMwaDetails.push(...mwaDetails)
+    const mwaRows = aggregateMwaSeason(mwaDetails, games, ownerOf, teamId => nameOf(season, teamId))
+    mwaBySeason[season] = { season, weeks: weeks.length, rows: mwaRows }
+    const mwaByOwner = Object.fromEntries(mwaRows.map(r => [r.owner, r]))
     for (const r of rows) {
       r.winnable = winnableByOwner[r.owner]?.winnable ?? 0
       r.decidedLosses = winnableByOwner[r.owner]?.losses ?? 0
+      r.stolen = mwaByOwner[r.owner]?.stolen ?? 0
+      r.avoidable = mwaByOwner[r.owner]?.avoidable ?? 0
+      r.mwa = mwaByOwner[r.owner]?.mwa ?? 0
     }
     console.log(`Season ${season}: ${weeks.length} weeks, ${weekRows.length} team-weeks`)
     for (const r of rows) {
@@ -1035,9 +1350,14 @@ async function main() {
 
   const winnableCareer = aggregateWinnableCareer(winnableBySeason)
   const winnableCareerByOwner = Object.fromEntries(winnableCareer.map(r => [r.owner, r]))
+  const mwaCareer = aggregateMwaCareer(mwaBySeason)
+  const mwaCareerByOwner = Object.fromEntries(mwaCareer.map(r => [r.owner, r]))
   for (const c of career) {
     c.winnable = winnableCareerByOwner[c.owner]?.winnable ?? 0
     c.decidedLosses = winnableCareerByOwner[c.owner]?.losses ?? 0
+    c.stolen = mwaCareerByOwner[c.owner]?.stolen ?? 0
+    c.avoidable = mwaCareerByOwner[c.owner]?.avoidable ?? 0
+    c.mwa = mwaCareerByOwner[c.owner]?.mwa ?? 0
   }
 
   const data = {
@@ -1056,6 +1376,13 @@ async function main() {
       perSeason: winnableBySeason,
       career: winnableCareer,
       details: [...allFlipDetails].sort((a, b) => a.season - b.season || a.week - b.week),
+    },
+    managerWinsAdded: {
+      scopeNote:
+        'Stolen wins minus avoidable losses since 2018. Expected = optimal lineup times the league-week-average efficiency (total actual over total optimal across included owners that week, reusing the same per-team actual/optimal as sit-start). Strict inequalities; ties excluded; playoffs excluded.',
+      perSeason: mwaBySeason,
+      career: mwaCareer,
+      details: [...allMwaDetails].sort((a, b) => a.season - b.season || a.week - b.week),
     },
   }
 

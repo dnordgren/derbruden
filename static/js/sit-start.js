@@ -177,6 +177,79 @@
     })
   }
 
+  // Manager wins added: career table is static HTML; the season table
+  // swaps with its own selector. Guards keep older JSON (no
+  // managerWinsAdded key) working with this script.
+  var mwa = data.managerWinsAdded || { perSeason: {} }
+  var mPerSeason = mwa.perSeason || {}
+  var mWrap = document.getElementById('mwa-table-wrap')
+  var mSel = document.getElementById('mwa-season-select')
+  function fmtSigned(n) {
+    if (n > 0) return '+' + n
+    return String(n)
+  }
+  function renderMwaTable(rows, season) {
+    if (!rows || !rows.length) return '<p class="section-note">No decided regular-season games for this season.</p>'
+    var body = rows
+      .map(function (r) {
+        return (
+          '<tr>' +
+          '<td class="number">' +
+          r.rank +
+          '</td>' +
+          '<td class="owner">' +
+          ownerLink(r.owner) +
+          '</td>' +
+          '<td>' +
+          escapeHtml(r.team) +
+          '</td>' +
+          '<td class="number">' +
+          r.games +
+          '</td>' +
+          '<td class="number">' +
+          r.stolen +
+          '</td>' +
+          '<td class="number">' +
+          r.avoidable +
+          '</td>' +
+          '<td class="number" title="' +
+          r.stolen +
+          ' stolen wins, ' +
+          r.avoidable +
+          ' avoidable losses">' +
+          fmtSigned(r.mwa) +
+          '</td>' +
+          '</tr>'
+        )
+      })
+      .join('\n')
+    return (
+      '<div class="table-container"><table class="stats-table">' +
+      '<caption class="visually-hidden">' +
+      escapeHtml(String(season)) +
+      ' manager wins added</caption>' +
+      '<thead><tr>' +
+      '<th scope="col" class="number">Rank</th>' +
+      '<th scope="col">Owner</th>' +
+      '<th scope="col">Team</th>' +
+      '<th scope="col" class="number">Games</th>' +
+      '<th scope="col" class="number">Stolen</th>' +
+      '<th scope="col" class="number">Avoidable</th>' +
+      '<th scope="col" class="number">MWA</th>' +
+      '</tr></thead>' +
+      '<tbody>' +
+      body +
+      '</tbody></table></div>'
+    )
+  }
+  if (mSel && mWrap) {
+    mSel.addEventListener('change', function () {
+      var entry = mPerSeason[mSel.value]
+      if (!entry) return
+      mWrap.innerHTML = renderMwaTable(entry.rows, mSel.value)
+    })
+  }
+
   // Season-over-season efficiency trend, one line per owner. Deferred
   // until DOMContentLoaded so the deferred d3 bundle is ready.
   window.addEventListener('DOMContentLoaded', function () {

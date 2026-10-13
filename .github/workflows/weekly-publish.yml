@@ -38,7 +38,7 @@ jobs:
       - name: Generate power rankings
         run: node scripts/generate-power-rankings.js
 
-      - name: Generate sit-start efficiency
+      - name: Generate sit-start efficiency and winnable losses
         run: make sitstart
 
       # First-party roster record for trade reconstruction: ESPN ages

@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart winnable capture-rosters
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -99,9 +99,13 @@ luck:
 	@echo "make luck : Finished"
 sitstart:
 	@echo "make sitstart : Started"
-	@echo "Generating sit/start efficiency ..."
+	@echo "Generating sit/start efficiency and winnable games lost ..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-sit-start.mjs
 	@echo "make sitstart : Finished"
+
+# Winnable games lost rides the sit-start pass (one cache/fetch path in
+# generate-sit-start.mjs); this alias exists so the feature is discoverable.
+winnable: sitstart
 
 capture-rosters:
 	@echo "make capture-rosters : Started"

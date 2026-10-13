@@ -370,6 +370,138 @@ export function aggregateCareer(perSeasonRows) {
 }
 
 // ---------------------------------------------------------------------------
+// Winnable games lost (flip analysis)
+// ---------------------------------------------------------------------------
+
+// For every decided non-tie regular-season loss, check whether the loser
+// would have won by starting the optimal legal lineup from the same weekly
+// roster: optimal points (same optimalLineup logic as sit/start) strictly
+// greater than the winner's actual schedule score. Ties are skipped and
+// weeks without roster data (fetch failures) are skipped via the key map.
+//
+// games: extractRegularSeasonGames rows
+//   { season, week, homeId, awayId, homeScore, awayScore, winner }
+// optimalByKey: Map `${season}:${week}:${teamId}` -> { actual, optimal }
+// ownerOf: teamId -> owner code (makeOwnerLookup)
+// Returns details:
+//   [{ season, week, owner, teamId, opp, actual, optimal, oppScore }]
+export function findWinnableLosses(games, optimalByKey, ownerOf) {
+  const details = []
+  for (const g of games) {
+    if (g.winner === 'tie') continue
+    if (g.winner !== 'home' && g.winner !== 'away') continue
+    const loserId = g.winner === 'home' ? g.awayId : g.homeId
+    const winnerId = g.winner === 'home' ? g.homeId : g.awayId
+    const loserScore = g.winner === 'home' ? g.awayScore : g.homeScore
+    const winnerScore = g.winner === 'home' ? g.homeScore : g.awayScore
+    const opt = optimalByKey.get(`${g.season}:${g.week}:${loserId}`)
+    if (!opt) continue
+    if (EXCLUDED_OWNERS.has(ownerOf(loserId))) continue
+    if (opt.optimal > winnerScore) {
+      details.push({
+        season: g.season,
+        week: g.week,
+        owner: ownerOf(loserId),
+        teamId: loserId,
+        opp: ownerOf(winnerId),
+        actual: loserScore,
+        optimal: opt.optimal,
+        oppScore: winnerScore,
+      })
+    }
+  }
+  return details
+}
+
+function winnablePct(winnable, losses) {
+  if (!(losses > 0)) return 0
+  return Math.round((winnable / losses) * 1000) / 1000
+}
+
+function sortWinnableRows(rows) {
+  // Most winnable losses first: the worst lineup management tops the table.
+  rows.sort(
+    (a, b) => b.winnable - a.winnable || b.losses - a.losses || a.owner.localeCompare(b.owner)
+  )
+  rows.forEach((r, i) => (r.rank = i + 1))
+  return rows
+}
+
+// One season: every owner that lost a decided game gets a row, even with
+// zero winnable losses. nameOf maps a teamId to that season's team name.
+export function aggregateWinnableSeason(details, games, ownerOf, nameOf) {
+  const byOwner = new Map()
+  const ensure = teamId => {
+    const owner = ownerOf(teamId)
+    if (EXCLUDED_OWNERS.has(owner)) return null
+    if (!byOwner.has(owner)) {
+      byOwner.set(owner, {
+        owner,
+        team: nameOf(teamId) || '',
+        teamId,
+        losses: 0,
+        winnable: 0,
+        winnablePct: 0,
+        games: [],
+      })
+    }
+    return byOwner.get(owner)
+  }
+  for (const g of games) {
+    if (g.winner === 'tie') continue
+    if (g.winner !== 'home' && g.winner !== 'away') continue
+    const loserId = g.winner === 'home' ? g.awayId : g.homeId
+    const rec = ensure(loserId)
+    if (rec) {
+      rec.losses += 1
+      rec.team = nameOf(loserId) || rec.team
+    }
+  }
+  for (const d of details) {
+    const rec = ensure(d.teamId)
+    if (rec) {
+      rec.winnable += 1
+      rec.team = nameOf(d.teamId) || rec.team
+      rec.games.push({ week: d.week, opp: d.opp, actual: d.actual, optimal: d.optimal, oppScore: d.oppScore })
+    }
+  }
+  for (const rec of byOwner.values()) {
+    rec.games.sort((a, b) => a.week - b.week)
+    rec.winnablePct = winnablePct(rec.winnable, rec.losses)
+  }
+  return sortWinnableRows([...byOwner.values()])
+}
+
+// Career: sum season rows. Seasons with no decided losses simply add nothing.
+export function aggregateWinnableCareer(perSeasonWinnable) {
+  const byOwner = new Map()
+  for (const [season, entry] of Object.entries(perSeasonWinnable)) {
+    for (const r of entry.rows || []) {
+      if (EXCLUDED_OWNERS.has(r.owner)) continue
+      if (!byOwner.has(r.owner)) {
+        byOwner.set(r.owner, {
+          owner: r.owner,
+          team: r.team,
+          teamId: r.teamId,
+          seasons: 0,
+          losses: 0,
+          winnable: 0,
+          winnablePct: 0,
+        })
+      }
+      const c = byOwner.get(r.owner)
+      c.team = r.team || c.team
+      c.seasons += 1
+      c.losses += r.losses
+      c.winnable += r.winnable
+      void season
+    }
+  }
+  for (const c of byOwner.values()) c.winnablePct = winnablePct(c.winnable, c.losses)
+  return sortWinnableRows([...byOwner.values()])
+}
+
+// ---------------------------------------------------------------------------
 // Rendering
 // ---------------------------------------------------------------------------
 
@@ -453,14 +585,84 @@ ${body}
   </table></div>`
 }
 
-function renderSeasonSelector(seasons, selected) {
+function renderSeasonSelector(seasons, selected, id = 'sitstart-season-select') {
   if (seasons.length <= 1) return ''
   const options = seasons
     .slice()
     .sort((a, b) => b - a)
     .map(s => `<option value="${s}" ${String(s) === String(selected) ? 'selected' : ''}>${s}</option>`)
     .join('\n')
-  return `<p class="section-note"><label for="sitstart-season-select">Season: </label><select id="sitstart-season-select">${options}</select></p>`
+  return `<p class="section-note"><label for="${id}">Season: </label><select id="${id}">${options}</select></p>`
+}
+
+function winnableTitle(r) {
+  return `${r.winnable} of ${r.losses} losses were winnable`
+}
+
+function renderWinnableCareerTable(rows) {
+  if (!rows.length) return `<p class="section-note">No decided regular-season losses yet.</p>`
+  const body = rows
+    .map(
+      r => `<tr>
+        <td class="number">${r.rank}</td>
+        <td class="owner">${ownerLink(r.owner)}</td>
+        <td>${escapeHtml(r.team)}</td>
+        <td class="number">${r.seasons}</td>
+        <td class="number">${r.losses}</td>
+        <td class="number" title="${winnableTitle(r)}">${r.winnable}</td>
+        <td class="number">${(r.winnablePct * 100).toFixed(0)}%</td>
+      </tr>`
+    )
+    .join('\n')
+  return `<div class="table-container"><table class="stats-table">
+    <caption class="visually-hidden">Career winnable games lost</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="number">Rank</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Team</th>
+        <th scope="col" class="number">Seasons</th>
+        <th scope="col" class="number">Losses</th>
+        <th scope="col" class="number">Winnable</th>
+        <th scope="col" class="number">Winnable%</th>
+      </tr>
+    </thead>
+    <tbody>
+${body}
+    </tbody>
+  </table></div>`
+}
+
+function renderWinnableSeasonTable(rows, caption) {
+  if (!rows.length) return `<p class="section-note">No decided regular-season losses for this season.</p>`
+  const body = rows
+    .map(
+      r => `<tr>
+        <td class="number">${r.rank}</td>
+        <td class="owner">${ownerLink(r.owner)}</td>
+        <td>${escapeHtml(r.team)}</td>
+        <td class="number">${r.losses}</td>
+        <td class="number" title="${winnableTitle(r)}">${r.winnable}</td>
+        <td class="number">${(r.winnablePct * 100).toFixed(0)}%</td>
+      </tr>`
+    )
+    .join('\n')
+  return `<div class="table-container"><table class="stats-table">
+    <caption class="visually-hidden">${escapeHtml(caption)}</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="number">Rank</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Team</th>
+        <th scope="col" class="number">Losses</th>
+        <th scope="col" class="number">Winnable</th>
+        <th scope="col" class="number">Winnable%</th>
+      </tr>
+    </thead>
+    <tbody>
+${body}
+    </tbody>
+  </table></div>`
 }
 
 export function renderPageContent(data) {
@@ -469,6 +671,9 @@ export function renderPageContent(data) {
     .sort((a, b) => a - b)
   const currentRows = data.perSeason[data.defaultSeason]?.rows || []
   const selector = renderSeasonSelector(seasons, data.defaultSeason)
+  const winnable = data.winnableLosses || { perSeason: {}, career: [] }
+  const winnableRows = winnable.perSeason[data.defaultSeason]?.rows || []
+  const winnableSelector = renderSeasonSelector(seasons, data.defaultSeason, 'winnable-season-select')
   const json = JSON.stringify(data).replace(/<\//g, '<\\/')
   return `<h2>Career Efficiency</h2>
 <p class="section-note">Actual starter points divided by optimal starter points across every decided regular-season week since 2018. A perfect week means the manager started the highest-scoring legal lineup. Regular season only.</p>
@@ -482,9 +687,17 @@ ${selector}
 <div id="sitstart-table-wrap">
 ${renderSeasonTable(currentRows, `${data.defaultSeason} sit-start efficiency`)}
 </div>
+<h2>Winnable Games Lost</h2>
+<p class="section-note">Decided regular-season losses since 2018 where starting the optimal legal lineup would have flipped the loss to a win (optimal points above the opponent's actual score). Ties don't count; playoffs excluded.</p>
+${renderWinnableCareerTable(winnable.career || [])}
+<h3>By Season</h3>
+${winnableSelector}
+<div id="winnable-table-wrap">
+${renderWinnableSeasonTable(winnableRows, `${data.defaultSeason} winnable games lost`)}
+</div>
 <script type="application/json" id="sitstart-data">${json}</script>
 <script src="../static/js/d3.v7.min.js" defer></script>
-<script src="../static/js/sit-start.js?v=7"></script>`
+<script src="../static/js/sit-start.js?v=8"></script>`
 }
 
 function pageTemplate(content) {
@@ -581,6 +794,7 @@ ${SITSTART_END}
       <p><strong>Actual:</strong> points scored by the lineup the manager actually started that week (ESPN lineupSlotId at kickoff: QB, 2 RB, 2 WR, TE, FLEX, D/ST, K).</p>
       <p><strong>Optimal:</strong> the highest-scoring legal lineup chosen from the same week's rostered players (backtracking over eligible slots; empty slots score 0).</p>
       <p><strong>Efficiency</strong> = actual / optimal. <strong>Perfect</strong> weeks are weeks where actual equals optimal. Regular-season decided weeks only, 2018 on.</p>
+      <p><strong>Winnable games lost:</strong> a decided regular-season loss counts as winnable when the loser's optimal lineup outscores the winner's actual score. Ties don't count.</p>
       <p>Regenerate with <code>make sitstart</code>.</p>
     </details>
   </main>
@@ -612,6 +826,16 @@ export function upsertPage(contentHtml, pagePath = PAGE_PATH) {
 
 // Owner-page section: season-by-season table plus a career row. Inserted
 // after the draft-history block so generate-stats.js tables are untouched.
+function winnableCell(r) {
+  if (r.winnable == null) return '\u2014'
+  return r.winnable
+}
+
+function winnableCellTitle(r) {
+  if (r.winnable == null || r.decidedLosses == null) return 'Winnable games lost'
+  return `${r.winnable} of ${r.decidedLosses} losses were winnable`
+}
+
 export function renderOwnerSection(ownerRows, careerRow) {
   const body = ownerRows
     .map(
@@ -623,6 +847,7 @@ export function renderOwnerSection(ownerRows, careerRow) {
         <td class="number">${(r.efficiency * 100).toFixed(1)}%</td>
         <td class="number" title="${winPctTitle(r)}">${fmtWinPct(r)}</td>
         <td class="number">${r.perfectWeeks}</td>
+        <td class="number" title="${winnableCellTitle(r)}">${winnableCell(r)}</td>
       </tr>`
     )
     .join('\n')
@@ -635,12 +860,13 @@ export function renderOwnerSection(ownerRows, careerRow) {
         <td class="number">${(careerRow.efficiency * 100).toFixed(1)}%</td>
         <td class="number" title="${winPctTitle(careerRow)}">${fmtWinPct(careerRow)}</td>
         <td class="number">${careerRow.perfectWeeks}</td>
+        <td class="number" title="${winnableCellTitle(careerRow)}">${winnableCell(careerRow)}</td>
       </tr>`
     : ''
   return `${SITSTART_START}
   <section class="sit-start">
     <h2>Sit/Start Efficiency</h2>
-    <p class="section-note">Actual starter points versus the best legal lineup from the same roster. <a href="./sit-start.html">League leaderboard</a>.</p>
+    <p class="section-note">Actual starter points versus the best legal lineup from the same roster. Winnable = decided losses the optimal lineup would have flipped. <a href="./sit-start.html">League leaderboard</a>.</p>
     <div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">Season-by-season sit-start efficiency</caption>
   <thead>
@@ -652,6 +878,7 @@ export function renderOwnerSection(ownerRows, careerRow) {
       <th scope="col" class="number">Eff%</th>
       <th scope="col" class="number">Win%</th>
       <th scope="col" class="number">Perfect</th>
+      <th scope="col" class="number">Winnable</th>
     </tr>
   </thead>
   <tbody>
@@ -701,6 +928,8 @@ async function main() {
 
   const metaBySeason = {}
   const perSeason = {}
+  const winnableBySeason = {}
+  const allFlipDetails = []
   const ownerSeasons = {} // owner -> { owner, page, seasons: { season: row } }
   const winPct = loadWinPct()
 
@@ -753,6 +982,21 @@ async function main() {
     }
     const rows = aggregateSeason(weekRows)
     perSeason[season] = { season, weeks: weeks.length, rows }
+    // Winnable games lost: flip each decided loss against the loser's
+    // optimal lineup from the same weekly roster pool.
+    const optimalByKey = new Map()
+    for (const wr of weekRows) {
+      optimalByKey.set(`${season}:${wr.week}:${wr.teamId}`, { actual: wr.actual, optimal: wr.optimal })
+    }
+    const flipDetails = findWinnableLosses(games, optimalByKey, ownerOf)
+    allFlipDetails.push(...flipDetails)
+    const winnableRows = aggregateWinnableSeason(flipDetails, games, ownerOf, teamId => nameOf(season, teamId))
+    winnableBySeason[season] = { season, weeks: weeks.length, rows: winnableRows }
+    const winnableByOwner = Object.fromEntries(winnableRows.map(r => [r.owner, r]))
+    for (const r of rows) {
+      r.winnable = winnableByOwner[r.owner]?.winnable ?? 0
+      r.decidedLosses = winnableByOwner[r.owner]?.losses ?? 0
+    }
     console.log(`Season ${season}: ${weeks.length} weeks, ${weekRows.length} team-weeks`)
     for (const r of rows) {
       const wl = winPct[r.owner]?.[season]
@@ -789,6 +1033,13 @@ async function main() {
   }
   const careerByOwner = Object.fromEntries(career.map(r => [r.owner, r]))
 
+  const winnableCareer = aggregateWinnableCareer(winnableBySeason)
+  const winnableCareerByOwner = Object.fromEntries(winnableCareer.map(r => [r.owner, r]))
+  for (const c of career) {
+    c.winnable = winnableCareerByOwner[c.owner]?.winnable ?? 0
+    c.decidedLosses = winnableCareerByOwner[c.owner]?.losses ?? 0
+  }
+
   const data = {
     generated: new Date().toISOString().slice(0, 10),
     leagueId: LEAGUE_ID,
@@ -799,6 +1050,13 @@ async function main() {
     perSeason,
     owners: ownerSeasons,
     career,
+    winnableLosses: {
+      scopeNote:
+        "Decided regular-season losses since 2018 where the loser's optimal lineup outscores the winner's actual score. Ties excluded; playoffs excluded.",
+      perSeason: winnableBySeason,
+      career: winnableCareer,
+      details: [...allFlipDetails].sort((a, b) => a.season - b.season || a.week - b.week),
+    },
   }
 
   fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true })

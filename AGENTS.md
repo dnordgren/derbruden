@@ -276,7 +276,8 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 - Real slot counts come from `mSettings` `lineupSlotCounts`; fallback
   is QB1/RB2/WR2/TE1/FLEX1/DST1/K1. Bye/injured players have no actual
   split and score 0 on both sides.
-- Tests: `node --test scripts/generate-sit-start.test.mjs`.
+- Tests: `node --test scripts/generate-sit-start.test.mjs scripts/generate-winnable-losses.test.mjs`.
+- Winnable games lost rides the same pass (`make winnable` aliases `make sitstart`): every decided non-tie regular-season loss since 2018 counts as winnable when the loser's optimal lineup outscores the winner's actual schedule score. Results extend `sit-start.json` (`winnableLosses` key plus `winnable`/`decidedLosses` on season and career rows), render as a Winnable Games Lost section on `src/sit-start.html` (`static/js/sit-start.js?v=8`), and add a Winnable column to each owner-page sit/start section.
 
 ## Team name sync
 

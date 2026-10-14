@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-13T19:45:40.489Z",
+  "updated": "2026-10-14T17:48:32.026Z",
   "order": [
     {
       "rank": 1,
@@ -15,46 +15,26 @@
     },
     {
       "rank": 2,
-      "teamId": 8,
-      "owner": "DN",
-      "name": "Washington Redskins",
-      "wins": 3,
-      "losses": 2,
-      "ties": 0,
-      "moves": 9
-    },
-    {
-      "rank": 3,
-      "teamId": 4,
-      "owner": "AN",
-      "name": "El Fusilado",
-      "wins": 1,
-      "losses": 4,
-      "ties": 0,
-      "moves": 8
-    },
-    {
-      "rank": 4,
       "teamId": 9,
       "owner": "JO",
       "name": "Adam's Revenge",
       "wins": 4,
       "losses": 1,
       "ties": 0,
-      "moves": 2
+      "moves": 3
     },
     {
-      "rank": 5,
+      "rank": 3,
       "teamId": 7,
       "owner": "CR",
       "name": "Apes Together Strong",
       "wins": 2,
       "losses": 3,
       "ties": 0,
-      "moves": 4
+      "moves": 5
     },
     {
-      "rank": 6,
+      "rank": 4,
       "teamId": 12,
       "owner": "JH",
       "name": "ORACLE AI",
@@ -64,7 +44,7 @@
       "moves": 3
     },
     {
-      "rank": 7,
+      "rank": 5,
       "teamId": 5,
       "owner": "AR",
       "name": "Give 'er The Beans ",
@@ -74,27 +54,7 @@
       "moves": 4
     },
     {
-      "rank": 8,
-      "teamId": 1,
-      "owner": "GM",
-      "name": "Gabe",
-      "wins": 2,
-      "losses": 3,
-      "ties": 0,
-      "moves": 8
-    },
-    {
-      "rank": 9,
-      "teamId": 2,
-      "owner": "DM",
-      "name": "Cracked Unc",
-      "wins": 4,
-      "losses": 1,
-      "ties": 0,
-      "moves": 13
-    },
-    {
-      "rank": 10,
+      "rank": 6,
       "teamId": 11,
       "owner": "IK",
       "name": "Olave Garden Breadsticks",
@@ -102,9 +62,169 @@
       "losses": 4,
       "ties": 0,
       "moves": 8
+    },
+    {
+      "rank": 7,
+      "teamId": 8,
+      "owner": "DN",
+      "name": "Washington Redskins",
+      "wins": 3,
+      "losses": 2,
+      "ties": 0,
+      "moves": 11
+    },
+    {
+      "rank": 8,
+      "teamId": 4,
+      "owner": "AN",
+      "name": "El Fusilado",
+      "wins": 1,
+      "losses": 4,
+      "ties": 0,
+      "moves": 9
+    },
+    {
+      "rank": 9,
+      "teamId": 1,
+      "owner": "GM",
+      "name": "Gabe",
+      "wins": 2,
+      "losses": 3,
+      "ties": 0,
+      "moves": 9
+    },
+    {
+      "rank": 10,
+      "teamId": 2,
+      "owner": "DM",
+      "name": "Cracked Unc",
+      "wins": 4,
+      "losses": 1,
+      "ties": 0,
+      "moves": 15
     }
   ],
   "moves": [
+    {
+      "id": "07604b17-1ffa-47fa-8c71-f18082181a9b",
+      "date": "2026-10-14T13:32:34.863Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 9,
+      "owner": "JO",
+      "adds": [
+        "Harrison Butker"
+      ],
+      "drops": [
+        "Harrison Mevis"
+      ],
+      "bid": null
+    },
+    {
+      "id": "987e9bb3-deda-42f8-b0b3-764fa1aa67c0",
+      "date": "2026-10-14T13:31:53.848Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 7,
+      "owner": "CR",
+      "adds": [
+        "Kirk Cousins"
+      ],
+      "drops": [
+        "Jacksonville Jaguars D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "67bc68d2-3877-4547-bcfb-e4df32d5348d",
+      "date": "2026-10-14T11:02:32.480Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Dominic Zvada"
+      ],
+      "drops": [
+        "Josh Downs"
+      ],
+      "bid": null
+    },
+    {
+      "id": "173b60b7-baa3-4b53-95be-6bd47794123f",
+      "date": "2026-10-14T07:14:19.461Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Kansas City Chiefs D/ST"
+      ],
+      "drops": [
+        "Cincinnati Bengals D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "a8be155e-ab2e-4ce1-b981-3ae279e2c236",
+      "date": "2026-10-14T07:13:35.777Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 1,
+      "owner": "GM",
+      "adds": [
+        "Tyler Loop"
+      ],
+      "drops": [
+        "Evan McPherson"
+      ],
+      "bid": null
+    },
+    {
+      "id": "79a615ce-d781-4682-b9c5-ea1d0d37141c",
+      "date": "2026-10-14T07:13:35.777Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "San Francisco 49ers D/ST"
+      ],
+      "drops": [
+        "Sione Vaki"
+      ],
+      "bid": null
+    },
+    {
+      "id": "42a7637a-ab6a-4711-91a0-bd4df7621eeb",
+      "date": "2026-10-14T07:13:35.776Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "MarShawn Lloyd"
+      ],
+      "drops": [
+        "Caleb Douglas"
+      ],
+      "bid": null
+    },
+    {
+      "id": "fb7e1a23-db52-4638-8981-4347220cd711",
+      "date": "2026-10-14T07:13:35.776Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Jordan Love"
+      ],
+      "drops": [
+        "Kalif Raymond"
+      ],
+      "bid": null
+    },
     {
       "id": "32103ea0-f528-4264-8ec4-dc3f553a210c",
       "date": "2026-10-11T15:35:06.570Z",

@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-10-13T19:45:40.489Z",
+  "updated": "2026-10-14T17:48:32.026Z",
   "players": {
     "2026:3052587": "Baker Mayfield",
     "2026:4383429": "Jacob Saylors",
@@ -78,6 +78,11 @@
     "2026:4360248": "Kyle Pitts Sr.",
     "2026:2578570": "Jacoby Brissett",
     "2026:4429096": "Blake Corum",
-    "2026:-16003": "Chicago Bears D/ST"
+    "2026:-16003": "Chicago Bears D/ST",
+    "2026:14880": "Kirk Cousins",
+    "2026:4697745": "Tyler Loop",
+    "2026:4574716": "Harrison Mevis",
+    "2026:5082424": "Dominic Zvada",
+    "2026:4036378": "Jordan Love"
   }
 }

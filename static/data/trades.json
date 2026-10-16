@@ -1,8 +1,43 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-09-09T06:21:32.732Z",
+  "updated": "2026-10-16T15:30:40.316Z",
   "trades": [
+    {
+      "id": "0ecc3a93-f883-4a76-83f2-c97a5e0818d2",
+      "event": "TRADE_PROPOSAL",
+      "date": "2026-10-16T11:50:37.961Z",
+      "teams": [
+        {
+          "teamId": 2,
+          "name": "Cracked Unc",
+          "gives": [
+            "Caleb Williams"
+          ],
+          "assets": [
+            {
+              "name": "Caleb Williams",
+              "playerId": 4431611,
+              "overallPickNumber": null
+            }
+          ]
+        },
+        {
+          "teamId": 7,
+          "name": "Apes Together Strong",
+          "gives": [
+            "DeVonta Smith"
+          ],
+          "assets": [
+            {
+              "name": "DeVonta Smith",
+              "playerId": 4241478,
+              "overallPickNumber": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "e82f5fd9-e636-4d86-8bcd-1dcff8cae6cf",
       "event": "TRADE_ACCEPT",

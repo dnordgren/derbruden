@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-16T17:10:46.838Z",
+  "updated": "2026-10-17T16:08:55.042Z",
   "order": [
     {
       "rank": 1,
@@ -61,7 +61,7 @@
       "wins": 1,
       "losses": 4,
       "ties": 0,
-      "moves": 9
+      "moves": 10
     },
     {
       "rank": 7,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "1e3b6a6a-9a9f-48b3-913c-e6cfdf247533",
+      "date": "2026-10-16T17:35:36.920Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 11,
+      "owner": "IK",
+      "adds": [
+        "Tyler Allgeier"
+      ],
+      "drops": [
+        "Rachaad White"
+      ],
+      "bid": null
+    },
     {
       "id": "22944876-925b-4c4b-9459-698528a65959",
       "date": "2026-10-16T13:49:01.211Z",

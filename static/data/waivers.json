@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-17T16:08:55.042Z",
+  "updated": "2026-10-18T16:23:02.572Z",
   "order": [
     {
       "rank": 1,
@@ -101,10 +101,25 @@
       "wins": 4,
       "losses": 1,
       "ties": 0,
-      "moves": 16
+      "moves": 17
     }
   ],
   "moves": [
+    {
+      "id": "7040b5cd-7492-42ad-a069-9c5d70aca7f5",
+      "date": "2026-10-18T16:05:53.441Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Rachaad White"
+      ],
+      "drops": [
+        "Josh Downs"
+      ],
+      "bid": null
+    },
     {
       "id": "1e3b6a6a-9a9f-48b3-913c-e6cfdf247533",
       "date": "2026-10-16T17:35:36.920Z",

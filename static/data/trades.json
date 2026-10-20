@@ -1,8 +1,55 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-16T15:30:40.316Z",
+  "updated": "2026-10-20T17:20:12.160Z",
   "trades": [
+    {
+      "id": "481f60e5-1cf9-44dd-b236-220102e0334d",
+      "event": "TRADE_ACCEPT",
+      "date": "2026-10-20T17:14:48.380Z",
+      "teams": []
+    },
+    {
+      "id": "0dbc0ba6-b82f-42a5-b7b5-ec7a67f6f057",
+      "event": "TRADE_PROPOSAL",
+      "date": "2026-10-20T14:22:40.084Z",
+      "teams": [
+        {
+          "teamId": 2,
+          "name": "Cracked Unc",
+          "gives": [
+            "Kyren Williams",
+            "Caleb Williams"
+          ],
+          "assets": [
+            {
+              "name": "Kyren Williams",
+              "playerId": 4430737,
+              "overallPickNumber": null
+            },
+            {
+              "name": "Caleb Williams",
+              "playerId": 4431611,
+              "overallPickNumber": null
+            }
+          ]
+        },
+        {
+          "teamId": 12,
+          "name": "ORACLE AI",
+          "gives": [
+            "Ja'Marr Chase"
+          ],
+          "assets": [
+            {
+              "name": "Ja'Marr Chase",
+              "playerId": 4362628,
+              "overallPickNumber": null
+            }
+          ]
+        }
+      ]
+    },
     {
       "id": "0ecc3a93-f883-4a76-83f2-c97a5e0818d2",
       "event": "TRADE_PROPOSAL",

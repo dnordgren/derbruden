@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-10-21T17:55:19.831Z",
+  "updated": "2026-10-22T17:51:44.374Z",
   "players": {
     "2026:3052587": "Baker Mayfield",
     "2026:4383429": "Jacob Saylors",
@@ -104,6 +104,8 @@
     "2026:8439": "Aaron Rodgers",
     "2026:4426338": "Bo Nix",
     "2026:4432577": "C.J. Stroud",
-    "2026:-16005": "Cleveland Browns D/ST"
+    "2026:-16005": "Cleveland Browns D/ST",
+    "2026:-16020": "New York Jets D/ST",
+    "2026:-16017": "New England Patriots D/ST"
   }
 }

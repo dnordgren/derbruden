@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-21T17:55:19.831Z",
+  "updated": "2026-10-22T17:51:44.374Z",
   "order": [
     {
       "rank": 1,
@@ -31,7 +31,7 @@
       "wins": 3,
       "losses": 3,
       "ties": 0,
-      "moves": 6
+      "moves": 7
     },
     {
       "rank": 4,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "67736701-02b9-46c0-b287-431c0439567c",
+      "date": "2026-10-22T01:53:04.544Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 7,
+      "owner": "CR",
+      "adds": [
+        "New York Jets D/ST"
+      ],
+      "drops": [
+        "New England Patriots D/ST"
+      ],
+      "bid": null
+    },
     {
       "id": "55f797c3-2bda-496b-afa5-1a75764333f3",
       "date": "2026-10-21T13:08:52.922Z",

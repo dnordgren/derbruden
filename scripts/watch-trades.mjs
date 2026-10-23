@@ -142,15 +142,33 @@ function txDate(tx) {
   return Number.isFinite(n) && n > 0 ? new Date(n).toISOString() : null
 }
 
+// Accepted trades arrive with empty `items` (ESPN puts the player legs on
+// the proposal, linked via `relatedTransactionId`, and drops executed
+// proposals from mTransactions2). Pass previously seen proposals as
+// `proposalIndex` (proposal id -> transaction) so accepts resolve to the
+// proposed legs. Returns the transaction's own items when non-empty, else
+// the related proposal's items when resolvable, else the transaction's
+// items (or [] when it has none).
+export function itemsFor(tx, proposalIndex = {}) {
+  if (Array.isArray(tx.items) && tx.items.length > 0) return tx.items
+  const related = tx.relatedTransactionId
+  if (related != null) {
+    const proposal = proposalIndex[String(related)]
+    if (proposal && Array.isArray(proposal.items) && proposal.items.length > 0)
+      return proposal.items
+  }
+  return Array.isArray(tx.items) ? tx.items : []
+}
+
 // Group transaction items into per-team sides. A moved player is attributed
 // to the team that sends him: directional items use fromTeamId, ADD/DROP
 // items use the DROP side. ADD-only legs duplicate a DROP leg, so they are
 // skipped. Returns null for non-trade events.
-export function mapTransaction(tx, teamNames, playerNames) {
+export function mapTransaction(tx, teamNames, playerNames, proposalIndex = {}) {
   const type = txType(tx)
   if (!TRADE_TYPES.has(type)) return null
 
-  const items = Array.isArray(tx.items) ? tx.items : []
+  const items = itemsFor(tx, proposalIndex)
   const sides = new Map()
 
   for (const item of items) {
@@ -316,10 +334,25 @@ function loadState(file) {
   try {
     const s = JSON.parse(fs.readFileSync(file, 'utf8'))
     const processedIds = Array.isArray(s.processedIds) ? s.processedIds.map(String) : []
-    return { processedIds, players: s.players ?? {} }
+    return { processedIds, players: s.players ?? {}, proposals: s.proposals ?? {} }
   } catch {
-    return { processedIds: [], players: {} }
+    return { processedIds: [], players: {}, proposals: {} }
   }
+}
+
+// Remember proposal payloads (id -> items + date) so later TRADE_ACCEPT
+// events can resolve their legs via relatedTransactionId after ESPN drops
+// the executed proposal from the API. Caps the cache to bound state size.
+export function rememberProposals(cache, transactions, limit = 200) {
+  for (const tx of transactions) {
+    if (txType(tx) !== 'TRADE_PROPOSAL') continue
+    if (!Array.isArray(tx.items) || tx.items.length === 0) continue
+    if (tx.id == null) continue
+    cache[String(tx.id)] = { items: tx.items, date: txDate(tx) }
+  }
+  const keys = Object.keys(cache)
+  if (keys.length > limit) for (const k of keys.slice(0, keys.length - limit)) delete cache[k]
+  return cache
 }
 
 function loadLedger(file) {
@@ -356,22 +389,34 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const raw = await fetchTransactions(fetchImpl, env, notifyTypes)
   const teamNames = await fetchTeamNames(fetchImpl, env)
 
+  // Index proposals from this fetch plus previously cached ones so accepts
+  // with empty items resolve even when ESPN has dropped the proposal.
+  rememberProposals(state.proposals, raw)
+  const proposalIndex = { ...state.proposals }
+  for (const tx of raw)
+    if (txType(tx) === 'TRADE_PROPOSAL' && Array.isArray(tx.items) && tx.items.length > 0 && tx.id != null)
+      proposalIndex[String(tx.id)] = tx
+
   const pending = newTransactions(raw, state.processedIds)
-  const mapped = []
+  // Keep (tx, record) pairs so the post-name-resolution remap cannot
+  // misalign when non-trade events are filtered out of `mapped`.
+  const pairs = []
   for (const tx of pending) {
-    const record = mapTransaction(tx, teamNames, state.players)
-    if (record) mapped.push(record)
+    const record = mapTransaction(tx, teamNames, state.players, proposalIndex)
+    if (record) pairs.push({ tx, record })
   }
+  const mapped = pairs.map((p) => p.record)
 
   const playerIds = new Set()
-  for (const tx of pending)
-    for (const item of tx.items ?? [])
+  for (const { tx } of pairs)
+    for (const item of itemsFor(tx, proposalIndex))
       if (item.playerId > 0) playerIds.add(item.playerId)
   await resolvePlayerNames(fetchImpl, state, playerIds)
-  for (let i = 0; i < mapped.length; i++) {
-    const remapped = mapTransaction(pending[i], teamNames, state.players)
-    if (remapped) mapped[i] = remapped
+  for (const pair of pairs) {
+    const remapped = mapTransaction(pair.tx, teamNames, state.players, proposalIndex)
+    if (remapped) pair.record = remapped
   }
+  for (let i = 0; i < pairs.length; i++) mapped[i] = pairs[i].record
 
   if (args.backfill !== null) {
     const picked = mapped
@@ -389,6 +434,10 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   }
 
   if (pending.length === 0) {
+    // Persist any proposals cached above even when nothing is new: a
+    // proposal processed before the cache existed can recur here, and its
+    // legs must survive until its accept arrives. Dry-run stays read-only.
+    if (!args.dryRun) writeJsonAtomic(stateFile, state)
     console.log('No new trade events.')
     return 0
   }

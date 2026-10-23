@@ -395,3 +395,58 @@ test('main resolves a later accept from a cached proposal', async () => {
       if (!(key in envBackup)) delete process.env[key]
   }
 })
+
+test('main persists proposal cache when there are no new events', async () => {
+  const envBackup = { ...process.env }
+  process.env.LEAGUE_ID = '794521'
+  process.env.LEAGUE_YEAR = '2026'
+  process.env.ESPN_S2 = 's2'
+  process.env.SWID = 'swid'
+  process.env.DISCORD_WEBHOOK_URL = 'https://discord.example/hook'
+
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'trades-cache-'))
+  const stateFile = path.join(dir, 'state.json')
+  const ledgerFile = path.join(dir, 'trades.json')
+  // Proposal was already processed before the cache existed: pending is
+  // empty, but its legs must still land in state for a later accept.
+  writeFileSync(stateFile, JSON.stringify({ processedIds: ['prop-old'] }))
+
+  const espnBody = {
+    transactions: [
+      {
+        id: 'prop-old',
+        type: 'TRADE_PROPOSAL',
+        proposedDate: 1792506160084,
+        items: [{ playerId: 4430737, fromTeamId: 2, toTeamId: 12, type: 'TRADE' }]
+      }
+    ]
+  }
+  const posts = []
+  const fakeFetch = async (url, options) => {
+    if (String(url).includes('discord.example')) {
+      posts.push(JSON.parse(options.body))
+      return { ok: true, status: 204 }
+    }
+    if (String(url).includes('view=mTeam'))
+      return makeJson({ teams: [{ id: 2, name: 'Cracked Unc' }, { id: 12, name: 'ORACLE AI' }] })
+    return makeJson(espnBody)
+  }
+  const makeJson = (body) => ({
+    ok: true,
+    status: 200,
+    text: async () => JSON.stringify(body),
+    headers: new Map()
+  })
+
+  try {
+    assert.equal(await main([], fakeFetch, { stateFile, ledgerFile }), 0)
+    assert.equal(posts.length, 0)
+    const state = JSON.parse(readFileSync(stateFile, 'utf8'))
+    assert.ok(state.proposals['prop-old'], 'proposal cached in state despite no new events')
+    assert.equal(state.proposals['prop-old'].items[0].playerId, 4430737)
+  } finally {
+    for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
+    for (const key of Object.keys(process.env))
+      if (!(key in envBackup)) delete process.env[key]
+  }
+})

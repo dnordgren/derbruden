@@ -146,7 +146,9 @@ function txDate(tx) {
 // the proposal, linked via `relatedTransactionId`, and drops executed
 // proposals from mTransactions2). Pass previously seen proposals as
 // `proposalIndex` (proposal id -> transaction) so accepts resolve to the
-// proposed legs. Returns null for non-trade events.
+// proposed legs. Returns the transaction's own items when non-empty, else
+// the related proposal's items when resolvable, else the transaction's
+// items (or [] when it has none).
 export function itemsFor(tx, proposalIndex = {}) {
   if (Array.isArray(tx.items) && tx.items.length > 0) return tx.items
   const related = tx.relatedTransactionId
@@ -432,6 +434,10 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   }
 
   if (pending.length === 0) {
+    // Persist any proposals cached above even when nothing is new: a
+    // proposal processed before the cache existed can recur here, and its
+    // legs must survive until its accept arrives. Dry-run stays read-only.
+    if (!args.dryRun) writeJsonAtomic(stateFile, state)
     console.log('No new trade events.')
     return 0
   }

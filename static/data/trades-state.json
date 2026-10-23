@@ -20,5 +20,42 @@
     "4430737": "Kyren Williams",
     "4431611": "Caleb Williams",
     "4569987": "Jaylen Warren"
+  },
+  "proposals": {
+    "0dbc0ba6-b82f-42a5-b7b5-ec7a67f6f057": {
+      "items": [
+        {
+          "fromLineupSlotId": 2,
+          "fromTeamId": 2,
+          "isKeeper": false,
+          "overallPickNumber": 0,
+          "playerId": 4430737,
+          "toLineupSlotId": -1,
+          "toTeamId": 12,
+          "type": "TRADE"
+        },
+        {
+          "fromLineupSlotId": 20,
+          "fromTeamId": 2,
+          "isKeeper": false,
+          "overallPickNumber": 0,
+          "playerId": 4431611,
+          "toLineupSlotId": -1,
+          "toTeamId": 12,
+          "type": "TRADE"
+        },
+        {
+          "fromLineupSlotId": 20,
+          "fromTeamId": 12,
+          "isKeeper": false,
+          "overallPickNumber": 0,
+          "playerId": 4362628,
+          "toLineupSlotId": -1,
+          "toTeamId": 2,
+          "type": "TRADE"
+        }
+      ],
+      "date": "2026-10-20T14:22:40.084Z"
+    }
   }
 }

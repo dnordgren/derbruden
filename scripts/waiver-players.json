@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-10-22T17:51:44.374Z",
+  "updated": "2026-10-23T17:44:08.177Z",
   "players": {
     "2026:3052587": "Baker Mayfield",
     "2026:4383429": "Jacob Saylors",
@@ -106,6 +106,9 @@
     "2026:4432577": "C.J. Stroud",
     "2026:-16005": "Cleveland Browns D/ST",
     "2026:-16020": "New York Jets D/ST",
-    "2026:-16017": "New England Patriots D/ST"
+    "2026:-16017": "New England Patriots D/ST",
+    "2026:-16014": "Los Angeles Rams D/ST",
+    "2026:4686468": "Seth McGowan",
+    "2026:4038941": "Justin Herbert"
   }
 }

@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-23T17:44:08.177Z",
+  "updated": "2026-10-24T16:26:50.210Z",
   "order": [
     {
       "rank": 1,
@@ -51,7 +51,7 @@
       "wins": 2,
       "losses": 4,
       "ties": 0,
-      "moves": 12
+      "moves": 13
     },
     {
       "rank": 6,
@@ -71,7 +71,7 @@
       "wins": 2,
       "losses": 4,
       "ties": 0,
-      "moves": 11
+      "moves": 12
     },
     {
       "rank": 8,
@@ -105,6 +105,34 @@
     }
   ],
   "moves": [
+    {
+      "id": "f7336fc3-a77c-4973-9d35-5e2a82486c67",
+      "date": "2026-10-24T12:45:12.739Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Tre Tucker"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "b4865b2d-676c-4d0e-b172-92bd2e91fa16",
+      "date": "2026-10-24T03:41:20.786Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 11,
+      "owner": "IK",
+      "adds": [
+        "Christian Kirk"
+      ],
+      "drops": [
+        "Tyreek Hill"
+      ],
+      "bid": null
+    },
     {
       "id": "7273c8d3-1122-4e51-bbbc-58dd89837193",
       "date": "2026-10-23T07:26:29.273Z",

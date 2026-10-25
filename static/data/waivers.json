@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-24T16:26:50.210Z",
+  "updated": "2026-10-25T16:58:18.500Z",
   "order": [
     {
       "rank": 1,
@@ -11,7 +11,7 @@
       "wins": 1,
       "losses": 5,
       "ties": 0,
-      "moves": 9
+      "moves": 10
     },
     {
       "rank": 2,
@@ -105,6 +105,19 @@
     }
   ],
   "moves": [
+    {
+      "id": "117a892f-c11a-4754-affc-b7da79dc954a",
+      "date": "2026-10-25T11:01:14.504Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Dominic Zvada"
+      ],
+      "drops": [],
+      "bid": null
+    },
     {
       "id": "f7336fc3-a77c-4973-9d35-5e2a82486c67",
       "date": "2026-10-24T12:45:12.739Z",

@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-10-27T18:33:49.248Z",
+  "updated": "2026-10-28T18:40:11.296Z",
   "players": {
     "2026:3052587": "Baker Mayfield",
     "2026:4383429": "Jacob Saylors",
@@ -110,6 +110,10 @@
     "2026:-16014": "Los Angeles Rams D/ST",
     "2026:4686468": "Seth McGowan",
     "2026:4038941": "Justin Herbert",
-    "2026:3895856": "Christian Kirk"
+    "2026:3895856": "Christian Kirk",
+    "2026:-16034": "Houston Texans D/ST",
+    "2026:4430968": "Kimani Vidal",
+    "2026:3917232": "Tyler Bass",
+    "2026:2971573": "Ka'imi Fairbairn"
   }
 }

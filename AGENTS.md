@@ -276,7 +276,8 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 - Real slot counts come from `mSettings` `lineupSlotCounts`; fallback
   is QB1/RB2/WR2/TE1/FLEX1/DST1/K1. Bye/injured players have no actual
   split and score 0 on both sides.
-- Tests: `node --test scripts/generate-sit-start.test.mjs`.
+- Tests: `node --test scripts/generate-sit-start.test.mjs scripts/generate-mwa.test.mjs`.
+- Manager Wins Added rides the same pass too: each decided week gets a league-average efficiency (total actual over total optimal across included owners, same per-team numbers as sit-start so bye/injured zeros match); expected = optimal x average. A win is stolen when expected trails the opponent's actual, a loss is avoidable when expected beats it (strict inequalities; ties neutral). MWA = stolen − avoidable, ranked descending. Results extend `sit-start.json` (`managerWinsAdded` key plus `stolen`/`avoidable`/`mwa` on season and career rows), render as a Manager Wins Added career table plus season selector on `src/sit-start.html`, and add Stolen/Avoidable/MWA columns to each owner-page sit/start section.
 
 ## Team name sync
 

@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-30T18:26:17.012Z",
+  "updated": "2026-10-31T17:31:13.006Z",
   "order": [
     {
       "rank": 1,
@@ -41,30 +41,20 @@
       "wins": 2,
       "losses": 5,
       "ties": 0,
-      "moves": 13
+      "moves": 14
     },
     {
       "rank": 5,
-      "teamId": 11,
-      "owner": "IK",
-      "name": "Olave Garden Breadsticks",
-      "wins": 3,
-      "losses": 4,
-      "ties": 0,
-      "moves": 13
-    },
-    {
-      "rank": 6,
       "teamId": 2,
       "owner": "DM",
       "name": "Cracked Unc",
       "wins": 5,
       "losses": 2,
       "ties": 0,
-      "moves": 20
+      "moves": 22
     },
     {
-      "rank": 7,
+      "rank": 6,
       "teamId": 12,
       "owner": "JH",
       "name": "ORACLE AI",
@@ -74,7 +64,7 @@
       "moves": 6
     },
     {
-      "rank": 8,
+      "rank": 7,
       "teamId": 7,
       "owner": "CR",
       "name": "Apes Together Strong",
@@ -84,7 +74,7 @@
       "moves": 9
     },
     {
-      "rank": 9,
+      "rank": 8,
       "teamId": 5,
       "owner": "AR",
       "name": "Give 'er The Beans ",
@@ -94,7 +84,7 @@
       "moves": 7
     },
     {
-      "rank": 10,
+      "rank": 9,
       "teamId": 1,
       "owner": "GM",
       "name": "Gabe",
@@ -102,9 +92,75 @@
       "losses": 5,
       "ties": 0,
       "moves": 17
+    },
+    {
+      "rank": 10,
+      "teamId": 11,
+      "owner": "IK",
+      "name": "Olave Garden Breadsticks",
+      "wins": 3,
+      "losses": 4,
+      "ties": 0,
+      "moves": 14
     }
   ],
   "moves": [
+    {
+      "id": "e1f2af05-2f68-40c0-9070-d1429e092f83",
+      "date": "2026-10-31T07:12:28.565Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 11,
+      "owner": "IK",
+      "adds": [
+        "Seth McGowan"
+      ],
+      "drops": [
+        "Jaydon Blue"
+      ],
+      "bid": null
+    },
+    {
+      "id": "cca196db-8ab3-4b27-b5ae-4ea05392fd7a",
+      "date": "2026-10-31T04:04:58.438Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Makai Lemon"
+      ],
+      "drops": [
+        "Houston Texans D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "4e7afc13-3ef4-43f3-a99c-eb0821f61f2d",
+      "date": "2026-10-31T00:56:13.996Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Houston Texans D/ST"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "d1512755-5b33-4c13-97ee-84f81b2236fe",
+      "date": "2026-10-30T19:41:45.659Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Kansas City Chiefs D/ST"
+      ],
+      "drops": [],
+      "bid": null
+    },
     {
       "id": "78af5617-9cce-40c9-b942-4748f62ac100",
       "date": "2026-10-29T21:04:15.789Z",

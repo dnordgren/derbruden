@@ -1,8 +1,14 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-21T17:53:59.768Z",
+  "updated": "2026-10-31T04:01:11.049Z",
   "trades": [
+    {
+      "id": "b19a950f-ef75-4247-bab7-fee90942c73f",
+      "event": "TRADE_ACCEPT",
+      "date": "2026-10-31T00:34:08.014Z",
+      "teams": []
+    },
     {
       "id": "199d00a1-765e-4684-997a-91231a8c3855",
       "event": "TRADE_ACCEPT",

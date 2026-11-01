@@ -3,6 +3,11 @@
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
 
+# Local deploys use the derbruden-deploy IAM profile (see ~/.aws/credentials).
+# Override on the command line if needed: make deploy AWS_PROFILE=other.
+export AWS_PROFILE ?= derbruden-deploy
+export AWS_REGION ?= us-east-1
+
 # Find all jpg and png files
 IMAGES := $(wildcard static/img/*.jpg) $(wildcard static/img/*.png)
 # Generate target webp filenames

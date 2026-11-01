@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-31T17:31:13.006Z",
+  "updated": "2026-11-01T18:39:25.673Z",
   "order": [
     {
       "rank": 1,
@@ -11,7 +11,7 @@
       "wins": 1,
       "losses": 6,
       "ties": 0,
-      "moves": 10
+      "moves": 14
     },
     {
       "rank": 2,
@@ -101,10 +101,79 @@
       "wins": 3,
       "losses": 4,
       "ties": 0,
-      "moves": 14
+      "moves": 15
     }
   ],
   "moves": [
+    {
+      "id": "e010e994-d099-4c49-afc6-21493d79a363",
+      "date": "2026-11-01T16:26:02.126Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Washington Commanders D/ST"
+      ],
+      "drops": [
+        "Chicago Bears D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "e816c3da-b5fa-4f47-a24e-104a5abaaaa3",
+      "date": "2026-11-01T16:25:14.770Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Chad Ryland"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "9b602363-00d3-446c-b2c4-e7e72936ae1c",
+      "date": "2026-11-01T16:24:45.513Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Tez Johnson"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "98449458-537e-437d-857b-361380a2ec7a",
+      "date": "2026-11-01T16:23:47.356Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Corey Kiner"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "0ad31959-829e-458e-86ed-750b6ffc6385",
+      "date": "2026-11-01T14:33:31.863Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 11,
+      "owner": "IK",
+      "adds": [
+        "Brenton Strange"
+      ],
+      "drops": [
+        "Pat Freiermuth"
+      ],
+      "bid": null
+    },
     {
       "id": "e1f2af05-2f68-40c0-9070-d1429e092f83",
       "date": "2026-10-31T07:12:28.565Z",

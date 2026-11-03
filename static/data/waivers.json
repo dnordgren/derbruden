@@ -1,14 +1,14 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-02T22:30:07.804Z",
+  "updated": "2026-11-03T20:19:19.048Z",
   "order": [
     {
       "rank": 1,
       "teamId": 10,
       "owner": "ZS",
       "name": "Tomato Toes",
-      "wins": 1,
+      "wins": 2,
       "losses": 6,
       "ties": 0,
       "moves": 14
@@ -19,7 +19,7 @@
       "owner": "JO",
       "name": "Adam's Revenge",
       "wins": 6,
-      "losses": 1,
+      "losses": 2,
       "ties": 0,
       "moves": 7
     },
@@ -29,7 +29,7 @@
       "owner": "DN",
       "name": "Washington Redskins",
       "wins": 4,
-      "losses": 3,
+      "losses": 4,
       "ties": 0,
       "moves": 16
     },
@@ -38,7 +38,7 @@
       "teamId": 4,
       "owner": "AN",
       "name": "El Fusilado",
-      "wins": 2,
+      "wins": 3,
       "losses": 5,
       "ties": 0,
       "moves": 14
@@ -48,7 +48,7 @@
       "teamId": 2,
       "owner": "DM",
       "name": "Cracked Unc",
-      "wins": 5,
+      "wins": 6,
       "losses": 2,
       "ties": 0,
       "moves": 22
@@ -58,7 +58,7 @@
       "teamId": 12,
       "owner": "JH",
       "name": "ORACLE AI",
-      "wins": 3,
+      "wins": 4,
       "losses": 4,
       "ties": 0,
       "moves": 6
@@ -68,7 +68,7 @@
       "teamId": 7,
       "owner": "CR",
       "name": "Apes Together Strong",
-      "wins": 4,
+      "wins": 5,
       "losses": 3,
       "ties": 0,
       "moves": 9
@@ -79,7 +79,7 @@
       "owner": "AR",
       "name": "Give 'er The Beans ",
       "wins": 5,
-      "losses": 2,
+      "losses": 3,
       "ties": 0,
       "moves": 7
     },
@@ -87,9 +87,9 @@
       "rank": 9,
       "teamId": 1,
       "owner": "GM",
-      "name": "Big Bawls Wubs",
+      "name": "Big Bawls Wub",
       "wins": 2,
-      "losses": 5,
+      "losses": 6,
       "ties": 0,
       "moves": 17
     },
@@ -99,7 +99,7 @@
       "owner": "IK",
       "name": "Olave Garden Breadsticks",
       "wins": 3,
-      "losses": 4,
+      "losses": 5,
       "ties": 0,
       "moves": 15
     }

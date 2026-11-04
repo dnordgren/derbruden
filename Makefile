@@ -5,7 +5,12 @@ DISTRIBUTION_ID = E3CDWEEK40CKI2
 
 # Local deploys use the derbruden-deploy IAM profile (see ~/.aws/credentials).
 # Override on the command line if needed: make deploy AWS_PROFILE=other.
+# GitHub Actions runners have no named profiles — credentials arrive as
+# env vars via configure-aws-credentials — so only default the profile
+# outside Actions, or every aws call fails with "profile could not be found".
+ifeq ($(GITHUB_ACTIONS),)
 export AWS_PROFILE ?= derbruden-deploy
+endif
 export AWS_REGION ?= us-east-1
 
 # Find all jpg and png files

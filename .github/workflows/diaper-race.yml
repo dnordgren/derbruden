@@ -69,7 +69,7 @@ jobs:
       - name: Notify Discord
         if: steps.status.outputs.count != '0'
         env:
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_DIAPERRACE }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_PLAYOFFRACE }}
         run: node scripts/post-diaper-discord.mjs
 
       - name: Commit updated data and page

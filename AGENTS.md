@@ -342,8 +342,8 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 - Weekly GitHub Action (`.github/workflows/diaper-race.yml`) mirrors the
   playoff one: Monday 9pm ET, publishes `diaper-race.html` +
   `diaper-race.json` with a two-path invalidation, commits when changed.
-  Needs a `DISCORD_WEBHOOK_DIAPERRACE` repo secret alongside the shared
-  `ESPN_S2` / `SWID` / AWS secrets.
+  Posts through the shared `DISCORD_WEBHOOK_PLAYOFFRACE` secret alongside
+  the shared `ESPN_S2` / `SWID` / AWS secrets.
 - `deploy-static` excludes `data/diaper-race.json` like the other JSON feeds.
 - Tests: `node --test scripts/diaper-race.test.mjs`.
 

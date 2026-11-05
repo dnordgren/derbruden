@@ -122,7 +122,7 @@ export function buildPayload(data) {
 
 async function main() {
   loadFromFile()
-  const webhook = process.env.DISCORD_WEBHOOK_URL || process.env.DISCORD_WEBHOOK_DIAPERRACE
+  const webhook = process.env.DISCORD_WEBHOOK_URL || process.env.DISCORD_WEBHOOK_PLAYOFFRACE
   const dryRun = process.argv.includes('--dry-run')
   const force = process.argv.includes('--force')
 
@@ -147,7 +147,7 @@ async function main() {
   }
 
   if (!webhook) {
-    console.warn('DISCORD_WEBHOOK_URL / DISCORD_WEBHOOK_DIAPERRACE not set. Skipping Discord post.')
+    console.warn('DISCORD_WEBHOOK_URL / DISCORD_WEBHOOK_PLAYOFFRACE not set. Skipping Discord post.')
     return
   }
 

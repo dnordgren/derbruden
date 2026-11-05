@@ -282,8 +282,8 @@ Notes:
 - A weekly GitHub Action (`.github/workflows/diaper-race.yml`) runs
   Monday nights 9pm ET alongside the playoff race, publishes
   `diaper-race.html` + `diaper-race.json` with a two-path invalidation,
-  and commits when files changed. Needs a `DISCORD_WEBHOOK_DIAPERRACE`
-  repository secret alongside the shared ESPN/AWS secrets.
+  and commits when files changed. Posts through the shared
+  `DISCORD_WEBHOOK_PLAYOFFRACE` secret alongside the shared ESPN/AWS secrets.
 - Tests: `node --test scripts/diaper-race.test.mjs`.
 
 ### Weekly update

@@ -43,6 +43,29 @@ const NOTIFY_TYPES_BASE = ['TRADE_PROPOSAL', 'TRADE_ACCEPT']
 const NOTIFY_TYPES_EXTRA = ['TRADE_DECLINE', 'TRADE_VETO']
 const TRADE_TYPES = new Set([...NOTIFY_TYPES_BASE, ...NOTIFY_TYPES_EXTRA])
 
+// Accepted trades occasionally arrive with empty `items` (ESPN keeps the
+// legs on the proposal and drops executed proposals fast). Posting or
+// ledgering those renders a blank row. Instead we hold them in
+// state.deferred and retry against the growing proposal cache; only after
+// the retry window do we ledger an `unresolved` stub (the page shows
+// "pending"), and Discord is never posted an empty trade.
+export const DEFAULT_PENDING_RETRY_DAYS = 14
+export const MAX_DEFERRED = 200
+
+function pendingRetryDays(env) {
+  const n = Number(env.PENDING_RETRY_DAYS ?? DEFAULT_PENDING_RETRY_DAYS)
+  return Number.isFinite(n) && n >= 0 ? n : DEFAULT_PENDING_RETRY_DAYS
+}
+
+export function hasLegs(record) {
+  return (
+    !!record &&
+    Array.isArray(record.teams) &&
+    record.teams.length > 0 &&
+    record.teams.some((t) => Array.isArray(t.gives) && t.gives.length > 0)
+  )
+}
+
 const EVENT_TITLES = {
   TRADE_PROPOSAL: 'Trade proposed',
   TRADE_ACCEPT: 'Trade accepted',
@@ -260,9 +283,14 @@ function loadState(file) {
   try {
     const s = JSON.parse(fs.readFileSync(file, 'utf8'))
     const processedIds = Array.isArray(s.processedIds) ? s.processedIds.map(String) : []
-    return { processedIds, players: s.players ?? {}, proposals: s.proposals ?? {} }
+    return {
+      processedIds,
+      players: s.players ?? {},
+      proposals: s.proposals ?? {},
+      deferred: s.deferred ?? {}
+    }
   } catch {
-    return { processedIds: [], players: {}, proposals: {} }
+    return { processedIds: [], players: {}, proposals: {}, deferred: {} }
   }
 }
 
@@ -279,6 +307,47 @@ export function rememberProposals(cache, transactions, limit = 200) {
   const keys = Object.keys(cache)
   if (keys.length > limit) for (const k of keys.slice(0, keys.length - limit)) delete cache[k]
   return cache
+}
+
+// Retry previously deferred trades against the latest proposal cache, even
+// when ESPN no longer returns them. Resolved records go back through the
+// normal ledger/post path; entries older than the retry window come back
+// as `unresolved` stubs (ledgered, never posted). Mutates state.deferred.
+export function sweepDeferred(
+  state,
+  { teamNames = {}, players = {}, proposalIndex = {}, nowMs = Date.now(), retryDays = DEFAULT_PENDING_RETRY_DAYS } = {}
+) {
+  const resolved = []
+  const expired = []
+  const deferred = state.deferred ?? {}
+  for (const [id, entry] of Object.entries(deferred)) {
+    if (!entry || !entry.tx) {
+      delete deferred[id]
+      continue
+    }
+    const record = mapTransaction(entry.tx, teamNames, players, proposalIndex)
+    if (record && hasLegs(record)) {
+      resolved.push(record)
+      delete deferred[id]
+      continue
+    }
+    const firstSeen = Date.parse(entry.firstSeen) || nowMs
+    if (nowMs - firstSeen >= retryDays * 86400000) {
+      expired.push({
+        id: String(entry.tx.id ?? entry.tx.transactionId ?? id),
+        event: txType(entry.tx) ?? 'TRADE_ACCEPT',
+        date: txDate(entry.tx),
+        teams: [],
+        unresolved: true
+      })
+      delete deferred[id]
+    }
+  }
+  // Bound the holding pen so a broken upstream can't grow state forever.
+  const keys = Object.keys(deferred)
+  if (keys.length > MAX_DEFERRED) for (const k of keys.slice(0, keys.length - MAX_DEFERRED)) delete deferred[k]
+  state.deferred = deferred
+  return { resolved, expired }
 }
 
 function loadLedger(file) {
@@ -337,6 +406,11 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   for (const { tx } of pairs)
     for (const item of itemsFor(tx, proposalIndex))
       if (item.playerId > 0) playerIds.add(item.playerId)
+  // Deferred trades may reference players nobody has resolved yet.
+  for (const entry of Object.values(state.deferred ?? {}))
+    if (entry && entry.tx)
+      for (const item of itemsFor(entry.tx, proposalIndex))
+        if (item.playerId > 0) playerIds.add(item.playerId)
   await resolvePlayerNames(fetchImpl, state, playerIds)
   for (const pair of pairs) {
     const remapped = mapTransaction(pair.tx, teamNames, state.players, proposalIndex)
@@ -344,22 +418,50 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   }
   for (let i = 0; i < pairs.length; i++) mapped[i] = pairs[i].record
 
+  // Retry previously deferred trades against the latest proposal cache,
+  // even when ESPN no longer returns them.
+  const retryDays = pendingRetryDays(env)
+  const nowMs = Date.now()
+  const retried = args.dryRun
+    ? { resolved: [], expired: [] }
+    : sweepDeferred(state, {
+        teamNames,
+        players: state.players,
+        proposalIndex,
+        nowMs,
+        retryDays
+      })
+
   if (args.backfill !== null) {
     const picked = mapped
       .slice(-args.backfill)
       .reverse()
       .filter((record) => !ledger.trades.some((t) => t.id === record.id))
+    const ready = picked.filter((record) => hasLegs(record))
+    const deferredIds = new Set()
+    for (const record of picked) {
+      if (hasLegs(record)) continue
+      // Never backfill a blank row: hold it for the normal retry path.
+      state.deferred = state.deferred ?? {}
+      if (!state.deferred[record.id]) {
+        const pair = pairs.find((p) => p.record.id === record.id)
+        if (pair) state.deferred[record.id] = { tx: pair.tx, firstSeen: new Date(nowMs).toISOString() }
+      }
+      deferredIds.add(String(record.id))
+      console.log(`Skipping leg-less ${record.event} ${record.id} (deferred, not backfilled).`)
+    }
     for (const tx of pending)
-      state.processedIds = [...state.processedIds, String(tx.id)].slice(-1000)
-    ledger.trades = [...picked, ...ledger.trades].slice(0, 500)
+      if (!deferredIds.has(String(tx.id ?? tx.transactionId)))
+        state.processedIds = [...state.processedIds, String(tx.id ?? tx.transactionId)].slice(-1000)
+    ledger.trades = [...ready, ...ledger.trades].slice(0, 500)
     ledger.updated = new Date().toISOString()
     writeJsonAtomic(ledgerFile, ledger)
     writeJsonAtomic(stateFile, state)
-    console.log(`Backfilled ${picked.length} trades. State tracks ${state.processedIds.length} events.`)
+    console.log(`Backfilled ${ready.length} trades. State tracks ${state.processedIds.length} events.`)
     return 0
   }
 
-  if (pending.length === 0) {
+  if (pending.length === 0 && retried.resolved.length === 0 && retried.expired.length === 0) {
     // Persist any proposals cached above even when nothing is new: a
     // proposal processed before the cache existed can recur here, and its
     // legs must survive until its accept arrives. Dry-run stays read-only.
@@ -370,7 +472,9 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
   if (args.dryRun) {
     for (const record of mapped) {
-      if (record.event === 'TRADE_ACCEPT')
+      if (!hasLegs(record))
+        console.log(`[dry-run] would defer (no legs yet): ${record.event} ${record.id}`)
+      else if (record.event === 'TRADE_ACCEPT')
         console.log(`[dry-run] would post: ${JSON.stringify(buildEmbed(record))}`)
       else console.log(`[dry-run] would record only: ${record.event} ${record.id}`)
     }
@@ -389,7 +493,26 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
   let failures = 0
   const posted = []
-  for (const record of mapped) {
+  // Fresh records plus deferred ones that just resolved against the cache.
+  const queue = [
+    ...pairs.map(({ tx, record }) => ({ tx, record })),
+    ...retried.resolved.map((record) => ({ tx: null, record }))
+  ]
+  for (const { tx, record } of queue) {
+    if (!hasLegs(record)) {
+      // Hold for a later poll: never ledger a blank row, never post it.
+      if (tx) {
+        state.deferred = state.deferred ?? {}
+        if (!state.deferred[record.id])
+          state.deferred[record.id] = { tx, firstSeen: new Date(nowMs).toISOString() }
+        writeJsonAtomic(stateFile, state)
+      }
+      console.log(`Deferred ${record.event} ${record.id} with no legs; will retry.`)
+      continue
+    }
+    // Resolved now: drop any deferred hold.
+    if (state.deferred?.[record.id]) delete state.deferred[record.id]
+
     const isNew = !ledger.trades.some((t) => t.id === record.id)
     if (isNew) {
       ledger.trades.unshift(record)
@@ -414,6 +537,21 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     }
 
     state.processedIds = [...state.processedIds, String(record.id)].slice(-1000)
+    writeJsonAtomic(stateFile, state)
+  }
+
+  // Legs never arrived within the retry window: ledger an `unresolved`
+  // stub so the page shows "pending" instead of a blank row. These are
+  // never posted to Discord.
+  for (const stub of retried.expired) {
+    if (!ledger.trades.some((t) => t.id === stub.id)) {
+      ledger.trades.unshift(stub)
+      ledger.trades = ledger.trades.slice(0, 500)
+      ledger.updated = new Date().toISOString()
+      writeJsonAtomic(ledgerFile, ledger)
+      console.log(`Ledgered ${stub.event} ${stub.id} as unresolved (legs never arrived).`)
+    }
+    state.processedIds = [...state.processedIds, String(stub.id)].slice(-1000)
     writeJsonAtomic(stateFile, state)
   }
 

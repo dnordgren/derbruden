@@ -127,6 +127,13 @@ roast-trade.mjs posted-trades.json --dry-run` prints the research packet;
 - Transaction IDs are UUIDs; dedupe state lives in
   `static/data/trades-state.json`. Empty state seeds silently on first run
   and never back-posts.
+- Accepts that arrive with empty `items` (legs still on an unseen proposal)
+  are never posted or ledgered blank: they wait in `state.deferred` and
+  retry against the proposal cache each poll (`PENDING_RETRY_DAYS=14`,
+  `sweepDeferred`, capped at 200). Past the window they ledger as
+  `unresolved: true` — the page renders "Trade details pending — see
+  ESPN" — and Discord is still never sent an empty trade. `--backfill`
+  skips leg-less records the same way.
 - Trade terms are persisted machine-readably: each ledger side carries an
   `assets` array (playerId / overallPickNumber) alongside the display
   names, so grading never needs ESPN's aging transaction detail.

@@ -182,15 +182,16 @@
             const badgeClass = String(t.event || '')
               .toLowerCase()
               .replace('trade_', '')
-            const details = (t.teams || [])
-              .map(
-                team =>
-                  '<span class="side">' +
-                  escapeHtml(team.name) +
-                  '</span> sends ' +
-                  escapeHtml((team.gives || []).join(', '))
-              )
-              .join('<br>')
+            const details =
+              (t.teams || [])
+                .map(
+                  team =>
+                    '<span class="side">' +
+                    escapeHtml(team.name) +
+                    '</span> sends ' +
+                    escapeHtml((team.gives || []).join(', '))
+                )
+                .join('<br>') || '<span class="muted">Trade details pending — see ESPN</span>'
             return (
               '<tr>' +
               '<td>' +

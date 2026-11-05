@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff diaper
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff diaper races
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -131,3 +131,9 @@ diaper:
 	@echo "Generating diaper race..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-diaper-race.mjs
 	@echo "make diaper : Finished"
+races:
+	@echo "make races : Started"
+	@echo "Generating playoff and diaper races..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-playoff-race.mjs
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-diaper-race.mjs
+	@echo "make races : Finished"

@@ -314,11 +314,14 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   of the season for each. Rendered side-by-side and in the Discord embed.
 - Weekly GitHub Action (`.github/workflows/playoff-race.yml`) runs Mondays
   9pm ET (01:00 UTC Tue in EDT, 02:00 UTC Tue in EST; two crons cover DST)
-  in season. Publishes `playoff-race.html` + `playoff-race.json` with a
-  two-path invalidation and commits when changed. Secrets: `ESPN_S2`,
+  in season. Publishes `playoff-race.html` + both race JSONs with a
+  three-path invalidation and commits when changed. Secrets: `ESPN_S2`,
   `SWID`, `DISCORD_WEBHOOK_PLAYOFFRACE`, `AWS_ACCESS_KEY_ID`,
   `AWS_SECRET_ACCESS_KEY`. `scripts/post-playoff-discord.mjs` posts the
-  embed (`--dry-run` previews, `--force` ignores the gate).
+  embed (`--dry-run` previews, `--force` ignores the gate). Renamed from
+  the old split `playoff-race` / `diaper-race` workflows when the two pages
+  merged into one (PR #59) so a single run generates, publishes, and
+  commits both races with no push races.
 - `deploy-static` excludes `data/playoff-race.json` like the other JSON
   feeds so full deploys never delete it or give it immutable caching.
 - Tests: `node --test scripts/playoff-race.test.mjs`.
@@ -334,16 +337,20 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   (`computeDiaperFate`). Same `--dry-run` / `--start-week` / season args,
   same late-season gate and repeat-post guard, same Monday hold-vs-flip
   hypotheticals reframed around diaper locks. Writes
-  `static/data/diaper-race.json` plus `src/diaper-race.html` between
-  `<!-- DIAPER_RACE_START -->` / `<!-- DIAPER_RACE_END -->` markers.
-- `make diaper` regenerates both from the ESPN API (same `scripts/.env`
-  `ESPN_S2` as the playoff race). `scripts/post-diaper-discord.mjs` posts
-  the worst-first embed (`--dry-run` previews, `--force` ignores the gate).
-- Weekly GitHub Action (`.github/workflows/diaper-race.yml`) mirrors the
-  playoff one: Monday 9pm ET, publishes `diaper-race.html` +
-  `diaper-race.json` with a two-path invalidation, commits when changed.
-  Posts through the shared `DISCORD_WEBHOOK_PLAYOFFRACE` secret alongside
-  the shared `ESPN_S2` / `SWID` / AWS secrets.
+  `static/data/diaper-race.json` plus the `<section id="diaper">` body of
+  the combined `src/playoff-race.html` page between
+  `<!-- DIAPER_RACE_START -->` / `<!-- DIAPER_RACE_END -->` markers
+  (playoff section first, diaper second; one page since PR #59).
+- `make diaper` regenerates the diaper section + JSON from the ESPN API
+  (same `scripts/.env` `ESPN_S2` as the playoff race); `make races` runs
+  both generators. `scripts/post-diaper-discord.mjs` posts
+  the worst-first embed (`--dry-run` previews, `--force` ignores the gate)
+  through the shared `DISCORD_WEBHOOK_PLAYOFFRACE` secret, linking
+  `playoff-race.html#diaper`.
+- The unified weekly GitHub Action (`.github/workflows/races.yml`)
+  runs both generators Monday 9pm ET, publishes the combined page +
+  both JSONs, posts 0-2 Discord embeds (each gated), and commits when
+  changed.
 - `deploy-static` excludes `data/diaper-race.json` like the other JSON feeds.
 - Tests: `node --test scripts/diaper-race.test.mjs`.
 

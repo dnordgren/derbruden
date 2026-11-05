@@ -34,7 +34,7 @@ import {
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const DATA_FILE = path.join(ROOT, 'static', 'data', 'diaper-race.json')
-const PAGE_PATH = path.join(ROOT, 'src', 'diaper-race.html')
+const PAGE_PATH = path.join(ROOT, 'src', 'playoff-race.html')
 const ENV_FILE = path.join(ROOT, '.env')
 const DEFAULT_LEAGUE_HOST = 'https://lm-api-reads.fantasy.espn.com'
 const LEAGUE_PATH = '/apis/v3/games/ffl/seasons/{year}/segments/0/leagues/{league}'
@@ -186,15 +186,15 @@ function pageTemplate(content) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DerBruden.com | Diaper Race</title>
-  <meta property="og:title" content="DerBruden.com | Diaper Race">
-  <meta property="og:description" content="Who wears the diaper in this year's league pic? Last-place tracker for the Der Bruden fantasy football league. Updated Mondays with hold vs flip hypotheticals.">
-  <meta property="og:url" content="https://derbruden.com/diaper-race.html">
+  <title>DerBruden.com | Races</title>
+  <meta property="og:title" content="DerBruden.com | Races">
+  <meta property="og:description" content="Playoff clinch scenarios and the last-place diaper watch for the Der Bruden fantasy football league. Updated Mondays with hold vs flip hypotheticals.">
+  <meta property="og:url" content="https://derbruden.com/playoff-race.html">
   <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="DerBruden.com | Diaper Race">
-  <meta name="twitter:description" content="Last-place tracker for the Der Bruden league. Worst record wears the diaper.">
+  <meta name="twitter:title" content="DerBruden.com | Races">
+  <meta name="twitter:description" content="Playoff race and diaper watch for the Der Bruden league.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
   <!--#include file="partials/head-common.html" -->
   <style>
@@ -226,12 +226,16 @@ function pageTemplate(content) {
     <div class="owner-logo-header">
       <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
         style="border-radius: 50%; object-fit: cover;">
-      <h1>Diaper Race</h1>
+      <h1>Playoff & Diaper Races</h1>
     </div>
+    <!-- PLAYOFF_RACE_START -->
+<!-- PLAYOFF_RACE_END -->
+    <section id="diaper">
     <!-- DIAPER_RACE_START -->
 ${content}
 <!-- DIAPER_RACE_END -->
-    <p class="section-note">Regular season only. Regenerate with <code>make diaper</code>. Diaper math enumerates all remaining outcomes head-to-head.</p>
+    </section>
+    <p class="section-note">Regular season only. Regenerate with <code>make races</code>. Clinch and diaper math enumerate all remaining outcomes head-to-head.</p>
   </main>
 
   <!--#include file="partials/footer.html" -->

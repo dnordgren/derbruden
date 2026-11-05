@@ -408,7 +408,7 @@ ${sc.flip.clinched.clinched.length ? `<p><strong>Would clinch:</strong> ${sc.fli
 
   html += `<details class="methodology"><summary>How this works</summary>
 <p>Standings count only regular-season games (playoffTierType NONE). Wins + 0.5×ties sorted, then points for. Clinched means even losing all remaining games, the team still finishes top ${data.playoffTeamCount} even if every tied team wins the tiebreak. Eliminated means even winning out, the team cannot reach top ${data.playoffTeamCount} even with tiebreak help. Enumeration tries all 2<sup>n</sup> outcomes for the ${data.remainingCount} remaining regular games (capped at ${ENUM_LIMIT}); head-to-head conflicts are respected, so not every team can win out simultaneously. Future points are ignored for tiebreak — wins grouping is conservative. Hypotheticals show Monday-night "hold vs flip" for the current in-progress week only.</p>
-<p>Data from the ESPN fantasy API. Regenerate with <code>make playoff</code> or wait for the Monday night GitHub Action. Page and JSON refresh together; start week is ${data.startWeek} (regular season is ${data.regularSeasonWeeks} weeks).</p>
+<p>Data from the ESPN fantasy API. Regenerate with <code>make races</code> or wait for the Monday night GitHub Action. Page and JSON refresh together; start week is ${data.startWeek} (regular season is ${data.regularSeasonWeeks} weeks).</p>
 </details>`
   return html
 }
@@ -441,15 +441,15 @@ function pageTemplate(content) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DerBruden.com | Playoff Race</title>
-  <meta property="og:title" content="DerBruden.com | Playoff Race">
-  <meta property="og:description" content="Late-season playoff clinch and elimination scenarios for the Der Bruden fantasy football league. Updated Mondays with hold vs flip hypotheticals.">
+  <title>DerBruden.com | Races</title>
+  <meta property="og:title" content="DerBruden.com | Races">
+  <meta property="og:description" content="Playoff clinch scenarios and the last-place diaper watch for the Der Bruden fantasy football league. Updated Mondays with hold vs flip hypotheticals.">
   <meta property="og:url" content="https://derbruden.com/playoff-race.html">
   <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="DerBruden.com | Playoff Race">
-  <meta name="twitter:description" content="Playoff clinch and elimination scenarios for the Der Bruden league.">
+  <meta name="twitter:title" content="DerBruden.com | Races">
+  <meta name="twitter:description" content="Playoff race and diaper watch for the Der Bruden league.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
   <!--#include file="partials/head-common.html" -->
   <style>
@@ -462,8 +462,12 @@ function pageTemplate(content) {
     .badge { display: inline-block; padding: 0 6px; border-radius: 8px; font-size: 0.8em; font-weight: 700; color: #fff; margin-left: 6px; }
     .badge.clinched { background: #1a7f37; }
     .badge.eliminated { background: #c0392b; }
+    .badge.doomed { background: #7b4b00; }
+    .badge.safe { background: #1a7f37; }
     tr.clinched { background: #e6f4ea; }
     tr.eliminated { background: #fce8e6; }
+    tr.doomed { background: #f3e8d3; }
+    tr.safe { background: #e6f4ea; }
     .muted { color: #666; font-size: 0.9em; }
     .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     @media (max-width: 800px) { .scenario-grid { grid-template-columns: 1fr; } }
@@ -481,12 +485,16 @@ function pageTemplate(content) {
     <div class="owner-logo-header">
       <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
         style="border-radius: 50%; object-fit: cover;">
-      <h1>Playoff Race</h1>
+      <h1>Playoff & Diaper Races</h1>
     </div>
     <!-- PLAYOFF_RACE_START -->
 ${content}
 <!-- PLAYOFF_RACE_END -->
-    <p class="section-note">Regular season only. Regenerate with <code>make playoff</code>. Clinch math enumerates all remaining outcomes head-to-head.</p>
+    <section id="diaper">
+<!-- DIAPER_RACE_START -->
+<!-- DIAPER_RACE_END -->
+    </section>
+    <p class="section-note">Regular season only. Regenerate with <code>make races</code>. Clinch and diaper math enumerate all remaining outcomes head-to-head.</p>
   </main>
 
   <!--#include file="partials/footer.html" -->

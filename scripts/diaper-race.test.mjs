@@ -141,7 +141,7 @@ test('buildPayload lists worst team first with diaper line', () => {
   const aaaPos = desc.indexOf('AAA')
   assert.ok(dddPos !== -1 && dddPos < aaaPos)
   assert.ok(desc.includes('diaper'))
-  assert.ok(desc.includes('https://derbruden.com/diaper-race.html'))
+  assert.ok(desc.includes('playoff-race.html?x=2026-w9#diaper'))
 })
 
 test('buildPayload hypes a locked-in diaper', () => {

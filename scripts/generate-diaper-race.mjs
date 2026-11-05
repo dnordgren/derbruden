@@ -22,6 +22,7 @@ import {
   buildScenarios,
   computeDiaperFate,
   computeOdds,
+  computeScoreStats,
   computeStandings,
   currentLeaderForGame,
   defaultSeason,
@@ -123,6 +124,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const remaining = regularGames.filter(g => !g.decided)
 
   const stats = computeStandings(decided, teamsById)
+  const scoreStats = computeScoreStats(decided)
   const standings = standingsList(stats, teamsById)
   const remainingByTeam = {}
   for (const g of remaining) {
@@ -136,7 +138,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
   const fate = computeDiaperFate(stats, remaining, teamCount, teamsById)
   const playoffTeamCount = settings.playoffTeamCount ?? DEFAULT_PLAYOFF_TEAM_COUNT
-  const odds = computeOdds(stats, remaining, playoffTeamCount, { season })
+  const odds = computeOdds(stats, remaining, playoffTeamCount, { season, scoreStats })
 
   // Late-season gate note
   let note = null

@@ -37,7 +37,9 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
-      "playoffPct": 98,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 99,
       "diaperPct": 0
     },
     {
@@ -56,7 +58,9 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
-      "playoffPct": 98,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 97,
       "diaperPct": 0
     },
     {
@@ -75,7 +79,9 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
-      "playoffPct": 90,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 94,
       "diaperPct": 0
     },
     {
@@ -94,7 +100,9 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
-      "playoffPct": 89,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 93,
       "diaperPct": 0
     },
     {
@@ -113,8 +121,10 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
-      "playoffPct": 67,
-      "diaperPct": 2
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 70,
+      "diaperPct": 1
     },
     {
       "rank": 6,
@@ -132,8 +142,10 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
-      "playoffPct": 67,
-      "diaperPct": 2
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 63,
+      "diaperPct": 1
     },
     {
       "rank": 7,
@@ -151,8 +163,10 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
-      "playoffPct": 34,
-      "diaperPct": 9
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 41,
+      "diaperPct": 4
     },
     {
       "rank": 8,
@@ -170,8 +184,10 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
+      "doomed": false,
+      "safe": false,
       "playoffPct": 34,
-      "diaperPct": 11
+      "diaperPct": 6
     },
     {
       "rank": 9,
@@ -189,8 +205,10 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
-      "playoffPct": 11,
-      "diaperPct": 37
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 5,
+      "diaperPct": 40
     },
     {
       "rank": 10,
@@ -208,14 +226,20 @@
       "remaining": 5,
       "clinched": false,
       "eliminated": false,
-      "playoffPct": 11,
-      "diaperPct": 37
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 4,
+      "diaperPct": 48
     }
   ],
   "clinchedTeamIds": [],
   "eliminatedTeamIds": [],
   "clinchedOwners": [],
   "eliminatedOwners": [],
+  "doomedTeamIds": [],
+  "safeTeamIds": [],
+  "doomedOwners": [],
+  "safeOwners": [],
   "remainingGames": [
     {
       "week": 9,

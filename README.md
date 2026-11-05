@@ -250,8 +250,9 @@ Notes:
   when files changed. Manual dispatch is available. Repo secrets: `ESPN_S2`,
   `SWID`, `DISCORD_WEBHOOK_PLAYOFFRACE`, `AWS_ACCESS_KEY_ID`,
   `AWS_SECRET_ACCESS_KEY`.
-- Likelihoods: `PO%` (playoff) and `D%` (diaper) columns come from
-  enumerating all remaining-game outcomes as coin flips with tied teams
+- Likelihoods: `PO%` (playoff) and `D%` (diaper) columns weight each
+  remaining game by PF-implied team strength (weekly scoring means,
+  league-blended variance) instead of coin flips, with tied teams
   splitting the contested spots — exact up to 20 games left, seeded
   Monte Carlo past that. ESPN does not expose its own playoff % via the
   API, so this is computed, not pulled. Same numbers ride along in both

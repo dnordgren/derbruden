@@ -325,14 +325,15 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 - `deploy-static` excludes `data/playoff-race.json` like the other JSON
   feeds so full deploys never delete it or give it immutable caching.
 - Tests: `node --test scripts/playoff-race.test.mjs`.
-- Likelihoods (`computeOdds`): every remaining game is a coin flip and
-  teams tied on wins at a cutoff split the contested spots evenly (fair
-  future PF tiebreak; with no games left, ties resolve by actual PF).
-  PO% = share of outcomes finishing top 6, D% = share finishing last.
-  Exact enumeration up to 20 remaining games, seeded 20,000-sample Monte
-  Carlo past that (deterministic per league state, so the no-repost guard
-  holds). Rendered as `PO%`/`D%` columns and appended to both Discord
-  embeds.
+- Likelihoods (`computeOdds`): each remaining game is weighted by
+  PF-implied strength — weekly scoring means with league-blended
+  variance (`computeScoreStats`, `gameWinProb`; preseason falls back to
+  coin flips). Teams tied on wins at a cutoff split the contested spots
+  evenly; with no games left, ties resolve by actual PF. PO% = share of
+  outcomes finishing top 6, D% = share finishing last. Exact enumeration
+  up to 20 remaining games, seeded 20,000-sample Monte Carlo past that
+  (deterministic per league state, so the no-repost guard holds).
+  Rendered as `PO%`/`D%` columns and appended to both Discord embeds.
 
 ## Diaper race
 

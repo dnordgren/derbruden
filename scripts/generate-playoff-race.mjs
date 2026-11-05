@@ -279,6 +279,12 @@ export function computeDiaperFate(currentStats, remainingGames, teamCount, teams
 }
 
 export const ODDS_MONTE_CARLO_SAMPLES = 20000
+// Prior weight (in games) blending team scoring stats toward league average.
+export const SCORE_PRIOR_GAMES = 4
+// Prior weight (in games) blending team scoring means toward league mean.
+export const MEAN_PRIOR_GAMES = 2
+// Floor on blended weekly-score standard deviation (points).
+export const SCORE_SD_FLOOR = 12
 
 export function hashSeed(str) {
   let h = 1779033703 ^ str.length
@@ -299,13 +305,65 @@ export function mulberry32(seed) {
   }
 }
 
-// Playoff/diaper likelihoods. Every remaining game is a coin flip; teams
-// tied on wins at a cutoff split the contested spots evenly (a fair future
-// PF tiebreak — future points are ignored, same as the clinch math). With
-// no games left, ties resolve by actual PF. Past ENUM_LIMIT games, seeded
-// Monte Carlo (deterministic per league state, so repeat runs agree and
-// the no-repost guard keeps working). Returns { teamId: { playoff, diaper } }
-// as whole percents.
+// Standard normal CDF (Abramowitz-Stegun 7.1.26, ~1e-7 accuracy).
+export function normalCdf(x) {
+  if (x === 0) return 0.5
+  const t = 1 / (1 + 0.2316419 * Math.abs(x))
+  const d = 0.3989423 * Math.exp(-x * x / 2)
+  const p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))))
+  return x > 0 ? 1 - p : p
+}
+
+// P(home beats away) treating weekly scores as independent normals.
+export function gameWinProb(homeMean, homeSd, awayMean, awaySd) {
+  const sd = Math.sqrt(homeSd * homeSd + awaySd * awaySd)
+  if (!(sd > 0)) {
+    const diff = homeMean - awayMean
+    return diff > 0 ? 1 : diff < 0 ? 0 : 0.5
+  }
+  return normalCdf((homeMean - awayMean) / sd)
+}
+
+// Per-team weekly scoring mean/sd from decided games. Means blend toward
+// the league mean (MEAN_PRIOR_GAMES of prior weight); sds blend toward the
+// league sd (SCORE_PRIOR_GAMES of prior weight) with a floor. Teams with no
+// decided games are absent (callers fall back to 0.5 for their games).
+export function computeScoreStats(decidedGames) {
+  const scores = {}
+  for (const g of decidedGames) {
+    if (typeof g.homeScore !== 'number' || typeof g.awayScore !== 'number') continue
+    ;(scores[g.homeId] ??= []).push(g.homeScore)
+    ;(scores[g.awayId] ??= []).push(g.awayScore)
+  }
+  const all = Object.values(scores).flat()
+  if (!all.length) return {}
+  const leagueMean = all.reduce((a, b) => a + b, 0) / all.length
+  const leagueVar = all.reduce((a, b) => a + (b - leagueMean) ** 2, 0) / Math.max(all.length - 1, 1)
+  const leagueSd = Math.sqrt(leagueVar)
+  const out = {}
+  for (const [id, arr] of Object.entries(scores)) {
+    const n = arr.length
+    const mean = arr.reduce((a, b) => a + b, 0) / n
+    const blendedMean = (mean * n + leagueMean * MEAN_PRIOR_GAMES) / (n + MEAN_PRIOR_GAMES)
+    let sd = leagueSd
+    if (n >= 2) {
+      const teamVar = arr.reduce((a, b) => a + (b - mean) ** 2, 0) / (n - 1)
+      sd = (Math.sqrt(teamVar) * n + leagueSd * SCORE_PRIOR_GAMES) / (n + SCORE_PRIOR_GAMES)
+    }
+    out[id] = { mean: blendedMean, sd: Math.max(sd, SCORE_SD_FLOOR) }
+  }
+  return out
+}
+
+// Playoff/diaper likelihoods. Each remaining game is weighted by
+// PF-implied strength (weekly scoring means, league-blended variance);
+// teams tied on wins at a cutoff split the contested spots evenly (future
+// points are ignored, same as the clinch math). With no games left, ties
+// resolve by actual PF. Without scoring history (preseason), games fall
+// back to coin flips. Past ENUM_LIMIT games, seeded Monte Carlo
+// (deterministic per league state, so repeat runs agree and the no-repost
+// guard keeps working). Returns { teamId: { playoff, diaper } } as whole
+// percents.
 export function computeOdds(currentStats, remainingGames, playoffTeamCount, opts = {}) {
   const teamIds = Object.keys(currentStats).map(Number)
   const n = remainingGames.length
@@ -348,19 +406,37 @@ export function computeOdds(currentStats, remainingGames, playoffTeamCount, opts
     tally(fw, weight, false)
   }
 
+  // Per-game home win probability from scoring history (0.5 fallback).
+  const gameProbs = remainingGames.map(g => {
+    const h = opts.scoreStats?.[g.homeId]
+    const a = opts.scoreStats?.[g.awayId]
+    if (!h || !a) return 0.5
+    return gameWinProb(h.mean, h.sd, a.mean, a.sd)
+  })
+
   if (n === 0) {
     tally({ ...base }, 1, true)
   } else if (n <= ENUM_LIMIT) {
     const total = 1 << n
     for (let mask = 0; mask < total; mask++) {
-      playOutcome(i => (((mask >> i) & 1) ? remainingGames[i].homeId : remainingGames[i].awayId), 1 / total)
+      // Weight each outcome by its game probabilities (they sum to 1).
+      let weight = 1
+      const winners = []
+      for (let i = 0; i < n; i++) {
+        const homeWin = (mask >> i) & 1
+        winners.push(homeWin ? remainingGames[i].homeId : remainingGames[i].awayId)
+        weight *= homeWin ? gameProbs[i] : 1 - gameProbs[i]
+      }
+      const fw = { ...base }
+      for (const w of winners) if (w in fw) fw[w] += 1
+      tally(fw, weight, false)
     }
   } else {
-    const seedStr = JSON.stringify({ s: opts.season ?? '', t: teamIds.map(id => [id, base[id]]), g: remainingGames.map(g => [g.week, g.homeId, g.awayId]) })
+    const seedStr = JSON.stringify({ s: opts.season ?? '', t: teamIds.map(id => [id, base[id]]), g: remainingGames.map(g => [g.week, g.homeId, g.awayId]), m: teamIds.map(id => opts.scoreStats?.[id] ? Math.round(opts.scoreStats[id].mean * 10) / 10 : null) })
     const rand = mulberry32(hashSeed(seedStr))
     const samples = opts.samples ?? ODDS_MONTE_CARLO_SAMPLES
     for (let s = 0; s < samples; s++) {
-      playOutcome(i => (rand() < 0.5 ? remainingGames[i].homeId : remainingGames[i].awayId), 1 / samples)
+      playOutcome(i => (rand() < gameProbs[i] ? remainingGames[i].homeId : remainingGames[i].awayId), 1 / samples)
     }
   }
   const pct = {}
@@ -682,6 +758,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const remaining = regularGames.filter(g => !g.decided)
 
   const stats = computeStandings(decided, teamsById)
+  const scoreStats = computeScoreStats(decided)
   const standings = standingsList(stats, teamsById)
   const remainingByTeam = countRemainingByTeam(remaining)
   standings.forEach(r => r.remaining = remainingByTeam[r.teamId] ?? 0)
@@ -692,7 +769,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const clinch = computeClinchEliminated(stats, remaining, playoffTeamCount, teamsById)
   const teamCount = Object.keys(teamsById).length
   const fate = computeDiaperFate(stats, remaining, teamCount, teamsById)
-  const odds = computeOdds(stats, remaining, playoffTeamCount, { season })
+  const odds = computeOdds(stats, remaining, playoffTeamCount, { season, scoreStats })
 
   // Late-season gate note
   let note = null
@@ -712,8 +789,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     const futureRemaining = remaining.filter(g => g.week !== raw.currentWeek)
     const holdFate = computeDiaperFate(raw.hold.stats, futureRemaining, teamCount, teamsById)
     const flipFate = computeDiaperFate(raw.flip.stats, futureRemaining, teamCount, teamsById)
-    const holdOdds = computeOdds(raw.hold.stats, futureRemaining, playoffTeamCount, { season })
-    const flipOdds = computeOdds(raw.flip.stats, futureRemaining, playoffTeamCount, { season })
+    const holdOdds = computeOdds(raw.hold.stats, futureRemaining, playoffTeamCount, { season, scoreStats })
+    const flipOdds = computeOdds(raw.flip.stats, futureRemaining, playoffTeamCount, { season, scoreStats })
     const withOdds = (rows, o) => rows.map(r => ({ ...r, playoffPct: o[r.teamId]?.playoff ?? null, diaperPct: o[r.teamId]?.diaper ?? null }))
     scenarios = {
       currentWeek: raw.currentWeek,

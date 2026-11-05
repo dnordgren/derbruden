@@ -20,7 +20,7 @@ const BASE_RATING = 1500
 
 const STATE_PATH = join(__dirname, 'power-rankings-state.json')
 const SRC_DIR = join(__dirname, '../src')
-const PAGE_PATH = join(SRC_DIR, 'power-rankings.html')
+const PAGE_PATH = join(SRC_DIR, 'index.html')
 
 function authHeaders() {
   return espnAuthHeaders(process.env, USER_AGENT)
@@ -265,58 +265,9 @@ function renderTable(rankings, meta) {
 </table></div>`
 }
 
-function pageTemplate(content) {
-  return `<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DerBruden.com | Power Rankings</title>
-  <meta property="og:title" content="DerBruden.com | Power Rankings">
-  <meta property="og:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league. Margin-of-victory adjusted, seeded from league history.">
-  <meta property="og:url" content="https://derbruden.com/power-rankings.html">
-  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="DerBruden.com | Power Rankings">
-  <meta name="twitter:description" content="Weekly Elo power ratings for the Der Bruden fantasy football league.">
-  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
-  <!--#include file="partials/head-common.html" -->
-</head>
-
-<body>
-  <!--#include file="partials/site-header.html" -->
-
-  <!--#include file="partials/nav.html" -->
-
-  <main id="main">
-    <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" class="owner-logo-image" width="100" height="100">
-      <h1>Power Rankings</h1>
-    </div>
-    ${content}
-    <details class="methodology">
-      <summary>How these rankings work</summary>
-      <p>Each team carries an Elo rating. Teams start near 1500. Last season's win percentage sets the starting point.</p>
-      <p>After each game, the winner takes points from the loser. Blowouts move ratings more than close games. An upset moves ratings more than a win over a weaker team. Regular season games only.</p>
-      <p>Avg Opp is the average rating of opponents faced. A low number means an easy schedule so far. Delta (&Delta;) compares this publish to the last one.</p>
-      <p>Data comes from the ESPN fantasy API. This page regenerates weekly.</p>
-    </details>
-  </main>
-
-  <!--#include file="partials/footer.html" -->
-</body>
-
-</html>
-`
-}
-
 function updatePage(rendered) {
   if (!fs.existsSync(PAGE_PATH)) {
-    fs.writeFileSync(PAGE_PATH, pageTemplate(rendered))
-    console.log(`Created ${PAGE_PATH}`)
-    return
+    throw new Error(`Index page not found: ${PAGE_PATH}`)
   }
 
   let content = fs.readFileSync(PAGE_PATH, 'utf8')
@@ -324,17 +275,27 @@ function updatePage(rendered) {
   const metaRegex = /<p class="pr-meta">[\s\S]*?<\/p>/
   const tableRegex = /<div class="table-container"[^>]*>[\s\S]*?<\/div>/
 
-  if (metaRegex.test(content)) {
-    content = content.replace(metaRegex, rendered.split('\n')[0])
-  }
-  const tableBlock = rendered.split('\n').slice(1).join('\n')
-  if (tableRegex.test(content)) {
-    content = content.replace(tableRegex, tableBlock)
+  if (!metaRegex.test(content) || !tableRegex.test(content)) {
+    // First run after the move: insert the rankings section at the top of <main>.
+    const section = `<section id="power-rankings" aria-labelledby="power-rankings-heading">
+      <h2 id="power-rankings-heading">Power Rankings</h2>
+      ${rendered}
+    </section>`
+    const mainRegex = /<main id="main">\s*/
+    if (!mainRegex.test(content)) {
+      throw new Error(`Could not find <main id="main"> in ${PAGE_PATH}`)
+    }
+    content = content.replace(mainRegex, match => `${match}${section}\n    `)
     fs.writeFileSync(PAGE_PATH, content)
-    console.log(`Updated ${PAGE_PATH}`)
-  } else {
-    console.warn(`Could not find table container in ${PAGE_PATH}`)
+    console.log(`Inserted power rankings into ${PAGE_PATH}`)
+    return
   }
+
+  content = content.replace(metaRegex, rendered.split('\n')[0])
+  const tableBlock = rendered.split('\n').slice(1).join('\n')
+  content = content.replace(tableRegex, tableBlock)
+  fs.writeFileSync(PAGE_PATH, content)
+  console.log(`Updated ${PAGE_PATH}`)
 }
 
 async function main() {

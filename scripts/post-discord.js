@@ -6,7 +6,7 @@ import { discordPageUrl } from './lib/discord.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const STATE_PATH = join(__dirname, 'power-rankings-state.json')
-const PAGE_URL = 'https://derbruden.com/power-rankings.html'
+const PAGE_URL = 'https://derbruden.com/'
 
 function loadConfig() {
   applyEnvFile(join(__dirname, '.env'))

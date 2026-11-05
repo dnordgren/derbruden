@@ -472,6 +472,12 @@ function pageTemplate(content) {
     .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     @media (max-width: 800px) { .scenario-grid { grid-template-columns: 1fr; } }
     .callout { background: #fff8e1; border: 1px solid #ffecb3; padding: 10px 12px; border-radius: 6px; }
+    @media (prefers-color-scheme: dark) {
+      .callout { background: #2a2417; border-color: #6b5d2e; }
+      tr.clinched, tr.safe { background: #1a2e22; }
+      tr.eliminated { background: #331d1b; }
+      tr.doomed { background: #2e2415; }
+    }
     .methodology { margin-top: 30px; font-size: 0.85em; color: #666; }
   </style>
 </head>

@@ -323,6 +323,30 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   feeds so full deploys never delete it or give it immutable caching.
 - Tests: `node --test scripts/playoff-race.test.mjs`.
 
+## Diaper race
+
+- `scripts/generate-diaper-race.mjs` tracks the last-place "diaper" (worst
+  record, lower PF breaks the tie — loser wears one for the league pic).
+  It imports the playoff-race engine (`extractTeams`, `extractGames`,
+  `computeStandings`, `standingsList`, `buildScenarios`, `raceDataEqual`)
+  and maps the problem to it: with N teams, cutoff N-1 makes
+  `computeClinchEliminated`'s clinched -> safe and eliminated -> doomed
+  (`computeDiaperFate`). Same `--dry-run` / `--start-week` / season args,
+  same late-season gate and repeat-post guard, same Monday hold-vs-flip
+  hypotheticals reframed around diaper locks. Writes
+  `static/data/diaper-race.json` plus `src/diaper-race.html` between
+  `<!-- DIAPER_RACE_START -->` / `<!-- DIAPER_RACE_END -->` markers.
+- `make diaper` regenerates both from the ESPN API (same `scripts/.env`
+  `ESPN_S2` as the playoff race). `scripts/post-diaper-discord.mjs` posts
+  the worst-first embed (`--dry-run` previews, `--force` ignores the gate).
+- Weekly GitHub Action (`.github/workflows/diaper-race.yml`) mirrors the
+  playoff one: Monday 9pm ET, publishes `diaper-race.html` +
+  `diaper-race.json` with a two-path invalidation, commits when changed.
+  Needs a `DISCORD_WEBHOOK_DIAPERRACE` repo secret alongside the shared
+  `ESPN_S2` / `SWID` / AWS secrets.
+- `deploy-static` excludes `data/diaper-race.json` like the other JSON feeds.
+- Tests: `node --test scripts/diaper-race.test.mjs`.
+
 ## Team name sync
 
 - A weekly GitHub Action (`.github/workflows/team-names.yml`) runs

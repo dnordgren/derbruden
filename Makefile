@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff diaper
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -58,6 +58,7 @@ deploy-static:
 	@aws s3 cp static/data/luck.json s3://$(BUCKET)/static/data/luck.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/sit-start.json s3://$(BUCKET)/static/data/sit-start.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/playoff-race.json s3://$(BUCKET)/static/data/playoff-race.json --cache-control "public, max-age=0, must-revalidate"
+	@aws s3 cp static/data/diaper-race.json s3://$(BUCKET)/static/data/diaper-race.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/ico/header-icon-32.png s3://$(BUCKET)/favicon.ico --cache-control "public, max-age=31536000, immutable"
 	@echo "make deploy-static : Finished"
 
@@ -125,3 +126,8 @@ playoff:
 	@echo "Generating playoff race..."
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-playoff-race.mjs
 	@echo "make playoff : Finished"
+diaper:
+	@echo "make diaper : Started"
+	@echo "Generating diaper race..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-diaper-race.mjs
+	@echo "make diaper : Finished"

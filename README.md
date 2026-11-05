@@ -252,6 +252,40 @@ Notes:
   `AWS_SECRET_ACCESS_KEY`.
 - Tests: `node --test scripts/playoff-race.test.mjs`.
 
+### Diaper race
+
+Builds [diaper-race.html](https://derbruden.com/diaper-race.html): last
+place wears a diaper for the annual league pic, so this tracks it worst-
+first — doomed (locked in) vs safe flags, remaining games, and Monday-
+night hypotheticals (if current leaders hold vs if underdogs rally) framed
+around diaper locks. Data lands in `static/data/diaper-race.json` with
+no-cache deploys like the other JSON feeds.
+
+```sh
+make diaper
+# or directly:
+node scripts/generate-diaper-race.mjs [--dry-run] [--start-week=N] [season]
+node scripts/post-diaper-discord.mjs [--dry-run]  # preview Discord payload
+```
+
+Notes:
+
+- Worst regular-season record takes the diaper, lower total points scored
+  breaks ties. Fate math reuses the playoff-race enumerator with a cutoff
+  of N-1 (10 teams → top 9 means safe): doomed means even winning out
+  leaves the team last even with tiebreak help; safe means even losing
+  out cannot finish last. Same 2<sup>n</sup> cap (20), same head-to-head
+  respect, same conservative wins-only grouping.
+- Same late-season gate (`DEFAULT_START_WEEK = 11`, shared
+  `PLAYOFF_START_WEEK` env) and repeat-post guard as the playoff race —
+  no-op Mondays stay silent.
+- A weekly GitHub Action (`.github/workflows/diaper-race.yml`) runs
+  Monday nights 9pm ET alongside the playoff race, publishes
+  `diaper-race.html` + `diaper-race.json` with a two-path invalidation,
+  and commits when files changed. Needs a `DISCORD_WEBHOOK_DIAPERRACE`
+  repository secret alongside the shared ESPN/AWS secrets.
+- Tests: `node --test scripts/diaper-race.test.mjs`.
+
 ### Weekly update
 
 Regenerate and publish in one pass:

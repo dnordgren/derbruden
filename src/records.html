@@ -55,9 +55,16 @@
       font-size: 0.95em;
     }
 
-    /* Narrow tables fit the viewport instead of forcing a scroll. */
+    /* Narrow tables size to their content instead of stretching full
+      width (which strands right-aligned numbers in a sea of empty
+      cells). Wide tables still fill the viewport and scroll. */
     .stats-table {
       min-width: 0;
+      width: auto;
+    }
+
+    .stats-table.h2h-matrix {
+      width: 100%;
     }
 
     /* The head-to-head matrix is genuinely wide; keep its scroll. */

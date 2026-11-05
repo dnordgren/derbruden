@@ -136,6 +136,8 @@ test('renderPageContent lists pivotal games with winner effects', () => {
   assert.ok(html.includes('swings shares by up to 40%'))
   assert.ok(html.includes('D win (10%)'))
   assert.ok(html.includes('A win (90%)'))
+  assert.ok(!html.includes('>Rem</th>'))
+  assert.ok(html.includes('🎯 Game of the week: W10 D @ A (swings shares up to 40%).'))
 })
 
 test('buildPayload lists worst team first with diaper line', () => {

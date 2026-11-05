@@ -591,11 +591,11 @@ export function renderStandingsTable(standings, clinchedSet, eliminatedSet, doom
     const rowClass = isClinched ? 'clinched' : isEliminated ? 'eliminated' : isDoomed ? 'doomed' : isSafe ? 'safe' : ''
     const ownerCell = TEAM_OWNERS[r.teamId] ? `<a href="./${TEAM_OWNERS[r.teamId].page}">${r.owner}</a>` : r.owner
     const record = `${r.wins}-${r.losses}${r.ties ? `-${r.ties}` : ''}`
-    return `<tr class="${rowClass}"><td class="number">${r.rank}</td><td class="owner">${ownerCell}${badge}</td><td>${escapeHtml(r.name)}</td><td class="number">${record}</td><td class="number">${r.pf.toFixed(1)}</td><td class="number">${r.playoffPct ?? '-'}</td><td class="number">${r.diaperPct ?? '-'}</td><td class="number">${r.remaining ?? '-'}</td></tr>`
+    return `<tr class="${rowClass}"><td class="number">${r.rank}</td><td class="owner">${ownerCell}${badge}</td><td>${escapeHtml(r.name)}</td><td class="number">${record}</td><td class="number">${r.pf.toFixed(1)}</td><td class="number">${r.playoffPct ?? '-'}</td><td class="number">${r.diaperPct ?? '-'}</td></tr>`
   }).join('\n')
   return `<div class="table-container"><table class="stats-table">
   <caption class="visually-hidden">Standings</caption>
-  <thead><tr><th class="number">#</th><th>Owner</th><th>Team</th><th class="number">W-L</th><th class="number">PF</th><th class="number">PO%</th><th class="number">D%</th><th class="number">Rem</th></tr></thead>
+  <thead><tr><th class="number">#</th><th>Owner</th><th>Team</th><th class="number">W-L</th><th class="number">PF</th><th class="number">PO%</th><th class="number">D%</th></tr></thead>
   <tbody>${rows}</tbody></table></div>`
 }
 
@@ -609,10 +609,17 @@ export function renderPageContent(data, teamsById) {
   const doomedSet = new Set(data.doomedTeamIds || [])
   const safeSet = new Set(data.safeTeamIds || [])
   const standingsWithRem = data.standings.map(r => ({ ...r, remaining: data.remainingByTeam?.[r.teamId] ?? r.remaining ?? 0 }))
+  const calloutParts = []
+  if (data.note) calloutParts.push(escapeHtml(data.note))
+  if (data.pivotal?.length) {
+    const top = data.pivotal[0]
+    calloutParts.push(`🎯 Game of the week: W${top.week} ${escapeHtml(top.awayOwner)} @ ${escapeHtml(top.homeOwner)} (swings shares up to ${top.swing}%).`)
+  }
+  const callout = calloutParts.length ? `<p class="callout">${calloutParts.join(' ')}</p>` : ''
   // sort for display already sorted
   let html = `<h2>Playoff Race</h2>
 <p class="section-note">${data.season} regular season &middot; ${data.regularSeasonWeeks} weeks &middot; top ${data.playoffTeamCount} make playoffs &middot; last place wears the diaper &middot; tiebreak is points for &middot; through week ${data.throughWeek} &middot; ${data.remainingCount} games left${data.currentWeek ? ` &middot; current week ${data.currentWeek}` : ''} &middot; generated ${data.generated}</p>
-${data.note ? `<p class="callout">${escapeHtml(data.note)}</p>` : ''}
+${callout}
 <h3>Current Standings</h3>
 <p class="section-note">x = clinched, e = eliminated, d = locked into the diaper, s = safe from it (wins-only guarantees, tiebreak could still flip).</p>
 ${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet, doomedSet, safeSet)}`

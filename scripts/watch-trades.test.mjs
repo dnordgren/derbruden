@@ -1,4 +1,4 @@
-import { readFileSync, mkdtempSync, writeFileSync } from 'node:fs'
+import { readFileSync, mkdtempSync, writeFileSync, existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import os from 'node:os'
@@ -11,6 +11,8 @@ import {
   mapTransaction,
   buildEmbed,
   rememberProposals,
+  hasLegs,
+  sweepDeferred,
   main
 } from './watch-trades.mjs'
 import { loadEnvFile } from './lib/espn.mjs'
@@ -449,4 +451,227 @@ test('main persists proposal cache when there are no new events', async () => {
     for (const key of Object.keys(process.env))
       if (!(key in envBackup)) delete process.env[key]
   }
+})
+
+test('hasLegs detects records with no trade legs', () => {
+  assert.equal(hasLegs({ teams: [] }), false)
+  assert.equal(hasLegs({ teams: [{ teamId: 2, gives: [] }] }), false)
+  assert.equal(hasLegs(null), false)
+  assert.equal(hasLegs({ teams: [{ teamId: 2, gives: ['X'] }] }), true)
+})
+
+test('main defers a leg-less accept instead of posting or ledgering it', async () => {
+  const envBackup = { ...process.env }
+  process.env.LEAGUE_ID = '794521'
+  process.env.LEAGUE_YEAR = '2026'
+  process.env.ESPN_S2 = 's2'
+  process.env.SWID = 'swid'
+  process.env.DISCORD_WEBHOOK_URL = 'https://discord.example/hook'
+
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'trades-defer-'))
+  const stateFile = path.join(dir, 'state.json')
+  const ledgerFile = path.join(dir, 'trades.json')
+  writeFileSync(stateFile, JSON.stringify({ processedIds: ['seed'] }))
+
+  // Accept arrives with empty items and no related proposal anywhere.
+  const espnBody = {
+    transactions: [
+      {
+        id: 'ghost-1',
+        type: 'TRADE_ACCEPT',
+        proposedDate: 1792516488380,
+        relatedTransactionId: 'prop-missing',
+        items: []
+      }
+    ]
+  }
+  const posts = []
+  const fakeFetch = async (url, options) => {
+    if (String(url).includes('discord.example')) {
+      posts.push(JSON.parse(options.body))
+      return { ok: true, status: 204 }
+    }
+    if (String(url).includes('view=mTeam'))
+      return makeJson({ teams: [{ id: 2, name: 'Cracked Unc' }, { id: 12, name: 'ORACLE AI' }] })
+    return makeJson(espnBody)
+  }
+  const makeJson = (body) => ({
+    ok: true,
+    status: 200,
+    text: async () => JSON.stringify(body),
+    headers: new Map()
+  })
+
+  try {
+    assert.equal(await main([], fakeFetch, { stateFile, ledgerFile }), 0)
+    // Never posted, never ledgered as a blank row.
+    assert.equal(posts.length, 0)
+    assert.equal(existsSync(ledgerFile), false)
+    const state = JSON.parse(readFileSync(stateFile, 'utf8'))
+    // Stays out of processedIds so later polls retry it.
+    assert.deepEqual(state.processedIds, ['seed'])
+    assert.ok(state.deferred['ghost-1'], 'leg-less accept held in deferred')
+    assert.equal(state.deferred['ghost-1'].tx.id, 'ghost-1')
+    assert.ok(state.deferred['ghost-1'].firstSeen, 'firstSeen recorded')
+  } finally {
+    for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
+    for (const key of Object.keys(process.env))
+      if (!(key in envBackup)) delete process.env[key]
+  }
+})
+
+test('deferred accept resolves on a later run once its proposal is cached', async () => {
+  const envBackup = { ...process.env }
+  process.env.LEAGUE_ID = '794521'
+  process.env.LEAGUE_YEAR = '2026'
+  process.env.ESPN_S2 = 's2'
+  process.env.SWID = 'swid'
+  process.env.DISCORD_WEBHOOK_URL = 'https://discord.example/hook'
+
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'trades-revive-'))
+  const stateFile = path.join(dir, 'state.json')
+  const ledgerFile = path.join(dir, 'trades.json')
+  writeFileSync(stateFile, JSON.stringify({ processedIds: ['seed'] }))
+
+  const proposalItems = [
+    { playerId: 4430737, fromTeamId: 2, toTeamId: 12, type: 'TRADE' },
+    { playerId: 4362628, fromTeamId: 12, toTeamId: 2, type: 'TRADE' }
+  ]
+  let espnBody = {
+    transactions: [
+      {
+        id: 'accept-8',
+        type: 'TRADE_ACCEPT',
+        proposedDate: 1792516488380,
+        relatedTransactionId: 'prop-8',
+        items: []
+      }
+    ]
+  }
+  const posts = []
+  const fakeFetch = async (url, options) => {
+    if (String(url).includes('discord.example')) {
+      posts.push(JSON.parse(options.body))
+      return { ok: true, status: 204 }
+    }
+    if (String(url).includes('view=mTeam'))
+      return makeJson({ teams: [{ id: 2, name: 'Cracked Unc' }, { id: 12, name: 'ORACLE AI' }] })
+    if (String(url).includes('/athletes/')) {
+      const id = Number(String(url).match(/athletes\/(\d+)/)[1])
+      const star = { 4430737: 'Kyren Williams', 4362628: "Ja'Marr Chase" }[id]
+      return makeJson(star ? { fullName: star } : {})
+    }
+    return makeJson(espnBody)
+  }
+  const makeJson = (body) => ({
+    ok: true,
+    status: 200,
+    text: async () => JSON.stringify(body),
+    headers: new Map()
+  })
+
+  try {
+    // Run 1: nothing to resolve against; the accept is deferred.
+    assert.equal(await main([], fakeFetch, { stateFile, ledgerFile }), 0)
+    assert.equal(posts.length, 0)
+    assert.ok(JSON.parse(readFileSync(stateFile, 'utf8')).deferred['accept-8'])
+
+    // Run 2: ESPN drops the accept but the proposal is back in the window.
+    espnBody = {
+      transactions: [
+        { id: 'prop-8', type: 'TRADE_PROPOSAL', proposedDate: 1792506160084, items: proposalItems }
+      ]
+    }
+    assert.equal(await main([], fakeFetch, { stateFile, ledgerFile }), 0)
+    // The revived accept posts with real legs; the proposal lands page-only.
+    assert.equal(posts.length, 1)
+    assert.match(posts[0].embeds[0].description, /Kyren Williams/)
+    assert.match(posts[0].embeds[0].description, /Ja'Marr Chase/)
+    const ledger = JSON.parse(readFileSync(ledgerFile, 'utf8'))
+    const accept = ledger.trades.find((t) => t.id === 'accept-8')
+    assert.ok(accept, 'revived accept ledgered')
+    assert.equal(accept.teams.length, 2)
+    const state = JSON.parse(readFileSync(stateFile, 'utf8'))
+    assert.equal(state.deferred['accept-8'], undefined)
+    assert.ok(state.processedIds.includes('accept-8'))
+  } finally {
+    for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
+    for (const key of Object.keys(process.env))
+      if (!(key in envBackup)) delete process.env[key]
+  }
+})
+
+test('deferred accept expires to an unresolved stub without ever posting', async () => {
+  const envBackup = { ...process.env }
+  process.env.LEAGUE_ID = '794521'
+  process.env.LEAGUE_YEAR = '2026'
+  process.env.ESPN_S2 = 's2'
+  process.env.SWID = 'swid'
+  process.env.DISCORD_WEBHOOK_URL = 'https://discord.example/hook'
+  process.env.PENDING_RETRY_DAYS = '7'
+
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'trades-expire-'))
+  const stateFile = path.join(dir, 'state.json')
+  const ledgerFile = path.join(dir, 'trades.json')
+  const old = new Date(Date.now() - 20 * 86400000).toISOString()
+  writeFileSync(
+    stateFile,
+    JSON.stringify({
+      processedIds: ['seed'],
+      deferred: {
+        'old-1': {
+          tx: { id: 'old-1', type: 'TRADE_ACCEPT', proposedDate: 1792516488380, items: [] },
+          firstSeen: old
+        }
+      }
+    })
+  )
+
+  const posts = []
+  const fakeFetch = async (url, options) => {
+    if (String(url).includes('discord.example')) {
+      posts.push(JSON.parse(options.body))
+      return { ok: true, status: 204 }
+    }
+    if (String(url).includes('view=mTeam')) return makeJson({ teams: [] })
+    return makeJson({ transactions: [] })
+  }
+  const makeJson = (body) => ({
+    ok: true,
+    status: 200,
+    text: async () => JSON.stringify(body),
+    headers: new Map()
+  })
+
+  try {
+    assert.equal(await main([], fakeFetch, { stateFile, ledgerFile }), 0)
+    assert.equal(posts.length, 0)
+    const ledger = JSON.parse(readFileSync(ledgerFile, 'utf8'))
+    assert.equal(ledger.trades.length, 1)
+    assert.equal(ledger.trades[0].id, 'old-1')
+    assert.deepEqual(ledger.trades[0].teams, [])
+    assert.equal(ledger.trades[0].unresolved, true)
+    const state = JSON.parse(readFileSync(stateFile, 'utf8'))
+    assert.equal(state.deferred['old-1'], undefined)
+    assert.ok(state.processedIds.includes('old-1'))
+  } finally {
+    for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
+    for (const key of Object.keys(process.env))
+      if (!(key in envBackup)) delete process.env[key]
+  }
+})
+
+test('sweepDeferred caps a runaway holding pen', () => {
+  const state = { deferred: {} }
+  for (let i = 0; i < 205; i++)
+    state.deferred[`d${i}`] = {
+      tx: { id: `d${i}`, type: 'TRADE_ACCEPT', items: [] },
+      firstSeen: new Date().toISOString()
+    }
+  const { resolved, expired } = sweepDeferred(state, { retryDays: 14, nowMs: Date.now() })
+  assert.equal(resolved.length, 0)
+  assert.equal(expired.length, 0)
+  assert.equal(Object.keys(state.deferred).length, 200)
+  assert.equal(state.deferred['d0'], undefined)
+  assert.ok(state.deferred['d204'])
 })

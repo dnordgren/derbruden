@@ -1,25 +1,112 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-10-31T04:01:11.049Z",
+  "updated": "2026-11-05T04:48:23.000Z",
   "trades": [
     {
       "id": "b19a950f-ef75-4247-bab7-fee90942c73f",
       "event": "TRADE_ACCEPT",
       "date": "2026-10-31T00:34:08.014Z",
-      "teams": []
+      "teams": [
+        {
+          "teamId": 2,
+          "name": "Cracked Unc",
+          "gives": [
+            "Caleb Williams"
+          ],
+          "assets": [
+            {
+              "name": "Caleb Williams",
+              "playerId": 4431611,
+              "overallPickNumber": null
+            }
+          ]
+        },
+        {
+          "teamId": 10,
+          "name": "Tomato Toes",
+          "gives": [
+            "Lamar Jackson"
+          ],
+          "assets": [
+            {
+              "name": "Lamar Jackson",
+              "playerId": 3916387,
+              "overallPickNumber": null
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "199d00a1-765e-4684-997a-91231a8c3855",
       "event": "TRADE_ACCEPT",
       "date": "2026-10-21T14:44:35.363Z",
-      "teams": []
+      "teams": [
+        {
+          "teamId": 1,
+          "name": "Big Bawls Wub",
+          "gives": [
+            "Javonte Williams"
+          ],
+          "assets": [
+            {
+              "name": "Javonte Williams",
+              "playerId": 4361579,
+              "overallPickNumber": null
+            }
+          ]
+        },
+        {
+          "teamId": 5,
+          "name": "Give 'er The Beans",
+          "gives": [
+            "Omarion Hampton"
+          ],
+          "assets": [
+            {
+              "name": "Omarion Hampton",
+              "playerId": 4685382,
+              "overallPickNumber": null
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "481f60e5-1cf9-44dd-b236-220102e0334d",
       "event": "TRADE_ACCEPT",
       "date": "2026-10-20T17:14:48.380Z",
-      "teams": []
+      "teams": [
+        {
+          "teamId": 1,
+          "name": "Big Bawls Wub",
+          "gives": [
+            "Justin Jefferson"
+          ],
+          "assets": [
+            {
+              "name": "Justin Jefferson",
+              "playerId": 4262921,
+              "overallPickNumber": null
+            }
+          ]
+        },
+        {
+          "teamId": 2,
+          "name": "Cracked Unc",
+          "gives": [
+            "Rashee Rice"
+          ],
+          "assets": [
+            {
+              "name": "Rashee Rice",
+              "playerId": 4428331,
+              "overallPickNumber": null
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "0dbc0ba6-b82f-42a5-b7b5-ec7a67f6f057",

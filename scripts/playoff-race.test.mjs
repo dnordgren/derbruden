@@ -2,12 +2,21 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import {
   computeClinchEliminated,
+  computeDiaperFate,
+  computeOdds,
+  computePivotalGames,
+  computeScoreStats,
   computeStandings,
   currentLeaderForGame,
   extractGames,
+  gameWinProb,
+  hashSeed,
+  mulberry32,
+  normalCdf,
   standingsList,
   buildScenarios,
   raceDataEqual,
+  renderStandingsTable,
   DEFAULT_START_WEEK,
 } from './generate-playoff-race.mjs'
 
@@ -172,4 +181,171 @@ test('raceDataEqual detects real race changes', () => {
   assert.equal(raceDataEqual(a, { ...a, clinchedOwners: ['DM'] }), false)
   assert.equal(raceDataEqual(a, null), false)
   assert.equal(raceDataEqual(null, a), false)
+})
+
+test('computeOdds with 0 remaining resolves ties by PF', () => {
+  const stats = {
+    1: { teamId: 1, wins: 8, losses: 5, ties: 0, pf: 1500, pa: 0 },
+    2: { teamId: 2, wins: 8, losses: 5, ties: 0, pf: 1400, pa: 0 },
+    3: { teamId: 3, wins: 6, losses: 7, ties: 0, pf: 1500, pa: 0 },
+    4: { teamId: 4, wins: 6, losses: 7, ties: 0, pf: 1300, pa: 0 },
+  }
+  const odds = computeOdds(stats, [], 2, { season: 2026 })
+  assert.deepEqual(odds[1], { playoff: 100, diaper: 0 })
+  assert.deepEqual(odds[2], { playoff: 100, diaper: 0 })
+  assert.deepEqual(odds[3], { playoff: 0, diaper: 0 })
+  assert.deepEqual(odds[4], { playoff: 0, diaper: 100 })
+})
+
+test('computeOdds splits tied teams evenly at the cut', () => {
+  // A 8-0 locked; B 7-1; C and D 6-2 with C @ D left, top 2.
+  // C wins -> B/C split the second spot; D wins -> B/D split it.
+  // Diaper: the loser finishes alone at the bottom each time.
+  const stats = {
+    1: { teamId: 1, wins: 8, losses: 0, ties: 0, pf: 1200, pa: 0 },
+    2: { teamId: 2, wins: 7, losses: 1, ties: 0, pf: 1100, pa: 0 },
+    3: { teamId: 3, wins: 6, losses: 2, ties: 0, pf: 800, pa: 0 },
+    4: { teamId: 4, wins: 6, losses: 2, ties: 0, pf: 700, pa: 0 },
+  }
+  const remaining = [{ week: 10, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }]
+  const odds = computeOdds(stats, remaining, 2, { season: 2026 })
+  assert.deepEqual(odds[1], { playoff: 100, diaper: 0 })
+  assert.deepEqual(odds[2], { playoff: 50, diaper: 0 })
+  assert.deepEqual(odds[3], { playoff: 25, diaper: 50 })
+  assert.deepEqual(odds[4], { playoff: 25, diaper: 50 })
+})
+
+test('computeOdds Monte Carlo is deterministic and bounded', () => {
+  const stats = {
+    1: { teamId: 1, wins: 6, losses: 2, ties: 0, pf: 1000, pa: 0 },
+    2: { teamId: 2, wins: 2, losses: 6, ties: 0, pf: 800, pa: 0 },
+  }
+  const remaining = Array.from({ length: 25 }, (_, i) => ({ week: i + 1, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }))
+  const a = computeOdds(stats, remaining, 1, { season: 2026 })
+  const b = computeOdds(stats, remaining, 1, { season: 2026 })
+  assert.deepEqual(a, b)
+  for (const id of [1, 2]) {
+    assert.ok(a[id].playoff >= 0 && a[id].playoff <= 100)
+    assert.ok(a[id].diaper >= 0 && a[id].diaper <= 100)
+  }
+  // 6-2 vs 2-6 with 25 head-to-head coin flips: leader wins ~79% (exact)
+  assert.ok(a[1].playoff >= 70 && a[1].playoff <= 90)
+  assert.ok(a[2].diaper >= 70 && a[2].diaper <= 90)
+  // different season seed input still runs (seed covers inputs; just check shape)
+  const c = computeOdds(stats, remaining, 1, { season: 2025 })
+  assert.ok(c[1].playoff >= 0 && c[1].playoff <= 100)
+})
+
+test('mulberry32 and hashSeed are deterministic', () => {
+  assert.equal(hashSeed('abc'), hashSeed('abc'))
+  const r1 = mulberry32(42)
+  const r2 = mulberry32(42)
+  assert.equal(r1(), r2())
+  assert.ok(r1() >= 0 && r1() < 1)
+})
+
+test('renderStandingsTable renders PO% and D% columns', () => {
+  const standings = [
+    { rank: 1, teamId: 1, owner: 'A', abbrev: 'A', name: 'A', wins: 8, losses: 0, ties: 0, pf: 1000, playoffPct: 98, diaperPct: 0, remaining: 0 },
+    { rank: 2, teamId: 2, owner: 'B', abbrev: 'B', name: 'B', wins: 0, losses: 8, ties: 0, pf: 700, playoffPct: 0, diaperPct: 71, remaining: 0 },
+  ]
+  const html = renderStandingsTable(standings, new Set(), new Set([2]), new Set([2]), new Set())
+  assert.ok(html.includes('<th class="number">PO%</th>'))
+  assert.ok(html.includes('<th class="number">D%</th>'))
+  assert.ok(html.includes('<td class="number">98</td>'))
+  assert.ok(html.includes('<td class="number">71</td>'))
+})
+
+test('normalCdf and gameWinProb behave', () => {
+  assert.ok(Math.abs(normalCdf(0) - 0.5) < 1e-6)
+  assert.ok(normalCdf(1.96) > 0.97 && normalCdf(1.96) < 0.98)
+  assert.equal(gameWinProb(120, 25, 120, 25), 0.5)
+  const fav = gameWinProb(140, 25, 100, 25)
+  assert.ok(fav > 0.85 && fav < 1)
+  // symmetry: swapping sides complements
+  assert.ok(Math.abs(fav + gameWinProb(100, 25, 140, 25) - 1) < 1e-9)
+})
+
+test('computeScoreStats blends toward league average', () => {
+  const games = [
+    { week: 1, homeId: 1, awayId: 2, homeScore: 120, awayScore: 100 },
+    { week: 2, homeId: 2, awayId: 1, homeScore: 110, awayScore: 130 },
+  ]
+  const s = computeScoreStats(games)
+  // team 1 scored 120+130: raw mean 125, blended toward league mean 115
+  assert.ok(s[1].mean > 115 && s[1].mean < 125)
+  // team 2 scored 100+110: raw mean 105, blended up toward 115
+  assert.ok(s[2].mean > 105 && s[2].mean < 115)
+  assert.ok(s[1].sd >= 12 && s[2].sd >= 12)
+  assert.deepEqual(computeScoreStats([]), {})
+})
+
+test('computeOdds weights games by scoring strength', () => {
+  // A outscores B by ~30/wk. One game left between them, both 5-3, top 1.
+  const stats = {
+    1: { teamId: 1, wins: 5, losses: 3, ties: 0, pf: 1040, pa: 0 },
+    2: { teamId: 2, wins: 5, losses: 3, ties: 0, pf: 800, pa: 0 },
+  }
+  const decided = Array.from({ length: 8 }, (_, i) => ({
+    week: i + 1, homeId: 1, awayId: 2,
+    homeScore: 130, awayScore: 100,
+  }))
+  const scoreStats = computeScoreStats(decided)
+  const remaining = [{ week: 9, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }]
+  const weighted = computeOdds(stats, remaining, 1, { season: 2026, scoreStats })
+  const coinflip = computeOdds(stats, remaining, 1, { season: 2026 })
+  assert.equal(coinflip[1].playoff, 50)
+  assert.ok(weighted[1].playoff > 70)
+  assert.equal(weighted[1].playoff + weighted[2].playoff, 100)
+  assert.equal(weighted[1].diaper + weighted[2].diaper, 100)
+})
+
+test('computeOdds weighted Monte Carlo is deterministic', () => {
+  const stats = {
+    1: { teamId: 1, wins: 6, losses: 2, ties: 0, pf: 1100, pa: 0 },
+    2: { teamId: 2, wins: 2, losses: 6, ties: 0, pf: 850, pa: 0 },
+  }
+  const decided = Array.from({ length: 8 }, (_, i) => ({
+    week: i + 1, homeId: 1, awayId: 2, homeScore: 137.5, awayScore: 106.25,
+  }))
+  const scoreStats = computeScoreStats(decided)
+  const remaining = Array.from({ length: 25 }, (_, i) => ({ week: i + 1, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }))
+  const a = computeOdds(stats, remaining, 1, { season: 2026, scoreStats })
+  const b = computeOdds(stats, remaining, 1, { season: 2026, scoreStats })
+  assert.deepEqual(a, b)
+  // stronger team should beat its coin-flip share (79)
+  assert.ok(a[1].playoff >= 79)
+})
+
+test('computePivotalGames ranks the decisive game first', () => {
+  // A 8-0 locked; B 7-1; C and D 6-2. Two games left: C @ D (decisive)
+  // and A @ B (matters little: A stays top-2 either way... B could fall
+  // to a tie but stays in range). Top 2.
+  const stats = {
+    1: { teamId: 1, wins: 8, losses: 0, ties: 0, pf: 1200, pa: 0 },
+    2: { teamId: 2, wins: 7, losses: 1, ties: 0, pf: 1100, pa: 0 },
+    3: { teamId: 3, wins: 6, losses: 2, ties: 0, pf: 800, pa: 0 },
+    4: { teamId: 4, wins: 6, losses: 2, ties: 0, pf: 700, pa: 0 },
+  }
+  const remaining = [
+    { week: 11, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false },
+    { week: 10, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false },
+  ]
+  const piv = computePivotalGames(stats, remaining, 2, { season: 2026, pivotSamples: 2000 })
+  assert.equal(piv.length, 2)
+  // week order, regardless of swing
+  assert.ok(piv[0].week <= piv[1].week)
+  assert.equal(piv[0].week, 10)
+  const decider = piv.find(p => p.homeId === 3)
+  assert.ok(decider.swing >= 50)
+  const movedIds = decider.shifts.map(s => s.teamId)
+  assert.ok(movedIds.includes(3) || movedIds.includes(4))
+  // determinism: same inputs, same ranking
+  const again = computePivotalGames(stats, remaining, 2, { season: 2026, pivotSamples: 2000 })
+  assert.deepEqual(piv, again)
+})
+
+test('computePivotalGames handles no remaining games', () => {
+  const stats = { 1: { teamId: 1, wins: 8, losses: 0, ties: 0, pf: 1000, pa: 0 } }
+  assert.deepEqual(computePivotalGames(stats, [], 1, {}), [])
 })

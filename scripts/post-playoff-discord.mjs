@@ -65,9 +65,10 @@ export function buildPayload(data) {
     if (r.clinched) marker = ' 🔒'
     else if (r.eliminated) marker = ' ❌'
     const pf = r.pf.toFixed(1)
+    const pct = r.playoffPct != null ? `, ${r.playoffPct}%` : ''
     // Highlight cutoff
     const cutoff = i === playoffCount - 1 ? ' ——— cut ———' : ''
-    lines.push(`**${rank}. ${owner}** ${rec} (${pf} PF)${marker}${cutoff ? ` ${cutoff}` : ''}`)
+    lines.push(`**${rank}. ${owner}** ${rec} (${pf} PF${pct})${marker}${cutoff ? ` ${cutoff}` : ''}`)
   }
   if (standings.length > displayCount) {
     const rest = standings.slice(displayCount)

@@ -1,4 +1,4 @@
-name: Playoff Race
+name: Races
 
 on:
   schedule:
@@ -13,7 +13,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: playoff-race
+  group: races
   cancel-in-progress: false
 
 jobs:
@@ -42,12 +42,15 @@ jobs:
       - name: Generate playoff race
         run: node scripts/generate-playoff-race.mjs
 
+      - name: Generate diaper race
+        run: node scripts/generate-diaper-race.mjs
+
       - name: Build pages
         run: node scripts/build.mjs
 
       - name: Check for changed files
         id: status
-        run: echo "count=$(git status --porcelain static/data src/playoff-race.html | wc -l)" >> "$GITHUB_OUTPUT"
+        run: echo "count=$(git status --porcelain static/data/playoff-race.json static/data/diaper-race.json src/playoff-race.html | wc -l)" >> "$GITHUB_OUTPUT"
 
       - name: Configure AWS credentials
         if: steps.status.outputs.count != '0'
@@ -57,31 +60,38 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # Publish page and data together; two invalidation paths stay
+      # Publish page and data together; three invalidation paths stay
       # within CloudFront free tier. Data uses no-cache; HTML is short TTL.
       - name: Publish page and data
         if: steps.status.outputs.count != '0'
         run: |
           aws s3 cp pub/playoff-race.html s3://derbruden.com/playoff-race.html --cache-control "public, max-age=60, stale-while-revalidate=300"
           aws s3 cp static/data/playoff-race.json s3://derbruden.com/static/data/playoff-race.json --cache-control "public, max-age=0, must-revalidate"
-          aws cloudfront create-invalidation --distribution-id E3CDWEEK40CKI2 --paths "/playoff-race.html" "/static/data/playoff-race.json"
+          aws s3 cp static/data/diaper-race.json s3://derbruden.com/static/data/diaper-race.json --cache-control "public, max-age=0, must-revalidate"
+          aws cloudfront create-invalidation --distribution-id E3CDWEEK40CKI2 --paths "/playoff-race.html" "/static/data/playoff-race.json" "/static/data/diaper-race.json"
 
-      - name: Notify Discord
+      - name: Notify Discord (playoff)
         if: steps.status.outputs.count != '0'
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_PLAYOFFRACE }}
         run: node scripts/post-playoff-discord.mjs
+
+      - name: Notify Discord (diaper)
+        if: steps.status.outputs.count != '0'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_PLAYOFFRACE }}
+        run: node scripts/post-diaper-discord.mjs
 
       - name: Commit updated data and page
         if: steps.status.outputs.count != '0'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/data/playoff-race.json src/playoff-race.html
+          git add static/data/playoff-race.json static/data/diaper-race.json src/playoff-race.html
           # Only commit if the data changed; HTML is derived from it.
           if git diff --cached --quiet; then
             echo "No changes since last publish."
           else
-            git commit -m "chore: Weekly playoff race update"
+            git commit -m "chore: Weekly races update"
             git push
           fi

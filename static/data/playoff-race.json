@@ -36,7 +36,11 @@
       "gamesBack": 0,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 99,
+      "diaperPct": 0
     },
     {
       "rank": 2,
@@ -53,7 +57,11 @@
       "gamesBack": 0,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 97,
+      "diaperPct": 0
     },
     {
       "rank": 3,
@@ -70,7 +78,11 @@
       "gamesBack": 1,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 94,
+      "diaperPct": 0
     },
     {
       "rank": 4,
@@ -87,7 +99,11 @@
       "gamesBack": 1,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 93,
+      "diaperPct": 0
     },
     {
       "rank": 5,
@@ -104,7 +120,11 @@
       "gamesBack": 2,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 70,
+      "diaperPct": 1
     },
     {
       "rank": 6,
@@ -121,7 +141,11 @@
       "gamesBack": 2,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 63,
+      "diaperPct": 1
     },
     {
       "rank": 7,
@@ -138,7 +162,11 @@
       "gamesBack": 3,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 41,
+      "diaperPct": 4
     },
     {
       "rank": 8,
@@ -155,7 +183,11 @@
       "gamesBack": 3,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 34,
+      "diaperPct": 6
     },
     {
       "rank": 9,
@@ -172,7 +204,11 @@
       "gamesBack": 4,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 5,
+      "diaperPct": 40
     },
     {
       "rank": 10,
@@ -189,13 +225,21 @@
       "gamesBack": 4,
       "remaining": 5,
       "clinched": false,
-      "eliminated": false
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 4,
+      "diaperPct": 48
     }
   ],
   "clinchedTeamIds": [],
   "eliminatedTeamIds": [],
   "clinchedOwners": [],
   "eliminatedOwners": [],
+  "doomedTeamIds": [],
+  "safeTeamIds": [],
+  "doomedOwners": [],
+  "safeOwners": [],
   "remainingGames": [
     {
       "week": 9,
@@ -448,6 +492,659 @@
       "leader": null
     }
   ],
+  "pivotal": [
+    {
+      "week": 9,
+      "homeId": 10,
+      "awayId": 4,
+      "homeOwner": "ZS",
+      "awayOwner": "AN",
+      "homeWinProb": 37,
+      "swing": 30,
+      "shifts": [
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 1,
+          "poHome": 8,
+          "dAway": 60,
+          "dHome": 30
+        },
+        {
+          "teamId": 4,
+          "owner": "AN",
+          "poAway": 44,
+          "poHome": 18,
+          "dAway": 1,
+          "dHome": 14
+        },
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 5,
+          "poHome": 6,
+          "dAway": 35,
+          "dHome": 48
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "homeId": 12,
+      "awayId": 1,
+      "homeOwner": "JH",
+      "awayOwner": "GM",
+      "homeWinProb": 60,
+      "swing": 29,
+      "shifts": [
+        {
+          "teamId": 12,
+          "owner": "JH",
+          "poAway": 45,
+          "poHome": 74,
+          "dAway": 3,
+          "dHome": 0
+        },
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 11,
+          "poHome": 1,
+          "dAway": 25,
+          "dHome": 51
+        },
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 4,
+          "poHome": 3,
+          "dAway": 57,
+          "dHome": 42
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "homeId": 8,
+      "awayId": 5,
+      "homeOwner": "DN",
+      "awayOwner": "AR",
+      "homeWinProb": 48,
+      "swing": 28,
+      "shifts": [
+        {
+          "teamId": 8,
+          "owner": "DN",
+          "poAway": 56,
+          "poHome": 84,
+          "dAway": 2,
+          "dHome": 0
+        },
+        {
+          "teamId": 5,
+          "owner": "AR",
+          "poAway": 98,
+          "poHome": 86,
+          "dAway": 0,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "homeId": 11,
+      "awayId": 9,
+      "homeOwner": "IK",
+      "awayOwner": "JO",
+      "homeWinProb": 63,
+      "swing": 27,
+      "shifts": [
+        {
+          "teamId": 11,
+          "owner": "IK",
+          "poAway": 24,
+          "poHome": 51,
+          "dAway": 8,
+          "dHome": 1
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "homeId": 7,
+      "awayId": 2,
+      "homeOwner": "CR",
+      "awayOwner": "DM",
+      "homeWinProb": 50,
+      "swing": 7,
+      "shifts": []
+    },
+    {
+      "week": 10,
+      "homeId": 1,
+      "awayId": 10,
+      "homeOwner": "GM",
+      "awayOwner": "ZS",
+      "homeWinProb": 52,
+      "swing": 48,
+      "shifts": [
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 7,
+          "poHome": 1,
+          "dAway": 23,
+          "dHome": 71
+        },
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 1,
+          "poHome": 9,
+          "dAway": 65,
+          "dHome": 18
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "homeId": 12,
+      "awayId": 8,
+      "homeOwner": "JH",
+      "awayOwner": "DN",
+      "homeWinProb": 46,
+      "swing": 33,
+      "shifts": [
+        {
+          "teamId": 8,
+          "owner": "DN",
+          "poAway": 85,
+          "poHome": 52,
+          "dAway": 0,
+          "dHome": 2
+        },
+        {
+          "teamId": 12,
+          "owner": "JH",
+          "poAway": 48,
+          "poHome": 80,
+          "dAway": 2,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "homeId": 7,
+      "awayId": 11,
+      "homeOwner": "CR",
+      "awayOwner": "IK",
+      "homeWinProb": 50,
+      "swing": 30,
+      "shifts": [
+        {
+          "teamId": 11,
+          "owner": "IK",
+          "poAway": 56,
+          "poHome": 26,
+          "dAway": 1,
+          "dHome": 6
+        },
+        {
+          "teamId": 7,
+          "owner": "CR",
+          "poAway": 90,
+          "poHome": 99,
+          "dAway": 0,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "homeId": 9,
+      "awayId": 4,
+      "homeOwner": "JO",
+      "awayOwner": "AN",
+      "homeWinProb": 43,
+      "swing": 28,
+      "shifts": [
+        {
+          "teamId": 4,
+          "owner": "AN",
+          "poAway": 46,
+          "poHome": 18,
+          "dAway": 2,
+          "dHome": 10
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "homeId": 5,
+      "awayId": 2,
+      "homeOwner": "AR",
+      "awayOwner": "DM",
+      "homeWinProb": 49,
+      "swing": 11,
+      "shifts": [
+        {
+          "teamId": 5,
+          "owner": "AR",
+          "poAway": 87,
+          "poHome": 98,
+          "dAway": 0,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "homeId": 5,
+      "awayId": 11,
+      "homeOwner": "AR",
+      "awayOwner": "IK",
+      "homeWinProb": 49,
+      "swing": 32,
+      "shifts": [
+        {
+          "teamId": 11,
+          "owner": "IK",
+          "poAway": 57,
+          "poHome": 25,
+          "dAway": 1,
+          "dHome": 6
+        },
+        {
+          "teamId": 5,
+          "owner": "AR",
+          "poAway": 86,
+          "poHome": 98,
+          "dAway": 0,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "homeId": 4,
+      "awayId": 7,
+      "homeOwner": "AN",
+      "awayOwner": "CR",
+      "homeWinProb": 43,
+      "swing": 30,
+      "shifts": [
+        {
+          "teamId": 4,
+          "owner": "AN",
+          "poAway": 22,
+          "poHome": 52,
+          "dAway": 9,
+          "dHome": 2
+        },
+        {
+          "teamId": 7,
+          "owner": "CR",
+          "poAway": 99,
+          "poHome": 89,
+          "dAway": 0,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "homeId": 8,
+      "awayId": 1,
+      "homeOwner": "DN",
+      "awayOwner": "GM",
+      "homeWinProb": 66,
+      "swing": 27,
+      "shifts": [
+        {
+          "teamId": 8,
+          "owner": "DN",
+          "poAway": 52,
+          "poHome": 79,
+          "dAway": 2,
+          "dHome": 0
+        },
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 12,
+          "poHome": 2,
+          "dAway": 24,
+          "dHome": 49
+        },
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 4,
+          "poHome": 4,
+          "dAway": 58,
+          "dHome": 43
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "homeId": 2,
+      "awayId": 12,
+      "homeOwner": "DM",
+      "awayOwner": "JH",
+      "homeWinProb": 57,
+      "swing": 26,
+      "shifts": [
+        {
+          "teamId": 12,
+          "owner": "JH",
+          "poAway": 78,
+          "poHome": 52,
+          "dAway": 0,
+          "dHome": 2
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "homeId": 9,
+      "awayId": 10,
+      "homeOwner": "JO",
+      "awayOwner": "ZS",
+      "homeWinProb": 56,
+      "swing": 26,
+      "shifts": [
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 7,
+          "poHome": 1,
+          "dAway": 34,
+          "dHome": 60
+        },
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 5,
+          "poHome": 5,
+          "dAway": 50,
+          "dHome": 33
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "homeId": 12,
+      "awayId": 11,
+      "homeOwner": "JH",
+      "awayOwner": "IK",
+      "homeWinProb": 43,
+      "swing": 36,
+      "shifts": [
+        {
+          "teamId": 11,
+          "owner": "IK",
+          "poAway": 57,
+          "poHome": 21,
+          "dAway": 1,
+          "dHome": 7
+        },
+        {
+          "teamId": 12,
+          "owner": "JH",
+          "poAway": 48,
+          "poHome": 81,
+          "dAway": 2,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "homeId": 5,
+      "awayId": 4,
+      "homeOwner": "AR",
+      "awayOwner": "AN",
+      "homeWinProb": 56,
+      "swing": 30,
+      "shifts": [
+        {
+          "teamId": 4,
+          "owner": "AN",
+          "poAway": 52,
+          "poHome": 22,
+          "dAway": 2,
+          "dHome": 9
+        },
+        {
+          "teamId": 5,
+          "owner": "AR",
+          "poAway": 86,
+          "poHome": 98,
+          "dAway": 0,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "homeId": 10,
+      "awayId": 7,
+      "homeOwner": "ZS",
+      "awayOwner": "CR",
+      "homeWinProb": 29,
+      "swing": 26,
+      "shifts": [
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 1,
+          "poHome": 9,
+          "dAway": 56,
+          "dHome": 30
+        },
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 6,
+          "poHome": 5,
+          "dAway": 36,
+          "dHome": 52
+        },
+        {
+          "teamId": 7,
+          "owner": "CR",
+          "poAway": 98,
+          "poHome": 87,
+          "dAway": 0,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "homeId": 8,
+      "awayId": 2,
+      "homeOwner": "DN",
+      "awayOwner": "DM",
+      "homeWinProb": 46,
+      "swing": 25,
+      "shifts": [
+        {
+          "teamId": 8,
+          "owner": "DN",
+          "poAway": 58,
+          "poHome": 83,
+          "dAway": 1,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "homeId": 9,
+      "awayId": 1,
+      "homeOwner": "JO",
+      "awayOwner": "GM",
+      "homeWinProb": 54,
+      "swing": 24,
+      "shifts": [
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 9,
+          "poHome": 2,
+          "dAway": 27,
+          "dHome": 51
+        },
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 4,
+          "poHome": 3,
+          "dAway": 56,
+          "dHome": 41
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "homeId": 8,
+      "awayId": 11,
+      "homeOwner": "DN",
+      "awayOwner": "IK",
+      "homeWinProb": 47,
+      "swing": 36,
+      "shifts": [
+        {
+          "teamId": 11,
+          "owner": "IK",
+          "poAway": 58,
+          "poHome": 22,
+          "dAway": 1,
+          "dHome": 6
+        },
+        {
+          "teamId": 8,
+          "owner": "DN",
+          "poAway": 56,
+          "poHome": 87,
+          "dAway": 2,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "homeId": 4,
+      "awayId": 12,
+      "homeOwner": "AN",
+      "awayOwner": "JH",
+      "homeWinProb": 51,
+      "swing": 35,
+      "shifts": [
+        {
+          "teamId": 4,
+          "owner": "AN",
+          "poAway": 17,
+          "poHome": 52,
+          "dAway": 10,
+          "dHome": 2
+        },
+        {
+          "teamId": 12,
+          "owner": "JH",
+          "poAway": 80,
+          "poHome": 45,
+          "dAway": 0,
+          "dHome": 2
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "homeId": 5,
+      "awayId": 10,
+      "homeOwner": "AR",
+      "awayOwner": "ZS",
+      "homeWinProb": 70,
+      "swing": 26,
+      "shifts": [
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 9,
+          "poHome": 1,
+          "dAway": 30,
+          "dHome": 56
+        },
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 5,
+          "poHome": 5,
+          "dAway": 52,
+          "dHome": 35
+        },
+        {
+          "teamId": 5,
+          "owner": "AR",
+          "poAway": 83,
+          "poHome": 97,
+          "dAway": 0,
+          "dHome": 0
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "homeId": 1,
+      "awayId": 2,
+      "homeOwner": "GM",
+      "awayOwner": "DM",
+      "homeWinProb": 33,
+      "swing": 25,
+      "shifts": [
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 2,
+          "poHome": 11,
+          "dAway": 49,
+          "dHome": 24
+        },
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 3,
+          "poHome": 3,
+          "dAway": 42,
+          "dHome": 58
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "homeId": 9,
+      "awayId": 7,
+      "homeOwner": "JO",
+      "awayOwner": "CR",
+      "homeWinProb": 36,
+      "swing": 9,
+      "shifts": [
+        {
+          "teamId": 7,
+          "owner": "CR",
+          "poAway": 98,
+          "poHome": 89,
+          "dAway": 0,
+          "dHome": 0
+        }
+      ]
+    }
+  ],
+  "pivotThreshold": 8,
   "scenarios": null,
   "note": "Playoff race starts week 11. Through week 8 no clinches are posted.",
   "isLateSeason": false

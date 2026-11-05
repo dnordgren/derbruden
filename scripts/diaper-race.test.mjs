@@ -1,0 +1,193 @@
+import assert from 'node:assert/strict'
+import { test } from 'node:test'
+import {
+  computeDiaperFate,
+  renderPageContent,
+  renderStandingsTable,
+} from './generate-playoff-race.mjs'
+import { buildPayload } from './post-diaper-discord.mjs'
+
+function teams(n = 4) {
+  const out = {}
+  for (let i = 1; i <= n; i++) out[i] = { id: i, abbrev: `T${i}`, name: `Team ${i}` }
+  return out
+}
+
+test('computeDiaperFate with 0 remaining uses PF tiebreak for last', () => {
+  const teamsById = teams()
+  const stats = {
+    1: { teamId: 1, wins: 8, losses: 5, ties: 0, pf: 1500, pa: 1300 },
+    2: { teamId: 2, wins: 8, losses: 5, ties: 0, pf: 1400, pa: 1300 },
+    3: { teamId: 3, wins: 6, losses: 7, ties: 0, pf: 1500, pa: 1300 },
+    4: { teamId: 4, wins: 6, losses: 7, ties: 0, pf: 1300, pa: 1300 },
+  }
+  const res = computeDiaperFate(stats, [], 4, teamsById)
+  // 4 has the worst record + lower PF -> doomed; everyone else safe
+  assert.deepEqual(new Set(res.doomed), new Set([4]))
+  assert.deepEqual(new Set(res.safe), new Set([1, 2, 3]))
+})
+
+test('computeDiaperFate dooms a team even winning out cannot save', () => {
+  // A 8-0, B 7-1, C 2-6, D 0-8, D has no remaining games and sits 2 wins
+  // behind C -> best rank 4.
+  const teamsById = teams()
+  const stats = {
+    1: { teamId: 1, wins: 8, losses: 0, ties: 0, pf: 1200, pa: 0 },
+    2: { teamId: 2, wins: 7, losses: 1, ties: 0, pf: 1100, pa: 0 },
+    3: { teamId: 3, wins: 2, losses: 6, ties: 0, pf: 800, pa: 0 },
+    4: { teamId: 4, wins: 0, losses: 8, ties: 0, pf: 700, pa: 0 },
+  }
+  const remaining = [{ week: 10, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }]
+  const res = computeDiaperFate(stats, remaining, 4, teamsById)
+  assert.deepEqual(new Set(res.doomed), new Set([4]))
+  assert.deepEqual(new Set(res.safe), new Set([1, 2, 3]))
+})
+
+test('computeDiaperFate respects ENUM_LIMIT', () => {
+  const teamsById = { 1: { id: 1, abbrev: 'A', name: 'A' }, 2: { id: 2, abbrev: 'B', name: 'B' } }
+  const stats = { 1: { teamId: 1, wins: 0, losses: 0, ties: 0, pf: 0, pa: 0 }, 2: { teamId: 2, wins: 0, losses: 0, ties: 0, pf: 0, pa: 0 } }
+  const remaining = Array.from({ length: 25 }, (_, i) => ({ week: i + 1, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }))
+  const res = computeDiaperFate(stats, remaining, 2, teamsById)
+  assert.equal(res.note?.includes('too many'), true)
+  assert.equal(res.doomed.length, 0)
+})
+
+test('renderStandingsTable shows diaper badges alongside playoff badges', () => {
+  const standings = [
+    { rank: 1, teamId: 1, owner: 'A', abbrev: 'A', name: 'A', wins: 8, losses: 0, ties: 0, pf: 1000, remaining: 0 },
+    { rank: 4, teamId: 4, owner: 'D', abbrev: 'D', name: 'D', wins: 0, losses: 8, ties: 0, pf: 700, remaining: 0 },
+  ]
+  const html = renderStandingsTable(standings, new Set([1]), new Set([4]), new Set([4]), new Set([1]))
+  assert.ok(html.includes('badge clinched'))
+  assert.ok(html.includes('badge eliminated'))
+  assert.ok(html.includes('badge doomed'))
+  assert.ok(html.includes('badge safe'))
+})
+
+test('renderPageContent covers the diaper stakes', () => {
+  const data = {
+    season: 2026,
+    generated: '2026-11-04',
+    playoffTeamCount: 2,
+    regularSeasonWeeks: 13,
+    throughWeek: 9,
+    currentWeek: 10,
+    remainingCount: 10,
+    startWeek: 11,
+    standings: [
+      { rank: 1, teamId: 1, owner: 'A', abbrev: 'A', name: 'A', wins: 8, losses: 1, ties: 0, winValue: 8, pf: 1000, pa: 800, gamesBack: 0, remaining: 4 },
+      { rank: 2, teamId: 4, owner: 'D', abbrev: 'D', name: 'D', wins: 1, losses: 8, ties: 0, winValue: 1, pf: 700, pa: 900, gamesBack: 7, remaining: 4 },
+    ],
+    clinchedTeamIds: [1],
+    eliminatedTeamIds: [],
+    clinchedOwners: ['A'],
+    eliminatedOwners: [],
+    doomedTeamIds: [],
+    safeTeamIds: [1],
+    doomedOwners: [],
+    safeOwners: ['A'],
+    remainingByTeam: { 1: 4, 4: 4 },
+    remainingGames: [],
+    scenarios: null,
+    note: null,
+  }
+  const html = renderPageContent(data, teams())
+  assert.ok(html.includes('wears the diaper'))
+  assert.ok(html.includes('make races'))
+})
+
+test('renderPageContent lists pivotal games with winner effects', () => {
+  const data = {
+    season: 2026,
+    generated: '2026-11-04',
+    playoffTeamCount: 2,
+    regularSeasonWeeks: 13,
+    throughWeek: 9,
+    currentWeek: 10,
+    remainingCount: 2,
+    startWeek: 11,
+    standings: [
+      { rank: 1, teamId: 1, owner: 'A', abbrev: 'A', name: 'A', wins: 8, losses: 1, ties: 0, winValue: 8, pf: 1000, pa: 800, gamesBack: 0, remaining: 1, playoffPct: 100, diaperPct: 0 },
+      { rank: 2, teamId: 4, owner: 'D', abbrev: 'D', name: 'D', wins: 1, losses: 8, ties: 0, winValue: 1, pf: 700, pa: 900, gamesBack: 7, remaining: 1, playoffPct: 0, diaperPct: 100 },
+    ],
+    clinchedTeamIds: [1],
+    eliminatedTeamIds: [],
+    clinchedOwners: ['A'],
+    eliminatedOwners: [],
+    doomedTeamIds: [4],
+    safeTeamIds: [1],
+    doomedOwners: ['D'],
+    safeOwners: ['A'],
+    remainingByTeam: { 1: 1, 4: 1 },
+    remainingGames: [],
+    pivotal: [
+      {
+        week: 10, homeId: 1, awayId: 4, homeOwner: 'A', awayOwner: 'D', homeWinProb: 90, swing: 40,
+        shifts: [{ teamId: 4, owner: 'D', poAway: 10, poHome: 0, dAway: 60, dHome: 100 }],
+      },
+    ],
+    pivotThreshold: 8,
+    scenarios: null,
+    note: null,
+  }
+  const html = renderPageContent(data, teams())
+  assert.ok(html.includes('Pivotal Games'))
+  assert.ok(html.includes('W10'))
+  assert.ok(html.includes('swings shares by up to 40%'))
+  assert.ok(html.includes('D win (10%)'))
+  assert.ok(html.includes('A win (90%)'))
+  assert.ok(!html.includes('>Rem</th>'))
+  assert.ok(html.includes('🎯 Game of the week: W10 D @ A (swings shares up to 40%).'))
+})
+
+test('buildPayload lists worst team first with diaper line', () => {
+  const data = {
+    season: 2026,
+    throughWeek: 9,
+    currentWeek: 10,
+    remainingCount: 10,
+    teamCount: 4,
+    standings: [
+      { rank: 1, teamId: 1, owner: 'AAA', wins: 8, losses: 1, ties: 0, pf: 1000, doomed: false, safe: true },
+      { rank: 2, teamId: 2, owner: 'BBB', wins: 5, losses: 4, ties: 0, pf: 900, doomed: false, safe: false },
+      { rank: 3, teamId: 3, owner: 'CCC', wins: 3, losses: 6, ties: 0, pf: 800, doomed: false, safe: false },
+      { rank: 4, teamId: 4, owner: 'DDD', wins: 1, losses: 8, ties: 0, pf: 700, doomed: false, safe: false, diaperPct: 71 },
+    ],
+    doomedTeamIds: [],
+    safeTeamIds: [1],
+    doomedOwners: [],
+    safeOwners: ['AAA'],
+    scenarios: null,
+  }
+  const payload = buildPayload(data)
+  assert.equal(payload.username, 'Der Bruden Diaper Race')
+  const desc = payload.embeds[0].description
+  const dddPos = desc.indexOf('DDD')
+  const aaaPos = desc.indexOf('AAA')
+  assert.ok(dddPos !== -1 && dddPos < aaaPos)
+  assert.ok(desc.includes('diaper'))
+  assert.ok(desc.includes('playoff-race.html?x=2026-w9'))
+  assert.ok(desc.includes('(700.0 PF, 71%)'))
+})
+
+test('buildPayload hypes a locked-in diaper', () => {
+  const data = {
+    season: 2026,
+    throughWeek: 13,
+    currentWeek: null,
+    remainingCount: 0,
+    teamCount: 4,
+    standings: [
+      { rank: 1, teamId: 1, owner: 'AAA', wins: 8, losses: 5, ties: 0, pf: 1000, doomed: false, safe: true },
+      { rank: 4, teamId: 4, owner: 'DDD', wins: 1, losses: 12, ties: 0, pf: 700, doomed: true, safe: false },
+    ],
+    doomedTeamIds: [4],
+    safeTeamIds: [1],
+    doomedOwners: ['DDD'],
+    safeOwners: ['AAA'],
+    scenarios: null,
+  }
+  const payload = buildPayload(data)
+  assert.ok(payload.embeds[0].title.includes('Final'))
+  assert.ok(payload.embeds[0].description.includes('🍼 DDD'))
+})

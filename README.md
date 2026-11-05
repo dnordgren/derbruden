@@ -208,7 +208,9 @@ Notes:
 ### Generate playoff race
 
 Builds [playoff-race.html](https://derbruden.com/playoff-race.html): current
-standings, clinched/ eliminated flags, remaining games, and Monday-night
+standings, clinched/eliminated flags, pivotal games (remaining games
+ranked by how far shares swing on the result, with winner → effect
+lines), and Monday-night
 hypotheticals (if current leaders hold vs if underdogs rally). Data lands in
 `static/data/playoff-race.json` with no-cache deploys like the other JSON
 feeds.
@@ -243,14 +245,57 @@ Notes:
   `currentLeaderForGame` uses live scores to project "hold" (leaders hold)
   vs "flip" (underdogs rally) for the current week, then re-enumerates the
   rest of the season for each scenario.
-- A weekly GitHub Action (`.github/workflows/playoff-race.yml`) runs
-  Monday nights 9pm ET (01:00 UTC Tue in EDT, 02:00 UTC Tue in EST, two
-  crons cover DST) in season, publishes `playoff-race.html` + `playoff-
-  race.json` with a two-path invalidation, and commits when files changed.
-  Manual dispatch is available. Repo secrets: `ESPN_S2`, `SWID`,
-  `DISCORD_WEBHOOK_PLAYOFFRACE`, `AWS_ACCESS_KEY_ID`,
+- A unified weekly GitHub Action (`.github/workflows/races.yml`) runs
+  both race generators Monday nights 9pm ET (01:00 UTC Tue in EDT,
+  02:00 UTC Tue in EST, two crons cover DST) in season, publishes the
+  combined page + both JSONs with a three-path invalidation, and commits
+  when files changed. Manual dispatch is available. Repo secrets: `ESPN_S2`,
+  `SWID`, `DISCORD_WEBHOOK_PLAYOFFRACE`, `AWS_ACCESS_KEY_ID`,
   `AWS_SECRET_ACCESS_KEY`.
-- Tests: `node --test scripts/playoff-race.test.mjs`.
+- Likelihoods: `PO%` (playoff) and `D%` (diaper) columns weight each
+  remaining game by PF-implied team strength (weekly scoring means,
+  league-blended variance) instead of coin flips, with tied teams
+  splitting the contested spots — exact up to 20 games left, seeded
+  Monte Carlo past that. ESPN does not expose its own playoff % via the
+  API, so this is computed, not pulled. Same numbers ride along in both
+  Discord embeds.
+
+### Diaper race
+
+The [races page](https://derbruden.com/playoff-race.html) is one combined
+table: playoff `x`/`e` badges plus diaper `d` (locked in) / `s` (safe)
+badges, one hold-vs-flip hypotheticals pair with both outcome lines.
+Last place wears a diaper for the annual league pic — worst record,
+lower points for breaks ties. The diaper Discord post keeps its own
+worst-first sort (different medium, different story). Fate data lands in
+`static/data/diaper-race.json` with no-cache deploys like the other JSON
+feeds.
+
+```sh
+make races  # both generators; or make diaper for the diaper section alone
+# or directly:
+node scripts/generate-diaper-race.mjs [--dry-run] [--start-week=N] [season]
+node scripts/post-diaper-discord.mjs [--dry-run]  # preview Discord payload
+```
+
+Notes:
+
+- Worst regular-season record takes the diaper, lower total points scored
+  breaks ties. Fate math reuses the playoff-race enumerator with a cutoff
+  of N-1 (10 teams → top 9 means safe): doomed means even winning out
+  leaves the team last even with tiebreak help; safe means even losing
+  out cannot finish last. Same 2<sup>n</sup> cap (20), same head-to-head
+  respect, same conservative wins-only grouping.
+- Same late-season gate (`DEFAULT_START_WEEK = 11`, shared
+  `PLAYOFF_START_WEEK` env) and repeat-post guard as the playoff race —
+  no-op Mondays stay silent.
+- A unified weekly GitHub Action (`.github/workflows/races.yml`)
+  runs both generators Monday nights 9pm ET, publishes the combined
+  page + both JSONs with a three-path invalidation, posts 0–2 Discord
+  embeds (playoff + diaper, each gated), and commits when files changed.
+  Posts through the shared `DISCORD_WEBHOOK_PLAYOFFRACE` secret alongside
+  the shared ESPN/AWS secrets.
+- Tests: `node --test scripts/diaper-race.test.mjs`.
 
 ### Weekly update
 

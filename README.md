@@ -208,7 +208,9 @@ Notes:
 ### Generate playoff race
 
 Builds [playoff-race.html](https://derbruden.com/playoff-race.html): current
-standings, clinched/ eliminated flags, remaining games, and Monday-night
+standings, clinched/eliminated flags, pivotal games (remaining games
+ranked by how far shares swing on the result, with winner → effect
+lines), and Monday-night
 hypotheticals (if current leaders hold vs if underdogs rally). Data lands in
 `static/data/playoff-race.json` with no-cache deploys like the other JSON
 feeds.

@@ -96,6 +96,48 @@ test('renderPageContent covers the diaper stakes', () => {
   assert.ok(html.includes('make races'))
 })
 
+test('renderPageContent lists pivotal games with winner effects', () => {
+  const data = {
+    season: 2026,
+    generated: '2026-11-04',
+    playoffTeamCount: 2,
+    regularSeasonWeeks: 13,
+    throughWeek: 9,
+    currentWeek: 10,
+    remainingCount: 2,
+    startWeek: 11,
+    standings: [
+      { rank: 1, teamId: 1, owner: 'A', abbrev: 'A', name: 'A', wins: 8, losses: 1, ties: 0, winValue: 8, pf: 1000, pa: 800, gamesBack: 0, remaining: 1, playoffPct: 100, diaperPct: 0 },
+      { rank: 2, teamId: 4, owner: 'D', abbrev: 'D', name: 'D', wins: 1, losses: 8, ties: 0, winValue: 1, pf: 700, pa: 900, gamesBack: 7, remaining: 1, playoffPct: 0, diaperPct: 100 },
+    ],
+    clinchedTeamIds: [1],
+    eliminatedTeamIds: [],
+    clinchedOwners: ['A'],
+    eliminatedOwners: [],
+    doomedTeamIds: [4],
+    safeTeamIds: [1],
+    doomedOwners: ['D'],
+    safeOwners: ['A'],
+    remainingByTeam: { 1: 1, 4: 1 },
+    remainingGames: [],
+    pivotal: [
+      {
+        week: 10, homeId: 1, awayId: 4, homeOwner: 'A', awayOwner: 'D', homeWinProb: 90, swing: 40,
+        shifts: [{ teamId: 4, owner: 'D', poAway: 10, poHome: 0, dAway: 60, dHome: 100 }],
+      },
+    ],
+    pivotThreshold: 8,
+    scenarios: null,
+    note: null,
+  }
+  const html = renderPageContent(data, teams())
+  assert.ok(html.includes('Pivotal Games'))
+  assert.ok(html.includes('W10'))
+  assert.ok(html.includes('swings shares by up to 40%'))
+  assert.ok(html.includes('D win (10%)'))
+  assert.ok(html.includes('A win (90%)'))
+})
+
 test('buildPayload lists worst team first with diaper line', () => {
   const data = {
     season: 2026,

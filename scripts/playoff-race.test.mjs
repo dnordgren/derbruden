@@ -4,6 +4,7 @@ import {
   computeClinchEliminated,
   computeDiaperFate,
   computeOdds,
+  computePivotalGames,
   computeScoreStats,
   computeStandings,
   currentLeaderForGame,
@@ -314,4 +315,35 @@ test('computeOdds weighted Monte Carlo is deterministic', () => {
   assert.deepEqual(a, b)
   // stronger team should beat its coin-flip share (79)
   assert.ok(a[1].playoff >= 79)
+})
+
+test('computePivotalGames ranks the decisive game first', () => {
+  // A 8-0 locked; B 7-1; C and D 6-2. Two games left: C @ D (decisive)
+  // and A @ B (matters little: A stays top-2 either way... B could fall
+  // to a tie but stays in range). Top 2.
+  const stats = {
+    1: { teamId: 1, wins: 8, losses: 0, ties: 0, pf: 1200, pa: 0 },
+    2: { teamId: 2, wins: 7, losses: 1, ties: 0, pf: 1100, pa: 0 },
+    3: { teamId: 3, wins: 6, losses: 2, ties: 0, pf: 800, pa: 0 },
+    4: { teamId: 4, wins: 6, losses: 2, ties: 0, pf: 700, pa: 0 },
+  }
+  const remaining = [
+    { week: 10, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false },
+    { week: 10, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false },
+  ]
+  const piv = computePivotalGames(stats, remaining, 2, { season: 2026, pivotSamples: 2000 })
+  assert.equal(piv.length, 2)
+  assert.ok(piv[0].swing >= piv[1].swing)
+  const decider = piv.find(p => p.homeId === 3)
+  assert.ok(decider.swing >= 50)
+  const movedIds = decider.shifts.map(s => s.teamId)
+  assert.ok(movedIds.includes(3) || movedIds.includes(4))
+  // determinism: same inputs, same ranking
+  const again = computePivotalGames(stats, remaining, 2, { season: 2026, pivotSamples: 2000 })
+  assert.deepEqual(piv, again)
+})
+
+test('computePivotalGames handles no remaining games', () => {
+  const stats = { 1: { teamId: 1, wins: 8, losses: 0, ties: 0, pf: 1000, pa: 0 } }
+  assert.deepEqual(computePivotalGames(stats, [], 1, {}), [])
 })

@@ -279,6 +279,10 @@ export function computeDiaperFate(currentStats, remainingGames, teamCount, teams
 }
 
 export const ODDS_MONTE_CARLO_SAMPLES = 20000
+// Samples per fixed-outcome world when ranking pivotal games.
+export const PIVOT_SAMPLES = 8000
+// Minimum share swing (points) for a team shift to be listed.
+export const PIVOT_THRESHOLD = 8
 // Prior weight (in games) blending team scoring stats toward league average.
 export const SCORE_PRIOR_GAMES = 4
 // Prior weight (in games) blending team scoring means toward league mean.
@@ -444,6 +448,52 @@ export function computeOdds(currentStats, remainingGames, playoffTeamCount, opts
   return pct
 }
 
+// Rank remaining games by how far playoff/diaper shares swing on the
+// result. For each game, fix the winner each way, recompute odds over the
+// rest, and take the biggest team-share move. Deterministic (seeded MC
+// inside computeOdds), sorted biggest swing first. Each entry carries the
+// qualifying team shifts so renderers can phrase winner → effect lines.
+export function computePivotalGames(currentStats, remainingGames, playoffTeamCount, opts = {}) {
+  const teamIds = Object.keys(currentStats).map(Number)
+  const samples = opts.pivotSamples ?? PIVOT_SAMPLES
+  const threshold = opts.threshold ?? PIVOT_THRESHOLD
+  const out = []
+  for (const g of remainingGames) {
+    const rest = remainingGames.filter(x => x !== g)
+    const worlds = {}
+    for (const [key, winnerId] of [['home', g.homeId], ['away', g.awayId]]) {
+      const st = {}
+      for (const id of teamIds) st[id] = { ...currentStats[id] }
+      if (winnerId in st) st[winnerId].wins += 1
+      const loserId = winnerId === g.homeId ? g.awayId : g.homeId
+      if (loserId in st) st[loserId].losses += 1
+      worlds[key] = computeOdds(st, rest, playoffTeamCount, { ...opts, samples })
+    }
+    let swing = 0
+    const shifts = []
+    for (const id of teamIds) {
+      const poA = worlds.away[id].playoff, poH = worlds.home[id].playoff
+      const dA = worlds.away[id].diaper, dH = worlds.home[id].diaper
+      swing = Math.max(swing, Math.abs(poH - poA), Math.abs(dH - dA))
+      if (Math.abs(poH - poA) >= threshold || Math.abs(dH - dA) >= threshold) {
+        shifts.push({ teamId: id, owner: ownerFor(id), poAway: poA, poHome: poH, dAway: dA, dHome: dH })
+      }
+    }
+    const moveOf = s => Math.max(Math.abs(s.poHome - s.poAway), Math.abs(s.dHome - s.dAway))
+    shifts.sort((a, b) => moveOf(b) - moveOf(a))
+    const h = opts.scoreStats?.[g.homeId]
+    const a = opts.scoreStats?.[g.awayId]
+    out.push({
+      week: g.week, homeId: g.homeId, awayId: g.awayId,
+      homeOwner: ownerFor(g.homeId), awayOwner: ownerFor(g.awayId),
+      homeWinProb: h && a ? Math.round(gameWinProb(h.mean, h.sd, a.mean, a.sd) * 100) : 50,
+      swing, shifts,
+    })
+  }
+  out.sort((a, b) => b.swing - a.swing)
+  return out
+}
+
 // For Monday hypotheticals: current week undecided games
 export function buildScenarios(currentStats, remainingGames, playoffTeamCount, teamsById) {
   if (!remainingGames.length) return null
@@ -573,12 +623,27 @@ ${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet, doomedSet, 
   if (data.safeOwners?.length) html += `<p><strong>Safe from the diaper:</strong> ${data.safeOwners.map(o => escapeHtml(o)).join(', ')}</p>`
   if (!data.clinchedOwners?.length && !data.eliminatedOwners?.length && !data.doomedOwners?.length && !data.safeOwners?.length) html += `<p>No teams have clinched, been eliminated, or locked in the diaper yet.</p>`
 
-  if (data.remainingGames?.length) {
-    html += `<h3>Remaining Games</h3><div class="table-container"><table class="stats-table"><thead><tr><th>Wk</th><th>Matchup</th><th>Score (if live)</th></tr></thead><tbody>`
-    for (const g of data.remainingGames) {
-      html += `<tr><td class="number">${g.week}</td><td>${escapeHtml(g.awayOwner)} @ ${escapeHtml(g.homeOwner)}</td><td class="number">${g.awayScore.toFixed(1)} - ${g.homeScore.toFixed(1)}${g.leader ? ` (${escapeHtml(g.leader)} leads)` : ''}</td></tr>`
+  if (data.pivotal?.length) {
+    const threshold = data.pivotThreshold ?? 8
+    const shown = data.pivotal.filter(p => p.swing >= threshold).slice(0, 8)
+    const restMax = data.pivotal.filter(p => p.swing < threshold).reduce((m, p) => Math.max(m, p.swing), 0)
+    if (shown.length) {
+      html += `<h3>Pivotal Games</h3><p class="section-note">Ranked by how far playoff/diaper shares swing on the result. Only shifts of ${threshold} points or more shown.</p>`
+      for (const p of shown) {
+        const line = (world, winner, prob) => {
+          const parts = []
+          for (const s of p.shifts) {
+            const po = world === 'home' ? [s.poAway, s.poHome] : [s.poHome, s.poAway]
+            const dd = world === 'home' ? [s.dAway, s.dHome] : [s.dHome, s.dAway]
+            if (Math.abs(po[1] - po[0]) >= threshold) parts.push(`${escapeHtml(s.owner)} PO ${po[0]}→${po[1]}`)
+            if (Math.abs(dd[1] - dd[0]) >= threshold) parts.push(`${escapeHtml(s.owner)} D ${dd[0]}→${dd[1]}`)
+          }
+          return parts.length ? `<br>${escapeHtml(winner)} win (${prob}%): ${parts.join(', ')}` : ''
+        }
+        html += `<p><strong>W${p.week} ${escapeHtml(p.awayOwner)} @ ${escapeHtml(p.homeOwner)}</strong> — swings shares by up to ${p.swing}%${line('home', p.homeOwner, p.homeWinProb)}${line('away', p.awayOwner, 100 - p.homeWinProb)}</p>`
+      }
+      if (restMax > 0) html += `<p class="section-note">Everything else moves shares by less than ${threshold}%.</p>`
     }
-    html += `</tbody></table></div>`
   }
 
   if (data.scenarios) {
@@ -819,6 +884,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const eliminatedOwners = clinch.eliminated.map(id => ownerFor(id))
   const doomedOwners = fate.doomed.map(id => ownerFor(id))
   const safeOwners = fate.safe.map(id => ownerFor(id))
+  const pivotal = remaining.length ? computePivotalGames(stats, remaining, playoffTeamCount, { season, scoreStats }) : []
 
   // Prepare remainingGames for JSON/page
   const remainingGamesJson = remaining.map(g => ({
@@ -875,6 +941,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     doomedOwners,
     safeOwners,
     remainingGames: remainingGamesJson,
+    pivotal,
+    pivotThreshold: PIVOT_THRESHOLD,
     scenarios: scenarios ? {
       currentWeek: scenarios.currentWeek,
       currentWeekGames: scenarios.currentWeekGames,
@@ -919,6 +987,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     safeOwners,
     remainingByTeam,
     remainingGames: remainingGamesJson,
+    pivotal,
+    pivotThreshold: PIVOT_THRESHOLD,
     scenarios,
     note,
   }

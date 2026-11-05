@@ -334,6 +334,11 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   up to 20 remaining games, seeded 20,000-sample Monte Carlo past that
   (deterministic per league state, so the no-repost guard holds).
   Rendered as `PO%`/`D%` columns and appended to both Discord embeds.
+- Pivotal games (`computePivotalGames`): each remaining game is fixed
+  each way, odds recomputed over the rest (seeded MC, deterministic),
+  ranked by the biggest team-share swing. Rendered with winner → effect
+  lines plus the favorite's win probability; shifts under 8 points fold
+  into an 'everything else' line. Page-only — Discord stays compact.
 
 ## Diaper race
 

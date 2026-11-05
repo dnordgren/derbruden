@@ -9,10 +9,10 @@ import {
   buildOrder,
   prunePlayers,
   parseArgs,
-  defaultSeason,
   mergeMoves,
   main,
 } from './generate-waivers.mjs'
+import { defaultSeason } from './lib/espn.mjs'
 
 test('defaultSeason maps Aug-Dec to the current year', () => {
   assert.equal(defaultSeason(new Date('2026-08-25')), 2026)

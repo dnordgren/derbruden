@@ -2,11 +2,11 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { TEAM_OWNERS } from './team-owners.js'
+import { applyEnvFile, defaultSeason, espnAuthHeaders, fetchJson, seasonLeagueUrl } from './lib/espn.mjs'
+import { escapeHtml } from './lib/html.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const LEAGUE_ID = process.env.FANTASY_LEAGUE_ID || '794521'
-const API_BASE = 'https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl'
 const CORE_BASE = 'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl'
 const USER_AGENT = 'derbruden.com draft history generator'
 
@@ -18,33 +18,8 @@ const CACHE_PATH = path.join(__dirname, 'draft-players.json')
 const SRC_DIR = path.join(__dirname, '../src')
 const PAGE_PATH = path.join(SRC_DIR, 'drafts.html')
 
-function loadEnvFile() {
-  const envPath = path.join(__dirname, '.env')
-  if (!fs.existsSync(envPath)) return
-  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
-    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/)
-    if (!match || process.env[match[1]]) continue
-    process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, '')
-  }
-}
-
 function authHeaders() {
-  const espnS2 = process.env.ESPN_S2
-  const swid = process.env.SWID
-  if (!espnS2) {
-    throw new Error('This league is private. Set ESPN_S2 in scripts/.env or your environment.')
-  }
-  const cookie = swid ? `SWID=${swid}; espn_s2=${espnS2}` : `espn_s2=${espnS2}`
-  return {
-    Cookie: cookie,
-    'User-Agent': USER_AGENT,
-  }
-}
-
-// The fantasy season runs August through early February.
-export function defaultSeason() {
-  const now = new Date()
-  return now.getUTCMonth() >= 7 ? now.getUTCFullYear() : now.getUTCFullYear() - 1
+  return espnAuthHeaders(process.env, USER_AGENT)
 }
 
 export function seasonRange(first, last) {
@@ -53,21 +28,9 @@ export function seasonRange(first, last) {
   return seasons
 }
 
-export function escapeHtml(value) {
-  return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
-}
-
-async function fetchJson(url, headers = {}) {
-  const res = await fetch(url, { headers })
-  if (!res.ok) {
-    throw new Error(`ESPN API returned ${res.status} for ${url}`)
-  }
-  return res.json()
-}
-
 async function fetchDraft(season) {
-  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` + '?view=mDraftDetail&view=mTeam'
-  const league = await fetchJson(url, authHeaders())
+  const url = seasonLeagueUrl(season) + '?view=mDraftDetail&view=mTeam'
+  const league = await fetchJson(fetch, url, { headers: authHeaders() })
   const teams = {}
   for (const team of league.teams || []) {
     teams[team.id] = { name: team.name || team.nickname || team.abbrev || `Team ${team.id}` }
@@ -104,7 +67,7 @@ function saveCache(cache) {
 async function resolveTeamAbbr(teamRef, cache) {
   if (!teamRef) return ''
   if (cache.teams[teamRef]) return cache.teams[teamRef]
-  const data = await fetchJson(teamRef)
+  const data = await fetchJson(fetch, teamRef)
   const abbr = data.abbreviation || ''
   cache.teams[teamRef] = abbr
   return abbr
@@ -130,14 +93,14 @@ async function resolveAthlete(season, playerId, cache) {
   const nflTeamId = dslNflTeamId(playerId)
   let info
   if (nflTeamId) {
-    const teamData = await fetchJson(`${CORE_BASE}/seasons/${season}/teams/${nflTeamId}`)
+    const teamData = await fetchJson(fetch, `${CORE_BASE}/seasons/${season}/teams/${nflTeamId}`)
     info = {
       name: `${teamData.displayName || `Team ${nflTeamId}`} D/ST`,
       pos: 'D/ST',
       pro: teamData.abbreviation || '',
     }
   } else {
-    const data = await fetchJson(`${CORE_BASE}/seasons/${season}/athletes/${playerId}`)
+    const data = await fetchJson(fetch, `${CORE_BASE}/seasons/${season}/athletes/${playerId}`)
     info = {
       name: data.displayName || data.fullName || `Player ${playerId}`,
       pos: cleanPosition(data.position && data.position.abbreviation),
@@ -147,7 +110,7 @@ async function resolveAthlete(season, playerId, cache) {
       info.pro = await resolveTeamAbbr(data.team.$ref, cache)
     } else {
       try {
-        const base = await fetchJson(`${CORE_BASE}/athletes/${playerId}`)
+        const base = await fetchJson(fetch, `${CORE_BASE}/athletes/${playerId}`)
         if (!info.pos) info.pos = cleanPosition(base.position && base.position.abbreviation)
         info.pro = await resolveTeamAbbr(base.team && base.team.$ref, cache)
       } catch {
@@ -347,6 +310,15 @@ function pageTemplate(content) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DerBruden.com | Draft History</title>
+  <meta property="og:title" content="DerBruden.com | Draft History">
+  <meta property="og:description" content="Complete Der Bruden fantasy football draft history: every pick, every round, every year.">
+  <meta property="og:url" content="https://derbruden.com/drafts.html">
+  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DerBruden.com | Draft History">
+  <meta name="twitter:description" content="Complete Der Bruden fantasy football draft history: every pick, every round, every year.">
+  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
   <style>
     .legend {
@@ -586,7 +558,7 @@ function updateOwnerPages(draftsBySeason, cache) {
 }
 
 async function main() {
-  loadEnvFile()
+  applyEnvFile(path.join(__dirname, '.env'))
   authHeaders()
 
   const lastSeason = defaultSeason()

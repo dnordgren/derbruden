@@ -6,7 +6,6 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
 import {
-  loadEnvFile,
   parseArgs,
   newTransactions,
   mapTransaction,
@@ -14,6 +13,7 @@ import {
   rememberProposals,
   main
 } from './watch-trades.mjs'
+import { loadEnvFile } from './lib/espn.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 

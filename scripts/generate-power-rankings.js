@@ -3,11 +3,16 @@ import Papa from 'papaparse'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { TEAM_OWNERS } from './team-owners.js'
+import {
+  applyEnvFile,
+  defaultSeason,
+  espnAuthHeaders,
+  fetchLeague,
+} from './lib/espn.mjs'
+import { escapeHtml } from './lib/html.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const LEAGUE_ID = process.env.FANTASY_LEAGUE_ID || '794521'
-const API_BASE = 'https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl'
 const USER_AGENT = 'derbruden.com power rankings generator'
 
 const K_FACTOR = 20
@@ -17,42 +22,12 @@ const STATE_PATH = join(__dirname, 'power-rankings-state.json')
 const SRC_DIR = join(__dirname, '../src')
 const PAGE_PATH = join(SRC_DIR, 'power-rankings.html')
 
-function loadEnvFile() {
-  const envPath = join(__dirname, '.env')
-  if (!fs.existsSync(envPath)) return
-  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
-    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/)
-    if (!match || process.env[match[1]]) continue
-    process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, '')
-  }
-}
-
 function authHeaders() {
-  const espnS2 = process.env.ESPN_S2
-  const swid = process.env.SWID
-  if (!espnS2) {
-    throw new Error('This league is private. Set ESPN_S2 in scripts/.env or your environment.')
-  }
-  const cookie = swid ? `SWID=${swid}; espn_s2=${espnS2}` : `espn_s2=${espnS2}`
-  return {
-    Cookie: cookie,
-    'User-Agent': USER_AGENT,
-  }
+  return espnAuthHeaders(process.env, USER_AGENT)
 }
 
-async function fetchLeague(season) {
-  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` + '?view=mTeam&view=mMatchupScore'
-  const res = await fetch(url, { headers: authHeaders() })
-  if (!res.ok) {
-    throw new Error(`ESPN API returned ${res.status} for season ${season}`)
-  }
-  return res.json()
-}
-
-function defaultSeason() {
-  const now = new Date()
-  // The fantasy season runs August through early February.
-  return now.getUTCMonth() >= 7 ? now.getUTCFullYear() : now.getUTCFullYear() - 1
+async function fetchSeason(season) {
+  return fetchLeague({ season, views: ['mTeam', 'mMatchupScore'], headers: authHeaders() })
 }
 
 function priorSeasonRows(season) {
@@ -290,10 +265,6 @@ function renderTable(rankings, meta) {
 </table></div>`
 }
 
-function escapeHtml(value) {
-  return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-}
-
 function pageTemplate(content) {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -367,19 +338,19 @@ function updatePage(rendered) {
 }
 
 async function main() {
-  loadEnvFile()
+  applyEnvFile(join(__dirname, '.env'))
   authHeaders()
   const [seasonArg] = process.argv.slice(2)
   const preferred = Number(seasonArg) || defaultSeason()
 
   let league
   try {
-    league = await fetchLeague(preferred)
+    league = await fetchSeason(preferred)
   } catch (err) {
     if (seasonArg) throw err
     const fallback = preferred - 1
     console.warn(`${err.message} Falling back to season ${fallback}.`)
-    league = await fetchLeague(fallback)
+    league = await fetchSeason(fallback)
   }
 
   const season = league.seasonId

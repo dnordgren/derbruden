@@ -1,19 +1,15 @@
 import fs from 'fs'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
+import { applyEnvFile } from './lib/espn.mjs'
+import { discordPageUrl } from './lib/discord.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const STATE_PATH = join(__dirname, 'power-rankings-state.json')
 const PAGE_URL = 'https://derbruden.com/power-rankings.html'
 
-function loadEnvFile() {
-  const envPath = join(__dirname, '.env')
-  if (!fs.existsSync(envPath)) return
-  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
-    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/)
-    if (!match || process.env[match[1]]) continue
-    process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, '')
-  }
+function loadConfig() {
+  applyEnvFile(join(__dirname, '.env'))
 }
 
 function loadSummary() {
@@ -29,7 +25,7 @@ function periodLabel(state) {
 
 function pageUrl(state) {
   // Bust scraper caches (Discord) so each week unfurls fresh.
-  return `${PAGE_URL}?x=${state.season}-w${state.week || 0}`
+  return discordPageUrl(PAGE_URL, state.season, state.week)
 }
 
 function buildPayload(state) {
@@ -54,7 +50,7 @@ function buildPayload(state) {
 }
 
 async function main() {
-  loadEnvFile()
+  loadConfig()
   const webhook = process.env.DISCORD_WEBHOOK_URL
   const dryRun = process.argv.includes('--dry-run')
 

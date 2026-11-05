@@ -11,6 +11,15 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import fs from 'node:fs'
 
+import {
+  authCookie,
+  fetchJson,
+  leagueUrl,
+  resolveConfig as baseResolveConfig,
+} from './lib/espn.mjs'
+import { writeJsonAtomic } from './lib/html.mjs'
+import { postDiscordMessage } from './lib/discord.mjs'
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 // State lives under static/data so GitHub Actions runs can commit it back.
 const DEFAULT_STATE_FILE = path.join(ROOT, 'static', 'data', 'trades-state.json')
@@ -20,8 +29,6 @@ const ENV_FILE = path.join(ROOT, '.env')
 // Transaction data comes from the read host and needs BOTH espn_s2 and SWID
 // from the same login session. The fantasy.espn.com host 302s every request
 // now, and lm-api-reads returns transactions only with the full cookie pair.
-const LEAGUE_PATH = '/apis/v3/games/ffl/seasons/{year}/segments/0/leagues/{league}'
-const DEFAULT_LEAGUE_HOST = 'https://lm-api-reads.fantasy.espn.com'
 const PLAYER_URL =
   'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/athletes/{id}'
 
@@ -50,35 +57,6 @@ const EVENT_COLORS = {
   TRADE_VETO: 0xe74c3c
 }
 
-export function loadEnvFile(file) {
-  if (!fs.existsSync(file)) return {}
-  const out = {}
-  for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
-    const trimmed = line.trim()
-    if (!trimmed || trimmed.startsWith('#')) continue
-    const eq = trimmed.indexOf('=')
-    if (eq < 1) continue
-    const key = trimmed.slice(0, eq).trim()
-    let value = trimmed.slice(eq + 1).trim()
-    if (
-      (value.startsWith('"') && value.endsWith('"')) ||
-      (value.startsWith("'") && value.endsWith("'"))
-    ) {
-      value = value.slice(1, -1)
-    }
-    out[key] = value
-  }
-  return out
-}
-
-function writeJsonAtomic(file, data) {
-  const dir = path.dirname(file)
-  fs.mkdirSync(dir, { recursive: true })
-  const tmp = path.join(dir, `.${path.basename(file)}.${process.pid}.tmp`)
-  fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + '\n')
-  fs.renameSync(tmp, file)
-}
-
 const CONFIG_KEYS = [
   'LEAGUE_ID',
   'LEAGUE_YEAR',
@@ -93,19 +71,9 @@ const CONFIG_KEYS = [
   'POSTED_TRADES_FILE'
 ]
 
-function authCookie(env) {
-  const parts = []
-  if (env.ESPN_S2) parts.push(`espn_s2=${env.ESPN_S2}`)
-  if (env.SWID) parts.push(`SWID=${env.SWID}`)
-  return parts.join('; ')
-}
-
 // Real environment variables win over the .env file.
 function resolveConfig() {
-  const fromFile = loadEnvFile(ENV_FILE)
-  const env = {}
-  for (const key of CONFIG_KEYS) env[key] = process.env[key] ?? fromFile[key]
-  return env
+  return baseResolveConfig(ENV_FILE, CONFIG_KEYS)
 }
 
 export function parseArgs(argv) {
@@ -231,26 +199,8 @@ export function buildEmbed(record) {
   }
 }
 
-async function fetchJson(fetchImpl, url, options) {
-  const res = await fetchImpl(url, options)
-  const text = await res.text()
-  let body
-  try {
-    body = JSON.parse(text)
-  } catch {
-    throw new Error(
-      `ESPN returned non-JSON (HTTP ${res.status}). Cookies are likely expired ` +
-        'or missing SWID. Copy espn_s2 and SWID together from one signed-in session.'
-    )
-  }
-  if (!res.ok) throw new Error(`ESPN HTTP ${res.status}: ${JSON.stringify(body).slice(0, 200)}`)
-  return body
-}
-
 async function fetchTransactions(fetchImpl, env, notifyTypes) {
-  const url =
-    (env.LEAGUE_HOST ?? DEFAULT_LEAGUE_HOST) +
-    LEAGUE_PATH.replace('{year}', env.LEAGUE_YEAR).replace('{league}', env.LEAGUE_ID)
+  const url = leagueUrl(env)
   const filter = { transactions: { filterType: { value: notifyTypes } } }
   const data = await fetchJson(fetchImpl, `${url}?view=mTransactions2`, {
     headers: {
@@ -262,9 +212,7 @@ async function fetchTransactions(fetchImpl, env, notifyTypes) {
 }
 
 async function fetchTeamNames(fetchImpl, env) {
-  const url =
-    (env.LEAGUE_HOST ?? DEFAULT_LEAGUE_HOST) +
-    LEAGUE_PATH.replace('{year}', env.LEAGUE_YEAR).replace('{league}', env.LEAGUE_ID)
+  const url = leagueUrl(env)
   try {
     const data = await fetchJson(fetchImpl, `${url}?view=mTeam`, {
       headers: { Cookie: authCookie(env) }
@@ -299,28 +247,6 @@ async function resolvePlayerNames(fetchImpl, state, playerIds) {
     }
   }
   return state.players
-}
-
-// One shared sender for embeds and plain-content messages. Retries once on
-// a 429 using Discord's retry_after hint.
-export async function postDiscordMessage(fetchImpl, webhookUrl, payload) {
-  const send = () =>
-    fetchImpl(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    })
-  const res = await send()
-  if (res.status === 429) {
-    const body = res.headers.get('content-type')?.includes('json') ? await res.json() : {}
-    const waitMs = (body.retry_after ?? Number(res.headers.get('retry-after')) ?? 1) * 1000
-    await new Promise((r) => setTimeout(r, Math.min(waitMs, 10000)))
-    const retry = await send()
-    if (!retry.ok && retry.status !== 204)
-      throw new Error(`Discord retry failed with HTTP ${retry.status}`)
-    return
-  }
-  if (!res.ok && res.status !== 204) throw new Error(`Discord failed with HTTP ${res.status}`)
 }
 
 async function postDiscord(fetchImpl, webhookUrl, embed) {

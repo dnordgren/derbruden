@@ -389,6 +389,19 @@ seasons/<year>/segments/0/leagues/794521`. The older
 UNDECIDED`. Filter on decided winners only or phantom ties appear.
 - Team abbreviations change year to year; team `id`s do not.
 
+## Shared script helpers
+
+- `scripts/lib/espn.mjs` owns env-file parsing (`loadEnvFile` /
+  `applyEnvFile` / `resolveConfig`), cookie auth, league URLs, `fetchJson`
+  with ESPN-flavored errors, and `defaultSeason`. `lib/html.mjs` owns
+  `escapeHtml`, `ownerLink`, `upsertSection` (marker splice + full-page
+  create), and `writeJsonAtomic`. `lib/discord.mjs` owns
+  `postDiscordMessage` (with 429 retry) and the cache-busting page URL.
+  New generators must import from `lib/` instead of copying these.
+- Tests import the helpers from `lib/` directly (e.g. `defaultSeason`,
+  `escapeHtml`); `generate-sit-start.test.mjs` also covers MWA (the old
+  `generate-mwa.test.mjs` was merged into it).
+
 ## Working agreements
 
 Derek's standing rules for any agent working in this repo. These outrank

@@ -25,38 +25,6 @@
       margin-bottom: 0;
     }
 
-    .event-badge {
-      display: inline-block;
-      padding: 1px 8px;
-      border-radius: 10px;
-      font-size: 0.8em;
-      font-weight: 600;
-      color: #fff;
-      background: #5d6d7e;
-    }
-
-    .event-badge.accepted {
-      background: #1e7d43;
-    }
-
-    .event-badge.declined,
-    .event-badge.vetoed {
-      background: #c0392b;
-    }
-
-    .event-badge.waiver {
-      background: #8e44ad;
-    }
-
-    .event-badge.pending {
-      background: #b45309;
-    }
-
-    .side {
-      white-space: nowrap;
-      font-weight: 600;
-    }
-
     table {
       width: 100%;
       border-collapse: collapse;
@@ -92,42 +60,6 @@
     @media (max-width: 768px) {
       table.moves {
         min-width: 0;
-      }
-
-      table.moves,
-      table.moves thead,
-      table.moves tbody,
-      table.moves tr,
-      table.moves td {
-        display: block;
-      }
-
-      table.moves thead {
-        display: none;
-      }
-
-      table.moves tbody tr {
-        margin-bottom: 16px;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 12px;
-      }
-
-      table.moves td {
-        border-bottom: none;
-        padding: 4px 12px;
-      }
-
-      table.moves td[colspan]::before {
-        content: none;
-      }
-
-      table.moves td::before {
-        display: block;
-        font-size: 0.75em;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--muted);
-        margin-bottom: 2px;
       }
 
       #trade-rows td:nth-child(1)::before {

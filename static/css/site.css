@@ -392,42 +392,6 @@ nav a[aria-current='page'] {
   white-space: nowrap;
 }
 
-/* Award badges */
-
-.rank-badge {
-  display: inline-grid;
-  place-items: center;
-  width: 1.7em;
-  height: 1.7em;
-  border-radius: 999px;
-  font-size: 0.72em;
-  font-weight: 800;
-  vertical-align: -0.35em;
-  margin-right: 0.5em;
-}
-
-.rank-badge.gold {
-  background: var(--gold);
-  color: var(--paper);
-}
-
-.rank-badge.silver {
-  box-shadow: inset 0 0 0 2px var(--muted);
-}
-
-.icon-bottle {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.12em;
-  margin-right: 0.5em;
-  background-color: currentColor;
-  mask: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9.5%201.5h5c.55%200%201%20.45%201%201v1.6c0%20.46-.26.88-.68%201.09l-.82.41V7h.25A2.75%202.75%200%200%201%2017%209.75v9.5A2.75%202.75%200%200%201%2014.25%2022h-4.5A2.75%202.75%200%200%201%207%2019.25v-9.5A2.75%202.75%200%200%201%209.75%207H10V5.6l-.82-.41a1.22%201.22%200%200%201-.68-1.09V2.5c0-.55.45-1%201-1zM10%209v10.5h4V9h-4z%22%2F%3E%3C%2Fsvg%3E')
-    no-repeat center / contain;
-  -webkit-mask: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9.5%201.5h5c.55%200%201%20.45%201%201v1.6c0%20.46-.26.88-.68%201.09l-.82.41V7h.25A2.75%202.75%200%200%201%2017%209.75v9.5A2.75%202.75%200%200%201%2014.25%2022h-4.5A2.75%202.75%200%200%201%207%2019.25v-9.5A2.75%202.75%200%200%201%209.75%207H10V5.6l-.82-.41a1.22%201.22%200%200%201-.68-1.09V2.5c0-.55.45-1%201-1zM10%209v10.5h4V9h-4z%22%2F%3E%3C%2Fsvg%3E')
-    no-repeat center / contain;
-}
-
 /* Page furniture */
 
 .owner-logo-header {
@@ -463,12 +427,6 @@ nav a[aria-current='page'] {
   grid-template-columns: 1fr 2fr;
   gap: 20px;
   margin-bottom: 40px;
-}
-
-.post-date,
-.post-category {
-  color: var(--muted);
-  font-size: 0.9em;
 }
 
 .pr-meta,
@@ -656,5 +614,91 @@ footer a {
   nav a {
     padding: 4px 4px;
     font-size: 0.9em;
+  }
+}
+
+/* Shared transaction/note patterns. These lived copy-pasted in
+   trades.html + waivers.html (.event-badge, .side, table.moves cards) and
+   in luck/sit-start/playoff-race/records (.section-note, .methodology).
+   One copy here keeps the pages and the generator templates in sync. */
+
+.section-note {
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+.event-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 10px;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: #fff;
+  background: #5d6d7e;
+}
+
+.event-badge.accepted {
+  background: #1e7d43;
+}
+
+.event-badge.declined,
+.event-badge.vetoed {
+  background: #c0392b;
+}
+
+.event-badge.waiver {
+  background: #8e44ad;
+}
+
+.event-badge.pending {
+  background: #b45309;
+}
+
+.side {
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.methodology code {
+  background: #f4f4f4;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+@media (max-width: 768px) {
+  table.moves,
+  table.moves thead,
+  table.moves tbody,
+  table.moves tr,
+  table.moves td {
+    display: block;
+  }
+
+  table.moves thead {
+    display: none;
+  }
+
+  table.moves tbody tr {
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+  }
+
+  table.moves td {
+    border-bottom: none;
+    padding: 4px 12px;
+  }
+
+  table.moves td[colspan]::before {
+    content: none;
+  }
+
+  table.moves td::before {
+    display: block;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 2px;
   }
 }

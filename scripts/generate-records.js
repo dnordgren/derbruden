@@ -3,11 +3,17 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname as pathDirname, join } from 'path'
 import { TEAM_OWNERS } from './team-owners.js'
+import {
+  applyEnvFile,
+  defaultSeason,
+  espnAuthHeaders,
+  fetchLeague,
+  LEAGUE_ID_DEFAULT,
+} from './lib/espn.mjs'
+import { escapeHtml, ownerLink, upsertSection } from './lib/html.mjs'
 
 const __dirname = pathDirname(fileURLToPath(import.meta.url))
 
-const LEAGUE_ID = process.env.FANTASY_LEAGUE_ID || '794521'
-const API_BASE = 'https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl'
 // The league joined ESPN in 2018; earlier seasons live only in stats.csv.
 const API_FIRST_SEASON = 2018
 const USER_AGENT = 'derbruden.com all-time records generator'
@@ -15,36 +21,8 @@ const USER_AGENT = 'derbruden.com all-time records generator'
 const DATA_PATH = join(__dirname, '../static/data/alltime-records.json')
 const PAGE_PATH = join(__dirname, '../src/records.html')
 
-export function defaultSeason() {
-  const now = new Date()
-  return now.getUTCMonth() >= 7 ? now.getUTCFullYear() : now.getUTCFullYear() - 1
-}
-
-function loadEnvFile() {
-  const envPath = join(__dirname, '.env')
-  if (!fs.existsSync(envPath)) return
-  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
-    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/)
-    if (!match || process.env[match[1]]) continue
-    process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, '')
-  }
-}
-
 function authHeaders() {
-  const espnS2 = process.env.ESPN_S2
-  const swid = process.env.SWID
-  if (!espnS2) {
-    throw new Error('This league is private. Set ESPN_S2 in scripts/.env or your environment.')
-  }
-  const cookie = swid ? `SWID=${swid}; espn_s2=${espnS2}` : `espn_s2=${espnS2}`
-  return { Cookie: cookie, 'User-Agent': USER_AGENT }
-}
-
-async function fetchLeague(season) {
-  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` + '?view=mTeam&view=mMatchupScore'
-  const res = await fetch(url, { headers: authHeaders() })
-  if (!res.ok) throw new Error(`ESPN API returned ${res.status} for season ${season}`)
-  return res.json()
+  return espnAuthHeaders(process.env, USER_AGENT)
 }
 
 // Decided games only. Unplayed matchups carry winner "UNDECIDED" and zero
@@ -413,17 +391,8 @@ export function crossCheck(apiRows, csvRows) {
   return problems
 }
 
-function escapeHtml(value) {
-  return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-}
-
 function fmt(n) {
   return Number.isInteger(n) ? String(n) : n.toFixed(1)
-}
-
-function ownerLink(owner) {
-  const mapped = Object.values(TEAM_OWNERS).find(m => m.owner === owner)
-  return mapped ? `<a href="./${mapped.page}">${escapeHtml(owner)}</a>` : escapeHtml(owner)
 }
 
 function detail(entry, result) {
@@ -536,21 +505,13 @@ const START = '<!-- RECORDS_START -->'
 const END = '<!-- RECORDS_END -->'
 
 export function upsertRecordsPage(contentHtml, pagePath = PAGE_PATH) {
-  const section = `${START}\n${contentHtml}\n${END}`
-  if (!fs.existsSync(pagePath)) {
-    fs.writeFileSync(pagePath, pageTemplate(contentHtml))
-    console.log(`Created ${pagePath}`)
-    return
-  }
-  const content = fs.readFileSync(pagePath, 'utf8')
-  const startIdx = content.indexOf(START)
-  const endIdx = content.indexOf(END)
-  if (startIdx === -1 || endIdx === -1) {
-    console.warn(`Markers missing in ${pagePath}; page left untouched`)
-    return
-  }
-  fs.writeFileSync(pagePath, content.slice(0, startIdx) + section + content.slice(endIdx + END.length))
-  console.log(`Updated ${pagePath}`)
+  upsertSection({
+    pagePath,
+    start: START,
+    end: END,
+    contentHtml,
+    renderFull: pageTemplate,
+  })
 }
 
 function pageTemplate(content) {
@@ -572,10 +533,6 @@ function pageTemplate(content) {
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
   <style>
-    .section-note {
-      color: var(--muted);
-      font-size: 0.9em;
-    }
 
     h2 {
       margin-top: 40px;
@@ -644,7 +601,7 @@ ${content}
 }
 
 async function main() {
-  loadEnvFile()
+  applyEnvFile(join(__dirname, '.env'))
   authHeaders()
 
   const args = process.argv.slice(2)
@@ -654,7 +611,11 @@ async function main() {
   const leaguesBySeason = new Map()
   for (let season = current; season >= API_FIRST_SEASON; season--) {
     try {
-      leaguesBySeason.set(season, await fetchLeague(season))
+      leaguesBySeason.set(season, await fetchLeague({
+        season,
+        views: ['mTeam', 'mMatchupScore'],
+        headers: authHeaders(),
+      }))
     } catch (err) {
       console.warn(`Skipping ${season}: ${err.message}`)
     }
@@ -715,7 +676,7 @@ async function main() {
   const allRecords = computeRecords(allGames, ownerOf, nameOf)
   const data = {
     generated: new Date().toISOString().slice(0, 10),
-    leagueId: LEAGUE_ID,
+    leagueId: LEAGUE_ID_DEFAULT,
     scopeNote:
       'Weekly records and head-to-head include every decided regular-season and postseason game since 2018. Droughts and champions also include recorded pre-ESPN history.',
     records: {

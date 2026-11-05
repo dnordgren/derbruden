@@ -25,68 +25,40 @@ import {
   computeScoreStats,
   computeStandings,
   currentLeaderForGame,
-  defaultSeason,
   extractGames,
   extractTeams,
-  loadEnvFile,
   parseArgs,
   raceDataEqual,
   standingsList,
 } from './generate-playoff-race.mjs'
+import {
+  authCookie,
+  defaultSeason,
+  fetchJson,
+  leagueUrl,
+  loadEnvFile,
+  resolveConfig as baseResolveConfig,
+} from './lib/espn.mjs'
+import { writeJsonAtomic } from './lib/html.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const DATA_FILE = path.join(ROOT, 'static', 'data', 'diaper-race.json')
 const ENV_FILE = path.join(ROOT, '.env')
-const DEFAULT_LEAGUE_HOST = 'https://lm-api-reads.fantasy.espn.com'
-const LEAGUE_PATH = '/apis/v3/games/ffl/seasons/{year}/segments/0/leagues/{league}'
 const USER_AGENT = 'derbruden.com diaper race generator'
 
-
 function resolveConfig() {
-  const fromFile = loadEnvFile(ENV_FILE)
-  const env = {}
-  const keys = ['LEAGUE_ID', 'LEAGUE_YEAR', 'ESPN_S2', 'SWID', 'LEAGUE_HOST', 'PLAYOFF_START_WEEK']
-  for (const key of keys) {
-    const value = process.env[key] || fromFile[key]
-    env[key] = value === '' ? undefined : value
-  }
-  return env
-}
-
-function authCookie(env) {
-  const parts = []
-  if (env.ESPN_S2) parts.push(`espn_s2=${env.ESPN_S2}`)
-  if (env.SWID) parts.push(`SWID=${env.SWID}`)
-  return parts.join('; ')
-}
-
-function leagueUrl(env) {
-  return (env.LEAGUE_HOST ?? DEFAULT_LEAGUE_HOST) + LEAGUE_PATH.replace('{year}', env.LEAGUE_YEAR).replace('{league}', env.LEAGUE_ID)
-}
-
-async function fetchJson(fetchImpl, url, options = {}) {
-  const res = await fetchImpl(url, options)
-  const text = await res.text()
-  let body
-  try {
-    body = JSON.parse(text)
-  } catch {
-    throw new Error(`ESPN returned non-JSON (HTTP ${res.status}). Cookies are likely expired or missing SWID.`)
-  }
-  if (!res.ok) throw new Error(`ESPN HTTP ${res.status}: ${JSON.stringify(body).slice(0, 500)}`)
-  return body
+  return baseResolveConfig(ENV_FILE, [
+    'LEAGUE_ID',
+    'LEAGUE_YEAR',
+    'ESPN_S2',
+    'SWID',
+    'LEAGUE_HOST',
+    'PLAYOFF_START_WEEK',
+  ])
 }
 
 function ownerFor(teamId) { return TEAM_OWNERS[teamId]?.owner ?? `Team ${teamId}` }
-
-function writeJsonAtomic(file, data) {
-  const dir = path.dirname(file)
-  fs.mkdirSync(dir, { recursive: true })
-  const tmp = path.join(dir, `.${path.basename(file)}.${process.pid}.tmp`)
-  fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + '\n')
-  fs.renameSync(tmp, file)
-}
 
 export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const args = parseArgs(argv)

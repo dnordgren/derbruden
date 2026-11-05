@@ -3,7 +3,6 @@ import { test } from 'node:test'
 import {
   buildBoard,
   dslNflTeamId,
-  escapeHtml,
   formatPickSummary,
   isFilledPick,
   pickRoundLabel,
@@ -12,6 +11,7 @@ import {
   slotOrder,
   seasonRange,
 } from './generate-drafts.js'
+import { escapeHtml } from './lib/html.mjs'
 
 test('pickRoundLabel formats round and pick number', () => {
   assert.equal(pickRoundLabel({ roundId: 3, roundPickNumber: 6 }), 'R3P6')

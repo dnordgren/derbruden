@@ -13,13 +13,12 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import fs from 'node:fs'
 
-import { loadEnvFile, postDiscordMessage } from './watch-trades.mjs'
+import { authCookie, fetchJson, leagueUrl, resolveConfig as baseResolveConfig } from './lib/espn.mjs'
+import { postDiscordMessage } from './lib/discord.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const ENV_FILE = path.join(ROOT, '.env')
 
-const LEAGUE_PATH = '/apis/v3/games/ffl/seasons/{year}/segments/0/leagues/{league}'
-const DEFAULT_LEAGUE_HOST = 'https://lm-api-reads.fantasy.espn.com'
 const NFL_NEWS_URL = 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/news?limit=25'
 const DEFAULT_BASE_URL = 'https://opencode.ai/zen/go'
 const DEFAULT_MODEL = 'muse-spark-1.2-contributor'
@@ -46,18 +45,8 @@ const CONFIG_KEYS = [
   'LEAGUE_HOST',
 ]
 
-function authCookie(env) {
-  const parts = []
-  if (env.ESPN_S2) parts.push(`espn_s2=${env.ESPN_S2}`)
-  if (env.SWID) parts.push(`SWID=${env.SWID}`)
-  return parts.join('; ')
-}
-
 function resolveConfig() {
-  const fromFile = loadEnvFile(ENV_FILE)
-  const env = {}
-  for (const key of CONFIG_KEYS) env[key] = process.env[key] ?? fromFile[key]
-  return env
+  return baseResolveConfig(ENV_FILE, CONFIG_KEYS)
 }
 
 export function parseArgs(argv) {
@@ -147,19 +136,6 @@ export function buildLeagueContext(leagueData, tradeRecord) {
     sides,
     playerNews,
   }
-}
-
-async function fetchJson(fetchImpl, url, options) {
-  const res = await fetchImpl(url, options)
-  const text = await res.text()
-  let body
-  try {
-    body = JSON.parse(text)
-  } catch {
-    throw new Error(`ESPN returned non-JSON (HTTP ${res.status}). Cookies are likely expired.`)
-  }
-  if (!res.ok) throw new Error(`ESPN HTTP ${res.status}: ${JSON.stringify(body).slice(0, 200)}`)
-  return body
 }
 
 async function fetchNflHeadlines(fetchImpl) {
@@ -276,9 +252,7 @@ export async function main(argv, fetchImpl = globalThis.fetch) {
     return 0
   }
 
-  const url =
-    (env.LEAGUE_HOST ?? DEFAULT_LEAGUE_HOST) +
-    LEAGUE_PATH.replace('{year}', env.LEAGUE_YEAR).replace('{league}', env.LEAGUE_ID)
+  const url = leagueUrl(env)
   const leagueData = await fetchJson(fetchImpl, `${url}?view=mTeam&view=mRoster`, {
     headers: { Cookie: authCookie(env) },
   })

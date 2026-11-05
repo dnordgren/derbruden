@@ -107,7 +107,7 @@ test('buildPayload lists worst team first with diaper line', () => {
       { rank: 1, teamId: 1, owner: 'AAA', wins: 8, losses: 1, ties: 0, pf: 1000, doomed: false, safe: true },
       { rank: 2, teamId: 2, owner: 'BBB', wins: 5, losses: 4, ties: 0, pf: 900, doomed: false, safe: false },
       { rank: 3, teamId: 3, owner: 'CCC', wins: 3, losses: 6, ties: 0, pf: 800, doomed: false, safe: false },
-      { rank: 4, teamId: 4, owner: 'DDD', wins: 1, losses: 8, ties: 0, pf: 700, doomed: false, safe: false },
+      { rank: 4, teamId: 4, owner: 'DDD', wins: 1, losses: 8, ties: 0, pf: 700, doomed: false, safe: false, diaperPct: 71 },
     ],
     doomedTeamIds: [],
     safeTeamIds: [1],
@@ -123,6 +123,7 @@ test('buildPayload lists worst team first with diaper line', () => {
   assert.ok(dddPos !== -1 && dddPos < aaaPos)
   assert.ok(desc.includes('diaper'))
   assert.ok(desc.includes('playoff-race.html?x=2026-w9'))
+  assert.ok(desc.includes('(700.0 PF, 71%)'))
 })
 
 test('buildPayload hypes a locked-in diaper', () => {

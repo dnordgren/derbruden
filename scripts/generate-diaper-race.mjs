@@ -17,9 +17,11 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { TEAM_OWNERS } from './team-owners.js'
 import {
+  DEFAULT_PLAYOFF_TEAM_COUNT,
   DEFAULT_START_WEEK,
   buildScenarios,
   computeDiaperFate,
+  computeOdds,
   computeStandings,
   currentLeaderForGame,
   defaultSeason,
@@ -133,6 +135,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const currentWeek = remaining.length ? Math.min(...remaining.map(g => g.week)) : null
 
   const fate = computeDiaperFate(stats, remaining, teamCount, teamsById)
+  const playoffTeamCount = settings.playoffTeamCount ?? DEFAULT_PLAYOFF_TEAM_COUNT
+  const odds = computeOdds(stats, remaining, playoffTeamCount, { season })
 
   // Late-season gate note
   let note = null
@@ -214,6 +218,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
       worstRank: fate.worstRank[r.teamId],
       doomed: fate.doomed.includes(r.teamId),
       safe: fate.safe.includes(r.teamId),
+      playoffPct: odds[r.teamId]?.playoff ?? null,
+      diaperPct: odds[r.teamId]?.diaper ?? null,
     })),
     doomedTeamIds: fate.doomed,
     safeTeamIds: fate.safe,

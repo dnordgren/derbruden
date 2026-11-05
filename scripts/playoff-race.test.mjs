@@ -2,12 +2,16 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import {
   computeClinchEliminated,
+  computeOdds,
   computeStandings,
   currentLeaderForGame,
   extractGames,
+  hashSeed,
+  mulberry32,
   standingsList,
   buildScenarios,
   raceDataEqual,
+  renderStandingsTable,
   DEFAULT_START_WEEK,
 } from './generate-playoff-race.mjs'
 
@@ -172,4 +176,77 @@ test('raceDataEqual detects real race changes', () => {
   assert.equal(raceDataEqual(a, { ...a, clinchedOwners: ['DM'] }), false)
   assert.equal(raceDataEqual(a, null), false)
   assert.equal(raceDataEqual(null, a), false)
+})
+
+test('computeOdds with 0 remaining resolves ties by PF', () => {
+  const stats = {
+    1: { teamId: 1, wins: 8, losses: 5, ties: 0, pf: 1500, pa: 0 },
+    2: { teamId: 2, wins: 8, losses: 5, ties: 0, pf: 1400, pa: 0 },
+    3: { teamId: 3, wins: 6, losses: 7, ties: 0, pf: 1500, pa: 0 },
+    4: { teamId: 4, wins: 6, losses: 7, ties: 0, pf: 1300, pa: 0 },
+  }
+  const odds = computeOdds(stats, [], 2, { season: 2026 })
+  assert.deepEqual(odds[1], { playoff: 100, diaper: 0 })
+  assert.deepEqual(odds[2], { playoff: 100, diaper: 0 })
+  assert.deepEqual(odds[3], { playoff: 0, diaper: 0 })
+  assert.deepEqual(odds[4], { playoff: 0, diaper: 100 })
+})
+
+test('computeOdds splits tied teams evenly at the cut', () => {
+  // A 8-0 locked; B 7-1; C and D 6-2 with C @ D left, top 2.
+  // C wins -> B/C split the second spot; D wins -> B/D split it.
+  // Diaper: the loser finishes alone at the bottom each time.
+  const stats = {
+    1: { teamId: 1, wins: 8, losses: 0, ties: 0, pf: 1200, pa: 0 },
+    2: { teamId: 2, wins: 7, losses: 1, ties: 0, pf: 1100, pa: 0 },
+    3: { teamId: 3, wins: 6, losses: 2, ties: 0, pf: 800, pa: 0 },
+    4: { teamId: 4, wins: 6, losses: 2, ties: 0, pf: 700, pa: 0 },
+  }
+  const remaining = [{ week: 10, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }]
+  const odds = computeOdds(stats, remaining, 2, { season: 2026 })
+  assert.deepEqual(odds[1], { playoff: 100, diaper: 0 })
+  assert.deepEqual(odds[2], { playoff: 50, diaper: 0 })
+  assert.deepEqual(odds[3], { playoff: 25, diaper: 50 })
+  assert.deepEqual(odds[4], { playoff: 25, diaper: 50 })
+})
+
+test('computeOdds Monte Carlo is deterministic and bounded', () => {
+  const stats = {
+    1: { teamId: 1, wins: 6, losses: 2, ties: 0, pf: 1000, pa: 0 },
+    2: { teamId: 2, wins: 2, losses: 6, ties: 0, pf: 800, pa: 0 },
+  }
+  const remaining = Array.from({ length: 25 }, (_, i) => ({ week: i + 1, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }))
+  const a = computeOdds(stats, remaining, 1, { season: 2026 })
+  const b = computeOdds(stats, remaining, 1, { season: 2026 })
+  assert.deepEqual(a, b)
+  for (const id of [1, 2]) {
+    assert.ok(a[id].playoff >= 0 && a[id].playoff <= 100)
+    assert.ok(a[id].diaper >= 0 && a[id].diaper <= 100)
+  }
+  // 6-2 vs 2-6 with 25 head-to-head coin flips: leader wins ~79% (exact)
+  assert.ok(a[1].playoff >= 70 && a[1].playoff <= 90)
+  assert.ok(a[2].diaper >= 70 && a[2].diaper <= 90)
+  // different season seed input still runs (seed covers inputs; just check shape)
+  const c = computeOdds(stats, remaining, 1, { season: 2025 })
+  assert.ok(c[1].playoff >= 0 && c[1].playoff <= 100)
+})
+
+test('mulberry32 and hashSeed are deterministic', () => {
+  assert.equal(hashSeed('abc'), hashSeed('abc'))
+  const r1 = mulberry32(42)
+  const r2 = mulberry32(42)
+  assert.equal(r1(), r2())
+  assert.ok(r1() >= 0 && r1() < 1)
+})
+
+test('renderStandingsTable renders PO% and D% columns', () => {
+  const standings = [
+    { rank: 1, teamId: 1, owner: 'A', abbrev: 'A', name: 'A', wins: 8, losses: 0, ties: 0, pf: 1000, playoffPct: 98, diaperPct: 0, remaining: 0 },
+    { rank: 2, teamId: 2, owner: 'B', abbrev: 'B', name: 'B', wins: 0, losses: 8, ties: 0, pf: 700, playoffPct: 0, diaperPct: 71, remaining: 0 },
+  ]
+  const html = renderStandingsTable(standings, new Set(), new Set([2]), new Set([2]), new Set())
+  assert.ok(html.includes('<th class="number">PO%</th>'))
+  assert.ok(html.includes('<th class="number">D%</th>'))
+  assert.ok(html.includes('<td class="number">98</td>'))
+  assert.ok(html.includes('<td class="number">71</td>'))
 })

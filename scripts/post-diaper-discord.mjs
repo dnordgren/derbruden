@@ -62,8 +62,9 @@ export function buildPayload(data) {
     if (r.doomed) marker = ' 🍼'
     else if (r.safe) marker = ' ✅'
     const pf = r.pf.toFixed(1)
+    const pct = r.diaperPct != null ? `, ${r.diaperPct}%` : ''
     const pip = i === 0 ? ' ——— diaper ———' : ''
-    lines.push(`**${owner}** ${rec} (${pf} PF)${marker}${pip ? ` ${pip}` : ''}`)
+    lines.push(`**${owner}** ${rec} (${pf} PF${pct})${marker}${pip ? ` ${pip}` : ''}`)
   }
   const rest = standings.slice(displayCount)
   if (rest.length) {

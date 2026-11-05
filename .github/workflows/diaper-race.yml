@@ -37,7 +37,7 @@ jobs:
           {
             echo "ESPN_S2=${{ secrets.ESPN_S2 }}"
             echo "SWID=${{ secrets.SWID }}"
-          } > scripts/.env
+          } > .env
 
       - name: Generate diaper race
         run: node scripts/generate-diaper-race.mjs

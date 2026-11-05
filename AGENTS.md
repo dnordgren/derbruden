@@ -330,17 +330,12 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 
 - `scripts/generate-diaper-race.mjs` tracks the last-place "diaper" (worst
   record, lower PF breaks the tie — loser wears one for the league pic).
-  It imports the playoff-race engine (`extractTeams`, `extractGames`,
-  `computeStandings`, `standingsList`, `buildScenarios`, `raceDataEqual`)
-  and maps the problem to it: with N teams, cutoff N-1 makes
-  `computeClinchEliminated`'s clinched -> safe and eliminated -> doomed
-  (`computeDiaperFate`). Same `--dry-run` / `--start-week` / season args,
-  same late-season gate and repeat-post guard, same Monday hold-vs-flip
-  hypotheticals reframed around diaper locks. Writes
-  `static/data/diaper-race.json` plus the `<section id="diaper">` body of
-  the combined `src/playoff-race.html` page between
-  `<!-- DIAPER_RACE_START -->` / `<!-- DIAPER_RACE_END -->` markers
-  (playoff section first, diaper second; one page since PR #59).
+  Fate math lives in the playoff module (`computeDiaperFate`: cutoff N-1
+  makes `computeClinchEliminated`'s clinched -> safe and eliminated ->
+  doomed). The diaper script writes `static/data/diaper-race.json` only
+  (same `--dry-run` / `--start-week` / season args, same late-season gate
+  and repeat-post guard); the single races page renders diaper `d`/`s`
+  badges in its one combined table from the playoff generator.
 - `make diaper` regenerates the diaper section + JSON from the ESPN API
   (same `scripts/.env` `ESPN_S2` as the playoff race); `make races` runs
   both generators. `scripts/post-diaper-discord.mjs` posts

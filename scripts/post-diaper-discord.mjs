@@ -8,7 +8,6 @@ const ROOT = path.resolve(__dirname, '..')
 const DATA_FILE = path.join(ROOT, 'static', 'data', 'diaper-race.json')
 const ENV_FILE = path.join(ROOT, '.env')
 const PAGE_BASE = 'https://derbruden.com/playoff-race.html'
-const PAGE_ANCHOR = '#diaper'
 
 function loadEnvFile(file = ENV_FILE) {
   if (!fs.existsSync(file)) return {}
@@ -42,7 +41,7 @@ function periodLabel(data) {
 }
 
 function pageUrl(data) {
-  return `${PAGE_BASE}?x=${data.season}-w${data.throughWeek || 0}${PAGE_ANCHOR}`
+  return `${PAGE_BASE}?x=${data.season}-w${data.throughWeek || 0}`
 }
 
 function formatRecord(r) {

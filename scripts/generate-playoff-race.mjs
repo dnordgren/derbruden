@@ -263,6 +263,21 @@ export function computeClinchEliminated(currentStats, remainingGames, playoffTea
   return { clinched, eliminated, bestRank, worstRank, remaining: n }
 }
 
+// The diaper is the mirror image of a playoff berth: with N teams, finishing
+// "top N-1" means safe and rank N means the diaper. Reuse the playoff
+// enumeration with a cutoff of N-1: clinched -> safe, eliminated -> doomed.
+export function computeDiaperFate(currentStats, remainingGames, teamCount, teamsById) {
+  const res = computeClinchEliminated(currentStats, remainingGames, teamCount - 1, teamsById)
+  return {
+    doomed: res.eliminated,
+    safe: res.clinched,
+    bestRank: res.bestRank,
+    worstRank: res.worstRank,
+    note: res.note,
+    remaining: res.remaining,
+  }
+}
+
 // For Monday hypotheticals: current week undecided games
 export function buildScenarios(currentStats, remainingGames, playoffTeamCount, teamsById) {
   if (!remainingGames.length) return null
@@ -347,14 +362,20 @@ function ownerFor(teamId) { return TEAM_OWNERS[teamId]?.owner ?? `Team ${teamId}
 
 function teamNameFor(teamId, teamsById) { return teamsById[teamId]?.name ?? ownerFor(teamId) }
 
-export function renderStandingsTable(standings, clinchedSet, eliminatedSet) {
+export function renderStandingsTable(standings, clinchedSet, eliminatedSet, doomedSet = new Set(), safeSet = new Set()) {
   const rows = standings.map(r => {
     const isClinched = clinchedSet.has(r.teamId)
     const isEliminated = eliminatedSet.has(r.teamId)
-    const badge = isClinched ? ' <span class="badge clinched">x</span>' : isEliminated ? ' <span class="badge eliminated">e</span>' : ''
+    const isDoomed = doomedSet.has(r.teamId)
+    const isSafe = safeSet.has(r.teamId)
+    const badge = (isClinched ? ' <span class="badge clinched">x</span>' : '')
+      + (isEliminated ? ' <span class="badge eliminated">e</span>' : '')
+      + (isDoomed ? ' <span class="badge doomed">d</span>' : '')
+      + (isSafe ? ' <span class="badge safe">s</span>' : '')
+    const rowClass = isClinched ? 'clinched' : isEliminated ? 'eliminated' : isDoomed ? 'doomed' : isSafe ? 'safe' : ''
     const ownerCell = TEAM_OWNERS[r.teamId] ? `<a href="./${TEAM_OWNERS[r.teamId].page}">${r.owner}</a>` : r.owner
     const record = `${r.wins}-${r.losses}${r.ties ? `-${r.ties}` : ''}`
-    return `<tr class="${isClinched ? 'clinched' : isEliminated ? 'eliminated' : ''}"><td class="number">${r.rank}</td><td class="owner">${ownerCell}${badge}</td><td>${escapeHtml(r.name)}</td><td class="number">${record}</td><td class="number">${r.pf.toFixed(1)}</td><td class="number">${r.remaining ?? '-'}</td></tr>`
+    return `<tr class="${rowClass}"><td class="number">${r.rank}</td><td class="owner">${ownerCell}${badge}</td><td>${escapeHtml(r.name)}</td><td class="number">${record}</td><td class="number">${r.pf.toFixed(1)}</td><td class="number">${r.remaining ?? '-'}</td></tr>`
   }).join('\n')
   return `<div class="table-container"><table class="stats-table">
   <caption class="visually-hidden">Standings</caption>
@@ -369,18 +390,22 @@ function escapeHtml(value) {
 export function renderPageContent(data, teamsById) {
   const clinchedSet = new Set(data.clinchedTeamIds || [])
   const eliminatedSet = new Set(data.eliminatedTeamIds || [])
+  const doomedSet = new Set(data.doomedTeamIds || [])
+  const safeSet = new Set(data.safeTeamIds || [])
   const standingsWithRem = data.standings.map(r => ({ ...r, remaining: data.remainingByTeam?.[r.teamId] ?? r.remaining ?? 0 }))
   // sort for display already sorted
   let html = `<h2>Playoff Race</h2>
-<p class="section-note">${data.season} regular season &middot; ${data.regularSeasonWeeks} weeks &middot; top ${data.playoffTeamCount} make playoffs &middot; tiebreak is points for &middot; through week ${data.throughWeek} &middot; ${data.remainingCount} games left${data.currentWeek ? ` &middot; current week ${data.currentWeek}` : ''} &middot; generated ${data.generated}</p>
+<p class="section-note">${data.season} regular season &middot; ${data.regularSeasonWeeks} weeks &middot; top ${data.playoffTeamCount} make playoffs &middot; last place wears the diaper &middot; tiebreak is points for &middot; through week ${data.throughWeek} &middot; ${data.remainingCount} games left${data.currentWeek ? ` &middot; current week ${data.currentWeek}` : ''} &middot; generated ${data.generated}</p>
 ${data.note ? `<p class="callout">${escapeHtml(data.note)}</p>` : ''}
 <h3>Current Standings</h3>
-<p class="section-note">x = clinched, e = eliminated (wins-only guarantee, tiebreak could still flip).</p>
-${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet)}`
+<p class="section-note">x = clinched, e = eliminated, d = locked into the diaper, s = safe from it (wins-only guarantees, tiebreak could still flip).</p>
+${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet, doomedSet, safeSet)}`
 
   if (data.clinchedOwners?.length) html += `<p><strong>Clinched:</strong> ${data.clinchedOwners.map(o => escapeHtml(o)).join(', ')}</p>`
   if (data.eliminatedOwners?.length) html += `<p><strong>Eliminated:</strong> ${data.eliminatedOwners.map(o => escapeHtml(o)).join(', ')}</p>`
-  if (!data.clinchedOwners?.length && !data.eliminatedOwners?.length) html += `<p>No teams have clinched or been eliminated yet.</p>`
+  if (data.doomedOwners?.length) html += `<p><strong>Fitted for the diaper:</strong> 🍼 ${data.doomedOwners.map(o => escapeHtml(o)).join(', ')}</p>`
+  if (data.safeOwners?.length) html += `<p><strong>Safe from the diaper:</strong> ${data.safeOwners.map(o => escapeHtml(o)).join(', ')}</p>`
+  if (!data.clinchedOwners?.length && !data.eliminatedOwners?.length && !data.doomedOwners?.length && !data.safeOwners?.length) html += `<p>No teams have clinched, been eliminated, or locked in the diaper yet.</p>`
 
   if (data.remainingGames?.length) {
     html += `<h3>Remaining Games</h3><div class="table-container"><table class="stats-table"><thead><tr><th>Wk</th><th>Matchup</th><th>Score (if live)</th></tr></thead><tbody>`
@@ -396,18 +421,20 @@ ${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet)}`
 <p class="section-note">If current leaders hold vs if they flip, how clinches shift (remaining after this week).</p>
 <div class="scenario-grid">
 <div><h4>If leaders hold</h4><p class="muted">${sc.currentWeekGames.map(g => `${g.awayOwner} @ ${g.homeOwner}: ${g.leader ?? 'tied'} leads → hold to ${ownerFor(g.holdWinner)}`).join('<br>')}</p>
-${renderStandingsTable(sc.hold.standings, new Set(sc.hold.clinched.clinched), new Set(sc.hold.clinched.eliminated))}
+${renderStandingsTable(sc.hold.standings, new Set(sc.hold.clinched.clinched), new Set(sc.hold.clinched.eliminated), new Set(sc.hold.doomed ?? []), new Set(sc.hold.safe ?? []))}
 ${sc.hold.clinched.clinched.length ? `<p><strong>Would clinch:</strong> ${sc.hold.clinched.clinched.map(id => ownerFor(id)).join(', ')}</p>` : ''}
+${sc.hold.doomed?.length ? `<p><strong>Would lock in the diaper:</strong> 🍼 ${sc.hold.doomed.map(id => ownerFor(id)).join(', ')}</p>` : ''}
 </div>
 <div><h4>If underdogs rally</h4><p class="muted">${sc.currentWeekGames.map(g => `${g.awayOwner} @ ${g.homeOwner}: flip to ${ownerFor(g.flipWinner)}`).join('<br>')}</p>
-${renderStandingsTable(sc.flip.standings, new Set(sc.flip.clinched.clinched), new Set(sc.flip.clinched.eliminated))}
+${renderStandingsTable(sc.flip.standings, new Set(sc.flip.clinched.clinched), new Set(sc.flip.clinched.eliminated), new Set(sc.flip.doomed ?? []), new Set(sc.flip.safe ?? []))}
 ${sc.flip.clinched.clinched.length ? `<p><strong>Would clinch:</strong> ${sc.flip.clinched.clinched.map(id => ownerFor(id)).join(', ')}</p>` : ''}
+${sc.flip.doomed?.length ? `<p><strong>Would lock in the diaper:</strong> 🍼 ${sc.flip.doomed.map(id => ownerFor(id)).join(', ')}</p>` : ''}
 </div>
 </div>`
   }
 
   html += `<details class="methodology"><summary>How this works</summary>
-<p>Standings count only regular-season games (playoffTierType NONE). Wins + 0.5×ties sorted, then points for. Clinched means even losing all remaining games, the team still finishes top ${data.playoffTeamCount} even if every tied team wins the tiebreak. Eliminated means even winning out, the team cannot reach top ${data.playoffTeamCount} even with tiebreak help. Enumeration tries all 2<sup>n</sup> outcomes for the ${data.remainingCount} remaining regular games (capped at ${ENUM_LIMIT}); head-to-head conflicts are respected, so not every team can win out simultaneously. Future points are ignored for tiebreak — wins grouping is conservative. Hypotheticals show Monday-night "hold vs flip" for the current in-progress week only.</p>
+<p>Standings count only regular-season games (playoffTierType NONE). Wins + 0.5×ties sorted, then points for. Clinched means even losing all remaining games, the team still finishes top ${data.playoffTeamCount} even if every tied team wins the tiebreak. Eliminated means even winning out, the team cannot reach top ${data.playoffTeamCount} even with tiebreak help. Same math at the bottom: doomed means even winning out leaves the team last even with tiebreak help, safe means even losing out cannot finish last — worst record takes the diaper, lower points for breaks ties. Enumeration tries all 2<sup>n</sup> outcomes for the ${data.remainingCount} remaining regular games (capped at ${ENUM_LIMIT}); head-to-head conflicts are respected, so not every team can win out simultaneously. Future points are ignored for tiebreak — wins grouping is conservative. Hypotheticals show Monday-night "hold vs flip" for the current in-progress week only.</p>
 <p>Data from the ESPN fantasy API. Regenerate with <code>make races</code> or wait for the Monday night GitHub Action. Page and JSON refresh together; start week is ${data.startWeek} (regular season is ${data.regularSeasonWeeks} weeks).</p>
 </details>`
   return html
@@ -573,6 +600,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const currentWeek = remaining.length ? Math.min(...remaining.map(g => g.week)) : null
 
   const clinch = computeClinchEliminated(stats, remaining, playoffTeamCount, teamsById)
+  const teamCount = Object.keys(teamsById).length
+  const fate = computeDiaperFate(stats, remaining, teamCount, teamsById)
 
   // Late-season gate note
   let note = null
@@ -588,11 +617,37 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   let scenarios = null
   const isLateSeasonGate = throughWeek >= startWeek - 1 || remaining.length === 0
   if (isLateSeasonGate && remaining.length && currentWeek && remaining.filter(g => g.week === currentWeek).length) {
-    scenarios = buildScenarios(stats, remaining, playoffTeamCount, teamsById)
+    const raw = buildScenarios(stats, remaining, playoffTeamCount, teamsById)
+    const futureRemaining = remaining.filter(g => g.week !== raw.currentWeek)
+    const holdFate = computeDiaperFate(raw.hold.stats, futureRemaining, teamCount, teamsById)
+    const flipFate = computeDiaperFate(raw.flip.stats, futureRemaining, teamCount, teamsById)
+    scenarios = {
+      currentWeek: raw.currentWeek,
+      currentWeekGames: raw.currentWeekGames,
+      hold: {
+        clinched: raw.hold.clinched,
+        standings: raw.hold.standings,
+        doomed: holdFate.doomed,
+        safe: holdFate.safe,
+        doomedOwners: holdFate.doomed.map(id => ownerFor(id)),
+        safeOwners: holdFate.safe.map(id => ownerFor(id)),
+      },
+      flip: {
+        clinched: raw.flip.clinched,
+        standings: raw.flip.standings,
+        doomed: flipFate.doomed,
+        safe: flipFate.safe,
+        doomedOwners: flipFate.doomed.map(id => ownerFor(id)),
+        safeOwners: flipFate.safe.map(id => ownerFor(id)),
+      },
+      futureRemainingCount: raw.futureRemainingCount,
+    }
   }
 
   const clinchedOwners = clinch.clinched.map(id => ownerFor(id))
   const eliminatedOwners = clinch.eliminated.map(id => ownerFor(id))
+  const doomedOwners = fate.doomed.map(id => ownerFor(id))
+  const safeOwners = fate.safe.map(id => ownerFor(id))
 
   // Prepare remainingGames for JSON/page
   const remainingGamesJson = remaining.map(g => ({
@@ -635,11 +690,17 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
       worstRank: clinch.worstRank[r.teamId],
       clinched: clinch.clinched.includes(r.teamId),
       eliminated: clinch.eliminated.includes(r.teamId),
+      doomed: fate.doomed.includes(r.teamId),
+      safe: fate.safe.includes(r.teamId),
     })),
     clinchedTeamIds: clinch.clinched,
     eliminatedTeamIds: clinch.eliminated,
     clinchedOwners,
     eliminatedOwners,
+    doomedTeamIds: fate.doomed,
+    safeTeamIds: fate.safe,
+    doomedOwners,
+    safeOwners,
     remainingGames: remainingGamesJson,
     scenarios: scenarios ? {
       currentWeek: scenarios.currentWeek,
@@ -679,6 +740,10 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     eliminatedTeamIds: clinch.eliminated,
     clinchedOwners,
     eliminatedOwners,
+    doomedTeamIds: fate.doomed,
+    safeTeamIds: fate.safe,
+    doomedOwners,
+    safeOwners,
     remainingByTeam,
     remainingGames: remainingGamesJson,
     scenarios,

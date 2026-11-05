@@ -254,13 +254,14 @@ Notes:
 
 ### Diaper race
 
-The [races page](https://derbruden.com/playoff-race.html) carries both
-sections: playoff standings up top, diaper watch below (`#diaper`
-anchor). Last place wears a diaper for the annual league pic, so the
-lower half tracks it worst-first — doomed (locked in) vs safe flags,
-remaining games, and Monday-night hypotheticals framed around diaper
-locks. Data lands in `static/data/diaper-race.json` with no-cache
-deploys like the other JSON feeds.
+The [races page](https://derbruden.com/playoff-race.html) is one combined
+table: playoff `x`/`e` badges plus diaper `d` (locked in) / `s` (safe)
+badges, one hold-vs-flip hypotheticals pair with both outcome lines.
+Last place wears a diaper for the annual league pic — worst record,
+lower points for breaks ties. The diaper Discord post keeps its own
+worst-first sort (different medium, different story). Fate data lands in
+`static/data/diaper-race.json` with no-cache deploys like the other JSON
+feeds.
 
 ```sh
 make races  # both generators; or make diaper for the diaper section alone

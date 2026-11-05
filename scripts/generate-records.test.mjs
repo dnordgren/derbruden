@@ -11,7 +11,6 @@ import {
   longestWinStreak,
   makeOwnerLookup,
   parseStatsCsv,
-  renderH2HChartSection,
   seasonSummaries,
 } from './generate-records.js'
 
@@ -290,27 +289,4 @@ test('makeOwnerLookup falls back to first-seen abbreviations', () => {
     2025: { 100: { id: 100, abbrev: 'RENAMED', name: 'Renamed' } },
   })
   assert.equal(lookup(100), 'NEW')
-})
-
-test('renderH2HChartSection embeds matrix payload and script tags', () => {
-  const html = renderH2HChartSection({
-    order: ['AA', 'BB'],
-    rows: [
-      { owner: 'AA', rivals: { BB: { wins: 3, losses: 1, ties: 0 } } },
-      { owner: 'BB', rivals: { AA: { wins: 1, losses: 3, ties: 0 } } },
-    ],
-  })
-  assert.ok(html.includes('id="records-h2h-chart"'))
-  assert.ok(html.includes('id="records-h2h-data"'))
-  assert.ok(html.includes('records-h2h.js?v=3'))
-  assert.ok(html.includes('defer'))
-  const match = html.match(/id="records-h2h-data">([\s\S]*?)<\/script>/)
-  assert.ok(match)
-  const parsed = JSON.parse(match[1])
-  assert.deepEqual(parsed.owners, ['AA', 'BB'])
-  assert.deepEqual(parsed.records.AA.BB, { wins: 3, losses: 1, ties: 0 })
-})
-
-test('renderH2HChartSection returns empty string when no rows', () => {
-  assert.equal(renderH2HChartSection({ order: [], rows: [] }), '')
 })

@@ -482,21 +482,6 @@ ${body}
 </table></div>`
 }
 
-export function renderH2HChartSection(h2h) {
-  if (!h2h.rows.length) return ''
-  const payload = {
-    owners: h2h.order,
-    records: Object.fromEntries(h2h.rows.map(r => [r.owner, r.rivals])),
-  }
-  const json = JSON.stringify(payload).replace(/<\//g, '<\\/')
-  return `<h2>Head-to-head heat map</h2>
-<p class="section-note">Win rate for row owner vs column owner. Green means the row owner won more often.</p>
-<div class="viz-chart" id="records-h2h-chart" tabindex="0" role="region" aria-label="Head-to-head heat map chart. It repeats the table above: row owner win rate versus column owner."></div>
-<script type="application/json" id="records-h2h-data">${json}</script>
-<script src="../static/js/d3.v7.min.js" defer></script>
-<script src="../static/js/records-h2h.js?v=3" defer></script>`
-}
-
 export function renderTrophiesSection({ champions, lowestScore, mostPointsInALoss, droughts }) {
   const ls = lowestScore
   const ml = mostPointsInALoss
@@ -538,7 +523,6 @@ export function renderPageContent(data) {
   return [
     renderRecordsSection(data.records),
     renderH2HSection(data.h2h),
-    renderH2HChartSection(data.h2h),
     renderTrophiesSection({
       champions: data.champions,
       lowestScore: data.hallOfShame.lowestScore,

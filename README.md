@@ -55,7 +55,7 @@ Season,Owner,W,L,%,RGPF,RGPA,TPF,DIFF,PO?,RGRnk,Champ,PORnk
 ### Generate power rankings
 
 Pulls the league from the ESPN fantasy API. Computes Elo ratings with a
-margin-of-victory factor. Writes `src/power-rankings.html`.
+margin-of-victory factor. Writes the Power Rankings table at the top of `src/index.html`.
 
 The league is private. Put the `espn_s2` cookie value from espn.com in
 `scripts/.env` (git ignored):

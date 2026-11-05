@@ -15,9 +15,8 @@ No framework; shared page chunks are inlined at build time by
   Pages link it and keep only page-specific rules inline. Archivo is
   self-hosted in `static/fonts/`. Shared chrome (head links, header,
   nav + sponsor ribbon, footer) lives in `src/partials/` — change it
-  there, not per page; the two full-page generator templates
-  (`generate-power-rankings.js`, `generate-drafts.js`) emit the same
-  includes and must stay in sync. Bump `site.css?v=N` in
+  there, not per page; the full-page generator template
+  (`generate-drafts.js`) emits the same includes and must stay in sync. Bump `site.css?v=N` in
   `partials/head-common.html` whenever site.css changes.
 
 ## Commands
@@ -27,7 +26,7 @@ No framework; shared page chunks are inlined at build time by
   edit `pub/` or deploy `src/` directly.
 - `node scripts/generate-stats.js owners index|all|<owner>` — rebuild
   stats tables into owner pages from `scripts/stats.csv`.
-- `make power` — regenerate `src/power-rankings.html` from the ESPN API.
+- `make power` — regenerate the Power Rankings table at the top of `src/index.html` from the ESPN API.
 - `make drafts` — rebuild `src/drafts.html` and per-owner draft sections
   from the ESPN API.
 - `make waivers` — regenerate `static/data/waivers.json` (waiver order +
@@ -70,8 +69,8 @@ No framework; shared page chunks are inlined at build time by
   live in `src/partials/` and are pulled in with
   `<!--#include file="partials/x.html" key="value" -->`; `{{key}}` in a
   partial is replaced by the attribute value. The directives work in
-  source pages AND in generator output: `generate-drafts.js` /
-  `generate-power-rankings.js` templates emit them, and `build.mjs`
+  source pages AND in generator output: `generate-drafts.js`
+  templates emit them, and `build.mjs`
   expands everything before deploy.
 - Commit style: `feat:` / `chore:` / `fix:` prefixes, imperative mood,
   Tim Pope guidelines.

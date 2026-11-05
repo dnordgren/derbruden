@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // ESPN fantasy waivers page generator. Fetches the current waiver order and
 // this season's waiver moves, then writes static/data/waivers.json for
-// src/waivers.html to render client-side.
+// src/transactions.html to render client-side.
 //
 // The JSON is rebuilt from scratch on every run, so only the current season
 // is ever retained. The player-name cache (scripts/waiver-players.json) is

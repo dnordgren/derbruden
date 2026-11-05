@@ -31,7 +31,7 @@ No framework; shared page chunks are inlined at build time by
 - `make drafts` — rebuild `src/drafts.html` and per-owner draft sections
   from the ESPN API.
 - `make waivers` — regenerate `static/data/waivers.json` (waiver order +
-  season moves) for `src/waivers.html`.
+  season moves) for the waivers section of `src/transactions.html`.
 - `make records` — regenerate `src/records.html` (all-time records,
   head-to-head matrix, trophy case, hall of shame) and
   `static/data/alltime-records.json` from the ESPN API. See
@@ -176,7 +176,7 @@ roast-trade.mjs posted-trades.json --dry-run` prints the research packet;
 - Tests: `node --test scripts/generate-drafts.test.mjs`.
 - Rerun each year after the live draft finishes.
 
-## Waivers
+## Transactions
 
 - `scripts/generate-waivers.mjs` fetches `view=mTeam` (teams carry
   `waiverRank`, lower is better priority) and waiver transactions
@@ -193,7 +193,7 @@ roast-trade.mjs posted-trades.json --dry-run` prints the research packet;
   `scripts/waiver-players.json` keyed `<season>:<playerId>`, pruned to the
   current season each run. Commit it.
 - A daily GitHub Action (`.github/workflows/waivers.yml`, two cron windows
-  for DST) publishes `waivers.html` + `waivers.json` with a two-path
+  for DST) publishes `transactions.html` + `waivers.json` with a two-path
   invalidation, then commits when files changed. Idle runs change nothing.
 - Moves keep statuses EXECUTED and PROPOSED only; declined/failed claims are
   dropped. List is capped at the 150 most recent.
@@ -214,6 +214,10 @@ roast-trade.mjs posted-trades.json --dry-run` prints the research packet;
 - Sections: records, head-to-head matrix, trophy case, hall of shame.
   Weekly marks and h2h include playoffs; droughts and champions merge
   stats.csv back to 2014.
+- Luck lives on the same page: `make luck` (`scripts/generate-luck.mjs`)
+  upserts All-Play standings + Luck Index between `<!-- LUCK_START -->` /
+  `<!-- LUCK_END -->` markers in `src/records.html` (same file, distinct
+  markers, so `make records` and `make luck` never clobber each other).
 - Playoff berth = played a `WINNERS_BRACKET` game. Consolation ladder
   and losers bracket are consolation rounds. Champion = winner of the
   latest-week winners-bracket game; its existence also marks the season

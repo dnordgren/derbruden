@@ -13,7 +13,8 @@ const USER_AGENT = 'derbruden.com luck-allplay generator'
 const CLOSE_MARGIN = 10
 
 const DATA_PATH = join(__dirname, '../static/data/luck.json')
-const PAGE_PATH = join(__dirname, '../src/luck.html')
+// Luck sections live on records.html between the LUCK_START/END markers.
+const PAGE_PATH = join(__dirname, '../src/records.html')
 
 export function defaultSeason() {
   const now = new Date()
@@ -505,8 +506,7 @@ const END = '<!-- LUCK_END -->'
 export function upsertLuckPage(contentHtml, pagePath = PAGE_PATH) {
   const section = `${START}\n${contentHtml}\n${END}`
   if (!fs.existsSync(pagePath)) {
-    fs.writeFileSync(pagePath, pageTemplate(contentHtml))
-    console.log(`Created ${pagePath}`)
+    console.warn(`Page missing: ${pagePath}; luck content not written`)
     return
   }
   const content = fs.readFileSync(pagePath, 'utf8')
@@ -518,89 +518,6 @@ export function upsertLuckPage(contentHtml, pagePath = PAGE_PATH) {
   }
   fs.writeFileSync(pagePath, content.slice(0, startIdx) + section + content.slice(endIdx + END.length))
   console.log(`Updated ${pagePath}`)
-}
-
-function pageTemplate(content) {
-  return `<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DerBruden.com | Luck & All-Play</title>
-  <meta property="og:title" content="DerBruden.com | Luck & All-Play">
-  <meta property="og:description" content="All-Play standings and Luck Index for the Der Bruden fantasy football league: who was good, who was lucky, and who got screwed by the schedule.">
-  <meta property="og:url" content="https://derbruden.com/luck.html">
-  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="DerBruden.com | Luck & All-Play">
-  <meta name="twitter:description" content="All-Play standings and Luck Index for the Der Bruden fantasy football league.">
-  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
-  <!--#include file="partials/head-common.html" -->
-  <style>
-    .section-note {
-      color: #666;
-      font-size: 0.9em;
-    }
-    h2 { margin-top: 40px; }
-    h3 { margin-top: 32px; }
-    .stats-table .detail {
-      color: #555;
-      font-size: 0.95em;
-    }
-    .stats-table td.owner {
-      font-weight: 500;
-      white-space: nowrap;
-    }
-    .luck-controls {
-      margin: 12px 0;
-    }
-    select {
-      font-size: 0.95em;
-      padding: 4px 8px;
-    }
-    .methodology {
-      margin-top: 30px;
-      font-size: 0.85em;
-      color: #666;
-    }
-    .methodology code {
-      background: #f4f4f4;
-      padding: 1px 4px;
-      border-radius: 3px;
-    }
-  </style>
-</head>
-
-<body>
-  <!--#include file="partials/site-header.html" -->
-
-  <!--#include file="partials/nav.html" -->
-
-  <main id="main">
-    <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" width="100" height="100"
-        style="border-radius: 50%; object-fit: cover;">
-      <h1>Luck &amp; All-Play</h1>
-    </div>
-    <!-- LUCK_START -->
-${content}
-<!-- LUCK_END -->
-    <details class="methodology">
-      <summary>How these numbers work</summary>
-      <p><strong>All-Play:</strong> Each week every team plays every other team. In a 10-team league that is 9 All-Play games per team per week. We tally All-Play W-L across the regular season. Comparing actual wins to All-Play wins exposes schedule luck: a team with 8 actual wins but 65 All-Play wins faced an easy slate; a team with 5 actual wins but 80 All-Play wins got screwed.</p>
-      <p><strong>Luck Index:</strong> Close games are those decided by &lt;10 points. Close win % versus points-for rank defines luck. Example: a team ranked 9th in PF but 1st in close win % is lucky; a team ranked 1st in PF but 9th in close win % is unlucky. Luck diff = PF rank − close rank. Positive means lucky, negative means unlucky. Teams with fewer than three close games show Small sample.</p>
-      <p>Both tables cover regular-season weeks only and start in 2018 when the league joined ESPN. Weekly scores before 2018 are not available.</p>
-      <p>Regenerate with <code>make luck</code>.</p>
-    </details>
-  </main>
-
-  <!--#include file="partials/footer.html" -->
-</body>
-
-</html>
-`
 }
 
 async function main() {

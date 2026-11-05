@@ -60,9 +60,9 @@ jobs:
       - name: Publish page and data
         if: steps.status.outputs.count != '0'
         run: |
-          aws s3 cp pub/waivers.html s3://derbruden.com/waivers.html --cache-control "public, max-age=60, stale-while-revalidate=300"
+          aws s3 cp pub/transactions.html s3://derbruden.com/transactions.html --cache-control "public, max-age=60, stale-while-revalidate=300"
           aws s3 cp static/data/waivers.json s3://derbruden.com/static/data/waivers.json --cache-control "public, max-age=0, must-revalidate"
-          aws cloudfront create-invalidation --distribution-id E3CDWEEK40CKI2 --paths "/waivers.html" "/static/data/waivers.json"
+          aws cloudfront create-invalidation --distribution-id E3CDWEEK40CKI2 --paths "/transactions.html" "/static/data/waivers.json"
 
       - name: Commit updated data
         if: steps.status.outputs.count != '0'

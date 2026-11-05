@@ -147,7 +147,7 @@ id)`; the generator resolves them to team names.
 ### Generate waiver data
 
 Builds `static/data/waivers.json` for the
-[waivers page](https://derbruden.com/waivers.html): current waiver order and
+[transactions page](https://derbruden.com/transactions.html): current waiver order and
 this season's waiver moves. Needs both `ESPN_S2` and `SWID`, like the trade
 watcher.
 
@@ -173,7 +173,8 @@ Notes:
 Builds [records.html](https://derbruden.com/records.html): highest and lowest
 weekly scores, biggest blowout, longest win streak, most points in a season,
 the lifetime head-to-head matrix, champions, and the hall of shame (lowest
-score ever, most points in a loss, longest playoff droughts).
+score ever, most points in a loss, longest playoff droughts). The same page
+also hosts All-Play standings and the Luck Index (see below).
 
 ```sh
 make records
@@ -197,6 +198,10 @@ Notes:
   loss resets it.
 - Output lands in `static/data/alltime-records.json`; the deploy excludes it
   from immutable caching so refreshes pick it up.
+- All-Play standings and the Luck Index render into the same page via
+  `make luck` (`node scripts/generate-luck.mjs`), which upserts its own
+  marked section of `records.html` and writes `static/data/luck.json`
+  for the season selector.
 - Regression check against `stats.csv`:
   `node scripts/generate-records.js --check`. W-L, playoff flags, and
   champions must agree with the sheet for every season since 2018. Two known
@@ -357,7 +362,7 @@ This:
 
 `scripts/watch-trades.mjs` polls ESPN for trade activity, posts new events to
 Discord, and updates `static/data/trades.json` for the
-[trade log](https://derbruden.com/trades.html).
+[transactions log](https://derbruden.com/transactions.html).
 
 ### GitHub Action (production)
 

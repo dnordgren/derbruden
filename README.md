@@ -235,6 +235,10 @@ Notes:
   Starting at 11 gives three weeks of signal (11, 12, 13) without early
   noise; use 10 if you want the earliest possible clinch. Before the gate
   the generator still writes the page but Discord posting is skipped.
+- Repeat-post guard: if the race is unchanged since the last run (only
+  the `generated` date would differ), the generator leaves both files
+  untouched, so the Action neither republishes nor re-posts — the final
+  standings go out once, not every Monday after the season ends.
 - Monday hypotheticals: on Monday nights while games are live,
   `currentLeaderForGame` uses live scores to project "hold" (leaders hold)
   vs "flip" (underdogs rally) for the current week, then re-enumerates the

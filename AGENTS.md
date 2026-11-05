@@ -302,6 +302,12 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   2025 clinch was week 10, first elimination week 12). The generator still
   writes the page pre-gate but `isLateSeason` is false and Discord posting
   skips. Override with `--start-week=N` or `PLAYOFF_START_WEEK`.
+- Repeat-post guard: when the race is unchanged since the last run
+  (everything but the `generated` date identical, and the page re-rendered
+  with the old date matches), the generator leaves both files untouched
+  (`raceDataEqual`). The workflow publishes/posts only when files change,
+  so no-op Mondays stay silent — the final standings post once, not every
+  Monday after the regular season ends.
 - Monday hypotheticals: while the current week's games are live,
   `currentLeaderForGame` (live score leader) builds "hold" (leaders hold)
   vs "flip" (underdogs rally) for that week, then re-enumerates the rest

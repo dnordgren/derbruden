@@ -496,6 +496,17 @@ ${content}
 `
 }
 
+// Repeat-post guard: the `generated` date changes on every run, so on its
+// own it must never count as a change. Two outputs are "the same race" when
+// everything except `generated` is identical. Key order is stable because
+// both sides come from the same output construction / a file it wrote.
+export function raceDataEqual(a, b) {
+  if (!a || !b) return false
+  const { generated: _ga, ...ra } = a
+  const { generated: _gb, ...rb } = b
+  return JSON.stringify(ra) === JSON.stringify(rb)
+}
+
 function writeJsonAtomic(file, data) {
   const dir = path.dirname(file)
   fs.mkdirSync(dir, { recursive: true })
@@ -640,7 +651,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   }
 
   // Render page content
-  const pageContent = renderPageContent({
+  const pageData = {
     season,
     generated: output.generated,
     playoffTeamCount,
@@ -658,7 +669,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     remainingGames: remainingGamesJson,
     scenarios,
     note,
-  }, teamsById)
+  }
+  const pageContent = renderPageContent(pageData, teamsById)
 
   if (args.dryRun) {
     console.log(`[dry-run] season ${season} through week ${throughWeek}, ${remaining.length} remaining, clinched ${clinchedOwners.join(',') || 'none'}, eliminated ${eliminatedOwners.join(',') || 'none'}`)
@@ -666,10 +678,38 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     return 0
   }
 
-  writeJsonAtomic(paths.dataFile ?? DATA_FILE, output)
-  console.log(`Wrote ${paths.dataFile ?? DATA_FILE} (${standings.length} teams, ${remaining.length} remaining)`)
+  const dataFile = paths.dataFile ?? DATA_FILE
+  const pagePath = paths.pagePath ?? PAGE_PATH
 
-  upsertPage(pageContent, paths.pagePath ?? PAGE_PATH)
+  // Repeat-post guard: if the race itself is unchanged since the last run
+  // (only the `generated` date would differ), leave both files untouched.
+  // The weekly workflow publishes and posts only when the files change, so
+  // a no-op run stays silent — in particular the final standings are posted
+  // once, not re-posted every Monday after the regular season ends.
+  if (fs.existsSync(dataFile) && fs.existsSync(pagePath)) {
+    try {
+      const existing = JSON.parse(fs.readFileSync(dataFile, 'utf8'))
+      if (raceDataEqual(existing, output)) {
+        const existingPage = fs.readFileSync(pagePath, 'utf8')
+        const startIdx = existingPage.indexOf(START)
+        const endIdx = existingPage.indexOf(END)
+        if (startIdx !== -1 && endIdx !== -1) {
+          const rerendered = renderPageContent({ ...pageData, generated: existing.generated }, teamsById)
+          if (existingPage.slice(startIdx + START.length, endIdx) === `\n${rerendered}\n`) {
+            console.log('Playoff race unchanged since last run; leaving files untouched.')
+            return 0
+          }
+        }
+      }
+    } catch {
+      // Unreadable existing state: fall through and write fresh files.
+    }
+  }
+
+  writeJsonAtomic(dataFile, output)
+  console.log(`Wrote ${dataFile} (${standings.length} teams, ${remaining.length} remaining)`)
+
+  upsertPage(pageContent, pagePath)
   return 0
 }
 

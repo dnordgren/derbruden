@@ -7,6 +7,7 @@ import {
   extractGames,
   standingsList,
   buildScenarios,
+  raceDataEqual,
   DEFAULT_START_WEEK,
 } from './generate-playoff-race.mjs'
 
@@ -155,4 +156,20 @@ test('buildScenarios creates hold vs flip', () => {
 
 test('DEFAULT_START_WEEK is 11', () => {
   assert.equal(DEFAULT_START_WEEK, 11)
+})
+
+test('raceDataEqual ignores only the generated date', () => {
+  const a = { generated: '2026-11-16', season: 2026, throughWeek: 10, remainingCount: 15, clinchedOwners: ['DM'] }
+  const b = { generated: '2026-11-23', season: 2026, throughWeek: 10, remainingCount: 15, clinchedOwners: ['DM'] }
+  assert.equal(raceDataEqual(a, b), true)
+  assert.equal(raceDataEqual(a, { ...b, generated: '2026-11-16' }), true)
+})
+
+test('raceDataEqual detects real race changes', () => {
+  const a = { generated: '2026-11-16', season: 2026, throughWeek: 10, remainingCount: 15, clinchedOwners: [] }
+  assert.equal(raceDataEqual(a, { ...a, throughWeek: 11 }), false)
+  assert.equal(raceDataEqual(a, { ...a, remainingCount: 10 }), false)
+  assert.equal(raceDataEqual(a, { ...a, clinchedOwners: ['DM'] }), false)
+  assert.equal(raceDataEqual(a, null), false)
+  assert.equal(raceDataEqual(null, a), false)
 })

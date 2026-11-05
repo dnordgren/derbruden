@@ -328,12 +328,14 @@ test('computePivotalGames ranks the decisive game first', () => {
     4: { teamId: 4, wins: 6, losses: 2, ties: 0, pf: 700, pa: 0 },
   }
   const remaining = [
-    { week: 10, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false },
+    { week: 11, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false },
     { week: 10, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false },
   ]
   const piv = computePivotalGames(stats, remaining, 2, { season: 2026, pivotSamples: 2000 })
   assert.equal(piv.length, 2)
-  assert.ok(piv[0].swing >= piv[1].swing)
+  // week order, regardless of swing
+  assert.ok(piv[0].week <= piv[1].week)
+  assert.equal(piv[0].week, 10)
   const decider = piv.find(p => p.homeId === 3)
   assert.ok(decider.swing >= 50)
   const movedIds = decider.shifts.map(s => s.teamId)

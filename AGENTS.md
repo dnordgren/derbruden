@@ -336,7 +336,7 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   Rendered as `PO%`/`D%` columns and appended to both Discord embeds.
 - Pivotal games (`computePivotalGames`): each remaining game is fixed
   each way, odds recomputed over the rest (seeded MC, deterministic),
-  ranked by the biggest team-share swing. Rendered with winner → effect
+  ordered by week with the biggest share-swing first within each week. Rendered with winner → effect
   lines plus the favorite's win probability; shifts under 8 points fold
   into an 'everything else' line. Page-only — Discord stays compact.
 

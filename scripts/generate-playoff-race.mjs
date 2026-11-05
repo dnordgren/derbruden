@@ -490,7 +490,7 @@ export function computePivotalGames(currentStats, remainingGames, playoffTeamCou
       swing, shifts,
     })
   }
-  out.sort((a, b) => b.swing - a.swing)
+  out.sort((a, b) => a.week - b.week || b.swing - a.swing)
   return out
 }
 
@@ -612,7 +612,7 @@ export function renderPageContent(data, teamsById) {
   const calloutParts = []
   if (data.note) calloutParts.push(escapeHtml(data.note))
   if (data.pivotal?.length) {
-    const top = data.pivotal[0]
+    const top = data.pivotal.reduce((m, p) => (p.swing > m.swing ? p : m), data.pivotal[0])
     calloutParts.push(`🎯 Game of the week: W${top.week} ${escapeHtml(top.awayOwner)} @ ${escapeHtml(top.homeOwner)} (swings shares up to ${top.swing}%).`)
   }
   const callout = calloutParts.length ? `<p class="callout">${calloutParts.join(' ')}</p>` : ''
@@ -635,7 +635,7 @@ ${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet, doomedSet, 
     const shown = data.pivotal.filter(p => p.swing >= threshold).slice(0, 8)
     const restMax = data.pivotal.filter(p => p.swing < threshold).reduce((m, p) => Math.max(m, p.swing), 0)
     if (shown.length) {
-      html += `<h3>Pivotal Games</h3><p class="section-note">Ranked by how far playoff/diaper shares swing on the result. Only shifts of ${threshold} points or more shown.</p>`
+      html += `<h3>Pivotal Games</h3><p class="section-note">Ordered by week, biggest share-swing first within each week. Only shifts of ${threshold} points or more shown.</p>`
       for (const p of shown) {
         const line = (world, winner, prob) => {
           const parts = []

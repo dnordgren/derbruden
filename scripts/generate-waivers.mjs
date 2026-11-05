@@ -16,16 +16,20 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import fs from 'node:fs'
 import { TEAM_OWNERS } from './team-owners.js'
+import {
+  authCookie,
+  defaultSeason,
+  fetchJson,
+  leagueUrl,
+  resolveConfig as baseResolveConfig,
+} from './lib/espn.mjs'
+import { writeJsonAtomic } from './lib/html.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DATA_FILE = path.join(ROOT, 'static', 'data', 'waivers.json')
 const PLAYERS_FILE = path.join(ROOT, 'scripts', 'waiver-players.json')
 const ENV_FILE = path.join(ROOT, '.env')
 
-// Same read host and cookie rules as the trade watcher: lm-api-reads serves
-// transactions only with the full espn_s2 + SWID pair.
-const LEAGUE_PATH = '/apis/v3/games/ffl/seasons/{year}/segments/0/leagues/{league}'
-const DEFAULT_LEAGUE_HOST = 'https://lm-api-reads.fantasy.espn.com'
 const CORE_BASE = 'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl'
 
 const MOVE_TYPES = ['FREEAGENT', 'WAIVER']
@@ -34,72 +38,8 @@ const MAX_MOVES = 150
 
 const CONFIG_KEYS = ['LEAGUE_ID', 'LEAGUE_YEAR', 'ESPN_S2', 'SWID', 'LEAGUE_HOST', 'WAIVERS_FILE']
 
-export function loadEnvFile(file) {
-  if (!fs.existsSync(file)) return {}
-  const out = {}
-  for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
-    const trimmed = line.trim()
-    if (!trimmed || trimmed.startsWith('#')) continue
-    const eq = trimmed.indexOf('=')
-    if (eq < 1) continue
-    const key = trimmed.slice(0, eq).trim()
-    let value = trimmed.slice(eq + 1).trim()
-    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
-      value = value.slice(1, -1)
-    }
-    out[key] = value
-  }
-  return out
-}
-
 function resolveConfig() {
-  const fromFile = loadEnvFile(ENV_FILE)
-  const env = {}
-  for (const key of CONFIG_KEYS) {
-    // Blank env vars (e.g. make passing unset values through) fall back to
-    // the .env file instead of shadowing it.
-    const value = process.env[key] || fromFile[key]
-    env[key] = value === '' ? undefined : value
-  }
-  return env
-}
-
-function authCookie(env) {
-  const parts = []
-  if (env.ESPN_S2) parts.push(`espn_s2=${env.ESPN_S2}`)
-  if (env.SWID) parts.push(`SWID=${env.SWID}`)
-  return parts.join('; ')
-}
-
-function leagueUrl(env) {
-  return (
-    (env.LEAGUE_HOST ?? DEFAULT_LEAGUE_HOST) +
-    LEAGUE_PATH.replace('{year}', env.LEAGUE_YEAR).replace('{league}', env.LEAGUE_ID)
-  )
-}
-
-async function fetchJson(fetchImpl, url, options = {}) {
-  const res = await fetchImpl(url, options)
-  const text = await res.text()
-  let body
-  try {
-    body = JSON.parse(text)
-  } catch {
-    throw new Error(
-      `ESPN returned non-JSON (HTTP ${res.status}). Cookies are likely expired ` +
-        'or missing SWID. Copy espn_s2 and SWID together from one signed-in session.'
-    )
-  }
-  if (!res.ok) throw new Error(`ESPN HTTP ${res.status}: ${JSON.stringify(body).slice(0, 200)}`)
-  return body
-}
-
-function writeJsonAtomic(file, data) {
-  const dir = path.dirname(file)
-  fs.mkdirSync(dir, { recursive: true })
-  const tmp = path.join(dir, `.${path.basename(file)}.${process.pid}.tmp`)
-  fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + '\n')
-  fs.renameSync(tmp, file)
+  return baseResolveConfig(ENV_FILE, CONFIG_KEYS)
 }
 
 export function parseArgs(argv) {
@@ -275,9 +215,7 @@ async function fetchMovesRaw(fetchImpl, url, env) {
 
 // Season year: Aug-Dec maps to the current calendar year, Jan-Jul to the
 // prior one. Same convention as the power rankings and trade watcher.
-export function defaultSeason(now = new Date()) {
-  return now.getMonth() + 1 >= 8 ? now.getFullYear() : now.getFullYear() - 1
-}
+export { defaultSeason }
 
 export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const args = parseArgs(argv)

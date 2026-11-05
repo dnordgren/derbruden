@@ -16,10 +16,6 @@
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
   <style>
-    .section-note {
-      color: #666;
-      font-size: 0.9em;
-    }
     h2 { margin-top: 40px; }
     .stats-table td.owner {
       font-weight: 500;
@@ -29,15 +25,35 @@
       font-size: 0.95em;
       padding: 4px 8px;
     }
-    .methodology {
-      margin-top: 30px;
-      font-size: 0.85em;
-      color: #666;
+    .legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0 4px;
     }
-    .methodology code {
-      background: #f4f4f4;
-      padding: 1px 4px;
-      border-radius: 3px;
+    .legend-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85em;
+      padding: 3px 10px 3px 6px;
+      border: 1px solid var(--line, #ddd);
+      border-radius: 999px;
+      background: var(--surface, #fff);
+      color: inherit;
+      cursor: pointer;
+    }
+    .legend-chip .swatch {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .legend-chip.off {
+      opacity: 0.45;
+    }
+    .legend-chip.legend-all {
+      font-weight: 700;
     }
   </style>
 </head>
@@ -49,8 +65,7 @@
 
   <main id="main">
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" width="100" height="100"
-        style="border-radius: 50%; object-fit: cover;">
+      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" width="100" height="100">
       <h1>Sit/Start Efficiency</h1>
     </div>
     <!-- SITSTART_START -->

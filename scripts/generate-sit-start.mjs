@@ -15,11 +15,18 @@ import { fileURLToPath } from 'url'
 import Papa from 'papaparse'
 import { TEAM_OWNERS } from './team-owners.js'
 import { extractRegularSeasonGames, makeOwnerLookup, seasonTeamMeta } from './generate-luck.mjs'
+import {
+  applyEnvFile,
+  defaultSeason,
+  espnAuthHeaders,
+  fetchJson as espnFetchJson,
+  LEAGUE_ID_DEFAULT,
+  seasonLeagueUrl,
+} from './lib/espn.mjs'
+import { escapeHtml, ownerLink, upsertSection, writeJsonAtomic } from './lib/html.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const LEAGUE_ID = process.env.FANTASY_LEAGUE_ID || '794521'
-const API_BASE = 'https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl'
 const USER_AGENT = 'derbruden.com sit-start efficiency generator'
 const API_FIRST_SEASON = 2018
 
@@ -70,29 +77,8 @@ function winPctTitle(r) {
 // all stay consistent. Add future removals here.
 export const EXCLUDED_OWNERS = new Set(['SHEN'])
 
-export function defaultSeason() {
-  const now = new Date()
-  return now.getUTCMonth() >= 7 ? now.getUTCFullYear() : now.getUTCFullYear() - 1
-}
-
-function loadEnvFile() {
-  const envPath = path.join(__dirname, '.env')
-  if (!fs.existsSync(envPath)) return
-  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
-    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/)
-    if (!match || process.env[match[1]]) continue
-    process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, '')
-  }
-}
-
 function authHeaders() {
-  const espnS2 = process.env.ESPN_S2
-  const swid = process.env.SWID
-  if (!espnS2) {
-    throw new Error('This league is private. Set ESPN_S2 in scripts/.env or your environment.')
-  }
-  const cookie = swid ? `SWID=${swid}; espn_s2=${espnS2}` : `espn_s2=${espnS2}`
-  return { Cookie: cookie, 'User-Agent': USER_AGENT }
+  return espnAuthHeaders(process.env, USER_AGENT)
 }
 
 function sleep(ms) {
@@ -113,9 +99,7 @@ function cacheWrite(name, data) {
 }
 
 async function fetchJson(url) {
-  const res = await fetch(url, { headers: authHeaders() })
-  if (!res.ok) throw new Error(`ESPN API returned ${res.status} for ${url}`)
-  return res.json()
+  return espnFetchJson(fetch, url, { headers: authHeaders() })
 }
 
 // Starter slot list from mSettings lineupSlotCounts, e.g.
@@ -225,15 +209,6 @@ function round1(n) {
   return Math.round(n * 10) / 10
 }
 
-function escapeHtml(value) {
-  return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-}
-
-function ownerLink(owner) {
-  const mapped = Object.values(TEAM_OWNERS).find(m => m.owner === owner)
-  return mapped ? `<a href="./${mapped.page}">${escapeHtml(owner)}</a>` : escapeHtml(owner)
-}
-
 function fmt(n) {
   return Number.isInteger(n) ? String(n) : n.toFixed(1)
 }
@@ -250,7 +225,7 @@ async function loadSchedule(season, offline) {
     return cached
   }
   try {
-    const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}?view=mTeam&view=mMatchupScore`
+    const url = seasonLeagueUrl(season) + '?view=mTeam&view=mMatchupScore'
     const data = await fetchJson(url)
     cacheWrite(name, data)
     await sleep(120)
@@ -270,7 +245,7 @@ async function loadSettings(season, offline) {
   const cached = cacheRead(name)
   if (cached) return cached
   if (offline) return null
-  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}?view=mSettings`
+  const url = seasonLeagueUrl(season) + '?view=mSettings'
   const data = await fetchJson(url)
   const counts = data.settings?.rosterSettings?.lineupSlotCounts || null
   cacheWrite(name, counts)
@@ -283,7 +258,7 @@ async function loadRoster(season, week, offline) {
   const cached = cacheRead(name)
   if (cached) return cached
   if (offline) throw new Error(`No cached roster for ${season} week ${week} (offline mode)`)
-  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}?view=mRoster&scoringPeriodId=${week}`
+  const url = seasonLeagueUrl(season) + `?view=mRoster&scoringPeriodId=${week}`
   const data = await fetchJson(url)
   cacheWrite(name, data)
   await sleep(120)
@@ -781,10 +756,6 @@ function pageTemplate(content) {
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
   <style>
-    .section-note {
-      color: #666;
-      font-size: 0.9em;
-    }
     h2 { margin-top: 40px; }
     .stats-table td.owner {
       font-weight: 500;
@@ -824,16 +795,6 @@ function pageTemplate(content) {
     .legend-chip.legend-all {
       font-weight: 700;
     }
-    .methodology {
-      margin-top: 30px;
-      font-size: 0.85em;
-      color: #666;
-    }
-    .methodology code {
-      background: #f4f4f4;
-      padding: 1px 4px;
-      border-radius: 3px;
-    }
   </style>
 </head>
 
@@ -844,8 +805,7 @@ function pageTemplate(content) {
 
   <main id="main">
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" width="100" height="100"
-        style="border-radius: 50%; object-fit: cover;">
+      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" width="100" height="100">
       <h1>Sit/Start Efficiency</h1>
     </div>
     ${SITSTART_START}
@@ -869,21 +829,13 @@ ${SITSTART_END}
 }
 
 export function upsertPage(contentHtml, pagePath = PAGE_PATH) {
-  const section = `${SITSTART_START}\n${contentHtml}\n${SITSTART_END}`
-  if (!fs.existsSync(pagePath)) {
-    fs.writeFileSync(pagePath, pageTemplate(contentHtml))
-    console.log(`Created ${pagePath}`)
-    return
-  }
-  const content = fs.readFileSync(pagePath, 'utf8')
-  const startIdx = content.indexOf(SITSTART_START)
-  const endIdx = content.indexOf(SITSTART_END)
-  if (startIdx === -1 || endIdx === -1) {
-    console.warn(`Markers missing in ${pagePath}; page left untouched`)
-    return
-  }
-  fs.writeFileSync(pagePath, content.slice(0, startIdx) + section + content.slice(endIdx + SITSTART_END.length))
-  console.log(`Updated ${pagePath}`)
+  upsertSection({
+    pagePath,
+    start: SITSTART_START,
+    end: SITSTART_END,
+    contentHtml,
+    renderFull: pageTemplate,
+  })
 }
 
 // Owner-page section: season-by-season table plus a career row. Inserted
@@ -992,7 +944,7 @@ export function upsertOwnerPage(pagePath, sectionHtml) {
 // ---------------------------------------------------------------------------
 
 async function main() {
-  loadEnvFile()
+  applyEnvFile(path.join(__dirname, '.env'))
   authHeaders()
 
   const args = process.argv.slice(2)
@@ -1120,7 +1072,7 @@ async function main() {
 
   const data = {
     generated: new Date().toISOString().slice(0, 10),
-    leagueId: LEAGUE_ID,
+    leagueId: LEAGUE_ID_DEFAULT,
     seasons: seasonKeys,
     defaultSeason: defaultYear,
     scopeNote:
@@ -1137,8 +1089,7 @@ async function main() {
     },
   }
 
-  fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true })
-  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2) + '\n')
+  writeJsonAtomic(DATA_PATH, data)
   console.log(`Wrote ${DATA_PATH}`)
 
   upsertPage(renderPageContent(data))

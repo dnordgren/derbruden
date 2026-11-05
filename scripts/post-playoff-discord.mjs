@@ -2,6 +2,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { applyEnvFile } from './lib/espn.mjs'
+import { discordPageUrl, postDiscordMessage } from './lib/discord.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
@@ -9,25 +11,8 @@ const DATA_FILE = path.join(ROOT, 'static', 'data', 'playoff-race.json')
 const ENV_FILE = path.join(ROOT, '.env')
 const PAGE_URL = 'https://derbruden.com/playoff-race.html'
 
-function loadEnvFile(file = ENV_FILE) {
-  if (!fs.existsSync(file)) return {}
-  const out = {}
-  for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
-    const trimmed = line.trim()
-    if (!trimmed || trimmed.startsWith('#')) continue
-    const eq = trimmed.indexOf('=')
-    if (eq < 1) continue
-    const key = trimmed.slice(0, eq).trim()
-    let value = trimmed.slice(eq + 1).trim()
-    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) value = value.slice(1, -1)
-    out[key] = value
-  }
-  return out
-}
-
 function loadFromFile() {
-  const envFile = loadEnvFile(ENV_FILE)
-  for (const [k, v] of Object.entries(envFile)) if (!process.env[k]) process.env[k] = v
+  applyEnvFile(ENV_FILE)
 }
 
 function loadData(file = DATA_FILE) {
@@ -41,7 +26,7 @@ function periodLabel(data) {
 }
 
 function pageUrl(data) {
-  return `${PAGE_URL}?x=${data.season}-w${data.throughWeek || 0}`
+  return discordPageUrl(PAGE_URL, data.season, data.throughWeek)
 }
 
 function formatRecord(r) {
@@ -158,15 +143,7 @@ async function main() {
     return
   }
 
-  const res = await fetch(webhook, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  })
-  if (!res.ok) {
-    const text = await res.text()
-    throw new Error(`Discord webhook returned ${res.status}: ${text.slice(0, 500)}`)
-  }
+  await postDiscordMessage(fetch, webhook, payload)
   console.log('Posted playoff race to Discord.')
 }
 

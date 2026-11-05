@@ -15,15 +15,13 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import fs from 'node:fs'
 
-import { loadEnvFile } from './watch-trades.mjs'
+import { DEFAULT_LEAGUE_HOST, fetchJson, LEAGUE_PATH, loadEnvFile } from './lib/espn.mjs'
+import { writeJsonAtomic } from './lib/html.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const DEFAULT_SNAPSHOT_FILE = path.join(ROOT, 'static', 'data', 'roster-snapshots.json')
 const ENV_FILE = path.join(ROOT, '.env')
 const SCRIPTS_ENV_FILE = path.join(ROOT, 'scripts', '.env')
-
-const LEAGUE_PATH = '/apis/v3/games/ffl/seasons/{year}/segments/0/leagues/{league}'
-const DEFAULT_LEAGUE_HOST = 'https://lm-api-reads.fantasy.espn.com'
 
 // A snapshot of scoring period N is only final once period N+1 has started;
 // Tuesday morning after the prior week's Monday game is the natural capture
@@ -48,24 +46,8 @@ export function resolveConfig() {
   return { ...loadEnvFile(ENV_FILE), ...loadEnvFile(SCRIPTS_ENV_FILE), ...process.env }
 }
 
-function authCookie(env) {
+function authCookieRequired(env) {
   return `espn_s2=${env.ESPN_S2}; SWID=${env.SWID}`
-}
-
-async function fetchJson(fetchImpl, url, options) {
-  const res = await fetchImpl(url, options)
-  const text = await res.text()
-  let body
-  try {
-    body = JSON.parse(text)
-  } catch {
-    throw new Error(
-      `ESPN returned non-JSON (HTTP ${res.status}). Cookies are likely expired ` +
-        'or missing SWID. Copy espn_s2 and SWID together from one signed-in session.'
-    )
-  }
-  if (!res.ok) throw new Error(`ESPN HTTP ${res.status}: ${JSON.stringify(body).slice(0, 200)}`)
-  return body
 }
 
 async function fetchRoster(fetchImpl, env, season, week) {
@@ -73,7 +55,7 @@ async function fetchRoster(fetchImpl, env, season, week) {
     (env.LEAGUE_HOST ?? DEFAULT_LEAGUE_HOST) +
     LEAGUE_PATH.replace('{year}', String(season)).replace('{league}', env.LEAGUE_ID) +
     `?view=mRoster&scoringPeriodId=${week}`
-  return fetchJson(fetchImpl, url, { headers: { Cookie: authCookie(env) } })
+  return fetchJson(fetchImpl, url, { headers: { Cookie: authCookieRequired(env) } })
 }
 
 // Last scoring period whose games have finished. Active season: the period
@@ -130,10 +112,10 @@ export function mergeSnapshot(snapshots, season, week, rosters) {
   }
 }
 
-function writeJsonAtomic(file, data) {
-  const tmp = `${file}.tmp`
-  fs.writeFileSync(tmp, JSON.stringify(data, null, 1) + '\n')
-  fs.renameSync(tmp, file)
+function writeSnapshotAtomic(file, data) {
+  // Snapshots have always used 1-space indent; keep it so regens don't
+  // rewrite the whole committed file.
+  writeJsonAtomic(file, data, 1)
 }
 
 // Weeks worth capturing for a season: 1..latestCompleted, minus anything
@@ -196,7 +178,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   }
   if (captured > 0) {
     snapshots.updated = new Date().toISOString()
-    writeJsonAtomic(snapshotFile, snapshots)
+    writeSnapshotAtomic(snapshotFile, snapshots)
   }
   console.log(`Captured ${captured} week(s); file now has seasons ${Object.keys(snapshots.seasons).join(', ')}.`)
   return 0

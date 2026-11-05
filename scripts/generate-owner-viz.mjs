@@ -3,14 +3,18 @@ import path from 'path'
 import Papa from 'papaparse'
 import { fileURLToPath } from 'url'
 import { TEAM_OWNERS } from './team-owners.js'
+import {
+  applyEnvFile,
+  defaultSeason,
+  espnAuthHeaders,
+  fetchLeague,
+} from './lib/espn.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const LEAGUE_ID = process.env.FANTASY_LEAGUE_ID || '794521'
-const API_BASE = 'https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl'
 const USER_AGENT = 'derbruden.com owner viz generator'
-const CACHE_DIR = join(__dirname, '.viz-cache')
-const SRC_DIR = join(__dirname, '../src')
+const CACHE_DIR = path.join(__dirname, '.viz-cache')
+const SRC_DIR = path.join(__dirname, '../src')
 const FIRST_SEASON = 2014
 
 const K_FACTOR = 20
@@ -19,36 +23,8 @@ const BASE_RATING = 1500
 export const VIZ_START = '<!-- OWNER_VIZ_START -->'
 export const VIZ_END = '<!-- OWNER_VIZ_END -->'
 
-function join(...parts) {
-  return path.join(...parts)
-}
-
-function loadEnvFile() {
-  const envPath = join(__dirname, '.env')
-  if (!fs.existsSync(envPath)) return
-  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
-    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/)
-    if (!match || process.env[match[1]]) continue
-    process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, '')
-  }
-}
-
 function authHeaders() {
-  const espnS2 = process.env.ESPN_S2
-  const swid = process.env.SWID
-  if (!espnS2) {
-    throw new Error('This league is private. Set ESPN_S2 in scripts/.env or your environment.')
-  }
-  const cookie = swid ? `SWID=${swid}; espn_s2=${espnS2}` : `espn_s2=${espnS2}`
-  return {
-    Cookie: cookie,
-    'User-Agent': USER_AGENT,
-  }
-}
-
-function defaultSeason() {
-  const now = new Date()
-  return now.getUTCMonth() >= 7 ? now.getUTCFullYear() : now.getUTCFullYear() - 1
+  return espnAuthHeaders(process.env, USER_AGENT)
 }
 
 function ownerById() {
@@ -63,23 +39,18 @@ function ownerCodes() {
   return [...new Set(Object.values(TEAM_OWNERS).map(e => e.owner))].sort()
 }
 
-async function fetchLeague(season) {
-  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` + '?view=mTeam&view=mMatchupScore'
-  const res = await fetch(url, { headers: authHeaders() })
-  if (!res.ok) {
-    throw new Error(`ESPN API returned ${res.status} for season ${season}`)
-  }
-  return res.json()
+async function fetchSeason(season) {
+  return fetchLeague({ season, views: ['mTeam', 'mMatchupScore'], headers: authHeaders() })
 }
 
 function cachePath(season) {
-  return join(CACHE_DIR, `season-${season}.json`)
+  return path.join(CACHE_DIR, `season-${season}.json`)
 }
 
 async function loadLeague(season, offline) {
   if (!offline) {
     try {
-      const league = await fetchLeague(season)
+      const league = await fetchSeason(season)
       fs.mkdirSync(CACHE_DIR, { recursive: true })
       fs.writeFileSync(cachePath(season), JSON.stringify(league))
       return { league, source: 'network' }
@@ -325,7 +296,7 @@ export function injectSection(content, sectionHtml) {
 }
 
 function statsRows() {
-  const csvPath = join(__dirname, 'stats.csv')
+  const csvPath = path.join(__dirname, 'stats.csv')
   return Papa.parse(fs.readFileSync(csvPath, 'utf8'), {
     header: true,
     dynamicTyping: true,
@@ -335,7 +306,8 @@ function statsRows() {
 
 async function main() {
   const offline = process.argv.includes('--offline')
-  if (!offline) loadEnvFile()
+  if (!offline) applyEnvFile(path.join(__dirname, '.env'))
+
 
   const owners = ownerCodes()
   const ownersMap = ownerById()
@@ -366,7 +338,7 @@ async function main() {
   for (const [teamId, entry] of Object.entries(TEAM_OWNERS)) {
     const payload = payloadFor(entry.owner, { generated, pfpa, elo, h2h, owners })
     const sectionHtml = renderSection(payload)
-    const pagePath = join(SRC_DIR, entry.page)
+    const pagePath = path.join(SRC_DIR, entry.page)
     if (!fs.existsSync(pagePath)) {
       console.warn(`File not found: ${pagePath}`)
       continue

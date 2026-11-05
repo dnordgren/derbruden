@@ -16,14 +16,19 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { TEAM_OWNERS } from './team-owners.js'
+import {
+  authCookie,
+  defaultSeason,
+  fetchJson,
+  leagueUrl,
+  resolveConfig as baseResolveConfig,
+} from './lib/espn.mjs'
+import { escapeHtml, upsertSection, writeJsonAtomic } from './lib/html.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const ROOT = path.resolve(__dirname, '..')
 const DATA_FILE = path.join(ROOT, 'static', 'data', 'playoff-race.json')
 const PAGE_PATH = path.join(ROOT, 'src', 'playoff-race.html')
-const ENV_FILE = path.join(ROOT, '.env')
-const DEFAULT_LEAGUE_HOST = 'https://lm-api-reads.fantasy.espn.com'
-const LEAGUE_PATH = '/apis/v3/games/ffl/seasons/{year}/segments/0/leagues/{league}'
 const USER_AGENT = 'derbruden.com playoff race generator'
 
 // Late-season gate: with 13 regular weeks and 6 playoff spots, clinches
@@ -35,61 +40,17 @@ export const DEFAULT_START_WEEK = 11
 export const DEFAULT_PLAYOFF_TEAM_COUNT = 6
 export const ENUM_LIMIT = 20
 
-export function loadEnvFile(file = ENV_FILE) {
-  if (!fs.existsSync(file)) return {}
-  const out = {}
-  for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
-    const trimmed = line.trim()
-    if (!trimmed || trimmed.startsWith('#')) continue
-    const eq = trimmed.indexOf('=')
-    if (eq < 1) continue
-    const key = trimmed.slice(0, eq).trim()
-    let value = trimmed.slice(eq + 1).trim()
-    if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
-      value = value.slice(1, -1)
-    }
-    out[key] = value
-  }
-  return out
-}
+const ENV_FILE = path.join(ROOT, '.env')
 
 function resolveConfig() {
-  const fromFile = loadEnvFile(ENV_FILE)
-  const env = {}
-  const keys = ['LEAGUE_ID', 'LEAGUE_YEAR', 'ESPN_S2', 'SWID', 'LEAGUE_HOST', 'PLAYOFF_START_WEEK']
-  for (const key of keys) {
-    const value = process.env[key] || fromFile[key]
-    env[key] = value === '' ? undefined : value
-  }
-  return env
-}
-
-function authCookie(env) {
-  const parts = []
-  if (env.ESPN_S2) parts.push(`espn_s2=${env.ESPN_S2}`)
-  if (env.SWID) parts.push(`SWID=${env.SWID}`)
-  return parts.join('; ')
-}
-
-function leagueUrl(env) {
-  return (env.LEAGUE_HOST ?? DEFAULT_LEAGUE_HOST) + LEAGUE_PATH.replace('{year}', env.LEAGUE_YEAR).replace('{league}', env.LEAGUE_ID)
-}
-
-async function fetchJson(fetchImpl, url, options = {}) {
-  const res = await fetchImpl(url, options)
-  const text = await res.text()
-  let body
-  try {
-    body = JSON.parse(text)
-  } catch {
-    throw new Error(`ESPN returned non-JSON (HTTP ${res.status}). Cookies are likely expired or missing SWID.`)
-  }
-  if (!res.ok) throw new Error(`ESPN HTTP ${res.status}: ${JSON.stringify(body).slice(0, 500)}`)
-  return body
-}
-
-export function defaultSeason(now = new Date()) {
-  return now.getMonth() + 1 >= 8 ? now.getFullYear() : now.getFullYear() - 1
+  return baseResolveConfig(ENV_FILE, [
+    'LEAGUE_ID',
+    'LEAGUE_YEAR',
+    'ESPN_S2',
+    'SWID',
+    'LEAGUE_HOST',
+    'PLAYOFF_START_WEEK',
+  ])
 }
 
 export function parseArgs(argv) {
@@ -599,10 +560,6 @@ export function renderStandingsTable(standings, clinchedSet, eliminatedSet, doom
   <tbody>${rows}</tbody></table></div>`
 }
 
-function escapeHtml(value) {
-  return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-}
-
 export function renderPageContent(data, teamsById) {
   const clinchedSet = new Set(data.clinchedTeamIds || [])
   const eliminatedSet = new Set(data.eliminatedTeamIds || [])
@@ -682,21 +639,13 @@ const START = '<!-- PLAYOFF_RACE_START -->'
 const END = '<!-- PLAYOFF_RACE_END -->'
 
 export function upsertPage(contentHtml, pagePath = PAGE_PATH) {
-  const section = `${START}\n${contentHtml}\n${END}`
-  if (!fs.existsSync(pagePath)) {
-    fs.writeFileSync(pagePath, pageTemplate(contentHtml))
-    console.log(`Created ${pagePath}`)
-    return
-  }
-  const content = fs.readFileSync(pagePath, 'utf8')
-  const startIdx = content.indexOf(START)
-  const endIdx = content.indexOf(END)
-  if (startIdx === -1 || endIdx === -1) {
-    console.warn(`Markers missing in ${pagePath}; page left untouched`)
-    return
-  }
-  fs.writeFileSync(pagePath, content.slice(0, startIdx) + section + content.slice(endIdx + END.length))
-  console.log(`Updated ${pagePath}`)
+  upsertSection({
+    pagePath,
+    start: START,
+    end: END,
+    contentHtml,
+    renderFull: pageTemplate,
+  })
 }
 
 function pageTemplate(content) {
@@ -710,15 +659,14 @@ function pageTemplate(content) {
   <meta property="og:title" content="DerBruden.com | Races">
   <meta property="og:description" content="Playoff clinch scenarios and the last-place diaper watch for the Der Bruden fantasy football league. Updated Mondays with hold vs flip hypotheticals.">
   <meta property="og:url" content="https://derbruden.com/playoff-race.html">
-  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp">
+  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="DerBruden.com | Races">
   <meta name="twitter:description" content="Playoff race and diaper watch for the Der Bruden league.">
-  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp">
+  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
   <style>
-    .section-note { color: #666; font-size: 0.9em; }
     h2 { margin-top: 40px; }
     h3 { margin-top: 32px; }
     h4 { margin-top: 16px; margin-bottom: 8px; }
@@ -733,7 +681,6 @@ function pageTemplate(content) {
     tr.eliminated { background: #fce8e6; }
     tr.doomed { background: #f3e8d3; }
     tr.safe { background: #e6f4ea; }
-    .muted { color: #666; font-size: 0.9em; }
     .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     @media (max-width: 800px) { .scenario-grid { grid-template-columns: 1fr; } }
     .callout { background: #fff8e1; border: 1px solid #ffecb3; padding: 10px 12px; border-radius: 6px; }
@@ -743,7 +690,6 @@ function pageTemplate(content) {
       tr.eliminated { background: #331d1b; }
       tr.doomed { background: #2e2415; }
     }
-    .methodology { margin-top: 30px; font-size: 0.85em; color: #666; }
   </style>
 </head>
 
@@ -754,8 +700,7 @@ function pageTemplate(content) {
 
   <main id="main">
     <div class="owner-logo-header">
-      <img src="../static/img/league-logo.webp" alt="DB Logo" width="100" height="100"
-        style="border-radius: 50%; object-fit: cover;">
+      <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" width="100" height="100">
       <h1>Playoff & Diaper Races</h1>
     </div>
     <!-- PLAYOFF_RACE_START -->
@@ -784,14 +729,6 @@ export function raceDataEqual(a, b) {
   const { generated: _ga, ...ra } = a
   const { generated: _gb, ...rb } = b
   return JSON.stringify(ra) === JSON.stringify(rb)
-}
-
-function writeJsonAtomic(file, data) {
-  const dir = path.dirname(file)
-  fs.mkdirSync(dir, { recursive: true })
-  const tmp = path.join(dir, `.${path.basename(file)}.${process.pid}.tmp`)
-  fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + '\n')
-  fs.renameSync(tmp, file)
 }
 
 export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {

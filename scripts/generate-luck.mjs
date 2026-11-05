@@ -1,13 +1,19 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { dirname as pathDirname, join } from 'path'
 import { TEAM_OWNERS } from './team-owners.js'
+import {
+  applyEnvFile,
+  defaultSeason,
+  espnAuthHeaders,
+  fetchLeague,
+  LEAGUE_ID_DEFAULT,
+} from './lib/espn.mjs'
+import { escapeHtml, ownerLink, writeJsonAtomic } from './lib/html.mjs'
 
-const __dirname = pathDirname(fileURLToPath(import.meta.url))
+const join = path.join
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-const LEAGUE_ID = process.env.FANTASY_LEAGUE_ID || '794521'
-const API_BASE = 'https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl'
 const API_FIRST_SEASON = 2018
 const USER_AGENT = 'derbruden.com luck-allplay generator'
 const CLOSE_MARGIN = 10
@@ -16,36 +22,12 @@ const DATA_PATH = join(__dirname, '../static/data/luck.json')
 // Luck sections live on records.html between the LUCK_START/END markers.
 const PAGE_PATH = join(__dirname, '../src/records.html')
 
-export function defaultSeason() {
-  const now = new Date()
-  return now.getUTCMonth() >= 7 ? now.getUTCFullYear() : now.getUTCFullYear() - 1
-}
-
-function loadEnvFile() {
-  const envPath = join(__dirname, '.env')
-  if (!fs.existsSync(envPath)) return
-  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
-    const match = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*?)\s*$/)
-    if (!match || process.env[match[1]]) continue
-    process.env[match[1]] = match[2].replace(/^['"]|['"]$/g, '')
-  }
-}
-
 function authHeaders() {
-  const espnS2 = process.env.ESPN_S2
-  const swid = process.env.SWID
-  if (!espnS2) {
-    throw new Error('This league is private. Set ESPN_S2 in scripts/.env or your environment.')
-  }
-  const cookie = swid ? `SWID=${swid}; espn_s2=${espnS2}` : `espn_s2=${espnS2}`
-  return { Cookie: cookie, 'User-Agent': USER_AGENT }
+  return espnAuthHeaders(process.env, USER_AGENT)
 }
 
-async function fetchLeague(season) {
-  const url = `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}` + '?view=mTeam&view=mMatchupScore'
-  const res = await fetch(url, { headers: authHeaders() })
-  if (!res.ok) throw new Error(`ESPN API returned ${res.status} for season ${season}`)
-  return res.json()
+async function fetchSeason(season) {
+  return fetchLeague({ season, views: ['mTeam', 'mMatchupScore'], headers: authHeaders() })
 }
 
 export function extractRegularSeasonGames(league, season) {
@@ -357,15 +339,6 @@ export function computeAllTimeLuck(allGames, ownerOf, nameOf) {
   return computeLuckIndex(allGames, ownerOf, nameOf)
 }
 
-function escapeHtml(value) {
-  return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-}
-
-function ownerLink(owner) {
-  const mapped = Object.values(TEAM_OWNERS).find(m => m.owner === owner)
-  return mapped ? `<a href="./${mapped.page}">${escapeHtml(owner)}</a>` : escapeHtml(owner)
-}
-
 function renderAllPlayTable(rows, caption) {
   if (!rows.length) return `<p class="section-note">No regular-season games for this season.</p>`
   const body = rows
@@ -521,7 +494,7 @@ export function upsertLuckPage(contentHtml, pagePath = PAGE_PATH) {
 }
 
 async function main() {
-  loadEnvFile()
+  applyEnvFile(join(__dirname, '.env'))
   authHeaders()
 
   const args = process.argv.slice(2)
@@ -531,7 +504,7 @@ async function main() {
   const leaguesBySeason = new Map()
   for (let season = current; season >= API_FIRST_SEASON; season--) {
     try {
-      leaguesBySeason.set(season, await fetchLeague(season))
+      leaguesBySeason.set(season, await fetchSeason(season))
     } catch (err) {
       console.warn(`Skipping ${season}: ${err.message}`)
     }
@@ -571,7 +544,7 @@ async function main() {
 
   const data = {
     generated: new Date().toISOString().slice(0, 10),
-    leagueId: LEAGUE_ID,
+    leagueId: LEAGUE_ID_DEFAULT,
     seasons: Object.keys(perSeason).map(Number).sort((a, b) => a - b),
     defaultSeason: defaultYear,
     scopeNote: 'Regular-season weeks only, 2018 on. All-Play replays each week as if every team played every other team. Luck Index contrasts <10 pt close record with points-for rank.',
@@ -582,8 +555,7 @@ async function main() {
     },
   }
 
-  fs.mkdirSync(pathDirname(DATA_PATH), { recursive: true })
-  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2) + '\n')
+  writeJsonAtomic(DATA_PATH, data)
   console.log(`Wrote ${DATA_PATH}`)
   upsertLuckPage(renderPageContent(data))
 }

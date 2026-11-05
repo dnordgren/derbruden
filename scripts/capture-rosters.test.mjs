@@ -143,9 +143,9 @@ test('main --week captures a specific week', async () => {
   assert.deepEqual(Object.keys(saved.seasons['2026']), ['2'])
 })
 
-test('loadEnvFile import surface matches watch-trades', () => {
-  // The capture script shares env parsing with the watcher; if the export
+test('env parsing comes from the shared lib', () => {
+  // Capture shares env parsing via scripts/lib/espn.mjs; if the import
   // ever moves, this fails fast instead of at CI runtime.
   const src = readFileSync(path.join(HERE, 'capture-rosters.mjs'), 'utf8')
-  assert.match(src, /import \{ loadEnvFile \} from '\.\/watch-trades\.mjs'/)
+  assert.match(src, /from '\.\/lib\/espn\.mjs'/)
 })

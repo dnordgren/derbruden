@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-04T20:35:13.877Z",
+  "updated": "2026-11-05T20:52:01.548Z",
   "order": [
     {
       "rank": 1,
@@ -25,16 +25,6 @@
     },
     {
       "rank": 3,
-      "teamId": 8,
-      "owner": "DN",
-      "name": "Washington Redskins",
-      "wins": 4,
-      "losses": 4,
-      "ties": 0,
-      "moves": 16
-    },
-    {
-      "rank": 4,
       "teamId": 7,
       "owner": "CR",
       "name": "Apes Together Strong",
@@ -44,7 +34,7 @@
       "moves": 9
     },
     {
-      "rank": 5,
+      "rank": 4,
       "teamId": 5,
       "owner": "AR",
       "name": "Give 'er The Beans ",
@@ -54,7 +44,7 @@
       "moves": 7
     },
     {
-      "rank": 6,
+      "rank": 5,
       "teamId": 1,
       "owner": "GM",
       "name": "Big Bawls Wub",
@@ -64,7 +54,7 @@
       "moves": 19
     },
     {
-      "rank": 7,
+      "rank": 6,
       "teamId": 4,
       "owner": "AN",
       "name": "El Fusilado",
@@ -74,7 +64,7 @@
       "moves": 15
     },
     {
-      "rank": 8,
+      "rank": 7,
       "teamId": 12,
       "owner": "JH",
       "name": "ORACLE AI",
@@ -84,7 +74,7 @@
       "moves": 7
     },
     {
-      "rank": 9,
+      "rank": 8,
       "teamId": 11,
       "owner": "IK",
       "name": "Olave Garden Breadsticks",
@@ -94,17 +84,72 @@
       "moves": 16
     },
     {
-      "rank": 10,
+      "rank": 9,
       "teamId": 2,
       "owner": "DM",
       "name": "Cracked Unc",
       "wins": 6,
       "losses": 2,
       "ties": 0,
-      "moves": 24
+      "moves": 25
+    },
+    {
+      "rank": 10,
+      "teamId": 8,
+      "owner": "DN",
+      "name": "Washington Redskins",
+      "wins": 4,
+      "losses": 4,
+      "ties": 0,
+      "moves": 18
     }
   ],
   "moves": [
+    {
+      "id": "6a261d54-4ccb-42d3-a5b6-6a9ec66cdb7f",
+      "date": "2026-11-05T17:34:06.305Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Dalton Kincaid"
+      ],
+      "drops": [
+        "Kyle Pitts Sr."
+      ],
+      "bid": null
+    },
+    {
+      "id": "23cad69b-cd1a-4fc8-bdcf-39a3ddd40904",
+      "date": "2026-11-05T08:07:03.657Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Omar Cooper Jr."
+      ],
+      "drops": [
+        "Woody Marks"
+      ],
+      "bid": null
+    },
+    {
+      "id": "6539f8c8-bb64-4c11-8a12-a660a7e71ccf",
+      "date": "2026-11-04T23:47:48.123Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "New York Giants D/ST"
+      ],
+      "drops": [
+        "Cincinnati Bengals D/ST"
+      ],
+      "bid": null
+    },
     {
       "id": "b72c9929-226a-4ea8-8c69-f4ca2605e6f6",
       "date": "2026-11-04T14:18:43.930Z",

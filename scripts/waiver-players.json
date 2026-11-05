@@ -1,6 +1,6 @@
 {
   "season": 2026,
-  "updated": "2026-11-04T20:35:13.877Z",
+  "updated": "2026-11-05T20:52:01.548Z",
   "players": {
     "2026:3052587": "Baker Mayfield",
     "2026:4383429": "Jacob Saylors",
@@ -122,6 +122,8 @@
     "2026:-16028": "Washington Commanders D/ST",
     "2026:4363538": "Chad Ryland",
     "2026:3121422": "Terry McLaurin",
-    "2026:4686658": "Mike Washington Jr."
+    "2026:4686658": "Mike Washington Jr.",
+    "2026:-16019": "New York Giants D/ST",
+    "2026:4429059": "Woody Marks"
   }
 }

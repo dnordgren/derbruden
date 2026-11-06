@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-05T20:52:01.548Z",
+  "updated": "2026-11-06T20:07:59.237Z",
   "order": [
     {
       "rank": 1,
@@ -11,7 +11,7 @@
       "wins": 2,
       "losses": 6,
       "ties": 0,
-      "moves": 14
+      "moves": 15
     },
     {
       "rank": 2,
@@ -21,20 +21,10 @@
       "wins": 6,
       "losses": 2,
       "ties": 0,
-      "moves": 7
-    },
-    {
-      "rank": 3,
-      "teamId": 7,
-      "owner": "CR",
-      "name": "Apes Together Strong",
-      "wins": 5,
-      "losses": 3,
-      "ties": 0,
       "moves": 9
     },
     {
-      "rank": 4,
+      "rank": 3,
       "teamId": 5,
       "owner": "AR",
       "name": "Give 'er The Beans ",
@@ -44,7 +34,7 @@
       "moves": 7
     },
     {
-      "rank": 5,
+      "rank": 4,
       "teamId": 1,
       "owner": "GM",
       "name": "Big Bawls Wub",
@@ -54,7 +44,7 @@
       "moves": 19
     },
     {
-      "rank": 6,
+      "rank": 5,
       "teamId": 4,
       "owner": "AN",
       "name": "El Fusilado",
@@ -64,7 +54,7 @@
       "moves": 15
     },
     {
-      "rank": 7,
+      "rank": 6,
       "teamId": 12,
       "owner": "JH",
       "name": "ORACLE AI",
@@ -74,7 +64,7 @@
       "moves": 7
     },
     {
-      "rank": 8,
+      "rank": 7,
       "teamId": 11,
       "owner": "IK",
       "name": "Olave Garden Breadsticks",
@@ -84,7 +74,7 @@
       "moves": 16
     },
     {
-      "rank": 9,
+      "rank": 8,
       "teamId": 2,
       "owner": "DM",
       "name": "Cracked Unc",
@@ -94,7 +84,7 @@
       "moves": 25
     },
     {
-      "rank": 10,
+      "rank": 9,
       "teamId": 8,
       "owner": "DN",
       "name": "Washington Redskins",
@@ -102,9 +92,77 @@
       "losses": 4,
       "ties": 0,
       "moves": 18
+    },
+    {
+      "rank": 10,
+      "teamId": 7,
+      "owner": "CR",
+      "name": "Apes Together Strong",
+      "wins": 5,
+      "losses": 3,
+      "ties": 0,
+      "moves": 10
     }
   ],
   "moves": [
+    {
+      "id": "4abd08b3-0649-46d6-bb26-ad7be1108d12",
+      "date": "2026-11-06T08:43:43.368Z",
+      "event": "WAIVER",
+      "status": "EXECUTED",
+      "teamId": 7,
+      "owner": "CR",
+      "adds": [
+        "Woody Marks"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "e5467460-3a33-4509-b40f-988a19fc8532",
+      "date": "2026-11-06T02:14:19.693Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Brandon Aiyuk"
+      ],
+      "drops": [
+        "Tez Johnson"
+      ],
+      "bid": null
+    },
+    {
+      "id": "aae0d14c-40c5-4e8c-8d4c-0b8a6094eaea",
+      "date": "2026-11-05T23:01:06.293Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 9,
+      "owner": "JO",
+      "adds": [
+        "Chicago Bears D/ST"
+      ],
+      "drops": [
+        "New England Patriots D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "be1eed3d-4e99-4a4d-a13d-65ef492c694a",
+      "date": "2026-11-05T22:58:47.252Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 9,
+      "owner": "JO",
+      "adds": [
+        "Cairo Santos"
+      ],
+      "drops": [
+        "Chris Boswell"
+      ],
+      "bid": null
+    },
     {
       "id": "6a261d54-4ccb-42d3-a5b6-6a9ec66cdb7f",
       "date": "2026-11-05T17:34:06.305Z",

@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-06T20:07:59.237Z",
+  "updated": "2026-11-07T18:22:41.505Z",
   "order": [
     {
       "rank": 1,
@@ -11,7 +11,7 @@
       "wins": 2,
       "losses": 6,
       "ties": 0,
-      "moves": 15
+      "moves": 18
     },
     {
       "rank": 2,
@@ -41,7 +41,7 @@
       "wins": 2,
       "losses": 6,
       "ties": 0,
-      "moves": 19
+      "moves": 20
     },
     {
       "rank": 5,
@@ -105,6 +105,62 @@
     }
   ],
   "moves": [
+    {
+      "id": "0959b9d4-b147-4ca5-93ac-d95ac522c36d",
+      "date": "2026-11-07T01:44:10.297Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Adonai Mitchell"
+      ],
+      "drops": [
+        "Brandon Aiyuk"
+      ],
+      "bid": null
+    },
+    {
+      "id": "9eda45dc-dd64-4263-805f-32e7c32f9467",
+      "date": "2026-11-07T01:41:12.330Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Buffalo Bills D/ST"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "34600cb3-eb8f-458e-96fd-9a8e720ee0f0",
+      "date": "2026-11-07T01:39:49.433Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Kenny Gainwell"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "4eb942eb-35d8-4e62-99d7-bdb2a9acfa1a",
+      "date": "2026-11-06T20:26:45.151Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 1,
+      "owner": "GM",
+      "adds": [
+        "Devin Singletary"
+      ],
+      "drops": [
+        "Josh Downs"
+      ],
+      "bid": null
+    },
     {
       "id": "4abd08b3-0649-46d6-bb26-ad7be1108d12",
       "date": "2026-11-06T08:43:43.368Z",

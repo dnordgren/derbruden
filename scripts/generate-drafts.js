@@ -283,7 +283,6 @@ function renderContent(draftsBySeason, teamsBySeason, cache, meta) {
       <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" class="owner-logo-image" width="100" height="100" />
       <h1>Draft history</h1>
     </div>
-    <p class="draft-meta">Drafts, ${seasons[seasons.length - 1]} to ${seasons[0]} &middot; updated ${meta.generated}</p>
     <p class="season-links">${links}</p>
     <p class="legend">
       <span class="chip skill"></span>RB/WR

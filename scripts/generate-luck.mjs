@@ -470,7 +470,7 @@ export function renderPageContent(data) {
   const allPlaySection = renderAllPlaySection(perSeason, allPlayAllTime, defaultYear)
   const luckSection = renderLuckSection(perSeason, luckAllTime, defaultYear)
   const json = JSON.stringify(data).replace(/<\//g, '<\\/')
-  return `${allPlaySection}\n${luckSection}\n<script type="application/json" id="luck-data">${json}</script>\n<script src="../static/js/luck.js?v=1"></script>`
+  return `${allPlaySection}\n${luckSection}\n<script type="application/json" id="luck-data">${json}</script>\n<script src="../static/js/luck.js?v=2"></script>`
 }
 
 const START = '<!-- LUCK_START -->'

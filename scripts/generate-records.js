@@ -521,15 +521,15 @@ function pageTemplate(content) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DerBruden.com | All-time records</title>
-  <meta property="og:title" content="DerBruden.com | All-time records">
-  <meta property="og:description" content="League records, head-to-head history, and the hall of shame.">
+  <title>DerBruden.com | Records and luck</title>
+  <meta property="og:title" content="DerBruden.com | Records and luck">
+  <meta property="og:description" content="League records, the luck index, and the hall of shame.">
   <meta property="og:url" content="https://derbruden.com/records.html">
   <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="DerBruden.com | All-time records">
-  <meta name="twitter:description" content="League records and the hall of shame.">
+  <meta name="twitter:title" content="DerBruden.com | Records and luck">
+  <meta name="twitter:description" content="League records and the luck index.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
   <style>
@@ -583,7 +583,7 @@ function pageTemplate(content) {
   <main id="main">
     <div class="owner-logo-header">
       <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" class="owner-logo-image" width="100" height="100">
-      <h1>All-time records</h1>
+      <h1>Records and luck</h1>
     </div>
     <!-- RECORDS_START -->
 ${content}

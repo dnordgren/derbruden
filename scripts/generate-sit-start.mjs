@@ -712,22 +712,22 @@ export function renderPageContent(data) {
   const mwaRows = mwa.perSeason[data.defaultSeason]?.rows || []
   const mwaSelector = renderSeasonSelector(seasons, data.defaultSeason, 'mwa-season-select')
   const json = JSON.stringify(data).replace(/<\//g, '<\\/')
-  return `<h2>Career Efficiency</h2>
-<p class="section-note">Actual starter points divided by optimal starter points across every decided regular-season week since 2018. A perfect week means the manager started the highest-scoring legal lineup. Regular season only.</p>
+  return `<h2>Career efficiency</h2>
+<p class="section-note">Started points divided by optimal points across every decided regular-season week since 2018. A perfect week means the manager started the highest-scoring legal lineup.</p>
 ${renderCareerTable(data.career)}
-<h2>Efficiency Trend</h2>
-<p class="section-note">Season-by-season efficiency for every owner. Y-axis starts at 75% so the gaps are visible. Select an owner below to toggle their line; isolate a single owner to overlay their win% (dashed, right axis). Starts with one random owner isolated.</p>
+<h2>Efficiency trend</h2>
+<p class="section-note">Efficiency by season for every owner. The chart starts at 75% so the gaps show. Select an owner to toggle their line. Isolating one owner overlays win percentage as a dashed line. One owner starts isolated.</p>
 <div class="legend-row" id="sitstart-legend"></div>
-<div class="viz-chart" id="sitstart-chart" tabindex="0" role="region" aria-label="Season-by-season sit-start efficiency by owner, percent. Y-axis starts at 75 percent."></div>
-<h2>By Season</h2>
+<div class="viz-chart" id="sitstart-chart" tabindex="0" role="region" aria-label="Sit-start efficiency by owner and season, percent. Chart starts at 75 percent."></div>
+<h2>By season</h2>
 ${selector}
 <div id="sitstart-table-wrap">
 ${renderSeasonTable(currentRows, `${data.defaultSeason} sit-start efficiency`)}
 </div>
-<h2>Manager Wins Added</h2>
-<p class="section-note">Stolen wins minus avoidable losses since 2018. Each decided regular-season week gets a league-average efficiency (actual points over optimal points across every team); a team's expected score is its optimal lineup times that average. Stole a win: won a game an average manager loses. Avoidable loss: lost a game an average manager wins. Ties don't count; playoffs excluded.</p>
+<h2>Manager wins added</h2>
+<p class="section-note">Stolen wins minus avoidable losses since 2018. Each decided regular-season week gets a league-average efficiency, total actual points over total optimal points. A team's expected score is its optimal lineup times that average. A win is stolen when an average lineup loses that matchup. A loss is avoidable when an average lineup wins it. Ties do not count and playoffs are excluded.</p>
 ${renderMwaCareerTable(mwa.career || [])}
-<h3>By Season</h3>
+<h3>By season</h3>
 ${mwaSelector}
 <div id="mwa-table-wrap">
 ${renderMwaSeasonTable(mwaRows, `${data.defaultSeason} manager wins added`)}
@@ -744,14 +744,14 @@ function pageTemplate(content) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DerBruden.com | Sit/Start Efficiency</title>
-  <meta property="og:title" content="DerBruden.com | Sit/Start Efficiency">
-  <meta property="og:description" content="Sit/start efficiency for the Der Bruden fantasy football league: actual starter points versus the optimal lineup, season by season.">
+  <title>DerBruden.com | Sit/start efficiency</title>
+  <meta property="og:title" content="DerBruden.com | Sit/start efficiency">
+  <meta property="og:description" content="Sit/start efficiency for the Der Bruden league.">
   <meta property="og:url" content="https://derbruden.com/sit-start.html">
   <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="DerBruden.com | Sit/Start Efficiency">
+  <meta name="twitter:title" content="DerBruden.com | Sit/start efficiency">
   <meta name="twitter:description" content="Actual starter points versus the optimal lineup, season by season.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
@@ -806,18 +806,15 @@ function pageTemplate(content) {
   <main id="main">
     <div class="owner-logo-header">
       <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" width="100" height="100">
-      <h1>Sit/Start Efficiency</h1>
+      <h1>Sit/start efficiency</h1>
     </div>
     ${SITSTART_START}
 ${content}
 ${SITSTART_END}
     <details class="methodology">
       <summary>How these numbers work</summary>
-      <p><strong>Actual:</strong> points scored by the lineup the manager actually started that week (ESPN lineupSlotId at kickoff: QB, 2 RB, 2 WR, TE, FLEX, D/ST, K).</p>
-      <p><strong>Optimal:</strong> the highest-scoring legal lineup chosen from the same week's rostered players (backtracking over eligible slots; empty slots score 0).</p>
-      <p><strong>Efficiency</strong> = actual / optimal. <strong>Perfect</strong> weeks are weeks where actual equals optimal. Regular-season decided weeks only, 2018 on.</p>
-      <p><strong>Manager wins added (MWA):</strong> stolen wins minus avoidable losses. Expected score = optimal lineup times the league-week-average efficiency (total actual over total optimal that week). A win is stolen when expected trails the opponent's actual score; a loss is avoidable when expected beats it. Strict inequalities, so ties and exact-equals weeks are neutral.</p>
-      <p>Regenerate with <code>make sitstart</code>.</p>
+      <p>Actual points are what the started lineup scored. Optimal points are the best legal lineup from the same week's roster. Efficiency is actual divided by optimal. A perfect week means the manager started the best lineup. Regular-season weeks only, 2018 on.</p>
+      <p>Manager wins added is stolen wins minus avoidable losses. Each week gets a league-average efficiency. Expected score is the optimal lineup times that average. A win is stolen when an average lineup would have lost. A loss is avoidable when an average lineup would have won. Ties do not count.</p>
     </details>
   </main>
 
@@ -889,10 +886,10 @@ export function renderOwnerSection(ownerRows, careerRow) {
     : ''
   return `${SITSTART_START}
   <section class="sit-start">
-    <h2>Sit/Start Efficiency</h2>
-    <p class="section-note">Actual starter points versus the best legal lineup from the same roster. MWA = stolen wins minus avoidable losses. <a href="./sit-start.html">League leaderboard</a>.</p>
+    <h2>Sit/start efficiency</h2>
+    <p class="section-note">Started points versus the best lineup from the same roster. MWA is stolen wins minus avoidable losses. <a href="./sit-start.html">League leaderboard</a>.</p>
     <div class="table-container" tabindex="0"><table class="stats-table">
-  <caption class="visually-hidden">Season-by-season sit-start efficiency</caption>
+  <caption class="visually-hidden">Sit-start efficiency by season</caption>
   <thead>
     <tr>
       <th scope="col" class="number">Season</th>

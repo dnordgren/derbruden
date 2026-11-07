@@ -476,7 +476,7 @@ test('renderPageContent includes the MWA section and v10 script, with no winnabl
     perSeason: { 2024: { season: 2024, rows: [] }, 2025: { season: 2025, rows: [] } },
     managerWinsAdded: { perSeason: { 2025: { season: 2025, rows: [] } }, career: [] },
   })
-  assert.ok(html.includes('Manager Wins Added'))
+  assert.ok(html.includes('Manager wins added'))
   assert.ok(html.includes('id="mwa-table-wrap"'))
   assert.ok(html.includes('id="mwa-season-select"'))
   assert.ok(html.includes('sit-start.js?v=10'))
@@ -485,7 +485,7 @@ test('renderPageContent includes the MWA section and v10 script, with no winnabl
 
 test('renderPageContent tolerates JSON without managerWinsAdded', async () => {
   const html = renderPageContent({ defaultSeason: 2025, career: [], perSeason: {} })
-  assert.ok(html.includes('Manager Wins Added'))
+  assert.ok(html.includes('Manager wins added'))
 })
 
 test('renderOwnerSection shows Stolen/Avoidable/MWA columns, no Winnable column, and dashes legacy rows', async () => {

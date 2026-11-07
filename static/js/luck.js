@@ -36,10 +36,10 @@
   }
   function allPlayVerdict(row) {
     var d = row.delta
-    if (d >= 2) return 'Benefited from schedule'
-    if (d >= 1) return 'Slightly lucky schedule'
-    if (d <= -2) return 'Hurt by schedule'
-    if (d <= -1) return 'Tough schedule'
+    if (d >= 2) return 'Easy schedule'
+    if (d >= 1) return 'Soft schedule'
+    if (d <= -2) return 'Hard schedule'
+    if (d <= -1) return 'Rough schedule'
     return 'As expected'
   }
 
@@ -89,15 +89,15 @@
     return (
       '<div class="table-container"><table class="stats-table">' +
       '<thead><tr>' +
-      '<th scope="col" class="number">AP Rank</th>' +
+      '<th scope="col" class="number">AP rank</th>' +
       '<th scope="col">Owner</th>' +
       '<th scope="col">Team</th>' +
       '<th scope="col" class="number">Record</th>' +
       '<th scope="col" class="number">PF</th>' +
-      '<th scope="col" class="number">All-Play</th>' +
-      '<th scope="col" class="number">AP %</th>' +
-      '<th scope="col" class="number">Luck (W-AP)</th>' +
-      '<th scope="col">Schedule</th>' +
+      '<th scope="col" class="number">All-play</th>' +
+      '<th scope="col" class="number">AP%</th>' +
+      '<th scope="col" class="number">Luck (win minus AP)</th>' +
+      '<th scope="col">Verdict</th>' +
       '</tr></thead>' +
       '<tbody>' +
       body +

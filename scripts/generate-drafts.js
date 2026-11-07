@@ -254,7 +254,7 @@ function renderSeasonBoard(season, picks, teams, cache) {
     .join('\n')
 
   return `<section class="draft-season" id="draft-${season}">
-    <h2>${season} Draft</h2>
+    <h2>${season} draft</h2>
     <div class="table-container" tabindex="0">
       <table class="draft-board">
         <caption class="visually-hidden">${season} draft board</caption>
@@ -281,9 +281,8 @@ function renderContent(draftsBySeason, teamsBySeason, cache, meta) {
 
   return `<div class="owner-logo-header">
       <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" class="owner-logo-image" width="100" height="100" />
-      <h1>Draft History</h1>
+      <h1>Draft history</h1>
     </div>
-    <p class="draft-meta">${seasons[seasons.length - 1]}&ndash;${seasons[0]} drafts &middot; generated ${meta.generated}</p>
     <p class="season-links">${links}</p>
     <p class="legend">
       <span class="chip skill"></span>RB/WR
@@ -296,9 +295,9 @@ function renderContent(draftsBySeason, teamsBySeason, cache, meta) {
     ${sections}
     <details class="methodology">
       <summary>About this page</summary>
-      <p>Every draft since the league moved to ESPN in 2018, laid out as the serpentine draft board. Columns follow first-round slot order; the arrow on each round shows the snake direction. The folded corner marks a keeper pick. Pro teams reflect the season of the draft.</p>
-      <p>The current year appears once its live draft has results.</p>
-      <p>Data comes from the ESPN fantasy API. Regenerate with <code>make drafts</code>.</p>
+      <p>Every draft since 2018, laid out as the snake draft board. Columns follow first-round order and the arrow shows the direction each round. The folded corner marks a keeper. Team names are from draft day.</p>
+      <p>The current year shows up after the draft runs.</p>
+      <p>Draft data from ESPN.</p>
     </details>`
 }
 
@@ -309,16 +308,7 @@ function pageTemplate(content) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DerBruden.com | Draft History</title>
-  <meta property="og:title" content="DerBruden.com | Draft History">
-  <meta property="og:description" content="Complete Der Bruden fantasy football draft history: every pick, every round, every year.">
-  <meta property="og:url" content="https://derbruden.com/drafts.html">
-  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="DerBruden.com | Draft History">
-  <meta name="twitter:description" content="Complete Der Bruden fantasy football draft history: every pick, every round, every year.">
-  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
+  <title>DerBruden.com | Draft history</title>
   <!--#include file="partials/head-common.html" -->
   <style>
     .legend {
@@ -519,7 +509,7 @@ function renderOwnerSection(draftsBySeason, cache, ownerCode) {
 
   return `<!-- DRAFT_HISTORY_START -->
   <section class="draft-history">
-    <h2>Draft Picks</h2>
+    <h2>Draft picks</h2>
     ${paragraphs.join('\n    ')}
   </section>
   <!-- DRAFT_HISTORY_END -->`

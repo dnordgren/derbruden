@@ -574,10 +574,10 @@ export function renderPageContent(data, teamsById) {
   }
   const callout = calloutParts.length ? `<p class="callout">${calloutParts.join(' ')}</p>` : ''
   // sort for display already sorted
-  let html = `<h2>Playoff Race</h2>
-<p class="section-note">${data.season} regular season &middot; ${data.regularSeasonWeeks} weeks &middot; top ${data.playoffTeamCount} make playoffs &middot; last place wears the diaper &middot; tiebreak is points for &middot; through week ${data.throughWeek} &middot; ${data.remainingCount} games left${data.currentWeek ? ` &middot; current week ${data.currentWeek}` : ''} &middot; generated ${data.generated}</p>
+  let html = `<h2>Playoff race</h2>
+<p class="section-note">${data.season} regular season &middot; ${data.regularSeasonWeeks} weeks &middot; top ${data.playoffTeamCount} make playoffs &middot; last place wears the diaper &middot; tiebreak is points for &middot; through week ${data.throughWeek} &middot; ${data.remainingCount} games left${data.currentWeek ? ` &middot; current week ${data.currentWeek}` : ''} &middot; updated ${data.generated}</p>
 ${callout}
-<h3>Current Standings</h3>
+<h3>Current standings</h3>
 <p class="section-note">x = clinched, e = eliminated, d = locked into the diaper, s = safe from it (wins-only guarantees, tiebreak could still flip).</p>
 ${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet, doomedSet, safeSet)}`
 
@@ -592,7 +592,7 @@ ${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet, doomedSet, 
     const shown = data.pivotal.filter(p => p.swing >= threshold).slice(0, 8)
     const restMax = data.pivotal.filter(p => p.swing < threshold).reduce((m, p) => Math.max(m, p.swing), 0)
     if (shown.length) {
-      html += `<h3>Pivotal Games</h3><p class="section-note">Ordered by week, biggest share-swing first within each week. Only shifts of ${threshold} points or more shown.</p>`
+      html += `<h3>Pivotal games</h3><p class="section-note">Ordered by week, biggest share-swing first within each week. Only shifts of ${threshold} points or more shown.</p>`
       for (const p of shown) {
         const line = (world, winner, prob) => {
           const parts = []
@@ -604,15 +604,16 @@ ${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet, doomedSet, 
           }
           return parts.length ? `<br>${escapeHtml(winner)} win (${prob}%): ${parts.join(', ')}` : ''
         }
-        html += `<p><strong>W${p.week} ${escapeHtml(p.awayOwner)} @ ${escapeHtml(p.homeOwner)}</strong> — swings shares by up to ${p.swing}%${line('home', p.homeOwner, p.homeWinProb)}${line('away', p.awayOwner, 100 - p.homeWinProb)}</p>`
+        html += `<p><strong>W${p.week} ${escapeHtml(p.awayOwner)} @ ${escapeHtml(p.homeOwner)}</strong>: swings shares by up to ${p.swing}%${line('home', p.homeOwner, p.homeWinProb)}${line('away', p.awayOwner, 100 - p.homeWinProb)}</p>`
       }
       if (restMax > 0) html += `<p class="section-note">Everything else moves shares by less than ${threshold}%.</p>`
+
     }
   }
 
   if (data.scenarios) {
     const sc = data.scenarios
-    html += `<h3>Monday Hypotheticals — Week ${sc.currentWeek}</h3>
+    html += `<h3>Monday hypotheticals for week ${sc.currentWeek}</h3>
 <p class="section-note">If current leaders hold vs if they flip, how clinches shift (remaining after this week).</p>
 <div class="scenario-grid">
 <div><h4>If leaders hold</h4><p class="muted">${sc.currentWeekGames.map(g => `${g.awayOwner} @ ${g.homeOwner}: ${g.leader ?? 'tied'} leads → hold to ${ownerFor(g.holdWinner)}`).join('<br>')}</p>
@@ -629,8 +630,8 @@ ${sc.flip.doomed?.length ? `<p><strong>Would lock in the diaper:</strong> 🍼 $
   }
 
   html += `<details class="methodology"><summary>How this works</summary>
-<p>Standings count only regular-season games (playoffTierType NONE). Wins + 0.5×ties sorted, then points for. Clinched means even losing all remaining games, the team still finishes top ${data.playoffTeamCount} even if every tied team wins the tiebreak. Eliminated means even winning out, the team cannot reach top ${data.playoffTeamCount} even with tiebreak help. Same math at the bottom: doomed means even winning out leaves the team last even with tiebreak help, safe means even losing out cannot finish last — worst record takes the diaper, lower points for breaks ties. Enumeration tries all 2<sup>n</sup> outcomes for the ${data.remainingCount} remaining regular games (capped at ${ENUM_LIMIT}); head-to-head conflicts are respected, so not every team can win out simultaneously. Future points are ignored for tiebreak — wins grouping is conservative. PO% is the share of all remaining-game outcomes (a coin flip each; tied teams split the contested spots) that puts the team in the top ${data.playoffTeamCount}; D% the share that finishes last. Past ${ENUM_LIMIT} remaining games a seeded 20,000-sample Monte Carlo estimates the same shares deterministically. Hypotheticals show Monday-night "hold vs flip" for the current in-progress week only.</p>
-<p>Data from the ESPN fantasy API. Regenerate with <code>make races</code> or wait for the Monday night GitHub Action. Page and JSON refresh together; start week is ${data.startWeek} (regular season is ${data.regularSeasonWeeks} weeks).</p>
+<p>Only regular-season games count. Teams sort by wins plus half wins for ties, then points for. A team has clinched if it finishes top ${data.playoffTeamCount} even when it loses out and every tiebreak goes against it. A team is eliminated if it misses the top ${data.playoffTeamCount} even when it wins out and every tiebreak goes its way. The same math sets the diaper race at the bottom. A team is doomed when it finishes last even when it wins out. It is safe when it cannot finish last even when it loses out. The math tries every outcome of the remaining games. Head-to-head results carry over, so rivals cannot all win out at once. Future points do not break ties. PO% is the share of all remaining-game outcomes that puts a team in the top ${data.playoffTeamCount}. D% is the share that finishes last. Monday-night hypotheticals show what happens if leaders hold or underdogs rally.</p>
+<p>Scenarios update Monday nights. The page and JSON refresh together.</p>
 </details>`
   return html
 }
@@ -657,13 +658,13 @@ function pageTemplate(content) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DerBruden.com | Races</title>
   <meta property="og:title" content="DerBruden.com | Races">
-  <meta property="og:description" content="Playoff clinch scenarios and the last-place diaper watch for the Der Bruden fantasy football league. Updated Mondays with hold vs flip hypotheticals.">
+  <meta property="og:description" content="Playoff clinch scenarios and the last-place diaper watch, updated Mondays.">
   <meta property="og:url" content="https://derbruden.com/playoff-race.html">
   <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="DerBruden.com | Races">
-  <meta name="twitter:description" content="Playoff race and diaper watch for the Der Bruden league.">
+  <meta name="twitter:description" content="Playoff race and diaper watch for the league.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
   <style>
@@ -701,7 +702,7 @@ function pageTemplate(content) {
   <main id="main">
     <div class="owner-logo-header">
       <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" width="100" height="100">
-      <h1>Playoff & Diaper Races</h1>
+      <h1>Playoff and diaper races</h1>
     </div>
     <!-- PLAYOFF_RACE_START -->
 ${content}
@@ -710,7 +711,7 @@ ${content}
 <!-- DIAPER_RACE_START -->
 <!-- DIAPER_RACE_END -->
     </section>
-    <p class="section-note">Regular season only. Regenerate with <code>make races</code>. Clinch and diaper math enumerate all remaining outcomes head-to-head.</p>
+    <p class="section-note">Regular season only. Clinch and diaper math checks every remaining outcome head to head.</p>
   </main>
 
   <!--#include file="partials/footer.html" -->

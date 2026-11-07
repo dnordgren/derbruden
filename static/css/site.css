@@ -429,8 +429,7 @@ nav a[aria-current='page'] {
   margin-bottom: 40px;
 }
 
-.pr-meta,
-.draft-meta {
+.pr-meta {
   color: var(--muted);
   font-size: 0.9em;
 }

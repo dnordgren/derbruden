@@ -421,33 +421,33 @@ ${body}
 
 export function renderAllPlaySection(perSeason, allTimeRows, defaultSeasonYear) {
   const currentRows = perSeason[defaultSeasonYear]?.allPlay || []
-  const currentCap = `${defaultSeasonYear} All-Play Standings`
+  const currentCap = `${defaultSeasonYear} all-play standings`
   const selector = renderSeasonSelector(Object.keys(perSeason).sort(), defaultSeasonYear, 'allplay')
-  return `<h2>All-Play Standings</h2>
-<p class="section-note">Every team plays every other team each week. A 10-team league produces nine All-Play results per week. This strips schedule luck and shows who was actually strong. Regular season only, 2018 on.</p>
+  return `<h2>All-play standings</h2>
+<p class="section-note">Every team plays every other team each week, nine results per team in a 10-team league. That strips out schedule luck. Regular season only, 2018 on.</p>
 ${selector}
 <div id="allplay-table-wrap">
 ${renderAllPlayTable(currentRows, currentCap)}
 </div>
-<h3>All-Time All-Play (2018–${Math.max(...Object.keys(perSeason).map(Number))})</h3>
-<p class="section-note">Aggregate All-Play record across every regular-season week since ESPN.</p>
-${renderAllPlayTable(allTimeRows, 'All-Time All-Play')}
+<h3>All-time all-play (2018 to ${Math.max(...Object.keys(perSeason).map(Number))})</h3>
+<p class="section-note">All-play record summed across every regular-season week since 2018.</p>
+${renderAllPlayTable(allTimeRows, 'All-time all-play')}
 `
 }
 
 export function renderLuckSection(perSeason, allTimeLuckRows, defaultSeasonYear) {
   const currentRows = perSeason[defaultSeasonYear]?.luck || []
-  const currentCap = `${defaultSeasonYear} Luck Index`
+  const currentCap = `${defaultSeasonYear} luck index`
   const selector = renderSeasonSelector(Object.keys(perSeason).sort(), defaultSeasonYear, 'luck')
-  return `<h2>Luck Index</h2>
-<p class="section-note">Close games (&lt;10 pts) flip on a few points. Luck Index shows close-game record against points-for rank. High PF rank with a bad close record is unlucky; low PF rank with a great close record is lucky. Regular season only.</p>
+  return `<h2>Luck index</h2>
+<p class="section-note">Close games are decided by under 10 points. The index sets close-game record against points-for rank. A high points rank with a bad close record is unlucky. A low points rank with a good close record is lucky. Regular season only.</p>
 ${selector}
 <div id="luck-table-wrap">
 ${renderLuckTable(currentRows, currentCap)}
 </div>
-<h3>All-Time Luck Index (2018–${Math.max(...Object.keys(perSeason).map(Number))})</h3>
+<h3>All-time luck index (2018 to ${Math.max(...Object.keys(perSeason).map(Number))})</h3>
 <p class="section-note">Cumulative close-game record versus total PF rank since 2018.</p>
-${renderLuckTable(allTimeLuckRows, 'All-Time Luck Index')}
+${renderLuckTable(allTimeLuckRows, 'All-time luck index')}
 `
 }
 
@@ -470,7 +470,7 @@ export function renderPageContent(data) {
   const allPlaySection = renderAllPlaySection(perSeason, allPlayAllTime, defaultYear)
   const luckSection = renderLuckSection(perSeason, luckAllTime, defaultYear)
   const json = JSON.stringify(data).replace(/<\//g, '<\\/')
-  return `${allPlaySection}\n${luckSection}\n<script type="application/json" id="luck-data">${json}</script>\n<script src="../static/js/luck.js?v=1"></script>`
+  return `${allPlaySection}\n${luckSection}\n<script type="application/json" id="luck-data">${json}</script>\n<script src="../static/js/luck.js?v=2"></script>`
 }
 
 const START = '<!-- LUCK_START -->'

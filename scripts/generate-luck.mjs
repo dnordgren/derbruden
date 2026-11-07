@@ -360,15 +360,15 @@ function renderAllPlayTable(rows, caption) {
     <caption class="visually-hidden">${escapeHtml(caption)}</caption>
     <thead>
       <tr>
-        <th scope="col" class="number">AP Rank</th>
+        <th scope="col" class="number">AP rank</th>
         <th scope="col">Owner</th>
         <th scope="col">Team</th>
         <th scope="col" class="number">Record</th>
         <th scope="col" class="number">PF</th>
-        <th scope="col" class="number">All-Play</th>
-        <th scope="col" class="number">AP %</th>
-        <th scope="col" class="number">Luck (W-AP)</th>
-        <th scope="col">Schedule</th>
+        <th scope="col" class="number">All-play</th>
+        <th scope="col" class="number">AP%</th>
+        <th scope="col" class="number">Luck (win minus AP)</th>
+        <th scope="col">Verdict</th>
       </tr>
     </thead>
     <tbody>
@@ -406,10 +406,10 @@ function renderLuckTable(rows, caption) {
         <th scope="col">Owner</th>
         <th scope="col">Team</th>
         <th scope="col" class="number">PF</th>
-        <th scope="col" class="number">PF Rank</th>
+        <th scope="col" class="number">PF rank</th>
         <th scope="col" class="number">Close &lt;10</th>
-        <th scope="col" class="number">Close %</th>
-        <th scope="col" class="number">Luck (PF−Close)</th>
+        <th scope="col" class="number">Close%</th>
+        <th scope="col" class="number">Luck (points minus close)</th>
         <th scope="col">Verdict</th>
       </tr>
     </thead>

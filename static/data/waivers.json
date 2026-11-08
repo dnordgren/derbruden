@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-07T18:22:41.505Z",
+  "updated": "2026-11-08T18:33:08.471Z",
   "order": [
     {
       "rank": 1,
@@ -11,7 +11,7 @@
       "wins": 2,
       "losses": 6,
       "ties": 0,
-      "moves": 18
+      "moves": 20
     },
     {
       "rank": 2,
@@ -61,7 +61,7 @@
       "wins": 4,
       "losses": 4,
       "ties": 0,
-      "moves": 7
+      "moves": 8
     },
     {
       "rank": 7,
@@ -105,6 +105,49 @@
     }
   ],
   "moves": [
+    {
+      "id": "71b46b88-2f2c-481b-8948-9cd753c51ea0",
+      "date": "2026-11-08T15:33:23.938Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 12,
+      "owner": "JH",
+      "adds": [
+        "San Francisco 49ers D/ST"
+      ],
+      "drops": [
+        "Sam Darnold"
+      ],
+      "bid": null
+    },
+    {
+      "id": "920593c8-aea2-4fed-a2f9-57420fa01b61",
+      "date": "2026-11-08T11:17:34.072Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Cincinnati Bengals D/ST"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "383d0b1f-52a4-4eb6-b408-442558918970",
+      "date": "2026-11-08T11:03:45.642Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Audric Estime"
+      ],
+      "drops": [
+        "Brian Robinson Jr."
+      ],
+      "bid": null
+    },
     {
       "id": "0959b9d4-b147-4ca5-93ac-d95ac522c36d",
       "date": "2026-11-07T01:44:10.297Z",

@@ -358,6 +358,64 @@ This:
 - Syncs `static/` to S3 `static/`
 - Invalidates the CloudFront cache
 
+## Analytics
+
+No third-party analytics, no cookies for tracking in the usual sense, no
+consent banner. Two pieces:
+
+1. `static/js/analytics.js` (loaded from `partials/head-common.html`, so every
+   page gets it) mints a random `db_cid` cookie, one year, `SameSite=Lax`.
+   Nothing is sent anywhere; the value only exists so the CDN log line can
+   name a returning visitor. `localStorage` mirrors it, so clearing cookies
+   alone does not mint a new identity.
+2. CloudFront standard logs v2 record the request `Cookie` header
+   (`cs-cookie`) and client address (`c-ip`) for every request. That is the
+   whole dataset.
+
+`scripts/analytics.mjs` summarizes a downloaded log pull:
+
+```sh
+make logs CLOUDFRONT_LOG_BUCKET=s3://<log-bucket>/AWSLogs/<account>/CloudFront/
+make analytics
+```
+
+`make analytics` on its own reads `logs/cloudfront/` (git ignored) and prints
+requests, human vs bot, `db_cid` coverage, unique clients, clients seen from
+more than one IP, cache hit ratio, top pages, referrers, status codes, and
+requests by hour/day. `node scripts/analytics.mjs <dir> --json` emits the same
+data for scripting.
+
+Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs`.
+
+### What this measures, honestly
+
+- Every request is counted, including ones from browsers that block
+  JavaScript. Those carry no `db_cid`, so they show up as "IP-only visitors"
+  and cannot be stitched across address changes.
+- The first request from a new visitor always arrives without the cookie
+  (it is set after the page loads), so `db_cid` coverage sits below 100%
+  and rises with repeat visits.
+- Distinct-client counts are approximate. Ad blockers do not reduce the
+  request count, but a shared IP with cleared cookies can look like more
+  than one person.
+- IP plus a persistent client id is pseudonymous personal data. Keep the log
+  bucket private, expire objects (a 90-day lifecycle rule is plenty), and do
+  not join these logs to anything identifying.
+
+### One-time AWS setup (needs admin creds)
+
+`derbruden-deploy` only holds S3 object writes and CloudFront invalidation, so
+this part is console or admin work:
+
+1. Create a private S3 bucket for logs, block all public access.
+2. CloudFront > distribution `E3CDWEEK40CKI2` > Logging > enable Standard
+   logging (v2), destination the new bucket, 90-day lifecycle rule on it.
+3. To read the reports, grant `derbruden-deploy` (or your own credential)
+   `s3:ListBucket` and `s3:GetObject` on that bucket.
+
+Nothing about the cookie requires the logging change: if logs are off, the
+script is harmless and simply collects nothing.
+
 ## Trade watcher
 
 `scripts/watch-trades.mjs` polls ESPN for trade activity, posts new events to

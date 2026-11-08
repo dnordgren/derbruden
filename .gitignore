@@ -32,3 +32,5 @@ node_modules/
 
 # ESPN league JSON cache for wacky stat prototype
 scripts/.wacky-cache/
+# CloudFront access log pulls (make logs)
+/logs/

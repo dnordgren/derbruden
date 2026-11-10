@@ -521,15 +521,15 @@ function pageTemplate(content) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DerBruden.com | All-Time Records</title>
-  <meta property="og:title" content="DerBruden.com | All-Time Records">
-  <meta property="og:description" content="Every record that matters in the Der Bruden fantasy football league: weekly highs, blowouts, streaks, lifetime head-to-head, and the hall of shame.">
+  <title>DerBruden.com | Records and luck</title>
+  <meta property="og:title" content="DerBruden.com | Records and luck">
+  <meta property="og:description" content="League records, the luck index, and the hall of shame.">
   <meta property="og:url" content="https://derbruden.com/records.html">
   <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="DerBruden.com | All-Time Records">
-  <meta name="twitter:description" content="Records, rivalries, and the hall of shame for the Der Bruden fantasy football league.">
+  <meta name="twitter:title" content="DerBruden.com | Records and luck">
+  <meta name="twitter:description" content="League records and the luck index.">
   <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <!--#include file="partials/head-common.html" -->
   <style>
@@ -583,14 +583,13 @@ function pageTemplate(content) {
   <main id="main">
     <div class="owner-logo-header">
       <img src="../static/img/league-logo.webp?v=1" alt="DB Logo" class="owner-logo-image" width="100" height="100">
-      <h1>All-Time Records</h1>
+      <h1>Records and luck</h1>
     </div>
     <!-- RECORDS_START -->
 ${content}
 <!-- RECORDS_END -->
     <p class="section-note">Weekly records and head-to-head cover every decided game
-    since the league joined ESPN in 2018. Champions and playoff droughts reach back
-    to 2014 through recorded league history. Regenerate with <code>make records</code>.</p>
+    since 2018. Champions and playoff droughts go back to 2014.</p>
   </main>
 
   <!--#include file="partials/footer.html" -->

@@ -93,7 +93,6 @@ test('renderPageContent covers the diaper stakes', () => {
   }
   const html = renderPageContent(data, teams())
   assert.ok(html.includes('wears the diaper'))
-  assert.ok(html.includes('make races'))
 })
 
 test('renderPageContent lists pivotal games with winner effects', () => {
@@ -131,7 +130,7 @@ test('renderPageContent lists pivotal games with winner effects', () => {
     note: null,
   }
   const html = renderPageContent(data, teams())
-  assert.ok(html.includes('Pivotal Games'))
+  assert.ok(html.includes('Pivotal games'))
   assert.ok(html.includes('W10'))
   assert.ok(html.includes('swings shares by up to 40%'))
   assert.ok(html.includes('D win (10%)'))

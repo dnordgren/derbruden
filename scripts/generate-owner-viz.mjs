@@ -265,13 +265,13 @@ export function renderSection(payload) {
   const json = JSON.stringify(payload).replace(/<\//g, '<\\/')
   return `${VIZ_START}
   <section class="owner-viz">
-    <h2>Points For vs Points Against</h2>
+    <h2>Points for vs points against</h2>
     <p class="viz-note">Each dot pair shows one season. Green is points scored, red is points allowed.</p>
     <div class="viz-chart" id="viz-pfpa" tabindex="0" role="region" aria-label="Points for versus points against chart. It visualizes the season table above: green is points scored, red is points allowed."></div>
-    <h2>Elo Trajectory</h2>
+    <h2>Elo trajectory</h2>
     <p class="viz-note">Weekly Elo rating, 1500 is league average.</p>
     <div class="viz-chart" id="viz-elo" tabindex="0" role="region" aria-label="Elo trajectory chart. Weekly rating where 1500 is league average."></div>
-    <h2>Career Head-to-Head</h2>
+    <h2>Career head-to-head</h2>
     <p class="viz-note">This owner's record against every other owner. Green means winning record, red means losing.</p>
     <div class="viz-chart viz-chart-h2h" id="viz-h2h" tabindex="0" role="region" aria-label="Career head-to-head chart against every other owner. Green means a winning record, red means losing."></div>
     <script type="application/json" id="owner-viz-data">${json}</script>

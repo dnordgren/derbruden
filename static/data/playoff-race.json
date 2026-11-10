@@ -1,61 +1,65 @@
 {
-  "generated": "2026-11-05",
+  "generated": "2026-11-10",
   "leagueId": "794521",
   "season": 2026,
   "playoffTeamCount": 6,
   "regularSeasonWeeks": 13,
   "startWeek": 11,
-  "throughWeek": 8,
-  "currentWeek": 9,
-  "remainingCount": 25,
+  "throughWeek": 9,
+  "currentWeek": 10,
+  "remainingCount": 20,
   "remainingByTeam": {
-    "1": 5,
-    "2": 5,
-    "4": 5,
-    "5": 5,
-    "7": 5,
-    "8": 5,
-    "9": 5,
-    "10": 5,
-    "11": 5,
-    "12": 5
+    "1": 4,
+    "2": 4,
+    "4": 4,
+    "5": 4,
+    "7": 4,
+    "8": 4,
+    "9": 4,
+    "10": 4,
+    "11": 4,
+    "12": 4
   },
   "standings": [
     {
       "rank": 1,
+      "teamId": 7,
+      "owner": "CR",
+      "abbrev": "BEAR",
+      "name": "Apes Together Strong",
+      "wins": 6,
+      "losses": 3,
+      "ties": 0,
+      "winValue": 6,
+      "pf": 1161.4,
+      "pa": 1083.1,
+      "gamesBack": 0,
+      "remaining": 4,
+      "bestRank": 1,
+      "worstRank": 10,
+      "clinched": false,
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 98,
+      "diaperPct": 0
+    },
+    {
+      "rank": 2,
       "teamId": 2,
       "owner": "DM",
       "abbrev": "D🚂",
       "name": "Cracked Unc",
       "wins": 6,
-      "losses": 2,
+      "losses": 3,
       "ties": 0,
       "winValue": 6,
-      "pf": 1016,
-      "pa": 854.2,
+      "pf": 1116.2,
+      "pa": 1002.5,
       "gamesBack": 0,
-      "remaining": 5,
-      "clinched": false,
-      "eliminated": false,
-      "doomed": false,
-      "safe": false,
-      "playoffPct": 99,
-      "diaperPct": 0
-    },
-    {
-      "rank": 2,
-      "teamId": 9,
-      "owner": "JO",
-      "abbrev": "DAD",
-      "name": "Adam's Revenge",
-      "wins": 6,
-      "losses": 2,
-      "ties": 0,
-      "winValue": 6,
-      "pf": 893.9,
-      "pa": 849.2,
-      "gamesBack": 0,
-      "remaining": 5,
+      "remaining": 4,
+      "bestRank": 1,
+      "worstRank": 10,
       "clinched": false,
       "eliminated": false,
       "doomed": false,
@@ -65,23 +69,25 @@
     },
     {
       "rank": 3,
-      "teamId": 7,
-      "owner": "CR",
-      "abbrev": "BEAR",
-      "name": "Apes Together Strong",
-      "wins": 5,
+      "teamId": 9,
+      "owner": "JO",
+      "abbrev": "DAD",
+      "name": "Adam's Revenge",
+      "wins": 6,
       "losses": 3,
       "ties": 0,
-      "winValue": 5,
-      "pf": 1013.1,
-      "pa": 983,
-      "gamesBack": 1,
-      "remaining": 5,
+      "winValue": 6,
+      "pf": 1002.2,
+      "pa": 1006.9,
+      "gamesBack": 0,
+      "remaining": 4,
+      "bestRank": 1,
+      "worstRank": 10,
       "clinched": false,
       "eliminated": false,
       "doomed": false,
       "safe": false,
-      "playoffPct": 94,
+      "playoffPct": 95,
       "diaperPct": 0
     },
     {
@@ -91,18 +97,20 @@
       "abbrev": "BEAN",
       "name": "Give 'er The Beans ",
       "wins": 5,
-      "losses": 3,
+      "losses": 4,
       "ties": 0,
       "winValue": 5,
-      "pf": 1004.9,
-      "pa": 874.7,
+      "pf": 1123.3,
+      "pa": 1002.9,
       "gamesBack": 1,
-      "remaining": 5,
+      "remaining": 4,
+      "bestRank": 1,
+      "worstRank": 10,
       "clinched": false,
       "eliminated": false,
       "doomed": false,
       "safe": false,
-      "playoffPct": 93,
+      "playoffPct": 82,
       "diaperPct": 0
     },
     {
@@ -111,83 +119,91 @@
       "owner": "DN",
       "abbrev": "NORD",
       "name": "Washington Redskins",
-      "wins": 4,
+      "wins": 5,
       "losses": 4,
       "ties": 0,
-      "winValue": 4,
-      "pf": 985.4,
-      "pa": 1012,
-      "gamesBack": 2,
-      "remaining": 5,
+      "winValue": 5,
+      "pf": 1113.6,
+      "pa": 1130.4,
+      "gamesBack": 1,
+      "remaining": 4,
+      "bestRank": 1,
+      "worstRank": 10,
       "clinched": false,
       "eliminated": false,
       "doomed": false,
       "safe": false,
-      "playoffPct": 70,
-      "diaperPct": 1
+      "playoffPct": 84,
+      "diaperPct": 0
     },
     {
       "rank": 6,
+      "teamId": 11,
+      "owner": "IK",
+      "abbrev": "OLVE",
+      "name": "Olave Garden Breadsticks",
+      "wins": 4,
+      "losses": 5,
+      "ties": 0,
+      "winValue": 4,
+      "pf": 1171.6,
+      "pa": 1132.9,
+      "gamesBack": 2,
+      "remaining": 4,
+      "bestRank": 1,
+      "worstRank": 10,
+      "clinched": false,
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 55,
+      "diaperPct": 1
+    },
+    {
+      "rank": 7,
+      "teamId": 4,
+      "owner": "AN",
+      "abbrev": "NITZ",
+      "name": "El Fusilado",
+      "wins": 4,
+      "losses": 5,
+      "ties": 0,
+      "winValue": 4,
+      "pf": 1117.9,
+      "pa": 1132.6,
+      "gamesBack": 2,
+      "remaining": 4,
+      "bestRank": 1,
+      "worstRank": 10,
+      "clinched": false,
+      "eliminated": false,
+      "doomed": false,
+      "safe": false,
+      "playoffPct": 50,
+      "diaperPct": 1
+    },
+    {
+      "rank": 8,
       "teamId": 12,
       "owner": "JH",
       "abbrev": "1010",
       "name": "ORACLE AI",
       "wins": 4,
-      "losses": 4,
+      "losses": 5,
       "ties": 0,
       "winValue": 4,
-      "pf": 947.9,
-      "pa": 898.4,
+      "pf": 1034.3,
+      "pa": 990.9,
       "gamesBack": 2,
-      "remaining": 5,
+      "remaining": 4,
+      "bestRank": 1,
+      "worstRank": 10,
       "clinched": false,
       "eliminated": false,
       "doomed": false,
       "safe": false,
-      "playoffPct": 63,
-      "diaperPct": 1
-    },
-    {
-      "rank": 7,
-      "teamId": 11,
-      "owner": "IK",
-      "abbrev": "OLVE",
-      "name": "Olave Garden Breadsticks",
-      "wins": 3,
-      "losses": 5,
-      "ties": 0,
-      "winValue": 3,
-      "pf": 1013.9,
-      "pa": 1024.6,
-      "gamesBack": 3,
-      "remaining": 5,
-      "clinched": false,
-      "eliminated": false,
-      "doomed": false,
-      "safe": false,
-      "playoffPct": 41,
-      "diaperPct": 4
-    },
-    {
-      "rank": 8,
-      "teamId": 4,
-      "owner": "AN",
-      "abbrev": "NITZ",
-      "name": "El Fusilado",
-      "wins": 3,
-      "losses": 5,
-      "ties": 0,
-      "winValue": 3,
-      "pf": 953.2,
-      "pa": 1002.9,
-      "gamesBack": 3,
-      "remaining": 5,
-      "clinched": false,
-      "eliminated": false,
-      "doomed": false,
-      "safe": false,
-      "playoffPct": 34,
-      "diaperPct": 6
+      "playoffPct": 31,
+      "diaperPct": 3
     },
     {
       "rank": 9,
@@ -195,20 +211,22 @@
       "owner": "GM",
       "abbrev": "BBW",
       "name": "Big Bawls Wub",
-      "wins": 2,
+      "wins": 3,
       "losses": 6,
       "ties": 0,
-      "winValue": 2,
-      "pf": 862.3,
-      "pa": 1058.4,
-      "gamesBack": 4,
-      "remaining": 5,
+      "winValue": 3,
+      "pf": 954.9,
+      "pa": 1144.8,
+      "gamesBack": 3,
+      "remaining": 4,
+      "bestRank": 1,
+      "worstRank": 10,
       "clinched": false,
       "eliminated": false,
       "doomed": false,
       "safe": false,
-      "playoffPct": 5,
-      "diaperPct": 40
+      "playoffPct": 7,
+      "diaperPct": 26
     },
     {
       "rank": 10,
@@ -217,19 +235,21 @@
       "abbrev": "JEWS",
       "name": "Tomato Toes",
       "wins": 2,
-      "losses": 6,
+      "losses": 7,
       "ties": 0,
       "winValue": 2,
-      "pf": 846.7,
-      "pa": 980.1,
+      "pf": 976.4,
+      "pa": 1144.7,
       "gamesBack": 4,
-      "remaining": 5,
+      "remaining": 4,
+      "bestRank": 3,
+      "worstRank": 10,
       "clinched": false,
       "eliminated": false,
       "doomed": false,
       "safe": false,
-      "playoffPct": 4,
-      "diaperPct": 48
+      "playoffPct": 1,
+      "diaperPct": 67
     }
   ],
   "clinchedTeamIds": [],
@@ -241,56 +261,6 @@
   "doomedOwners": [],
   "safeOwners": [],
   "remainingGames": [
-    {
-      "week": 9,
-      "homeId": 7,
-      "awayId": 2,
-      "homeOwner": "CR",
-      "awayOwner": "DM",
-      "homeScore": 0,
-      "awayScore": 0,
-      "leader": null
-    },
-    {
-      "week": 9,
-      "homeId": 11,
-      "awayId": 9,
-      "homeOwner": "IK",
-      "awayOwner": "JO",
-      "homeScore": 0,
-      "awayScore": 0,
-      "leader": null
-    },
-    {
-      "week": 9,
-      "homeId": 10,
-      "awayId": 4,
-      "homeOwner": "ZS",
-      "awayOwner": "AN",
-      "homeScore": 0,
-      "awayScore": 0,
-      "leader": null
-    },
-    {
-      "week": 9,
-      "homeId": 8,
-      "awayId": 5,
-      "homeOwner": "DN",
-      "awayOwner": "AR",
-      "homeScore": 0,
-      "awayScore": 0,
-      "leader": null
-    },
-    {
-      "week": 9,
-      "homeId": 12,
-      "awayId": 1,
-      "homeOwner": "JH",
-      "awayOwner": "GM",
-      "homeScore": 0,
-      "awayScore": 0,
-      "leader": null
-    },
     {
       "week": 10,
       "homeId": 9,
@@ -494,181 +464,55 @@
   ],
   "pivotal": [
     {
-      "week": 9,
-      "homeId": 10,
-      "awayId": 4,
-      "homeOwner": "ZS",
-      "awayOwner": "AN",
-      "homeWinProb": 37,
-      "swing": 30,
-      "shifts": [
-        {
-          "teamId": 10,
-          "owner": "ZS",
-          "poAway": 1,
-          "poHome": 8,
-          "dAway": 60,
-          "dHome": 30
-        },
-        {
-          "teamId": 4,
-          "owner": "AN",
-          "poAway": 44,
-          "poHome": 18,
-          "dAway": 1,
-          "dHome": 14
-        },
-        {
-          "teamId": 1,
-          "owner": "GM",
-          "poAway": 5,
-          "poHome": 6,
-          "dAway": 35,
-          "dHome": 48
-        }
-      ]
-    },
-    {
-      "week": 9,
-      "homeId": 12,
-      "awayId": 1,
-      "homeOwner": "JH",
-      "awayOwner": "GM",
-      "homeWinProb": 60,
-      "swing": 29,
-      "shifts": [
-        {
-          "teamId": 12,
-          "owner": "JH",
-          "poAway": 45,
-          "poHome": 74,
-          "dAway": 3,
-          "dHome": 0
-        },
-        {
-          "teamId": 1,
-          "owner": "GM",
-          "poAway": 11,
-          "poHome": 1,
-          "dAway": 25,
-          "dHome": 51
-        },
-        {
-          "teamId": 10,
-          "owner": "ZS",
-          "poAway": 4,
-          "poHome": 3,
-          "dAway": 57,
-          "dHome": 42
-        }
-      ]
-    },
-    {
-      "week": 9,
-      "homeId": 8,
-      "awayId": 5,
-      "homeOwner": "DN",
-      "awayOwner": "AR",
-      "homeWinProb": 48,
-      "swing": 28,
-      "shifts": [
-        {
-          "teamId": 8,
-          "owner": "DN",
-          "poAway": 56,
-          "poHome": 84,
-          "dAway": 2,
-          "dHome": 0
-        },
-        {
-          "teamId": 5,
-          "owner": "AR",
-          "poAway": 98,
-          "poHome": 86,
-          "dAway": 0,
-          "dHome": 0
-        }
-      ]
-    },
-    {
-      "week": 9,
-      "homeId": 11,
-      "awayId": 9,
-      "homeOwner": "IK",
-      "awayOwner": "JO",
-      "homeWinProb": 63,
-      "swing": 27,
-      "shifts": [
-        {
-          "teamId": 11,
-          "owner": "IK",
-          "poAway": 24,
-          "poHome": 51,
-          "dAway": 8,
-          "dHome": 1
-        }
-      ]
-    },
-    {
-      "week": 9,
-      "homeId": 7,
-      "awayId": 2,
-      "homeOwner": "CR",
-      "awayOwner": "DM",
-      "homeWinProb": 50,
-      "swing": 7,
-      "shifts": []
-    },
-    {
       "week": 10,
       "homeId": 1,
       "awayId": 10,
       "homeOwner": "GM",
       "awayOwner": "ZS",
-      "homeWinProb": 52,
-      "swing": 48,
+      "homeWinProb": 47,
+      "swing": 45,
       "shifts": [
         {
           "teamId": 10,
           "owner": "ZS",
-          "poAway": 7,
-          "poHome": 1,
-          "dAway": 23,
-          "dHome": 71
+          "poAway": 2,
+          "poHome": 0,
+          "dAway": 46,
+          "dHome": 91
         },
         {
           "teamId": 1,
           "owner": "GM",
-          "poAway": 1,
-          "poHome": 9,
-          "dAway": 65,
-          "dHome": 18
+          "poAway": 2,
+          "poHome": 12,
+          "dAway": 46,
+          "dHome": 5
         }
       ]
     },
     {
       "week": 10,
-      "homeId": 12,
-      "awayId": 8,
-      "homeOwner": "JH",
-      "awayOwner": "DN",
-      "homeWinProb": 46,
+      "homeId": 9,
+      "awayId": 4,
+      "homeOwner": "JO",
+      "awayOwner": "AN",
+      "homeWinProb": 38,
       "swing": 33,
       "shifts": [
         {
-          "teamId": 8,
-          "owner": "DN",
-          "poAway": 85,
-          "poHome": 52,
+          "teamId": 4,
+          "owner": "AN",
+          "poAway": 63,
+          "poHome": 30,
           "dAway": 0,
-          "dHome": 2
+          "dHome": 3
         },
         {
-          "teamId": 12,
-          "owner": "JH",
-          "poAway": 48,
-          "poHome": 80,
-          "dAway": 2,
+          "teamId": 9,
+          "owner": "JO",
+          "poAway": 92,
+          "poHome": 100,
+          "dAway": 0,
           "dHome": 0
         }
       ]
@@ -679,43 +523,51 @@
       "awayId": 11,
       "homeOwner": "CR",
       "awayOwner": "IK",
-      "homeWinProb": 50,
-      "swing": 30,
+      "homeWinProb": 49,
+      "swing": 33,
       "shifts": [
         {
           "teamId": 11,
           "owner": "IK",
-          "poAway": 56,
-          "poHome": 26,
-          "dAway": 1,
-          "dHome": 6
+          "poAway": 71,
+          "poHome": 38,
+          "dAway": 0,
+          "dHome": 2
         },
         {
-          "teamId": 7,
-          "owner": "CR",
-          "poAway": 90,
-          "poHome": 99,
-          "dAway": 0,
-          "dHome": 0
+          "teamId": 4,
+          "owner": "AN",
+          "poAway": 46,
+          "poHome": 55,
+          "dAway": 1,
+          "dHome": 1
         }
       ]
     },
     {
       "week": 10,
-      "homeId": 9,
-      "awayId": 4,
-      "homeOwner": "JO",
-      "awayOwner": "AN",
-      "homeWinProb": 43,
-      "swing": 28,
+      "homeId": 12,
+      "awayId": 8,
+      "homeOwner": "JH",
+      "awayOwner": "DN",
+      "homeWinProb": 41,
+      "swing": 32,
       "shifts": [
         {
-          "teamId": 4,
-          "owner": "AN",
-          "poAway": 46,
-          "poHome": 18,
-          "dAway": 2,
-          "dHome": 10
+          "teamId": 12,
+          "owner": "JH",
+          "poAway": 18,
+          "poHome": 50,
+          "dAway": 6,
+          "dHome": 0
+        },
+        {
+          "teamId": 8,
+          "owner": "DN",
+          "poAway": 95,
+          "poHome": 69,
+          "dAway": 0,
+          "dHome": 0
         }
       ]
     },
@@ -725,14 +577,14 @@
       "awayId": 2,
       "homeOwner": "AR",
       "awayOwner": "DM",
-      "homeWinProb": 49,
-      "swing": 11,
+      "homeWinProb": 51,
+      "swing": 22,
       "shifts": [
         {
           "teamId": 5,
           "owner": "AR",
-          "poAway": 87,
-          "poHome": 98,
+          "poAway": 71,
+          "poHome": 93,
           "dAway": 0,
           "dHome": 0
         }
@@ -744,22 +596,22 @@
       "awayId": 11,
       "homeOwner": "AR",
       "awayOwner": "IK",
-      "homeWinProb": 49,
-      "swing": 32,
+      "homeWinProb": 45,
+      "swing": 38,
       "shifts": [
         {
           "teamId": 11,
           "owner": "IK",
-          "poAway": 57,
-          "poHome": 25,
-          "dAway": 1,
-          "dHome": 6
+          "poAway": 72,
+          "poHome": 34,
+          "dAway": 0,
+          "dHome": 2
         },
         {
           "teamId": 5,
           "owner": "AR",
-          "poAway": 86,
-          "poHome": 98,
+          "poAway": 71,
+          "poHome": 96,
           "dAway": 0,
           "dHome": 0
         }
@@ -771,22 +623,76 @@
       "awayId": 7,
       "homeOwner": "AN",
       "awayOwner": "CR",
-      "homeWinProb": 43,
-      "swing": 30,
+      "homeWinProb": 46,
+      "swing": 33,
       "shifts": [
         {
           "teamId": 4,
           "owner": "AN",
-          "poAway": 22,
-          "poHome": 52,
-          "dAway": 9,
-          "dHome": 2
+          "poAway": 35,
+          "poHome": 68,
+          "dAway": 2,
+          "dHome": 0
         },
         {
-          "teamId": 7,
-          "owner": "CR",
-          "poAway": 99,
-          "poHome": 89,
+          "teamId": 11,
+          "owner": "IK",
+          "poAway": 59,
+          "poHome": 50,
+          "dAway": 1,
+          "dHome": 1
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "homeId": 2,
+      "awayId": 12,
+      "homeOwner": "DM",
+      "awayOwner": "JH",
+      "homeWinProb": 58,
+      "swing": 29,
+      "shifts": [
+        {
+          "teamId": 12,
+          "owner": "JH",
+          "poAway": 48,
+          "poHome": 19,
+          "dAway": 0,
+          "dHome": 6
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "homeId": 9,
+      "awayId": 10,
+      "homeOwner": "JO",
+      "awayOwner": "ZS",
+      "homeWinProb": 53,
+      "swing": 26,
+      "shifts": [
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 2,
+          "poHome": 0,
+          "dAway": 54,
+          "dHome": 80
+        },
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 7,
+          "poHome": 6,
+          "dAway": 36,
+          "dHome": 18
+        },
+        {
+          "teamId": 9,
+          "owner": "JO",
+          "poAway": 89,
+          "poHome": 99,
           "dAway": 0,
           "dHome": 0
         }
@@ -798,78 +704,32 @@
       "awayId": 1,
       "homeOwner": "DN",
       "awayOwner": "GM",
-      "homeWinProb": 66,
-      "swing": 27,
+      "homeWinProb": 69,
+      "swing": 25,
       "shifts": [
         {
           "teamId": 8,
           "owner": "DN",
-          "poAway": 52,
-          "poHome": 79,
-          "dAway": 2,
+          "poAway": 67,
+          "poHome": 92,
+          "dAway": 0,
           "dHome": 0
         },
         {
           "teamId": 1,
           "owner": "GM",
-          "poAway": 12,
+          "poAway": 17,
           "poHome": 2,
-          "dAway": 24,
-          "dHome": 49
-        },
-        {
-          "teamId": 10,
-          "owner": "ZS",
-          "poAway": 4,
-          "poHome": 4,
-          "dAway": 58,
-          "dHome": 43
-        }
-      ]
-    },
-    {
-      "week": 11,
-      "homeId": 2,
-      "awayId": 12,
-      "homeOwner": "DM",
-      "awayOwner": "JH",
-      "homeWinProb": 57,
-      "swing": 26,
-      "shifts": [
-        {
-          "teamId": 12,
-          "owner": "JH",
-          "poAway": 78,
-          "poHome": 52,
-          "dAway": 0,
-          "dHome": 2
-        }
-      ]
-    },
-    {
-      "week": 11,
-      "homeId": 9,
-      "awayId": 10,
-      "homeOwner": "JO",
-      "awayOwner": "ZS",
-      "homeWinProb": 56,
-      "swing": 26,
-      "shifts": [
-        {
-          "teamId": 10,
-          "owner": "ZS",
-          "poAway": 7,
-          "poHome": 1,
-          "dAway": 34,
-          "dHome": 60
-        },
-        {
-          "teamId": 1,
-          "owner": "GM",
-          "poAway": 5,
-          "poHome": 5,
-          "dAway": 50,
+          "dAway": 12,
           "dHome": 33
+        },
+        {
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 1,
+          "poHome": 1,
+          "dAway": 78,
+          "dHome": 63
         }
       ]
     },
@@ -879,23 +739,23 @@
       "awayId": 11,
       "homeOwner": "JH",
       "awayOwner": "IK",
-      "homeWinProb": 43,
-      "swing": 36,
+      "homeWinProb": 37,
+      "swing": 41,
       "shifts": [
         {
           "teamId": 11,
           "owner": "IK",
-          "poAway": 57,
-          "poHome": 21,
-          "dAway": 1,
-          "dHome": 7
+          "poAway": 70,
+          "poHome": 29,
+          "dAway": 0,
+          "dHome": 3
         },
         {
           "teamId": 12,
           "owner": "JH",
-          "poAway": 48,
-          "poHome": 81,
-          "dAway": 2,
+          "poAway": 17,
+          "poHome": 55,
+          "dAway": 5,
           "dHome": 0
         }
       ]
@@ -906,22 +766,22 @@
       "awayId": 4,
       "homeOwner": "AR",
       "awayOwner": "AN",
-      "homeWinProb": 56,
-      "swing": 30,
+      "homeWinProb": 51,
+      "swing": 39,
       "shifts": [
         {
           "teamId": 4,
           "owner": "AN",
-          "poAway": 52,
-          "poHome": 22,
-          "dAway": 2,
-          "dHome": 9
+          "poAway": 70,
+          "poHome": 31,
+          "dAway": 0,
+          "dHome": 3
         },
         {
           "teamId": 5,
           "owner": "AR",
-          "poAway": 86,
-          "poHome": 98,
+          "poAway": 69,
+          "poHome": 95,
           "dAway": 0,
           "dHome": 0
         }
@@ -934,29 +794,56 @@
       "homeOwner": "ZS",
       "awayOwner": "CR",
       "homeWinProb": 29,
-      "swing": 26,
+      "swing": 27,
       "shifts": [
         {
           "teamId": 10,
           "owner": "ZS",
-          "poAway": 1,
-          "poHome": 9,
-          "dAway": 56,
-          "dHome": 30
+          "poAway": 0,
+          "poHome": 3,
+          "dAway": 75,
+          "dHome": 48
         },
         {
           "teamId": 1,
           "owner": "GM",
           "poAway": 6,
-          "poHome": 5,
-          "dAway": 36,
-          "dHome": 52
+          "poHome": 7,
+          "dAway": 21,
+          "dHome": 39
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "homeId": 9,
+      "awayId": 1,
+      "homeOwner": "JO",
+      "awayOwner": "GM",
+      "homeWinProb": 56,
+      "swing": 22,
+      "shifts": [
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 13,
+          "poHome": 2,
+          "dAway": 14,
+          "dHome": 36
         },
         {
-          "teamId": 7,
-          "owner": "CR",
-          "poAway": 98,
-          "poHome": 87,
+          "teamId": 10,
+          "owner": "ZS",
+          "poAway": 1,
+          "poHome": 1,
+          "dAway": 77,
+          "dHome": 60
+        },
+        {
+          "teamId": 9,
+          "owner": "JO",
+          "poAway": 89,
+          "poHome": 100,
           "dAway": 0,
           "dHome": 0
         }
@@ -968,69 +855,15 @@
       "awayId": 2,
       "homeOwner": "DN",
       "awayOwner": "DM",
-      "homeWinProb": 46,
-      "swing": 25,
+      "homeWinProb": 50,
+      "swing": 20,
       "shifts": [
         {
           "teamId": 8,
           "owner": "DN",
-          "poAway": 58,
-          "poHome": 83,
-          "dAway": 1,
-          "dHome": 0
-        }
-      ]
-    },
-    {
-      "week": 12,
-      "homeId": 9,
-      "awayId": 1,
-      "homeOwner": "JO",
-      "awayOwner": "GM",
-      "homeWinProb": 54,
-      "swing": 24,
-      "shifts": [
-        {
-          "teamId": 1,
-          "owner": "GM",
-          "poAway": 9,
-          "poHome": 2,
-          "dAway": 27,
-          "dHome": 51
-        },
-        {
-          "teamId": 10,
-          "owner": "ZS",
-          "poAway": 4,
-          "poHome": 3,
-          "dAway": 56,
-          "dHome": 41
-        }
-      ]
-    },
-    {
-      "week": 13,
-      "homeId": 8,
-      "awayId": 11,
-      "homeOwner": "DN",
-      "awayOwner": "IK",
-      "homeWinProb": 47,
-      "swing": 36,
-      "shifts": [
-        {
-          "teamId": 11,
-          "owner": "IK",
-          "poAway": 58,
-          "poHome": 22,
-          "dAway": 1,
-          "dHome": 6
-        },
-        {
-          "teamId": 8,
-          "owner": "DN",
-          "poAway": 56,
-          "poHome": 87,
-          "dAway": 2,
+          "poAway": 74,
+          "poHome": 94,
+          "dAway": 0,
           "dHome": 0
         }
       ]
@@ -1041,24 +874,51 @@
       "awayId": 12,
       "homeOwner": "AN",
       "awayOwner": "JH",
-      "homeWinProb": 51,
-      "swing": 35,
+      "homeWinProb": 58,
+      "swing": 41,
       "shifts": [
         {
           "teamId": 4,
           "owner": "AN",
-          "poAway": 17,
-          "poHome": 52,
-          "dAway": 10,
-          "dHome": 2
+          "poAway": 27,
+          "poHome": 68,
+          "dAway": 3,
+          "dHome": 0
         },
         {
           "teamId": 12,
           "owner": "JH",
-          "poAway": 80,
-          "poHome": 45,
+          "poAway": 52,
+          "poHome": 16,
+          "dAway": 0,
+          "dHome": 6
+        }
+      ]
+    },
+    {
+      "week": 13,
+      "homeId": 8,
+      "awayId": 11,
+      "homeOwner": "DN",
+      "awayOwner": "IK",
+      "homeWinProb": 44,
+      "swing": 37,
+      "shifts": [
+        {
+          "teamId": 11,
+          "owner": "IK",
+          "poAway": 71,
+          "poHome": 34,
           "dAway": 0,
           "dHome": 2
+        },
+        {
+          "teamId": 8,
+          "owner": "DN",
+          "poAway": 74,
+          "poHome": 96,
+          "dAway": 0,
+          "dHome": 0
         }
       ]
     },
@@ -1068,32 +928,32 @@
       "awayId": 10,
       "homeOwner": "AR",
       "awayOwner": "ZS",
-      "homeWinProb": 70,
+      "homeWinProb": 67,
       "swing": 26,
       "shifts": [
         {
           "teamId": 10,
           "owner": "ZS",
-          "poAway": 9,
-          "poHome": 1,
-          "dAway": 30,
-          "dHome": 56
-        },
-        {
-          "teamId": 1,
-          "owner": "GM",
-          "poAway": 5,
-          "poHome": 5,
-          "dAway": 52,
-          "dHome": 35
+          "poAway": 3,
+          "poHome": 0,
+          "dAway": 50,
+          "dHome": 76
         },
         {
           "teamId": 5,
           "owner": "AR",
-          "poAway": 83,
-          "poHome": 97,
-          "dAway": 0,
+          "poAway": 66,
+          "poHome": 90,
+          "dAway": 1,
           "dHome": 0
+        },
+        {
+          "teamId": 1,
+          "owner": "GM",
+          "poAway": 8,
+          "poHome": 6,
+          "dAway": 38,
+          "dHome": 20
         }
       ]
     },
@@ -1104,23 +964,23 @@
       "homeOwner": "GM",
       "awayOwner": "DM",
       "homeWinProb": 33,
-      "swing": 25,
+      "swing": 21,
       "shifts": [
         {
           "teamId": 1,
           "owner": "GM",
           "poAway": 2,
-          "poHome": 11,
-          "dAway": 49,
-          "dHome": 24
+          "poHome": 15,
+          "dAway": 33,
+          "dHome": 12
         },
         {
           "teamId": 10,
           "owner": "ZS",
-          "poAway": 3,
-          "poHome": 3,
-          "dAway": 42,
-          "dHome": 58
+          "poAway": 1,
+          "poHome": 1,
+          "dAway": 62,
+          "dHome": 78
         }
       ]
     },
@@ -1130,14 +990,14 @@
       "awayId": 7,
       "homeOwner": "JO",
       "awayOwner": "CR",
-      "homeWinProb": 36,
-      "swing": 9,
+      "homeWinProb": 32,
+      "swing": 8,
       "shifts": [
         {
-          "teamId": 7,
-          "owner": "CR",
-          "poAway": 98,
-          "poHome": 89,
+          "teamId": 9,
+          "owner": "JO",
+          "poAway": 92,
+          "poHome": 100,
           "dAway": 0,
           "dHome": 0
         }
@@ -1146,6 +1006,6 @@
   ],
   "pivotThreshold": 8,
   "scenarios": null,
-  "note": "Playoff race starts week 11. Through week 8 no clinches are posted.",
+  "note": "Playoff race starts week 11. Through week 9 no clinches are posted.",
   "isLateSeason": false
 }

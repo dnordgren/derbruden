@@ -26,3 +26,6 @@ scripts/*.html
 # build output from scripts/build.mjs
 /pub/
 node_modules/
+
+# CloudFront access log pulls (make logs)
+/logs/

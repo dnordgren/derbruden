@@ -358,6 +358,93 @@ This:
 - Syncs `static/` to S3 `static/`
 - Invalidates the CloudFront cache
 
+## Analytics
+
+First-party analytics: one first-party cookie, no third-party script, no
+consent banner, nothing sent to anyone. Two pieces:
+
+1. `static/js/analytics.js` (loaded from `partials/head-common.html`, so every
+   page gets it) mints a random `db_cid` cookie, one year, `SameSite=Lax`.
+   The value never leaves the request it rides on — there is no beacon, and it
+   exists only so the CDN log line can name a returning visitor.
+   `localStorage` mirrors it, so clearing cookies alone does not mint a new
+   identity.
+2. CloudFront standard logs v2 record the request `Cookie` header
+   (`cs(Cookie)`) and client address (`c-ip`) for every request. That is the
+   whole dataset.
+
+`scripts/analytics.mjs` summarizes a downloaded log pull:
+
+```sh
+make logs CLOUDFRONT_LOG_BUCKET=s3://<log-bucket>/AWSLogs/<account>/CloudFront/
+make analytics
+```
+
+`make analytics` on its own reads `logs/cloudfront/` (git ignored) and prints
+requests, human vs bot, page views, `db_cid` coverage, unique clients, clients
+seen from more than one IP, cache hit ratio, top pages, top URIs, referrers,
+status codes, and requests by hour/day.
+
+`--days N` keeps the N days ending at the newest timestamp in the pull, so a
+window is reproducible against an old download instead of depending on when
+the report runs. `--json` emits the same data for scripting:
+
+```sh
+node scripts/analytics.mjs logs/cloudfront --days 7 --json
+```
+
+"Top pages" counts only `/` and `*.html`. Everything else is an asset, and a
+font file outships every page on the site, so an unfiltered list would answer
+nothing. "Top URIs" is the unfiltered view for when you want cache and asset
+behaviour.
+
+Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs`.
+
+### What this measures, honestly
+
+- Every request is counted, including ones from browsers that block
+  JavaScript. Those carry no `db_cid`, so they show up as "IP-only visitors"
+  and cannot be stitched across address changes.
+- The first request from a new visitor always arrives without the cookie
+  (it is set after the page loads), so `db_cid` coverage sits below 100%
+  and rises with repeat visits.
+- That first cookieless request means one person can appear in both buckets.
+  The report subtracts addresses that later show up carrying a `db_cid` and
+  lists them as "of which later got a cookie", so unique clients plus IP-only
+  visitors does not overstate the audience.
+- Distinct-client counts are still approximate. A shared IP with cleared
+  cookies can look like more than one person.
+- IP plus a persistent client id is pseudonymous personal data. Keep the log
+  bucket private, expire objects (a 90-day lifecycle rule is plenty), and do
+  not join these logs to anything identifying.
+
+### One-time AWS setup (needs admin creds)
+
+`derbruden-deploy` only holds S3 object writes and CloudFront invalidation, so
+this part is console or admin work:
+
+1. Create a private S3 bucket for logs, block all public access.
+2. CloudFront > distribution `E3CDWEEK40CKI2` > Logging > Add > Amazon S3,
+   destination the new bucket.
+3. **Output format: JSON.** The reader parses NDJSON; CSV or Parquet will not
+   load.
+4. **Field selection must include `cs(Cookie)`.** It is one of the optional
+   fields and is not implied by enabling logging.
+5. **Turn on cookie logging:** Logs > Manage > Settings > Cookie logging. This
+   is a separate distribution-wide switch (`IncludeCookies` in the API), and
+   it applies to every destination at once. With it off, `cs(Cookie)` is
+   always `-` and the report shows zero client ids while looking otherwise
+   healthy.
+6. Set a 90-day lifecycle rule on the bucket.
+7. To read the reports, grant `derbruden-deploy` (or your own credential)
+   `s3:ListBucket` and `s3:GetObject` on that bucket.
+
+Steps 3 to 5 are the ones that get skipped, and each fails silently: the
+report still prints request counts, so it looks fine while `db_cid` coverage
+sits at zero. The reporter therefore prints an explicit warning when no
+request carried an id. If logs stay off entirely, the cookie script is
+harmless and simply collects nothing.
+
 ## Trade watcher
 
 `scripts/watch-trades.mjs` polls ESPN for trade activity, posts new events to

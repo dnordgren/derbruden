@@ -75,6 +75,30 @@ No framework; shared page chunks are inlined at build time by
 - Commit style: `feat:` / `chore:` / `fix:` prefixes, imperative mood,
   Tim Pope guidelines.
 
+## Analytics
+
+- No third-party analytics (no GA4, no Plausible). Tracking is a first-party
+  `db_cid` cookie plus CloudFront standard logs v2; see README "Analytics".
+- `static/js/analytics.js` is loaded from `partials/head-common.html`, so it
+  reaches every page including generator output. Bump `?v=N` there when the
+  script changes.
+- `scripts/analytics.mjs` is dependency-free (Node stdlib only) and reads
+  gzipped v2 NDJSON; v1 TSV field names are tolerated. `make logs` pulls,
+  `make analytics` reports. `logs/` is git ignored.
+- Enabling CloudFront logging needs admin creds; `derbruden-deploy` cannot do
+  it (`cloudfront:GetDistribution`, `s3:GetBucketLogging`, and every IAM and
+  DynamoDB call return AccessDenied on that user).
+- Three settings must all be on or the cookie silently no-ops: output format
+  JSON, `cs(Cookie)` in the selected fields, and cookie logging enabled
+  (Logs > Manage > Settings, `IncludeCookies`, distribution-wide). With any
+  one missing, `cs(Cookie)` is `-`, coverage reads zero, and nothing errors.
+  The README lists the full setup and the reporter prints a warning on zero
+  coverage.
+- Treat the log bucket as pseudonymous PII: private, 90-day lifecycle, never
+  joined to identifying data. Do not add a beacon or DynamoDB to this path
+  without a question the access log cannot answer.
+- Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs`.
+
 ## Power rankings
 
 - Requires `scripts/.env` with `ESPN_S2=<cookie>` (git ignored). `SWID`

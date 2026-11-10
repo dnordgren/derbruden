@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff diaper races
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff diaper races analytics logs
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -137,3 +137,18 @@ races:
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-playoff-race.mjs
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-diaper-race.mjs
 	@echo "make races : Finished"
+
+ANALYTICS_LOG_DIR ?= logs/cloudfront
+CLOUDFRONT_LOG_BUCKET ?=
+
+logs:
+	@echo "make logs : Started"
+	@echo "Syncing CloudFront standard logs v2 into $(ANALYTICS_LOG_DIR) ..."
+	@test -n "$(CLOUDFRONT_LOG_BUCKET)" || (echo "Set CLOUDFRONT_LOG_BUCKET (e.g. s3://derbruden-logs). See README 'Analytics'." && exit 1)
+	@AWS_PROFILE=$(AWS_PROFILE) aws s3 sync $(CLOUDFRONT_LOG_BUCKET) $(ANALYTICS_LOG_DIR) --only-show-errors
+	@echo "make logs : Finished"
+
+analytics:
+	@echo "make analytics : Started"
+	@node scripts/analytics.mjs $(ANALYTICS_LOG_DIR)
+	@echo "make analytics : Finished"

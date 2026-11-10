@@ -8,6 +8,10 @@
 // Usage:
 //   node scripts/analytics.mjs [logDir] [--days N] [--json]
 //
+//   --days N  keep the N days ending at the newest timestamp in the pull, so a
+//             window is reproducible against an old log download rather than
+//             depending on when the report happens to run.
+//
 // Pull logs first:
 //   aws s3 sync s3://<log-bucket>/AWSLogs/.../CloudFront/ ./logs/cloudfront/
 //
@@ -18,7 +22,7 @@ import path from 'node:path'
 import { gunzipSync } from 'node:zlib'
 import { fileURLToPath } from 'node:url'
 
-const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
 
 // Known crawlers and scanners. CloudFront logs everything, so a bare UA
 // filter is what keeps "traffic" from meaning "the internet's port scans".
@@ -87,9 +91,19 @@ function hostOf(referer) {
   }
 }
 
+// One page view is one HTML request. Assets (CSS, fonts, JS, JSON) are the
+// bulk of the rows in these logs, so counting every URI as a "page" would put
+// the font file at #1 and tell you nothing about reading.
+export function isPageView(uri) {
+  if (!uri) return false
+  const path = uri.split('?')[0]
+  return path === '/' || path.endsWith('/') || path.endsWith('.html')
+}
+
 // Aggregate a stream of normalized records into the report shape.
 export function summarize(records) {
   const pages = new Map()
+  const uris = new Map()
   const referrers = new Map()
   const statuses = new Map()
   const days = new Map()
@@ -100,12 +114,12 @@ export function summarize(records) {
   let botHits = 0
   let humanHits = 0
   let cookieHits = 0
+  let pageViews = 0
   let bytes = 0
   let hits = 0
   let misses = 0
   const ipOnly = new Set()
   const cookieIps = new Map()
-  const ipClients = new Map()
 
   for (const record of records) {
     total += 1
@@ -115,10 +129,16 @@ export function summarize(records) {
 
     bytes += record.bytes
     bump(statuses, String(record.status))
-    bump(pages, record.uri || '(none)')
+    bump(uris, record.uri || '(none)')
     bump(referrers, hostOf(record.referer))
     bump(edges, record.edgeLocation)
-    if (record.edgeResult === 'Hit') hits += 1
+    if (isPageView(record.uri)) {
+      bump(pages, record.uri.split('?')[0])
+      if (!bot) pageViews += 1
+    }
+    // RefreshHit is a revalidation served from the edge, so it counts as a
+    // hit; Miss is the only real miss.
+    if (record.edgeResult === 'Hit' || record.edgeResult === 'RefreshHit') hits += 1
     if (record.edgeResult === 'Miss') misses += 1
 
     if (record.time) {
@@ -136,28 +156,38 @@ export function summarize(records) {
       cookieIps.get(cid).add(record.ip)
     } else if (!bot && record.ip) {
       ipOnly.add(record.ip)
-      if (!ipClients.has(record.ip)) ipClients.set(record.ip, new Set())
-      ipClients.get(record.ip).add(cid || `ip:${record.ip}`)
     }
   }
 
   const multiIpClients = [...cookieIps.values()].filter(ips => ips.size > 1).length
   const requestHitRatio = hits + misses > 0 ? hits / (hits + misses) : 0
 
+  // A visitor's first HTML request always arrives before the cookie exists, so
+  // that address lands in ipOnly. If the same address later appears carrying a
+  // db_cid it was never an extra person, and counting it as one would make
+  // "unique clients" plus "IP-only visitors" exceed the real audience.
+  const cookieIpSet = new Set()
+  for (const ips of cookieIps.values()) for (const ip of ips) cookieIpSet.add(ip)
+  const ipOnlyResolvedByCookie = [...ipOnly].filter(ip => cookieIpSet.has(ip)).length
+
   return {
     total,
     botHits,
     humanHits,
+    pageViews,
     cookieHits,
     cookieCoverage: total > 0 ? cookieHits / total : 0,
     uniqueClients: clients.size,
-    ipOnlyVisitors: ipOnly.size,
+    ipOnlyAddresses: ipOnly.size,
+    ipOnlyVisitors: ipOnly.size - ipOnlyResolvedByCookie,
+    ipOnlyResolvedByCookie,
     // A client id seen from more than one address is exactly the case the
     // cookie exists to fix; IP alone would have counted them twice.
     clientsAcrossMultipleIps: multiIpClients,
     cacheHitRatio: requestHitRatio,
     bytes,
     pages: topOf(pages, 25),
+    uris: topOf(uris, 25),
     referrers: topOf(referrers, 15),
     statuses: topOf(statuses, 10),
     days: [...days.entries()].sort(),
@@ -208,9 +238,14 @@ export function formatReport(report) {
   row('Requests', report.total)
   row('Human requests', report.humanHits)
   row('Bot / scanner requests', report.botHits)
+  row('Page views (HTML, human)', report.pageViews)
   row('Requests carrying db_cid', `${report.cookieHits} (${pct(report.cookieCoverage)})`)
   row('Unique client ids', report.uniqueClients)
-  row('IP-only visitors', `${report.ipOnlyVisitors} (no cookie)`)
+  row('Cookie-less addresses seen', report.ipOnlyAddresses)
+  if (report.ipOnlyResolvedByCookie) {
+    row('  later identified by cookie', report.ipOnlyResolvedByCookie)
+  }
+  row('IP-only visitors (unresolved)', report.ipOnlyVisitors)
   row('Clients seen from >1 IP', report.clientsAcrossMultipleIps)
   row('Edge cache hit ratio', pct(report.cacheHitRatio))
   row('Bytes served', kb(report.bytes))
@@ -226,6 +261,7 @@ export function formatReport(report) {
   }
 
   section('Top pages', report.pages, 20)
+  section('Top URIs (all requests, incl. assets)', report.uris, 15)
   section('Referrers', report.referrers)
   section('Status codes', report.statuses)
   section('Edge locations', report.edges, 10)
@@ -252,14 +288,64 @@ export function formatReport(report) {
     }
   }
 
+  // A zero here is far more likely a disabled setting than a cookie-free
+  // audience, and the failure is otherwise silent.
+  if (report.total > 0 && report.cookieHits === 0) {
+    lines.push('')
+    lines.push('⚠  No request carried db_cid. Check, in order: CloudFront logging')
+    lines.push('   enabled, cookie logging switched on (Logs > Manage > Settings),')
+    lines.push('   and cs(Cookie) included in the selected log fields.')
+  }
+
   lines.push('')
   return lines.join('\n')
 }
 
+// Keeps the N days ending at the newest record, so `--days 7` means the same
+// window however old the log pull is.
+export function lastNDays(records, days) {
+  let newest = -Infinity
+  for (const record of records) {
+    const t = Date.parse(record.time)
+    if (!Number.isNaN(t) && t > newest) newest = t
+  }
+  if (!Number.isFinite(newest)) return records
+  const cutoff = newest - days * 24 * 60 * 60 * 1000
+  return records.filter(record => {
+    const t = Date.parse(record.time)
+    return Number.isNaN(t) || t >= cutoff
+  })
+}
+
 async function main() {
   const args = process.argv.slice(2)
-  const json = args.includes('--json')
-  const dir = args.find(a => !a.startsWith('--')) || 'logs/cloudfront'
+  const flags = new Set()
+  const positional = []
+  let days = null
+
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i]
+    let raw = null
+    if (arg === '--days') raw = args[++i]
+    else if (arg.startsWith('--days=')) raw = arg.slice('--days='.length)
+
+    if (raw !== null) {
+      const value = Number(raw)
+      if (!Number.isFinite(value) || value <= 0) {
+        console.error('--days needs a positive number, e.g. --days 7')
+        process.exitCode = 1
+        return
+      }
+      days = value
+    } else if (arg.startsWith('--')) {
+      flags.add(arg)
+    } else {
+      positional.push(arg)
+    }
+  }
+
+  const json = flags.has('--json')
+  const dir = positional[0] || 'logs/cloudfront'
 
   if (!fs.existsSync(dir)) {
     console.error(`No log directory at ${dir}`)
@@ -270,7 +356,7 @@ async function main() {
     return
   }
 
-  const records = []
+  let records = []
   for await (const record of readCloudFrontLogs(dir)) records.push(record)
 
   if (!records.length) {
@@ -278,6 +364,8 @@ async function main() {
     process.exitCode = 1
     return
   }
+
+  if (days) records = lastNDays(records, days)
 
   const report = summarize(records)
   console.log(json ? JSON.stringify(report, null, 2) : formatReport(report))

@@ -10,7 +10,8 @@
 ;(function () {
   var KEY = 'db_cid'
   var MAX_AGE = 60 * 60 * 24 * 365 // one year
-  var UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
+  // v4 only, matching what mint() emits and what the reader validates.
+  var UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
 
   function mint() {
     if (window.crypto && typeof window.crypto.randomUUID === 'function') {

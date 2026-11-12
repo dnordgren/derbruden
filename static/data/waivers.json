@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-11T20:58:11.151Z",
+  "updated": "2026-11-12T21:11:41.296Z",
   "order": [
     {
       "rank": 1,
@@ -51,7 +51,7 @@
       "wins": 6,
       "losses": 3,
       "ties": 0,
-      "moves": 10
+      "moves": 9
     },
     {
       "rank": 6,
@@ -71,7 +71,7 @@
       "wins": 4,
       "losses": 5,
       "ties": 0,
-      "moves": 16
+      "moves": 17
     },
     {
       "rank": 8,
@@ -105,6 +105,21 @@
     }
   ],
   "moves": [
+    {
+      "id": "0142b834-9f40-4fe4-b125-9c4ebfc7213d",
+      "date": "2026-11-11T22:43:34.730Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Chris Boswell"
+      ],
+      "drops": [
+        "Tre Tucker"
+      ],
+      "bid": null
+    },
     {
       "id": "9dafa397-f784-459d-9351-5af0ca587fc2",
       "date": "2026-11-11T12:39:32.515Z",
@@ -2267,21 +2282,6 @@
       ],
       "drops": [
         "Tyrone Tracy Jr."
-      ],
-      "bid": null
-    },
-    {
-      "id": "5737956b-bd50-46a2-9dd5-e6a97ca6fa53",
-      "date": "2026-09-16T07:24:51.940Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 7,
-      "owner": "CR",
-      "adds": [
-        "Jalen Coker"
-      ],
-      "drops": [
-        "Wan'Dale Robinson"
       ],
       "bid": null
     }

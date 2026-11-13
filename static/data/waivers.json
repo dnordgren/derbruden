@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-12T21:11:41.296Z",
+  "updated": "2026-11-13T20:41:18.643Z",
   "order": [
     {
       "rank": 1,
@@ -51,7 +51,7 @@
       "wins": 6,
       "losses": 3,
       "ties": 0,
-      "moves": 9
+      "moves": 10
     },
     {
       "rank": 6,
@@ -101,10 +101,23 @@
       "wins": 3,
       "losses": 6,
       "ties": 0,
-      "moves": 21
+      "moves": 20
     }
   ],
   "moves": [
+    {
+      "id": "9ff69458-23bb-49d7-be87-eb6194bb02ea",
+      "date": "2026-11-13T00:55:44.552Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 7,
+      "owner": "CR",
+      "adds": [
+        "Chris Rodriguez Jr."
+      ],
+      "drops": [],
+      "bid": null
+    },
     {
       "id": "0142b834-9f40-4fe4-b125-9c4ebfc7213d",
       "date": "2026-11-11T22:43:34.730Z",
@@ -2268,21 +2281,6 @@
         "Pat Freiermuth"
       ],
       "drops": [],
-      "bid": null
-    },
-    {
-      "id": "1347c2c6-77bb-4017-bb7d-2f818718fd7c",
-      "date": "2026-09-16T07:24:51.942Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 1,
-      "owner": "GM",
-      "adds": [
-        "Devaughn Vele"
-      ],
-      "drops": [
-        "Tyrone Tracy Jr."
-      ],
       "bid": null
     }
   ]

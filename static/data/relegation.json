@@ -1,0 +1,3089 @@
+{
+  "generated": "2026-11-14",
+  "leagueId": "794521",
+  "window": "2019-2025 (seeded from 2018-2024)",
+  "method": "Weekly scores held fixed; pairings replaced by a 2x5 divisional template (intra x2, cross x1). Seeding: prior-year All-Play % (primary) or prior-year W-L (sensitivity).",
+  "perSeason": [
+    {
+      "season": 2019,
+      "weeks": 13,
+      "fourteenWeek": false,
+      "seedingNote": "New franchise(s) JH seeded last (no 2018 season).",
+      "allplay": {
+        "divisions": {
+          "A": [
+            "GM",
+            "IK",
+            "CR",
+            "DN",
+            "JO"
+          ],
+          "B": [
+            "DM",
+            "AN",
+            "ZS",
+            "AR",
+            "JH"
+          ]
+        },
+        "medianMargin": 26.22,
+        "meanMargin": 31.78,
+        "close10Pct": 21.5,
+        "close20Pct": 38.5,
+        "spreadWins": 9,
+        "lateRace": {
+          "week11": 8,
+          "week12": 7
+        },
+        "fields": {
+          "straight": [
+            "AN",
+            "DN",
+            "DM",
+            "GM",
+            "AR",
+            "CR"
+          ],
+          "winnersPlusRecord": [
+            "DN",
+            "AN",
+            "DM",
+            "GM",
+            "AR",
+            "CR"
+          ],
+          "winnersPlusPf": [
+            "DN",
+            "AN",
+            "CR",
+            "DM",
+            "GM",
+            "JO"
+          ],
+          "divWinners": [
+            "DN",
+            "AN"
+          ]
+        },
+        "topSixPfMissedStraight": 1,
+        "topSixPfMissed": {
+          "straight": 1,
+          "winnersPlusRecord": 1,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 23.48,
+            "close10Pct": 25
+          },
+          "B": {
+            "n": 20,
+            "median": 48.68,
+            "close10Pct": 15
+          },
+          "cross": {
+            "n": 25,
+            "median": 20.32,
+            "close10Pct": 24
+          }
+        },
+        "standings": [
+          {
+            "owner": "AN",
+            "w": 12,
+            "l": 1,
+            "t": 0,
+            "pf": 1914.04,
+            "div": "B",
+            "divRecord": "8-0"
+          },
+          {
+            "owner": "DN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1530.34,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1367.84,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "GM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1361.06,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "AR",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1332.7,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "CR",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1402.98,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JH",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1339.2,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1348.8,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "IK",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1307.08,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "ZS",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1207.58,
+            "div": "B",
+            "divRecord": "1-7"
+          }
+        ]
+      },
+      "record": {
+        "divisions": {
+          "A": [
+            "GM",
+            "IK",
+            "CR",
+            "AN",
+            "JO"
+          ],
+          "B": [
+            "DN",
+            "ZS",
+            "DM",
+            "AR",
+            "JH"
+          ]
+        },
+        "medianMargin": 23.2,
+        "meanMargin": 31.6,
+        "close10Pct": 20,
+        "close20Pct": 44.6,
+        "spreadWins": 10,
+        "lateRace": {
+          "week11": 9,
+          "week12": 8
+        },
+        "fields": {
+          "straight": [
+            "AN",
+            "DN",
+            "GM",
+            "AR",
+            "JO",
+            "JH"
+          ],
+          "winnersPlusRecord": [
+            "AN",
+            "DN",
+            "GM",
+            "AR",
+            "JO",
+            "JH"
+          ],
+          "winnersPlusPf": [
+            "AN",
+            "DN",
+            "CR",
+            "DM",
+            "GM",
+            "JO"
+          ],
+          "divWinners": [
+            "AN",
+            "DN"
+          ]
+        },
+        "topSixPfMissedStraight": 2,
+        "topSixPfMissed": {
+          "straight": 2,
+          "winnersPlusRecord": 2,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 38.14,
+            "close10Pct": 10
+          },
+          "B": {
+            "n": 20,
+            "median": 20.6,
+            "close10Pct": 25
+          },
+          "cross": {
+            "n": 25,
+            "median": 20.32,
+            "close10Pct": 24
+          }
+        },
+        "standings": [
+          {
+            "owner": "AN",
+            "w": 13,
+            "l": 0,
+            "t": 0,
+            "pf": 1914.04,
+            "div": "A",
+            "divRecord": "8-0"
+          },
+          {
+            "owner": "DN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1530.34,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "GM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1361.06,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "AR",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1332.7,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "JO",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1348.8,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "JH",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1339.2,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "ZS",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1207.58,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "CR",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1402.98,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "DM",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1367.84,
+            "div": "B",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "IK",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1307.08,
+            "div": "A",
+            "divRecord": "2-6"
+          }
+        ]
+      },
+      "actual": {
+        "medianMargin": 27.6,
+        "meanMargin": 32.46,
+        "close10Pct": 18.5,
+        "close20Pct": 36.9,
+        "spreadWins": 7,
+        "lateRace": {
+          "week11": 10,
+          "week12": 10
+        },
+        "playoffField": [
+          "AN",
+          "DN",
+          "CR",
+          "DM",
+          "JH",
+          "IK"
+        ],
+        "standings": [
+          {
+            "owner": "AN",
+            "w": 11,
+            "l": 2,
+            "t": 0,
+            "pf": 1914.04
+          },
+          {
+            "owner": "DN",
+            "w": 10,
+            "l": 3,
+            "t": 0,
+            "pf": 1530.34
+          },
+          {
+            "owner": "CR",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1402.98
+          },
+          {
+            "owner": "DM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1367.84
+          },
+          {
+            "owner": "JH",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1339.2
+          },
+          {
+            "owner": "IK",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1307.08
+          },
+          {
+            "owner": "AR",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1332.7
+          },
+          {
+            "owner": "GM",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1361.06
+          },
+          {
+            "owner": "JO",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1348.8
+          },
+          {
+            "owner": "ZS",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1207.58
+          }
+        ]
+      }
+    },
+    {
+      "season": 2020,
+      "weeks": 13,
+      "fourteenWeek": false,
+      "allplay": {
+        "divisions": {
+          "A": [
+            "AN",
+            "DN",
+            "CR",
+            "JH",
+            "DM"
+          ],
+          "B": [
+            "GM",
+            "AR",
+            "IK",
+            "JO",
+            "ZS"
+          ]
+        },
+        "medianMargin": 22.44,
+        "meanMargin": 25.81,
+        "close10Pct": 29.2,
+        "close20Pct": 40,
+        "spreadWins": 8,
+        "lateRace": {
+          "week11": 7,
+          "week12": 8
+        },
+        "fields": {
+          "straight": [
+            "CR",
+            "JO",
+            "AN",
+            "ZS",
+            "GM",
+            "JH"
+          ],
+          "winnersPlusRecord": [
+            "CR",
+            "JO",
+            "AN",
+            "ZS",
+            "GM",
+            "JH"
+          ],
+          "winnersPlusPf": [
+            "CR",
+            "JO",
+            "AN",
+            "JH",
+            "GM",
+            "DM"
+          ],
+          "divWinners": [
+            "CR",
+            "JO"
+          ]
+        },
+        "topSixPfMissedStraight": 1,
+        "topSixPfMissed": {
+          "straight": 1,
+          "winnersPlusRecord": 1,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 22.44,
+            "close10Pct": 40
+          },
+          "B": {
+            "n": 20,
+            "median": 21.36,
+            "close10Pct": 30
+          },
+          "cross": {
+            "n": 25,
+            "median": 24.6,
+            "close10Pct": 20
+          }
+        },
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 11,
+            "l": 2,
+            "t": 0,
+            "pf": 1573.66,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 4,
+            "t": 1,
+            "pf": 1581.18,
+            "div": "B",
+            "divRecord": "6-1-1"
+          },
+          {
+            "owner": "AN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1588.62,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "ZS",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1296.22,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "GM",
+            "w": 6,
+            "l": 6,
+            "t": 1,
+            "pf": 1435.98,
+            "div": "B",
+            "divRecord": "5-2-1"
+          },
+          {
+            "owner": "JH",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1555.48,
+            "div": "A",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "DN",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1308.28,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "DM",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1400.4,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "IK",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1376.58,
+            "div": "B",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "AR",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1301.54,
+            "div": "B",
+            "divRecord": "2-6"
+          }
+        ]
+      },
+      "record": {
+        "divisions": {
+          "A": [
+            "AN",
+            "DN",
+            "CR",
+            "DM",
+            "JH"
+          ],
+          "B": [
+            "IK",
+            "AR",
+            "GM",
+            "JO",
+            "ZS"
+          ]
+        },
+        "medianMargin": 22.04,
+        "meanMargin": 26.67,
+        "close10Pct": 21.5,
+        "close20Pct": 46.2,
+        "spreadWins": 7,
+        "lateRace": {
+          "week11": 9,
+          "week12": 9
+        },
+        "fields": {
+          "straight": [
+            "CR",
+            "GM",
+            "AN",
+            "JO",
+            "JH",
+            "DM"
+          ],
+          "winnersPlusRecord": [
+            "CR",
+            "GM",
+            "AN",
+            "JO",
+            "JH",
+            "DM"
+          ],
+          "winnersPlusPf": [
+            "CR",
+            "GM",
+            "AN",
+            "JO",
+            "JH",
+            "DM"
+          ],
+          "divWinners": [
+            "CR",
+            "GM"
+          ]
+        },
+        "topSixPfMissedStraight": 0,
+        "topSixPfMissed": {
+          "straight": 0,
+          "winnersPlusRecord": 0,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 27.74,
+            "close10Pct": 20
+          },
+          "B": {
+            "n": 20,
+            "median": 15.28,
+            "close10Pct": 35
+          },
+          "cross": {
+            "n": 25,
+            "median": 22.04,
+            "close10Pct": 12
+          }
+        },
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 10,
+            "l": 3,
+            "t": 0,
+            "pf": 1573.66,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "GM",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1435.98,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "AN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1588.62,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1581.18,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JH",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1555.48,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1400.4,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "IK",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1376.58,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "ZS",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1296.22,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "DN",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1308.28,
+            "div": "A",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "AR",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1301.54,
+            "div": "B",
+            "divRecord": "3-5"
+          }
+        ]
+      },
+      "actual": {
+        "medianMargin": 21.82,
+        "meanMargin": 26.13,
+        "close10Pct": 23.1,
+        "close20Pct": 43.1,
+        "spreadWins": 7,
+        "lateRace": {
+          "week11": 6,
+          "week12": 6
+        },
+        "playoffField": [
+          "JH",
+          "GM",
+          "AN",
+          "CR",
+          "JO",
+          "DM"
+        ],
+        "standings": [
+          {
+            "owner": "JH",
+            "w": 10,
+            "l": 3,
+            "t": 0,
+            "pf": 1555.48
+          },
+          {
+            "owner": "GM",
+            "w": 8,
+            "l": 4,
+            "t": 1,
+            "pf": 1435.98
+          },
+          {
+            "owner": "AN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1588.62
+          },
+          {
+            "owner": "CR",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1573.66
+          },
+          {
+            "owner": "JO",
+            "w": 7,
+            "l": 5,
+            "t": 1,
+            "pf": 1581.18
+          },
+          {
+            "owner": "DM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1400.4
+          },
+          {
+            "owner": "ZS",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1296.22
+          },
+          {
+            "owner": "IK",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1376.58
+          },
+          {
+            "owner": "DN",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1308.28
+          },
+          {
+            "owner": "AR",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1301.54
+          }
+        ]
+      }
+    },
+    {
+      "season": 2021,
+      "weeks": 14,
+      "fourteenWeek": true,
+      "allplay": {
+        "divisions": {
+          "A": [
+            "AN",
+            "JO",
+            "CR",
+            "JH",
+            "GM"
+          ],
+          "B": [
+            "DM",
+            "IK",
+            "ZS",
+            "DN",
+            "AR"
+          ]
+        },
+        "medianMargin": 19.14,
+        "meanMargin": 21.14,
+        "close10Pct": 30,
+        "close20Pct": 55.7,
+        "spreadWins": 5,
+        "lateRace": {
+          "week12": 7,
+          "week13": 7
+        },
+        "fields": {
+          "straight": [
+            "DN",
+            "CR",
+            "JH",
+            "ZS",
+            "GM",
+            "IK"
+          ],
+          "winnersPlusRecord": [
+            "CR",
+            "DN",
+            "JH",
+            "ZS",
+            "GM",
+            "IK"
+          ],
+          "winnersPlusPf": [
+            "CR",
+            "DN",
+            "DM",
+            "JH",
+            "IK",
+            "AR"
+          ],
+          "divWinners": [
+            "CR",
+            "DN"
+          ]
+        },
+        "topSixPfMissedStraight": 2,
+        "topSixPfMissed": {
+          "straight": 2,
+          "winnersPlusRecord": 2,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 22.12,
+            "close10Pct": 40
+          },
+          "B": {
+            "n": 20,
+            "median": 18.94,
+            "close10Pct": 40
+          },
+          "cross": {
+            "n": 30,
+            "median": 18.16,
+            "close10Pct": 16.7
+          }
+        },
+        "standings": [
+          {
+            "owner": "DN",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1657.46,
+            "div": "B",
+            "divRecord": "7-1"
+          },
+          {
+            "owner": "CR",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1669.46,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JH",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1602.44,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "ZS",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1561.8,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "GM",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1448.88,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "IK",
+            "w": 7,
+            "l": 7,
+            "t": 0,
+            "pf": 1589.52,
+            "div": "B",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "AR",
+            "w": 7,
+            "l": 7,
+            "t": 0,
+            "pf": 1580.64,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1507.58,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "DM",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1604.62,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AN",
+            "w": 4,
+            "l": 10,
+            "t": 0,
+            "pf": 1531.48,
+            "div": "A",
+            "divRecord": "3-5"
+          }
+        ]
+      },
+      "record": {
+        "divisions": {
+          "A": [
+            "JH",
+            "GM",
+            "AN",
+            "CR",
+            "JO"
+          ],
+          "B": [
+            "DM",
+            "ZS",
+            "IK",
+            "DN",
+            "AR"
+          ]
+        },
+        "medianMargin": 19.76,
+        "meanMargin": 21.62,
+        "close10Pct": 25.7,
+        "close20Pct": 51.4,
+        "spreadWins": 4,
+        "lateRace": {
+          "week12": 9,
+          "week13": 9
+        },
+        "fields": {
+          "straight": [
+            "CR",
+            "DN",
+            "IK",
+            "DM",
+            "JH",
+            "JO"
+          ],
+          "winnersPlusRecord": [
+            "CR",
+            "DN",
+            "IK",
+            "DM",
+            "JH",
+            "JO"
+          ],
+          "winnersPlusPf": [
+            "CR",
+            "DN",
+            "DM",
+            "JH",
+            "IK",
+            "AR"
+          ],
+          "divWinners": [
+            "CR",
+            "DN"
+          ]
+        },
+        "topSixPfMissedStraight": 1,
+        "topSixPfMissed": {
+          "straight": 1,
+          "winnersPlusRecord": 1,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 22.4,
+            "close10Pct": 20
+          },
+          "B": {
+            "n": 20,
+            "median": 18.94,
+            "close10Pct": 40
+          },
+          "cross": {
+            "n": 30,
+            "median": 19.76,
+            "close10Pct": 20
+          }
+        },
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1669.46,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "DN",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1657.46,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "IK",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1589.52,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 7,
+            "l": 7,
+            "t": 0,
+            "pf": 1604.62,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JH",
+            "w": 7,
+            "l": 7,
+            "t": 0,
+            "pf": 1602.44,
+            "div": "A",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "JO",
+            "w": 7,
+            "l": 7,
+            "t": 0,
+            "pf": 1507.58,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AR",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1580.64,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AN",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1531.48,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "GM",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1448.88,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "ZS",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1561.8,
+            "div": "B",
+            "divRecord": "2-6"
+          }
+        ]
+      },
+      "actual": {
+        "medianMargin": 16.24,
+        "meanMargin": 19.43,
+        "close10Pct": 40,
+        "close20Pct": 57.1,
+        "spreadWins": 4,
+        "lateRace": {
+          "week12": 8,
+          "week13": 9
+        },
+        "playoffField": [
+          "DN",
+          "IK",
+          "AR",
+          "JO",
+          "GM",
+          "ZS"
+        ],
+        "standings": [
+          {
+            "owner": "DN",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1657.46
+          },
+          {
+            "owner": "IK",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1589.52
+          },
+          {
+            "owner": "AR",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1580.64
+          },
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1507.58
+          },
+          {
+            "owner": "GM",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1448.88
+          },
+          {
+            "owner": "ZS",
+            "w": 7,
+            "l": 7,
+            "t": 0,
+            "pf": 1561.8
+          },
+          {
+            "owner": "DM",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1604.62
+          },
+          {
+            "owner": "AN",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1531.48
+          },
+          {
+            "owner": "CR",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1669.46
+          },
+          {
+            "owner": "JH",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1602.44
+          }
+        ]
+      }
+    },
+    {
+      "season": 2022,
+      "weeks": 14,
+      "fourteenWeek": true,
+      "allplay": {
+        "divisions": {
+          "A": [
+            "CR",
+            "AR",
+            "IK",
+            "DN",
+            "JH"
+          ],
+          "B": [
+            "GM",
+            "DM",
+            "ZS",
+            "JO",
+            "AN"
+          ]
+        },
+        "medianMargin": 20.78,
+        "meanMargin": 24.8,
+        "close10Pct": 30,
+        "close20Pct": 50,
+        "spreadWins": 5,
+        "lateRace": {
+          "week12": 7,
+          "week13": 7
+        },
+        "fields": {
+          "straight": [
+            "CR",
+            "AN",
+            "GM",
+            "DN",
+            "DM",
+            "JH"
+          ],
+          "winnersPlusRecord": [
+            "CR",
+            "AN",
+            "GM",
+            "DN",
+            "DM",
+            "JH"
+          ],
+          "winnersPlusPf": [
+            "CR",
+            "AN",
+            "GM",
+            "DN",
+            "DM",
+            "JO"
+          ],
+          "divWinners": [
+            "CR",
+            "AN"
+          ]
+        },
+        "topSixPfMissedStraight": 1,
+        "topSixPfMissed": {
+          "straight": 1,
+          "winnersPlusRecord": 1,
+          "winnersPlusPf": 1
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 18.26,
+            "close10Pct": 25
+          },
+          "B": {
+            "n": 20,
+            "median": 24.94,
+            "close10Pct": 25
+          },
+          "cross": {
+            "n": 30,
+            "median": 19.34,
+            "close10Pct": 36.7
+          }
+        },
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1699.86,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "AN",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1445.08,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "GM",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1586.5,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DN",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1520.66,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1519.86,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JH",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1457.66,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "IK",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1406.62,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1491.1,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "ZS",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1374.26,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AR",
+            "w": 4,
+            "l": 10,
+            "t": 0,
+            "pf": 1407,
+            "div": "A",
+            "divRecord": "0-8"
+          }
+        ]
+      },
+      "record": {
+        "divisions": {
+          "A": [
+            "DN",
+            "IK",
+            "AR",
+            "JO",
+            "GM"
+          ],
+          "B": [
+            "ZS",
+            "DM",
+            "AN",
+            "CR",
+            "JH"
+          ]
+        },
+        "medianMargin": 18.26,
+        "meanMargin": 24.59,
+        "close10Pct": 32.9,
+        "close20Pct": 55.7,
+        "spreadWins": 7,
+        "lateRace": {
+          "week12": 8,
+          "week13": 7
+        },
+        "fields": {
+          "straight": [
+            "CR",
+            "GM",
+            "DN",
+            "DM",
+            "JO",
+            "JH"
+          ],
+          "winnersPlusRecord": [
+            "GM",
+            "CR",
+            "DN",
+            "DM",
+            "JO",
+            "JH"
+          ],
+          "winnersPlusPf": [
+            "GM",
+            "CR",
+            "DN",
+            "DM",
+            "JO",
+            "JH"
+          ],
+          "divWinners": [
+            "GM",
+            "CR"
+          ]
+        },
+        "topSixPfMissedStraight": 0,
+        "topSixPfMissed": {
+          "straight": 0,
+          "winnersPlusRecord": 0,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 16.7,
+            "close10Pct": 30
+          },
+          "B": {
+            "n": 20,
+            "median": 17.66,
+            "close10Pct": 50
+          },
+          "cross": {
+            "n": 30,
+            "median": 26.2,
+            "close10Pct": 23.3
+          }
+        },
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 10,
+            "l": 4,
+            "t": 0,
+            "pf": 1699.86,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "GM",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1586.5,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DN",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1520.66,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1519.86,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1491.1,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JH",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1457.66,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "AN",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1445.08,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "IK",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1406.62,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "AR",
+            "w": 3,
+            "l": 11,
+            "t": 0,
+            "pf": 1407,
+            "div": "A",
+            "divRecord": "1-7"
+          },
+          {
+            "owner": "ZS",
+            "w": 3,
+            "l": 11,
+            "t": 0,
+            "pf": 1374.26,
+            "div": "B",
+            "divRecord": "1-7"
+          }
+        ]
+      },
+      "actual": {
+        "medianMargin": 22.66,
+        "meanMargin": 25.51,
+        "close10Pct": 22.9,
+        "close20Pct": 48.6,
+        "spreadWins": 6,
+        "lateRace": {
+          "week12": 8,
+          "week13": 9
+        },
+        "playoffField": [
+          "DM",
+          "GM",
+          "DN",
+          "CR",
+          "JH",
+          "AR"
+        ],
+        "standings": [
+          {
+            "owner": "DM",
+            "w": 10,
+            "l": 4,
+            "t": 0,
+            "pf": 1519.86
+          },
+          {
+            "owner": "GM",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1586.5
+          },
+          {
+            "owner": "DN",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1520.66
+          },
+          {
+            "owner": "CR",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1699.86
+          },
+          {
+            "owner": "JH",
+            "w": 7,
+            "l": 7,
+            "t": 0,
+            "pf": 1457.66
+          },
+          {
+            "owner": "AR",
+            "w": 7,
+            "l": 7,
+            "t": 0,
+            "pf": 1407
+          },
+          {
+            "owner": "JO",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1491.1
+          },
+          {
+            "owner": "IK",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1406.62
+          },
+          {
+            "owner": "ZS",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1374.26
+          },
+          {
+            "owner": "AN",
+            "w": 4,
+            "l": 10,
+            "t": 0,
+            "pf": 1445.08
+          }
+        ]
+      }
+    },
+    {
+      "season": 2023,
+      "weeks": 13,
+      "fourteenWeek": false,
+      "allplay": {
+        "divisions": {
+          "A": [
+            "CR",
+            "GM",
+            "JH",
+            "DM",
+            "AN"
+          ],
+          "B": [
+            "DN",
+            "IK",
+            "AR",
+            "JO",
+            "ZS"
+          ]
+        },
+        "medianMargin": 27.22,
+        "meanMargin": 26.41,
+        "close10Pct": 20,
+        "close20Pct": 40,
+        "spreadWins": 8,
+        "lateRace": {
+          "week11": 9,
+          "week12": 9
+        },
+        "fields": {
+          "straight": [
+            "CR",
+            "AN",
+            "JO",
+            "GM",
+            "DM",
+            "JH"
+          ],
+          "winnersPlusRecord": [
+            "CR",
+            "JO",
+            "AN",
+            "GM",
+            "DM",
+            "JH"
+          ],
+          "winnersPlusPf": [
+            "CR",
+            "JO",
+            "AN",
+            "DM",
+            "GM",
+            "JH"
+          ],
+          "divWinners": [
+            "CR",
+            "JO"
+          ]
+        },
+        "topSixPfMissedStraight": 0,
+        "topSixPfMissed": {
+          "straight": 0,
+          "winnersPlusRecord": 0,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 28.04,
+            "close10Pct": 20
+          },
+          "B": {
+            "n": 20,
+            "median": 22.52,
+            "close10Pct": 20
+          },
+          "cross": {
+            "n": 25,
+            "median": 33.62,
+            "close10Pct": 20
+          }
+        },
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 11,
+            "l": 2,
+            "t": 0,
+            "pf": 1675.9,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "AN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1443.34,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1433.92,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "GM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1417.68,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1438.12,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "JH",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1387.84,
+            "div": "A",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "IK",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1361.1,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "DN",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1285.54,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "ZS",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1354.64,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "AR",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1323.1,
+            "div": "B",
+            "divRecord": "2-6"
+          }
+        ]
+      },
+      "record": {
+        "divisions": {
+          "A": [
+            "DM",
+            "GM",
+            "DN",
+            "CR",
+            "JH"
+          ],
+          "B": [
+            "AR",
+            "JO",
+            "IK",
+            "ZS",
+            "AN"
+          ]
+        },
+        "medianMargin": 20.96,
+        "meanMargin": 24.5,
+        "close10Pct": 24.6,
+        "close20Pct": 44.6,
+        "spreadWins": 12,
+        "lateRace": {
+          "week11": 8,
+          "week12": 7
+        },
+        "fields": {
+          "straight": [
+            "CR",
+            "AN",
+            "JO",
+            "DM",
+            "JH",
+            "IK"
+          ],
+          "winnersPlusRecord": [
+            "CR",
+            "AN",
+            "JO",
+            "DM",
+            "JH",
+            "IK"
+          ],
+          "winnersPlusPf": [
+            "CR",
+            "AN",
+            "DM",
+            "JO",
+            "GM",
+            "JH"
+          ],
+          "divWinners": [
+            "CR",
+            "AN"
+          ]
+        },
+        "topSixPfMissedStraight": 1,
+        "topSixPfMissed": {
+          "straight": 1,
+          "winnersPlusRecord": 1,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 30.26,
+            "close10Pct": 20
+          },
+          "B": {
+            "n": 20,
+            "median": 21.14,
+            "close10Pct": 15
+          },
+          "cross": {
+            "n": 25,
+            "median": 19.6,
+            "close10Pct": 36
+          }
+        },
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 13,
+            "l": 0,
+            "t": 0,
+            "pf": 1675.9,
+            "div": "A",
+            "divRecord": "8-0"
+          },
+          {
+            "owner": "AN",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1443.34,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1433.92,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "DM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1438.12,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "JH",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1387.84,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "IK",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1361.1,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "ZS",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1354.64,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "GM",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1417.68,
+            "div": "A",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "DN",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1285.54,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AR",
+            "w": 1,
+            "l": 12,
+            "t": 0,
+            "pf": 1323.1,
+            "div": "B",
+            "divRecord": "0-8"
+          }
+        ]
+      },
+      "actual": {
+        "medianMargin": 22.4,
+        "meanMargin": 26.44,
+        "close10Pct": 20,
+        "close20Pct": 41.5,
+        "spreadWins": 7,
+        "lateRace": {
+          "week11": 9,
+          "week12": 9
+        },
+        "playoffField": [
+          "CR",
+          "ZS",
+          "DM",
+          "AN",
+          "JO",
+          "GM"
+        ],
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 11,
+            "l": 2,
+            "t": 0,
+            "pf": 1675.9
+          },
+          {
+            "owner": "ZS",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1354.64
+          },
+          {
+            "owner": "DM",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1438.12
+          },
+          {
+            "owner": "AN",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1443.34
+          },
+          {
+            "owner": "JO",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1433.92
+          },
+          {
+            "owner": "GM",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1417.68
+          },
+          {
+            "owner": "JH",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1387.84
+          },
+          {
+            "owner": "IK",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1361.1
+          },
+          {
+            "owner": "DN",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1285.54
+          },
+          {
+            "owner": "AR",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1323.1
+          }
+        ]
+      }
+    },
+    {
+      "season": 2024,
+      "weeks": 13,
+      "fourteenWeek": false,
+      "allplay": {
+        "divisions": {
+          "A": [
+            "CR",
+            "AN",
+            "DM",
+            "JO",
+            "GM"
+          ],
+          "B": [
+            "JH",
+            "IK",
+            "ZS",
+            "AR",
+            "DN"
+          ]
+        },
+        "medianMargin": 20,
+        "meanMargin": 23.7,
+        "close10Pct": 24.6,
+        "close20Pct": 50.8,
+        "spreadWins": 7,
+        "lateRace": {
+          "week11": 9,
+          "week12": 9
+        },
+        "fields": {
+          "straight": [
+            "GM",
+            "JO",
+            "AN",
+            "ZS",
+            "JH",
+            "DN"
+          ],
+          "winnersPlusRecord": [
+            "GM",
+            "ZS",
+            "JO",
+            "AN",
+            "JH",
+            "DN"
+          ],
+          "winnersPlusPf": [
+            "GM",
+            "ZS",
+            "JO",
+            "AN",
+            "JH",
+            "DN"
+          ],
+          "divWinners": [
+            "GM",
+            "ZS"
+          ]
+        },
+        "topSixPfMissedStraight": 0,
+        "topSixPfMissed": {
+          "straight": 0,
+          "winnersPlusRecord": 0,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 21.08,
+            "close10Pct": 20
+          },
+          "B": {
+            "n": 20,
+            "median": 21.48,
+            "close10Pct": 30
+          },
+          "cross": {
+            "n": 25,
+            "median": 19.02,
+            "close10Pct": 24
+          }
+        },
+        "standings": [
+          {
+            "owner": "GM",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1620.74,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1493.42,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "AN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1458.52,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "ZS",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1552.7,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JH",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1450.76,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DN",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1410.52,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "DM",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1400.76,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "CR",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1360.32,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AR",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1314.76,
+            "div": "B",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "IK",
+            "w": 2,
+            "l": 11,
+            "t": 0,
+            "pf": 1255.18,
+            "div": "B",
+            "divRecord": "2-6"
+          }
+        ]
+      },
+      "record": {
+        "divisions": {
+          "A": [
+            "CR",
+            "ZS",
+            "DM",
+            "AN",
+            "JO"
+          ],
+          "B": [
+            "GM",
+            "JH",
+            "IK",
+            "DN",
+            "AR"
+          ]
+        },
+        "medianMargin": 17.82,
+        "meanMargin": 22.5,
+        "close10Pct": 29.2,
+        "close20Pct": 53.8,
+        "spreadWins": 5,
+        "lateRace": {
+          "week11": 8,
+          "week12": 9
+        },
+        "fields": {
+          "straight": [
+            "GM",
+            "ZS",
+            "JO",
+            "DN",
+            "DM",
+            "AR"
+          ],
+          "winnersPlusRecord": [
+            "ZS",
+            "GM",
+            "JO",
+            "DN",
+            "DM",
+            "AR"
+          ],
+          "winnersPlusPf": [
+            "ZS",
+            "GM",
+            "JO",
+            "AN",
+            "JH",
+            "DN"
+          ],
+          "divWinners": [
+            "ZS",
+            "GM"
+          ]
+        },
+        "topSixPfMissedStraight": 2,
+        "topSixPfMissed": {
+          "straight": 2,
+          "winnersPlusRecord": 2,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 24.08,
+            "close10Pct": 25
+          },
+          "B": {
+            "n": 20,
+            "median": 21.6,
+            "close10Pct": 20
+          },
+          "cross": {
+            "n": 25,
+            "median": 16.42,
+            "close10Pct": 40
+          }
+        },
+        "standings": [
+          {
+            "owner": "GM",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1620.74,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "ZS",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1552.7,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "JO",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1493.42,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1410.52,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "DM",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1400.76,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "AR",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1314.76,
+            "div": "B",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "JH",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1450.76,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "IK",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1255.18,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AN",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1458.52,
+            "div": "A",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "CR",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1360.32,
+            "div": "A",
+            "divRecord": "3-5"
+          }
+        ]
+      },
+      "actual": {
+        "medianMargin": 17.14,
+        "meanMargin": 20.38,
+        "close10Pct": 30.8,
+        "close20Pct": 55.4,
+        "spreadWins": 7,
+        "lateRace": {
+          "week11": 7,
+          "week12": 7
+        },
+        "playoffField": [
+          "JH",
+          "GM",
+          "ZS",
+          "JO",
+          "AN",
+          "CR"
+        ],
+        "standings": [
+          {
+            "owner": "JH",
+            "w": 10,
+            "l": 3,
+            "t": 0,
+            "pf": 1450.76
+          },
+          {
+            "owner": "GM",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1620.74
+          },
+          {
+            "owner": "ZS",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1552.7
+          },
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1493.42
+          },
+          {
+            "owner": "AN",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1458.52
+          },
+          {
+            "owner": "CR",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1360.32
+          },
+          {
+            "owner": "AR",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1314.76
+          },
+          {
+            "owner": "DN",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1410.52
+          },
+          {
+            "owner": "DM",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1400.76
+          },
+          {
+            "owner": "IK",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1255.18
+          }
+        ]
+      }
+    },
+    {
+      "season": 2025,
+      "weeks": 13,
+      "fourteenWeek": false,
+      "allplay": {
+        "divisions": {
+          "A": [
+            "GM",
+            "ZS",
+            "JO",
+            "JH",
+            "AN"
+          ],
+          "B": [
+            "DN",
+            "DM",
+            "CR",
+            "AR",
+            "IK"
+          ]
+        },
+        "medianMargin": 21.58,
+        "meanMargin": 23.85,
+        "close10Pct": 30.8,
+        "close20Pct": 47.7,
+        "spreadWins": 4,
+        "lateRace": {
+          "week11": 9,
+          "week12": 8
+        },
+        "fields": {
+          "straight": [
+            "GM",
+            "DM",
+            "JH",
+            "JO",
+            "CR",
+            "AN"
+          ],
+          "winnersPlusRecord": [
+            "GM",
+            "DM",
+            "JH",
+            "JO",
+            "CR",
+            "AN"
+          ],
+          "winnersPlusPf": [
+            "GM",
+            "DM",
+            "JO",
+            "AR",
+            "IK",
+            "CR"
+          ],
+          "divWinners": [
+            "GM",
+            "DM"
+          ]
+        },
+        "topSixPfMissedStraight": 2,
+        "topSixPfMissed": {
+          "straight": 2,
+          "winnersPlusRecord": 2,
+          "winnersPlusPf": 1
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 23,
+            "close10Pct": 25
+          },
+          "B": {
+            "n": 20,
+            "median": 22.74,
+            "close10Pct": 20
+          },
+          "cross": {
+            "n": 25,
+            "median": 15.32,
+            "close10Pct": 44
+          }
+        },
+        "standings": [
+          {
+            "owner": "GM",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1454.4,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "DM",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1371.98,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "JH",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1362.52,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1531.84,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "CR",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1409.96,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "AN",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1386.72,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "AR",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1474.78,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "DN",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1307.64,
+            "div": "B",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "IK",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1455.58,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "ZS",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1320.44,
+            "div": "A",
+            "divRecord": "1-7"
+          }
+        ]
+      },
+      "record": {
+        "divisions": {
+          "A": [
+            "JH",
+            "GM",
+            "ZS",
+            "JO",
+            "AN"
+          ],
+          "B": [
+            "CR",
+            "AR",
+            "DN",
+            "DM",
+            "IK"
+          ]
+        },
+        "medianMargin": 23.14,
+        "meanMargin": 24.9,
+        "close10Pct": 18.5,
+        "close20Pct": 43.1,
+        "spreadWins": 5,
+        "lateRace": {
+          "week11": 7,
+          "week12": 8
+        },
+        "fields": {
+          "straight": [
+            "AR",
+            "DM",
+            "JO",
+            "IK",
+            "GM",
+            "DN"
+          ],
+          "winnersPlusRecord": [
+            "JO",
+            "AR",
+            "DM",
+            "IK",
+            "GM",
+            "DN"
+          ],
+          "winnersPlusPf": [
+            "JO",
+            "AR",
+            "IK",
+            "GM",
+            "CR",
+            "AN"
+          ],
+          "divWinners": [
+            "JO",
+            "AR"
+          ]
+        },
+        "topSixPfMissedStraight": 2,
+        "topSixPfMissed": {
+          "straight": 2,
+          "winnersPlusRecord": 2,
+          "winnersPlusPf": 0
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 25.48,
+            "close10Pct": 15
+          },
+          "B": {
+            "n": 20,
+            "median": 23.66,
+            "close10Pct": 20
+          },
+          "cross": {
+            "n": 25,
+            "median": 23.14,
+            "close10Pct": 20
+          }
+        },
+        "standings": [
+          {
+            "owner": "AR",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1474.78,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1371.98,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1531.84,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "IK",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1455.58,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "GM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1454.4,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "DN",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1307.64,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "CR",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1409.96,
+            "div": "B",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "JH",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1362.52,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AN",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1386.72,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "ZS",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1320.44,
+            "div": "A",
+            "divRecord": "4-4"
+          }
+        ]
+      },
+      "actual": {
+        "medianMargin": 23.74,
+        "meanMargin": 26.23,
+        "close10Pct": 24.6,
+        "close20Pct": 43.1,
+        "spreadWins": 3,
+        "lateRace": {
+          "week11": 10,
+          "week12": 9
+        },
+        "playoffField": [
+          "JO",
+          "JH",
+          "IK",
+          "CR",
+          "AR",
+          "GM"
+        ],
+        "standings": [
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1531.84
+          },
+          {
+            "owner": "JH",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1362.52
+          },
+          {
+            "owner": "IK",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1455.58
+          },
+          {
+            "owner": "CR",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1409.96
+          },
+          {
+            "owner": "AR",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1474.78
+          },
+          {
+            "owner": "GM",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1454.4
+          },
+          {
+            "owner": "AN",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1386.72
+          },
+          {
+            "owner": "ZS",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1320.44
+          },
+          {
+            "owner": "DN",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1307.64
+          },
+          {
+            "owner": "DM",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1371.98
+          }
+        ]
+      }
+    }
+  ]
+}

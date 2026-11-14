@@ -137,3 +137,9 @@ races:
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-playoff-race.mjs
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-diaper-race.mjs
 	@echo "make races : Finished"
+
+relegation:
+	@echo "make relegation : Started"
+	@echo "Generating divisional relegation backtest..."
+	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-relegation.mjs
+	@echo "make relegation : Finished"

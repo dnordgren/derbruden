@@ -7,6 +7,7 @@ import {
   seedOrder,
   simulateSeason,
   playoffFields,
+  renderPage,
 } from './generate-relegation.mjs'
 
 test('template: every week is a perfect matching of slots 0-9', () => {
@@ -73,6 +74,57 @@ test('simulateSeason: constant scores produce a sweep for the top seed', () => {
   // Top seed is in division A and logged 8 divisional games.
   const top = sim.standings[0]
   assert.equal(top.divW + top.divL + top.divT, 8)
+})
+
+test('renderPage emits the vote page with headline numbers and standings', () => {
+  const sim = {
+    divisions: { A: ['AA'], B: ['BB'] },
+    medianMargin: 20,
+    meanMargin: 24,
+    close10Pct: 25,
+    close20Pct: 45,
+    spreadWins: 6,
+    marginsByType: {
+      A: { n: 20, median: 21, close10Pct: 30 },
+      B: { n: 20, median: 26, close10Pct: 20 },
+      cross: { n: 25, median: 19, close10Pct: 28 },
+    },
+    fields: { straight: ['AA'], winnersPlusRecord: ['AA'], winnersPlusPf: ['AA'] },
+    topSixPfMissedStraight: 1,
+    topSixPfMissed: { straight: 1, winnersPlusRecord: 1, winnersPlusPf: 0 },
+    standings: [
+      { owner: 'AA', div: 'A', w: 9, l: 4, t: 0, pf: 1500, divRecord: '6-2' },
+      { owner: 'BB', div: 'B', w: 4, l: 9, t: 0, pf: 1200, divRecord: '3-5' },
+    ],
+  }
+  const data = {
+    generated: '2026-11-14',
+    leagueId: '794521',
+    window: '2019-2025 (seeded from 2018-2024)',
+    method: 'x',
+    perSeason: [
+      {
+        season: 2025,
+        fourteenWeek: false,
+        allplay: sim,
+        record: { medianMargin: 21 },
+        actual: {
+          medianMargin: 22,
+          meanMargin: 25,
+          close10Pct: 24,
+          close20Pct: 46,
+          spreadWins: 5,
+          playoffField: ['AA'],
+        },
+      },
+    ],
+  }
+  const page = renderPage(data)
+  assert.match(page, /Vote: divisional relegation/)
+  assert.match(page, /2025 simulated standings/)
+  assert.match(page, /AA ✓/)
+  assert.match(page, /partials\/head-common\.html/)
+  assert.ok(!page.includes('undefined'), 'page must not contain undefined values')
 })
 
 test('playoffFields: division winners are protected in winners variants only', () => {

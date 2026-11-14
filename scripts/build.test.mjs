@@ -3,7 +3,7 @@ import { test } from 'node:test'
 import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { resolveIncludes } from './build.mjs'
+import { resolveIncludes, listPages } from './build.mjs'
 
 function withFixture(fn) {
   const dir = mkdtempSync(join(tmpdir(), 'derbruden-build-'))
@@ -42,6 +42,18 @@ test('rejects an include without a file attribute', () => {
 test('rejects a missing partial', () => {
   withFixture(dir => {
     assert.throws(() => resolveIncludes('<!--#include file="nope.html" -->', [], dir), /not found/)
+  })
+})
+
+test('listPages recurses into subdirectories but skips partials', () => {
+  withFixture(dir => {
+    mkdirSync(join(dir, 'partials'), { recursive: true })
+    mkdirSync(join(dir, 'votes'), { recursive: true })
+    writeFileSync(join(dir, 'index.html'), '<p>home</p>')
+    writeFileSync(join(dir, 'votes', 'relegation.html'), '<p>vote</p>')
+    writeFileSync(join(dir, 'partials', 'nav.html'), '<p>nav</p>')
+    writeFileSync(join(dir, 'notes.txt'), 'not a page')
+    assert.deepEqual(listPages(dir), ['index.html', join('votes', 'relegation.html')])
   })
 })
 

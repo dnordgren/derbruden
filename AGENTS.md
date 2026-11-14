@@ -392,10 +392,17 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   replaced departed team 6 / SHEN).
 - League JSON caches under git-ignored `scripts/.relegation-cache/`;
   `--offline` rebuilds from cache only. Same `scripts/.env` `ESPN_S2`
-  as power rankings. Writes `static/data/relegation.json` and
-  `docs/relegation-backtest.md`. No workflow, no deploy, no Discord:
-  it is a one-off vote analysis, not a recurring page.
-- Tests: `node --test scripts/generate-relegation.test.mjs`.
+  as power rankings. Writes `static/data/relegation.json`,
+  `docs/relegation-backtest.md`, and the vote page
+  `src/votes/relegation.html` (built to `pub/votes/relegation.html`;
+  `build.mjs` recurses into `src/` subdirectories except `partials`).
+  The page is deliberately NOT linked from the nav or any other page —
+  it is shared by direct URL for the league vote. It uses root-relative
+  asset paths and no nav partial, because the shared partials assume a
+  top-level page. `deploy-static` excludes `data/relegation.json` and
+  copies it separately like the other data feeds. No workflow and no
+  Discord post: a one-off vote analysis, not a recurring page.
+- Tests: `node --test scripts/generate-relegation.test.mjs scripts/build.test.mjs`.
 
 ## Team name sync
 

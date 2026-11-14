@@ -36,6 +36,7 @@ const LEAGUE_ID = process.env.LEAGUE_ID || '794521'
 const CACHE_DIR = path.join(__dirname, '.relegation-cache')
 const DATA_FILE = path.join(ROOT, 'static', 'data', 'relegation.json')
 const REPORT_FILE = path.join(ROOT, 'docs', 'relegation-backtest.md')
+const PAGE_FILE = path.join(ROOT, 'src', 'votes', 'relegation.html')
 export const FIRST_SEASON = 2018
 export const LAST_SEASON = 2025
 export const PLAYOFF_TEAMS = 6
@@ -628,6 +629,181 @@ export function renderReport(data) {
   return lines.join('\n')
 }
 
+export function renderPage(data) {
+  const rows = data.perSeason
+  const sims = rows.map(r => r.allplay).filter(s => s && !s.error)
+  const acts = rows.map(r => r.actual)
+  const avgOf = (list, key) => round2(list.reduce((s, r) => s + r[key], 0) / list.length)
+  const pooledType = key => {
+    const medians = sims.map(s => s.marginsByType[key].median)
+    const closes = sims.map(s => s.marginsByType[key].close10Pct)
+    const n = sims.reduce((s, r) => s + r.marginsByType[key].n, 0)
+    return {
+      n,
+      median: round2(medians.reduce((a, b) => a + b, 0) / medians.length),
+      close10: round1(closes.reduce((a, b) => a + b, 0) / closes.length),
+    }
+  }
+  const typeA = pooledType('A'),
+    typeB = pooledType('B'),
+    typeX = pooledType('cross')
+  const missed = key =>
+    avgOf(
+      sims.map(s => ({ v: s.topSixPfMissed[key] })),
+      'v'
+    )
+
+  const seasonRows = rows
+    .map(r => {
+      const s = r.allplay
+      if (!s || s.error)
+        return `<tr><td>${r.season}</td><td class="number">${r.actual.medianMargin}</td><td class="number">n/a</td><td class="number">${r.actual.close10Pct}%</td><td class="number">n/a</td><td>n/a</td><td class="number">n/a</td></tr>`
+      const same = s.fields.straight.filter(o => r.actual.playoffField.includes(o)).length
+      return `<tr><td>${r.season}${r.fourteenWeek ? ' *' : ''}</td><td class="number">${r.actual.medianMargin}</td><td class="number">${s.medianMargin}</td><td class="number">${r.actual.close10Pct}%</td><td class="number">${s.close10Pct}%</td><td>${same}/6 same</td><td class="number">${s.topSixPfMissedStraight}</td></tr>`
+    })
+    .join('\n')
+
+  const standingsSections = rows
+    .filter(r => r.allplay && !r.allplay.error)
+    .map(r => {
+      const s = r.allplay
+      const body = s.standings
+        .map((t, i) => {
+          const inField = s.fields.straight.includes(t.owner)
+          return `<tr><td class="number">${i + 1}</td><td class="owner">${t.owner}${inField ? ' ✓' : ''}</td><td>${t.div}</td><td class="number">${t.w}-${t.l}${t.t ? `-${t.t}` : ''}</td><td class="number">${t.pf}</td><td class="number">${t.divRecord}</td></tr>`
+        })
+        .join('\n')
+      return `<h3>${r.season} simulated standings${r.fourteenWeek ? ' (14-week season)' : ''}</h3>
+<p class="section-note">Division A: ${s.divisions.A.join(', ')} &middot; Division B: ${s.divisions.B.join(', ')}${r.seedingNote ? ` &middot; ${r.seedingNote}` : ''} &middot; ✓ = makes playoffs under straight top-6</p>
+<table class="stats-table">
+<thead><tr><th>#</th><th>Owner</th><th>Div</th><th>W-L</th><th>PF</th><th>Div W-L</th></tr></thead>
+<tbody>
+${body}
+</tbody>
+</table>`
+    })
+    .join('\n')
+
+  return `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DerBruden.com | Vote: Divisional Relegation</title>
+  <meta property="og:title" content="DerBruden.com | Vote: Divisional Relegation">
+  <meta property="og:description" content="Backtest of the divisional relegation proposal for the Der Bruden league: seven seasons of ESPN data, re-scheduled under tiered divisions. The games do not get closer — here is the evidence.">
+  <meta property="og:url" content="https://derbruden.com/votes/relegation.html">
+  <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DerBruden.com | Vote: Divisional Relegation">
+  <meta name="twitter:description" content="Seven-season backtest of the Der Bruden divisional relegation proposal.">
+  <meta name="twitter:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
+  <!--#include file="partials/head-common.html" -->
+  <style>
+    h2 { margin-top: 40px; }
+    h3 { margin-top: 32px; }
+    .stats-table .number { text-align: right; }
+    .stats-table .owner { font-weight: 500; white-space: nowrap; }
+    .callout { background: #fff8e1; border: 1px solid #ffecb3; padding: 10px 12px; border-radius: 6px; }
+    @media (prefers-color-scheme: dark) {
+      .callout { background: #2a2417; border-color: #6b5d2e; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="header-container">
+      <div class="header">
+        <a href="/">
+          <img src="/static/img/header-logo.webp?v=1" alt="DerBruden.com" class="logo" width="200" height="153">
+        </a>
+        <div>
+          <p class="site-title">DerBruden.com</p>
+          <p class="tagline">Strange dreams lately?</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="owner-logo-header">
+      <img src="/static/img/league-logo.webp?v=1" alt="DB Logo" width="100" height="100">
+      <h1>Vote: divisional relegation</h1>
+    </div>
+
+    <h2>The proposal</h2>
+    <p>Split the league into two divisions, rebased every year on the prior year's results: <strong>Division A</strong> is the prior year's top 5, <strong>Division B</strong> the bottom 5. You play your division twice and everyone else once (8 + 5 = a perfect 13-week fit). The pitch: you play teams at your own power level more often, so the league becomes more competitive.</p>
+    <p>Before voting, we ran the numbers. Every team's actual weekly scores from ESPN for 2019–2025 were held fixed — fantasy points don't care who the opponent was — and only the pairings were changed to the divisional schedule, with divisions seeded by the prior year's All-Play record. Seven seasons of counterfactual history:</p>
+
+    <p class="callout"><strong>The short version:</strong> the games do not get closer, and the standings get <em>less</em> even. If we adopt this, it should be for promotion/relegation drama — and only with PF-based wildcards, which fix the one real fairness problem the model found.</p>
+
+    <h2>Headline numbers (averages, 2019–2025)</h2>
+    <table class="stats-table">
+      <thead><tr><th>Metric</th><th>Actual</th><th>Relegation sim</th></tr></thead>
+      <tbody>
+        <tr><td>Median margin</td><td class="number">${avgOf(acts, 'medianMargin')}</td><td class="number">${avgOf(sims, 'medianMargin')}</td></tr>
+        <tr><td>Mean margin</td><td class="number">${avgOf(acts, 'meanMargin')}</td><td class="number">${avgOf(sims, 'meanMargin')}</td></tr>
+        <tr><td>Games within 10 pts</td><td class="number">${avgOf(acts, 'close10Pct')}%</td><td class="number">${avgOf(sims, 'close10Pct')}%</td></tr>
+        <tr><td>Games within 20 pts</td><td class="number">${avgOf(acts, 'close20Pct')}%</td><td class="number">${avgOf(sims, 'close20Pct')}%</td></tr>
+        <tr><td>Final standings spread (wins, 1st to 10th)</td><td class="number">${avgOf(acts, 'spreadWins')}</td><td class="number">${avgOf(sims, 'spreadWins')}</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Margins by game type (simulated, pooled)</h2>
+    <p class="section-note">The proposal's claim is specifically that divisional games get closer. They don't — cross-division games are the closest of the three. Last year's tiers barely predict this year's scoring gaps; rosters reshuffle too much year to year.</p>
+    <table class="stats-table">
+      <thead><tr><th>Game type</th><th>Games</th><th>Median margin</th><th>Within 10 pts</th></tr></thead>
+      <tbody>
+        <tr><td>Division A (prior top 5)</td><td class="number">${typeA.n}</td><td class="number">${typeA.median}</td><td class="number">${typeA.close10}%</td></tr>
+        <tr><td>Division B (prior bottom 5)</td><td class="number">${typeB.n}</td><td class="number">${typeB.median}</td><td class="number">${typeB.close10}%</td></tr>
+        <tr><td>Cross-division</td><td class="number">${typeX.n}</td><td class="number">${typeX.median}</td><td class="number">${typeX.close10}%</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Playoff qualification: the part that actually matters</h2>
+    <p>Tiered divisions distort records — A teams beat each other up, B teams feast on each other. Measured as top-6 points-for teams who would miss the playoffs (average per season):</p>
+    <table class="stats-table">
+      <thead><tr><th>Qualification rule</th><th>Top-6 PF teams missing playoffs</th></tr></thead>
+      <tbody>
+        <tr><td>Straight top 6 by W-L</td><td class="number">${missed('straight')}</td></tr>
+        <tr><td>Division winners in, wildcards by W-L</td><td class="number">${missed('winnersPlusRecord')}</td></tr>
+        <tr><td>Division winners in, wildcards by PF</td><td class="number">${missed('winnersPlusPf')}</td></tr>
+      </tbody>
+    </table>
+    <p>If this passes, the PF-wildcard version is the fair one. Under straight W-L, roughly one genuinely top-six team per season stays home.</p>
+
+    <h2>Season by season</h2>
+    <table class="stats-table">
+      <thead><tr><th>Season</th><th>Actual median margin</th><th>Sim median margin</th><th>Actual ≤10pt</th><th>Sim ≤10pt</th><th>Playoff field (straight) vs actual</th><th>Top-6 PF missing sim playoffs</th></tr></thead>
+      <tbody>
+${seasonRows}
+      </tbody>
+    </table>
+    <p class="section-note">* 2021 and 2022 were 14-week regular seasons; week 14 is modeled as one extra cross-division round. Treat those two as directional.</p>
+
+    <h2>Your counterfactual seasons</h2>
+    <p class="section-note">Simulated final standings under the divisional schedule, All-Play seeding. Full data: <a href="/static/data/relegation.json">relegation.json</a>.</p>
+${standingsSections}
+
+    <h2>Method and limits</h2>
+    <p>Data from the ESPN fantasy API (league 794521), regular season only, 2018–2025; each target season 2019–2025 is seeded from the prior year (2018 can only seed — ESPN has no weekly data before it, and pre-2018 exists only as season aggregates). Seeding by prior-year W-L instead of All-Play tells the same story (median margin ${avgOf(
+      rows.map(r => r.record).filter(s => s && !s.error),
+      'medianMargin'
+    )} across seasons). Scores are held fixed: lineup, waiver, and trade behavior would shift somewhat under a different schedule and playoff race, and the model can't see that. In 2019, franchise 12 (JH) had no prior season — the departed franchise 6 (SHEN) left after 2018 — so JH was seeded last.</p>
+    <p class="section-note">Generated ${data.generated} by scripts/generate-relegation.mjs. This page is not linked from the site nav; it was shared directly for the vote.</p>
+  </main>
+
+  <!--#include file="partials/footer.html" -->
+</body>
+
+</html>
+`
+}
+
 async function main() {
   loadEnv()
   const offline = process.argv.includes('--offline')
@@ -636,13 +812,17 @@ async function main() {
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2) + '\n')
   fs.mkdirSync(path.dirname(REPORT_FILE), { recursive: true })
   fs.writeFileSync(REPORT_FILE, renderReport(data))
+  fs.mkdirSync(path.dirname(PAGE_FILE), { recursive: true })
+  fs.writeFileSync(PAGE_FILE, renderPage(data))
   for (const r of data.perSeason) {
     const s = r.allplay
     console.log(
       `${r.season}${r.fourteenWeek ? '*' : ''} actual: median ${r.actual.medianMargin}, ≤10pt ${r.actual.close10Pct}% | sim: ${s ? `median ${s.medianMargin}, ≤10pt ${s.close10Pct}%, top6PF missed ${s.topSixPfMissedStraight}` : 'n/a'}`
     )
   }
-  console.log(`Wrote ${path.relative(ROOT, DATA_FILE)} and ${path.relative(ROOT, REPORT_FILE)}`)
+  console.log(
+    `Wrote ${path.relative(ROOT, DATA_FILE)}, ${path.relative(ROOT, REPORT_FILE)}, and ${path.relative(ROOT, PAGE_FILE)}`
+  )
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

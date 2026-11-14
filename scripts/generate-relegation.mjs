@@ -429,6 +429,24 @@ export function simulateSeason(weekly, order) {
   return { ...result, games, slotOf, divisionOf, weeks: weeksSorted }
 }
 
+// The refined proposal's playoff split: Division A sends its top 4,
+// Division B its top 2 (by W-L, PF tiebreak — the standings order).
+export function fourTwoField(standings, divisionOf) {
+  const a = standings.filter(r => divisionOf.get(r.id) === 'A')
+  const b = standings.filter(r => divisionOf.get(r.id) === 'B')
+  return [...a.slice(0, 4), ...b.slice(0, 2)].map(r => r.id)
+}
+
+// Next season's seed order under 2-up / 2-down movement: A keeps its
+// top 3 and B's top 2 are promoted; A's bottom 2 are relegated and
+// B's bottom 3 stay. Order within each group is the division's
+// standings order, so the returned array is next year's slots 0-9.
+export function nextDivisions(standings, divisionOf) {
+  const a = standings.filter(r => divisionOf.get(r.id) === 'A').map(r => r.id)
+  const b = standings.filter(r => divisionOf.get(r.id) === 'B').map(r => r.id)
+  return [...a.slice(0, 3), ...b.slice(0, 2), ...a.slice(3), ...b.slice(2)]
+}
+
 function round1(x) {
   return Math.round(x * 10) / 10
 }
@@ -513,12 +531,64 @@ export async function runBacktest({ offline = false } = {}) {
     }
     perSeason.push(entry)
   }
+  // Refined proposal variant, run alongside the full-rebase model:
+  // divisions move 2-up / 2-down from the simulated prior season
+  // (recursive — each year's divisions depend on the simulated year
+  // before), and playoffs use the 4/2 split. The first year seeds
+  // from the prior season's All-Play order like the main model.
+  let proposalOrder = null
+  for (const entry of perSeason) {
+    const y = entry.season
+    const cur = seasons.get(y)
+    const prior = seasons.get(y - 1)
+    if (!proposalOrder) {
+      proposalOrder = seedOrder(prior.weekly, prior.games, 'allplay').filter(id => cur.weekly.has(id))
+      for (const id of cur.teams.keys()) {
+        if (!proposalOrder.includes(id)) proposalOrder.push(id)
+      }
+    }
+    if (proposalOrder.length !== 10) {
+      entry.proposal = { error: `seeded ${proposalOrder.length}/10 teams` }
+      proposalOrder = null
+      continue
+    }
+    const sim = simulateSeason(cur.weekly, proposalOrder)
+    const owner = id => cur.teams.get(id)?.owner || String(id)
+    const fourTwo = fourTwoField(sim.standings, sim.divisionOf)
+    entry.proposal = {
+      divisions: {
+        A: proposalOrder.slice(0, 5).map(owner),
+        B: proposalOrder.slice(5).map(owner),
+      },
+      medianMargin: sim.medianMargin,
+      meanMargin: sim.meanMargin,
+      close10Pct: sim.close10Pct,
+      close20Pct: sim.close20Pct,
+      spreadWins: sim.spreadWins,
+      lateRace: sim.lateRace,
+      marginsByType: sim.marginsByType,
+      fourTwoField: fourTwo.map(owner),
+      straightField: sim.fields.straight.map(owner),
+      topSixPfMissedFourTwo: fourTwo.filter(id => sim.pfRank.get(id) > 6).length,
+      topSixPfMissedStraight: sim.topSixPfMissed.straight,
+      standings: sim.standings.map(r => ({
+        owner: owner(r.id),
+        w: r.w,
+        l: r.l,
+        t: r.t,
+        pf: round2(r.pf),
+        div: sim.divisionOf.get(r.id),
+        divRecord: `${r.divW}-${r.divL}${r.divT ? `-${r.divT}` : ''}`,
+      })),
+    }
+    proposalOrder = nextDivisions(sim.standings, sim.divisionOf)
+  }
   return {
     generated: new Date().toISOString().slice(0, 10),
     leagueId: LEAGUE_ID,
     window: `${FIRST_SEASON + 1}-${LAST_SEASON} (seeded from ${FIRST_SEASON}-${LAST_SEASON - 1})`,
     method:
-      'Weekly scores held fixed; pairings replaced by a 2x5 divisional template (intra x2, cross x1). Seeding: prior-year All-Play % (primary) or prior-year W-L (sensitivity).',
+      'Weekly scores held fixed; pairings replaced by a 2x5 divisional template (intra x2, cross x1). Seeding: prior-year All-Play % (primary) or prior-year W-L (sensitivity). A second variant (proposal) moves divisions 2-up / 2-down recursively from the simulated prior season and splits playoff spots 4 (Division A) / 2 (Division B).',
     perSeason,
   }
 }
@@ -613,6 +683,43 @@ export function renderReport(data) {
     )
   }
   lines.push('')
+  const props = rows.map(r => r.proposal).filter(p => p && !p.error)
+  if (props.length) {
+    lines.push('## Refined proposal variant: 2-up / 2-down movement, 4/2 playoff split')
+    lines.push('')
+    lines.push(
+      'Divisions are not fully rebased: A keeps its top 3, B promotes its top 2, A relegates its bottom 2, B keeps its bottom 3 (movement taken from the simulated prior season, recursively). Playoffs: Division A sends its top 4, Division B its top 2, by W-L with PF tiebreak.'
+    )
+    lines.push('')
+    lines.push('| Metric | Actual | Full rebase sim | Proposal variant |')
+    lines.push('|---|---|---|---|')
+    lines.push(
+      `| Median margin | ${avg(acts, 'medianMargin')} | ${avg(sims, 'medianMargin')} | ${avg(props, 'medianMargin')} |`
+    )
+    lines.push(
+      `| Games within 10 pts | ${avg(acts, 'close10Pct')}% | ${avg(sims, 'close10Pct')}% | ${avg(props, 'close10Pct')}% |`
+    )
+    lines.push(
+      `| Final standings spread (wins) | ${avg(acts, 'spreadWins')} | ${avg(sims, 'spreadWins')} | ${avg(props, 'spreadWins')} |`
+    )
+    lines.push(
+      `| Top-6 PF teams missing playoffs | n/a | ${avg(
+        sims.map(s => ({ v: s.topSixPfMissed.straight })),
+        'v'
+      )} (straight) | ${avg(
+        props.map(p => ({ v: p.topSixPfMissedFourTwo })),
+        'v'
+      )} (4/2 split) |`
+    )
+    lines.push('')
+    for (const r of rows) {
+      if (!r.proposal || r.proposal.error) continue
+      lines.push(
+        `- **${r.season}** A: ${r.proposal.divisions.A.join(', ')} · B: ${r.proposal.divisions.B.join(', ')} · Playoffs (4/2): ${r.proposal.fourTwoField.join(', ')}`
+      )
+    }
+    lines.push('')
+  }
   lines.push('## Notes and limits')
   lines.push('')
   lines.push(
@@ -775,6 +882,46 @@ ${body}
       </tbody>
     </table>
     <p>If this passes, the PF-wildcard version is the fair one. Under straight W-L, roughly one genuinely top-six team per season stays home.</p>
+
+    <h2>Variant: 2-up / 2-down movement with a 4/2 playoff split</h2>
+    <p>The refined version of the proposal, modeled alongside the full rebase above. Divisions are <strong>not</strong> fully rebased each year: Division A keeps its top 3, Division B's top 2 are <strong>promoted</strong>, A's bottom 2 are <strong>relegated</strong>, and B's bottom 3 stay — so each division turns over two teams a year, decided by the in-division finish. Playoff spots are split by division: <strong>A sends its top 4, B sends its top 2</strong> (W-L, PF tiebreak). Making the top division is worth real playoff equity — 4 of 5 A teams qualify, against 2 of 5 in B — and B's two spots double as its promotion places.</p>
+    ${(() => {
+      const props = rows.map(r => r.proposal).filter(p => p && !p.error)
+      if (!props.length) return ''
+      const propRows = rows
+        .filter(r => r.proposal && !r.proposal.error)
+        .map((r, i, arr) => {
+          const p = r.proposal
+          let move = ''
+          if (i > 0) {
+            const prev = arr[i - 1].proposal
+            const promoted = p.divisions.A.filter(o => prev.divisions.B.includes(o))
+            const relegated = p.divisions.B.filter(o => prev.divisions.A.includes(o))
+            move = `<br>Promoted: ${promoted.join(', ')} &middot; Relegated: ${relegated.join(', ')}`
+          }
+          return `<tr><td>${r.season}</td><td>${p.divisions.A.join(', ')}</td><td>${p.divisions.B.join(', ')}</td><td>${p.fourTwoField.join(', ')}${move}</td></tr>`
+        })
+        .join('\n')
+      return `<table class="stats-table">
+      <thead><tr><th>Metric</th><th>Actual</th><th>Full rebase sim</th><th>2-up / 2-down + 4/2</th></tr></thead>
+      <tbody>
+        <tr><td>Median margin</td><td class="number">${avgOf(acts, 'medianMargin')}</td><td class="number">${avgOf(sims, 'medianMargin')}</td><td class="number">${avgOf(props, 'medianMargin')}</td></tr>
+        <tr><td>Games within 10 pts</td><td class="number">${avgOf(acts, 'close10Pct')}%</td><td class="number">${avgOf(sims, 'close10Pct')}%</td><td class="number">${avgOf(props, 'close10Pct')}%</td></tr>
+        <tr><td>Final standings spread (wins, 1st to 10th)</td><td class="number">${avgOf(acts, 'spreadWins')}</td><td class="number">${avgOf(sims, 'spreadWins')}</td><td class="number">${avgOf(props, 'spreadWins')}</td></tr>
+        <tr><td>Top-6 PF teams missing playoffs</td><td class="number">n/a</td><td class="number">${missed('straight')} (straight)</td><td class="number">${avgOf(
+          props.map(p => ({ v: p.topSixPfMissedFourTwo })),
+          'v'
+        )} (4/2 split)</td></tr>
+      </tbody>
+    </table>
+    <h3>Divisions and playoff fields under the variant</h3>
+    <table class="stats-table">
+      <thead><tr><th>Season</th><th>Division A</th><th>Division B</th><th>Playoff field (4/2) and movement</th></tr></thead>
+      <tbody>
+${propRows}
+      </tbody>
+    </table>`
+    })()}
 
     <h2>Season by season</h2>
     <table class="stats-table">

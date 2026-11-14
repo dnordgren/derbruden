@@ -390,6 +390,11 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   cross-division round (`WEEK_14`) and those seasons are flagged.
 - A franchise with no prior season is seeded last (2019: team 12
   replaced departed team 6 / SHEN).
+- A second variant (`proposal` key in the JSON) models the refined
+  proposal alongside the full rebase: divisions move 2-up / 2-down
+  recursively from the simulated prior season (`nextDivisions`), and
+  playoff spots split 4 (Division A) / 2 (Division B) by W-L
+  (`fourTwoField`). The vote page carries a section for it.
 - League JSON caches under git-ignored `scripts/.relegation-cache/`;
   `--offline` rebuilds from cache only. Same `scripts/.env` `ESPN_S2`
   as power rankings. Writes `static/data/relegation.json`,

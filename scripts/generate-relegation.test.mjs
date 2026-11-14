@@ -7,6 +7,8 @@ import {
   seedOrder,
   simulateSeason,
   playoffFields,
+  fourTwoField,
+  nextDivisions,
   renderPage,
 } from './generate-relegation.mjs'
 
@@ -76,6 +78,43 @@ test('simulateSeason: constant scores produce a sweep for the top seed', () => {
   assert.equal(top.divW + top.divL + top.divT, 8)
 })
 
+test('fourTwoField takes A top 4 and B top 2 in standings order', () => {
+  const standings = [1, 6, 2, 7, 3, 8, 4, 9, 5, 10].map(id => ({ id }))
+  const divisionOf = new Map([
+    [1, 'A'],
+    [2, 'A'],
+    [3, 'A'],
+    [4, 'A'],
+    [5, 'A'],
+    [6, 'B'],
+    [7, 'B'],
+    [8, 'B'],
+    [9, 'B'],
+    [10, 'B'],
+  ])
+  assert.deepEqual(fourTwoField(standings, divisionOf), [1, 2, 3, 4, 6, 7])
+})
+
+test('nextDivisions promotes B top 2 and relegates A bottom 2', () => {
+  // Standings order interleaved; A finishes 1,2,3,4,5 -> ids 1..5 in
+  // this order, B finishes with ids 10,9,8,7,6 in this order.
+  const standings = [1, 10, 2, 9, 3, 8, 4, 7, 5, 6].map(id => ({ id }))
+  const divisionOf = new Map([
+    [1, 'A'],
+    [2, 'A'],
+    [3, 'A'],
+    [4, 'A'],
+    [5, 'A'],
+    [6, 'B'],
+    [7, 'B'],
+    [8, 'B'],
+    [9, 'B'],
+    [10, 'B'],
+  ])
+  // Next A: A top 3 (1,2,3) + B top 2 (10,9). Next B: A bottom 2 (4,5) + B bottom 3 (8,7,6).
+  assert.deepEqual(nextDivisions(standings, divisionOf), [1, 2, 3, 10, 9, 4, 5, 8, 7, 6])
+})
+
 test('renderPage emits the vote page with headline numbers and standings', () => {
   const sim = {
     divisions: { A: ['AA'], B: ['BB'] },
@@ -107,6 +146,14 @@ test('renderPage emits the vote page with headline numbers and standings', () =>
         season: 2025,
         fourteenWeek: false,
         allplay: sim,
+        proposal: {
+          divisions: { A: ['AA'], B: ['BB'] },
+          fourTwoField: ['AA'],
+          topSixPfMissedFourTwo: 1,
+          medianMargin: 19,
+          close10Pct: 27,
+          spreadWins: 7,
+        },
         record: { medianMargin: 21 },
         actual: {
           medianMargin: 22,
@@ -121,6 +168,7 @@ test('renderPage emits the vote page with headline numbers and standings', () =>
   }
   const page = renderPage(data)
   assert.match(page, /Vote: divisional relegation/)
+  assert.match(page, /2-up \/ 2-down movement with a 4\/2 playoff split/)
   assert.match(page, /2025 simulated standings/)
   assert.match(page, /AA ✓/)
   assert.match(page, /partials\/head-common\.html/)

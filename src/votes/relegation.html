@@ -90,6 +90,31 @@
     </table>
     <p>If this passes, the PF-wildcard version is the fair one. Under straight W-L, roughly one genuinely top-six team per season stays home.</p>
 
+    <h2>Variant: 2-up / 2-down movement with a 4/2 playoff split</h2>
+    <p>The refined version of the proposal, modeled alongside the full rebase above. Divisions are <strong>not</strong> fully rebased each year: Division A keeps its top 3, Division B's top 2 are <strong>promoted</strong>, A's bottom 2 are <strong>relegated</strong>, and B's bottom 3 stay — so each division turns over two teams a year, decided by the in-division finish. Playoff spots are split by division: <strong>A sends its top 4, B sends its top 2</strong> (W-L, PF tiebreak). Making the top division is worth real playoff equity — 4 of 5 A teams qualify, against 2 of 5 in B — and B's two spots double as its promotion places.</p>
+    <table class="stats-table">
+      <thead><tr><th>Metric</th><th>Actual</th><th>Full rebase sim</th><th>2-up / 2-down + 4/2</th></tr></thead>
+      <tbody>
+        <tr><td>Median margin</td><td class="number">21.66</td><td class="number">22.48</td><td class="number">20.85</td></tr>
+        <tr><td>Games within 10 pts</td><td class="number">25.7%</td><td class="number">26.59%</td><td class="number">26.06%</td></tr>
+        <tr><td>Final standings spread (wins, 1st to 10th)</td><td class="number">5.86</td><td class="number">6.57</td><td class="number">7</td></tr>
+        <tr><td>Top-6 PF teams missing playoffs</td><td class="number">n/a</td><td class="number">1 (straight)</td><td class="number">1.29 (4/2 split)</td></tr>
+      </tbody>
+    </table>
+    <h3>Divisions and playoff fields under the variant</h3>
+    <table class="stats-table">
+      <thead><tr><th>Season</th><th>Division A</th><th>Division B</th><th>Playoff field (4/2) and movement</th></tr></thead>
+      <tbody>
+<tr><td>2019</td><td>GM, IK, CR, DN, JO</td><td>DM, AN, ZS, AR, JH</td><td>DN, GM, CR, JO, AN, DM</td></tr>
+<tr><td>2020</td><td>DN, GM, CR, AN, DM</td><td>JO, IK, AR, JH, ZS</td><td>AN, CR, GM, DM, JO, JH<br>Promoted: AN, DM &middot; Relegated: JO, IK</td></tr>
+<tr><td>2021</td><td>AN, CR, GM, JO, JH</td><td>DM, DN, IK, AR, ZS</td><td>CR, GM, JO, AN, AR, DN<br>Promoted: JO, JH &middot; Relegated: DM, DN</td></tr>
+<tr><td>2022</td><td>CR, GM, JO, AR, DN</td><td>AN, JH, IK, DM, ZS</td><td>CR, GM, DN, JO, JH, AN<br>Promoted: AR, DN &middot; Relegated: AN, JH</td></tr>
+<tr><td>2023</td><td>CR, GM, DN, JH, AN</td><td>JO, AR, IK, DM, ZS</td><td>CR, AN, GM, JH, JO, IK<br>Promoted: JH, AN &middot; Relegated: JO, AR</td></tr>
+<tr><td>2024</td><td>CR, AN, GM, JO, IK</td><td>JH, DN, DM, ZS, AR</td><td>GM, AN, JO, CR, ZS, DM<br>Promoted: JO, IK &middot; Relegated: JH, DN</td></tr>
+<tr><td>2025</td><td>GM, AN, JO, ZS, DM</td><td>CR, IK, JH, AR, DN</td><td>JO, GM, DM, ZS, IK, CR<br>Promoted: ZS, DM &middot; Relegated: CR, IK</td></tr>
+      </tbody>
+    </table>
+
     <h2>Season by season</h2>
     <table class="stats-table">
       <thead><tr><th>Season</th><th>Actual median margin</th><th>Sim median margin</th><th>Actual ≤10pt</th><th>Sim ≤10pt</th><th>Playoff field (straight) vs actual</th><th>Top-6 PF missing sim playoffs</th></tr></thead>

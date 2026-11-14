@@ -2,7 +2,7 @@
   "generated": "2026-11-14",
   "leagueId": "794521",
   "window": "2019-2025 (seeded from 2018-2024)",
-  "method": "Weekly scores held fixed; pairings replaced by a 2x5 divisional template (intra x2, cross x1). Seeding: prior-year All-Play % (primary) or prior-year W-L (sensitivity).",
+  "method": "Weekly scores held fixed; pairings replaced by a 2x5 divisional template (intra x2, cross x1). Seeding: prior-year All-Play % (primary) or prior-year W-L (sensitivity). A second variant (proposal) moves divisions 2-up / 2-down recursively from the simulated prior season and splits playoff spots 4 (Division A) / 2 (Division B).",
   "perSeason": [
     {
       "season": 2019,
@@ -441,6 +441,160 @@
             "l": 9,
             "t": 0,
             "pf": 1207.58
+          }
+        ]
+      },
+      "proposal": {
+        "divisions": {
+          "A": [
+            "GM",
+            "IK",
+            "CR",
+            "DN",
+            "JO"
+          ],
+          "B": [
+            "DM",
+            "AN",
+            "ZS",
+            "AR",
+            "JH"
+          ]
+        },
+        "medianMargin": 26.22,
+        "meanMargin": 31.78,
+        "close10Pct": 21.5,
+        "close20Pct": 38.5,
+        "spreadWins": 9,
+        "lateRace": {
+          "week11": 8,
+          "week12": 7
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 23.48,
+            "close10Pct": 25
+          },
+          "B": {
+            "n": 20,
+            "median": 48.68,
+            "close10Pct": 15
+          },
+          "cross": {
+            "n": 25,
+            "median": 20.32,
+            "close10Pct": 24
+          }
+        },
+        "fourTwoField": [
+          "DN",
+          "GM",
+          "CR",
+          "JO",
+          "AN",
+          "DM"
+        ],
+        "straightField": [
+          "AN",
+          "DN",
+          "DM",
+          "GM",
+          "AR",
+          "CR"
+        ],
+        "topSixPfMissedFourTwo": 0,
+        "topSixPfMissedStraight": 1,
+        "standings": [
+          {
+            "owner": "AN",
+            "w": 12,
+            "l": 1,
+            "t": 0,
+            "pf": 1914.04,
+            "div": "B",
+            "divRecord": "8-0"
+          },
+          {
+            "owner": "DN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1530.34,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1367.84,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "GM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1361.06,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "AR",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1332.7,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "CR",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1402.98,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JH",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1339.2,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1348.8,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "IK",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1307.08,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "ZS",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1207.58,
+            "div": "B",
+            "divRecord": "1-7"
           }
         ]
       }
@@ -883,6 +1037,160 @@
             "pf": 1301.54
           }
         ]
+      },
+      "proposal": {
+        "divisions": {
+          "A": [
+            "DN",
+            "GM",
+            "CR",
+            "AN",
+            "DM"
+          ],
+          "B": [
+            "JO",
+            "IK",
+            "AR",
+            "JH",
+            "ZS"
+          ]
+        },
+        "medianMargin": 19.34,
+        "meanMargin": 24.82,
+        "close10Pct": 30.8,
+        "close20Pct": 50.8,
+        "spreadWins": 8,
+        "lateRace": {
+          "week11": 8,
+          "week12": 8
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 23.2,
+            "close10Pct": 40
+          },
+          "B": {
+            "n": 20,
+            "median": 22.38,
+            "close10Pct": 15
+          },
+          "cross": {
+            "n": 25,
+            "median": 16.02,
+            "close10Pct": 36
+          }
+        },
+        "fourTwoField": [
+          "AN",
+          "CR",
+          "GM",
+          "DM",
+          "JO",
+          "JH"
+        ],
+        "straightField": [
+          "JO",
+          "AN",
+          "CR",
+          "JH",
+          "GM",
+          "DM"
+        ],
+        "topSixPfMissedFourTwo": 0,
+        "topSixPfMissedStraight": 0,
+        "standings": [
+          {
+            "owner": "JO",
+            "w": 10,
+            "l": 3,
+            "t": 0,
+            "pf": 1581.18,
+            "div": "B",
+            "divRecord": "7-1"
+          },
+          {
+            "owner": "AN",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1588.62,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "CR",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1573.66,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JH",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1555.48,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "GM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1435.98,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "DM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1400.4,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "IK",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1376.58,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "DN",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1308.28,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AR",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1301.54,
+            "div": "B",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "ZS",
+            "w": 2,
+            "l": 11,
+            "t": 0,
+            "pf": 1296.22,
+            "div": "B",
+            "divRecord": "1-7"
+          }
+        ]
       }
     },
     {
@@ -1321,6 +1629,160 @@
             "l": 9,
             "t": 0,
             "pf": 1602.44
+          }
+        ]
+      },
+      "proposal": {
+        "divisions": {
+          "A": [
+            "AN",
+            "CR",
+            "GM",
+            "JO",
+            "JH"
+          ],
+          "B": [
+            "DM",
+            "DN",
+            "IK",
+            "AR",
+            "ZS"
+          ]
+        },
+        "medianMargin": 20.3,
+        "meanMargin": 22.26,
+        "close10Pct": 28.6,
+        "close20Pct": 47.1,
+        "spreadWins": 7,
+        "lateRace": {
+          "week12": 8,
+          "week13": 9
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 13.74,
+            "close10Pct": 40
+          },
+          "B": {
+            "n": 20,
+            "median": 15.94,
+            "close10Pct": 35
+          },
+          "cross": {
+            "n": 30,
+            "median": 23.94,
+            "close10Pct": 16.7
+          }
+        },
+        "fourTwoField": [
+          "CR",
+          "GM",
+          "JO",
+          "AN",
+          "AR",
+          "DN"
+        ],
+        "straightField": [
+          "CR",
+          "AR",
+          "GM",
+          "DN",
+          "IK",
+          "JO"
+        ],
+        "topSixPfMissedFourTwo": 3,
+        "topSixPfMissedStraight": 2,
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 11,
+            "l": 3,
+            "t": 0,
+            "pf": 1669.46,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "AR",
+            "w": 10,
+            "l": 4,
+            "t": 0,
+            "pf": 1580.64,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "GM",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1448.88,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "DN",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1657.46,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "IK",
+            "w": 7,
+            "l": 7,
+            "t": 0,
+            "pf": 1589.52,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1507.58,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "DM",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1604.62,
+            "div": "B",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "ZS",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1561.8,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AN",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1531.48,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JH",
+            "w": 4,
+            "l": 10,
+            "t": 0,
+            "pf": 1602.44,
+            "div": "A",
+            "divRecord": "0-8"
           }
         ]
       }
@@ -1763,6 +2225,160 @@
             "pf": 1445.08
           }
         ]
+      },
+      "proposal": {
+        "divisions": {
+          "A": [
+            "CR",
+            "GM",
+            "JO",
+            "AR",
+            "DN"
+          ],
+          "B": [
+            "AN",
+            "JH",
+            "IK",
+            "DM",
+            "ZS"
+          ]
+        },
+        "medianMargin": 21.94,
+        "meanMargin": 27.19,
+        "close10Pct": 20,
+        "close20Pct": 44.3,
+        "spreadWins": 6,
+        "lateRace": {
+          "week12": 7,
+          "week13": 8
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 21.94,
+            "close10Pct": 20
+          },
+          "B": {
+            "n": 20,
+            "median": 23.68,
+            "close10Pct": 10
+          },
+          "cross": {
+            "n": 30,
+            "median": 21.36,
+            "close10Pct": 26.7
+          }
+        },
+        "fourTwoField": [
+          "CR",
+          "GM",
+          "DN",
+          "JO",
+          "JH",
+          "AN"
+        ],
+        "straightField": [
+          "CR",
+          "GM",
+          "JH",
+          "AN",
+          "IK",
+          "DN"
+        ],
+        "topSixPfMissedFourTwo": 1,
+        "topSixPfMissedStraight": 2,
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 10,
+            "l": 4,
+            "t": 0,
+            "pf": 1699.86,
+            "div": "A",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "GM",
+            "w": 9,
+            "l": 5,
+            "t": 0,
+            "pf": 1586.5,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JH",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1457.66,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "AN",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1445.08,
+            "div": "B",
+            "divRecord": "6-2"
+          },
+          {
+            "owner": "IK",
+            "w": 8,
+            "l": 6,
+            "t": 0,
+            "pf": 1406.62,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DN",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1520.66,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "JO",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1491.1,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "AR",
+            "w": 6,
+            "l": 8,
+            "t": 0,
+            "pf": 1407,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "DM",
+            "w": 5,
+            "l": 9,
+            "t": 0,
+            "pf": 1519.86,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "ZS",
+            "w": 4,
+            "l": 10,
+            "t": 0,
+            "pf": 1374.26,
+            "div": "B",
+            "divRecord": "1-7"
+          }
+        ]
       }
     },
     {
@@ -2201,6 +2817,160 @@
             "l": 9,
             "t": 0,
             "pf": 1323.1
+          }
+        ]
+      },
+      "proposal": {
+        "divisions": {
+          "A": [
+            "CR",
+            "GM",
+            "DN",
+            "JH",
+            "AN"
+          ],
+          "B": [
+            "JO",
+            "AR",
+            "IK",
+            "DM",
+            "ZS"
+          ]
+        },
+        "medianMargin": 26.56,
+        "meanMargin": 26.1,
+        "close10Pct": 21.5,
+        "close20Pct": 38.5,
+        "spreadWins": 5,
+        "lateRace": {
+          "week11": 9,
+          "week12": 8
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 27.42,
+            "close10Pct": 20
+          },
+          "B": {
+            "n": 20,
+            "median": 26.56,
+            "close10Pct": 20
+          },
+          "cross": {
+            "n": 25,
+            "median": 26.46,
+            "close10Pct": 24
+          }
+        },
+        "fourTwoField": [
+          "CR",
+          "AN",
+          "GM",
+          "JH",
+          "JO",
+          "IK"
+        ],
+        "straightField": [
+          "CR",
+          "AN",
+          "JO",
+          "GM",
+          "JH",
+          "IK"
+        ],
+        "topSixPfMissedFourTwo": 1,
+        "topSixPfMissedStraight": 1,
+        "standings": [
+          {
+            "owner": "CR",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1675.9,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "AN",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1443.34,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "JO",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1433.92,
+            "div": "B",
+            "divRecord": "7-1"
+          },
+          {
+            "owner": "GM",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1417.68,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JH",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1387.84,
+            "div": "A",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "IK",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1361.1,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1438.12,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "ZS",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1354.64,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "DN",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1285.54,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "AR",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1323.1,
+            "div": "B",
+            "divRecord": "2-6"
           }
         ]
       }
@@ -2643,6 +3413,160 @@
             "pf": 1255.18
           }
         ]
+      },
+      "proposal": {
+        "divisions": {
+          "A": [
+            "CR",
+            "AN",
+            "GM",
+            "JO",
+            "IK"
+          ],
+          "B": [
+            "JH",
+            "DN",
+            "DM",
+            "ZS",
+            "AR"
+          ]
+        },
+        "medianMargin": 14.7,
+        "meanMargin": 19.77,
+        "close10Pct": 32.3,
+        "close20Pct": 60,
+        "spreadWins": 8,
+        "lateRace": {
+          "week11": 7,
+          "week12": 7
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 21.08,
+            "close10Pct": 25
+          },
+          "B": {
+            "n": 20,
+            "median": 13.14,
+            "close10Pct": 35
+          },
+          "cross": {
+            "n": 25,
+            "median": 19.02,
+            "close10Pct": 36
+          }
+        },
+        "fourTwoField": [
+          "GM",
+          "AN",
+          "JO",
+          "CR",
+          "ZS",
+          "DM"
+        ],
+        "straightField": [
+          "GM",
+          "ZS",
+          "AN",
+          "DM",
+          "JO",
+          "JH"
+        ],
+        "topSixPfMissedFourTwo": 2,
+        "topSixPfMissedStraight": 1,
+        "standings": [
+          {
+            "owner": "GM",
+            "w": 10,
+            "l": 3,
+            "t": 0,
+            "pf": 1620.74,
+            "div": "A",
+            "divRecord": "7-1"
+          },
+          {
+            "owner": "ZS",
+            "w": 10,
+            "l": 3,
+            "t": 0,
+            "pf": 1552.7,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "AN",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1458.52,
+            "div": "A",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "DM",
+            "w": 8,
+            "l": 5,
+            "t": 0,
+            "pf": 1400.76,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1493.42,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JH",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1450.76,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "AR",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1314.76,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "DN",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1410.52,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "CR",
+            "w": 3,
+            "l": 10,
+            "t": 0,
+            "pf": 1360.32,
+            "div": "A",
+            "divRecord": "2-6"
+          },
+          {
+            "owner": "IK",
+            "w": 2,
+            "l": 11,
+            "t": 0,
+            "pf": 1255.18,
+            "div": "A",
+            "divRecord": "2-6"
+          }
+        ]
       }
     },
     {
@@ -3081,6 +4005,160 @@
             "l": 8,
             "t": 0,
             "pf": 1371.98
+          }
+        ]
+      },
+      "proposal": {
+        "divisions": {
+          "A": [
+            "GM",
+            "AN",
+            "JO",
+            "ZS",
+            "DM"
+          ],
+          "B": [
+            "CR",
+            "IK",
+            "JH",
+            "AR",
+            "DN"
+          ]
+        },
+        "medianMargin": 16.88,
+        "meanMargin": 23.73,
+        "close10Pct": 27.7,
+        "close20Pct": 52.3,
+        "spreadWins": 6,
+        "lateRace": {
+          "week11": 9,
+          "week12": 8
+        },
+        "marginsByType": {
+          "A": {
+            "n": 20,
+            "median": 23.02,
+            "close10Pct": 20
+          },
+          "B": {
+            "n": 20,
+            "median": 14.92,
+            "close10Pct": 30
+          },
+          "cross": {
+            "n": 25,
+            "median": 18.6,
+            "close10Pct": 32
+          }
+        },
+        "fourTwoField": [
+          "JO",
+          "GM",
+          "DM",
+          "ZS",
+          "IK",
+          "CR"
+        ],
+        "straightField": [
+          "IK",
+          "CR",
+          "JO",
+          "JH",
+          "AR",
+          "GM"
+        ],
+        "topSixPfMissedFourTwo": 2,
+        "topSixPfMissedStraight": 1,
+        "standings": [
+          {
+            "owner": "IK",
+            "w": 10,
+            "l": 3,
+            "t": 0,
+            "pf": 1455.58,
+            "div": "B",
+            "divRecord": "5-3"
+          },
+          {
+            "owner": "CR",
+            "w": 9,
+            "l": 4,
+            "t": 0,
+            "pf": 1409.96,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JO",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1531.84,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "JH",
+            "w": 7,
+            "l": 6,
+            "t": 0,
+            "pf": 1362.52,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "AR",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1474.78,
+            "div": "B",
+            "divRecord": "3-5"
+          },
+          {
+            "owner": "GM",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1454.4,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "DN",
+            "w": 6,
+            "l": 7,
+            "t": 0,
+            "pf": 1307.64,
+            "div": "B",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "DM",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1371.98,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "ZS",
+            "w": 5,
+            "l": 8,
+            "t": 0,
+            "pf": 1320.44,
+            "div": "A",
+            "divRecord": "4-4"
+          },
+          {
+            "owner": "AN",
+            "w": 4,
+            "l": 9,
+            "t": 0,
+            "pf": 1386.72,
+            "div": "A",
+            "divRecord": "4-4"
           }
         ]
       }

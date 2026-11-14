@@ -2,7 +2,7 @@
 
 Generated 2026-11-14 from ESPN league 794521 data. Window: 2019-2025 (seeded from 2018-2024).
 
-Weekly scores held fixed; pairings replaced by a 2x5 divisional template (intra x2, cross x1). Seeding: prior-year All-Play % (primary) or prior-year W-L (sensitivity).
+Weekly scores held fixed; pairings replaced by a 2x5 divisional template (intra x2, cross x1). Seeding: prior-year All-Play % (primary) or prior-year W-L (sensitivity). A second variant (proposal) moves divisions 2-up / 2-down recursively from the simulated prior season and splits playoff spots 4 (Division A) / 2 (Division B).
 
 Playoff variants under the simulated schedule: **straight** = top 6 by W-L (PF tiebreak); **winners+record** = both division winners in, next 4 by W-L; **winners+PF** = division winners in, next 4 by points for.
 
@@ -47,6 +47,25 @@ Top-6 PF teams missing the simulated playoffs, by qualification variant (avg per
 - **2023** A: CR, GM, JH, DM, AN · B: DN, IK, AR, JO, ZS
 - **2024** A: CR, AN, DM, JO, GM · B: JH, IK, ZS, AR, DN
 - **2025** A: GM, ZS, JO, JH, AN · B: DN, DM, CR, AR, IK
+
+## Refined proposal variant: 2-up / 2-down movement, 4/2 playoff split
+
+Divisions are not fully rebased: A keeps its top 3, B promotes its top 2, A relegates its bottom 2, B keeps its bottom 3 (movement taken from the simulated prior season, recursively). Playoffs: Division A sends its top 4, Division B its top 2, by W-L with PF tiebreak.
+
+| Metric | Actual | Full rebase sim | Proposal variant |
+|---|---|---|---|
+| Median margin | 21.66 | 22.48 | 20.85 |
+| Games within 10 pts | 25.7% | 26.59% | 26.06% |
+| Final standings spread (wins) | 5.86 | 6.57 | 7 |
+| Top-6 PF teams missing playoffs | n/a | 1 (straight) | 1.29 (4/2 split) |
+
+- **2019** A: GM, IK, CR, DN, JO · B: DM, AN, ZS, AR, JH · Playoffs (4/2): DN, GM, CR, JO, AN, DM
+- **2020** A: DN, GM, CR, AN, DM · B: JO, IK, AR, JH, ZS · Playoffs (4/2): AN, CR, GM, DM, JO, JH
+- **2021** A: AN, CR, GM, JO, JH · B: DM, DN, IK, AR, ZS · Playoffs (4/2): CR, GM, JO, AN, AR, DN
+- **2022** A: CR, GM, JO, AR, DN · B: AN, JH, IK, DM, ZS · Playoffs (4/2): CR, GM, DN, JO, JH, AN
+- **2023** A: CR, GM, DN, JH, AN · B: JO, AR, IK, DM, ZS · Playoffs (4/2): CR, AN, GM, JH, JO, IK
+- **2024** A: CR, AN, GM, JO, IK · B: JH, DN, DM, ZS, AR · Playoffs (4/2): GM, AN, JO, CR, ZS, DM
+- **2025** A: GM, AN, JO, ZS, DM · B: CR, IK, JH, AR, DN · Playoffs (4/2): JO, GM, DM, ZS, IK, CR
 
 ## Notes and limits
 

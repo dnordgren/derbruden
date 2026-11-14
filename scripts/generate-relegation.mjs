@@ -799,7 +799,7 @@ ${body}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DerBruden.com | Vote: Divisional Relegation</title>
   <meta property="og:title" content="DerBruden.com | Vote: Divisional Relegation">
-  <meta property="og:description" content="Backtest of the divisional relegation proposal for the Der Bruden league: seven seasons of ESPN data, re-scheduled under tiered divisions. The games do not get closer — here is the evidence.">
+  <meta property="og:description" content="Backtest of the divisional relegation proposal for the Der Bruden league. Seven seasons of ESPN data, rescheduled under tiered divisions. The games do not get closer. Here is the evidence.">
   <meta property="og:url" content="https://derbruden.com/votes/relegation.html">
   <meta property="og:image" content="https://derbruden.com/static/img/league-logo.webp?v=1">
   <meta property="og:type" content="website">
@@ -843,12 +843,12 @@ ${body}
     </div>
 
     <h2>The proposal</h2>
-    <p>Split the league into two divisions, rebased every year on the prior year's results: <strong>Division A</strong> is the prior year's top 5, <strong>Division B</strong> the bottom 5. You play your division twice and everyone else once (8 + 5 = a perfect 13-week fit). The pitch: you play teams at your own power level more often, so the league becomes more competitive.</p>
-    <p>Before voting, we ran the numbers. Every team's actual weekly scores from ESPN for 2019–2025 were held fixed — fantasy points don't care who the opponent was — and only the pairings were changed to the divisional schedule, with divisions seeded by the prior year's All-Play record. Seven seasons of counterfactual history:</p>
+    <p>Split the league into two divisions and rebase them every year on the prior year's results. <strong>Division A</strong> is the prior year's top 5, and <strong>Division B</strong> is the bottom 5. You play your division twice and everyone else once. The 8 + 5 split fits the 13-week season exactly. The pitch is that you play teams at your own power level more often, so the league becomes more competitive.</p>
+    <p>Before voting, we ran the numbers. We held every team's actual weekly scores from ESPN for 2019 to 2025 fixed, because a team's fantasy points do not depend on its opponent. We changed only the pairings to the divisional schedule and seeded the divisions by the prior year's All-Play record. That gives seven seasons of counterfactual history.</p>
 
-    <p class="callout"><strong>The short version:</strong> the games do not get closer, and the standings get <em>less</em> even. If we adopt this, it should be for promotion/relegation drama — and only with PF-based wildcards, which fix the one real fairness problem the model found.</p>
+    <p class="callout"><strong>The short version:</strong> the games do not get closer, and the standings get <em>less</em> even. If we adopt this, it should be for promotion and relegation drama, and only with PF-based wildcards. The wildcards fix the one real fairness problem the model found.</p>
 
-    <h2>Headline numbers (averages, 2019–2025)</h2>
+    <h2>Headline numbers, 2019 to 2025 averages</h2>
     <table class="stats-table">
       <thead><tr><th>Metric</th><th>Actual</th><th>Relegation sim</th></tr></thead>
       <tbody>
@@ -860,8 +860,8 @@ ${body}
       </tbody>
     </table>
 
-    <h2>Margins by game type (simulated, pooled)</h2>
-    <p class="section-note">The proposal's claim is specifically that divisional games get closer. They don't — cross-division games are the closest of the three. Last year's tiers barely predict this year's scoring gaps; rosters reshuffle too much year to year.</p>
+    <h2>Margins by game type, simulated and pooled</h2>
+    <p class="section-note">The proposal's claim is specifically that divisional games get closer. They do not. Cross-division games are the closest of the three. Last year's tiers say little about this year's scoring gaps. Rosters reshuffle too much from year to year.</p>
     <table class="stats-table">
       <thead><tr><th>Game type</th><th>Games</th><th>Median margin</th><th>Within 10 pts</th></tr></thead>
       <tbody>
@@ -871,8 +871,8 @@ ${body}
       </tbody>
     </table>
 
-    <h2>Playoff qualification: the part that actually matters</h2>
-    <p>Tiered divisions distort records — A teams beat each other up, B teams feast on each other. Measured as top-6 points-for teams who would miss the playoffs (average per season):</p>
+    <h2>Playoff qualification</h2>
+    <p>Tiered divisions distort records. The A teams play the strongest schedules and the B teams the weakest, so their win totals are not comparable. The table counts top-6 points-for teams who would miss the playoffs, averaged per season.</p>
     <table class="stats-table">
       <thead><tr><th>Qualification rule</th><th>Top-6 PF teams missing playoffs</th></tr></thead>
       <tbody>
@@ -881,10 +881,10 @@ ${body}
         <tr><td>Division winners in, wildcards by PF</td><td class="number">${missed('winnersPlusPf')}</td></tr>
       </tbody>
     </table>
-    <p>If this passes, the PF-wildcard version is the fair one. Under straight W-L, roughly one genuinely top-six team per season stays home.</p>
+    <p>If this passes, the PF-wildcard version is the fair one. Under straight W-L, roughly one top-six team per season misses out.</p>
 
-    <h2>Variant: 2-up / 2-down movement with a 4/2 playoff split</h2>
-    <p>The refined version of the proposal, modeled alongside the full rebase above. Divisions are <strong>not</strong> fully rebased each year: Division A keeps its top 3, Division B's top 2 are <strong>promoted</strong>, A's bottom 2 are <strong>relegated</strong>, and B's bottom 3 stay — so each division turns over two teams a year, decided by the in-division finish. Playoff spots are split by division: <strong>A sends its top 4, B sends its top 2</strong> (W-L, PF tiebreak). Making the top division is worth real playoff equity — 4 of 5 A teams qualify, against 2 of 5 in B — and B's two spots double as its promotion places.</p>
+    <h2>Variant with 2-up / 2-down movement and a 4/2 playoff split</h2>
+    <p>This variant pairs 2-up / 2-down movement with a 4/2 playoff split. It is the refined version of the proposal, and we modeled it alongside the full rebase above. The divisions are not fully rebased each year. Division A keeps its top 3. Division B's top 2 are promoted. A's bottom 2 are relegated. B's bottom 3 stay. Each division turns over two teams a year, and the in-division finish decides who moves. Playoff spots are split by division. A sends its top 4 and B sends its top 2, by W-L with PF as the tiebreak. A place in Division A carries real playoff value. Four of five A teams qualify, against two of five in B. B's two spots double as its promotion places.</p>
     ${(() => {
       const props = rows.map(r => r.proposal).filter(p => p && !p.error)
       if (!props.length) return ''
@@ -908,15 +908,15 @@ ${body}
         <tr><td>Median margin</td><td class="number">${avgOf(acts, 'medianMargin')}</td><td class="number">${avgOf(sims, 'medianMargin')}</td><td class="number">${avgOf(props, 'medianMargin')}</td></tr>
         <tr><td>Games within 10 pts</td><td class="number">${avgOf(acts, 'close10Pct')}%</td><td class="number">${avgOf(sims, 'close10Pct')}%</td><td class="number">${avgOf(props, 'close10Pct')}%</td></tr>
         <tr><td>Final standings spread (wins, 1st to 10th)</td><td class="number">${avgOf(acts, 'spreadWins')}</td><td class="number">${avgOf(sims, 'spreadWins')}</td><td class="number">${avgOf(props, 'spreadWins')}</td></tr>
-        <tr><td>Top-6 PF teams missing playoffs</td><td class="number">n/a</td><td class="number">${missed('straight')} (straight)</td><td class="number">${avgOf(
+        <tr><td>Top-6 PF teams missing playoffs</td><td class="number">n/a</td><td class="number">${missed('straight')}, straight</td><td class="number">${avgOf(
           props.map(p => ({ v: p.topSixPfMissedFourTwo })),
           'v'
-        )} (4/2 split)</td></tr>
+        )}, 4/2 split</td></tr>
       </tbody>
     </table>
     <h3>Divisions and playoff fields under the variant</h3>
     <table class="stats-table">
-      <thead><tr><th>Season</th><th>Division A</th><th>Division B</th><th>Playoff field (4/2) and movement</th></tr></thead>
+      <thead><tr><th>Season</th><th>Division A</th><th>Division B</th><th>Playoff field under the 4/2 split, and movement</th></tr></thead>
       <tbody>
 ${propRows}
       </tbody>
@@ -937,10 +937,10 @@ ${seasonRows}
 ${standingsSections}
 
     <h2>Method and limits</h2>
-    <p>Data from the ESPN fantasy API (league 794521), regular season only, 2018–2025; each target season 2019–2025 is seeded from the prior year (2018 can only seed — ESPN has no weekly data before it, and pre-2018 exists only as season aggregates). Seeding by prior-year W-L instead of All-Play tells the same story (median margin ${avgOf(
+    <p>Data is from the ESPN fantasy API, league 794521, regular season only, for 2018 to 2025. Each target season from 2019 to 2025 is seeded from the prior year. The 2018 season can only seed. ESPN has no weekly data before it, and pre-2018 seasons exist only as season aggregates. Seeding by prior-year W-L instead of All-Play tells the same story, with a median margin of ${avgOf(
       rows.map(r => r.record).filter(s => s && !s.error),
       'medianMargin'
-    )} across seasons). Scores are held fixed: lineup, waiver, and trade behavior would shift somewhat under a different schedule and playoff race, and the model can't see that. In 2019, franchise 12 (JH) had no prior season — the departed franchise 6 (SHEN) left after 2018 — so JH was seeded last.</p>
+    )} across seasons. Scores are held fixed. Lineup, waiver, and trade behavior would shift somewhat under a different schedule and playoff race, and the model cannot see that. In 2019, franchise 12, JH, had no prior season, because the departed franchise 6, SHEN, left after 2018. JH was seeded last.</p>
     <p class="section-note">Generated ${data.generated} by scripts/generate-relegation.mjs. This page is not linked from the site nav; it was shared directly for the vote.</p>
   </main>
 

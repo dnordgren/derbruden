@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-14T18:52:55.440Z",
+  "updated": "2026-11-15T19:29:10.779Z",
   "order": [
     {
       "rank": 1,
@@ -11,7 +11,7 @@
       "wins": 2,
       "losses": 7,
       "ties": 0,
-      "moves": 19
+      "moves": 21
     },
     {
       "rank": 2,
@@ -41,7 +41,7 @@
       "wins": 5,
       "losses": 4,
       "ties": 0,
-      "moves": 18
+      "moves": 17
     },
     {
       "rank": 5,
@@ -101,10 +101,70 @@
       "wins": 3,
       "losses": 6,
       "ties": 0,
-      "moves": 20
+      "moves": 19
     }
   ],
   "moves": [
+    {
+      "id": "b75dd4eb-e526-4ced-aa74-594d3e84b8ac",
+      "date": "2026-11-15T17:32:59.372Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "Tre Tucker"
+      ],
+      "drops": [
+        "Makai Lemon"
+      ],
+      "bid": null
+    },
+    {
+      "id": "1d0d9958-97b1-4241-a0d6-1b5b6d7d6d96",
+      "date": "2026-11-15T13:11:24.202Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Jake Bates"
+      ],
+      "drops": [
+        "Chad Ryland"
+      ],
+      "bid": null
+    },
+    {
+      "id": "fd3d0d19-1bf4-45e1-9894-64b81aa01a84",
+      "date": "2026-11-15T13:10:59.937Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Indianapolis Colts D/ST"
+      ],
+      "drops": [
+        "Cincinnati Bengals D/ST"
+      ],
+      "bid": null
+    },
+    {
+      "id": "cc954b61-8261-4272-a727-2ab27cb39bd9",
+      "date": "2026-11-14T20:44:01.566Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Josh Downs"
+      ],
+      "drops": [
+        "David Montgomery"
+      ],
+      "bid": null
+    },
     {
       "id": "9ff69458-23bb-49d7-be87-eb6194bb02ea",
       "date": "2026-11-13T00:55:44.552Z",
@@ -2223,64 +2283,6 @@
       "drops": [
         "Jacksonville Jaguars D/ST"
       ],
-      "bid": null
-    },
-    {
-      "id": "0450c20b-228a-46d3-893f-34916787f206",
-      "date": "2026-09-17T04:49:28.814Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 8,
-      "owner": "DN",
-      "adds": [
-        "Caleb Douglas"
-      ],
-      "drops": [
-        "Jayden Reed"
-      ],
-      "bid": null
-    },
-    {
-      "id": "61f35b81-e277-418d-9093-1780a901683e",
-      "date": "2026-09-16T13:59:29.698Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 1,
-      "owner": "GM",
-      "adds": [
-        "Tampa Bay Buccaneers D/ST"
-      ],
-      "drops": [
-        "Baker Mayfield"
-      ],
-      "bid": null
-    },
-    {
-      "id": "25a94efc-c944-4235-98aa-adf01d0cf50d",
-      "date": "2026-09-16T07:24:51.942Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 2,
-      "owner": "DM",
-      "adds": [
-        "Dontayvion Wicks"
-      ],
-      "drops": [
-        "Jacob Saylors"
-      ],
-      "bid": null
-    },
-    {
-      "id": "08b78e38-d226-463c-829a-8e41f5fdd879",
-      "date": "2026-09-16T07:24:51.942Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 4,
-      "owner": "AN",
-      "adds": [
-        "Pat Freiermuth"
-      ],
-      "drops": [],
       "bid": null
     }
   ]

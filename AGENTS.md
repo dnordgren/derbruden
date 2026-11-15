@@ -424,6 +424,20 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   `.owner-logo-header` as `OWNER - <ESPN team name>`. It deploys and
   commits only when a name changed; no-op weeks skip S3 and CloudFront.
 
+## Wacky stat (detector + poster)
+
+- Generator: `scripts/generate-wacky-stat.mjs` — deterministic
+  detectors (blowout, Monday flip, h2h streak, milestones, player
+  records, …) over cached ESPN pulls in git-ignored
+  `scripts/.wacky-cache/`; prints ranked candidates, posts nothing.
+- Rarity floor: league-history detectors must rank ≤30th all-time
+  (tunable `--max-rank=N`); post nothing rather than noise.
+- Poster: `scripts/post-wacky-discord.mjs` — posts ONE hand-approved
+  text via the `DISCORD_WEBHOOK_WACKYSTAT` webhook. Dry-run by
+  default; only an explicit `--send` posts. Never wire it to a
+  workflow or schedule: the editorial approval is the gate.
+- Tests: `node --test scripts/generate-wacky-stat.test.mjs scripts/post-wacky-discord.test.mjs`.
+
 ## ESPN fantasy API gotchas
 
 - Base URL is `https://lm-api-reads.fantasy.espn.com/apis/v3/games/ffl/...

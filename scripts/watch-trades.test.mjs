@@ -15,7 +15,7 @@ import {
   sweepDeferred,
   main
 } from './watch-trades.mjs'
-import { loadEnvFile } from './lib/espn.mjs'
+import { loadEnvFile, applyEnvFile } from './lib/espn.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
 
@@ -45,6 +45,26 @@ test('loadEnvFile parses values, quotes, and comments', () => {
   assert.equal(parsed.D, 'spaced')
   assert.equal(parsed.E, 'x=y')
   assert.equal(parsed['BAD LINE'], undefined)
+})
+
+test('applyEnvFile fills unset and blank vars but keeps real values', () => {
+  const dir = mkdtempSync(path.join(os.tmpdir(), 'env-'))
+  const file = path.join(dir, '.env')
+  writeFileSync(file, 'APPLY_UNSET=from-file\nAPPLY_BLANK=from-file\nAPPLY_REAL=from-file\n')
+  delete process.env.APPLY_UNSET
+  process.env.APPLY_BLANK = ''
+  process.env.APPLY_REAL = 'from-env'
+  try {
+    applyEnvFile(file)
+    assert.equal(process.env.APPLY_UNSET, 'from-file')
+    // Regression: a blank (Makefile's ESPN_S2="") must not shadow the file.
+    assert.equal(process.env.APPLY_BLANK, 'from-file')
+    assert.equal(process.env.APPLY_REAL, 'from-env')
+  } finally {
+    delete process.env.APPLY_UNSET
+    delete process.env.APPLY_BLANK
+    delete process.env.APPLY_REAL
+  }
 })
 
 test('newTransactions filters seen IDs and sorts oldest first', () => {

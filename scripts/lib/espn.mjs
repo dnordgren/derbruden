@@ -30,10 +30,16 @@ export function loadEnvFile(file) {
 }
 
 // Merge a .env-style file into process.env without overwriting real
-// environment variables. For scripts that historically read scripts/.env.
+// environment variables. Blank env vars count as unset and fall back to
+// the file: the Makefile prefixes its targets with ESPN_S2="$$ESPN_S2",
+// which is an empty string wherever the shell has no cookie (GitHub
+// Actions, local shells), and that blank must not shadow scripts/.env.
+// For scripts that historically read scripts/.env.
 export function applyEnvFile(file) {
   for (const [key, value] of Object.entries(loadEnvFile(file))) {
-    if (process.env[key] == null) process.env[key] = value
+    if (process.env[key] == null || process.env[key] === '') {
+      process.env[key] = value
+    }
   }
 }
 

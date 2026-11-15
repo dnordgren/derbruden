@@ -274,12 +274,12 @@ test('parseArgs: fresh/snapshot default off and parse as flags', () => {
   assert.throws(() => parseArgs(['--bogus']), /Unknown argument/)
 })
 
-test('currentCacheFiles names only the target season (+week) files', () => {
+test('currentCacheFiles: season phase names the season file, week phase names only week files', () => {
   assert.deepEqual(currentCacheFiles(2026), ['season-2026.json'])
-  assert.deepEqual(currentCacheFiles(2026, 10), ['season-2026.json', 'roster-2026-10.json', 'nfl-2026-10.json'])
+  assert.deepEqual(currentCacheFiles(2026, 10), ['roster-2026-10.json', 'nfl-2026-10.json'])
 })
 
-test('clearCurrentCache removes current files and leaves history untouched', () => {
+test('clearCurrentCache two-phase flow keeps the re-fetched season file and history', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'wacky-cache-'))
   for (const name of [
     'season-2026.json',
@@ -290,8 +290,15 @@ test('clearCurrentCache removes current files and leaves history untouched', () 
   ]) {
     fs.writeFileSync(path.join(dir, name), '{}')
   }
+  // Mirror main(): phase 1 clears the season file, the league is
+  // re-fetched live (rewriting it), phase 2 clears the week files.
+  clearCurrentCache(2026, null, dir)
+  assert.equal(fs.existsSync(path.join(dir, 'season-2026.json')), false)
+  fs.writeFileSync(path.join(dir, 'season-2026.json'), '{"refetched":true}')
   clearCurrentCache(2026, 10, dir)
-  assert.deepEqual(fs.readdirSync(dir).sort(), ['roster-2026-9.json', 'season-2019.json'])
+  // Regression: the re-fetched season file must survive phase 2.
+  assert.equal(fs.existsSync(path.join(dir, 'season-2026.json')), true)
+  assert.deepEqual(fs.readdirSync(dir).sort(), ['roster-2026-9.json', 'season-2019.json', 'season-2026.json'])
   fs.rmSync(dir, { recursive: true, force: true })
 })
 

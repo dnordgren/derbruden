@@ -35,14 +35,34 @@ export function buildPage(html, name) {
   return out
 }
 
+// All .html pages under src/, recursively (e.g. votes/relegation.html),
+// excluding the partials directory, as paths relative to src/.
+export function listPages(srcDir = SRC_DIR) {
+  const pages = []
+  const walk = (dir, rel) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory()) {
+        if (entry.name === 'partials') continue
+        walk(path.join(dir, entry.name), path.join(rel, entry.name))
+      } else if (entry.name.endsWith('.html')) {
+        pages.push(path.join(rel, entry.name))
+      }
+    }
+  }
+  walk(srcDir, '')
+  return pages.sort()
+}
+
 function build() {
   fs.rmSync(OUT_DIR, { recursive: true, force: true })
   fs.mkdirSync(OUT_DIR, { recursive: true })
 
-  const pages = fs.readdirSync(SRC_DIR).filter(f => f.endsWith('.html'))
+  const pages = listPages()
   for (const page of pages) {
     const html = fs.readFileSync(path.join(SRC_DIR, page), 'utf8')
-    fs.writeFileSync(path.join(OUT_DIR, page), buildPage(html, page))
+    const outPath = path.join(OUT_DIR, page)
+    fs.mkdirSync(path.dirname(outPath), { recursive: true })
+    fs.writeFileSync(outPath, buildPage(html, page))
     console.log(`built ${page}`)
   }
   console.log(`Built ${pages.length} pages into pub/`)

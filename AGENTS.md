@@ -373,6 +373,42 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 - `deploy-static` excludes `data/diaper-race.json` like the other JSON feeds.
 - Tests: `node --test scripts/diaper-race.test.mjs`.
 
+## Relegation backtest
+
+- `scripts/generate-relegation.mjs` (`make relegation`) models the
+  divisional relegation vote proposal: divisions rebased yearly from
+  prior-year results (A = top 5, B = bottom 5; intra-division pairs
+  meet twice, cross pairs once over 13 weeks; template in
+  `TEMPLATE_13`, verified by tests).
+- Method: weekly scores are opponent-independent in fantasy, so each
+  season's actual weekly scores are held fixed and only pairings
+  change. Backtest window is target seasons 2019–2025 seeded from
+  2018–2024 (ESPN weekly data starts 2018; stats.csv aggregates cannot
+  be re-scheduled). Seeding is prior-year All-Play % (primary,
+  schedule-independent) with a prior-year W-L sensitivity pass.
+- 2021–2022 were 14-week regular seasons; week 14 is one extra
+  cross-division round (`WEEK_14`) and those seasons are flagged.
+- A franchise with no prior season is seeded last (2019: team 12
+  replaced departed team 6 / SHEN).
+- A second variant (`proposal` key in the JSON) models the refined
+  proposal alongside the full rebase: divisions move 2-up / 2-down
+  recursively from the simulated prior season (`nextDivisions`), and
+  playoff spots split 4 (Division A) / 2 (Division B) by W-L
+  (`fourTwoField`). The vote page carries a section for it.
+- League JSON caches under git-ignored `scripts/.relegation-cache/`;
+  `--offline` rebuilds from cache only. Same `scripts/.env` `ESPN_S2`
+  as power rankings. Writes `static/data/relegation.json`,
+  `docs/relegation-backtest.md`, and the vote page
+  `src/votes/relegation.html` (built to `pub/votes/relegation.html`;
+  `build.mjs` recurses into `src/` subdirectories except `partials`).
+  The page is deliberately NOT linked from the nav or any other page —
+  it is shared by direct URL for the league vote. It uses root-relative
+  asset paths and no nav partial, because the shared partials assume a
+  top-level page. `deploy-static` excludes `data/relegation.json` and
+  copies it separately like the other data feeds. No workflow and no
+  Discord post: a one-off vote analysis, not a recurring page.
+- Tests: `node --test scripts/generate-relegation.test.mjs scripts/build.test.mjs`.
+
 ## Team name sync
 
 - A weekly GitHub Action (`.github/workflows/team-names.yml`) runs

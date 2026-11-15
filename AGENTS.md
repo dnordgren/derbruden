@@ -432,6 +432,12 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   `scripts/.wacky-cache/`; prints ranked candidates, posts nothing.
 - Rarity floor: league-history detectors must rank ≤30th all-time
   (tunable `--max-rank=N`); post nothing rather than noise.
+- The cache has no expiry: scheduled runs pass `--fresh` (drops only
+  the target season + week cache files for a live re-pull; history
+  stays cached). `--snapshot` saves the in-progress week's live games
+  + rosters to `snapshot-<season>-<week>.json` and exits. Two Muse
+  crons (not GHA) drive it: Sun ~15:30 CT snapshot, Sun ~18:45 CT
+  analysis delivering candidates for editorial approval.
 - Poster: `scripts/post-wacky-discord.mjs` — posts ONE hand-approved
   text via the `DISCORD_WEBHOOK_WACKYSTAT` webhook. Dry-run by
   default; only an explicit `--send` posts. Never wire it to a

@@ -20,7 +20,14 @@ import {
   detectMilestones,
   detectFutility,
   detectPlayerRecord,
+  parseArgs,
+  currentCacheFiles,
+  clearCurrentCache,
+  snapshotWeek,
 } from './generate-wacky-stat.mjs'
+import fs from 'node:fs'
+import os from 'node:os'
+import path from 'node:path'
 
 const TEAMS = {
   1: { id: 1, name: 'Alpha', owner: 'AA' },
@@ -256,4 +263,50 @@ test('detectBenchFlip fires only when the swap flips the result', () => {
   assert.equal(flip.type, 'bench-flip')
   assert.equal(flip.facts.netGain, 15)
   assert.deepEqual(detectBenchFlip([game(2026, 9, 140, 100)], rosters, TEAMS), [])
+})
+
+test('parseArgs: fresh/snapshot default off and parse as flags', () => {
+  const base = parseArgs([])
+  assert.equal(base.fresh, false)
+  assert.equal(base.snapshot, false)
+  assert.equal(parseArgs(['--fresh']).fresh, true)
+  assert.equal(parseArgs(['--snapshot']).snapshot, true)
+  assert.throws(() => parseArgs(['--bogus']), /Unknown argument/)
+})
+
+test('currentCacheFiles names only the target season (+week) files', () => {
+  assert.deepEqual(currentCacheFiles(2026), ['season-2026.json'])
+  assert.deepEqual(currentCacheFiles(2026, 10), ['season-2026.json', 'roster-2026-10.json', 'nfl-2026-10.json'])
+})
+
+test('clearCurrentCache removes current files and leaves history untouched', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'wacky-cache-'))
+  for (const name of [
+    'season-2026.json',
+    'roster-2026-10.json',
+    'nfl-2026-10.json',
+    'season-2019.json',
+    'roster-2026-9.json',
+  ]) {
+    fs.writeFileSync(path.join(dir, name), '{}')
+  }
+  clearCurrentCache(2026, 10, dir)
+  assert.deepEqual(fs.readdirSync(dir).sort(), ['roster-2026-9.json', 'season-2019.json'])
+  fs.rmSync(dir, { recursive: true, force: true })
+})
+
+test('snapshotWeek prefers the league current scoring period', () => {
+  assert.equal(snapshotWeek({ scoringPeriodId: 10, schedule: [] }), 10)
+  const decided = (week, winner) => ({
+    matchupPeriodId: week,
+    playoffTierType: 'NONE',
+    winner,
+    home: { teamId: 1, totalPoints: 100 },
+    away: { teamId: 2, totalPoints: 90 },
+  })
+  // Thursday game of week 10 is final, week 10 still in progress:
+  // scoringPeriodId wins over lastCompletedWeek (which would say 10 -> 11).
+  assert.equal(snapshotWeek({ scoringPeriodId: 10, schedule: [decided(9, 'HOME'), decided(10, 'AWAY')] }), 10)
+  // Fallback when the payload lacks scoringPeriodId.
+  assert.equal(snapshotWeek({ schedule: [decided(9, 'HOME')] }), 10)
 })

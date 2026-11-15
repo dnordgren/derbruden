@@ -12,7 +12,8 @@
 // review. Posting (Discord webhook) is a separate, gated step.
 //
 // Usage:
-//   node scripts/generate-wacky-stat.mjs [--season=YYYY] [--week=N] [--offline] [--max-rank=N]
+//   node scripts/generate-wacky-stat.mjs [--season=YYYY] [--week=N] [--offline] [--max-rank=N] [--fresh]
+//   node scripts/generate-wacky-stat.mjs --snapshot [--season=YYYY] [--week=N]
 // Defaults: current season (Aug-Dec -> this year, else last year) and the
 // last completed week of that season.
 //
@@ -21,6 +22,14 @@
 // mTeam+mMatchupScore+mSettings, roster-<year>-<week>.json holds the
 // scoring-period-scoped mRoster pull. Missing cache entries are fetched
 // from ESPN (needs ESPN_S2/SWID in scripts/.env) unless --offline.
+//
+// The cache has no expiry, so a scheduled run passes --fresh: it drops
+// ONLY the target season + target week cache files (season JSON, roster
+// week, NFL day map) so they are re-pulled live. Finished weeks and
+// historical seasons are immutable and stay cached forever.
+// --snapshot instead saves the in-progress week's live games + rosters
+// to snapshot-<season>-<week>.json (separate from the main cache, so a
+// mid-game capture can never poison a later analysis run) and exits.
 
 import fs from 'node:fs'
 import path from 'node:path'
@@ -759,6 +768,30 @@ async function loadMondayTeamIds(season, week, offline) {
   )
 }
 
+// The only cache files a --fresh / --snapshot run may drop: the target
+// season's league JSON plus, once the week is known, that week's roster
+// and NFL day-map files. Everything older is final and stays cached.
+export function currentCacheFiles(season, week = null) {
+  const files = [`season-${season}.json`]
+  if (week != null) files.push(`roster-${season}-${week}.json`, `nfl-${season}-${week}.json`)
+  return files
+}
+
+export function clearCurrentCache(season, week = null, dir = CACHE_DIR) {
+  for (const name of currentCacheFiles(season, week)) {
+    const p = path.join(dir, name)
+    if (fs.existsSync(p)) fs.unlinkSync(p)
+  }
+}
+
+// The in-progress week for a snapshot: ESPN's own current scoring
+// period. (lastCompletedWeek + 1 is wrong the moment any game of the
+// current week is final — e.g. the Thursday game.)
+export function snapshotWeek(league) {
+  if (league.scoringPeriodId) return league.scoringPeriodId
+  return lastCompletedWeek(league) + 1
+}
+
 export function lastCompletedWeek(league) {
   let last = 0
   for (const g of extractWeeklyGames(league, 0)) last = Math.max(last, g.week)
@@ -766,9 +799,11 @@ export function lastCompletedWeek(league) {
 }
 
 export function parseArgs(argv) {
-  const args = { season: null, week: null, offline: false, maxRank: MAX_HISTORY_RANK }
+  const args = { season: null, week: null, offline: false, fresh: false, snapshot: false, maxRank: MAX_HISTORY_RANK }
   for (const arg of argv) {
     if (arg === '--offline') args.offline = true
+    else if (arg === '--fresh') args.fresh = true
+    else if (arg === '--snapshot') args.snapshot = true
     else if (arg.startsWith('--season=')) args.season = Number(arg.split('=')[1])
     else if (arg.startsWith('--week=')) args.week = Number(arg.split('=')[1])
     else if (arg.startsWith('--max-rank=')) args.maxRank = Number(arg.split('=')[1])
@@ -780,9 +815,53 @@ export function parseArgs(argv) {
 async function main() {
   const args = parseArgs(process.argv.slice(2))
   const season = args.season ?? defaultSeason()
+  // A fresh or snapshot run must see live data for the target season:
+  // drop its league JSON first, then (once the week is known) that
+  // week's roster + NFL day-map files. History is never dropped.
+  if (args.fresh || args.snapshot) clearCurrentCache(season)
   const targetLeague = await loadJson(`season-${season}.json`, seasonUrl(season), args.offline)
-  const week = args.week ?? lastCompletedWeek(targetLeague)
+  const week = args.week ?? (args.snapshot ? snapshotWeek(targetLeague) : lastCompletedWeek(targetLeague))
   if (!week) throw new Error(`No completed week found for ${season}`)
+  if (args.fresh || args.snapshot) clearCurrentCache(season, week)
+
+  if (args.snapshot) {
+    // Raw schedule entries for the week, decided or not — extractWeeklyGames
+    // only returns decided games, which is exactly what a live snapshot
+    // must NOT filter to.
+    const games = (targetLeague.schedule || [])
+      .filter(
+        m => m.matchupPeriodId === week && (!m.playoffTierType || m.playoffTierType === 'NONE') && m.home && m.away
+      )
+      .map(m => ({
+        week: m.matchupPeriodId,
+        homeId: m.home.teamId,
+        awayId: m.away.teamId,
+        homePts: Number(m.home.totalPoints) || 0,
+        awayPts: Number(m.away.totalPoints) || 0,
+        winner: m.winner || 'UNDECIDED',
+      }))
+    if (!games.length) throw new Error(`No games found for ${season} Week ${week} to snapshot`)
+    const rosters = await loadRosterWeek(season, week, args.offline)
+    let mondayTeamIds = new Set()
+    try {
+      mondayTeamIds = await loadMondayTeamIds(season, week, args.offline)
+    } catch {
+      // snapshot still useful without the Monday map
+    }
+    const snapshot = {
+      capturedAt: new Date().toISOString(),
+      season,
+      week,
+      games,
+      rosters,
+      mondayTeamIds: [...mondayTeamIds],
+    }
+    fs.mkdirSync(CACHE_DIR, { recursive: true })
+    const out = path.join(CACHE_DIR, `snapshot-${season}-${week}.json`)
+    fs.writeFileSync(out, JSON.stringify(snapshot))
+    console.log(`Snapshot saved: ${out} (${games.length} games, captured ${snapshot.capturedAt})`)
+    return
+  }
 
   const seasonGames = new Map()
   for (let y = FIRST_HISTORY_SEASON; y <= season; y++) {

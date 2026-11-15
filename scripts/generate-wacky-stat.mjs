@@ -768,13 +768,17 @@ async function loadMondayTeamIds(season, week, offline) {
   )
 }
 
-// The only cache files a --fresh / --snapshot run may drop: the target
-// season's league JSON plus, once the week is known, that week's roster
-// and NFL day-map files. Everything older is final and stays cached.
+// The only cache files a --fresh / --snapshot run may drop. Two phases:
+// before the league is loaded, the target season's JSON (week unknown
+// yet); once the week is known, that week's roster + NFL day-map files.
+// The week phase must NOT name the season file again — main() clears in
+// two phases with a live re-fetch in between, and re-clearing the
+// season file would delete the copy it just fetched, leaving the
+// current season permanently uncached. Everything older is final and
+// stays cached.
 export function currentCacheFiles(season, week = null) {
-  const files = [`season-${season}.json`]
-  if (week != null) files.push(`roster-${season}-${week}.json`, `nfl-${season}-${week}.json`)
-  return files
+  if (week == null) return [`season-${season}.json`]
+  return [`roster-${season}-${week}.json`, `nfl-${season}-${week}.json`]
 }
 
 export function clearCurrentCache(season, week = null, dir = CACHE_DIR) {

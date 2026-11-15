@@ -124,6 +124,8 @@ export function rosterWeek(rosterLeague, week) {
         points,
         lineupSlotId: e.lineupSlotId,
         elig: player.eligibleSlots || [],
+        pos: player.defaultPositionId,
+        proTeamId: player.proTeamId,
       }
       if (e.lineupSlotId === BENCH_SLOT || e.lineupSlotId === IR_SLOT) bench.push(entry)
       else starters.push(entry)
@@ -383,13 +385,304 @@ export function detectBenchFlip(games, rosters, teams) {
   return best ? [best] : []
 }
 
-export function detectCandidates({ games, history, teams, rosters, priorRosters, maxRank = MAX_HISTORY_RANK }) {
+export const POS_NAMES = { 1: 'QB', 2: 'RB', 3: 'WR', 4: 'TE', 5: 'K', 16: 'D/ST' }
+
+// Monday-night points for one team from its roster week: starters whose
+// NFL team played on Monday, plus the biggest single contributor.
+export function mondayLine(teamRoster, mondayTeamIds) {
+  let total = 0
+  let top = null
+  for (const p of teamRoster?.starters || []) {
+    if (!mondayTeamIds.has(Number(p.proTeamId))) continue
+    total += p.points
+    if (!top || p.points > top.points) top = { name: p.name, points: p.points }
+  }
+  return { total, top }
+}
+
+// Did the lead change hands on Monday night? Reconstructs the score
+// going into MNF as final minus Monday starters' points. Returns the
+// blown lead (pre-MNF margin of the team that ended up losing), or null.
+export function mondayFlip(game, weekRosters, mondayTeamIds) {
+  if (!weekRosters || !mondayTeamIds || mondayTeamIds.size === 0) return null
+  const home = mondayLine(weekRosters[game.homeId], mondayTeamIds)
+  const away = mondayLine(weekRosters[game.awayId], mondayTeamIds)
+  const preHome = game.homePts - home.total
+  const preAway = game.awayPts - away.total
+  if (preHome === preAway) return null
+  const preLeaderId = preHome > preAway ? game.homeId : game.awayId
+  if (preLeaderId === game.winnerId) return null
+  const winnerLine = game.winnerId === game.homeId ? home : away
+  return {
+    blownLead: Math.abs(preHome - preAway),
+    winnerMondayPts: winnerLine.total,
+    topScorer: winnerLine.top,
+  }
+}
+
+export function detectMondayFlip(games, weekRosters, mondayTeamIds, historyFlips, teams, maxRank = MAX_HISTORY_RANK) {
+  let best = null
+  for (const g of games) {
+    const flip = mondayFlip(g, weekRosters, mondayTeamIds)
+    if (!flip) continue
+    const rank = 1 + historyFlips.filter(h => h > flip.blownLead).length
+    const cand = {
+      type: 'monday-flip',
+      score: Math.round(100 * (1 - (rank - 1) / Math.max(historyFlips.length, 1))),
+      headline:
+        `${label(teams[g.loserId])} led ${label(teams[g.winnerId])} by ${fmt(flip.blownLead)} going into Monday night and lost` +
+        ` — the ${ordinal(rank)}-biggest blown Monday lead since ${FIRST_HISTORY_SEASON}` +
+        ` (${label(teams[g.winnerId])} scored ${fmt(flip.winnerMondayPts)} on Monday` +
+        (flip.topScorer ? `, led by ${flip.topScorer.name}'s ${fmt(flip.topScorer.points)}` : '') +
+        ').',
+      facts: { rank, totalFlips: historyFlips.length, blownLead: fmt(flip.blownLead) },
+    }
+    if (!best || cand.facts.rank < best.facts.rank) best = cand
+  }
+  if (!best || best.facts.rank > maxRank) return []
+  return [best]
+}
+
+// Consecutive wins by the target game's winner over its loser, counting
+// backwards through every prior meeting (history is chronological).
+export function detectH2HStreak(games, history, teams) {
+  let best = null
+  for (const g of games) {
+    const meetings = history.filter(
+      h =>
+        (h.winnerId === g.winnerId && h.loserId === g.loserId) || (h.winnerId === g.loserId && h.loserId === g.winnerId)
+    )
+    let streak = 1
+    let lastLoss = null
+    for (let i = meetings.length - 1; i >= 0; i--) {
+      if (meetings[i].winnerId === g.winnerId) streak++
+      else {
+        lastLoss = meetings[i]
+        break
+      }
+    }
+    if (streak < 5) continue
+    const cand = {
+      type: 'h2h-streak',
+      score: Math.min(95, 50 + streak * 5),
+      headline:
+        `${label(teams[g.winnerId])} has now beaten ${label(teams[g.loserId])} ${streak} straight times` +
+        (lastLoss
+          ? ` — the last loss in this matchup came in Week ${lastLoss.week}, ${lastLoss.season}.`
+          : ` — and has not lost to them since ${FIRST_HISTORY_SEASON}.`),
+      facts: { streak },
+    }
+    if (!best || streak > best.facts.streak) best = cand
+  }
+  return best ? [best] : []
+}
+
+// Best legal total for a set of lineup slots from a pool of players.
+// Backtracking over slots (scarcest first) with an optimistic bound;
+// a slot may be left empty for 0, matching the sit/start convention
+// that an optimal lineup never starts a negative score.
+export function optimalLineupTotal(entries, slots) {
+  const pool = entries.filter(e => e.points > 0 || slots.some(s => e.elig.includes(s)))
+  const order = slots
+    .map(slot => ({ slot, options: pool.filter(p => p.elig.includes(slot)).length }))
+    .sort((a, b) => a.options - b.options)
+    .map(o => o.slot)
+  const byPoints = [...pool].sort((a, b) => b.points - a.points)
+  const used = new Set()
+  let best = 0
+  function dfs(idx, total) {
+    if (idx === order.length) {
+      if (total > best) best = total
+      return
+    }
+    let bound = total
+    let need = order.length - idx
+    for (const p of byPoints) {
+      if (need === 0) break
+      if (!used.has(p)) {
+        bound += Math.max(p.points, 0)
+        need--
+      }
+    }
+    if (bound <= best) return
+    dfs(idx + 1, total)
+    for (const p of pool) {
+      if (used.has(p) || !p.elig.includes(order[idx])) continue
+      used.add(p)
+      dfs(idx + 1, total + p.points)
+      used.delete(p)
+    }
+  }
+  dfs(0, 0)
+  return best
+}
+
+export function isPerfectWeek(teamRoster) {
+  if (!teamRoster || !teamRoster.starters.length) return false
+  const actual = teamRoster.starters.reduce((s, p) => s + p.points, 0)
+  const slots = teamRoster.starters.map(p => p.lineupSlotId)
+  const optimal = optimalLineupTotal([...teamRoster.starters, ...teamRoster.bench], slots)
+  return optimal - actual < 0.005
+}
+
+export function detectPerfectWeek(games, rosters, teams, priorPerfectCount) {
+  const out = []
+  const seen = new Set()
+  for (const g of games) {
+    for (const teamId of [g.homeId, g.awayId]) {
+      if (seen.has(teamId)) continue
+      seen.add(teamId)
+      if (!isPerfectWeek(rosters?.[teamId])) continue
+      out.push({
+        type: 'perfect-week',
+        score: 92,
+        headline:
+          `${label(teams[teamId])} started a perfect lineup — every starter was the best legal option at his slot.` +
+          ` Only the ${ordinal(priorPerfectCount + out.length + 1)} perfect week in the league since ${FIRST_HISTORY_SEASON}.`,
+        facts: { priorPerfectCount },
+      })
+    }
+  }
+  return out
+}
+
+export function detectMilestones(games, history, teams) {
+  const career = {}
+  const bump = (teamId, g, wins, pf) => {
+    const c = (career[teamId] ||= { wins: 0, losses: 0, pf: 0 })
+    c.wins += wins
+    c.losses += 1 - wins
+    c.pf += pf
+  }
+  for (const h of history) {
+    bump(h.winnerId, h, 1, h.winnerPts)
+    bump(h.loserId, h, 0, h.loserPts)
+  }
+  const out = []
+  for (const g of games) {
+    for (const [teamId, won, pts] of [
+      [g.winnerId, 1, g.winnerPts],
+      [g.loserId, 0, g.loserPts],
+    ]) {
+      const before = { ...(career[teamId] || { wins: 0, losses: 0, pf: 0 }) }
+      const after = { wins: before.wins + won, losses: before.losses + (1 - won), pf: before.pf + pts }
+      const checks = [
+        ['wins', 50, v => `career win #${v}`],
+        ['pf', 2500, v => `${v.toLocaleString('en-US')} career points-for`],
+        ['losses', 50, v => `career loss #${v}`],
+      ]
+      for (const [key, step, describe] of checks) {
+        const crossed = Math.floor(after[key] / step) * step
+        if (crossed > 0 && before[key] < crossed && after[key] >= crossed) {
+          out.push({
+            type: 'milestone',
+            score: 70,
+            headline: `${label(teams[teamId])} reached ${describe(crossed)} this week (now ${fmt(after[key])} total).`,
+            facts: { kind: key, value: crossed },
+          })
+        }
+      }
+    }
+  }
+  return out
+}
+
+export function detectFutility(games, history, teams) {
+  const log = {}
+  for (const h of [...history, ...games].sort((a, b) => a.season - b.season || a.week - b.week)) {
+    for (const [teamId, pts, won] of [
+      [h.winnerId, h.winnerPts, true],
+      [h.loserId, h.loserPts, false],
+    ]) {
+      ;(log[teamId] ||= []).push({ season: h.season, week: h.week, pts, won })
+    }
+  }
+  const out = []
+  const seen = new Set()
+  for (const g of games) {
+    for (const teamId of [g.homeId, g.awayId]) {
+      if (seen.has(teamId)) continue
+      seen.add(teamId)
+      const entries = log[teamId] || []
+      const last = entries[entries.length - 1]
+      if (!last) continue
+      let loseStreak = 0
+      for (let i = entries.length - 1; i >= 0 && !entries[i].won; i--) loseStreak++
+      let priorLoseStreak = 0
+      for (let i = entries.length - 2; i >= 0 && !entries[i].won; i--) priorLoseStreak++
+      if (!last.won && loseStreak >= 6) {
+        out.push({
+          type: 'futility',
+          score: Math.min(90, 40 + loseStreak * 6),
+          headline: `${label(teams[teamId])} has lost ${loseStreak} straight games.`,
+          facts: { kind: 'losing-streak', streak: loseStreak },
+        })
+      } else if (last.won && priorLoseStreak >= 5) {
+        out.push({
+          type: 'futility',
+          score: Math.min(90, 40 + priorLoseStreak * 6),
+          headline: `${label(teams[teamId])} finally won, snapping a ${priorLoseStreak}-game losing streak.`,
+          facts: { kind: 'streak-snapped', streak: priorLoseStreak },
+        })
+      }
+      let subStreak = 0
+      for (let i = entries.length - 1; i >= 0 && entries[i].pts < 100; i--) subStreak++
+      if (subStreak >= 4) {
+        out.push({
+          type: 'futility',
+          score: Math.min(88, 40 + subStreak * 8),
+          headline: `${label(teams[teamId])} has now scored under 100 points in ${subStreak} straight games.`,
+          facts: { kind: 'sub-100-streak', streak: subStreak },
+        })
+      }
+    }
+  }
+  return out
+}
+
+// Best single-player game of the week by position, ranked against every
+// starting player-week at that position in history.
+export function detectPlayerRecord(games, rosters, playerHistory, teams, maxRank = MAX_HISTORY_RANK) {
+  let best = null
+  const seen = new Set()
+  for (const g of games) {
+    for (const teamId of [g.homeId, g.awayId]) {
+      if (seen.has(teamId)) continue
+      seen.add(teamId)
+      for (const p of rosters?.[teamId]?.starters || []) {
+        if (!POS_NAMES[p.pos]) continue
+        const rank = 1 + playerHistory.filter(h => h.pos === p.pos && h.points > p.points).length
+        const total = playerHistory.filter(h => h.pos === p.pos).length
+        const cand = {
+          type: 'player-record',
+          score: Math.round(100 * (1 - (rank - 1) / Math.max(total, 1))),
+          headline:
+            `${p.name} scored ${fmt(p.points)} for ${label(teams[teamId])}` +
+            ` — the ${ordinal(rank)}-biggest ${POS_NAMES[p.pos]} game since ${FIRST_HISTORY_SEASON} (of ${total}).`,
+          facts: { rank, total, pos: POS_NAMES[p.pos], points: fmt(p.points) },
+        }
+        if (!best || rank < best.facts.rank) best = cand
+      }
+    }
+  }
+  if (!best || best.facts.rank > maxRank) return []
+  return [best]
+}
+
+export function detectCandidates(ctx) {
+  const { games, history, teams, rosters, priorRosters, maxRank = MAX_HISTORY_RANK } = ctx
   const all = [
     ...detectBlowout(games, history, teams, maxRank),
     ...detectHighScoreLoss(games, history, teams, maxRank),
     ...detectLowScoreWin(games, history, teams, maxRank),
     ...detectHeartbreaker(games, history, teams, maxRank),
     ...detectHardLuck(games, history, teams),
+    ...detectMondayFlip(games, ctx.weekRosters, ctx.mondayTeamIds, ctx.historyFlips || [], teams, maxRank),
+    ...detectH2HStreak(games, history, teams),
+    ...detectPerfectWeek(games, rosters, teams, ctx.priorPerfectCount || 0),
+    ...detectMilestones(games, history, teams),
+    ...detectFutility(games, history, teams),
+    ...detectPlayerRecord(games, rosters, ctx.playerHistory || [], teams, maxRank),
     ...detectTopPlayerShare(games, rosters, priorRosters, teams),
     ...detectBenchFlip(games, rosters, teams),
   ]
@@ -415,6 +708,56 @@ const seasonUrl = season =>
   `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}?view=mTeam&view=mMatchupScore&view=mSettings`
 const rosterUrl = (season, week) =>
   `${API_BASE}/seasons/${season}/segments/0/leagues/${LEAGUE_ID}?view=mRoster&scoringPeriodId=${week}`
+const nflScoreboardUrl = (season, week) =>
+  `https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=${season}&seasontype=2&week=${week}`
+
+// Roster weeks are cached slim: { byTeam: { <id>: { starters, bench } } },
+// the exact shape rosterWeek() returns, so a 4 MB ESPN pull becomes a
+// ~40 KB cache file. Legacy raw caches are converted on first read.
+async function loadRosterWeek(season, week, offline) {
+  const cacheName = `roster-${season}-${week}.json`
+  const cachePath = path.join(CACHE_DIR, cacheName)
+  if (fs.existsSync(cachePath)) {
+    const parsed = JSON.parse(fs.readFileSync(cachePath, 'utf8'))
+    if (parsed.byTeam) return parsed.byTeam
+    const byTeam = rosterWeek(parsed, week)
+    fs.writeFileSync(cachePath, JSON.stringify({ byTeam }))
+    return byTeam
+  }
+  if (offline) throw new Error(`No cache for ${cacheName} and --offline was given`)
+  const env = resolveConfig(ENV_FILE, ['ESPN_S2', 'SWID'])
+  const raw = await fetchJson(fetch, rosterUrl(season, week), { headers: { Cookie: authCookie(env) } })
+  const byTeam = rosterWeek(raw, week)
+  fs.mkdirSync(CACHE_DIR, { recursive: true })
+  fs.writeFileSync(cachePath, JSON.stringify({ byTeam }))
+  return byTeam
+}
+
+// Which NFL teams played on Monday of a given week (Eastern), from the
+// public ESPN NFL scoreboard. Cached slim as { days: { teamId: 'Mon' } }.
+async function loadMondayTeamIds(season, week, offline) {
+  const cacheName = `nfl-${season}-${week}.json`
+  const cachePath = path.join(CACHE_DIR, cacheName)
+  let days
+  if (fs.existsSync(cachePath)) {
+    days = JSON.parse(fs.readFileSync(cachePath, 'utf8')).days || {}
+  } else {
+    if (offline) throw new Error(`No cache for ${cacheName} and --offline was given`)
+    const data = await fetchJson(fetch, nflScoreboardUrl(season, week))
+    days = {}
+    for (const ev of data.events || []) {
+      const day = new Date(ev.date).toLocaleDateString('en-US', { timeZone: 'America/New_York', weekday: 'short' })
+      for (const c of ev.competitions?.[0]?.competitors || []) days[c.team.id] = day
+    }
+    fs.mkdirSync(CACHE_DIR, { recursive: true })
+    fs.writeFileSync(cachePath, JSON.stringify({ days }))
+  }
+  return new Set(
+    Object.keys(days)
+      .filter(id => days[id] === 'Mon')
+      .map(Number)
+  )
+}
 
 export function lastCompletedWeek(league) {
   let last = 0
@@ -450,16 +793,80 @@ async function main() {
   const games = seasonGames.get(season).filter(g => g.week === week)
   const teams = extractTeams(targetLeague)
 
-  const rosters = rosterWeek(
-    await loadJson(`roster-${season}-${week}.json`, rosterUrl(season, week), args.offline),
-    week
-  )
+  // Roster weeks for the target week (required) and every history week
+  // (best effort: a missing cache shrinks the player-level baselines,
+  // it does not block the score-level detectors).
+  const rosters = await loadRosterWeek(season, week, args.offline)
+  const weekRosters = new Map([[`${season}|${week}`, rosters]])
+  const weeksWanted = new Map()
+  for (const [y, gs] of seasonGames) {
+    for (const g of gs) {
+      if (y < season || (y === season && g.week < week)) weeksWanted.set(`${y}|${g.week}`, [y, g.week])
+    }
+  }
+  for (const [key, [y, w]] of weeksWanted) {
+    try {
+      weekRosters.set(key, await loadRosterWeek(y, w, args.offline))
+    } catch {
+      // baseline gap only
+    }
+  }
   const priorRosters = []
   for (let w = 1; w < week; w++) {
-    priorRosters.push(rosterWeek(await loadJson(`roster-${season}-${w}.json`, rosterUrl(season, w), args.offline), w))
+    const r = weekRosters.get(`${season}|${w}`)
+    if (r) priorRosters.push(r)
   }
 
-  const candidates = detectCandidates({ games, history, teams, rosters, priorRosters, maxRank: args.maxRank })
+  // Monday-flip history, player-week history, and the perfect-week count
+  // all come from the same history roster pass.
+  const historyFlips = []
+  const playerHistory = []
+  let priorPerfectCount = 0
+  const historyByWeek = new Map()
+  for (const h of history) {
+    const key = `${h.season}|${h.week}`
+    if (!historyByWeek.has(key)) historyByWeek.set(key, [])
+    historyByWeek.get(key).push(h)
+  }
+  for (const [key, weekGames] of historyByWeek) {
+    const [y, w] = key.split('|').map(Number)
+    const wr = weekRosters.get(key)
+    if (!wr) continue
+    let monday = new Set()
+    try {
+      monday = await loadMondayTeamIds(y, w, args.offline)
+    } catch {
+      // no Monday baseline for this week
+    }
+    for (const h of weekGames) {
+      const flip = mondayFlip(h, wr, monday)
+      if (flip) historyFlips.push(flip.blownLead)
+    }
+    for (const teamRoster of Object.values(wr)) {
+      for (const p of teamRoster.starters) playerHistory.push({ pos: p.pos, points: p.points })
+      if (isPerfectWeek(teamRoster)) priorPerfectCount++
+    }
+  }
+  let mondayTeamIds = new Set()
+  try {
+    mondayTeamIds = await loadMondayTeamIds(season, week, args.offline)
+  } catch {
+    // Monday detector stays silent without the NFL schedule
+  }
+
+  const candidates = detectCandidates({
+    games,
+    history,
+    teams,
+    rosters,
+    priorRosters,
+    maxRank: args.maxRank,
+    weekRosters: rosters,
+    mondayTeamIds,
+    historyFlips,
+    priorPerfectCount,
+    playerHistory,
+  })
   console.log(`Wacky stat candidates — Der Bruden ${season} Week ${week} (DRY RUN, nothing posted)`)
   console.log(`History baseline: ${history.length} decided regular-season games, ${FIRST_HISTORY_SEASON}-${season}`)
   if (!candidates.length) console.log('No candidates cleared the detector thresholds this week.')

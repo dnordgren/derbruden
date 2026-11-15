@@ -12,6 +12,14 @@ import {
   detectBenchFlip,
   detectHeartbreaker,
   detectHardLuck,
+  mondayFlip,
+  detectMondayFlip,
+  detectH2HStreak,
+  optimalLineupTotal,
+  isPerfectWeek,
+  detectMilestones,
+  detectFutility,
+  detectPlayerRecord,
 } from './generate-wacky-stat.mjs'
 
 const TEAMS = {
@@ -158,6 +166,83 @@ test('detectHardLuck fires when a loser would have beaten 8 of 9', () => {
   assert.equal(cand.facts.prior, 0)
   const quiet = [game(2026, 9, 135, 100, 1, 2), ...week.slice(1)]
   assert.deepEqual(detectHardLuck(quiet, history, teams), [])
+})
+
+test('mondayFlip reconstructs the pre-MNF lead and detectMondayFlip ranks it', () => {
+  const g = { ...game(2026, 9, 105, 100, 2, 1), homeId: 1, awayId: 2, homePts: 100, awayPts: 105 }
+  const rosters = {
+    1: { starters: [{ name: 'H', points: 100, proTeamId: 3, lineupSlotId: 0, elig: [0] }], bench: [] },
+    2: {
+      starters: [
+        { name: 'Monday Star', points: 30, proTeamId: 7, lineupSlotId: 2, elig: [2] },
+        { name: 'Sunday Guy', points: 75, proTeamId: 4, lineupSlotId: 0, elig: [0] },
+      ],
+      bench: [],
+    },
+  }
+  const flip = mondayFlip(g, rosters, new Set([7]))
+  assert.equal(flip.blownLead, 25)
+  assert.equal(flip.winnerMondayPts, 30)
+  assert.equal(flip.topScorer.name, 'Monday Star')
+  const [cand] = detectMondayFlip([g], rosters, new Set([7]), [30, 28], TEAMS)
+  assert.equal(cand.facts.rank, 3)
+  assert.deepEqual(detectMondayFlip([g], rosters, new Set([7]), Array(31).fill(40), TEAMS), [])
+  // No Monday players for the winner -> lead holds -> no flip.
+  assert.equal(mondayFlip(g, rosters, new Set([99])), null)
+})
+
+test('detectH2HStreak fires at five straight wins over the same opponent', () => {
+  const history = [1, 2, 3, 4].map(w => game(2025, w, 120, 100, 1, 2))
+  const [cand] = detectH2HStreak([game(2026, 9, 110, 90, 1, 2)], history, TEAMS)
+  assert.equal(cand.facts.streak, 5)
+  const short = [1, 2, 3].map(w => game(2025, w, 120, 100, 1, 2))
+  assert.deepEqual(detectH2HStreak([game(2026, 9, 110, 90, 1, 2)], short, TEAMS), [])
+})
+
+test('optimalLineupTotal and isPerfectWeek agree with the sit/start convention', () => {
+  const mk = (name, points, slot, elig) => ({ name, points, lineupSlotId: slot, elig })
+  const perfect = {
+    starters: [mk('QB1', 20, 0, [0]), mk('RB1', 15, 2, [2, 23])],
+    bench: [mk('RB2', 10, 20, [2, 23])],
+  }
+  assert.equal(isPerfectWeek(perfect), true)
+  const flawed = {
+    starters: [mk('QB1', 20, 0, [0]), mk('RB1', 15, 2, [2, 23])],
+    bench: [mk('RB2', 18, 20, [2, 23])],
+  }
+  assert.equal(isPerfectWeek(flawed), false)
+  assert.equal(optimalLineupTotal([...flawed.starters, ...flawed.bench], [0, 2]), 38)
+})
+
+test('detectMilestones fires when a career threshold is crossed that week', () => {
+  const history = []
+  for (let i = 0; i < 49; i++) history.push(game(2024, (i % 13) + 1, 120, 100, 1, 2))
+  const out = detectMilestones([game(2026, 9, 110, 90, 1, 2)], history, TEAMS)
+  assert.ok(out.some(c => c.facts.kind === 'wins' && c.facts.value === 50))
+})
+
+test('detectFutility catches a snapped losing streak and a sub-100 streak', () => {
+  const history = [1, 2, 3, 4, 5].map(w => game(2026, w, 130, 95, 2, 1))
+  const out = detectFutility([game(2026, 9, 105, 99, 1, 2)], history, TEAMS)
+  assert.ok(out.some(c => c.facts.kind === 'streak-snapped' && c.facts.streak === 5))
+  const drought = [1, 2, 3].map(w => game(2026, w, 120, 90, 2, 1))
+  const out2 = detectFutility([game(2026, 9, 125, 92, 2, 1)], drought, TEAMS)
+  assert.ok(out2.some(c => c.facts.kind === 'sub-100-streak' && c.facts.streak === 4))
+})
+
+test('detectPlayerRecord ranks a positional game against history', () => {
+  const rosters = {
+    1: { starters: [{ name: 'QB Hero', points: 38, pos: 1, proTeamId: 1, lineupSlotId: 0, elig: [0] }], bench: [] },
+    2: { starters: [], bench: [] },
+  }
+  const playerHistory = [
+    { pos: 1, points: 40 },
+    { pos: 1, points: 35 },
+    { pos: 2, points: 50 },
+  ]
+  const [cand] = detectPlayerRecord([game(2026, 9, 110, 90)], rosters, playerHistory, TEAMS)
+  assert.equal(cand.facts.rank, 2)
+  assert.equal(cand.facts.pos, 'QB')
 })
 
 test('detectBenchFlip fires only when the swap flips the result', () => {

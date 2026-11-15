@@ -24,6 +24,12 @@ No framework; shared page chunks are inlined at build time by
 - `make build` — inline `<!--#include -->` directives from `src/*.html`
   into git-ignored `pub/`. `deploy-html` runs it automatically; never
   edit `pub/` or deploy `src/` directly.
+- `npm install --prefix scripts` — once per checkout/worktree, before
+  running generators or tests: the generators depend on `papaparse`
+  (declared in `scripts/package.json`) and the test files import the
+  generators, so `node --test scripts/*.test.mjs` dies with
+  `ERR_MODULE_NOT_FOUND` until this has been run. The GitHub workflows
+  already do this install; fresh local worktrees are the gap.
 - `node scripts/generate-stats.js owners index|all|<owner>` — rebuild
   stats tables into owner pages from `scripts/stats.csv`.
 - `make power` — regenerate the Power Rankings table at the top of `src/index.html` from the ESPN API.
@@ -417,6 +423,26 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 - `scripts/sync-team-names.js` rewrites each `<h1>` inside
   `.owner-logo-header` as `OWNER - <ESPN team name>`. It deploys and
   commits only when a name changed; no-op weeks skip S3 and CloudFront.
+
+## Wacky stat (detector + poster)
+
+- Generator: `scripts/generate-wacky-stat.mjs` — deterministic
+  detectors (blowout, Monday flip, h2h streak, milestones, player
+  records, …) over cached ESPN pulls in git-ignored
+  `scripts/.wacky-cache/`; prints ranked candidates, posts nothing.
+- Rarity floor: league-history detectors must rank ≤30th all-time
+  (tunable `--max-rank=N`); post nothing rather than noise.
+- The cache has no expiry: scheduled runs pass `--fresh` (drops only
+  the target season + week cache files for a live re-pull; history
+  stays cached). `--snapshot` saves the in-progress week's live games
+  + rosters to `snapshot-<season>-<week>.json` and exits. Two Muse
+  crons (not GHA) drive it: Sun ~15:30 CT snapshot, Sun ~18:45 CT
+  analysis delivering candidates for editorial approval.
+- Poster: `scripts/post-wacky-discord.mjs` — posts ONE hand-approved
+  text via the `DISCORD_WEBHOOK_WACKYSTAT` webhook. Dry-run by
+  default; only an explicit `--send` posts. Never wire it to a
+  workflow or schedule: the editorial approval is the gate.
+- Tests: `node --test scripts/generate-wacky-stat.test.mjs scripts/post-wacky-discord.test.mjs`.
 
 ## ESPN fantasy API gotchas
 

@@ -29,3 +29,6 @@ scripts/*.html
 # build output from scripts/build.mjs
 /pub/
 node_modules/
+
+# ESPN league JSON cache for wacky stat prototype
+scripts/.wacky-cache/

@@ -24,6 +24,7 @@ import {
   currentCacheFiles,
   clearCurrentCache,
   snapshotWeek,
+  liveGames,
 } from './generate-wacky-stat.mjs'
 import fs from 'node:fs'
 import os from 'node:os'
@@ -316,4 +317,46 @@ test('snapshotWeek prefers the league current scoring period', () => {
   assert.equal(snapshotWeek({ scoringPeriodId: 10, schedule: [decided(9, 'HOME'), decided(10, 'AWAY')] }), 10)
   // Fallback when the payload lacks scoringPeriodId.
   assert.equal(snapshotWeek({ schedule: [decided(9, 'HOME')] }), 10)
+})
+
+test('parseArgs: --live defaults off and parses', () => {
+  assert.equal(parseArgs([]).live, false)
+  assert.equal(parseArgs(['--live']).live, true)
+})
+
+const LIVE_LEAGUE = {
+  schedule: [
+    { matchupPeriodId: 10, playoffTierType: 'NONE', home: { teamId: 1 }, away: { teamId: 2 } },
+    { matchupPeriodId: 10, playoffTierType: 'NONE', home: { teamId: 3 }, away: { teamId: 4 } },
+    { matchupPeriodId: 10, playoffTierType: 'NONE', home: { teamId: 5 }, away: { teamId: 6 } },
+    { matchupPeriodId: 10, playoffTierType: 'WINNERS_BRACKET', home: { teamId: 7 }, away: { teamId: 8 } },
+    { matchupPeriodId: 9, playoffTierType: 'NONE', home: { teamId: 1 }, away: { teamId: 3 } },
+  ],
+}
+const rosterOf = (starterPts, benchPts = []) => ({
+  starters: starterPts.map(points => ({ points })),
+  bench: benchPts.map(points => ({ points })),
+})
+
+test('liveGames sums starters only, picks the provisional winner, rounds to 2dp', () => {
+  const rosters = {
+    1: rosterOf([60.1, 40.2], [99.9]), // bench points must not count
+    2: rosterOf([50.05, 30.05]),
+  }
+  const games = liveGames(LIVE_LEAGUE, 2026, 10, rosters)
+  assert.equal(games.length, 1) // other matchups lack rosters / are playoff / wrong week
+  const g = games[0]
+  assert.equal(g.homePts, 100.3)
+  assert.equal(g.awayPts, 80.1)
+  assert.equal(g.winnerId, 1)
+  assert.equal(g.loserId, 2)
+  assert.equal(g.winnerPts, 100.3)
+  assert.equal(g.loserPts, 80.1)
+  assert.equal(g.margin, 20.2)
+  assert.equal(g.provisional, true)
+})
+
+test('liveGames skips an exactly tied matchup (no provisional winner yet)', () => {
+  const rosters = { 1: rosterOf([50]), 2: rosterOf([25, 25]) }
+  assert.deepEqual(liveGames(LIVE_LEAGUE, 2026, 10, rosters), [])
 })

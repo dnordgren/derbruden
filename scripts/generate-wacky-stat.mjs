@@ -14,6 +14,7 @@
 // Usage:
 //   node scripts/generate-wacky-stat.mjs [--season=YYYY] [--week=N] [--offline] [--max-rank=N] [--fresh]
 //   node scripts/generate-wacky-stat.mjs --snapshot [--season=YYYY] [--week=N]
+//   node scripts/generate-wacky-stat.mjs --live [--season=YYYY]
 // Defaults: current season (Aug-Dec -> this year, else last year) and the
 // last completed week of that season.
 //
@@ -30,6 +31,13 @@
 // --snapshot instead saves the in-progress week's live games + rosters
 // to snapshot-<season>-<week>.json (separate from the main cache, so a
 // mid-game capture can never poison a later analysis run) and exits.
+//
+// --live analyzes the IN-PROGRESS week (ESPN scoringPeriodId): the
+// season view carries no live matchup scores (schedule totals stay 0
+// and winner flags unset until the week closes), but the roster pull's
+// per-player points ARE live, so team totals are summed from starters
+// and winners are provisional. Candidates are labeled LIVE/provisional
+// in the output; totals can only grow as remaining players play.
 
 import fs from 'node:fs'
 import path from 'node:path'
@@ -83,6 +91,45 @@ export function extractWeeklyGames(league, season) {
       winnerPts: homeWon ? homePts : awayPts,
       loserPts: homeWon ? awayPts : homePts,
       margin: Math.abs(homePts - awayPts),
+    })
+  }
+  return games
+}
+
+// Provisional games for the in-progress week: pairings come from the
+// schedule (whose own totals/winner are still 0/unset mid-week), team
+// totals are summed from the roster pull's live starter points, and
+// the leader is the provisional winner. Games with a missing roster or
+// an exactly tied total have no provisional winner and are skipped.
+// Same game shape as extractWeeklyGames, plus provisional: true.
+export function liveGames(league, season, week, rostersByTeam) {
+  const round2 = n => Math.round(n * 100) / 100
+  const starterTotal = roster => round2(roster.starters.reduce((sum, p) => sum + (Number(p.points) || 0), 0))
+  const games = []
+  for (const m of league.schedule || []) {
+    if (m.matchupPeriodId !== week) continue
+    if (m.playoffTierType && m.playoffTierType !== 'NONE') continue
+    if (!m.home || !m.away) continue
+    const home = rostersByTeam[m.home.teamId]
+    const away = rostersByTeam[m.away.teamId]
+    if (!home || !away) continue
+    const homePts = starterTotal(home)
+    const awayPts = starterTotal(away)
+    if (homePts === awayPts) continue
+    const homeWon = homePts > awayPts
+    games.push({
+      season,
+      week,
+      homeId: m.home.teamId,
+      awayId: m.away.teamId,
+      homePts,
+      awayPts,
+      winnerId: homeWon ? m.home.teamId : m.away.teamId,
+      loserId: homeWon ? m.away.teamId : m.home.teamId,
+      winnerPts: homeWon ? homePts : awayPts,
+      loserPts: homeWon ? awayPts : homePts,
+      margin: round2(Math.abs(homePts - awayPts)),
+      provisional: true,
     })
   }
   return games
@@ -803,11 +850,20 @@ export function lastCompletedWeek(league) {
 }
 
 export function parseArgs(argv) {
-  const args = { season: null, week: null, offline: false, fresh: false, snapshot: false, maxRank: MAX_HISTORY_RANK }
+  const args = {
+    season: null,
+    week: null,
+    offline: false,
+    fresh: false,
+    snapshot: false,
+    live: false,
+    maxRank: MAX_HISTORY_RANK,
+  }
   for (const arg of argv) {
     if (arg === '--offline') args.offline = true
     else if (arg === '--fresh') args.fresh = true
     else if (arg === '--snapshot') args.snapshot = true
+    else if (arg === '--live') args.live = true
     else if (arg.startsWith('--season=')) args.season = Number(arg.split('=')[1])
     else if (arg.startsWith('--week=')) args.week = Number(arg.split('=')[1])
     else if (arg.startsWith('--max-rank=')) args.maxRank = Number(arg.split('=')[1])
@@ -819,14 +875,15 @@ export function parseArgs(argv) {
 async function main() {
   const args = parseArgs(process.argv.slice(2))
   const season = args.season ?? defaultSeason()
-  // A fresh or snapshot run must see live data for the target season:
-  // drop its league JSON first, then (once the week is known) that
-  // week's roster + NFL day-map files. History is never dropped.
-  if (args.fresh || args.snapshot) clearCurrentCache(season)
+  // A fresh, snapshot, or live run must see live data for the target
+  // season: drop its league JSON first, then (once the week is known)
+  // that week's roster + NFL day-map files. History is never dropped.
+  // Live implies fresh — stale rosters would defeat the point.
+  if (args.fresh || args.snapshot || args.live) clearCurrentCache(season)
   const targetLeague = await loadJson(`season-${season}.json`, seasonUrl(season), args.offline)
-  const week = args.week ?? (args.snapshot ? snapshotWeek(targetLeague) : lastCompletedWeek(targetLeague))
+  const week = args.week ?? (args.snapshot || args.live ? snapshotWeek(targetLeague) : lastCompletedWeek(targetLeague))
   if (!week) throw new Error(`No completed week found for ${season}`)
-  if (args.fresh || args.snapshot) clearCurrentCache(season, week)
+  if (args.fresh || args.snapshot || args.live) clearCurrentCache(season, week)
 
   if (args.snapshot) {
     // Raw schedule entries for the week, decided or not — extractWeeklyGames
@@ -873,13 +930,16 @@ async function main() {
     seasonGames.set(y, extractWeeklyGames(league, y))
   }
   const history = buildHistory(seasonGames, season, week)
-  const games = seasonGames.get(season).filter(g => g.week === week)
+  let games = seasonGames.get(season).filter(g => g.week === week)
   const teams = extractTeams(targetLeague)
 
   // Roster weeks for the target week (required) and every history week
   // (best effort: a missing cache shrinks the player-level baselines,
   // it does not block the score-level detectors).
   const rosters = await loadRosterWeek(season, week, args.offline)
+  // Live mode: the season view has no decided games for the in-progress
+  // week, so build provisional games from the live roster totals.
+  if (args.live) games = liveGames(targetLeague, season, week, rosters)
   const weekRosters = new Map([[`${season}|${week}`, rosters]])
   const weeksWanted = new Map()
   for (const [y, gs] of seasonGames) {
@@ -950,7 +1010,9 @@ async function main() {
     priorPerfectCount,
     playerHistory,
   })
-  console.log(`Wacky stat candidates — Der Bruden ${season} Week ${week} (DRY RUN, nothing posted)`)
+  console.log(
+    `Wacky stat candidates — Der Bruden ${season} Week ${week}${args.live ? ' LIVE (provisional — week in progress)' : ''} (DRY RUN, nothing posted)`
+  )
   console.log(`History baseline: ${history.length} decided regular-season games, ${FIRST_HISTORY_SEASON}-${season}`)
   if (!candidates.length) console.log('No candidates cleared the detector thresholds this week.')
   candidates.forEach((c, i) => {
@@ -958,7 +1020,7 @@ async function main() {
     console.log(`   ${c.headline}`)
   })
   console.log('\nJSON:')
-  console.log(JSON.stringify({ season, week, candidates }, null, 2))
+  console.log(JSON.stringify({ season, week, live: args.live, candidates }, null, 2))
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {

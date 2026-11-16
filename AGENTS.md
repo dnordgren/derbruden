@@ -435,9 +435,13 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 - The cache has no expiry: scheduled runs pass `--fresh` (drops only
   the target season + week cache files for a live re-pull; history
   stays cached). `--snapshot` saves the in-progress week's live games
-  + rosters to `snapshot-<season>-<week>.json` and exits. Two Muse
-  crons (not GHA) drive it: Sun ~15:30 CT snapshot, Sun ~18:45 CT
-  analysis delivering candidates for editorial approval.
+  + rosters to `snapshot-<season>-<week>.json` and exits. `--live`
+  analyzes the in-progress week: the season view has no live matchup
+  scores, so team totals are summed from the roster pull's live
+  starter points and winners are provisional (output is labeled
+  LIVE; totals can only grow). Two Muse crons (not GHA) drive it:
+  Sun ~15:30 CT snapshot, Sun ~18:45 CT `--live` analysis delivering
+  provisional candidates for editorial approval.
 - Poster: `scripts/post-wacky-discord.mjs` — posts ONE hand-approved
   text via the `DISCORD_WEBHOOK_WACKYSTAT` webhook. Dry-run by
   default; only an explicit `--send` posts. Never wire it to a

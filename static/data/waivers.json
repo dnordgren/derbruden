@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-18T21:38:48.316Z",
+  "updated": "2026-11-19T21:53:45.145Z",
   "order": [
     {
       "rank": 1,
@@ -31,7 +31,7 @@
       "wins": 7,
       "losses": 3,
       "ties": 0,
-      "moves": 10
+      "moves": 11
     },
     {
       "rank": 4,
@@ -61,7 +61,7 @@
       "wins": 3,
       "losses": 7,
       "ties": 0,
-      "moves": 20
+      "moves": 19
     },
     {
       "rank": 7,
@@ -71,7 +71,7 @@
       "wins": 3,
       "losses": 7,
       "ties": 0,
-      "moves": 24
+      "moves": 25
     },
     {
       "rank": 8,
@@ -91,7 +91,7 @@
       "wins": 7,
       "losses": 3,
       "ties": 0,
-      "moves": 24
+      "moves": 23
     },
     {
       "rank": 10,
@@ -105,6 +105,36 @@
     }
   ],
   "moves": [
+    {
+      "id": "3d57d28d-b0e6-4af9-920d-cb4d6484ce8f",
+      "date": "2026-11-19T12:37:42.175Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 10,
+      "owner": "ZS",
+      "adds": [
+        "Chig Okonkwo"
+      ],
+      "drops": [
+        "Adonai Mitchell"
+      ],
+      "bid": null
+    },
+    {
+      "id": "cbff678c-ad26-48fc-a41e-6a7e51620123",
+      "date": "2026-11-19T03:31:27.285Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 7,
+      "owner": "CR",
+      "adds": [
+        "Jacory Croskey-Merritt"
+      ],
+      "drops": [
+        "Chris Rodriguez Jr."
+      ],
+      "bid": null
+    },
     {
       "id": "1c21f9fc-80ee-4acd-8401-89ada4e0b5cd",
       "date": "2026-11-18T17:06:06.290Z",
@@ -2250,34 +2280,6 @@
       ],
       "drops": [
         "MarShawn Lloyd"
-      ],
-      "bid": null
-    },
-    {
-      "id": "0c544136-9838-443a-a559-6d1419ee3273",
-      "date": "2026-09-23T07:20:02.703Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 2,
-      "owner": "DM",
-      "adds": [
-        "Minnesota Vikings D/ST"
-      ],
-      "drops": [],
-      "bid": null
-    },
-    {
-      "id": "56c564d5-bbf0-49d5-91f2-0d4916367c50",
-      "date": "2026-09-23T07:20:02.703Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 1,
-      "owner": "GM",
-      "adds": [
-        "Jonah Coleman"
-      ],
-      "drops": [
-        "Tampa Bay Buccaneers D/ST"
       ],
       "bid": null
     }

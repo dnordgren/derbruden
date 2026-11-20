@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-19T21:53:45.145Z",
+  "updated": "2026-11-20T21:35:44.882Z",
   "order": [
     {
       "rank": 1,
@@ -41,7 +41,7 @@
       "wins": 4,
       "losses": 6,
       "ties": 0,
-      "moves": 14
+      "moves": 15
     },
     {
       "rank": 5,
@@ -61,7 +61,7 @@
       "wins": 3,
       "losses": 7,
       "ties": 0,
-      "moves": 19
+      "moves": 18
     },
     {
       "rank": 7,
@@ -91,7 +91,7 @@
       "wins": 7,
       "losses": 3,
       "ties": 0,
-      "moves": 23
+      "moves": 22
     },
     {
       "rank": 10,
@@ -101,10 +101,40 @@
       "wins": 6,
       "losses": 4,
       "ties": 0,
-      "moves": 18
+      "moves": 19
     }
   ],
   "moves": [
+    {
+      "id": "efd1e25f-9fc3-44be-a9a2-bf8d6c8d2dfc",
+      "date": "2026-11-20T11:50:30.438Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 4,
+      "owner": "AN",
+      "adds": [
+        "Keenan Allen"
+      ],
+      "drops": [
+        "Chris Boswell"
+      ],
+      "bid": null
+    },
+    {
+      "id": "ce7027cb-6b24-4b63-b884-abcf699e89ab",
+      "date": "2026-11-20T02:26:24.696Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Kenny Gainwell"
+      ],
+      "drops": [
+        "Corey Kiner"
+      ],
+      "bid": null
+    },
     {
       "id": "3d57d28d-b0e6-4af9-920d-cb4d6484ce8f",
       "date": "2026-11-19T12:37:42.175Z",
@@ -2250,36 +2280,6 @@
       ],
       "drops": [
         "Los Angeles Chargers D/ST"
-      ],
-      "bid": null
-    },
-    {
-      "id": "25821642-3b29-4e29-8f23-93dfb2024c12",
-      "date": "2026-09-23T07:20:02.705Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 1,
-      "owner": "GM",
-      "adds": [
-        "Evan McPherson"
-      ],
-      "drops": [
-        "Chris Boswell"
-      ],
-      "bid": null
-    },
-    {
-      "id": "a4a92063-303c-4b42-9803-b484a98cd866",
-      "date": "2026-09-23T07:20:02.704Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 2,
-      "owner": "DM",
-      "adds": [
-        "Josh Downs"
-      ],
-      "drops": [
-        "MarShawn Lloyd"
       ],
       "bid": null
     }

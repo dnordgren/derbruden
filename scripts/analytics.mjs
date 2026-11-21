@@ -142,10 +142,15 @@ export function summarize(records) {
     if (record.edgeResult === 'Miss') misses += 1
 
     if (record.time) {
-      const day = record.time.slice(0, 10)
-      bump(days, day)
-      const hour = new Date(record.time).getUTCHours()
-      if (!Number.isNaN(hour)) bump(hours, String(hour).padStart(2, '0'))
+      // One parse path for both buckets: an unparseable timestamp (or an
+      // epoch-shaped v1 field) skips day and hour together instead of landing
+      // garbage in one and a real value in the other.
+      const t = Date.parse(record.time)
+      if (!Number.isNaN(t)) {
+        const when = new Date(t)
+        bump(days, when.toISOString().slice(0, 10))
+        bump(hours, String(when.getUTCHours()).padStart(2, '0'))
+      }
     }
 
     const cid = clientIdFromCookie(record.cookie)
@@ -154,7 +159,9 @@ export function summarize(records) {
       clients.add(cid)
       if (!cookieIps.has(cid)) cookieIps.set(cid, new Set())
       cookieIps.get(cid).add(record.ip)
-    } else if (!bot && record.ip) {
+    } else if (!bot && record.ip && isPageView(record.uri)) {
+      // A visitor is someone who read a page. An address that only ever
+      // fetched assets (favicon, fonts) is not a person in this bucket.
       ipOnly.add(record.ip)
     }
   }

@@ -414,6 +414,9 @@ Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs
   visitors does not overstate the audience.
 - Distinct-client counts are still approximate. A shared IP with cleared
   cookies can look like more than one person.
+- "IP-only visitors" counts addresses that fetched a page (HTML) without a
+  `db_cid`. An address that only ever pulled assets — favicon, fonts — is not
+  a visitor, even though its requests appear in every other bucket.
 - IP plus a persistent client id is pseudonymous personal data. Keep the log
   bucket private, expire objects (a 90-day lifecycle rule is plenty), and do
   not join these logs to anything identifying.

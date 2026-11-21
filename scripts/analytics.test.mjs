@@ -171,6 +171,25 @@ test('an IP that later carries a cookie is not also an IP-only visitor', () => {
   assert.equal(report.ipOnlyVisitors, 1, 'the resolved address is not double counted')
 })
 
+test('an address that only ever fetched assets is not an IP-only visitor', () => {
+  const report = summarize([
+    normalize(v2({ 'cs-uri-stem': '/static/css/site.css' })),
+    normalize(v2({ 'cs-uri-stem': '/static/fonts/archivo-latin-var.woff2' })),
+  ])
+  assert.equal(report.humanHits, 2, 'both requests still counted as human traffic')
+  assert.equal(report.ipOnlyAddresses, 0)
+  assert.equal(report.ipOnlyVisitors, 0, 'a favicon-only address is not a reader')
+})
+
+test('day and hour buckets skip unparseable timestamps together', () => {
+  const report = summarize([
+    normalize(v2({ timestamp: '2026-11-03T14:02:11Z' })),
+    normalize(v2({ timestamp: 'not-a-timestamp' })),
+  ])
+  assert.deepEqual(report.days, [['2026-11-03', 1]])
+  assert.deepEqual(report.hours, [['14', 1]], 'hour bucket does not accept what the day bucket rejects')
+})
+
 test('counts RefreshHit as a cache hit', () => {
   const report = summarize([
     normalize(v2({ 'x-edge-result-type': 'Hit' })),

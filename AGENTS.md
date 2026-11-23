@@ -24,12 +24,14 @@ No framework; shared page chunks are inlined at build time by
 - `make build` — inline `<!--#include -->` directives from `src/*.html`
   into git-ignored `pub/`. `deploy-html` runs it automatically; never
   edit `pub/` or deploy `src/` directly.
-- `npm install --prefix scripts` — once per checkout/worktree, before
-  running generators or tests: the generators depend on `papaparse`
-  (declared in `scripts/package.json`) and the test files import the
-  generators, so `node --test scripts/*.test.mjs` dies with
-  `ERR_MODULE_NOT_FOUND` until this has been run. The GitHub workflows
-  already do this install; fresh local worktrees are the gap.
+- `npm ci` — once per checkout/worktree, before running generators or
+  tests: the generators depend on `papaparse` (declared in
+  `scripts/package.json`, wired up as an npm workspace by the root
+  `package.json`) and the test files import the generators, so
+  `node --test scripts/*.test.mjs` dies with `ERR_MODULE_NOT_FOUND`
+  until this has been run. Deps hoist to the root `node_modules`;
+  plain `npm install` at root or in `scripts/` also works. The GitHub
+  workflows already do this install; fresh local worktrees are the gap.
 - `node scripts/generate-stats.js owners index|all|<owner>` — rebuild
   stats tables into owner pages from `scripts/stats.csv`.
 - `make power` — regenerate the Power Rankings table at the top of `src/index.html` from the ESPN API.

@@ -23,10 +23,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: scripts/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm install --prefix scripts
+        run: npm ci
 
       - name: Configure league auth
         run: |

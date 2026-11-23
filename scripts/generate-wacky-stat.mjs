@@ -148,9 +148,11 @@ export function extractTeams(league) {
 }
 
 // Applied fantasy total for one scoring period, same convention as the
-// sit/start generator. Falls back to the pool entry's appliedStatTotal,
-// which is period-scoped because our roster pulls always pass
-// scoringPeriodId.
+// sit/start generator: null when the player has no actual-stat split for
+// the week (bye/DNP in a completed week, or not yet played in a live
+// one). Never fall back to playerPoolEntry.appliedStatTotal here — it is
+// not period-accurate for a player who has not played yet (it carries a
+// stale prior total), which fabricated live candidates (issue #71).
 export function weekScoreOf(player, week) {
   const split = (player.stats || []).find(
     s => s.statSourceId === 0 && s.statSplitTypeId === 1 && s.scoringPeriodId === week
@@ -171,10 +173,9 @@ export function rosterWeek(rosterLeague, week) {
       const player = e.playerPoolEntry?.player
       if (!player) continue
       let points = weekScoreOf(player, week)
-      if (points == null && Number.isFinite(Number(e.playerPoolEntry?.appliedStatTotal))) {
-        points = Number(e.playerPoolEntry.appliedStatTotal)
-      }
-      if (points == null) continue
+      // No actual split yet -> he has scored 0 this week (live week) or
+      // 0 for the week (bye/DNP, completed week).
+      if (points == null) points = 0
       const entry = {
         name: player.fullName || `Player ${e.playerId}`,
         points,
@@ -576,6 +577,9 @@ export function optimalLineupTotal(entries, slots) {
 export function isPerfectWeek(teamRoster) {
   if (!teamRoster || !teamRoster.starters.length) return false
   const actual = teamRoster.starters.reduce((s, p) => s + p.points, 0)
+  // An all-zero lineup (live week, none of the team's players have
+  // kicked off yet) is not a perfect week.
+  if (actual <= 0) return false
   const slots = teamRoster.starters.map(p => p.lineupSlotId)
   const optimal = optimalLineupTotal([...teamRoster.starters, ...teamRoster.bench], slots)
   return optimal - actual < 0.005

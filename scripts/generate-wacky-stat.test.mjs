@@ -25,6 +25,8 @@ import {
   clearCurrentCache,
   snapshotWeek,
   liveGames,
+  weekScoreOf,
+  rosterWeek,
 } from './generate-wacky-stat.mjs'
 import fs from 'node:fs'
 import os from 'node:os'
@@ -359,4 +361,86 @@ test('liveGames sums starters only, picks the provisional winner, rounds to 2dp'
 test('liveGames skips an exactly tied matchup (no provisional winner yet)', () => {
   const rosters = { 1: rosterOf([50]), 2: rosterOf([25, 25]) }
   assert.deepEqual(liveGames(LIVE_LEAGUE, 2026, 10, rosters), [])
+})
+
+test('weekScoreOf returns null without an actual split (projection/other week only)', () => {
+  const player = {
+    stats: [
+      { statSourceId: 1, statSplitTypeId: 1, scoringPeriodId: 11, appliedTotal: 30.1 },
+      { statSourceId: 0, statSplitTypeId: 1, scoringPeriodId: 10, appliedTotal: 22.5 },
+    ],
+  }
+  assert.equal(weekScoreOf(player, 11), null)
+  assert.equal(weekScoreOf(player, 10), 22.5)
+})
+
+test('rosterWeek scores not-yet-played players 0, never the stale pool total (issue #71)', () => {
+  // Week 11 live: JSN has only a projection entry; his appliedStatTotal
+  // is his most recent completed game, not this week's score. CMC's real
+  // line has posted and must come through unchanged.
+  const raw = {
+    teams: [
+      {
+        id: 1,
+        roster: {
+          entries: [
+            {
+              playerId: 1,
+              lineupSlotId: 20,
+              playerPoolEntry: {
+                appliedStatTotal: 30.1,
+                player: {
+                  fullName: 'Jaxon Smith-Njigba',
+                  defaultPositionId: 3,
+                  proTeamId: 12,
+                  eligibleSlots: [2, 23],
+                  stats: [{ statSourceId: 1, statSplitTypeId: 1, scoringPeriodId: 11, appliedTotal: 31.2 }],
+                },
+              },
+            },
+            {
+              playerId: 2,
+              lineupSlotId: 2,
+              playerPoolEntry: {
+                appliedStatTotal: 47.8,
+                player: {
+                  fullName: 'Christian McCaffrey',
+                  defaultPositionId: 2,
+                  proTeamId: 25,
+                  eligibleSlots: [2, 23],
+                  stats: [{ statSourceId: 0, statSplitTypeId: 1, scoringPeriodId: 11, appliedTotal: 1.4 }],
+                },
+              },
+            },
+          ],
+        },
+      },
+    ],
+  }
+  const week = rosterWeek(raw, 11)
+  const bench = week[1].bench.find(p => p.name === 'Jaxon Smith-Njigba')
+  assert.equal(bench.points, 0)
+  const starter = week[1].starters.find(p => p.name === 'Christian McCaffrey')
+  assert.equal(starter.points, 1.4)
+})
+
+test('bench-flip cannot fire on a not-yet-played bench player (live week)', () => {
+  const rosters = {
+    2: {
+      starters: [{ name: 'Starter', points: 5, lineupSlotId: 4, elig: [4] }],
+      bench: [{ name: 'Sunday Night Star', points: 0, lineupSlotId: 20, elig: [4, 23] }],
+    },
+  }
+  assert.deepEqual(detectBenchFlip([game(2026, 11, 100, 84.3)], rosters, TEAMS), [])
+})
+
+test('isPerfectWeek is false for an all-zero lineup (live week, nobody kicked off)', () => {
+  const notYet = {
+    starters: [
+      { name: 'QB1', points: 0, lineupSlotId: 0, elig: [0] },
+      { name: 'RB1', points: 0, lineupSlotId: 2, elig: [2, 23] },
+    ],
+    bench: [{ name: 'RB2', points: 0, lineupSlotId: 20, elig: [2, 23] }],
+  }
+  assert.equal(isPerfectWeek(notYet), false)
 })

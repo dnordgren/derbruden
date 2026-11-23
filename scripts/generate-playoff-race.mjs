@@ -16,13 +16,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { TEAM_OWNERS } from './team-owners.js'
-import {
-  authCookie,
-  defaultSeason,
-  fetchJson,
-  leagueUrl,
-  resolveConfig as baseResolveConfig,
-} from './lib/espn.mjs'
+import { authCookie, defaultSeason, fetchJson, leagueUrl, resolveConfig as baseResolveConfig } from './lib/espn.mjs'
 import { escapeHtml, upsertSection, writeJsonAtomic } from './lib/html.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -64,14 +58,20 @@ export function parseArgs(argv) {
     else if (/^\d+$/.test(arg) && !args.startWeek) args.startWeek = Number(arg)
     else throw new Error(`Unknown argument: ${arg}`)
   }
-  if (args.startWeek != null && (!Number.isInteger(args.startWeek) || args.startWeek < 1)) throw new Error('--start-week needs a positive integer')
+  if (args.startWeek != null && (!Number.isInteger(args.startWeek) || args.startWeek < 1))
+    throw new Error('--start-week needs a positive integer')
   return args
 }
 
 export function extractTeams(league) {
   const map = {}
   for (const t of league.teams || []) {
-    map[t.id] = { id: t.id, abbrev: t.abbrev, name: t.name || [t.location, t.nickname].filter(Boolean).join(' ') || `Team ${t.id}`, record: t.record?.overall || null }
+    map[t.id] = {
+      id: t.id,
+      abbrev: t.abbrev,
+      name: t.name || [t.location, t.nickname].filter(Boolean).join(' ') || `Team ${t.id}`,
+      record: t.record?.overall || null,
+    }
   }
   return map
 }
@@ -110,15 +110,23 @@ export function computeStandings(decidedGames, teamsById) {
   }
   for (const g of decidedGames) {
     if (!g.decided) continue
-    const hid = g.homeId, aid = g.awayId
+    const hid = g.homeId,
+      aid = g.awayId
     if (!(hid in stats) || !(aid in stats)) continue
     stats[hid].pf += g.homeScore
     stats[hid].pa += g.awayScore
     stats[aid].pf += g.awayScore
     stats[aid].pa += g.homeScore
-    if (g.winner === 'home') { stats[hid].wins += 1; stats[aid].losses += 1 }
-    else if (g.winner === 'away') { stats[aid].wins += 1; stats[hid].losses += 1 }
-    else if (g.winner === 'tie') { stats[hid].ties += 1; stats[aid].ties += 1 }
+    if (g.winner === 'home') {
+      stats[hid].wins += 1
+      stats[aid].losses += 1
+    } else if (g.winner === 'away') {
+      stats[aid].wins += 1
+      stats[hid].losses += 1
+    } else if (g.winner === 'tie') {
+      stats[hid].ties += 1
+      stats[aid].ties += 1
+    }
   }
   return stats
 }
@@ -143,10 +151,10 @@ export function standingsList(stats, teamsById) {
   })
   rows.sort((a, b) => b.winValue - a.winValue || b.pf - a.pf)
   // assign rank with ties broken by order (1..n)
-  rows.forEach((r, i) => r.rank = i + 1)
+  rows.forEach((r, i) => (r.rank = i + 1))
   // games back: leader winValue - team winValue
   const leader = rows[0]?.winValue ?? 0
-  rows.forEach(r => r.gamesBack = leader - r.winValue)
+  rows.forEach(r => (r.gamesBack = leader - r.winValue))
   // remaining games count is filled later
   return rows
 }
@@ -174,11 +182,21 @@ export function computeClinchEliminated(currentStats, remainingGames, playoffTea
     const eliminated = standings.slice(playoffTeamCount).map(r => r.teamId)
     const bestRank = {}
     const worstRank = {}
-    for (const r of standings) { bestRank[r.teamId] = r.rank; worstRank[r.teamId] = r.rank }
+    for (const r of standings) {
+      bestRank[r.teamId] = r.rank
+      worstRank[r.teamId] = r.rank
+    }
     return { clinched, eliminated, bestRank, worstRank, remaining: 0 }
   }
   if (n > ENUM_LIMIT) {
-    return { clinched: [], eliminated: [], bestRank: {}, worstRank: {}, note: `too many remaining games (${n}) to enumerate`, remaining: n }
+    return {
+      clinched: [],
+      eliminated: [],
+      bestRank: {},
+      worstRank: {},
+      note: `too many remaining games (${n}) to enumerate`,
+      remaining: n,
+    }
   }
   // current win values
   const baseWins = {}
@@ -186,7 +204,10 @@ export function computeClinchEliminated(currentStats, remainingGames, playoffTea
 
   const bestRank = {}
   const worstRank = {}
-  for (const id of teamIds) { bestRank[id] = Infinity; worstRank[id] = -Infinity }
+  for (const id of teamIds) {
+    bestRank[id] = Infinity
+    worstRank[id] = -Infinity
+  }
 
   const total = 1 << n
   // For each mask, compute final wins
@@ -202,7 +223,8 @@ export function computeClinchEliminated(currentStats, remainingGames, playoffTea
     // For each team, compute best/worst rank under wins-only tie grouping
     for (const tid of teamIds) {
       const w = finalWins[tid]
-      let greater = 0, greaterOrEqual = 0
+      let greater = 0,
+        greaterOrEqual = 0
       for (const oid of teamIds) {
         const ow = finalWins[oid]
         if (ow > w) greater++
@@ -263,7 +285,8 @@ export function hashSeed(str) {
 export function mulberry32(seed) {
   let a = seed >>> 0
   return function () {
-    a |= 0; a = (a + 0x6D2B79F5) | 0
+    a |= 0
+    a = (a + 0x6d2b79f5) | 0
     let t = Math.imul(a ^ (a >>> 15), 1 | a)
     t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296
@@ -274,7 +297,7 @@ export function mulberry32(seed) {
 export function normalCdf(x) {
   if (x === 0) return 0.5
   const t = 1 / (1 + 0.2316419 * Math.abs(x))
-  const d = 0.3989423 * Math.exp(-x * x / 2)
+  const d = 0.3989423 * Math.exp((-x * x) / 2)
   const p = d * t * (0.3193815 + t * (-0.3565638 + t * (1.781478 + t * (-1.821256 + t * 1.330274))))
   return x > 0 ? 1 - p : p
 }
@@ -340,13 +363,16 @@ export function computeOdds(currentStats, remainingGames, playoffTeamCount, opts
   }
   const po = {}
   const di = {}
-  for (const id of teamIds) { po[id] = 0; di[id] = 0 }
+  for (const id of teamIds) {
+    po[id] = 0
+    di[id] = 0
+  }
 
   const tally = (finalWins, weight, resolveTies) => {
     if (resolveTies) {
-      const sorted = [...teamIds].sort((a, b) => (finalWins[b] - finalWins[a]) || (pf[b] - pf[a]))
+      const sorted = [...teamIds].sort((a, b) => finalWins[b] - finalWins[a] || pf[b] - pf[a])
       for (let i = 0; i < playoffTeamCount && i < sorted.length; i++) po[sorted[i]] += weight
-      const last = [...teamIds].sort((a, b) => (finalWins[a] - finalWins[b]) || (pf[a] - pf[b]))[0]
+      const last = [...teamIds].sort((a, b) => finalWins[a] - finalWins[b] || pf[a] - pf[b])[0]
       di[last] += weight
     } else {
       const sorted = [...teamIds].sort((a, b) => finalWins[b] - finalWins[a])
@@ -397,7 +423,12 @@ export function computeOdds(currentStats, remainingGames, playoffTeamCount, opts
       tally(fw, weight, false)
     }
   } else {
-    const seedStr = JSON.stringify({ s: opts.season ?? '', t: teamIds.map(id => [id, base[id]]), g: remainingGames.map(g => [g.week, g.homeId, g.awayId]), m: teamIds.map(id => opts.scoreStats?.[id] ? Math.round(opts.scoreStats[id].mean * 10) / 10 : null) })
+    const seedStr = JSON.stringify({
+      s: opts.season ?? '',
+      t: teamIds.map(id => [id, base[id]]),
+      g: remainingGames.map(g => [g.week, g.homeId, g.awayId]),
+      m: teamIds.map(id => (opts.scoreStats?.[id] ? Math.round(opts.scoreStats[id].mean * 10) / 10 : null)),
+    })
     const rand = mulberry32(hashSeed(seedStr))
     const samples = opts.samples ?? ODDS_MONTE_CARLO_SAMPLES
     for (let s = 0; s < samples; s++) {
@@ -422,7 +453,10 @@ export function computePivotalGames(currentStats, remainingGames, playoffTeamCou
   for (const g of remainingGames) {
     const rest = remainingGames.filter(x => x !== g)
     const worlds = {}
-    for (const [key, winnerId] of [['home', g.homeId], ['away', g.awayId]]) {
+    for (const [key, winnerId] of [
+      ['home', g.homeId],
+      ['away', g.awayId],
+    ]) {
       const st = {}
       for (const id of teamIds) st[id] = { ...currentStats[id] }
       if (winnerId in st) st[winnerId].wins += 1
@@ -433,8 +467,10 @@ export function computePivotalGames(currentStats, remainingGames, playoffTeamCou
     let swing = 0
     const shifts = []
     for (const id of teamIds) {
-      const poA = worlds.away[id].playoff, poH = worlds.home[id].playoff
-      const dA = worlds.away[id].diaper, dH = worlds.home[id].diaper
+      const poA = worlds.away[id].playoff,
+        poH = worlds.home[id].playoff
+      const dA = worlds.away[id].diaper,
+        dH = worlds.home[id].diaper
       swing = Math.max(swing, Math.abs(poH - poA), Math.abs(dH - dA))
       if (Math.abs(poH - poA) >= threshold || Math.abs(dH - dA) >= threshold) {
         shifts.push({ teamId: id, owner: ownerFor(id), poAway: poA, poHome: poH, dAway: dA, dHome: dH })
@@ -445,10 +481,14 @@ export function computePivotalGames(currentStats, remainingGames, playoffTeamCou
     const h = opts.scoreStats?.[g.homeId]
     const a = opts.scoreStats?.[g.awayId]
     out.push({
-      week: g.week, homeId: g.homeId, awayId: g.awayId,
-      homeOwner: ownerFor(g.homeId), awayOwner: ownerFor(g.awayId),
+      week: g.week,
+      homeId: g.homeId,
+      awayId: g.awayId,
+      homeOwner: ownerFor(g.homeId),
+      awayOwner: ownerFor(g.awayId),
       homeWinProb: h && a ? Math.round(gameWinProb(h.mean, h.sd, a.mean, a.sd) * 100) : 50,
-      swing, shifts,
+      swing,
+      shifts,
     })
   }
   out.sort((a, b) => a.week - b.week || b.swing - a.swing)
@@ -496,8 +536,8 @@ export function buildScenarios(currentStats, remainingGames, playoffTeamCount, t
   const remByTeamHold = countRemainingByTeam(futureRemaining)
   const remByTeamFlip = remByTeamHold
 
-  holdStandings.forEach(r => r.remaining = remByTeamHold[r.teamId] ?? 0)
-  flipStandings.forEach(r => r.remaining = remByTeamFlip[r.teamId] ?? 0)
+  holdStandings.forEach(r => (r.remaining = remByTeamHold[r.teamId] ?? 0))
+  flipStandings.forEach(r => (r.remaining = remByTeamFlip[r.teamId] ?? 0))
 
   return {
     currentWeek,
@@ -509,9 +549,11 @@ export function buildScenarios(currentStats, remainingGames, playoffTeamCount, t
       awayOwner: TEAM_OWNERS[g.awayId]?.owner ?? `Team ${g.awayId}`,
       homeScore: g.homeScore,
       awayScore: g.awayScore,
-      leader: currentLeaderForGame(g) ? (TEAM_OWNERS[currentLeaderForGame(g)]?.owner ?? `Team ${currentLeaderForGame(g)}`) : null,
+      leader: currentLeaderForGame(g)
+        ? (TEAM_OWNERS[currentLeaderForGame(g)]?.owner ?? `Team ${currentLeaderForGame(g)}`)
+        : null,
       leaderId: currentLeaderForGame(g),
-      holdWinner: (currentLeaderForGame(g) ?? g.homeId),
+      holdWinner: currentLeaderForGame(g) ?? g.homeId,
       flipWinner: (currentLeaderForGame(g) ?? g.homeId) === g.homeId ? g.awayId : g.homeId,
     })),
     hold: { stats: holdStats, clinched: holdClinched, standings: holdStandings },
@@ -535,25 +577,46 @@ function countRemainingByTeam(remainingGames) {
   return map
 }
 
-function ownerFor(teamId) { return TEAM_OWNERS[teamId]?.owner ?? `Team ${teamId}` }
+function ownerFor(teamId) {
+  return TEAM_OWNERS[teamId]?.owner ?? `Team ${teamId}`
+}
 
-function teamNameFor(teamId, teamsById) { return teamsById[teamId]?.name ?? ownerFor(teamId) }
+function teamNameFor(teamId, teamsById) {
+  return teamsById[teamId]?.name ?? ownerFor(teamId)
+}
 
-export function renderStandingsTable(standings, clinchedSet, eliminatedSet, doomedSet = new Set(), safeSet = new Set()) {
-  const rows = standings.map(r => {
-    const isClinched = clinchedSet.has(r.teamId)
-    const isEliminated = eliminatedSet.has(r.teamId)
-    const isDoomed = doomedSet.has(r.teamId)
-    const isSafe = safeSet.has(r.teamId)
-    const badge = (isClinched ? ' <span class="badge clinched">x</span>' : '')
-      + (isEliminated ? ' <span class="badge eliminated">e</span>' : '')
-      + (isDoomed ? ' <span class="badge doomed">d</span>' : '')
-      + (isSafe ? ' <span class="badge safe">s</span>' : '')
-    const rowClass = isClinched ? 'clinched' : isEliminated ? 'eliminated' : isDoomed ? 'doomed' : isSafe ? 'safe' : ''
-    const ownerCell = TEAM_OWNERS[r.teamId] ? `<a href="./${TEAM_OWNERS[r.teamId].page}">${r.owner}</a>` : r.owner
-    const record = `${r.wins}-${r.losses}${r.ties ? `-${r.ties}` : ''}`
-    return `<tr class="${rowClass}"><td class="number">${r.rank}</td><td class="owner">${ownerCell}${badge}</td><td>${escapeHtml(r.name)}</td><td class="number">${record}</td><td class="number">${r.pf.toFixed(1)}</td><td class="number">${r.playoffPct ?? '-'}</td><td class="number">${r.diaperPct ?? '-'}</td></tr>`
-  }).join('\n')
+export function renderStandingsTable(
+  standings,
+  clinchedSet,
+  eliminatedSet,
+  doomedSet = new Set(),
+  safeSet = new Set()
+) {
+  const rows = standings
+    .map(r => {
+      const isClinched = clinchedSet.has(r.teamId)
+      const isEliminated = eliminatedSet.has(r.teamId)
+      const isDoomed = doomedSet.has(r.teamId)
+      const isSafe = safeSet.has(r.teamId)
+      const badge =
+        (isClinched ? ' <span class="badge clinched">x</span>' : '') +
+        (isEliminated ? ' <span class="badge eliminated">e</span>' : '') +
+        (isDoomed ? ' <span class="badge doomed">d</span>' : '') +
+        (isSafe ? ' <span class="badge safe">s</span>' : '')
+      const rowClass = isClinched
+        ? 'clinched'
+        : isEliminated
+          ? 'eliminated'
+          : isDoomed
+            ? 'doomed'
+            : isSafe
+              ? 'safe'
+              : ''
+      const ownerCell = TEAM_OWNERS[r.teamId] ? `<a href="./${TEAM_OWNERS[r.teamId].page}">${r.owner}</a>` : r.owner
+      const record = `${r.wins}-${r.losses}${r.ties ? `-${r.ties}` : ''}`
+      return `<tr class="${rowClass}"><td class="number">${r.rank}</td><td class="owner">${ownerCell}${badge}</td><td>${escapeHtml(r.name)}</td><td class="number">${record}</td><td class="number">${r.pf.toFixed(1)}</td><td class="number">${r.playoffPct ?? '-'}</td><td class="number">${r.diaperPct ?? '-'}</td></tr>`
+    })
+    .join('\n')
   return `<div class="table-container"><table class="stats-table">
   <caption class="visually-hidden">Standings</caption>
   <thead><tr><th class="number">#</th><th>Owner</th><th>Team</th><th class="number">W-L</th><th class="number">PF</th><th class="number">PO%</th><th class="number">D%</th></tr></thead>
@@ -565,12 +628,17 @@ export function renderPageContent(data, teamsById) {
   const eliminatedSet = new Set(data.eliminatedTeamIds || [])
   const doomedSet = new Set(data.doomedTeamIds || [])
   const safeSet = new Set(data.safeTeamIds || [])
-  const standingsWithRem = data.standings.map(r => ({ ...r, remaining: data.remainingByTeam?.[r.teamId] ?? r.remaining ?? 0 }))
+  const standingsWithRem = data.standings.map(r => ({
+    ...r,
+    remaining: data.remainingByTeam?.[r.teamId] ?? r.remaining ?? 0,
+  }))
   const calloutParts = []
   if (data.note) calloutParts.push(escapeHtml(data.note))
   if (data.pivotal?.length) {
     const top = data.pivotal.reduce((m, p) => (p.swing > m.swing ? p : m), data.pivotal[0])
-    calloutParts.push(`🎯 Game of the week: W${top.week} ${escapeHtml(top.awayOwner)} @ ${escapeHtml(top.homeOwner)} (swings shares up to ${top.swing}%).`)
+    calloutParts.push(
+      `🎯 Game of the week: W${top.week} ${escapeHtml(top.awayOwner)} @ ${escapeHtml(top.homeOwner)} (swings shares up to ${top.swing}%).`
+    )
   }
   const callout = calloutParts.length ? `<p class="callout">${calloutParts.join(' ')}</p>` : ''
   // sort for display already sorted
@@ -581,11 +649,21 @@ ${callout}
 <p class="section-note">x = clinched, e = eliminated, d = locked into the diaper, s = safe from it (wins-only guarantees, tiebreak could still flip).</p>
 ${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet, doomedSet, safeSet)}`
 
-  if (data.clinchedOwners?.length) html += `<p><strong>Clinched:</strong> ${data.clinchedOwners.map(o => escapeHtml(o)).join(', ')}</p>`
-  if (data.eliminatedOwners?.length) html += `<p><strong>Eliminated:</strong> ${data.eliminatedOwners.map(o => escapeHtml(o)).join(', ')}</p>`
-  if (data.doomedOwners?.length) html += `<p><strong>Fitted for the diaper:</strong> 🍼 ${data.doomedOwners.map(o => escapeHtml(o)).join(', ')}</p>`
-  if (data.safeOwners?.length) html += `<p><strong>Safe from the diaper:</strong> ${data.safeOwners.map(o => escapeHtml(o)).join(', ')}</p>`
-  if (!data.clinchedOwners?.length && !data.eliminatedOwners?.length && !data.doomedOwners?.length && !data.safeOwners?.length) html += `<p>No teams have clinched, been eliminated, or locked in the diaper yet.</p>`
+  if (data.clinchedOwners?.length)
+    html += `<p><strong>Clinched:</strong> ${data.clinchedOwners.map(o => escapeHtml(o)).join(', ')}</p>`
+  if (data.eliminatedOwners?.length)
+    html += `<p><strong>Eliminated:</strong> ${data.eliminatedOwners.map(o => escapeHtml(o)).join(', ')}</p>`
+  if (data.doomedOwners?.length)
+    html += `<p><strong>Fitted for the diaper:</strong> 🍼 ${data.doomedOwners.map(o => escapeHtml(o)).join(', ')}</p>`
+  if (data.safeOwners?.length)
+    html += `<p><strong>Safe from the diaper:</strong> ${data.safeOwners.map(o => escapeHtml(o)).join(', ')}</p>`
+  if (
+    !data.clinchedOwners?.length &&
+    !data.eliminatedOwners?.length &&
+    !data.doomedOwners?.length &&
+    !data.safeOwners?.length
+  )
+    html += `<p>No teams have clinched, been eliminated, or locked in the diaper yet.</p>`
 
   if (data.pivotal?.length) {
     const threshold = data.pivotThreshold ?? 8
@@ -607,7 +685,6 @@ ${renderStandingsTable(standingsWithRem, clinchedSet, eliminatedSet, doomedSet, 
         html += `<p><strong>W${p.week} ${escapeHtml(p.awayOwner)} @ ${escapeHtml(p.homeOwner)}</strong>: swings shares by up to ${p.swing}%${line('home', p.homeOwner, p.homeWinProb)}${line('away', p.awayOwner, 100 - p.homeWinProb)}</p>`
       }
       if (restMax > 0) html += `<p class="section-note">Everything else moves shares by less than ${threshold}%.</p>`
-
     }
   }
 
@@ -746,13 +823,17 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const url = leagueUrl(env)
   let league
   try {
-    league = await fetchJson(fetchImpl, `${url}?view=mSettings&view=mTeam&view=mMatchupScore`, { headers: { Cookie: authCookie(env), 'User-Agent': USER_AGENT } })
+    league = await fetchJson(fetchImpl, `${url}?view=mSettings&view=mTeam&view=mMatchupScore`, {
+      headers: { Cookie: authCookie(env), 'User-Agent': USER_AGENT },
+    })
   } catch (err) {
     if (!args.season) {
       const fallback = preferredSeason - 1
       console.warn(`${err.message} Falling back to season ${fallback}.`)
       env.LEAGUE_YEAR = String(fallback)
-      league = await fetchJson(fetchImpl, `${leagueUrl(env)}?view=mSettings&view=mTeam&view=mMatchupScore`, { headers: { Cookie: authCookie(env), 'User-Agent': USER_AGENT } })
+      league = await fetchJson(fetchImpl, `${leagueUrl(env)}?view=mSettings&view=mTeam&view=mMatchupScore`, {
+        headers: { Cookie: authCookie(env), 'User-Agent': USER_AGENT },
+      })
     } else throw err
   }
 
@@ -771,7 +852,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const scoreStats = computeScoreStats(decided)
   const standings = standingsList(stats, teamsById)
   const remainingByTeam = countRemainingByTeam(remaining)
-  standings.forEach(r => r.remaining = remainingByTeam[r.teamId] ?? 0)
+  standings.forEach(r => (r.remaining = remainingByTeam[r.teamId] ?? 0))
 
   const throughWeek = decided.reduce((m, g) => Math.max(m, g.week), 0)
   const currentWeek = remaining.length ? Math.min(...remaining.map(g => g.week)) : null
@@ -801,7 +882,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     const flipFate = computeDiaperFate(raw.flip.stats, futureRemaining, teamCount, teamsById)
     const holdOdds = computeOdds(raw.hold.stats, futureRemaining, playoffTeamCount, { season, scoreStats })
     const flipOdds = computeOdds(raw.flip.stats, futureRemaining, playoffTeamCount, { season, scoreStats })
-    const withOdds = (rows, o) => rows.map(r => ({ ...r, playoffPct: o[r.teamId]?.playoff ?? null, diaperPct: o[r.teamId]?.diaper ?? null }))
+    const withOdds = (rows, o) =>
+      rows.map(r => ({ ...r, playoffPct: o[r.teamId]?.playoff ?? null, diaperPct: o[r.teamId]?.diaper ?? null }))
     scenarios = {
       currentWeek: raw.currentWeek,
       currentWeekGames: raw.currentWeekGames,
@@ -829,7 +911,9 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const eliminatedOwners = clinch.eliminated.map(id => ownerFor(id))
   const doomedOwners = fate.doomed.map(id => ownerFor(id))
   const safeOwners = fate.safe.map(id => ownerFor(id))
-  const pivotal = remaining.length ? computePivotalGames(stats, remaining, playoffTeamCount, { season, scoreStats }) : []
+  const pivotal = remaining.length
+    ? computePivotalGames(stats, remaining, playoffTeamCount, { season, scoreStats })
+    : []
 
   // Prepare remainingGames for JSON/page
   const remainingGamesJson = remaining.map(g => ({
@@ -888,25 +972,27 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     remainingGames: remainingGamesJson,
     pivotal,
     pivotThreshold: PIVOT_THRESHOLD,
-    scenarios: scenarios ? {
-      currentWeek: scenarios.currentWeek,
-      currentWeekGames: scenarios.currentWeekGames,
-      hold: {
-        clinched: scenarios.hold.clinched.clinched,
-        eliminated: scenarios.hold.clinched.eliminated,
-        clinchedOwners: scenarios.hold.clinched.clinched.map(id => ownerFor(id)),
-        eliminatedOwners: scenarios.hold.clinched.eliminated.map(id => ownerFor(id)),
-        standings: scenarios.hold.standings,
-      },
-      flip: {
-        clinched: scenarios.flip.clinched.clinched,
-        eliminated: scenarios.flip.clinched.eliminated,
-        clinchedOwners: scenarios.flip.clinched.clinched.map(id => ownerFor(id)),
-        eliminatedOwners: scenarios.flip.clinched.eliminated.map(id => ownerFor(id)),
-        standings: scenarios.flip.standings,
-      },
-      futureRemainingCount: scenarios.futureRemainingCount,
-    } : null,
+    scenarios: scenarios
+      ? {
+          currentWeek: scenarios.currentWeek,
+          currentWeekGames: scenarios.currentWeekGames,
+          hold: {
+            clinched: scenarios.hold.clinched.clinched,
+            eliminated: scenarios.hold.clinched.eliminated,
+            clinchedOwners: scenarios.hold.clinched.clinched.map(id => ownerFor(id)),
+            eliminatedOwners: scenarios.hold.clinched.eliminated.map(id => ownerFor(id)),
+            standings: scenarios.hold.standings,
+          },
+          flip: {
+            clinched: scenarios.flip.clinched.clinched,
+            eliminated: scenarios.flip.clinched.eliminated,
+            clinchedOwners: scenarios.flip.clinched.clinched.map(id => ownerFor(id)),
+            eliminatedOwners: scenarios.flip.clinched.eliminated.map(id => ownerFor(id)),
+            standings: scenarios.flip.standings,
+          },
+          futureRemainingCount: scenarios.futureRemainingCount,
+        }
+      : null,
     note,
     isLateSeason: isLateSeasonGate,
   }
@@ -921,7 +1007,12 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     currentWeek,
     remainingCount: remaining.length,
     startWeek,
-    standings: standings.map(r => ({ ...r, remaining: remainingByTeam[r.teamId] ?? 0, playoffPct: odds[r.teamId]?.playoff ?? null, diaperPct: odds[r.teamId]?.diaper ?? null })),
+    standings: standings.map(r => ({
+      ...r,
+      remaining: remainingByTeam[r.teamId] ?? 0,
+      playoffPct: odds[r.teamId]?.playoff ?? null,
+      diaperPct: odds[r.teamId]?.diaper ?? null,
+    })),
     clinchedTeamIds: clinch.clinched,
     eliminatedTeamIds: clinch.eliminated,
     clinchedOwners,
@@ -940,7 +1031,9 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const pageContent = renderPageContent(pageData, teamsById)
 
   if (args.dryRun) {
-    console.log(`[dry-run] season ${season} through week ${throughWeek}, ${remaining.length} remaining, clinched ${clinchedOwners.join(',') || 'none'}, eliminated ${eliminatedOwners.join(',') || 'none'}`)
+    console.log(
+      `[dry-run] season ${season} through week ${throughWeek}, ${remaining.length} remaining, clinched ${clinchedOwners.join(',') || 'none'}, eliminated ${eliminatedOwners.join(',') || 'none'}`
+    )
     console.log(JSON.stringify(output, null, 2))
     return 0
   }
@@ -981,5 +1074,10 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 }
 
 if (process.argv[1] && import.meta.url === new URL(`file://${path.resolve(process.argv[1])}`).href) {
-  main(process.argv.slice(2)).then(code => process.exit(code)).catch(e => { console.error(e.message); process.exit(1) })
+  main(process.argv.slice(2))
+    .then(code => process.exit(code))
+    .catch(e => {
+      console.error(e.message)
+      process.exit(1)
+    })
 }

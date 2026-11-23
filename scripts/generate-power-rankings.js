@@ -3,12 +3,7 @@ import Papa from 'papaparse'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { TEAM_OWNERS } from './team-owners.js'
-import {
-  applyEnvFile,
-  defaultSeason,
-  espnAuthHeaders,
-  fetchLeague,
-} from './lib/espn.mjs'
+import { applyEnvFile, defaultSeason, espnAuthHeaders, fetchLeague } from './lib/espn.mjs'
 import { escapeHtml } from './lib/html.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -187,7 +182,7 @@ function loadPreviousRanks(season) {
 }
 
 function saveState(season, rankings, meta) {
-  const ranks = {};
+  const ranks = {}
   const published = rankings.map(row => ({
     rank: row.rank,
     id: row.id,
@@ -195,8 +190,8 @@ function saveState(season, rankings, meta) {
     name: row.name,
     rating: row.rating,
     record: `${row.wins}-${row.losses}${row.ties ? `-${row.ties}` : ''}`,
-  }));
-  for (const row of rankings) ranks[row.id] = row.rank;
+  }))
+  for (const row of rankings) ranks[row.id] = row.rank
   fs.writeFileSync(
     STATE_PATH,
     JSON.stringify(
@@ -210,7 +205,7 @@ function saveState(season, rankings, meta) {
       null,
       2
     )
-  );
+  )
 }
 
 function deltaCell(row, previousRanks) {

@@ -2,12 +2,7 @@ import fs from 'fs'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { TEAM_OWNERS } from './team-owners.js'
-import {
-  applyEnvFile,
-  defaultSeason,
-  espnAuthHeaders,
-  fetchLeague,
-} from './lib/espn.mjs'
+import { applyEnvFile, defaultSeason, espnAuthHeaders, fetchLeague } from './lib/espn.mjs'
 import { escapeHtml } from './lib/html.mjs'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))

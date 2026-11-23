@@ -108,7 +108,7 @@ export function mergeSnapshot(snapshots, season, week, rosters) {
   seasons[key] = { ...existing, [week]: rosters }
   return {
     snapshots: { ...snapshots, seasons },
-    changed: true
+    changed: true,
   }
 }
 
@@ -131,8 +131,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const args = parseArgs(argv)
   const env = resolveConfig()
   const required = ['LEAGUE_ID', 'LEAGUE_YEAR', 'ESPN_S2', 'SWID']
-  for (const key of required)
-    if (!env[key]) throw new Error(`Missing required config: ${key}`)
+  for (const key of required) if (!env[key]) throw new Error(`Missing required config: ${key}`)
 
   const snapshotFile = paths.snapshotFile ?? env.ROSTER_SNAPSHOT_FILE ?? DEFAULT_SNAPSHOT_FILE
   const season = Number(env.LEAGUE_YEAR)
@@ -146,11 +145,14 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
   const snapshots = loadSnapshots(snapshotFile)
   snapshots.leagueId = env.LEAGUE_ID
-  const weeks = args.week != null
-    ? (args.week <= latest ? [args.week] : [])
-    : args.backfill
-      ? missingWeeks(snapshots, season, latest)
-      : [latest].filter(w => missingWeeks(snapshots, season, latest).includes(w))
+  const weeks =
+    args.week != null
+      ? args.week <= latest
+        ? [args.week]
+        : []
+      : args.backfill
+        ? missingWeeks(snapshots, season, latest)
+        : [latest].filter(w => missingWeeks(snapshots, season, latest).includes(w))
 
   if (weeks.length === 0) {
     console.log(`Season ${season} snapshots already current through week ${latest}.`)
@@ -159,9 +161,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
   let captured = 0
   for (const week of weeks) {
-    const data = week === 1 && args.week == null && !args.backfill
-      ? probe
-      : await fetchRoster(fetchImpl, env, season, week)
+    const data =
+      week === 1 && args.week == null && !args.backfill ? probe : await fetchRoster(fetchImpl, env, season, week)
     const { snapshots: merged, changed } = mergeSnapshot(snapshots, season, week, slimRosters(data.teams))
     if (!changed) {
       console.log(`Week ${week} already captured; skipping.`)
@@ -186,8 +187,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
 if (process.argv[1] && import.meta.url === new URL(`file://${path.resolve(process.argv[1])}`).href) {
   main(process.argv.slice(2))
-    .then((code) => process.exit(code))
-    .catch((e) => {
+    .then(code => process.exit(code))
+    .catch(e => {
       console.error(e.message)
       process.exit(1)
     })

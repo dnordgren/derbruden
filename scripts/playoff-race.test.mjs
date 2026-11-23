@@ -31,15 +31,35 @@ function matchup(overrides = {}) {
   }
 }
 function league(schedule, teams) {
-  return { schedule, teams: teams ?? [{ id: 1, abbrev: 'A' }, { id: 2, abbrev: 'B' }, { id: 3, abbrev: 'C' }, { id: 4, abbrev: 'D' }] }
+  return {
+    schedule,
+    teams: teams ?? [
+      { id: 1, abbrev: 'A' },
+      { id: 2, abbrev: 'B' },
+      { id: 3, abbrev: 'C' },
+      { id: 4, abbrev: 'D' },
+    ],
+  }
 }
 
 test('extractGames splits decided vs undecided and flags playoff', () => {
   const games = extractGames(
     league([
       matchup({ winner: 'HOME', playoffTierType: 'NONE' }),
-      matchup({ matchupPeriodId: 2, winner: 'UNDECIDED', home: { teamId: 1, totalPoints: 50 }, away: { teamId: 2, totalPoints: 60 }, playoffTierType: 'NONE' }),
-      matchup({ matchupPeriodId: 3, winner: 'AWAY', playoffTierType: 'WINNERS_BRACKET', home: { teamId: 1, totalPoints: 100 }, away: { teamId: 2, totalPoints: 110 } }),
+      matchup({
+        matchupPeriodId: 2,
+        winner: 'UNDECIDED',
+        home: { teamId: 1, totalPoints: 50 },
+        away: { teamId: 2, totalPoints: 60 },
+        playoffTierType: 'NONE',
+      }),
+      matchup({
+        matchupPeriodId: 3,
+        winner: 'AWAY',
+        playoffTierType: 'WINNERS_BRACKET',
+        home: { teamId: 1, totalPoints: 100 },
+        away: { teamId: 2, totalPoints: 110 },
+      }),
     ])
   )
   assert.equal(games.length, 3)
@@ -64,7 +84,11 @@ test('computeStandings tallies wins and PF', () => {
 })
 
 test('standingsList sorts by winValue then PF', () => {
-  const teamsById = { 1: { id: 1, abbrev: 'A', name: 'A' }, 2: { id: 2, abbrev: 'B', name: 'B' }, 3: { id: 3, abbrev: 'C', name: 'C' } }
+  const teamsById = {
+    1: { id: 1, abbrev: 'A', name: 'A' },
+    2: { id: 2, abbrev: 'B', name: 'B' },
+    3: { id: 3, abbrev: 'C', name: 'C' },
+  }
   const stats = {
     1: { teamId: 1, wins: 5, losses: 5, ties: 0, pf: 1000, pa: 900 },
     2: { teamId: 2, wins: 5, losses: 5, ties: 0, pf: 1100, pa: 900 },
@@ -113,7 +137,9 @@ test('computeClinchEliminated clinches with head-to-head conflicts', () => {
     3: { teamId: 3, wins: 6, losses: 2, ties: 0, pf: 800, pa: 0 },
     4: { teamId: 4, wins: 6, losses: 2, ties: 0, pf: 800, pa: 0 },
   }
-  const remaining = [{ week: 10, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }]
+  const remaining = [
+    { week: 10, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false },
+  ]
   const res = computeClinchEliminated(stats, remaining, 2, teamsById)
   // A clinched (worst rank 1), B worst rank 3? Let's see: if C wins, C 7 ties B 7 -> B worst 3 -> not clinched.
   assert.ok(res.clinched.includes(1))
@@ -124,8 +150,19 @@ test('computeClinchEliminated clinches with head-to-head conflicts', () => {
 
 test('computeClinchEliminated respects ENUM_LIMIT', () => {
   const teamsById = { 1: { id: 1, abbrev: 'A', name: 'A' }, 2: { id: 2, abbrev: 'B', name: 'B' } }
-  const stats = { 1: { teamId: 1, wins: 0, losses: 0, ties: 0, pf: 0, pa: 0 }, 2: { teamId: 2, wins: 0, losses: 0, ties: 0, pf: 0, pa: 0 } }
-  const remaining = Array.from({ length: 25 }, (_, i) => ({ week: i + 1, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }))
+  const stats = {
+    1: { teamId: 1, wins: 0, losses: 0, ties: 0, pf: 0, pa: 0 },
+    2: { teamId: 2, wins: 0, losses: 0, ties: 0, pf: 0, pa: 0 },
+  }
+  const remaining = Array.from({ length: 25 }, (_, i) => ({
+    week: i + 1,
+    homeId: 1,
+    awayId: 2,
+    homeScore: 0,
+    awayScore: 0,
+    winner: 'undecided',
+    playoff: false,
+  }))
   const res = computeClinchEliminated(stats, remaining, 1, teamsById)
   assert.equal(res.note?.includes('too many'), true)
   assert.equal(res.clinched.length, 0)
@@ -135,7 +172,10 @@ test('currentLeaderForGame picks score leader', () => {
   assert.equal(currentLeaderForGame({ homeId: 1, awayId: 2, homeScore: 100, awayScore: 90, decided: false }), 1)
   assert.equal(currentLeaderForGame({ homeId: 1, awayId: 2, homeScore: 90, awayScore: 100, decided: false }), 2)
   assert.equal(currentLeaderForGame({ homeId: 1, awayId: 2, homeScore: 90, awayScore: 90, decided: false }), null)
-  assert.equal(currentLeaderForGame({ homeId: 1, awayId: 2, homeScore: 100, awayScore: 90, winner: 'home', decided: true }), 1)
+  assert.equal(
+    currentLeaderForGame({ homeId: 1, awayId: 2, homeScore: 100, awayScore: 90, winner: 'home', decided: true }),
+    1
+  )
 })
 
 test('buildScenarios creates hold vs flip', () => {
@@ -207,7 +247,9 @@ test('computeOdds splits tied teams evenly at the cut', () => {
     3: { teamId: 3, wins: 6, losses: 2, ties: 0, pf: 800, pa: 0 },
     4: { teamId: 4, wins: 6, losses: 2, ties: 0, pf: 700, pa: 0 },
   }
-  const remaining = [{ week: 10, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }]
+  const remaining = [
+    { week: 10, homeId: 3, awayId: 4, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false },
+  ]
   const odds = computeOdds(stats, remaining, 2, { season: 2026 })
   assert.deepEqual(odds[1], { playoff: 100, diaper: 0 })
   assert.deepEqual(odds[2], { playoff: 50, diaper: 0 })
@@ -220,7 +262,15 @@ test('computeOdds Monte Carlo is deterministic and bounded', () => {
     1: { teamId: 1, wins: 6, losses: 2, ties: 0, pf: 1000, pa: 0 },
     2: { teamId: 2, wins: 2, losses: 6, ties: 0, pf: 800, pa: 0 },
   }
-  const remaining = Array.from({ length: 25 }, (_, i) => ({ week: i + 1, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }))
+  const remaining = Array.from({ length: 25 }, (_, i) => ({
+    week: i + 1,
+    homeId: 1,
+    awayId: 2,
+    homeScore: 0,
+    awayScore: 0,
+    winner: 'undecided',
+    playoff: false,
+  }))
   const a = computeOdds(stats, remaining, 1, { season: 2026 })
   const b = computeOdds(stats, remaining, 1, { season: 2026 })
   assert.deepEqual(a, b)
@@ -246,8 +296,34 @@ test('mulberry32 and hashSeed are deterministic', () => {
 
 test('renderStandingsTable renders PO% and D% columns', () => {
   const standings = [
-    { rank: 1, teamId: 1, owner: 'A', abbrev: 'A', name: 'A', wins: 8, losses: 0, ties: 0, pf: 1000, playoffPct: 98, diaperPct: 0, remaining: 0 },
-    { rank: 2, teamId: 2, owner: 'B', abbrev: 'B', name: 'B', wins: 0, losses: 8, ties: 0, pf: 700, playoffPct: 0, diaperPct: 71, remaining: 0 },
+    {
+      rank: 1,
+      teamId: 1,
+      owner: 'A',
+      abbrev: 'A',
+      name: 'A',
+      wins: 8,
+      losses: 0,
+      ties: 0,
+      pf: 1000,
+      playoffPct: 98,
+      diaperPct: 0,
+      remaining: 0,
+    },
+    {
+      rank: 2,
+      teamId: 2,
+      owner: 'B',
+      abbrev: 'B',
+      name: 'B',
+      wins: 0,
+      losses: 8,
+      ties: 0,
+      pf: 700,
+      playoffPct: 0,
+      diaperPct: 71,
+      remaining: 0,
+    },
   ]
   const html = renderStandingsTable(standings, new Set(), new Set([2]), new Set([2]), new Set())
   assert.ok(html.includes('<th class="number">PO%</th>'))
@@ -287,8 +363,11 @@ test('computeOdds weights games by scoring strength', () => {
     2: { teamId: 2, wins: 5, losses: 3, ties: 0, pf: 800, pa: 0 },
   }
   const decided = Array.from({ length: 8 }, (_, i) => ({
-    week: i + 1, homeId: 1, awayId: 2,
-    homeScore: 130, awayScore: 100,
+    week: i + 1,
+    homeId: 1,
+    awayId: 2,
+    homeScore: 130,
+    awayScore: 100,
   }))
   const scoreStats = computeScoreStats(decided)
   const remaining = [{ week: 9, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }]
@@ -306,10 +385,22 @@ test('computeOdds weighted Monte Carlo is deterministic', () => {
     2: { teamId: 2, wins: 2, losses: 6, ties: 0, pf: 850, pa: 0 },
   }
   const decided = Array.from({ length: 8 }, (_, i) => ({
-    week: i + 1, homeId: 1, awayId: 2, homeScore: 137.5, awayScore: 106.25,
+    week: i + 1,
+    homeId: 1,
+    awayId: 2,
+    homeScore: 137.5,
+    awayScore: 106.25,
   }))
   const scoreStats = computeScoreStats(decided)
-  const remaining = Array.from({ length: 25 }, (_, i) => ({ week: i + 1, homeId: 1, awayId: 2, homeScore: 0, awayScore: 0, winner: 'undecided', playoff: false }))
+  const remaining = Array.from({ length: 25 }, (_, i) => ({
+    week: i + 1,
+    homeId: 1,
+    awayId: 2,
+    homeScore: 0,
+    awayScore: 0,
+    winner: 'undecided',
+    playoff: false,
+  }))
   const a = computeOdds(stats, remaining, 1, { season: 2026, scoreStats })
   const b = computeOdds(stats, remaining, 1, { season: 2026, scoreStats })
   assert.deepEqual(a, b)

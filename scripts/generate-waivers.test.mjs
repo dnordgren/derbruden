@@ -3,15 +3,7 @@ import assert from 'node:assert/strict'
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import {
-  dslNflTeamId,
-  mapMove,
-  buildOrder,
-  prunePlayers,
-  parseArgs,
-  mergeMoves,
-  main,
-} from './generate-waivers.mjs'
+import { dslNflTeamId, mapMove, buildOrder, prunePlayers, parseArgs, mergeMoves, main } from './generate-waivers.mjs'
 import { defaultSeason } from './lib/espn.mjs'
 
 test('defaultSeason maps Aug-Dec to the current year', () => {

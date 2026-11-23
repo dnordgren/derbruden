@@ -1,11 +1,6 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import {
-  computeAllPlayStandings,
-  computeLuckIndex,
-  extractRegularSeasonGames,
-  luckLabel,
-} from './generate-luck.mjs'
+import { computeAllPlayStandings, computeLuckIndex, extractRegularSeasonGames, luckLabel } from './generate-luck.mjs'
 
 const ownerOf = id => `O${id}`
 const nameOf = (season, id) => `T${id}`
@@ -58,10 +53,7 @@ test('extractRegularSeasonGames filters playoffs and undecided', () => {
 test('computeAllPlayStandings totals weekly cross-play correctly', () => {
   // 4-team league, 1 week: scores 150,130,110,90
   // 2 games: 1 vs 2, 3 vs 4 but all-play is cross-week: top team goes 3-0, etc.
-  const games = [
-    g(2024, 1, 1, 2, 150, 130),
-    g(2024, 1, 3, 4, 110, 90),
-  ]
+  const games = [g(2024, 1, 1, 2, 150, 130), g(2024, 1, 3, 4, 110, 90)]
   const rows = computeAllPlayStandings(games, ownerOf, nameOf)
   // Expect 4 rows sorted by allPlayPct
   assert.equal(rows.length, 4)

@@ -12,7 +12,7 @@ import {
   loadSnapshots,
   mergeSnapshot,
   missingWeeks,
-  main
+  main,
 } from './capture-rosters.mjs'
 
 const HERE = path.dirname(fileURLToPath(import.meta.url))
@@ -22,8 +22,8 @@ function rosterPayload(week, rosters) {
     status: { currentScoringPeriodId: week + 1 },
     teams: Object.entries(rosters).map(([teamId, ids]) => ({
       id: Number(teamId),
-      roster: { entries: ids.map(id => ({ playerId: id })) }
-    }))
+      roster: { entries: ids.map(id => ({ playerId: id })) },
+    })),
   }
 }
 
@@ -55,7 +55,7 @@ test('slimRosters keeps team -> sorted player ids only', () => {
   const slim = slimRosters([
     { id: 2, roster: { entries: [{ playerId: 9 }, { playerId: 3 }, { playerId: -1 }, { playerId: 0 }] } },
     { id: 1, roster: { entries: [{ playerId: 7 }] } },
-    { id: 3, roster: null }
+    { id: 3, roster: null },
   ])
   assert.deepEqual(slim, { 1: [7], 2: [3, 9], 3: [] })
 })
@@ -89,14 +89,14 @@ test('main captures the latest completed week and skips when current', async () 
   const urls = []
   // League is in scoring period 5, so weeks 1-4 are complete and the
   // default (non-backfill) run should capture exactly week 4.
-  const fetchImpl = async (url) => {
+  const fetchImpl = async url => {
     urls.push(url)
     const sp = Number(new URL(url).searchParams.get('scoringPeriodId'))
     const payload = rosterPayload(sp, { 1: [100 + sp], 2: [200 + sp] })
     payload.status.currentScoringPeriodId = 5
     return new Response(JSON.stringify(payload), {
       status: 200,
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json' },
     })
   }
   const env = { LEAGUE_ID: '794521', LEAGUE_YEAR: '2026', ESPN_S2: 'x', SWID: 'y' }
@@ -126,7 +126,7 @@ test('main captures the latest completed week and skips when current', async () 
 test('main --week captures a specific week', async () => {
   const dir = mkdtempSync(path.join(os.tmpdir(), 'capture-rosters-'))
   const file = path.join(dir, 'roster-snapshots.json')
-  const fetchImpl = async (url) => {
+  const fetchImpl = async url => {
     const sp = Number(new URL(url).searchParams.get('scoringPeriodId'))
     const payload = rosterPayload(sp, { 1: [sp] })
     payload.status.currentScoringPeriodId = 3

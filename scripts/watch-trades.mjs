@@ -11,12 +11,7 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import fs from 'node:fs'
 
-import {
-  authCookie,
-  fetchJson,
-  leagueUrl,
-  resolveConfig as baseResolveConfig,
-} from './lib/espn.mjs'
+import { authCookie, fetchJson, leagueUrl, resolveConfig as baseResolveConfig } from './lib/espn.mjs'
 import { writeJsonAtomic } from './lib/html.mjs'
 import { postDiscordMessage } from './lib/discord.mjs'
 
@@ -29,14 +24,13 @@ const ENV_FILE = path.join(ROOT, '.env')
 // Transaction data comes from the read host and needs BOTH espn_s2 and SWID
 // from the same login session. The fantasy.espn.com host 302s every request
 // now, and lm-api-reads returns transactions only with the full cookie pair.
-const PLAYER_URL =
-  'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/athletes/{id}'
+const PLAYER_URL = 'https://sports.core.api.espn.com/v2/sports/football/leagues/nfl/athletes/{id}'
 
 const TYPE_BY_ID = {
   239: 'TRADE_PROPOSAL',
   244: 'TRADE_ACCEPT',
   245: 'TRADE_DECLINE',
-  246: 'TRADE_VETO'
+  246: 'TRADE_VETO',
 }
 
 const NOTIFY_TYPES_BASE = ['TRADE_PROPOSAL', 'TRADE_ACCEPT']
@@ -62,7 +56,7 @@ export function hasLegs(record) {
     !!record &&
     Array.isArray(record.teams) &&
     record.teams.length > 0 &&
-    record.teams.some((t) => Array.isArray(t.gives) && t.gives.length > 0)
+    record.teams.some(t => Array.isArray(t.gives) && t.gives.length > 0)
   )
 }
 
@@ -70,14 +64,14 @@ const EVENT_TITLES = {
   TRADE_PROPOSAL: 'Trade proposed',
   TRADE_ACCEPT: 'Trade accepted',
   TRADE_DECLINE: 'Trade declined',
-  TRADE_VETO: 'Trade vetoed'
+  TRADE_VETO: 'Trade vetoed',
 }
 
 const EVENT_COLORS = {
   TRADE_PROPOSAL: 0x95a5a6,
   TRADE_ACCEPT: 0x2ecc71,
   TRADE_DECLINE: 0xe74c3c,
-  TRADE_VETO: 0xe74c3c
+  TRADE_VETO: 0xe74c3c,
 }
 
 const CONFIG_KEYS = [
@@ -91,7 +85,7 @@ const CONFIG_KEYS = [
   'LEAGUE_HOST',
   // Ephemeral handoff file for downstream steps (the trade roast agent).
   // Written outside static/data so it never lands in a commit.
-  'POSTED_TRADES_FILE'
+  'POSTED_TRADES_FILE',
 ]
 
 // Real environment variables win over the .env file.
@@ -104,7 +98,8 @@ export function parseArgs(argv) {
   for (const arg of argv) {
     if (arg === '--dry-run') args.dryRun = true
     else if (arg.startsWith('--backfill=')) args.backfill = Number(arg.split('=')[1])
-    else if (arg === '--backfill') args.backfill = null // value in next arg
+    else if (arg === '--backfill')
+      args.backfill = null // value in next arg
     else if (/^\d+$/.test(arg) && argv.includes('--backfill')) args.backfill = Number(arg)
     else throw new Error(`Unknown argument: ${arg}`)
   }
@@ -118,7 +113,7 @@ export function parseArgs(argv) {
 export function newTransactions(transactions, processedIds = []) {
   const seen = new Set(processedIds.map(String))
   return transactions
-    .filter((t) => t.id != null && !seen.has(String(t.id)))
+    .filter(t => t.id != null && !seen.has(String(t.id)))
     .sort((a, b) => (a.proposedDate ?? a.processDate ?? 0) - (b.proposedDate ?? b.processDate ?? 0))
 }
 
@@ -145,8 +140,7 @@ export function itemsFor(tx, proposalIndex = {}) {
   const related = tx.relatedTransactionId
   if (related != null) {
     const proposal = proposalIndex[String(related)]
-    if (proposal && Array.isArray(proposal.items) && proposal.items.length > 0)
-      return proposal.items
+    if (proposal && Array.isArray(proposal.items) && proposal.items.length > 0) return proposal.items
   }
   return Array.isArray(tx.items) ? tx.items : []
 }
@@ -190,7 +184,7 @@ export function mapTransaction(tx, teamNames, playerNames, proposalIndex = {}) {
       gives: side.names,
       // Machine-readable terms for the trade grader. `gives` stays plain
       // strings so the web page and Discord embeds render unchanged.
-      assets: side.assets
+      assets: side.assets,
     }))
     .sort((a, b) => a.teamId - b.teamId)
 
@@ -198,7 +192,7 @@ export function mapTransaction(tx, teamNames, playerNames, proposalIndex = {}) {
     id: String(tx.id ?? tx.transactionId),
     event: type,
     date: txDate(tx),
-    teams
+    teams,
   }
 }
 
@@ -212,13 +206,13 @@ function pushPlayer(sides, teamId, player, asset) {
 export function buildEmbed(record) {
   const description =
     record.teams.length > 0
-      ? record.teams.map((t) => `**${t.name}** sends ${t.gives.join(', ')}`).join('\n')
+      ? record.teams.map(t => `**${t.name}** sends ${t.gives.join(', ')}`).join('\n')
       : 'Players unknown (payload missing details)'
   return {
     title: EVENT_TITLES[record.event] ?? record.event,
     description,
     color: EVENT_COLORS[record.event] ?? 0x95a5a6,
-    timestamp: record.date ?? undefined
+    timestamp: record.date ?? undefined,
   }
 }
 
@@ -228,8 +222,8 @@ async function fetchTransactions(fetchImpl, env, notifyTypes) {
   const data = await fetchJson(fetchImpl, `${url}?view=mTransactions2`, {
     headers: {
       Cookie: authCookie(env),
-      'X-Fantasy-Filter': JSON.stringify(filter)
-    }
+      'X-Fantasy-Filter': JSON.stringify(filter),
+    },
   })
   return Array.isArray(data.transactions) ? data.transactions : []
 }
@@ -238,7 +232,7 @@ async function fetchTeamNames(fetchImpl, env) {
   const url = leagueUrl(env)
   try {
     const data = await fetchJson(fetchImpl, `${url}?view=mTeam`, {
-      headers: { Cookie: authCookie(env) }
+      headers: { Cookie: authCookie(env) },
     })
     const map = {}
     for (const t of data.teams ?? []) {
@@ -256,14 +250,10 @@ async function resolvePlayerNames(fetchImpl, state, playerIds) {
   for (const [id, value] of Object.entries(state.players))
     if (/^Player \d+$/.test(value) || Number(id) <= 0) delete state.players[id]
 
-  const missing = [...playerIds].filter((id) => id > 0 && !(id in state.players))
+  const missing = [...playerIds].filter(id => id > 0 && !(id in state.players))
   for (const id of missing.slice(0, 25)) {
     try {
-      const data = await fetchJson(
-        fetchImpl,
-        PLAYER_URL.replace('{id}', String(id)),
-        {}
-      )
+      const data = await fetchJson(fetchImpl, PLAYER_URL.replace('{id}', String(id)), {})
       state.players[id] = data.fullName ?? data.displayName ?? `Player ${id}`
     } catch {
       state.players[id] = `Player ${id}`
@@ -275,7 +265,7 @@ async function resolvePlayerNames(fetchImpl, state, playerIds) {
 async function postDiscord(fetchImpl, webhookUrl, embed) {
   return postDiscordMessage(fetchImpl, webhookUrl, {
     username: 'Der Bruden Trades',
-    embeds: [embed]
+    embeds: [embed],
   })
 }
 
@@ -287,7 +277,7 @@ function loadState(file) {
       processedIds,
       players: s.players ?? {},
       proposals: s.proposals ?? {},
-      deferred: s.deferred ?? {}
+      deferred: s.deferred ?? {},
     }
   } catch {
     return { processedIds: [], players: {}, proposals: {}, deferred: {} }
@@ -338,7 +328,7 @@ export function sweepDeferred(
         event: txType(entry.tx) ?? 'TRADE_ACCEPT',
         date: txDate(entry.tx),
         teams: [],
-        unresolved: true
+        unresolved: true,
       })
       delete deferred[id]
     }
@@ -360,19 +350,15 @@ function loadLedger(file) {
 
 export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const args = parseArgs(argv)
-  if (args.dryRun && args.backfill !== null)
-    throw new Error('Use --dry-run or --backfill, not both')
+  if (args.dryRun && args.backfill !== null) throw new Error('Use --dry-run or --backfill, not both')
   const env = resolveConfig()
 
   const required = ['LEAGUE_ID', 'LEAGUE_YEAR', 'ESPN_S2', 'SWID']
-  for (const key of required)
-    if (!env[key]) throw new Error(`Missing required config: ${key}`)
+  for (const key of required) if (!env[key]) throw new Error(`Missing required config: ${key}`)
   if (!args.dryRun && !args.backfill && !env.DISCORD_WEBHOOK_URL)
     throw new Error('Missing required config: DISCORD_WEBHOOK_URL (or use --dry-run)')
 
-  const notifyTypes = env.NOTIFY_DECLINED === 'true'
-    ? [...NOTIFY_TYPES_BASE, ...NOTIFY_TYPES_EXTRA]
-    : NOTIFY_TYPES_BASE
+  const notifyTypes = env.NOTIFY_DECLINED === 'true' ? [...NOTIFY_TYPES_BASE, ...NOTIFY_TYPES_EXTRA] : NOTIFY_TYPES_BASE
 
   const stateFile = paths.stateFile ?? env.STATE_FILE ?? DEFAULT_STATE_FILE
   const ledgerFile = paths.ledgerFile ?? LEDGER_FILE
@@ -400,17 +386,15 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     const record = mapTransaction(tx, teamNames, state.players, proposalIndex)
     if (record) pairs.push({ tx, record })
   }
-  const mapped = pairs.map((p) => p.record)
+  const mapped = pairs.map(p => p.record)
 
   const playerIds = new Set()
   for (const { tx } of pairs)
-    for (const item of itemsFor(tx, proposalIndex))
-      if (item.playerId > 0) playerIds.add(item.playerId)
+    for (const item of itemsFor(tx, proposalIndex)) if (item.playerId > 0) playerIds.add(item.playerId)
   // Deferred trades may reference players nobody has resolved yet.
   for (const entry of Object.values(state.deferred ?? {}))
     if (entry && entry.tx)
-      for (const item of itemsFor(entry.tx, proposalIndex))
-        if (item.playerId > 0) playerIds.add(item.playerId)
+      for (const item of itemsFor(entry.tx, proposalIndex)) if (item.playerId > 0) playerIds.add(item.playerId)
   await resolvePlayerNames(fetchImpl, state, playerIds)
   for (const pair of pairs) {
     const remapped = mapTransaction(pair.tx, teamNames, state.players, proposalIndex)
@@ -429,22 +413,22 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
         players: state.players,
         proposalIndex,
         nowMs,
-        retryDays
+        retryDays,
       })
 
   if (args.backfill !== null) {
     const picked = mapped
       .slice(-args.backfill)
       .reverse()
-      .filter((record) => !ledger.trades.some((t) => t.id === record.id))
-    const ready = picked.filter((record) => hasLegs(record))
+      .filter(record => !ledger.trades.some(t => t.id === record.id))
+    const ready = picked.filter(record => hasLegs(record))
     const deferredIds = new Set()
     for (const record of picked) {
       if (hasLegs(record)) continue
       // Never backfill a blank row: hold it for the normal retry path.
       state.deferred = state.deferred ?? {}
       if (!state.deferred[record.id]) {
-        const pair = pairs.find((p) => p.record.id === record.id)
+        const pair = pairs.find(p => p.record.id === record.id)
         if (pair) state.deferred[record.id] = { tx: pair.tx, firstSeen: new Date(nowMs).toISOString() }
       }
       deferredIds.add(String(record.id))
@@ -472,8 +456,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
   if (args.dryRun) {
     for (const record of mapped) {
-      if (!hasLegs(record))
-        console.log(`[dry-run] would defer (no legs yet): ${record.event} ${record.id}`)
+      if (!hasLegs(record)) console.log(`[dry-run] would defer (no legs yet): ${record.event} ${record.id}`)
       else if (record.event === 'TRADE_ACCEPT')
         console.log(`[dry-run] would post: ${JSON.stringify(buildEmbed(record))}`)
       else console.log(`[dry-run] would record only: ${record.event} ${record.id}`)
@@ -483,11 +466,9 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
   if (state.processedIds.length === 0) {
     // First run: mark everything seen without notifying so restarts never spam.
-    state.processedIds = pending.map((tx) => String(tx.id))
+    state.processedIds = pending.map(tx => String(tx.id))
     writeJsonAtomic(stateFile, state)
-    console.log(
-      `Seeded state with ${state.processedIds.length} known events; nothing notified on first run.`
-    )
+    console.log(`Seeded state with ${state.processedIds.length} known events; nothing notified on first run.`)
     return 0
   }
 
@@ -496,15 +477,14 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   // Fresh records plus deferred ones that just resolved against the cache.
   const queue = [
     ...pairs.map(({ tx, record }) => ({ tx, record })),
-    ...retried.resolved.map((record) => ({ tx: null, record }))
+    ...retried.resolved.map(record => ({ tx: null, record })),
   ]
   for (const { tx, record } of queue) {
     if (!hasLegs(record)) {
       // Hold for a later poll: never ledger a blank row, never post it.
       if (tx) {
         state.deferred = state.deferred ?? {}
-        if (!state.deferred[record.id])
-          state.deferred[record.id] = { tx, firstSeen: new Date(nowMs).toISOString() }
+        if (!state.deferred[record.id]) state.deferred[record.id] = { tx, firstSeen: new Date(nowMs).toISOString() }
         writeJsonAtomic(stateFile, state)
       }
       console.log(`Deferred ${record.event} ${record.id} with no legs; will retry.`)
@@ -513,7 +493,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     // Resolved now: drop any deferred hold.
     if (state.deferred?.[record.id]) delete state.deferred[record.id]
 
-    const isNew = !ledger.trades.some((t) => t.id === record.id)
+    const isNew = !ledger.trades.some(t => t.id === record.id)
     if (isNew) {
       ledger.trades.unshift(record)
       ledger.trades = ledger.trades.slice(0, 500)
@@ -544,7 +524,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   // stub so the page shows "pending" instead of a blank row. These are
   // never posted to Discord.
   for (const stub of retried.expired) {
-    if (!ledger.trades.some((t) => t.id === stub.id)) {
+    if (!ledger.trades.some(t => t.id === stub.id)) {
       ledger.trades.unshift(stub)
       ledger.trades = ledger.trades.slice(0, 500)
       ledger.updated = new Date().toISOString()
@@ -566,8 +546,8 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 
 if (process.argv[1] && import.meta.url === new URL(`file://${path.resolve(process.argv[1])}`).href) {
   main(process.argv.slice(2))
-    .then((code) => process.exit(code))
-    .catch((e) => {
+    .then(code => process.exit(code))
+    .catch(e => {
       console.error(e.message)
       process.exit(1)
     })

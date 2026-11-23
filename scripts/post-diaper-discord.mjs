@@ -53,8 +53,14 @@ export function buildPayload(data) {
   }
   const rest = standings.slice(displayCount)
   if (rest.length) {
-    const safeLine = rest.filter(r => r.safe).map(r => `${r.owner} ${formatRecord(r)} ✅`).join(', ')
-    const mixLine = rest.filter(r => !r.safe && !r.doomed).map(r => `${r.owner} ${formatRecord(r)}`).join(', ')
+    const safeLine = rest
+      .filter(r => r.safe)
+      .map(r => `${r.owner} ${formatRecord(r)} ✅`)
+      .join(', ')
+    const mixLine = rest
+      .filter(r => !r.safe && !r.doomed)
+      .map(r => `${r.owner} ${formatRecord(r)}`)
+      .join(', ')
     if (safeLine) lines.push(`\nSafe: ${safeLine}`)
     if (mixLine) lines.push(`In the mix: ${mixLine}`)
   }
@@ -63,7 +69,8 @@ export function buildPayload(data) {
 
   if (data.doomedOwners?.length) description += `\n\n**Fitted for the diaper:** 🍼 ${data.doomedOwners.join(', ')}`
   if (data.safeOwners?.length) description += `\n**Safe:** ${data.safeOwners.join(', ')} ✅`
-  if (!data.doomedOwners?.length && !data.safeOwners?.length) description += `\n\n_No locks yet — everyone can still dodge the diaper._`
+  if (!data.doomedOwners?.length && !data.safeOwners?.length)
+    description += `\n\n_No locks yet — everyone can still dodge the diaper._`
 
   if (data.scenarios) {
     const sc = data.scenarios
@@ -71,7 +78,9 @@ export function buildPayload(data) {
     const flipDoomed = sc.flip.doomedOwners
     const common = holdDoomed.filter(o => flipDoomed.includes(o))
     let hypo = '\n\n**Monday hypotheticals**\n'
-    const gamesDesc = sc.currentWeekGames.map(g => `${g.awayOwner} @ ${g.homeOwner} (${g.leader ?? 'tied'} leads)`).join(', ')
+    const gamesDesc = sc.currentWeekGames
+      .map(g => `${g.awayOwner} @ ${g.homeOwner} (${g.leader ?? 'tied'} leads)`)
+      .join(', ')
     hypo += `Week ${sc.currentWeek}: ${gamesDesc}\n`
     hypo += `• If leaders hold: ${holdDoomed.length ? '🍼 ' + holdDoomed.join(', ') + ' locked in' : 'no new locks'}`
     if (common.length && holdDoomed.length > common.length) hypo += ` (${common.join(', ')} anyway)`
@@ -100,7 +109,9 @@ export function buildPayload(data) {
         url,
         description,
         color: 0x7b4b00,
-        footer: { text: `Last place wears the diaper · worst record, lower PF breaks ties · ${data.throughWeek ? `through week ${data.throughWeek}` : 'preseason'} · ${data.remainingCount} games left` },
+        footer: {
+          text: `Last place wears the diaper · worst record, lower PF breaks ties · ${data.throughWeek ? `through week ${data.throughWeek}` : 'preseason'} · ${data.remainingCount} games left`,
+        },
       },
     ],
   }
@@ -142,5 +153,8 @@ async function main() {
 }
 
 if (process.argv[1] && import.meta.url === new URL(`file://${path.resolve(process.argv[1])}`).href) {
-  main().catch(err => { console.error(err.message); process.exit(1) })
+  main().catch(err => {
+    console.error(err.message)
+    process.exit(1)
+  })
 }

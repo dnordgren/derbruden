@@ -16,13 +16,7 @@ import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import fs from 'node:fs'
 import { TEAM_OWNERS } from './team-owners.js'
-import {
-  authCookie,
-  defaultSeason,
-  fetchJson,
-  leagueUrl,
-  resolveConfig as baseResolveConfig,
-} from './lib/espn.mjs'
+import { authCookie, defaultSeason, fetchJson, leagueUrl, resolveConfig as baseResolveConfig } from './lib/espn.mjs'
 import { writeJsonAtomic } from './lib/html.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')

@@ -57,7 +57,10 @@ export function buildPayload(data) {
   }
   if (standings.length > displayCount) {
     const rest = standings.slice(displayCount)
-    const eliminatedLine = rest.filter(r => r.eliminated).map(r => `${r.owner} ${formatRecord(r)} ❌`).join(', ')
+    const eliminatedLine = rest
+      .filter(r => r.eliminated)
+      .map(r => `${r.owner} ${formatRecord(r)} ❌`)
+      .join(', ')
     if (eliminatedLine) lines.push(`\nEliminated: ${eliminatedLine}`)
   }
 
@@ -65,7 +68,8 @@ export function buildPayload(data) {
 
   if (data.clinchedOwners?.length) description += `\n\n**Clinched:** ${data.clinchedOwners.join(', ')} 🔒`
   if (data.eliminatedOwners?.length) description += `\n**Eliminated:** ${data.eliminatedOwners.join(', ')} ❌`
-  if (!data.clinchedOwners?.length && !data.eliminatedOwners?.length) description += `\n\n_No clinches yet — magic numbers still to come._`
+  if (!data.clinchedOwners?.length && !data.eliminatedOwners?.length)
+    description += `\n\n_No clinches yet — magic numbers still to come._`
 
   if (data.scenarios) {
     const sc = data.scenarios
@@ -76,7 +80,9 @@ export function buildPayload(data) {
     const common = holdClinched.filter(o => flipClinched.includes(o))
     let hypo = '\n\n**Monday hypotheticals**\n'
     // Show current week games
-    const gamesDesc = sc.currentWeekGames.map(g => `${g.awayOwner} @ ${g.homeOwner} (${g.leader ?? 'tied'} leads)`).join(', ')
+    const gamesDesc = sc.currentWeekGames
+      .map(g => `${g.awayOwner} @ ${g.homeOwner} (${g.leader ?? 'tied'} leads)`)
+      .join(', ')
     hypo += `Week ${sc.currentWeek}: ${gamesDesc}\n`
     hypo += `• If leaders hold: ${holdClinched.length ? holdClinched.join(', ') + ' clinch' : 'no new clinches'}`
     if (common.length && holdOnly.length) hypo += ` (${common.join(', ')} anyway)`
@@ -106,7 +112,9 @@ export function buildPayload(data) {
         url,
         description,
         color: 0x00429f,
-        footer: { text: `Top ${playoffCount} make playoffs · tiebreak PF · ${data.throughWeek ? `through week ${data.throughWeek}` : 'preseason'} · ${data.remainingCount} games left` },
+        footer: {
+          text: `Top ${playoffCount} make playoffs · tiebreak PF · ${data.throughWeek ? `through week ${data.throughWeek}` : 'preseason'} · ${data.remainingCount} games left`,
+        },
       },
     ],
   }
@@ -148,5 +156,8 @@ async function main() {
 }
 
 if (process.argv[1] && import.meta.url === new URL(`file://${path.resolve(process.argv[1])}`).href) {
-  main().catch(err => { console.error(err.message); process.exit(1) })
+  main().catch(err => {
+    console.error(err.message)
+    process.exit(1)
+  })
 }

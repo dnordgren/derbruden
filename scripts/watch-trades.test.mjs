@@ -13,7 +13,7 @@ import {
   rememberProposals,
   hasLegs,
   sweepDeferred,
-  main
+  main,
 } from './watch-trades.mjs'
 import { loadEnvFile, applyEnvFile } from './lib/espn.mjs'
 
@@ -34,10 +34,7 @@ test('parseArgs rejects junk', () => {
 test('loadEnvFile parses values, quotes, and comments', () => {
   const dir = mkdtempSync(path.join(os.tmpdir(), 'env-'))
   const file = path.join(dir, '.env')
-  writeFileSync(
-    file,
-    '# comment\nA=1\nB="two words"\nC=three\n\nD=  spaced  \nBAD LINE\nE=x=y\n'
-  )
+  writeFileSync(file, '# comment\nA=1\nB="two words"\nC=three\n\nD=  spaced  \nBAD LINE\nE=x=y\n')
   const parsed = loadEnvFile(file)
   assert.equal(parsed.A, '1')
   assert.equal(parsed.B, 'two words')
@@ -72,9 +69,12 @@ test('newTransactions filters seen IDs and sorts oldest first', () => {
     { id: 'c', proposedDate: 3 },
     { id: 'a', processDate: 1 },
     { id: 'b', proposedDate: 2 },
-    { id: 'seen', proposedDate: 0 }
+    { id: 'seen', proposedDate: 0 },
   ]
-  assert.deepEqual(newTransactions(txs, ['seen']).map((t) => t.id), ['a', 'b', 'c'])
+  assert.deepEqual(
+    newTransactions(txs, ['seen']).map(t => t.id),
+    ['a', 'b', 'c']
+  )
 })
 
 test('mapTransaction groups directional items under the sending team', () => {
@@ -85,8 +85,8 @@ test('mapTransaction groups directional items under the sending team', () => {
     items: [
       { playerId: 111, fromTeamId: 5, toTeamId: 8 },
       { playerId: 222, fromTeamId: 8, toTeamId: 5 },
-      { playerId: 333, fromTeamId: 8, toTeamId: 5 }
-    ]
+      { playerId: 333, fromTeamId: 8, toTeamId: 5 },
+    ],
   }
   const names = { 111: 'Player One', 222: 'Player Two', 333: 'Player Three' }
   const record = mapTransaction(tx, {}, names)
@@ -97,7 +97,7 @@ test('mapTransaction groups directional items under the sending team', () => {
       teamId: 5,
       name: 'Team 5',
       gives: ['Player One'],
-      assets: [{ name: 'Player One', playerId: 111, overallPickNumber: null }]
+      assets: [{ name: 'Player One', playerId: 111, overallPickNumber: null }],
     },
     {
       teamId: 8,
@@ -105,9 +105,9 @@ test('mapTransaction groups directional items under the sending team', () => {
       gives: ['Player Two', 'Player Three'],
       assets: [
         { name: 'Player Two', playerId: 222, overallPickNumber: null },
-        { name: 'Player Three', playerId: 333, overallPickNumber: null }
-      ]
-    }
+        { name: 'Player Three', playerId: 333, overallPickNumber: null },
+      ],
+    },
   ])
 })
 
@@ -120,8 +120,8 @@ test('mapTransaction supports ADD/DROP style items', () => {
       { playerId: 444, type: 'ADD', teamId: 5 },
       { playerId: 444, type: 'DROP', teamId: 8 },
       { playerId: 555, type: 'ADD', teamId: 8 },
-      { playerId: 555, type: 'DROP', teamId: 5 }
-    ]
+      { playerId: 555, type: 'DROP', teamId: 5 },
+    ],
   }
   const record = mapTransaction(tx, {}, {})
   assert.equal(record.event, 'TRADE_PROPOSAL')
@@ -130,14 +130,14 @@ test('mapTransaction supports ADD/DROP style items', () => {
       teamId: 5,
       name: 'Team 5',
       gives: ['Player 555'],
-      assets: [{ name: 'Player 555', playerId: 555, overallPickNumber: null }]
+      assets: [{ name: 'Player 555', playerId: 555, overallPickNumber: null }],
     },
     {
       teamId: 8,
       name: 'Team 8',
       gives: ['Player 444'],
-      assets: [{ name: 'Player 444', playerId: 444, overallPickNumber: null }]
-    }
+      assets: [{ name: 'Player 444', playerId: 444, overallPickNumber: null }],
+    },
   ])
 })
 
@@ -148,8 +148,8 @@ test('mapTransaction attributes draft picks and skips non-player items', () => {
     proposedDate: 1783617131690,
     items: [
       { playerId: 2473037, fromTeamId: 4, toTeamId: 11, type: 'TRADE' },
-      { playerId: 0, fromTeamId: 11, toTeamId: 4, overallPickNumber: 67, type: 'DRAFT_TRADE' }
-    ]
+      { playerId: 0, fromTeamId: 11, toTeamId: 4, overallPickNumber: 67, type: 'DRAFT_TRADE' },
+    ],
   }
   const record = mapTransaction(tx, {}, {})
   assert.equal(record.id, 'b4f8f7af-cb66-4b32-95d0-7040cf565023')
@@ -159,14 +159,14 @@ test('mapTransaction attributes draft picks and skips non-player items', () => {
       teamId: 4,
       name: 'Team 4',
       gives: ['Player 2473037'],
-      assets: [{ name: 'Player 2473037', playerId: 2473037, overallPickNumber: null }]
+      assets: [{ name: 'Player 2473037', playerId: 2473037, overallPickNumber: null }],
     },
     {
       teamId: 11,
       name: 'Team 11',
       gives: ['Draft pick #67'],
-      assets: [{ name: 'Draft pick #67', playerId: null, overallPickNumber: 67 }]
-    }
+      assets: [{ name: 'Draft pick #67', playerId: null, overallPickNumber: 67 }],
+    },
   ])
 })
 
@@ -178,15 +178,15 @@ test('mapTransaction resolves empty accept items via relatedTransactionId', () =
     items: [
       { playerId: 4430737, fromTeamId: 2, toTeamId: 12, type: 'TRADE' },
       { playerId: 4431611, fromTeamId: 2, toTeamId: 12, type: 'TRADE' },
-      { playerId: 4362628, fromTeamId: 12, toTeamId: 2, type: 'TRADE' }
-    ]
+      { playerId: 4362628, fromTeamId: 12, toTeamId: 2, type: 'TRADE' },
+    ],
   }
   const accept = {
     id: 'accept-1',
     type: 'TRADE_ACCEPT',
     proposedDate: 1792516488380,
     relatedTransactionId: 'prop-1',
-    items: []
+    items: [],
   }
   const names = { 4430737: 'Kyren Williams', 4431611: 'Caleb Williams', 4362628: "Ja'Marr Chase" }
   const teams = { 2: 'Cracked Unc', 12: 'ORACLE AI' }
@@ -195,7 +195,10 @@ test('mapTransaction resolves empty accept items via relatedTransactionId', () =
   // With it, the embed names players instead of "Players unknown".
   const record = mapTransaction(accept, teams, names, { 'prop-1': proposal })
   assert.equal(record.event, 'TRADE_ACCEPT')
-  assert.deepEqual(record.teams.map((t) => t.name), ['Cracked Unc', 'ORACLE AI'])
+  assert.deepEqual(
+    record.teams.map(t => t.name),
+    ['Cracked Unc', 'ORACLE AI']
+  )
   assert.deepEqual(record.teams[0].gives, ['Kyren Williams', 'Caleb Williams'])
   assert.deepEqual(record.teams[1].gives, ["Ja'Marr Chase"])
   assert.match(buildEmbed(record).description, /Kyren Williams/)
@@ -205,7 +208,7 @@ test('rememberProposals caches proposals with legs and caps size', () => {
   const cache = rememberProposals({}, [
     { id: 'a', type: 'TRADE_PROPOSAL', items: [{ playerId: 1 }] },
     { id: 'b', type: 'TRADE_PROPOSAL', items: [] }, // empty: skipped
-    { id: 'c', type: 'TRADE_ACCEPT', items: [] } // not a proposal: skipped
+    { id: 'c', type: 'TRADE_ACCEPT', items: [] }, // not a proposal: skipped
   ])
   assert.deepEqual(Object.keys(cache), ['a'])
   const big = {}
@@ -224,7 +227,10 @@ test('buildEmbed maps titles and colors', () => {
     id: 1,
     event: 'TRADE_ACCEPT',
     date: '2026-08-23T00:00:00.000Z',
-    teams: [{ teamId: 5, name: 'A', gives: ['X'] }, { teamId: 8, name: 'B', gives: ['Y'] }]
+    teams: [
+      { teamId: 5, name: 'A', gives: ['X'] },
+      { teamId: 8, name: 'B', gives: ['Y'] },
+    ],
   })
   assert.equal(accepted.title, 'Trade accepted')
   assert.equal(accepted.color, 0x2ecc71)
@@ -240,10 +246,11 @@ test('fixture payload maps end to end', () => {
   const fixture = JSON.parse(readFileSync(path.join(HERE, 'test/fixtures/transactions-sample.json'), 'utf8'))
   const pending = newTransactions(fixture.transactions, [])
   assert.equal(pending.length, 3) // includes one non-trade event
-  const records = pending
-    .map((tx) => mapTransaction(tx, { 5: 'Significant Figures', 8: 'Ice Box' }, {}))
-    .filter(Boolean)
-  assert.deepEqual(records.map((r) => r.id), ['1002', '1003'])
+  const records = pending.map(tx => mapTransaction(tx, { 5: 'Significant Figures', 8: 'Ice Box' }, {})).filter(Boolean)
+  assert.deepEqual(
+    records.map(r => r.id),
+    ['1002', '1003']
+  )
   assert.equal(records[0].event, 'TRADE_PROPOSAL')
   assert.equal(records[0].teams.length, 2)
   assert.equal(records[1].event, 'TRADE_ACCEPT')
@@ -267,15 +274,15 @@ test('main posts new trades and dedupes on second run', async () => {
         id: '2001',
         type: 'TRADE_ACCEPT',
         date: 1755900000000,
-        items: [{ playerId: 111, fromTeamId: 5, toTeamId: 8 }]
+        items: [{ playerId: 111, fromTeamId: 5, toTeamId: 8 }],
       },
       {
         id: '2002',
         type: 'TRADE_PROPOSAL',
         proposedDate: 1755986400000,
-        items: [{ playerId: 222, fromTeamId: 8, toTeamId: 5 }]
-      }
-    ]
+        items: [{ playerId: 222, fromTeamId: 8, toTeamId: 5 }],
+      },
+    ],
   }
   const posts = []
   const fakeFetch = async (url, options) => {
@@ -283,18 +290,21 @@ test('main posts new trades and dedupes on second run', async () => {
       posts.push(JSON.parse(options.body))
       return { ok: true, status: 204 }
     }
-    if (String(url).includes('view=mTeam')) return makeJson({ teams: [
-      { id: 5, name: 'Feel It In My Plums', location: 'Feel It In My', nickname: 'Plums' },
-      { id: 8, name: 'Toe Burrows Ice Box', location: 'Toe Burrows', nickname: 'Ice Box' }
-    ] })
+    if (String(url).includes('view=mTeam'))
+      return makeJson({
+        teams: [
+          { id: 5, name: 'Feel It In My Plums', location: 'Feel It In My', nickname: 'Plums' },
+          { id: 8, name: 'Toe Burrows Ice Box', location: 'Toe Burrows', nickname: 'Ice Box' },
+        ],
+      })
     if (String(url).includes('/athletes/')) return makeJson({ fullName: 'Jason Myers' })
     return makeJson(espnBody)
   }
-  const makeJson = (body) => ({
+  const makeJson = body => ({
     ok: true,
     status: 200,
     text: async () => JSON.stringify(body),
-    headers: new Map()
+    headers: new Map(),
   })
 
   try {
@@ -316,7 +326,7 @@ test('main posts new trades and dedupes on second run', async () => {
     // Successful posts are handed to the roast agent.
     const posted = JSON.parse(readFileSync(postedFile, 'utf8'))
     assert.deepEqual(
-      posted.map((r) => r.id),
+      posted.map(r => r.id),
       ['2001']
     )
     delete process.env.POSTED_TRADES_FILE
@@ -335,8 +345,7 @@ test('main posts new trades and dedupes on second run', async () => {
     assert.equal(posts.length, 1)
   } finally {
     for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
-    for (const key of Object.keys(process.env))
-      if (!(key in envBackup)) delete process.env[key]
+    for (const key of Object.keys(process.env)) if (!(key in envBackup)) delete process.env[key]
   }
 })
 
@@ -355,12 +364,10 @@ test('main resolves a later accept from a cached proposal', async () => {
 
   const proposalItems = [
     { playerId: 4430737, fromTeamId: 2, toTeamId: 12, type: 'TRADE' },
-    { playerId: 4362628, fromTeamId: 12, toTeamId: 2, type: 'TRADE' }
+    { playerId: 4362628, fromTeamId: 12, toTeamId: 2, type: 'TRADE' },
   ]
   let espnBody = {
-    transactions: [
-      { id: 'prop-9', type: 'TRADE_PROPOSAL', proposedDate: 1792506160084, items: proposalItems }
-    ]
+    transactions: [{ id: 'prop-9', type: 'TRADE_PROPOSAL', proposedDate: 1792506160084, items: proposalItems }],
   }
   const posts = []
   const fakeFetch = async (url, options) => {
@@ -369,7 +376,12 @@ test('main resolves a later accept from a cached proposal', async () => {
       return { ok: true, status: 204 }
     }
     if (String(url).includes('view=mTeam'))
-      return makeJson({ teams: [{ id: 2, name: 'Cracked Unc' }, { id: 12, name: 'ORACLE AI' }] })
+      return makeJson({
+        teams: [
+          { id: 2, name: 'Cracked Unc' },
+          { id: 12, name: 'ORACLE AI' },
+        ],
+      })
     if (String(url).includes('/athletes/4227356')) return makeJson({ fullName: 'Caleb Placeholder' })
     if (String(url).includes('/athletes/')) {
       const id = Number(String(url).match(/athletes\/(\d+)/)[1])
@@ -378,11 +390,11 @@ test('main resolves a later accept from a cached proposal', async () => {
     }
     return makeJson(espnBody)
   }
-  const makeJson = (body) => ({
+  const makeJson = body => ({
     ok: true,
     status: 200,
     text: async () => JSON.stringify(body),
-    headers: new Map()
+    headers: new Map(),
   })
 
   try {
@@ -400,9 +412,9 @@ test('main resolves a later accept from a cached proposal', async () => {
           type: 'TRADE_ACCEPT',
           proposedDate: 1792516488380,
           relatedTransactionId: 'prop-9',
-          items: []
-        }
-      ]
+          items: [],
+        },
+      ],
     }
     assert.equal(await main([], fakeFetch, { stateFile, ledgerFile }), 0)
     assert.equal(posts.length, 1)
@@ -413,8 +425,7 @@ test('main resolves a later accept from a cached proposal', async () => {
     assert.equal(ledger.trades[0].teams.length, 2)
   } finally {
     for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
-    for (const key of Object.keys(process.env))
-      if (!(key in envBackup)) delete process.env[key]
+    for (const key of Object.keys(process.env)) if (!(key in envBackup)) delete process.env[key]
   }
 })
 
@@ -439,9 +450,9 @@ test('main persists proposal cache when there are no new events', async () => {
         id: 'prop-old',
         type: 'TRADE_PROPOSAL',
         proposedDate: 1792506160084,
-        items: [{ playerId: 4430737, fromTeamId: 2, toTeamId: 12, type: 'TRADE' }]
-      }
-    ]
+        items: [{ playerId: 4430737, fromTeamId: 2, toTeamId: 12, type: 'TRADE' }],
+      },
+    ],
   }
   const posts = []
   const fakeFetch = async (url, options) => {
@@ -450,14 +461,19 @@ test('main persists proposal cache when there are no new events', async () => {
       return { ok: true, status: 204 }
     }
     if (String(url).includes('view=mTeam'))
-      return makeJson({ teams: [{ id: 2, name: 'Cracked Unc' }, { id: 12, name: 'ORACLE AI' }] })
+      return makeJson({
+        teams: [
+          { id: 2, name: 'Cracked Unc' },
+          { id: 12, name: 'ORACLE AI' },
+        ],
+      })
     return makeJson(espnBody)
   }
-  const makeJson = (body) => ({
+  const makeJson = body => ({
     ok: true,
     status: 200,
     text: async () => JSON.stringify(body),
-    headers: new Map()
+    headers: new Map(),
   })
 
   try {
@@ -468,8 +484,7 @@ test('main persists proposal cache when there are no new events', async () => {
     assert.equal(state.proposals['prop-old'].items[0].playerId, 4430737)
   } finally {
     for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
-    for (const key of Object.keys(process.env))
-      if (!(key in envBackup)) delete process.env[key]
+    for (const key of Object.keys(process.env)) if (!(key in envBackup)) delete process.env[key]
   }
 })
 
@@ -501,9 +516,9 @@ test('main defers a leg-less accept instead of posting or ledgering it', async (
         type: 'TRADE_ACCEPT',
         proposedDate: 1792516488380,
         relatedTransactionId: 'prop-missing',
-        items: []
-      }
-    ]
+        items: [],
+      },
+    ],
   }
   const posts = []
   const fakeFetch = async (url, options) => {
@@ -512,14 +527,19 @@ test('main defers a leg-less accept instead of posting or ledgering it', async (
       return { ok: true, status: 204 }
     }
     if (String(url).includes('view=mTeam'))
-      return makeJson({ teams: [{ id: 2, name: 'Cracked Unc' }, { id: 12, name: 'ORACLE AI' }] })
+      return makeJson({
+        teams: [
+          { id: 2, name: 'Cracked Unc' },
+          { id: 12, name: 'ORACLE AI' },
+        ],
+      })
     return makeJson(espnBody)
   }
-  const makeJson = (body) => ({
+  const makeJson = body => ({
     ok: true,
     status: 200,
     text: async () => JSON.stringify(body),
-    headers: new Map()
+    headers: new Map(),
   })
 
   try {
@@ -535,8 +555,7 @@ test('main defers a leg-less accept instead of posting or ledgering it', async (
     assert.ok(state.deferred['ghost-1'].firstSeen, 'firstSeen recorded')
   } finally {
     for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
-    for (const key of Object.keys(process.env))
-      if (!(key in envBackup)) delete process.env[key]
+    for (const key of Object.keys(process.env)) if (!(key in envBackup)) delete process.env[key]
   }
 })
 
@@ -555,7 +574,7 @@ test('deferred accept resolves on a later run once its proposal is cached', asyn
 
   const proposalItems = [
     { playerId: 4430737, fromTeamId: 2, toTeamId: 12, type: 'TRADE' },
-    { playerId: 4362628, fromTeamId: 12, toTeamId: 2, type: 'TRADE' }
+    { playerId: 4362628, fromTeamId: 12, toTeamId: 2, type: 'TRADE' },
   ]
   let espnBody = {
     transactions: [
@@ -564,9 +583,9 @@ test('deferred accept resolves on a later run once its proposal is cached', asyn
         type: 'TRADE_ACCEPT',
         proposedDate: 1792516488380,
         relatedTransactionId: 'prop-8',
-        items: []
-      }
-    ]
+        items: [],
+      },
+    ],
   }
   const posts = []
   const fakeFetch = async (url, options) => {
@@ -575,7 +594,12 @@ test('deferred accept resolves on a later run once its proposal is cached', asyn
       return { ok: true, status: 204 }
     }
     if (String(url).includes('view=mTeam'))
-      return makeJson({ teams: [{ id: 2, name: 'Cracked Unc' }, { id: 12, name: 'ORACLE AI' }] })
+      return makeJson({
+        teams: [
+          { id: 2, name: 'Cracked Unc' },
+          { id: 12, name: 'ORACLE AI' },
+        ],
+      })
     if (String(url).includes('/athletes/')) {
       const id = Number(String(url).match(/athletes\/(\d+)/)[1])
       const star = { 4430737: 'Kyren Williams', 4362628: "Ja'Marr Chase" }[id]
@@ -583,11 +607,11 @@ test('deferred accept resolves on a later run once its proposal is cached', asyn
     }
     return makeJson(espnBody)
   }
-  const makeJson = (body) => ({
+  const makeJson = body => ({
     ok: true,
     status: 200,
     text: async () => JSON.stringify(body),
-    headers: new Map()
+    headers: new Map(),
   })
 
   try {
@@ -598,9 +622,7 @@ test('deferred accept resolves on a later run once its proposal is cached', asyn
 
     // Run 2: ESPN drops the accept but the proposal is back in the window.
     espnBody = {
-      transactions: [
-        { id: 'prop-8', type: 'TRADE_PROPOSAL', proposedDate: 1792506160084, items: proposalItems }
-      ]
+      transactions: [{ id: 'prop-8', type: 'TRADE_PROPOSAL', proposedDate: 1792506160084, items: proposalItems }],
     }
     assert.equal(await main([], fakeFetch, { stateFile, ledgerFile }), 0)
     // The revived accept posts with real legs; the proposal lands page-only.
@@ -608,7 +630,7 @@ test('deferred accept resolves on a later run once its proposal is cached', asyn
     assert.match(posts[0].embeds[0].description, /Kyren Williams/)
     assert.match(posts[0].embeds[0].description, /Ja'Marr Chase/)
     const ledger = JSON.parse(readFileSync(ledgerFile, 'utf8'))
-    const accept = ledger.trades.find((t) => t.id === 'accept-8')
+    const accept = ledger.trades.find(t => t.id === 'accept-8')
     assert.ok(accept, 'revived accept ledgered')
     assert.equal(accept.teams.length, 2)
     const state = JSON.parse(readFileSync(stateFile, 'utf8'))
@@ -616,8 +638,7 @@ test('deferred accept resolves on a later run once its proposal is cached', asyn
     assert.ok(state.processedIds.includes('accept-8'))
   } finally {
     for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
-    for (const key of Object.keys(process.env))
-      if (!(key in envBackup)) delete process.env[key]
+    for (const key of Object.keys(process.env)) if (!(key in envBackup)) delete process.env[key]
   }
 })
 
@@ -641,9 +662,9 @@ test('deferred accept expires to an unresolved stub without ever posting', async
       deferred: {
         'old-1': {
           tx: { id: 'old-1', type: 'TRADE_ACCEPT', proposedDate: 1792516488380, items: [] },
-          firstSeen: old
-        }
-      }
+          firstSeen: old,
+        },
+      },
     })
   )
 
@@ -656,11 +677,11 @@ test('deferred accept expires to an unresolved stub without ever posting', async
     if (String(url).includes('view=mTeam')) return makeJson({ teams: [] })
     return makeJson({ transactions: [] })
   }
-  const makeJson = (body) => ({
+  const makeJson = body => ({
     ok: true,
     status: 200,
     text: async () => JSON.stringify(body),
-    headers: new Map()
+    headers: new Map(),
   })
 
   try {
@@ -676,8 +697,7 @@ test('deferred accept expires to an unresolved stub without ever posting', async
     assert.ok(state.processedIds.includes('old-1'))
   } finally {
     for (const key of Object.keys(envBackup)) process.env[key] = envBackup[key]
-    for (const key of Object.keys(process.env))
-      if (!(key in envBackup)) delete process.env[key]
+    for (const key of Object.keys(process.env)) if (!(key in envBackup)) delete process.env[key]
   }
 })
 
@@ -686,7 +706,7 @@ test('sweepDeferred caps a runaway holding pen', () => {
   for (let i = 0; i < 205; i++)
     state.deferred[`d${i}`] = {
       tx: { id: `d${i}`, type: 'TRADE_ACCEPT', items: [] },
-      firstSeen: new Date().toISOString()
+      firstSeen: new Date().toISOString(),
     }
   const { resolved, expired } = sweepDeferred(state, { retryDays: 14, nowMs: Date.now() })
   assert.equal(resolved.length, 0)

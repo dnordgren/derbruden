@@ -3,13 +3,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { dirname as pathDirname, join } from 'path'
 import { TEAM_OWNERS } from './team-owners.js'
-import {
-  applyEnvFile,
-  defaultSeason,
-  espnAuthHeaders,
-  fetchLeague,
-  LEAGUE_ID_DEFAULT,
-} from './lib/espn.mjs'
+import { applyEnvFile, defaultSeason, espnAuthHeaders, fetchLeague, LEAGUE_ID_DEFAULT } from './lib/espn.mjs'
 import { escapeHtml, ownerLink, upsertSection } from './lib/html.mjs'
 
 const __dirname = pathDirname(fileURLToPath(import.meta.url))
@@ -610,11 +604,14 @@ async function main() {
   const leaguesBySeason = new Map()
   for (let season = current; season >= API_FIRST_SEASON; season--) {
     try {
-      leaguesBySeason.set(season, await fetchLeague({
+      leaguesBySeason.set(
         season,
-        views: ['mTeam', 'mMatchupScore'],
-        headers: authHeaders(),
-      }))
+        await fetchLeague({
+          season,
+          views: ['mTeam', 'mMatchupScore'],
+          headers: authHeaders(),
+        })
+      )
     } catch (err) {
       console.warn(`Skipping ${season}: ${err.message}`)
     }

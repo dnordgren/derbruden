@@ -2,13 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { TEAM_OWNERS } from './team-owners.js'
-import {
-  applyEnvFile,
-  defaultSeason,
-  espnAuthHeaders,
-  fetchLeague,
-  LEAGUE_ID_DEFAULT,
-} from './lib/espn.mjs'
+import { applyEnvFile, defaultSeason, espnAuthHeaders, fetchLeague, LEAGUE_ID_DEFAULT } from './lib/espn.mjs'
 import { escapeHtml, ownerLink, writeJsonAtomic } from './lib/html.mjs'
 
 const join = path.join
@@ -380,13 +374,12 @@ ${body}
 function renderLuckTable(rows, caption) {
   if (!rows.length) return `<p class="section-note">No regular-season games for this season.</p>`
   const body = rows
-    .map(
-      r => {
-        const closeRecord = `${r.closeW}-${r.closeL}${r.closeT ? `-${r.closeT}` : ''}`
-        const closePct = r.closePct != null ? `${(r.closePct * 100).toFixed(0)}%` : '—'
-        const diffCell = r.luckDiff != null ? (r.luckDiff > 0 ? `+${r.luckDiff}` : `${r.luckDiff}`) : '—'
-        const pfRankCell = r.pfRank
-        return `<tr>
+    .map(r => {
+      const closeRecord = `${r.closeW}-${r.closeL}${r.closeT ? `-${r.closeT}` : ''}`
+      const closePct = r.closePct != null ? `${(r.closePct * 100).toFixed(0)}%` : '—'
+      const diffCell = r.luckDiff != null ? (r.luckDiff > 0 ? `+${r.luckDiff}` : `${r.luckDiff}`) : '—'
+      const pfRankCell = r.pfRank
+      return `<tr>
         <td class="owner">${ownerLink(r.owner)}</td>
         <td>${escapeHtml(r.team)}</td>
         <td class="number">${fmt(r.pf)}</td>
@@ -396,8 +389,7 @@ function renderLuckTable(rows, caption) {
         <td class="number">${diffCell}</td>
         <td class="detail">${escapeHtml(r.luckLabel)}</td>
       </tr>`
-      }
-    )
+    })
     .join('\n')
   return `<div class="table-container"><table class="stats-table">
     <caption class="visually-hidden">${escapeHtml(caption)}</caption>
@@ -545,9 +537,12 @@ async function main() {
   const data = {
     generated: new Date().toISOString().slice(0, 10),
     leagueId: LEAGUE_ID_DEFAULT,
-    seasons: Object.keys(perSeason).map(Number).sort((a, b) => a - b),
+    seasons: Object.keys(perSeason)
+      .map(Number)
+      .sort((a, b) => a - b),
     defaultSeason: defaultYear,
-    scopeNote: 'Regular-season weeks only, 2018 on. All-Play replays each week as if every team played every other team. Luck Index contrasts <10 pt close record with points-for rank.',
+    scopeNote:
+      'Regular-season weeks only, 2018 on. All-Play replays each week as if every team played every other team. Luck Index contrasts <10 pt close record with points-for rank.',
     perSeason,
     allTime: {
       allPlay: allTimeAllPlay,

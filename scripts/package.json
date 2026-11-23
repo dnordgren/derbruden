@@ -7,5 +7,8 @@
   "type": "module",
   "dependencies": {
     "papaparse": "^5.4.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.10.1"
   }
 }

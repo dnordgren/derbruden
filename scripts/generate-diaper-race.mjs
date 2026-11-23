@@ -58,7 +58,9 @@ function resolveConfig() {
   ])
 }
 
-function ownerFor(teamId) { return TEAM_OWNERS[teamId]?.owner ?? `Team ${teamId}` }
+function ownerFor(teamId) {
+  return TEAM_OWNERS[teamId]?.owner ?? `Team ${teamId}`
+}
 
 export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const args = parseArgs(argv)
@@ -74,13 +76,17 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   const url = leagueUrl(env)
   let league
   try {
-    league = await fetchJson(fetchImpl, `${url}?view=mSettings&view=mTeam&view=mMatchupScore`, { headers: { Cookie: authCookie(env), 'User-Agent': USER_AGENT } })
+    league = await fetchJson(fetchImpl, `${url}?view=mSettings&view=mTeam&view=mMatchupScore`, {
+      headers: { Cookie: authCookie(env), 'User-Agent': USER_AGENT },
+    })
   } catch (err) {
     if (!args.season) {
       const fallback = preferredSeason - 1
       console.warn(`${err.message} Falling back to season ${fallback}.`)
       env.LEAGUE_YEAR = String(fallback)
-      league = await fetchJson(fetchImpl, `${leagueUrl(env)}?view=mSettings&view=mTeam&view=mMatchupScore`, { headers: { Cookie: authCookie(env), 'User-Agent': USER_AGENT } })
+      league = await fetchJson(fetchImpl, `${leagueUrl(env)}?view=mSettings&view=mTeam&view=mMatchupScore`, {
+        headers: { Cookie: authCookie(env), 'User-Agent': USER_AGENT },
+      })
     } else throw err
   }
 
@@ -103,7 +109,7 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
     remainingByTeam[g.homeId] = (remainingByTeam[g.homeId] ?? 0) + 1
     remainingByTeam[g.awayId] = (remainingByTeam[g.awayId] ?? 0) + 1
   }
-  standings.forEach(r => r.remaining = remainingByTeam[r.teamId] ?? 0)
+  standings.forEach(r => (r.remaining = remainingByTeam[r.teamId] ?? 0))
 
   const throughWeek = decided.reduce((m, g) => Math.max(m, g.week), 0)
   const currentWeek = remaining.length ? Math.min(...remaining.map(g => g.week)) : null
@@ -206,7 +212,9 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
   }
 
   if (args.dryRun) {
-    console.log(`[dry-run] season ${season} through week ${throughWeek}, ${remaining.length} remaining, doomed ${doomedOwners.join(',') || 'none'}, safe ${safeOwners.length} teams`)
+    console.log(
+      `[dry-run] season ${season} through week ${throughWeek}, ${remaining.length} remaining, doomed ${doomedOwners.join(',') || 'none'}, safe ${safeOwners.length} teams`
+    )
     console.log(JSON.stringify(output, null, 2))
     return 0
   }
@@ -233,5 +241,10 @@ export async function main(argv, fetchImpl = globalThis.fetch, paths = {}) {
 }
 
 if (process.argv[1] && import.meta.url === new URL(`file://${path.resolve(process.argv[1])}`).href) {
-  main(process.argv.slice(2)).then(code => process.exit(code)).catch(e => { console.error(e.message); process.exit(1) })
+  main(process.argv.slice(2))
+    .then(code => process.exit(code))
+    .catch(e => {
+      console.error(e.message)
+      process.exit(1)
+    })
 }

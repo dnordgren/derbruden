@@ -1,18 +1,18 @@
-import fs from 'fs';
-import Papa from 'papaparse';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import fs from 'fs'
+import Papa from 'papaparse'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 function fmtPct(wins, losses) {
-  return (wins / (wins + losses)).toFixed(3).replace('0.', '.');
+  return (wins / (wins + losses)).toFixed(3).replace('0.', '.')
 }
 
 function champCells(count) {
   return count
     ? `<span class="trophies" aria-hidden="true">${'★'.repeat(count)}</span><span class="visually-hidden">${count} championship${count > 1 ? 's' : ''}</span>`
-    : '<span class="visually-hidden">0</span>';
+    : '<span class="visually-hidden">0</span>'
 }
 
 function generateStatsIndex(data) {
@@ -28,31 +28,32 @@ function generateStatsIndex(data) {
           rgpa: 0,
           playoffs: 0,
           championships: 0,
-        };
+        }
       }
-      acc[row.Owner].games += row.W + row.L;
-      acc[row.Owner].wins += row.W;
-      acc[row.Owner].losses += row.L;
-      acc[row.Owner].rgpf += row.RGPF;
-      acc[row.Owner].rgpa += row.RGPA;
-      acc[row.Owner].playoffs += row['PO?'] === 'Y' ? 1 : 0;
-      acc[row.Owner].championships += row.Champ === 'Y' ? 1 : 0;
-      return acc;
-    }, {});
+      acc[row.Owner].games += row.W + row.L
+      acc[row.Owner].wins += row.W
+      acc[row.Owner].losses += row.L
+      acc[row.Owner].rgpf += row.RGPF
+      acc[row.Owner].rgpa += row.RGPA
+      acc[row.Owner].playoffs += row['PO?'] === 'Y' ? 1 : 0
+      acc[row.Owner].championships += row.Champ === 'Y' ? 1 : 0
+      return acc
+    }, {})
 
   const ownerStats = Object.entries(stats)
     .map(([owner, data]) => ({
       owner,
       ...data,
       winPct: data.wins / (data.wins + data.losses),
-      pointsDiff: data.rgpf - data.rgpa
+      pointsDiff: data.rgpf - data.rgpa,
     }))
     .filter(stat => stat.games >= 75)
-    .sort((a, b) => b.winPct - a.winPct);
+    .sort((a, b) => b.winPct - a.winPct)
 
-  const tableRows = ownerStats.map(stat => {
-    const champ = champCells(stat.championships);
-    return `<tr>
+  const tableRows = ownerStats
+    .map(stat => {
+      const champ = champCells(stat.championships)
+      return `<tr>
       <td class="owner"><a href="./${stat.owner.toLowerCase()}.html">${stat.owner}</a></td>
       <td class="number">${stat.games}</td>
       <td class="number">${stat.wins}</td>
@@ -63,8 +64,9 @@ function generateStatsIndex(data) {
       <td class="number">${stat.pointsDiff.toLocaleString()}</td>
       <td class="number">${stat.playoffs}</td>
       <td class="number">${champ}</td>
-    </tr>`;
-  }).join('\n    ');
+    </tr>`
+    })
+    .join('\n    ')
 
   return `<div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">League totals, all owners</caption>
@@ -85,26 +87,28 @@ function generateStatsIndex(data) {
   <tbody>
     ${tableRows}
   </tbody>
-</table></div>`;
+</table></div>`
 }
 
 function generateOwnerStats(data, owner) {
-  const ownerData = data
-    .filter(row => row.Owner === owner)
-    .sort((a, b) => b.Season - a.Season);
+  const ownerData = data.filter(row => row.Owner === owner).sort((a, b) => b.Season - a.Season)
 
-  const totals = ownerData.reduce((acc, row) => ({
-    wins: acc.wins + row.W,
-    losses: acc.losses + row.L,
-    rgpf: acc.rgpf + row.RGPF,
-    rgpa: acc.rgpa + row.RGPA,
-    playoffs: acc.playoffs + (row['PO?'] === 'Y' ? 1 : 0),
-    championships: acc.championships + (row.Champ === 'Y' ? 1 : 0)
-  }), { wins: 0, losses: 0, rgpf: 0, rgpa: 0, playoffs: 0, championships: 0 });
+  const totals = ownerData.reduce(
+    (acc, row) => ({
+      wins: acc.wins + row.W,
+      losses: acc.losses + row.L,
+      rgpf: acc.rgpf + row.RGPF,
+      rgpa: acc.rgpa + row.RGPA,
+      playoffs: acc.playoffs + (row['PO?'] === 'Y' ? 1 : 0),
+      championships: acc.championships + (row.Champ === 'Y' ? 1 : 0),
+    }),
+    { wins: 0, losses: 0, rgpf: 0, rgpa: 0, playoffs: 0, championships: 0 }
+  )
 
-  const tableRows = ownerData.map(row => {
-    const champ = champCells(row.Champ === 'Y' ? 1 : 0);
-    return `<tr>
+  const tableRows = ownerData
+    .map(row => {
+      const champ = champCells(row.Champ === 'Y' ? 1 : 0)
+      return `<tr>
       <td class="number">${row.Season}</td>
       <td class="number">${row.W}</td>
       <td class="number">${row.L}</td>
@@ -116,10 +120,11 @@ function generateOwnerStats(data, owner) {
       <td class="number">${(row.RGPF - row.RGPA).toLocaleString()}</td>
       <td class="number">${row['PO?']}</td>
       <td class="number">${champ}</td>
-    </tr>`;
-  }).join('\n    ');
+    </tr>`
+    })
+    .join('\n    ')
 
-  const totalChamp = champCells(totals.championships);
+  const totalChamp = champCells(totals.championships)
 
   return `<div class="table-container" tabindex="0"><table class="stats-table">
   <caption class="visually-hidden">Season-by-season record, ${owner}</caption>
@@ -154,59 +159,59 @@ function generateOwnerStats(data, owner) {
       <td class="number">${totalChamp}</td>
     </tr>
   </tbody>
-</table></div>`;
+</table></div>`
 }
 
 async function main() {
-  const [,, command, subcommand, param] = process.argv;
+  const [, , command, subcommand, param] = process.argv
   if (command !== 'owners') {
-    console.error('Invalid command');
-    process.exit(1);
+    console.error('Invalid command')
+    process.exit(1)
   }
 
-  const csvPath = join(__dirname, 'stats.csv');
-  const fileContent = fs.readFileSync(csvPath, 'utf8');
+  const csvPath = join(__dirname, 'stats.csv')
+  const fileContent = fs.readFileSync(csvPath, 'utf8')
   const parsedData = Papa.parse(fileContent, {
     header: true,
     dynamicTyping: true,
-    skipEmptyLines: true
-  }).data;
+    skipEmptyLines: true,
+  }).data
 
-  const srcDir = join(__dirname, '../src');
+  const srcDir = join(__dirname, '../src')
 
   function updateFile(filename, newContent) {
-    const filePath = join(srcDir, filename);
+    const filePath = join(srcDir, filename)
     if (!fs.existsSync(filePath)) {
-        console.warn(`File not found: ${filePath}`);
-        return;
+      console.warn(`File not found: ${filePath}`)
+      return
     }
 
-    let content = fs.readFileSync(filePath, 'utf8');
-    const regex = /<div class="table-container"[^>]*>[\s\S]*?<\/div>/;
+    let content = fs.readFileSync(filePath, 'utf8')
+    const regex = /<div class="table-container"[^>]*>[\s\S]*?<\/div>/
 
     if (regex.test(content)) {
-      content = content.replace(regex, newContent);
-      fs.writeFileSync(filePath, content);
-      console.log(`Updated ${filename}`);
+      content = content.replace(regex, newContent)
+      fs.writeFileSync(filePath, content)
+      console.log(`Updated ${filename}`)
     } else {
-        console.warn(`Could not find table container in ${filename}`);
+      console.warn(`Could not find table container in ${filename}`)
     }
   }
 
   if (subcommand === 'index') {
-    const ownersIndexTable = generateStatsIndex(parsedData);
-    updateFile('owners.html', ownersIndexTable);
+    const ownersIndexTable = generateStatsIndex(parsedData)
+    updateFile('owners.html', ownersIndexTable)
   } else if (subcommand === 'all') {
-    const owners = [...new Set(parsedData.map(row => row.Owner))];
+    const owners = [...new Set(parsedData.map(row => row.Owner))]
     owners.forEach(owner => {
-      if (!owner) return;
-      const ownerTable = generateOwnerStats(parsedData, owner);
-      updateFile(`${owner.toLowerCase()}.html`, ownerTable);
-    });
+      if (!owner) return
+      const ownerTable = generateOwnerStats(parsedData, owner)
+      updateFile(`${owner.toLowerCase()}.html`, ownerTable)
+    })
   } else {
-    const ownerTable = generateOwnerStats(parsedData, subcommand.toUpperCase());
-    updateFile(`${subcommand.toLowerCase()}.html`, ownerTable);
+    const ownerTable = generateOwnerStats(parsedData, subcommand.toUpperCase())
+    updateFile(`${subcommand.toLowerCase()}.html`, ownerTable)
   }
 }
 
-main().catch(console.error);
+main().catch(console.error)

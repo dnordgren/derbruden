@@ -31,6 +31,10 @@ jobs:
       - name: Unit tests
         run: node --test scripts/*.test.mjs
 
+      - name: Check formatting
+        working-directory: scripts
+        run: npx prettier --check "**/*.{js,mjs}"
+
       - name: Build site
         run: node scripts/build.mjs
 

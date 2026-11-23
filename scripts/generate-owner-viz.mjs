@@ -3,12 +3,7 @@ import path from 'path'
 import Papa from 'papaparse'
 import { fileURLToPath } from 'url'
 import { TEAM_OWNERS } from './team-owners.js'
-import {
-  applyEnvFile,
-  defaultSeason,
-  espnAuthHeaders,
-  fetchLeague,
-} from './lib/espn.mjs'
+import { applyEnvFile, defaultSeason, espnAuthHeaders, fetchLeague } from './lib/espn.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -307,7 +302,6 @@ function statsRows() {
 async function main() {
   const offline = process.argv.includes('--offline')
   if (!offline) applyEnvFile(path.join(__dirname, '.env'))
-
 
   const owners = ownerCodes()
   const ownersMap = ownerById()

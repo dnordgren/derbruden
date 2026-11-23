@@ -17,6 +17,7 @@ import {
   detectH2HStreak,
   optimalLineupTotal,
   isPerfectWeek,
+  detectPerfectWeek,
   detectMilestones,
   detectFutility,
   detectPlayerRecord,
@@ -420,18 +421,27 @@ test('rosterWeek scores not-yet-played players 0, never the stale pool total (is
   const week = rosterWeek(raw, 11)
   const bench = week[1].bench.find(p => p.name === 'Jaxon Smith-Njigba')
   assert.equal(bench.points, 0)
+  assert.equal(bench.played, false)
   const starter = week[1].starters.find(p => p.name === 'Christian McCaffrey')
   assert.equal(starter.points, 1.4)
+  assert.equal(starter.played, true)
 })
 
-test('bench-flip cannot fire on a not-yet-played bench player (live week)', () => {
+test('detectBenchFlip skips unplayed pairs in live mode, still fires on a completed-week DNP', () => {
   const rosters = {
     2: {
-      starters: [{ name: 'Starter', points: 5, lineupSlotId: 4, elig: [4] }],
-      bench: [{ name: 'Sunday Night Star', points: 0, lineupSlotId: 20, elig: [4, 23] }],
+      starters: [{ name: 'Pending Starter', points: 0, played: false, lineupSlotId: 4, elig: [4] }],
+      bench: [{ name: 'Banked Bench', points: 21.92, played: true, lineupSlotId: 20, elig: [4, 23] }],
     },
   }
-  assert.deepEqual(detectBenchFlip([game(2026, 11, 100, 84.3)], rosters, TEAMS), [])
+  const games = [game(2026, 11, 100, 84.3, 1, 2)]
+  // Live: the starter has no actual line, so "flips the game" is
+  // undecidable -> skipped (accepted gap: it never surfaces later).
+  assert.deepEqual(detectBenchFlip(games, rosters, TEAMS, true), [])
+  // Completed week: a 0 is final (DNP) -> the flip is a real fact.
+  const [flip] = detectBenchFlip(games, rosters, TEAMS, false)
+  assert.equal(flip.type, 'bench-flip')
+  assert.equal(flip.facts.netGain, 6.22)
 })
 
 test('isPerfectWeek is false for an all-zero lineup (live week, nobody kicked off)', () => {
@@ -443,4 +453,22 @@ test('isPerfectWeek is false for an all-zero lineup (live week, nobody kicked of
     bench: [{ name: 'RB2', points: 0, lineupSlotId: 20, elig: [2, 23] }],
   }
   assert.equal(isPerfectWeek(notYet), false)
+})
+
+test('detectPerfectWeek holds a roster with pending players in live mode only', () => {
+  const rosters = {
+    1: {
+      starters: [
+        { name: 'Played', points: 20, played: true, lineupSlotId: 0, elig: [0] },
+        { name: 'Pending', points: 0, played: false, lineupSlotId: 2, elig: [2, 23] },
+      ],
+      bench: [{ name: 'Bench', points: 0, played: false, lineupSlotId: 20, elig: [2, 23] }],
+    },
+  }
+  const games = [game(2026, 11, 20, 10, 1, 2)]
+  // Live: pending players could still spoil the lineup -> hold.
+  assert.deepEqual(detectPerfectWeek(games, rosters, TEAMS, 0, true), [])
+  // Completed: 0s are final, the lineup was perfect.
+  const [cand] = detectPerfectWeek(games, rosters, TEAMS, 0, false)
+  assert.equal(cand.type, 'perfect-week')
 })

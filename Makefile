@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff diaper races analytics logs
+.PHONY: webp clean build deploy deploy-preview deploy-html deploy-assets deploy-data-feeds deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff diaper races analytics logs
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -12,6 +12,14 @@ ifeq ($(GITHUB_ACTIONS),)
 export AWS_PROFILE ?= derbruden-deploy
 endif
 export AWS_REGION ?= us-east-1
+
+# Extra flags for every s3 call. GitHub Actions sets this to --dryrun for a
+# preview run, so the commands print instead of writing. Empty by default.
+AWS_FLAGS ?=
+
+# Dry runs skip invalidation: CloudFront has no dry-run mode, so a preview
+# run would otherwise flush the live cache for a deploy that never happened.
+SKIP_INVALIDATE ?=
 
 # Find all jpg and png files
 IMAGES := $(wildcard static/img/*.jpg) $(wildcard static/img/*.png)
@@ -36,6 +44,17 @@ webp: $(WEBP_FILES)
 deploy: deploy-html deploy-static invalidate-cache
 	@echo "Deployment complete"
 
+# Deploy a branch to production without touching the JSON data feeds.
+#
+# Production doubles as staging here: a branch ships, gets tested on the
+# live site, and is merged only afterwards. The pages and static assets
+# come from the branch, but static/data/*.json stays as it is, because the
+# cron publishers write those files straight to S3 ahead of any branch and
+# a days-old checkout would silently roll live trade and waiver data back.
+# Use `make deploy` when the data feeds themselves changed.
+deploy-preview: deploy-html deploy-assets invalidate-cache
+	@echo "Preview deployment complete (data feeds untouched)"
+
 build:
 	@echo "make build : Started"
 	@echo "Inlining partials into pub/..."
@@ -45,29 +64,43 @@ build:
 deploy-html: build
 	@echo "make deploy-html : Started"
 	@echo "Deploying HTML to bucket derbruden.com..."
-	@aws s3 sync pub/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=60, stale-while-revalidate=300"
+	@aws s3 sync pub/ s3://$(BUCKET)/ --delete --exclude "*" --include "*.html" --cache-control "public, max-age=60, stale-while-revalidate=300" $(AWS_FLAGS)
 	@echo "make deploy-html : Finished"
 
-deploy-static:
-	@echo "make deploy-static : Started"
+# Static assets only. The data feeds are excluded so the additive
+# re-copy below is the only thing that can touch them.
+deploy-assets:
+	@echo "make deploy-assets : Started"
 	@echo "Deploying static assets to bucket derbruden.com..."
-	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --exclude "data/luck.json" --exclude "data/sit-start.json" --exclude "data/games.json" --exclude "data/playoff-race.json" --exclude "data/relegation.json" --cache-control "public, max-age=31536000, immutable"
-	@aws s3 cp static/data/trades.json s3://$(BUCKET)/static/data/trades.json --cache-control "public, max-age=0, must-revalidate"
-	@aws s3 cp static/data/alltime-records.json s3://$(BUCKET)/static/data/alltime-records.json --cache-control "public, max-age=0, must-revalidate"
-	@aws s3 cp static/data/waivers.json s3://$(BUCKET)/static/data/waivers.json --cache-control "public, max-age=0, must-revalidate"
-	@aws s3 cp static/data/luck.json s3://$(BUCKET)/static/data/luck.json --cache-control "public, max-age=0, must-revalidate"
-	@aws s3 cp static/data/sit-start.json s3://$(BUCKET)/static/data/sit-start.json --cache-control "public, max-age=0, must-revalidate"
-	@aws s3 cp static/data/playoff-race.json s3://$(BUCKET)/static/data/playoff-race.json --cache-control "public, max-age=0, must-revalidate"
-	@aws s3 cp static/data/diaper-race.json s3://$(BUCKET)/static/data/diaper-race.json --cache-control "public, max-age=0, must-revalidate"
-	@aws s3 cp static/data/relegation.json s3://$(BUCKET)/static/data/relegation.json --cache-control "public, max-age=0, must-revalidate"
-	@aws s3 cp static/ico/header-icon-32.png s3://$(BUCKET)/favicon.ico --cache-control "public, max-age=31536000, immutable"
+	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --exclude "data/luck.json" --exclude "data/sit-start.json" --exclude "data/games.json" --exclude "data/playoff-race.json" --exclude "data/relegation.json" --cache-control "public, max-age=31536000, immutable" $(AWS_FLAGS)
+	@aws s3 cp static/ico/header-icon-32.png s3://$(BUCKET)/favicon.ico --cache-control "public, max-age=31536000, immutable" $(AWS_FLAGS)
+	@echo "make deploy-assets : Finished"
+
+deploy-static: deploy-assets deploy-data-feeds
 	@echo "make deploy-static : Finished"
+
+# The generated feeds: short-lived cache, rewritten by the cron workflows.
+deploy-data-feeds:
+	@echo "make deploy-data-feeds : Started"
+	@aws s3 cp static/data/trades.json s3://$(BUCKET)/static/data/trades.json --cache-control "public, max-age=0, must-revalidate" $(AWS_FLAGS)
+	@aws s3 cp static/data/alltime-records.json s3://$(BUCKET)/static/data/alltime-records.json --cache-control "public, max-age=0, must-revalidate" $(AWS_FLAGS)
+	@aws s3 cp static/data/waivers.json s3://$(BUCKET)/static/data/waivers.json --cache-control "public, max-age=0, must-revalidate" $(AWS_FLAGS)
+	@aws s3 cp static/data/luck.json s3://$(BUCKET)/static/data/luck.json --cache-control "public, max-age=0, must-revalidate" $(AWS_FLAGS)
+	@aws s3 cp static/data/sit-start.json s3://$(BUCKET)/static/data/sit-start.json --cache-control "public, max-age=0, must-revalidate" $(AWS_FLAGS)
+	@aws s3 cp static/data/playoff-race.json s3://$(BUCKET)/static/data/playoff-race.json --cache-control "public, max-age=0, must-revalidate" $(AWS_FLAGS)
+	@aws s3 cp static/data/diaper-race.json s3://$(BUCKET)/static/data/diaper-race.json --cache-control "public, max-age=0, must-revalidate" $(AWS_FLAGS)
+	@aws s3 cp static/data/relegation.json s3://$(BUCKET)/static/data/relegation.json --cache-control "public, max-age=0, must-revalidate" $(AWS_FLAGS)
+	@echo "make deploy-data-feeds : Finished"
 
 invalidate-cache:
 	@echo "make invalidate-cache : Started"
-	@echo "Invalidating CloudFront cache E3CDWEEK40CKI2..."
+ifdef SKIP_INVALIDATE
+	@echo "Skipping invalidation (dry run)"
+else
+	@echo "Invalidating CloudFront cache $(DISTRIBUTION_ID)..."
 	@aws cloudfront create-invalidation --distribution-id $(DISTRIBUTION_ID) --paths "/*"
 	@echo "make invalidate-cache : Finished"
+endif
 
 clean:
 	@echo "make clean : Started"

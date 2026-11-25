@@ -24,12 +24,14 @@ No framework; shared page chunks are inlined at build time by
 - `make build` — inline `<!--#include -->` directives from `src/*.html`
   into git-ignored `pub/`. `deploy-html` runs it automatically; never
   edit `pub/` or deploy `src/` directly.
-- `npm install --prefix scripts` — once per checkout/worktree, before
-  running generators or tests: the generators depend on `papaparse`
-  (declared in `scripts/package.json`) and the test files import the
-  generators, so `node --test scripts/*.test.mjs` dies with
-  `ERR_MODULE_NOT_FOUND` until this has been run. The GitHub workflows
-  already do this install; fresh local worktrees are the gap.
+- `npm ci` — once per checkout/worktree, before running generators or
+  tests: the generators depend on `papaparse` (declared in
+  `scripts/package.json`, wired up as an npm workspace by the root
+  `package.json`) and the test files import the generators, so
+  `node --test scripts/*.test.mjs` dies with `ERR_MODULE_NOT_FOUND`
+  until this has been run. Deps hoist to the root `node_modules`;
+  plain `npm install` at root or in `scripts/` also works. The GitHub
+  workflows already do this install; fresh local worktrees are the gap.
 - `node scripts/generate-stats.js owners index|all|<owner>` — rebuild
   stats tables into owner pages from `scripts/stats.csv`.
 - `make power` — regenerate the Power Rankings table at the top of `src/index.html` from the ESPN API.
@@ -297,6 +299,7 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   split and score 0 on both sides.
 - Tests: `node --test scripts/generate-sit-start.test.mjs scripts/generate-mwa.test.mjs`.
 - Manager Wins Added rides the same pass too: each decided week gets a league-average efficiency (total actual over total optimal across included owners, same per-team numbers as sit-start so bye/injured zeros match); expected = optimal x average. A win is stolen when expected trails the opponent's actual, a loss is avoidable when expected beats it (strict inequalities; ties neutral). MWA = stolen − avoidable, ranked descending. Results extend `sit-start.json` (`managerWinsAdded` key plus `stolen`/`avoidable`/`mwa` on season and career rows), render as a Manager Wins Added career table plus season selector on `src/sit-start.html`, and add Stolen/Avoidable/MWA columns to each owner-page sit/start section.
+
 ## Playoff race
 
 - `scripts/generate-playoff-race.mjs` fetches `view=mSettings` (for
@@ -435,13 +438,13 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 - The cache has no expiry: scheduled runs pass `--fresh` (drops only
   the target season + week cache files for a live re-pull; history
   stays cached). `--snapshot` saves the in-progress week's live games
-  + rosters to `snapshot-<season>-<week>.json` and exits. `--live`
-  analyzes the in-progress week: the season view has no live matchup
-  scores, so team totals are summed from the roster pull's live
-  starter points and winners are provisional (output is labeled
-  LIVE; totals can only grow). Two Muse crons (not GHA) drive it:
-  Sun ~15:30 CT snapshot, Sun ~18:45 CT `--live` analysis delivering
-  provisional candidates for editorial approval.
+  - rosters to `snapshot-<season>-<week>.json` and exits. `--live`
+    analyzes the in-progress week: the season view has no live matchup
+    scores, so team totals are summed from the roster pull's live
+    starter points and winners are provisional (output is labeled
+    LIVE; totals can only grow). Two Muse crons (not GHA) drive it:
+    Sun ~15:30 CT snapshot, Sun ~18:45 CT `--live` analysis delivering
+    provisional candidates for editorial approval.
 - Poster: `scripts/post-wacky-discord.mjs` — posts ONE hand-approved
   text via the `DISCORD_WEBHOOK_WACKYSTAT` webhook. Dry-run by
   default; only an explicit `--send` posts. Never wire it to a

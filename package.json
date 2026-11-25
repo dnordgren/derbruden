@@ -1,0 +1,7 @@
+{
+  "name": "derbruden",
+  "private": true,
+  "workspaces": [
+    "scripts"
+  ]
+}

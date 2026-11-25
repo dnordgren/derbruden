@@ -148,9 +148,11 @@ export function extractTeams(league) {
 }
 
 // Applied fantasy total for one scoring period, same convention as the
-// sit/start generator. Falls back to the pool entry's appliedStatTotal,
-// which is period-scoped because our roster pulls always pass
-// scoringPeriodId.
+// sit/start generator: null when the player has no actual-stat split for
+// the week (bye/DNP in a completed week, or not yet played in a live
+// one). Never fall back to playerPoolEntry.appliedStatTotal here — it is
+// not period-accurate for a player who has not played yet (it carries a
+// stale prior total), which fabricated live candidates (issue #71).
 export function weekScoreOf(player, week) {
   const split = (player.stats || []).find(
     s => s.statSourceId === 0 && s.statSplitTypeId === 1 && s.scoringPeriodId === week
@@ -170,14 +172,15 @@ export function rosterWeek(rosterLeague, week) {
     for (const e of t.roster?.entries || []) {
       const player = e.playerPoolEntry?.player
       if (!player) continue
-      let points = weekScoreOf(player, week)
-      if (points == null && Number.isFinite(Number(e.playerPoolEntry?.appliedStatTotal))) {
-        points = Number(e.playerPoolEntry.appliedStatTotal)
-      }
-      if (points == null) continue
+      const split = weekScoreOf(player, week)
+      // No actual split yet -> he has scored 0 this week (live week) or
+      // 0 for the week (bye/DNP, completed week). `played` records which
+      // case it is, so live mode can tell "0 so far" from "0, final".
+      const played = split != null
       const entry = {
         name: player.fullName || `Player ${e.playerId}`,
-        points,
+        points: played ? split : 0,
+        played,
         lineupSlotId: e.lineupSlotId,
         elig: player.eligibleSlots || [],
         pos: player.defaultPositionId,
@@ -416,7 +419,10 @@ export function detectHardLuck(games, history, teams) {
 
 // A losing team that would have won with its single best bench swap:
 // bench player outscores an eligible starter by more than the margin.
-export function detectBenchFlip(games, rosters, teams) {
+// In live mode the comparison is only decidable once BOTH players have
+// an actual line — an unplayed starter at 0 would claim a flip that
+// the night's football can still erase — so those pairs are skipped.
+export function detectBenchFlip(games, rosters, teams, live = false) {
   let best = null
   for (const g of games) {
     const r = rosters?.[g.loserId]
@@ -424,6 +430,7 @@ export function detectBenchFlip(games, rosters, teams) {
     for (const b of r.bench) {
       for (const s of r.starters) {
         if (!b.elig.includes(s.lineupSlotId)) continue
+        if (live && (!b.played || !s.played)) continue
         const gain = b.points - s.points
         if (gain > g.margin && (!best || gain - g.margin > best.facts.netGain)) {
           best = {
@@ -576,19 +583,26 @@ export function optimalLineupTotal(entries, slots) {
 export function isPerfectWeek(teamRoster) {
   if (!teamRoster || !teamRoster.starters.length) return false
   const actual = teamRoster.starters.reduce((s, p) => s + p.points, 0)
+  // An all-zero lineup (live week, none of the team's players have
+  // kicked off yet) is not a perfect week.
+  if (actual <= 0) return false
   const slots = teamRoster.starters.map(p => p.lineupSlotId)
   const optimal = optimalLineupTotal([...teamRoster.starters, ...teamRoster.bench], slots)
   return optimal - actual < 0.005
 }
 
-export function detectPerfectWeek(games, rosters, teams, priorPerfectCount) {
+export function detectPerfectWeek(games, rosters, teams, priorPerfectCount, live = false) {
   const out = []
   const seen = new Set()
   for (const g of games) {
     for (const teamId of [g.homeId, g.awayId]) {
       if (seen.has(teamId)) continue
       seen.add(teamId)
-      if (!isPerfectWeek(rosters?.[teamId])) continue
+      const r = rosters?.[teamId]
+      if (!isPerfectWeek(r)) continue
+      // Live week: pending players (0 so far) could still spoil the
+      // lineup, so hold the claim until everyone has played.
+      if (live && [...(r.starters || []), ...(r.bench || [])].some(p => !p.played)) continue
       out.push({
         type: 'perfect-week',
         score: 92,
@@ -735,12 +749,12 @@ export function detectCandidates(ctx) {
     ...detectHardLuck(games, history, teams),
     ...detectMondayFlip(games, ctx.weekRosters, ctx.mondayTeamIds, ctx.historyFlips || [], teams, maxRank),
     ...detectH2HStreak(games, history, teams),
-    ...detectPerfectWeek(games, rosters, teams, ctx.priorPerfectCount || 0),
+    ...detectPerfectWeek(games, rosters, teams, ctx.priorPerfectCount || 0, ctx.live),
     ...detectMilestones(games, history, teams),
     ...detectFutility(games, history, teams),
     ...detectPlayerRecord(games, rosters, ctx.playerHistory || [], teams, maxRank),
     ...detectTopPlayerShare(games, rosters, priorRosters, teams),
-    ...detectBenchFlip(games, rosters, teams),
+    ...detectBenchFlip(games, rosters, teams, ctx.live),
   ]
   return all.sort((a, b) => b.score - a.score)
 }
@@ -1009,6 +1023,7 @@ async function main() {
     historyFlips,
     priorPerfectCount,
     playerHistory,
+    live: args.live,
   })
   console.log(
     `Wacky stat candidates — Der Bruden ${season} Week ${week}${args.live ? ' LIVE (provisional — week in progress)' : ''} (DRY RUN, nothing posted)`

@@ -70,14 +70,17 @@ jobs:
           aws s3 cp static/data/diaper-race.json s3://derbruden.com/static/data/diaper-race.json --cache-control "public, max-age=0, must-revalidate"
           aws cloudfront create-invalidation --distribution-id E3CDWEEK40CKI2 --paths "/playoff-race.html" "/static/data/playoff-race.json" "/static/data/diaper-race.json"
 
+      # Race Discord posts are parked (Nov 2026). The page and JSON still
+      # publish every week; only the embeds are held back. Re-enable with
+      # `gh variable set RACE_DISCORD_ENABLED --body true`.
       - name: Notify Discord (playoff)
-        if: steps.status.outputs.count != '0'
+        if: steps.status.outputs.count != '0' && vars.RACE_DISCORD_ENABLED == 'true'
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_PLAYOFFRACE }}
         run: node scripts/post-playoff-discord.mjs
 
       - name: Notify Discord (diaper)
-        if: steps.status.outputs.count != '0'
+        if: steps.status.outputs.count != '0' && vars.RACE_DISCORD_ENABLED == 'true'
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_PLAYOFFRACE }}
         run: node scripts/post-diaper-discord.mjs

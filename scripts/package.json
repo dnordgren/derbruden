@@ -9,6 +9,7 @@
     "papaparse": "^5.4.1"
   },
   "devDependencies": {
+    "jsdom": "^31.0.1",
     "prettier": "^3.10.1"
   }
 }

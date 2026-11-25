@@ -337,7 +337,8 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   three-path invalidation and commits when changed. Discord posting is
   gated on the `RACE_DISCORD_ENABLED` repo variable and off by default.
   Secrets: `ESPN_S2`, `SWID`, `DISCORD_WEBHOOK_PLAYOFFRACE`,
-  `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`. `scripts/post-playoff-discord.mjs` posts the
+  `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`.
+  `scripts/post-playoff-discord.mjs` posts the
   embed (`--dry-run` previews, `--force` ignores the gate). Renamed from
   the old split `playoff-race` / `diaper-race` workflows when the two pages
   merged into one (PR #59) so a single run generates, publishes, and

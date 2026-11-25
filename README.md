@@ -339,6 +339,12 @@ node scripts/post-discord.js --dry-run  # prints payload only
 Posts are skipped before week 1 of a new season. The preseason board is
 a seed table, so it stays off Discord until real games happen.
 
+Race embeds (playoff + diaper) are a separate path: `races.yml` posts
+them through `DISCORD_WEBHOOK_PLAYOFFRACE`, and both steps are parked
+behind the `RACE_DISCORD_ENABLED` repository variable — unset means no
+race posts, while the page and JSONs keep publishing. See "Generate
+playoff race" above for the re-enable command.
+
 The page also carries Open Graph tags, so pasting the link anywhere
 unfurls into a card with the league logo.
 

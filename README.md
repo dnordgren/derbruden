@@ -257,6 +257,10 @@ Notes:
   when files changed. Manual dispatch is available. Repo secrets: `ESPN_S2`,
   `SWID`, `DISCORD_WEBHOOK_PLAYOFFRACE`, `AWS_ACCESS_KEY_ID`,
   `AWS_SECRET_ACCESS_KEY`.
+- Discord posting is parked (Nov 2026). Both race notify steps require
+  the repo variable `RACE_DISCORD_ENABLED == 'true'` and are skipped
+  while it is unset. The page and JSONs still publish weekly; re-enable
+  with `gh variable set RACE_DISCORD_ENABLED --body true`.
 - Likelihoods: `PO%` (playoff) and `D%` (diaper) columns weight each
   remaining game by PF-implied team strength (weekly scoring means,
   league-blended variance) instead of coin flips, with tied teams
@@ -296,10 +300,10 @@ Notes:
   no-op Mondays stay silent.
 - A unified weekly GitHub Action (`.github/workflows/races.yml`)
   runs both generators Monday nights 9pm ET, publishes the combined
-  page + both JSONs with a three-path invalidation, posts 0–2 Discord
-  embeds (playoff + diaper, each gated), and commits when files changed.
-  Posts through the shared `DISCORD_WEBHOOK_PLAYOFFRACE` secret alongside
-  the shared ESPN/AWS secrets.
+  page + both JSONs with a three-path invalidation, and commits when
+  files changed. The 0–2 Discord embeds are parked behind the
+  `RACE_DISCORD_ENABLED` repo variable (skipped while unset); the
+  `DISCORD_WEBHOOK_PLAYOFFRACE` secret stays in place for re-enabling.
 - Tests: `node --test scripts/diaper-race.test.mjs`.
 
 ### Weekly update

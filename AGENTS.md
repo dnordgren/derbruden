@@ -331,12 +331,13 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   `currentLeaderForGame` (live score leader) builds "hold" (leaders hold)
   vs "flip" (underdogs rally) for that week, then re-enumerates the rest
   of the season for each. Rendered side-by-side and in the Discord embed.
-- Weekly GitHub Action (`.github/workflows/playoff-race.yml`) runs Mondays
+- Weekly GitHub Action (`.github/workflows/races.yml`) runs Mondays
   9pm ET (01:00 UTC Tue in EDT, 02:00 UTC Tue in EST; two crons cover DST)
   in season. Publishes `playoff-race.html` + both race JSONs with a
-  three-path invalidation and commits when changed. Secrets: `ESPN_S2`,
-  `SWID`, `DISCORD_WEBHOOK_PLAYOFFRACE`, `AWS_ACCESS_KEY_ID`,
-  `AWS_SECRET_ACCESS_KEY`. `scripts/post-playoff-discord.mjs` posts the
+  three-path invalidation and commits when changed. Discord posting is
+  gated on the `RACE_DISCORD_ENABLED` repo variable and off by default.
+  Secrets: `ESPN_S2`, `SWID`, `DISCORD_WEBHOOK_PLAYOFFRACE`,
+  `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`. `scripts/post-playoff-discord.mjs` posts the
   embed (`--dry-run` previews, `--force` ignores the gate). Renamed from
   the old split `playoff-race` / `diaper-race` workflows when the two pages
   merged into one (PR #59) so a single run generates, publishes, and
@@ -377,8 +378,10 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   `playoff-race.html#diaper`.
 - The unified weekly GitHub Action (`.github/workflows/races.yml`)
   runs both generators Monday 9pm ET, publishes the combined page +
-  both JSONs, posts 0-2 Discord embeds (each gated), and commits when
-  changed.
+  both JSONs, and commits when changed. The 0-2 Discord embeds are
+  parked behind the `RACE_DISCORD_ENABLED` repo variable (both steps
+  skipped while it is unset; `gh variable set RACE_DISCORD_ENABLED
+  --body true` turns them back on).
 - `deploy-static` excludes `data/diaper-race.json` like the other JSON feeds.
 - Tests: `node --test scripts/diaper-race.test.mjs`.
 

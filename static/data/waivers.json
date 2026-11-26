@@ -1,7 +1,7 @@
 {
   "leagueId": "794521",
   "season": 2026,
-  "updated": "2026-11-25T22:50:57.441Z",
+  "updated": "2026-11-26T22:39:59.668Z",
   "order": [
     {
       "rank": 1,
@@ -11,7 +11,7 @@
       "wins": 4,
       "losses": 7,
       "ties": 0,
-      "moves": 8
+      "moves": 7
     },
     {
       "rank": 2,
@@ -91,7 +91,7 @@
       "wins": 7,
       "losses": 4,
       "ties": 0,
-      "moves": 19
+      "moves": 20
     },
     {
       "rank": 10,
@@ -105,6 +105,34 @@
     }
   ],
   "moves": [
+    {
+      "id": "819964ee-7aab-4eb7-9209-57eca02049f5",
+      "date": "2026-11-26T04:40:10.820Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 2,
+      "owner": "DM",
+      "adds": [
+        "J.J. McCarthy"
+      ],
+      "drops": [],
+      "bid": null
+    },
+    {
+      "id": "a6e2af78-98b2-4a3e-81db-355e2a162f34",
+      "date": "2026-11-26T02:45:26.842Z",
+      "event": "FREEAGENT",
+      "status": "EXECUTED",
+      "teamId": 8,
+      "owner": "DN",
+      "adds": [
+        "Los Angeles Chargers D/ST"
+      ],
+      "drops": [
+        "Max Hurleman"
+      ],
+      "bid": null
+    },
     {
       "id": "7aa65302-ffbe-4ea2-9642-d0e164a13d8d",
       "date": "2026-11-25T20:20:39.839Z",
@@ -2259,34 +2287,6 @@
       "drops": [
         "Darren Waller"
       ],
-      "bid": null
-    },
-    {
-      "id": "d691c317-6660-4fbc-b511-bc6fba553448",
-      "date": "2026-09-30T07:00:10.986Z",
-      "event": "WAIVER",
-      "status": "EXECUTED",
-      "teamId": 12,
-      "owner": "JH",
-      "adds": [
-        "Juwan Johnson"
-      ],
-      "drops": [
-        "Rashid Shaheed"
-      ],
-      "bid": null
-    },
-    {
-      "id": "b523c8aa-53a1-45eb-9f65-09bb6317b621",
-      "date": "2026-09-27T16:36:13.251Z",
-      "event": "FREEAGENT",
-      "status": "EXECUTED",
-      "teamId": 2,
-      "owner": "DM",
-      "adds": [
-        "Tre Tucker"
-      ],
-      "drops": [],
       "bid": null
     }
   ]

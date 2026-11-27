@@ -27,7 +27,7 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f
 // Known crawlers and scanners. CloudFront logs everything, so a bare UA
 // filter is what keeps "traffic" from meaning "the internet's port scans".
 const BOT_RE =
-  /bot|crawler|spider|crawl|slurp|curl|wget|python-requests|go-http-client|headless|scanner|nmap|masscan|zgrab|fuzz|semrush|ahrefs|mj12|dotbot|petalbot|bytespider|facebookexternalhit|discordbot|slackbot|twitterbot|bingpreview|embedly|quora|pinterest/i
+  /bot|crawler|spider|crawl|slurp|curl|wget|python-requests|go-http-client|headless|scanner|nmap|masscan|zgrab|fuzz|semrush|ahrefs|mj12|dotbot|petalbot|bytespider|anthropic|meta-externalagent|facebookexternalhit|discordbot|slackbot|twitterbot|bingpreview|embedly|quora|pinterest/i
 
 export function isBot(userAgent) {
   return BOT_RE.test(userAgent || '')
@@ -98,7 +98,7 @@ function bump(map, key, by = 1) {
   map.set(key, (map.get(key) || 0) + by)
 }
 
-function hostOf(referer) {
+export function hostOf(referer) {
   if (!referer || referer === '-') return '(direct)'
   try {
     return new URL(referer).hostname.replace(/^www\./, '')

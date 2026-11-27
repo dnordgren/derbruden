@@ -105,7 +105,20 @@ No framework; shared page chunks are inlined at build time by
 - Treat the log bucket as pseudonymous PII: private, 90-day lifecycle, never
   joined to identifying data. Do not add a beacon or DynamoDB to this path
   without a question the access log cannot answer.
-- Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs`.
+- Site page: `src/analytics.html` (linked from `src/partials/footer.html`,
+  rendered client-side by `static/js/analytics-page.js?v=1` + vendored D3)
+  displays aggregate-only metrics from `static/data/analytics.json` (7d/30d/90d
+  windows, bot categories/paths, global CloudFront edge POPs via
+  `scripts/lib/edge-locations.mjs`, plus compact all-time daily rollups merged
+  across runs so trends survive the 90-day S3 log expiration).
+- `scripts/generate-analytics.mjs` (`make analytics-data`) builds
+  `static/data/analytics.json` with a repeat-write guard (`analyticsDataEqual`).
+  Daily GitHub Action `.github/workflows/analytics.yml` (9am ET, two crons for
+  DST) syncs `s3://derbruden-logs/` into ephemeral `logs/cloudfront/`,
+  regenerates `static/data/analytics.json`, publishes `analytics.html` +
+  `analytics.json` with two-path invalidation, and commits when changed.
+  `deploy-static` excludes `data/analytics.json` from immutable caching.
+- Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs scripts/generate-analytics.test.mjs`.
 
 ## Power rankings
 

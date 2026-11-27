@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "updatedAt": null,
+  "latestLogDate": null,
+  "allTime": {
+    "firstDate": null,
+    "lastDate": null,
+    "totals": {
+      "days": 0,
+      "total": 0,
+      "pageViews": 0,
+      "humanHits": 0,
+      "botHits": 0,
+      "botShare": 0,
+      "bytes": 0,
+      "avgDailyPageViews": 0,
+      "avgDailyVisitors": 0,
+      "peakDay": null
+    },
+    "days": []
+  },
+  "windows": {}
+}

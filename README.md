@@ -308,15 +308,26 @@ Notes:
 
 ### Weekly update
 
-Regenerate and publish in one pass:
+Regenerate and publish in one pass. The generators need the ESPN cookie,
+so they still run locally:
 
 ```sh
-make power && AWS_PROFILE=derbruden make deploy
+make power
 ```
 
-Run after the Monday night game settles. The deploy profile lives in
-`~/.aws`. If the system `aws` binary is broken (Ubuntu apt v1 often is),
-use the local install:
+Then publish, including the regenerated data feeds, with a full deploy:
+
+```sh
+gh workflow run deploy.yml -f full_deploy=true
+```
+
+Run after the Monday night game settles. `full_deploy=true` is correct here
+because `make power` rewrote `static/data/*.json` and those changes are the
+point of the run.
+
+Local fallback: `AWS_PROFILE=derbruden make deploy` (profile in `~/.aws`).
+If the system `aws` binary is broken (Ubuntu apt v1 often is), use the local
+install:
 
 ```sh
 export PATH="$HOME/.venvs/awscli/bin:$PATH"
@@ -357,16 +368,64 @@ unfurls into a card with the league logo.
 
 ### Run Deploy
 
+Deploys go through the `Deploy` GitHub Actions workflow. It is on demand
+only — nothing deploys on merge, and nothing deploys on a schedule.
+
 ```sh
-AWS_PROFILE=derbruden make deploy
+gh workflow run deploy.yml --ref <branch>
 ```
 
-This:
+Or in the browser: **Actions → Deploy → Run workflow**, pick the branch,
+leave `ref` empty. Follow it with `gh run watch` or the run page.
+
+Production doubles as staging: deploy a branch, test the live site, and
+merge once you are satisfied. The workflow re-runs the CI gate (tests,
+formatting, build) and refuses to publish if any of it fails.
+
+Two modes:
+
+- **Preview (default).** Pages and static assets from the ref;
+  `static/data/*.json` untouched. This is the default because the cron
+  publishers write those feeds straight to S3 — a branch older than the
+  last publisher run would otherwise roll live trade and waiver data back
+  to its own stale copy.
+- **Full** (`-f full_deploy=true`). Also re-copies the JSON feeds. Use it
+  only when the feeds themselves changed.
+
+Add `-f dry_run=true` to print every S3 command without writing anything.
+CloudFront has no dry-run mode, so a dry run skips invalidation rather
+than flushing the live cache for a deploy that never happened.
+
+```sh
+# preview a branch a teammate can look at
+gh workflow run deploy.yml --ref feat/my-change
+
+# ship it, including regenerated data feeds
+gh workflow run deploy.yml --ref feat/my-change -f full_deploy=true
+
+# see what would ship, without touching the bucket
+gh workflow run deploy.yml --ref feat/my-change -f dry_run=true
+```
+
+A full deploy:
 
 - Clears S3 bucket of prior `*.html` and images in `static/`
-- Syncs `*.html` from `src/` to S3 root to host site
+- Syncs `*.html` from `pub/` to S3 root to host site
 - Syncs `static/` to S3 `static/`
 - Invalidates the CloudFront cache
+
+### Deploy locally
+
+Still supported as a fallback for when Actions is unavailable:
+
+```sh
+AWS_PROFILE=derbruden make deploy          # full, including data feeds
+AWS_PROFILE=derbruden make deploy-preview  # pages and assets only
+```
+
+Local runs need the `derbruden-deploy` profile in `~/.aws/credentials`, and
+the apt `aws` binary is broken (old pyOpenSSL clash) — `~/.zshenv` pins
+`PATH` to the working `~/.venvs/awscli` install.
 
 ## Analytics
 

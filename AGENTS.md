@@ -6,7 +6,9 @@ Guidance for AI coding agents working in this repo.
 
 DerBruden.com. Static fantasy football league site for the Der Bruden
 ESPN league (id 794521). Plain HTML in `src/`, assets in `static/`.
-Deploys to S3 + CloudFront with `make deploy` (profile `derbruden`).
+Deploys to S3 + CloudFront through the `.github/workflows/deploy.yml`
+workflow (`deploy.yml`, on demand) or locally with `make deploy`
+(profile `derbruden`).
 No framework; shared page chunks are inlined at build time by
 `scripts/build.mjs` into git-ignored `pub/`.
 
@@ -32,6 +34,11 @@ No framework; shared page chunks are inlined at build time by
   until this has been run. Deps hoist to the root `node_modules`;
   plain `npm install` at root or in `scripts/` also works. The GitHub
   workflows already do this install; fresh local worktrees are the gap.
+- Tests: `node --test scripts/*.test.mjs` runs everything — unit tests
+  for the generators plus `render.test.mjs`, which builds every page and
+  loads it in jsdom to assert the tables and charts actually mount. Use
+  that glob rather than naming individual files; the per-section `Tests:`
+  lines below are historical and go stale.
 - `node scripts/generate-stats.js owners index|all|<owner>` — rebuild
   stats tables into owner pages from `scripts/stats.csv`.
 - `make power` — regenerate the Power Rankings table at the top of `src/index.html` from the ESPN API.
@@ -49,6 +56,8 @@ No framework; shared page chunks are inlined at build time by
   `static/data/playoff-race.json` (playoff clinch/elimination scenarios)
   from the ESPN API. See "Playoff race" below.
 - `AWS_PROFILE=derbruden make deploy` — S3 sync + CloudFront invalidation.
+  Prefer dispatching the Deploy workflow instead (see "Deploy" below);
+  local `make deploy` is the fallback when Actions is unavailable.
   The apt `aws` binary is broken on the dev machine (old pyOpenSSL clash).
   `~/.zshenv` pins PATH to the working `~/.venvs/awscli` install, so fresh
   shells just work. If a stale session resolves `/usr/bin/aws`, run
@@ -106,6 +115,38 @@ No framework; shared page chunks are inlined at build time by
   joined to identifying data. Do not add a beacon or DynamoDB to this path
   without a question the access log cannot answer.
 - Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs`.
+
+## CI and deploy
+
+- `.github/workflows/ci.yml` runs on every PR and on pushes to master
+  (the master run also backstops the cron publishers' auto-commits).
+  Four steps, no secrets: `npm ci`, `node --test scripts/*.test.mjs`,
+  prettier `--check` over `scripts/**/*.{js,mjs}`, and `node
+  scripts/build.mjs`. The built `pub/` is uploaded as an artifact so a
+  PR's exact output can be inspected before merge.
+- `.github/workflows/deploy.yml` is **on demand only** — no push or
+  merge trigger. Dispatch it with
+  `gh workflow run deploy.yml --ref <branch>`, or Actions → Deploy → Run
+  workflow with the branch selected and `ref` empty. It re-runs the CI
+  gate and refuses to publish unless tests, formatting, and the build
+  pass.
+- Two modes. The default is a **preview deploy**: pages and static
+  assets from the ref, `static/data/*.json` left exactly as it is.
+  `full_deploy=true` additionally re-copies the JSON feeds. Preview is
+  the default because the cron publishers write those feeds straight to
+  S3, so any branch older than the last publisher run would roll live
+  trade and waiver data back to its own stale copy. Use
+  `full_deploy=true` only when the feeds themselves changed.
+- `dry_run=true` passes `--dryrun` to every S3 call and skips the
+  CloudFront invalidation (CloudFront has no dry-run mode, so guessing
+  would flush the live cache for a deploy that never happened).
+- Production doubles as staging: Derek deploys a branch, tests the live
+  site, and merges afterwards. Deploys therefore never require a merged
+  branch, and merging never deploys.
+- Local `AWS_PROFILE=derbruden make deploy` still works and is the
+  documented fallback, but dispatching the workflow is the default path.
+  `make deploy-preview` is the local equivalent of the default mode.
+
 
 ## Power rankings
 
@@ -519,8 +560,19 @@ convenience; when in doubt, stop and ask.
 - When the task is complete: commit on the branch, push it, and open a PR.
   `gh` is already authenticated as dnordgren. Then stop and wait.
 - Never merge a PR without Derek's explicit instruction. He reviews every PR.
-- Never run `make deploy` without explicit instruction. Merging does not
-  deploy; site deploys are manual (`AWS_PROFILE=derbruden make deploy`).
+- Never deploy without explicit instruction, and deploy by dispatching the
+  `Deploy` workflow — never by writing to S3 or CloudFront directly.
+  Production doubles as staging: Derek deploys a *branch* to test it live,
+  and merges only after that. So deploying a branch you were told to
+  deploy is expected and correct; deploying anything else is not.
+  Merging does not deploy.
+  `gh workflow run deploy.yml --ref <branch>` (or Actions → Deploy → Run
+  workflow, choosing the branch and leaving `ref` empty) ships the pages
+  and static assets of that ref and leaves `static/data/*.json` alone, so
+  live trade and waiver data is not rolled back to the branch's copy. Pass
+  `-f full_deploy=true` only when the data feeds themselves changed, and
+  `-f dry_run=true` to print the S3 commands without writing anything.
+  Local `AWS_PROFILE=derbruden make deploy` is the fallback, not the default.
 - No git identity is configured on the dev machine. Before committing, set it
   in the worktree:
   `git config user.name "Derek Nordgren"`

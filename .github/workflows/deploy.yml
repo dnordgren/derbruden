@@ -1,0 +1,94 @@
+name: Deploy
+
+# On-demand only, never on push or merge. Production doubles as staging:
+# a branch is deployed, tested on the live site, and only then merged. The
+# default run deploys the branch you dispatch from; `ref` overrides it.
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Branch, tag, or SHA to deploy. Defaults to the branch selected above.
+        required: false
+        type: string
+      full_deploy:
+        description: Also sync static/data/*.json feeds. Rolls live trade/waiver data back to this ref.
+        required: false
+        type: boolean
+        default: false
+      dry_run:
+        description: Build and print the S3 sync commands without writing to the bucket.
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+# One deploy at a time, and never cancel one mid-sync: a half-finished
+# upload leaves the bucket in a state nobody chose.
+concurrency:
+  group: deploy-site
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Resolve target ref
+        id: target
+        run: echo "ref=${{ inputs.ref || github.ref }}" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.target.outputs.ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Deploying is the one workflow that writes to production, so nothing
+      # ships unless the same gate a PR has to pass also passes here.
+      - name: Unit and render tests
+        run: node --test scripts/*.test.mjs
+
+      - name: Check formatting
+        working-directory: scripts
+        run: npx prettier --check "**/*.{js,mjs}"
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Describe deploy
+        env:
+          # Passed through the environment, not interpolated into the script:
+          # ref is user-supplied and must never be parsed as shell.
+          TARGET_REF: ${{ steps.target.outputs.ref }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          FULL_DEPLOY: ${{ inputs.full_deploy }}
+        run: |
+          {
+            echo "### Deploy$([ "$DRY_RUN" = 'true' ] && echo ' (dry run)')"
+            echo ''
+            echo "- ref: \`${TARGET_REF}\`"
+            echo "- mode: $([ "$FULL_DEPLOY" = 'true' ] && echo 'full, including data feeds' || echo 'preview, data feeds left alone')"
+            echo '- bucket: derbruden.com, distribution E3CDWEEK40CKI2'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Deploy to S3 and invalidate CloudFront
+        env:
+          # --dryrun prints each S3 call instead of writing; CloudFront has no
+          # dry-run mode, so invalidation is skipped rather than guessed at.
+          AWS_FLAGS: ${{ inputs.dry_run && '--dryrun' || '' }}
+          SKIP_INVALIDATE: ${{ inputs.dry_run && '1' || '' }}
+        # The Makefile skips AWS_PROFILE when GITHUB_ACTIONS is set, so no
+        # named profile is needed; credentials arrive from configure-aws-credentials.
+        run: make ${{ inputs.full_deploy && 'deploy' || 'deploy-preview' }}

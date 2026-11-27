@@ -1,23 +1,1252 @@
 {
   "version": 1,
-  "updatedAt": null,
-  "latestLogDate": null,
+  "updatedAt": "2026-11-27T05:31:31.262Z",
+  "latestLogDate": "2026-11-27",
   "allTime": {
-    "firstDate": null,
-    "lastDate": null,
+    "firstDate": "2026-11-27",
+    "lastDate": "2026-11-27",
     "totals": {
-      "days": 0,
-      "total": 0,
-      "pageViews": 0,
-      "humanHits": 0,
-      "botHits": 0,
-      "botShare": 0,
-      "bytes": 0,
-      "avgDailyPageViews": 0,
-      "avgDailyVisitors": 0,
-      "peakDay": null
+      "days": 1,
+      "total": 711,
+      "pageViews": 45,
+      "humanHits": 700,
+      "botHits": 11,
+      "botShare": 0.0155,
+      "bytes": 1791669,
+      "avgDailyPageViews": 45,
+      "avgDailyVisitors": 9,
+      "peakDay": {
+        "date": "2026-11-27",
+        "pageViews": 45,
+        "visitors": 9
+      }
     },
-    "days": []
+    "days": [
+      [
+        "2026-11-27",
+        45,
+        700,
+        11,
+        9,
+        1791669
+      ]
+    ]
   },
-  "windows": {}
+  "windows": {
+    "7d": {
+      "days": 7,
+      "startDate": "2026-11-27",
+      "endDate": "2026-11-27",
+      "total": 711,
+      "humanHits": 700,
+      "botHits": 11,
+      "botShare": 0.0155,
+      "pageViews": 45,
+      "uniqueVisitors": 9,
+      "uniqueClients": 3,
+      "ipOnlyVisitors": 6,
+      "clientsAcrossMultipleIps": 0,
+      "cookieCoverage": 0.0657,
+      "cacheHitRatio": 0.2439,
+      "bytes": 1791669,
+      "daily": [
+        [
+          "2026-11-27",
+          45,
+          700,
+          11,
+          9,
+          1791669
+        ]
+      ],
+      "hours": [
+        [
+          "00",
+          0,
+          0
+        ],
+        [
+          "01",
+          0,
+          0
+        ],
+        [
+          "02",
+          6,
+          1
+        ],
+        [
+          "03",
+          22,
+          5
+        ],
+        [
+          "04",
+          623,
+          2
+        ],
+        [
+          "05",
+          49,
+          3
+        ],
+        [
+          "06",
+          0,
+          0
+        ],
+        [
+          "07",
+          0,
+          0
+        ],
+        [
+          "08",
+          0,
+          0
+        ],
+        [
+          "09",
+          0,
+          0
+        ],
+        [
+          "10",
+          0,
+          0
+        ],
+        [
+          "11",
+          0,
+          0
+        ],
+        [
+          "12",
+          0,
+          0
+        ],
+        [
+          "13",
+          0,
+          0
+        ],
+        [
+          "14",
+          0,
+          0
+        ],
+        [
+          "15",
+          0,
+          0
+        ],
+        [
+          "16",
+          0,
+          0
+        ],
+        [
+          "17",
+          0,
+          0
+        ],
+        [
+          "18",
+          0,
+          0
+        ],
+        [
+          "19",
+          0,
+          0
+        ],
+        [
+          "20",
+          0,
+          0
+        ],
+        [
+          "21",
+          0,
+          0
+        ],
+        [
+          "22",
+          0,
+          0
+        ],
+        [
+          "23",
+          0,
+          0
+        ]
+      ],
+      "pages": [
+        [
+          "/",
+          15
+        ],
+        [
+          "/_debug_toolbar/",
+          2
+        ],
+        [
+          "/backup/",
+          2
+        ],
+        [
+          "/debug/pprof/",
+          2
+        ],
+        [
+          "/mcp/",
+          2
+        ],
+        [
+          "/opcache-status/",
+          2
+        ],
+        [
+          "/php-opcache-status/",
+          2
+        ],
+        [
+          "/records.html",
+          2
+        ],
+        [
+          "/storage/framework/sessions/",
+          2
+        ],
+        [
+          "/storage/sessions/",
+          2
+        ],
+        [
+          "/v2/keys/",
+          2
+        ],
+        [
+          "/about.html",
+          1
+        ],
+        [
+          "/cr.html",
+          1
+        ],
+        [
+          "/dm.html",
+          1
+        ],
+        [
+          "/dn.html",
+          1
+        ],
+        [
+          "/drafts.html",
+          1
+        ],
+        [
+          "/gm.html",
+          1
+        ],
+        [
+          "/playoff-race.html",
+          1
+        ],
+        [
+          "/sit-start.html",
+          1
+        ],
+        [
+          "/transactions.html",
+          1
+        ]
+      ],
+      "referrers": [
+        [
+          "(direct)",
+          30
+        ],
+        [
+          "google.com",
+          1
+        ]
+      ],
+      "bots": {
+        "categories": [
+          [
+            "Search Crawlers",
+            4
+          ],
+          [
+            "Scanners & Other",
+            3
+          ],
+          [
+            "AI Crawlers",
+            2
+          ],
+          [
+            "CLI & Scripts",
+            2
+          ]
+        ],
+        "topPaths": [
+          [
+            "/",
+            5
+          ],
+          [
+            "/robots.txt",
+            3
+          ],
+          [
+            "/about.html",
+            1
+          ],
+          [
+            "/gm.html",
+            1
+          ],
+          [
+            "/owners-updates/",
+            1
+          ]
+        ]
+      },
+      "locations": [
+        {
+          "code": "CDG",
+          "city": "Paris",
+          "country": "FR",
+          "human": 608,
+          "bot": 0,
+          "total": 608
+        },
+        {
+          "code": "MIA",
+          "city": "Miami",
+          "country": "US",
+          "human": 44,
+          "bot": 1,
+          "total": 45
+        },
+        {
+          "code": "QRO",
+          "city": "Querétaro",
+          "country": "MX",
+          "human": 23,
+          "bot": 0,
+          "total": 23
+        },
+        {
+          "code": "SFO",
+          "city": "San Francisco",
+          "country": "US",
+          "human": 14,
+          "bot": 0,
+          "total": 14
+        },
+        {
+          "code": "LHR",
+          "city": "London",
+          "country": "GB",
+          "human": 6,
+          "bot": 0,
+          "total": 6
+        },
+        {
+          "code": "ORD",
+          "city": "Chicago",
+          "country": "US",
+          "human": 2,
+          "bot": 4,
+          "total": 6
+        },
+        {
+          "code": "IAD",
+          "city": "Ashburn / DC",
+          "country": "US",
+          "human": 0,
+          "bot": 3,
+          "total": 3
+        },
+        {
+          "code": "MSP",
+          "city": "Minneapolis",
+          "country": "US",
+          "human": 2,
+          "bot": 0,
+          "total": 2
+        },
+        {
+          "code": "TLV",
+          "city": "Tel Aviv",
+          "country": "IL",
+          "human": 0,
+          "bot": 2,
+          "total": 2
+        },
+        {
+          "code": "FRA",
+          "city": "Frankfurt",
+          "country": "DE",
+          "human": 1,
+          "bot": 0,
+          "total": 1
+        },
+        {
+          "code": "MRS",
+          "city": "Marseille",
+          "country": "FR",
+          "human": 0,
+          "bot": 1,
+          "total": 1
+        }
+      ],
+      "countries": [
+        [
+          "FR",
+          608,
+          1
+        ],
+        [
+          "US",
+          62,
+          8
+        ],
+        [
+          "MX",
+          23,
+          0
+        ],
+        [
+          "GB",
+          6,
+          0
+        ],
+        [
+          "IL",
+          0,
+          2
+        ],
+        [
+          "DE",
+          1,
+          0
+        ]
+      ]
+    },
+    "30d": {
+      "days": 30,
+      "startDate": "2026-11-27",
+      "endDate": "2026-11-27",
+      "total": 711,
+      "humanHits": 700,
+      "botHits": 11,
+      "botShare": 0.0155,
+      "pageViews": 45,
+      "uniqueVisitors": 9,
+      "uniqueClients": 3,
+      "ipOnlyVisitors": 6,
+      "clientsAcrossMultipleIps": 0,
+      "cookieCoverage": 0.0657,
+      "cacheHitRatio": 0.2439,
+      "bytes": 1791669,
+      "daily": [
+        [
+          "2026-11-27",
+          45,
+          700,
+          11,
+          9,
+          1791669
+        ]
+      ],
+      "hours": [
+        [
+          "00",
+          0,
+          0
+        ],
+        [
+          "01",
+          0,
+          0
+        ],
+        [
+          "02",
+          6,
+          1
+        ],
+        [
+          "03",
+          22,
+          5
+        ],
+        [
+          "04",
+          623,
+          2
+        ],
+        [
+          "05",
+          49,
+          3
+        ],
+        [
+          "06",
+          0,
+          0
+        ],
+        [
+          "07",
+          0,
+          0
+        ],
+        [
+          "08",
+          0,
+          0
+        ],
+        [
+          "09",
+          0,
+          0
+        ],
+        [
+          "10",
+          0,
+          0
+        ],
+        [
+          "11",
+          0,
+          0
+        ],
+        [
+          "12",
+          0,
+          0
+        ],
+        [
+          "13",
+          0,
+          0
+        ],
+        [
+          "14",
+          0,
+          0
+        ],
+        [
+          "15",
+          0,
+          0
+        ],
+        [
+          "16",
+          0,
+          0
+        ],
+        [
+          "17",
+          0,
+          0
+        ],
+        [
+          "18",
+          0,
+          0
+        ],
+        [
+          "19",
+          0,
+          0
+        ],
+        [
+          "20",
+          0,
+          0
+        ],
+        [
+          "21",
+          0,
+          0
+        ],
+        [
+          "22",
+          0,
+          0
+        ],
+        [
+          "23",
+          0,
+          0
+        ]
+      ],
+      "pages": [
+        [
+          "/",
+          15
+        ],
+        [
+          "/_debug_toolbar/",
+          2
+        ],
+        [
+          "/backup/",
+          2
+        ],
+        [
+          "/debug/pprof/",
+          2
+        ],
+        [
+          "/mcp/",
+          2
+        ],
+        [
+          "/opcache-status/",
+          2
+        ],
+        [
+          "/php-opcache-status/",
+          2
+        ],
+        [
+          "/records.html",
+          2
+        ],
+        [
+          "/storage/framework/sessions/",
+          2
+        ],
+        [
+          "/storage/sessions/",
+          2
+        ],
+        [
+          "/v2/keys/",
+          2
+        ],
+        [
+          "/about.html",
+          1
+        ],
+        [
+          "/cr.html",
+          1
+        ],
+        [
+          "/dm.html",
+          1
+        ],
+        [
+          "/dn.html",
+          1
+        ],
+        [
+          "/drafts.html",
+          1
+        ],
+        [
+          "/gm.html",
+          1
+        ],
+        [
+          "/playoff-race.html",
+          1
+        ],
+        [
+          "/sit-start.html",
+          1
+        ],
+        [
+          "/transactions.html",
+          1
+        ]
+      ],
+      "referrers": [
+        [
+          "(direct)",
+          30
+        ],
+        [
+          "google.com",
+          1
+        ]
+      ],
+      "bots": {
+        "categories": [
+          [
+            "Search Crawlers",
+            4
+          ],
+          [
+            "Scanners & Other",
+            3
+          ],
+          [
+            "AI Crawlers",
+            2
+          ],
+          [
+            "CLI & Scripts",
+            2
+          ]
+        ],
+        "topPaths": [
+          [
+            "/",
+            5
+          ],
+          [
+            "/robots.txt",
+            3
+          ],
+          [
+            "/about.html",
+            1
+          ],
+          [
+            "/gm.html",
+            1
+          ],
+          [
+            "/owners-updates/",
+            1
+          ]
+        ]
+      },
+      "locations": [
+        {
+          "code": "CDG",
+          "city": "Paris",
+          "country": "FR",
+          "human": 608,
+          "bot": 0,
+          "total": 608
+        },
+        {
+          "code": "MIA",
+          "city": "Miami",
+          "country": "US",
+          "human": 44,
+          "bot": 1,
+          "total": 45
+        },
+        {
+          "code": "QRO",
+          "city": "Querétaro",
+          "country": "MX",
+          "human": 23,
+          "bot": 0,
+          "total": 23
+        },
+        {
+          "code": "SFO",
+          "city": "San Francisco",
+          "country": "US",
+          "human": 14,
+          "bot": 0,
+          "total": 14
+        },
+        {
+          "code": "LHR",
+          "city": "London",
+          "country": "GB",
+          "human": 6,
+          "bot": 0,
+          "total": 6
+        },
+        {
+          "code": "ORD",
+          "city": "Chicago",
+          "country": "US",
+          "human": 2,
+          "bot": 4,
+          "total": 6
+        },
+        {
+          "code": "IAD",
+          "city": "Ashburn / DC",
+          "country": "US",
+          "human": 0,
+          "bot": 3,
+          "total": 3
+        },
+        {
+          "code": "MSP",
+          "city": "Minneapolis",
+          "country": "US",
+          "human": 2,
+          "bot": 0,
+          "total": 2
+        },
+        {
+          "code": "TLV",
+          "city": "Tel Aviv",
+          "country": "IL",
+          "human": 0,
+          "bot": 2,
+          "total": 2
+        },
+        {
+          "code": "FRA",
+          "city": "Frankfurt",
+          "country": "DE",
+          "human": 1,
+          "bot": 0,
+          "total": 1
+        },
+        {
+          "code": "MRS",
+          "city": "Marseille",
+          "country": "FR",
+          "human": 0,
+          "bot": 1,
+          "total": 1
+        }
+      ],
+      "countries": [
+        [
+          "FR",
+          608,
+          1
+        ],
+        [
+          "US",
+          62,
+          8
+        ],
+        [
+          "MX",
+          23,
+          0
+        ],
+        [
+          "GB",
+          6,
+          0
+        ],
+        [
+          "IL",
+          0,
+          2
+        ],
+        [
+          "DE",
+          1,
+          0
+        ]
+      ]
+    },
+    "90d": {
+      "days": 90,
+      "startDate": "2026-11-27",
+      "endDate": "2026-11-27",
+      "total": 711,
+      "humanHits": 700,
+      "botHits": 11,
+      "botShare": 0.0155,
+      "pageViews": 45,
+      "uniqueVisitors": 9,
+      "uniqueClients": 3,
+      "ipOnlyVisitors": 6,
+      "clientsAcrossMultipleIps": 0,
+      "cookieCoverage": 0.0657,
+      "cacheHitRatio": 0.2439,
+      "bytes": 1791669,
+      "daily": [
+        [
+          "2026-11-27",
+          45,
+          700,
+          11,
+          9,
+          1791669
+        ]
+      ],
+      "hours": [
+        [
+          "00",
+          0,
+          0
+        ],
+        [
+          "01",
+          0,
+          0
+        ],
+        [
+          "02",
+          6,
+          1
+        ],
+        [
+          "03",
+          22,
+          5
+        ],
+        [
+          "04",
+          623,
+          2
+        ],
+        [
+          "05",
+          49,
+          3
+        ],
+        [
+          "06",
+          0,
+          0
+        ],
+        [
+          "07",
+          0,
+          0
+        ],
+        [
+          "08",
+          0,
+          0
+        ],
+        [
+          "09",
+          0,
+          0
+        ],
+        [
+          "10",
+          0,
+          0
+        ],
+        [
+          "11",
+          0,
+          0
+        ],
+        [
+          "12",
+          0,
+          0
+        ],
+        [
+          "13",
+          0,
+          0
+        ],
+        [
+          "14",
+          0,
+          0
+        ],
+        [
+          "15",
+          0,
+          0
+        ],
+        [
+          "16",
+          0,
+          0
+        ],
+        [
+          "17",
+          0,
+          0
+        ],
+        [
+          "18",
+          0,
+          0
+        ],
+        [
+          "19",
+          0,
+          0
+        ],
+        [
+          "20",
+          0,
+          0
+        ],
+        [
+          "21",
+          0,
+          0
+        ],
+        [
+          "22",
+          0,
+          0
+        ],
+        [
+          "23",
+          0,
+          0
+        ]
+      ],
+      "pages": [
+        [
+          "/",
+          15
+        ],
+        [
+          "/_debug_toolbar/",
+          2
+        ],
+        [
+          "/backup/",
+          2
+        ],
+        [
+          "/debug/pprof/",
+          2
+        ],
+        [
+          "/mcp/",
+          2
+        ],
+        [
+          "/opcache-status/",
+          2
+        ],
+        [
+          "/php-opcache-status/",
+          2
+        ],
+        [
+          "/records.html",
+          2
+        ],
+        [
+          "/storage/framework/sessions/",
+          2
+        ],
+        [
+          "/storage/sessions/",
+          2
+        ],
+        [
+          "/v2/keys/",
+          2
+        ],
+        [
+          "/about.html",
+          1
+        ],
+        [
+          "/cr.html",
+          1
+        ],
+        [
+          "/dm.html",
+          1
+        ],
+        [
+          "/dn.html",
+          1
+        ],
+        [
+          "/drafts.html",
+          1
+        ],
+        [
+          "/gm.html",
+          1
+        ],
+        [
+          "/playoff-race.html",
+          1
+        ],
+        [
+          "/sit-start.html",
+          1
+        ],
+        [
+          "/transactions.html",
+          1
+        ]
+      ],
+      "referrers": [
+        [
+          "(direct)",
+          30
+        ],
+        [
+          "google.com",
+          1
+        ]
+      ],
+      "bots": {
+        "categories": [
+          [
+            "Search Crawlers",
+            4
+          ],
+          [
+            "Scanners & Other",
+            3
+          ],
+          [
+            "AI Crawlers",
+            2
+          ],
+          [
+            "CLI & Scripts",
+            2
+          ]
+        ],
+        "topPaths": [
+          [
+            "/",
+            5
+          ],
+          [
+            "/robots.txt",
+            3
+          ],
+          [
+            "/about.html",
+            1
+          ],
+          [
+            "/gm.html",
+            1
+          ],
+          [
+            "/owners-updates/",
+            1
+          ]
+        ]
+      },
+      "locations": [
+        {
+          "code": "CDG",
+          "city": "Paris",
+          "country": "FR",
+          "human": 608,
+          "bot": 0,
+          "total": 608
+        },
+        {
+          "code": "MIA",
+          "city": "Miami",
+          "country": "US",
+          "human": 44,
+          "bot": 1,
+          "total": 45
+        },
+        {
+          "code": "QRO",
+          "city": "Querétaro",
+          "country": "MX",
+          "human": 23,
+          "bot": 0,
+          "total": 23
+        },
+        {
+          "code": "SFO",
+          "city": "San Francisco",
+          "country": "US",
+          "human": 14,
+          "bot": 0,
+          "total": 14
+        },
+        {
+          "code": "LHR",
+          "city": "London",
+          "country": "GB",
+          "human": 6,
+          "bot": 0,
+          "total": 6
+        },
+        {
+          "code": "ORD",
+          "city": "Chicago",
+          "country": "US",
+          "human": 2,
+          "bot": 4,
+          "total": 6
+        },
+        {
+          "code": "IAD",
+          "city": "Ashburn / DC",
+          "country": "US",
+          "human": 0,
+          "bot": 3,
+          "total": 3
+        },
+        {
+          "code": "MSP",
+          "city": "Minneapolis",
+          "country": "US",
+          "human": 2,
+          "bot": 0,
+          "total": 2
+        },
+        {
+          "code": "TLV",
+          "city": "Tel Aviv",
+          "country": "IL",
+          "human": 0,
+          "bot": 2,
+          "total": 2
+        },
+        {
+          "code": "FRA",
+          "city": "Frankfurt",
+          "country": "DE",
+          "human": 1,
+          "bot": 0,
+          "total": 1
+        },
+        {
+          "code": "MRS",
+          "city": "Marseille",
+          "country": "FR",
+          "human": 0,
+          "bot": 1,
+          "total": 1
+        }
+      ],
+      "countries": [
+        [
+          "FR",
+          608,
+          1
+        ],
+        [
+          "US",
+          62,
+          8
+        ],
+        [
+          "MX",
+          23,
+          0
+        ],
+        [
+          "GB",
+          6,
+          0
+        ],
+        [
+          "IL",
+          0,
+          2
+        ],
+        [
+          "DE",
+          1,
+          0
+        ]
+      ]
+    }
+  }
 }

@@ -6,7 +6,8 @@
   },
   "type": "module",
   "dependencies": {
-    "papaparse": "^5.4.1"
+    "papaparse": "^5.4.1",
+    "sharp": "^0.35.5"
   },
   "devDependencies": {
     "jsdom": "^31.0.1",

@@ -44,7 +44,7 @@ No framework; shared page chunks are inlined at build time by
   `static/data/alltime-records.json` from the ESPN API. See
   "All-time records" below.
 - `node scripts/sync-team-names.js [--dry-run] [season]` — sync ESPN
-  team names into owner page headers.
+  team names and owner profile pictures into owner pages and `static/img/`.
 - `make playoff` — regenerate `src/playoff-race.html` and
   `static/data/playoff-race.json` (playoff clinch/elimination scenarios)
   from the ESPN API. See "Playoff race" below.
@@ -446,14 +446,27 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
   Discord post: a one-off vote analysis, not a recurring page.
 - Tests: `node --test scripts/generate-relegation.test.mjs scripts/build.test.mjs`.
 
-## Team name sync
+## Team name & logo sync
 
 - A weekly GitHub Action (`.github/workflows/team-names.yml`) runs
   Tuesdays at 8am ET year round (two cron windows cover DST). Same repo
   secrets as power rankings minus the Discord webhook.
 - `scripts/sync-team-names.js` rewrites each `<h1>` inside
-  `.owner-logo-header` as `OWNER - <ESPN team name>`. It deploys and
-  commits only when a name changed; no-op weeks skip S3 and CloudFront.
+  `.owner-logo-header` as `OWNER - <ESPN team name>` and syncs each
+  team's ESPN `team.logo` into `static/img/owner-<code>-logo.webp`.
+- Logos are downloaded without ESPN auth cookies (URLs can point to
+  third-party hosts), converted/resized to 200px WebP (q=80, 2x retina
+  for the 100px circular avatar, handling both ESPN SVG vector packs and
+  custom raster uploads) via `sharp`, and written atomically. Whenever an
+  owner's `.webp` changes, the script bumps `?v=N` on that owner's page
+  so browser caches pick up the new image after `make deploy` uploads to
+  S3 and invalidates CloudFront.
+- `scripts/owner-logos-state.json` tracks `{ url, sha256 }` of each
+  owner's last-synced source image so unchanged weeks skip re-encoding,
+  S3, CloudFront, and commits. Fetch/decode errors on an individual
+  owner's logo warn and leave the existing image intact without failing
+  the run.
+- Tests: `node --test scripts/sync-team-names.test.mjs`.
 
 ## Wacky stat (detector + poster)
 

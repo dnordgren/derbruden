@@ -19,6 +19,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
 
@@ -38,30 +39,39 @@ jobs:
             echo "SWID=${{ secrets.SWID }}"
           } > scripts/.env
 
-      - name: Sync team names from ESPN
+      - name: Sync team names and logos from ESPN
         run: node scripts/sync-team-names.js
 
-      - name: Check for changed pages
+      - name: Check for changed files
         id: status
-        run: echo "count=$(git status --porcelain -- src | wc -l)" >> "$GITHUB_OUTPUT"
+        run: |
+          echo "deploy_count=$(git status --porcelain -- src static/img | wc -l)" >> "$GITHUB_OUTPUT"
+          echo "commit_count=$(git status --porcelain -- src static/img scripts/owner-logos-state.json | wc -l)" >> "$GITHUB_OUTPUT"
 
       - name: Configure AWS credentials
-        if: steps.status.outputs.count != '0'
+        if: steps.status.outputs.deploy_count != '0'
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Deploy changed pages
-        if: steps.status.outputs.count != '0'
+      - name: Deploy changed pages and logos
+        if: steps.status.outputs.deploy_count != '0'
         run: make deploy
 
-      - name: Commit synced pages
-        if: steps.status.outputs.count != '0'
+      - name: Commit synced pages and logos
+        if: steps.status.outputs.commit_count != '0'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/
-          git commit -m "chore: Weekly team name sync"
-          git push
+          git add src/ static/img/
+          if [ -f scripts/owner-logos-state.json ]; then
+            git add scripts/owner-logos-state.json
+          fi
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: Weekly team name and logo sync"
+            git push
+          fi

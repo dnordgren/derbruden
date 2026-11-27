@@ -1,0 +1,14 @@
+{
+  "DN": {
+    "url": "https://i.imgur.com/efobiF4.png",
+    "sha256": "e69b4b3efd56a93f37458d30e6fe900ad261a49581764ef15ff3b72270617247"
+  },
+  "JH": {
+    "url": "https://research-methodology.net/wp-content/uploads/2012/08/Oracle4-150x150.jpg",
+    "sha256": "b2ab492b0a3360f2d67afe037bc130d8206f7724813a248b98daa9b89fb82b43"
+  },
+  "JO": {
+    "url": "https://images-na.ssl-images-amazon.com/images/I/71ywp%2B0%2BpUL._SX425_.jpg",
+    "sha256": "23cd28dd15bfc80453fdddfcd034d7fce467b98bf5fa74d8c9f8414f6a390b64"
+  }
+}

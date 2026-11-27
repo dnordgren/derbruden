@@ -231,3 +231,91 @@ test('lastNDays ignores records with unparseable timestamps instead of dropping 
   ]
   assert.equal(lastNDays(records, 1).length, 2)
 })
+
+function v2DateTime(overrides = {}) {
+  const { timestamp: _unused, ...base } = v2()
+  return {
+    date: '2026-11-27',
+    time: '02:38:11',
+    ...base,
+    ...overrides,
+  }
+}
+
+test('normalizes separate CloudFront v2 date and time fields into UTC ISO-8601', () => {
+  assert.equal(normalize(v2DateTime()).time, '2026-11-27T02:38:11Z')
+  assert.equal(normalize(v2DateTime({ time: '02:38:11Z' })).time, '2026-11-27T02:38:11Z', 'does not double-append Z')
+  assert.equal(
+    normalize(v2DateTime({ time: '02:38:11+00:00' })).time,
+    '2026-11-27T02:38:11+00:00',
+    'preserves explicit timezone offset'
+  )
+  assert.equal(
+    normalize(v2DateTime({ timestamp: '2026-11-03T14:02:11Z' })).time,
+    '2026-11-03T14:02:11Z',
+    'prefers timestamp when present'
+  )
+})
+
+test('buckets separate date and time records into their actual UTC hours in summarize', () => {
+  const report = summarize([
+    normalize(v2DateTime({ date: '2026-11-27', time: '02:38:11' })),
+    normalize(v2DateTime({ date: '2026-11-27', time: '19:05:44' })),
+    normalize(v2DateTime({ date: '2026-11-28', time: '02:15:00' })),
+  ])
+  assert.deepEqual(report.days, [
+    ['2026-11-27', 2],
+    ['2026-11-28', 1],
+  ])
+  assert.deepEqual(report.hours, [
+    ['02', 2],
+    ['19', 1],
+  ])
+})
+
+test('lastNDays filters separate date and time records with sub-day precision', () => {
+  const records = [
+    normalize(v2DateTime({ date: '2026-11-26', time: '06:00:00' })),
+    normalize(v2DateTime({ date: '2026-11-26', time: '14:00:00' })),
+    normalize(v2DateTime({ date: '2026-11-27', time: '12:00:00' })),
+  ]
+  const kept = lastNDays(records, 1)
+  assert.deepEqual(
+    kept.map(r => r.time),
+    ['2026-11-26T14:00:00Z', '2026-11-27T12:00:00Z']
+  )
+})
+
+test('degrades safely when date or time is missing, dash-placeholder, or malformed', () => {
+  const { timestamp: _unused, ...base } = v2()
+
+  assert.equal(normalize({ ...base, date: '2026-11-27' }).time, '2026-11-27')
+  assert.equal(normalize({ ...base, date: '2026-11-27', time: '-' }).time, '2026-11-27')
+  assert.equal(normalize({ ...base, date: '-', time: '02:38:11' }).time, '02:38:11')
+  assert.equal(normalize({ ...base, date: '-', time: '-' }).time, '')
+
+  const report = summarize([
+    normalize(v2DateTime({ date: '2026-11-27', time: '09:15:00' })),
+    normalize({ ...base, date: '2026-11-27', time: '-' }),
+    normalize({ ...base, date: '-', time: '02:38:11' }),
+    normalize({ ...base, date: '-', time: '-' }),
+    normalize({ ...base, date: 'not-a-date', time: 'bad-time' }),
+  ])
+  assert.equal(report.total, 5)
+  assert.deepEqual(report.days, [['2026-11-27', 2]])
+  assert.deepEqual(report.hours, [
+    ['00', 1],
+    ['09', 1],
+  ])
+
+  const filtered = lastNDays(
+    [
+      normalize(v2DateTime({ date: '2026-11-27', time: '09:15:00' })),
+      normalize({ ...base, date: '-', time: '02:38:11' }),
+      normalize({ ...base, date: '-', time: '-' }),
+      normalize({ ...base, date: 'not-a-date', time: 'bad-time' }),
+    ],
+    1
+  )
+  assert.equal(filtered.length, 4, 'unparseable date/time records are retained rather than dropped')
+})

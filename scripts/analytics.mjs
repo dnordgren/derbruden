@@ -48,6 +48,22 @@ export function clientIdFromCookie(cookieHeader) {
   return UUID_RE.test(value) ? value : null
 }
 
+// CloudFront Standard Logging v2 emits separate UTC `date` and `time` fields
+// when configured via explicit record_fields; combine them into a UTC ISO-8601
+// timestamp so Date.parse preserves the hour and sub-day windowing works.
+function normalizeTime(record) {
+  const present = value => value !== undefined && value !== null && value !== '' && value !== '-'
+  if (present(record.timestamp)) return record.timestamp
+  if (present(record.date) && present(record.time)) {
+    const time = String(record.time)
+    const suffix = /(?:[Zz]|[+-]\d{2}:?\d{2})$/.test(time) ? '' : 'Z'
+    return `${record.date}T${time}${suffix}`
+  }
+  if (present(record.date)) return record.date
+  if (present(record.time)) return record.time
+  return ''
+}
+
 // CloudFront v2 log records are JSON with header-shaped keys like "cs-uri-stem"
 // and "cs(Cookie)". Normalize the handful we report on, tolerating the v1 TSV
 // field names too so an older log pull still works.
@@ -59,7 +75,7 @@ export function normalize(record) {
     return ''
   }
   return {
-    time: get('timestamp', 'date', 'time'),
+    time: normalizeTime(record),
     ip: get('c-ip'),
     method: get('cs-method'),
     uri: get('cs-uri-stem', 'cs-uri'),

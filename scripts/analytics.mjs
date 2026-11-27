@@ -33,6 +33,41 @@ export function isBot(userAgent) {
   return BOT_RE.test(userAgent || '')
 }
 
+// Paths no human browsing this static site ever requests: exposed-config and
+// credential hunting (`/.env`, `/.git`, `/.claude`, `secret_token`), CMS and
+// framework probes (`wp-login`, `cgi-bin`, `_debug_toolbar`), and server-side
+// code or config files the site never serves (`.php`, `.py`, `docker-compose`
+// and friends). Scanners spoof a plain browser UA, so the UA filter above
+// misses them; the path gives them away — including on the HTTP request that
+// only earns a 301 redirect to HTTPS before the HTTPS retry earns a 403.
+const PROBE_PATH_RE =
+  /(?:^|\/)(?:\.env(?:\.|\/|$)|\.git(?:-|\.|\/|$)|\.claude(?:\/|$)|\.aws(?:\/|$)|\.github(?:\/|$)|credentials?(?:\.|\/|$)|client_secrets|secret_token|secrets?\.(?:json|ya?ml|rb|php)|settings\.(?:py|json|php)|appsettings(?:\.|\/|$)|config\.(?:json|ya?ml|php|txt)|key\.json|llm-?apis|ai[_-]?key|docker-compose|composer\.(?:json|lock)|cgi-bin(?:\/|$)|wp-(?:admin|login|content|includes)|phpinfo|_debug_toolbar|__clockwork|opcache-status|pathscan)/i
+const PROBE_EXT_RE = /\.(?:php|py|cgi|pl|asp|aspx|jsp|rb|sh|yml|yaml)$/i
+
+export function isProbePath(uri) {
+  if (!uri) return false
+  let path = String(uri).split('?')[0]
+  try {
+    path = decodeURIComponent(path)
+  } catch {
+    // Keep the raw path; the patterns still match its unencoded segments.
+  }
+  return PROBE_PATH_RE.test(path) || PROBE_EXT_RE.test(path)
+}
+
+// A request counts as bot traffic when its UA says so, when it probes a path
+// above, or when it errors: this site serves only public static files, so a
+// 4xx/5xx is a request for something that is not here — a scanner working a
+// checklist, a crawler chasing a dead link — never a page a visitor read.
+// Erroring requests stay in the totals as bot hits rather than being dropped,
+// so scan volume remains visible instead of silently vanishing.
+export function isBotRequest(record) {
+  if (!record) return false
+  if (isBot(record.userAgent)) return true
+  if (Number(record.status) >= 400) return true
+  return isProbePath(record.uri)
+}
+
 // Pulls `db_cid` out of the raw request Cookie header. Returns null when the
 // visitor sent no cookie (first request, JS blocked, cookies disabled).
 export function clientIdFromCookie(cookieHeader) {
@@ -139,7 +174,7 @@ export function summarize(records) {
 
   for (const record of records) {
     total += 1
-    const bot = isBot(record.userAgent)
+    const bot = isBotRequest(record)
     if (bot) botHits += 1
     else humanHits += 1
 

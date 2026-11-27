@@ -14,7 +14,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { clientIdFromCookie, hostOf, isBot, isPageView, lastNDays, readCloudFrontLogs } from './analytics.mjs'
+import { clientIdFromCookie, hostOf, isBotRequest, isPageView, lastNDays, readCloudFrontLogs } from './analytics.mjs'
 import { parseEdgeLocation } from './lib/edge-locations.mjs'
 import { writeJsonAtomic } from './lib/html.mjs'
 
@@ -111,7 +111,7 @@ export function computeDailyRollups(records) {
       }
       byDay.set(date, bucket)
     }
-    const bot = isBot(record.userAgent)
+    const bot = isBotRequest(record)
     if (bot) bucket.botHits += 1
     else bucket.humanHits += 1
     bucket.bytes += record.bytes
@@ -216,7 +216,7 @@ export function summarizeWindow(records, days) {
 
   for (const record of subset) {
     total += 1
-    const bot = isBot(record.userAgent)
+    const bot = isBotRequest(record)
     if (bot) botHits += 1
     else humanHits += 1
 

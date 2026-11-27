@@ -93,6 +93,11 @@ No framework; shared page chunks are inlined at build time by
 - `scripts/analytics.mjs` is dependency-free (Node stdlib only) and reads
   gzipped v2 NDJSON; v1 TSV field names are tolerated. `make logs` pulls,
   `make analytics` reports. `logs/` is git ignored.
+- Bot classification lives in `isBotRequest` in `scripts/analytics.mjs`
+  (UA keywords, status >= 400, or a probe path) and is shared by the CLI
+  report and `generate-analytics.mjs`. Do not classify on UA alone:
+  scanners spoof browser UAs, and a UA-only rule counted a 608-request
+  credential scan as human visitors in Nov 2026.
 - Enabling CloudFront logging needs admin creds; `derbruden-deploy` cannot do
   it (`cloudfront:GetDistribution`, `s3:GetBucketLogging`, and every IAM and
   DynamoDB call return AccessDenied on that user).

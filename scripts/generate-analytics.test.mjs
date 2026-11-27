@@ -133,6 +133,66 @@ test('summarizeWindow separates humans, bots, self-referrals, hours, and POP loc
   ])
 })
 
+test('summarizeWindow and daily rollups count a spoofed-UA scan as bots, not French visitors', () => {
+  // The 2026-11-27 Paris scan: browser UA, CloudFront-host probes for
+  // secrets, 301 on HTTP then 403 on HTTPS. None of it may land in human
+  // hits, page views, visitors, or the CDG human location count.
+  const spoofed = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+  const scan = [
+    logRec({
+      'c-ip': '192.0.2.96',
+      'cs(Cookie)': '',
+      'cs(User-Agent)': spoofed,
+      'cs-uri-stem': '/.env',
+      'sc-status': 301,
+      'x-edge-location': 'CDG50-P1',
+    }),
+    logRec({
+      'c-ip': '192.0.2.96',
+      'cs(Cookie)': '',
+      'cs(User-Agent)': spoofed,
+      'cs-uri-stem': '/.env',
+      'sc-status': 403,
+      'x-edge-location': 'CDG50-P1',
+    }),
+    logRec({
+      'c-ip': '192.0.2.96',
+      'cs(Cookie)': '',
+      'cs(User-Agent)': spoofed,
+      'cs-uri-stem': '/.git/HEAD',
+      'sc-status': 403,
+      'x-edge-location': 'CDG50-P1',
+    }),
+  ]
+  const records = [...scan, logRec({ 'cs-uri-stem': '/index.html' })]
+
+  const win = summarizeWindow(records, 7)
+  assert.equal(win.total, 4)
+  assert.equal(win.humanHits, 1)
+  assert.equal(win.botHits, 3)
+  assert.equal(win.pageViews, 1)
+  assert.deepEqual(win.bots.categories, [['Scanners & Other', 3]])
+  assert.deepEqual(
+    win.locations.find(l => l.code === 'CDG'),
+    {
+      code: 'CDG',
+      city: 'Paris',
+      country: 'FR',
+      human: 0,
+      bot: 3,
+      total: 3,
+    }
+  )
+  assert.deepEqual(
+    win.countries.find(c => c[0] === 'FR'),
+    ['FR', 0, 3]
+  )
+
+  const rollups = computeDailyRollups(records)
+  assert.equal(rollups.length, 1)
+  assert.deepEqual(rollups[0].slice(1, 5), [1, 1, 3, 1], 'pageViews, humanHits, botHits, visitors')
+})
+
 test('mergeAllTimeDays preserves expired history while updating overlapping live days', () => {
   const existing = [
     ['2026-08-01', 20, 80, 15, 5, 500000],

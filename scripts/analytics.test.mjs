@@ -5,7 +5,17 @@ import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { test } from 'node:test'
 
-import { clientIdFromCookie, formatReport, isBot, isPageView, lastNDays, normalize, summarize } from './analytics.mjs'
+import {
+  clientIdFromCookie,
+  formatReport,
+  isBot,
+  isBotRequest,
+  isPageView,
+  isProbePath,
+  lastNDays,
+  normalize,
+  summarize,
+} from './analytics.mjs'
 
 const CID_A = 'aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee'
 const CID_B = '11111111-2222-4333-8444-555555555555'
@@ -46,6 +56,66 @@ test('flags bots and scanners by user agent', () => {
   assert.ok(isBot('Mozilla/5.0 (compatible; AhrefsBot/7.0)'))
   assert.ok(isBot('python-requests/2.31.0'))
   assert.equal(isBot('Mozilla/5.0 (Windows NT 10.0) Chrome/131.0'), false)
+})
+
+test('flags error responses as bot traffic even with a spoofed browser UA', () => {
+  // Regression: 2026-11-27, one address in Paris-POP range fired 608 requests
+  // in 11 seconds with a plain browser UA; 606 were 403 probes and all 608
+  // were counted as human visitors.
+  const spoofed = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+  assert.equal(isBot(spoofed), false, 'UA alone does not give the scanner away')
+  assert.ok(isBotRequest(normalize(v2({ 'cs(User-Agent)': spoofed, 'sc-status': 403, 'cs-uri-stem': '/.git/HEAD' }))))
+  assert.ok(isBotRequest(normalize(v2({ 'cs(User-Agent)': spoofed, 'sc-status': 404, 'cs-uri-stem': '/nope.html' }))))
+  assert.equal(
+    isBotRequest(normalize(v2({ 'cs(User-Agent)': spoofed, 'sc-status': 200, 'cs-uri-stem': '/' }))),
+    false,
+    'a successful page load with a browser UA stays human'
+  )
+})
+
+test('flags probe paths even when the response is not an error', () => {
+  // Scanners hit HTTP first and get a 301 to HTTPS; the path alone must be
+  // enough, or half of every scan stays in the human bucket.
+  const spoofed = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+  for (const uri of [
+    '/.env',
+    '/admin/.env',
+    '/.git/config',
+    '/.claude/settings.json',
+    '/cgi-bin/info.cgi',
+    '/wp-login.php',
+    '/docker-compose.yml',
+    '/client_secrets.json',
+  ]) {
+    assert.ok(isProbePath(uri), uri)
+    assert.ok(isBotRequest(normalize(v2({ 'cs(User-Agent)': spoofed, 'sc-status': 301, 'cs-uri-stem': uri }))), uri)
+  }
+  // Legit traffic is not a probe: pages, assets, and data files stay human.
+  for (const uri of [
+    '/',
+    '/records.html',
+    '/static/js/analytics.js',
+    '/static/css/site.css',
+    '/static/data/analytics.json',
+    '/robots.txt',
+  ]) {
+    assert.equal(isProbePath(uri), false, uri)
+  }
+})
+
+test('a scanner burst counts as bot hits, never as page views or visitors', () => {
+  const spoofed = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+  const report = summarize([
+    normalize(v2({ 'cs(User-Agent)': spoofed, 'cs-uri-stem': '/.env', 'sc-status': 301, 'cs(Cookie)': '' })),
+    normalize(v2({ 'cs(User-Agent)': spoofed, 'cs-uri-stem': '/.env', 'sc-status': 403, 'cs(Cookie)': '' })),
+    normalize(v2({ 'cs(User-Agent)': spoofed, 'cs-uri-stem': '/_debug_toolbar/', 'sc-status': 403, 'cs(Cookie)': '' })),
+    normalize(v2({ 'cs-uri-stem': '/index.html' })),
+  ])
+  assert.equal(report.total, 4, 'scan requests stay in the totals')
+  assert.equal(report.botHits, 3)
+  assert.equal(report.humanHits, 1)
+  assert.equal(report.pageViews, 1)
+  assert.equal(report.ipOnlyVisitors, 1, 'only the real reader counts as a visitor')
 })
 
 test('normalizes v2 fields and falls back to v1 names', () => {

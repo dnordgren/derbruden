@@ -439,6 +439,15 @@ Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs
   The report subtracts addresses that later show up carrying a `db_cid` and
   lists them as "of which later got a cookie", so unique clients plus IP-only
   visitors does not overstate the audience.
+- Bot classification is three-legged: a known-bot user agent, an error
+  status (>= 400 — this static site has nothing to 403/404 on except things
+  that are not here), or a probe path no browsing human requests (`/.env`,
+  `/.git`, `/.claude`, `wp-login`, `*.php`, and friends — including the HTTP
+  attempt that only earns a 301 before the HTTPS retry errors). Erroring and
+  probing requests stay in the totals as bot hits, so vulnerability-scan
+  volume (e.g. the 608-request Paris-POP scan on 2026-11-27, previously
+  counted as French human visitors) shows under Bots instead of polluting
+  human traffic, page views, and locations.
 - Distinct-client counts are still approximate. A shared IP with cleared
   cookies can look like more than one person.
 - "IP-only visitors" counts addresses that fetched a page (HTML) without a

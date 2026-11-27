@@ -95,6 +95,7 @@ test('summarizeWindow separates humans, bots, self-referrals, hours, and POP loc
   assert.equal(win.ipOnlyVisitors, 1)
   assert.equal(win.uniqueVisitors, 2)
   assert.equal(win.clientsAcrossMultipleIps, 1)
+  assert.equal(win.cookieCoverage, 0.75, '3 of 4 human requests carried db_cid, bots excluded')
   assert.equal(win.cacheHitRatio, 0.8)
 
   // /index.html merged into /; assets and bot paths excluded from Top Pages

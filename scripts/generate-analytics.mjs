@@ -118,7 +118,7 @@ export function computeDailyRollups(records) {
     if (!bot && isPageView(record.uri)) bucket.pageViews += 1
 
     const cid = clientIdFromCookie(record.cookie)
-    if (cid) {
+    if (cid && !bot) {
       bucket.clients.add(cid)
       if (!bucket.cookieIps.has(cid)) bucket.cookieIps.set(cid, new Set())
       if (record.ip) bucket.cookieIps.get(cid).add(record.ip)
@@ -271,7 +271,7 @@ export function summarizeWindow(records, days) {
     }
 
     const cid = clientIdFromCookie(record.cookie)
-    if (cid) {
+    if (cid && !bot) {
       cookieHits += 1
       clients.add(cid)
       if (!cookieIps.has(cid)) cookieIps.set(cid, new Set())
@@ -305,7 +305,7 @@ export function summarizeWindow(records, days) {
     uniqueClients: identity.uniqueClients,
     ipOnlyVisitors: identity.ipOnlyVisitors,
     clientsAcrossMultipleIps: identity.clientsAcrossMultipleIps,
-    cookieCoverage: roundRatio(cookieHits, total),
+    cookieCoverage: roundRatio(cookieHits, humanHits),
     cacheHitRatio: roundRatio(hits, hits + misses),
     bytes,
     daily,

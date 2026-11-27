@@ -334,6 +334,7 @@ test('analytics page renders KPIs, D3 charts, bot report, and global locations',
   try {
     const doc = dom.window.document
     await waitFor(() => doc.querySelectorAll('#kpi-grid .kpi-card').length === 5, { timeout: 15000 })
+    assert.match(doc.getElementById('kpi-grid').textContent, /Avg Pages \/ Visitor/)
     assert.equal(doc.querySelectorAll('#daily-chart svg').length, 1)
     assert.equal(doc.querySelectorAll('#hourly-chart svg').length, 1)
     assert.ok(countShape(doc) > 30)

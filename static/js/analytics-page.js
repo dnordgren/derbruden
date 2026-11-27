@@ -268,6 +268,7 @@
       if (w.clientsAcrossMultipleIps > 0) {
         idSub += ' (' + w.clientsAcrossMultipleIps + ' multi-IP)'
       }
+      var pagesPerVisitor = w.uniqueVisitors > 0 ? (w.pageViews / w.uniqueVisitors).toFixed(1) : '0.0'
       cards = [
         {
           label: 'Page Views',
@@ -282,16 +283,16 @@
           cls: '',
         },
         {
+          label: 'Avg Pages / Visitor',
+          value: pagesPerVisitor,
+          sub: 'Human cookie coverage ' + fmtPct(w.cookieCoverage),
+          cls: 'kpi-neutral',
+        },
+        {
           label: 'Bot Traffic',
           value: fmtPct(w.botShare),
           sub: fmtInt(w.botHits) + ' bot requests',
           cls: 'kpi-bot',
-        },
-        {
-          label: 'Edge Cache Hit',
-          value: fmtPct(w.cacheHitRatio),
-          sub: 'Cookie coverage ' + fmtPct(w.cookieCoverage),
-          cls: 'kpi-neutral',
         },
         {
           label: 'Data Served',

@@ -454,13 +454,14 @@ id="owner-viz-data">`; `static/js/owner-charts.js` renders client-side
 - `scripts/sync-team-names.js` rewrites each `<h1>` inside
   `.owner-logo-header` as `OWNER - <ESPN team name>` and syncs each
   team's ESPN `team.logo` into `static/img/owner-<code>-logo.webp`.
-- Logos are downloaded without ESPN auth cookies (URLs can point to
-  third-party hosts), converted/resized to 200px WebP (q=80, 2x retina
-  for the 100px circular avatar, handling both ESPN SVG vector packs and
-  custom raster uploads) via `sharp`, and written atomically. Whenever an
-  owner's `.webp` changes, the script bumps `?v=N` on that owner's page
-  so browser caches pick up the new image after `make deploy` uploads to
-  S3 and invalidates CloudFront.
+- Logos send ESPN auth cookies only to HTTPS `*.fantasy.espn.com` hosts
+  (needed for ESPN-hosted uploads on `mystique-api.fantasy.espn.com`),
+  follow redirects manually to strip cookies off-host, convert/resize to
+  200px WebP (q=80, 2x retina for the 100px circular avatar, handling
+  both ESPN SVG vector packs and custom raster uploads) via `sharp`, and
+  write atomically. Whenever an owner's `.webp` changes, the script
+  bumps `?v=N` on that owner's page so browser caches pick up the new
+  image after `make deploy` uploads to S3 and invalidates CloudFront.
 - `scripts/owner-logos-state.json` tracks `{ url, sha256 }` of each
   owner's last-synced source image so unchanged weeks skip re-encoding,
   S3, CloudFront, and commits. Fetch/decode errors on an individual

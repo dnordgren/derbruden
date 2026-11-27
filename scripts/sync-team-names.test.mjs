@@ -7,6 +7,7 @@ import sharp from 'sharp'
 import {
   bumpLogoVersion,
   fetchLogoBytes,
+  isEspnFantasyUrl,
   logoFilename,
   optimizeLogo,
   syncTeams,
@@ -69,6 +70,15 @@ test('validateLogoUrl accepts http(s) and protocol-relative URLs and rejects uns
   assert.equal(validateLogoUrl('not a url'), null)
 })
 
+test('isEspnFantasyUrl only matches HTTPS fantasy.espn.com hosts', () => {
+  assert.equal(isEspnFantasyUrl('https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/abc'), true)
+  assert.equal(isEspnFantasyUrl('https://fantasy.espn.com/foo.png'), true)
+  assert.equal(isEspnFantasyUrl('http://mystique-api.fantasy.espn.com/insecure.png'), false)
+  assert.equal(isEspnFantasyUrl('https://evil-fantasy.espn.com/x.png'), false)
+  assert.equal(isEspnFantasyUrl('https://fantasy.espn.com.evil.com/x.png'), false)
+  assert.equal(isEspnFantasyUrl('https://i.imgur.com/abc.png'), false)
+})
+
 test('bumpLogoVersion increments existing ?v=N and initializes unversioned references', () => {
   const html1 = makeOwnerHtml('DN', 'Team', 1)
   const r1 = bumpLogoVersion(html1, 'DN')
@@ -129,17 +139,38 @@ test('optimizeLogo produces 200x200 WebP for large rasters and SVGs without enla
   await assert.rejects(() => optimizeLogo(Buffer.from('<html>not an image</html>')))
 })
 
-test('fetchLogoBytes never sends Cookie header and rejects bad status, HTML, or oversized bodies', async () => {
+test('fetchLogoBytes scopes ESPN cookies to fantasy.espn.com, strips on redirect, and validates responses', async () => {
   const png = await makePng(64, 64)
+  const secretCookie = 'espn_s2=secret; SWID={123}'
+
+  // Third-party host never receives ESPN Cookie header.
   let seenHeaders = null
   const okFetch = async (url, opts) => {
     seenHeaders = opts.headers
     return new Response(png, { status: 200, headers: { 'content-type': 'image/png' } })
   }
-  const bytes = await fetchLogoBytes('https://example.com/pic.png', { fetchImpl: okFetch })
+  const bytes = await fetchLogoBytes('https://example.com/pic.png', { fetchImpl: okFetch, espnCookie: secretCookie })
   assert.equal(bytes.equals(png), true)
   assert.equal('Cookie' in seenHeaders, false)
-  assert.equal('cookie' in seenHeaders, false)
+
+  // mystique-api.fantasy.espn.com gets the ESPN Cookie, and redirects off-host strip it.
+  const hops = []
+  const redirectFetch = async (url, opts) => {
+    hops.push({ url, cookie: opts.headers.Cookie || null })
+    if (url.includes('mystique-api.fantasy.espn.com')) {
+      return new Response(null, { status: 302, headers: { location: 'https://cdn.thirdparty.example/img.png' } })
+    }
+    return new Response(png, { status: 200, headers: { 'content-type': 'image/png' } })
+  }
+  const redirected = await fetchLogoBytes('https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/abc', {
+    fetchImpl: redirectFetch,
+    espnCookie: secretCookie,
+  })
+  assert.equal(redirected.equals(png), true)
+  assert.deepEqual(hops, [
+    { url: 'https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/abc', cookie: secretCookie },
+    { url: 'https://cdn.thirdparty.example/img.png', cookie: null },
+  ])
 
   await assert.rejects(
     () =>

@@ -4,7 +4,7 @@ import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import sharp from 'sharp'
 import { TEAM_OWNERS } from './team-owners.js'
-import { applyEnvFile, defaultSeason, espnAuthHeaders, fetchLeague } from './lib/espn.mjs'
+import { applyEnvFile, authCookie, defaultSeason, espnAuthHeaders, fetchLeague } from './lib/espn.mjs'
 import { escapeHtml, writeJsonAtomic } from './lib/html.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -74,27 +74,81 @@ export function validateLogoUrl(rawUrl) {
   return parsed.href
 }
 
-// Fetch raw logo bytes without sending ESPN auth cookies — team.logo can
-// point to an arbitrary third-party image host.
+export function isEspnFantasyUrl(urlString) {
+  try {
+    const parsed = new URL(urlString)
+    return (
+      parsed.protocol === 'https:' &&
+      (parsed.hostname === 'fantasy.espn.com' || parsed.hostname.endsWith('.fantasy.espn.com'))
+    )
+  } catch {
+    return false
+  }
+}
+
+// Fetch raw logo bytes. ESPN's own mystique-api.fantasy.espn.com image host
+// requires espn_s2/SWID cookies, while custom URLs can point to arbitrary
+// third-party hosts. Only attach ESPN cookies to HTTPS *.fantasy.espn.com
+// URLs, and follow redirects manually so cookies are never forwarded off-host.
 export async function fetchLogoBytes(
   logoUrl,
-  { fetchImpl = globalThis.fetch, timeoutMs = LOGO_FETCH_TIMEOUT_MS, maxBytes = MAX_LOGO_BYTES } = {}
+  {
+    fetchImpl = globalThis.fetch,
+    espnCookie = '',
+    timeoutMs = LOGO_FETCH_TIMEOUT_MS,
+    maxBytes = MAX_LOGO_BYTES,
+    maxRedirects = 5,
+  } = {}
 ) {
-  const res = await fetchImpl(logoUrl, {
-    headers: {
+  let currentUrl = logoUrl
+  let res
+
+  for (let hop = 0; hop <= maxRedirects; hop += 1) {
+    const headers = {
       'User-Agent': USER_AGENT,
       Accept: 'image/*,*/*;q=0.8',
-    },
-    redirect: 'follow',
-    signal: AbortSignal.timeout(timeoutMs),
-  })
+    }
+    if (espnCookie && isEspnFantasyUrl(currentUrl)) {
+      headers.Cookie = espnCookie
+    }
+
+    res = await fetchImpl(currentUrl, {
+      headers,
+      redirect: 'manual',
+      signal: AbortSignal.timeout(timeoutMs),
+    })
+
+    if (res.status >= 300 && res.status < 400) {
+      const location = res.headers?.get?.('location')
+      if (!location) {
+        throw new Error(`HTTP ${res.status} redirect without Location header fetching ${currentUrl}`)
+      }
+      if (hop === maxRedirects) {
+        throw new Error(`Too many redirects fetching ${logoUrl}`)
+      }
+      let nextUrl
+      try {
+        nextUrl = validateLogoUrl(new URL(location, currentUrl).href)
+      } catch {
+        nextUrl = null
+      }
+      if (!nextUrl) {
+        throw new Error(`Invalid redirect target (${location}) fetching ${currentUrl}`)
+      }
+      currentUrl = nextUrl
+      continue
+    }
+
+    break
+  }
+
   if (!res.ok) {
-    throw new Error(`HTTP ${res.status} fetching ${logoUrl}`)
+    throw new Error(`HTTP ${res.status} fetching ${currentUrl}`)
   }
 
   const contentType = (res.headers?.get?.('content-type') || '').toLowerCase().split(';')[0].trim()
   if (contentType && NON_IMAGE_CONTENT_TYPES.includes(contentType)) {
-    throw new Error(`Unexpected content-type ${contentType} from ${logoUrl}`)
+    throw new Error(`Unexpected content-type ${contentType} from ${currentUrl}`)
   }
 
   const contentLength = Number(res.headers?.get?.('content-length') || 0)
@@ -104,7 +158,7 @@ export async function fetchLogoBytes(
 
   const buffer = Buffer.from(await res.arrayBuffer())
   if (buffer.length === 0) {
-    throw new Error(`Empty response body from ${logoUrl}`)
+    throw new Error(`Empty response body from ${currentUrl}`)
   }
   if (buffer.length > maxBytes) {
     throw new Error(`Logo exceeds size limit (${buffer.length} > ${maxBytes} bytes)`)
@@ -173,6 +227,7 @@ export async function syncOwnerLogo({
   srcDir = SRC_DIR,
   imgDir = IMG_DIR,
   dryRun = false,
+  espnCookie = '',
   fetchImpl = globalThis.fetch,
   optimizeImpl = optimizeLogo,
 }) {
@@ -188,7 +243,7 @@ export async function syncOwnerLogo({
 
   let rawBytes
   try {
-    rawBytes = await fetchLogoBytes(validUrl, { fetchImpl })
+    rawBytes = await fetchLogoBytes(validUrl, { fetchImpl, espnCookie })
   } catch (err) {
     console.warn(`${owner}: failed to fetch logo (${err.message}); keeping existing image`)
     return { status: 'error', reason: err.message }
@@ -246,6 +301,7 @@ export async function syncTeams({
   imgDir = IMG_DIR,
   stateFile = STATE_FILE,
   dryRun = false,
+  espnCookie = '',
   fetchImpl = globalThis.fetch,
   optimizeImpl = optimizeLogo,
   teamOwners = TEAM_OWNERS,
@@ -277,6 +333,7 @@ export async function syncTeams({
       srcDir,
       imgDir,
       dryRun,
+      espnCookie,
       fetchImpl,
       optimizeImpl,
     })
@@ -312,6 +369,7 @@ export async function syncTeams({
 async function main(argv = process.argv.slice(2)) {
   applyEnvFile(path.join(__dirname, '.env'))
   authHeaders()
+  const espnCookie = authCookie(process.env)
   const dryRun = argv.includes('--dry-run')
 
   const [seasonArg] = argv.filter(arg => /^\d{4}$/.test(arg))
@@ -327,7 +385,7 @@ async function main(argv = process.argv.slice(2)) {
     league = await fetchSeason(fallback)
   }
 
-  await syncTeams({ league, dryRun })
+  await syncTeams({ league, dryRun, espnCookie })
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {

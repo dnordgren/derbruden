@@ -37,3 +37,8 @@ output "deploy_user_arn" {
   description = "ARN of the derbruden-deploy IAM user."
   value       = aws_iam_user.deploy.arn
 }
+
+output "github_terraform_role_arn" {
+  description = "IAM role ARN to store in the AWS_TERRAFORM_ROLE_ARN GitHub Actions repository variable."
+  value       = aws_iam_role.github_terraform.arn
+}

@@ -1,0 +1,251 @@
+name: Terraform PR Comment
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+
+jobs:
+  comment:
+    name: Terraform Comment Command
+    # Gate strictly to repo owner on PRs before any step or OIDC token request runs.
+    if: >-
+      github.event.issue.pull_request != null &&
+      github.event.comment.user.login == 'dnordgren' &&
+      github.event.comment.author_association == 'OWNER' &&
+      (
+        startsWith(github.event.comment.body, '/tf plan') ||
+        startsWith(github.event.comment.body, '/tf apply') ||
+        startsWith(github.event.comment.body, 'terraform plan') ||
+        startsWith(github.event.comment.body, 'terraform apply')
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+      issues: write
+    concurrency:
+      group: terraform-comment-${{ github.event.issue.number }}
+      cancel-in-progress: false
+    defaults:
+      run:
+        working-directory: terraform
+    steps:
+      - name: Validate command and PR state
+        id: parse
+        uses: actions/github-script@v9
+        env:
+          ROLE_ARN: ${{ vars.AWS_TERRAFORM_ROLE_ARN }}
+        with:
+          script: |
+            const body = (context.payload.comment?.body || '').trim();
+            const match = body.match(/^(?:\/tf|terraform)\s+(plan|apply)$/i);
+            if (!match) {
+              core.info('Comment is not a standalone Terraform command; ignoring.');
+              core.setOutput('matched', 'false');
+              return;
+            }
+
+            const action = match[1].toLowerCase();
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comment_id = context.payload.comment.id;
+
+            if (!process.env.ROLE_ARN) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number,
+                body: '❌ Repository variable `AWS_TERRAFORM_ROLE_ARN` is not set yet. See `terraform/README.md` for OIDC bootstrap steps.',
+              });
+              core.setFailed('AWS_TERRAFORM_ROLE_ARN is not configured.');
+              return;
+            }
+
+            const { data: pr } = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: issue_number,
+            });
+
+            if (pr.state !== 'open') {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number,
+                body: `❌ PR #${issue_number} is **${pr.state}**; refusing to run \`terraform ${action}\`.`,
+              });
+              core.setFailed(`PR #${issue_number} is ${pr.state}.`);
+              return;
+            }
+
+            if (!pr.head.repo || pr.head.repo.full_name !== `${owner}/${repo}`) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number,
+                body: '❌ Refusing to run Terraform on a fork PR.',
+              });
+              core.setFailed('Fork PRs are not permitted to assume the Terraform CI role.');
+              return;
+            }
+
+            await github.rest.reactions.createForIssueComment({
+              owner,
+              repo,
+              comment_id,
+              content: 'eyes',
+            });
+
+            core.setOutput('matched', 'true');
+            core.setOutput('action', action);
+            core.setOutput('head_sha', pr.head.sha);
+
+      - uses: actions/checkout@v4
+        if: steps.parse.outputs.matched == 'true'
+        with:
+          ref: ${{ steps.parse.outputs.head_sha }}
+
+      - name: Configure AWS credentials (OIDC)
+        if: steps.parse.outputs.matched == 'true'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_TERRAFORM_ROLE_ARN }}
+          aws-region: us-east-1
+          role-session-name: gh-tf-comment-${{ github.run_id }}
+
+      - uses: hashicorp/setup-terraform@v4
+        if: steps.parse.outputs.matched == 'true'
+        with:
+          terraform_version: '<2.0.0'
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        id: init
+        if: steps.parse.outputs.matched == 'true'
+        run: |
+          set +e
+          terraform init -no-color -input=false 2>&1 | tee "$RUNNER_TEMP/tf-output.txt"
+          rc=${PIPESTATUS[0]}
+          set -e
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+
+      - name: Terraform Run
+        id: tf
+        if: steps.parse.outputs.matched == 'true' && steps.init.outputs.rc == '0'
+        env:
+          TF_ACTION: ${{ steps.parse.outputs.action }}
+        run: |
+          set +e
+          if [ "$TF_ACTION" = "apply" ]; then
+            terraform apply -auto-approve -no-color -input=false -lock-timeout=5m 2>&1 | tee "$RUNNER_TEMP/tf-output.txt"
+          else
+            terraform plan -no-color -input=false -detailed-exitcode -lock-timeout=5m 2>&1 | tee "$RUNNER_TEMP/tf-output.txt"
+          fi
+          rc=${PIPESTATUS[0]}
+          set -e
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+
+      - name: Comment result on PR
+        if: always() && steps.init.outcome != 'skipped'
+        uses: actions/github-script@v9
+        env:
+          TF_ACTION: ${{ steps.parse.outputs.action }}
+          INIT_RC: ${{ steps.init.outputs.rc }}
+          TF_RC: ${{ steps.tf.outputs.rc }}
+          HEAD_SHA: ${{ steps.parse.outputs.head_sha }}
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+
+            const outPath = path.join(process.env.RUNNER_TEMP, 'tf-output.txt');
+            let raw = fs.existsSync(outPath)
+              ? fs.readFileSync(outPath, 'utf8').trim()
+              : '(no Terraform output captured)';
+
+            const maxLen = 55000;
+            if (raw.length > maxLen) {
+              raw = `${raw.slice(0, maxLen)}\n\n... (output truncated; see full workflow logs)`;
+            }
+
+            const action = process.env.TF_ACTION;
+            const initRc = process.env.INIT_RC;
+            const tfRc = process.env.TF_RC;
+            const shortSha = (process.env.HEAD_SHA || '').slice(0, 7);
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+
+            let ok = false;
+            let heading;
+            if (initRc !== '0') {
+              heading = '❌ Terraform Init Failed';
+            } else if (action === 'plan') {
+              if (tfRc === '0') {
+                ok = true;
+                heading = '✅ Terraform Plan: No changes';
+              } else if (tfRc === '2') {
+                ok = true;
+                heading = '📋 Terraform Plan: Changes detected';
+              } else {
+                heading = '❌ Terraform Plan Failed';
+              }
+            } else if (tfRc === '0') {
+              ok = true;
+              heading = '🚀 Terraform Apply Succeeded';
+            } else {
+              heading = '❌ Terraform Apply Failed';
+            }
+
+            const body = [
+              `### ${heading}`,
+              `Commit \`${shortSha}\` · Triggered by \`/tf ${action}\` · [Workflow logs](${runUrl})`,
+              '',
+              '<details><summary>Show Terraform output</summary>',
+              '',
+              '```hcl',
+              raw,
+              '```',
+              '',
+              '</details>',
+            ].join('\n');
+
+            const { owner, repo } = context.repo;
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: context.issue.number,
+              body,
+            });
+
+            await github.rest.reactions.createForIssueComment({
+              owner,
+              repo,
+              comment_id: context.payload.comment.id,
+              content: ok ? 'rocket' : 'confused',
+            });
+
+            if (process.env.GITHUB_STEP_SUMMARY) {
+              fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${body}\n`);
+            }
+
+      - name: Check Terraform exit code
+        if: steps.parse.outputs.matched == 'true'
+        env:
+          TF_ACTION: ${{ steps.parse.outputs.action }}
+          INIT_RC: ${{ steps.init.outputs.rc }}
+          TF_RC: ${{ steps.tf.outputs.rc }}
+        run: |
+          if [ "$INIT_RC" != "0" ]; then
+            exit "$INIT_RC"
+          fi
+          if [ "$TF_ACTION" = "plan" ]; then
+            if [ "$TF_RC" != "0" ] && [ "$TF_RC" != "2" ]; then
+              exit "$TF_RC"
+            fi
+          elif [ "$TF_RC" != "0" ]; then
+            exit "$TF_RC"
+          fi

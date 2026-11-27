@@ -33,3 +33,9 @@ variable "legacy_logs_prefix" {
   type        = string
   default     = "derbruden.com/cloudfront"
 }
+
+variable "github_repo" {
+  description = "GitHub repository (owner/name) permitted to assume the Terraform CI IAM role via OIDC."
+  type        = string
+  default     = "dnordgren/derbruden"
+}

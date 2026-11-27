@@ -54,6 +54,12 @@ test('normalizes v2 fields and falls back to v1 names', () => {
   assert.equal(record.uri, '/power-rankings.html')
   assert.equal(record.status, 200)
 
+  const split = normalize({ date: '2026-11-26', time: '14:02:11', 'cs-uri-stem': '/' })
+  assert.equal(split.time, '2026-11-26T14:02:11Z')
+  const report = summarize([split])
+  assert.deepEqual(report.days, [['2026-11-26', 1]])
+  assert.deepEqual(report.hours, [['14', 1]])
+
   const v1 = normalize({ 'c-ip': '198.51.100.5', 'cs-uri': '/index.html', 'sc-status': '304' })
   assert.equal(v1.uri, '/index.html')
   assert.equal(v1.status, 304)

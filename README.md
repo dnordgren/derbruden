@@ -408,7 +408,24 @@ font file outships every page on the site, so an unfiltered list would answer
 nothing. "Top URIs" is the unfiltered view for when you want cache and asset
 behaviour.
 
-Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs`.
+The public [analytics page](https://derbruden.com/analytics.html) (linked in
+the site footer) reads aggregate-only JSON from `static/data/analytics.json`:
+rolling 7d/30d/90d summaries, bot categories/paths, global CloudFront edge POP
+locations, and a compact all-time daily rollup merged across runs so trends
+persist past the 90-day S3 log expiration. Generate it locally with:
+
+```sh
+make logs && make analytics-data
+```
+
+A daily GitHub Action (`.github/workflows/analytics.yml`, 9am ET with two cron
+windows for DST) syncs `s3://derbruden-logs/` into ephemeral `logs/cloudfront/`,
+regenerates `static/data/analytics.json`, publishes `analytics.html` and
+`analytics.json` with two-path CloudFront invalidation, and commits when
+changed. Raw logs, IPs, cookies, and User-Agents never enter git or the public
+bucket.
+
+Tests: `node --test scripts/analytics.test.mjs scripts/analytics-cookie.test.mjs scripts/generate-analytics.test.mjs`.
 
 ### What this measures, honestly
 

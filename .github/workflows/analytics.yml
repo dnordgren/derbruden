@@ -1,0 +1,73 @@
+name: Analytics
+
+on:
+  schedule:
+    # Daily at 9am ET. Cron runs on UTC only, so two windows cover
+    # daylight time (Mar-Oct) and standard time (Nov-Feb). GitHub cron
+    # rejects ranges that wrap the year, so list winter months out.
+    - cron: '0 13 * 3-10 *'
+    - cron: '0 14 * 11,12,1,2 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: analytics
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # Raw logs live only in ephemeral logs/cloudfront/ (git-ignored) and are
+      # never committed or uploaded to the public site bucket.
+      - name: Sync CloudFront logs from S3
+        run: |
+          mkdir -p logs/cloudfront
+          aws s3 sync s3://derbruden-logs/AWSLogs/354450307824/CloudFront/ logs/cloudfront/ --only-show-errors
+
+      - name: Generate analytics JSON
+        run: node scripts/generate-analytics.mjs
+
+      - name: Check for changed files
+        id: status
+        run: echo "count=$(git status --porcelain static/data/analytics.json | wc -l)" >> "$GITHUB_OUTPUT"
+
+      - name: Build pages
+        if: steps.status.outputs.count != '0' || github.event_name == 'workflow_dispatch'
+        run: node scripts/build.mjs
+
+      # Two invalidation paths stay far below the monthly CloudFront free tier.
+      # analytics-page.js is versioned (?v=1) and immutable-cached so copying it
+      # here ensures /analytics.html works immediately even before `make deploy`.
+      - name: Publish page and data
+        if: steps.status.outputs.count != '0' || github.event_name == 'workflow_dispatch'
+        run: |
+          aws s3 cp pub/analytics.html s3://derbruden.com/analytics.html --cache-control "public, max-age=60, stale-while-revalidate=300"
+          aws s3 cp static/js/analytics-page.js s3://derbruden.com/static/js/analytics-page.js --cache-control "public, max-age=31536000, immutable"
+          aws s3 cp static/data/analytics.json s3://derbruden.com/static/data/analytics.json --cache-control "public, max-age=0, must-revalidate"
+          aws cloudfront create-invalidation --distribution-id E3CDWEEK40CKI2 --paths "/analytics.html" "/static/data/analytics.json"
+
+      - name: Commit updated analytics data
+        if: steps.status.outputs.count != '0'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add static/data/analytics.json
+          git commit -m "chore: Update analytics data"
+          git push

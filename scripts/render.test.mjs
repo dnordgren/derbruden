@@ -219,6 +219,144 @@ test('transactions page fills tables from the JSON feeds', async () => {
   }
 })
 
+test('analytics page renders KPIs, D3 charts, bot report, and global locations', async () => {
+  const fixture = {
+    version: 1,
+    updatedAt: '2026-11-27T14:00:00Z',
+    latestLogDate: '2026-11-27',
+    allTime: {
+      firstDate: '2026-11-25',
+      lastDate: '2026-11-27',
+      totals: {
+        days: 3,
+        total: 320,
+        pageViews: 95,
+        humanHits: 240,
+        botHits: 80,
+        botShare: 0.25,
+        bytes: 4200000,
+        avgDailyPageViews: 31.7,
+        avgDailyVisitors: 6.3,
+        peakDay: { date: '2026-11-26', pageViews: 42, visitors: 8 },
+      },
+      days: [
+        ['2026-11-25', 25, 70, 20, 5, 1100000],
+        ['2026-11-26', 42, 100, 35, 8, 1800000],
+        ['2026-11-27', 28, 70, 25, 6, 1300000],
+      ],
+    },
+    windows: {
+      '7d': {
+        days: 7,
+        startDate: '2026-11-25',
+        endDate: '2026-11-27',
+        total: 320,
+        humanHits: 240,
+        botHits: 80,
+        botShare: 0.25,
+        pageViews: 95,
+        uniqueVisitors: 10,
+        uniqueClients: 8,
+        ipOnlyVisitors: 2,
+        clientsAcrossMultipleIps: 2,
+        cookieCoverage: 0.78,
+        cacheHitRatio: 0.92,
+        bytes: 4200000,
+        daily: [
+          ['2026-11-25', 25, 70, 20, 5, 1100000],
+          ['2026-11-26', 42, 100, 35, 8, 1800000],
+          ['2026-11-27', 28, 70, 25, 6, 1300000],
+        ],
+        hours: Array.from({ length: 24 }, (_, h) => [String(h).padStart(2, '0'), (h % 5) + 1, h % 3]),
+        pages: [
+          ['/', 45],
+          ['/records.html', 25],
+          ['/dn.html', 15],
+        ],
+        referrers: [
+          ['(direct)', 70],
+          ['discord.com', 25],
+        ],
+        bots: {
+          categories: [
+            ['AI Crawlers', 45],
+            ['Search Crawlers', 35],
+          ],
+          topPaths: [
+            ['/', 50],
+            ['/robots.txt', 30],
+          ],
+        },
+        locations: [
+          { code: 'SEA', city: 'Seattle', country: 'US', human: 180, bot: 10, total: 190 },
+          { code: 'FRA', city: 'Frankfurt', country: 'DE', human: 0, bot: 50, total: 50 },
+        ],
+        countries: [
+          ['US', 180, 10],
+          ['DE', 0, 50],
+        ],
+      },
+      '30d': null,
+      '90d': null,
+    },
+  }
+  fixture.windows['30d'] = fixture.windows['7d']
+  fixture.windows['90d'] = fixture.windows['7d']
+
+  const errors = []
+  const virtualConsole = new VirtualConsole()
+  virtualConsole.on('jsdomError', err => errors.push(`jsdomError: ${err.message}`))
+  virtualConsole.on('error', (...args) => errors.push(`console.error: ${args.join(' ')}`))
+
+  const dom = new JSDOM(readFileSync(join(buildDir, 'analytics.html'), 'utf8'), {
+    url: `${ORIGIN}/analytics.html`,
+    runScripts: 'dangerously',
+    pretendToBeVisual: true,
+    virtualConsole,
+    resources: { interceptors: [serveFrom(buildDir)] },
+    beforeParse: window => {
+      window.fetch = async input => {
+        const href = typeof input === 'string' ? input : input.url
+        const { pathname } = new URL(href, window.location.href)
+        if (pathname === '/static/data/analytics.json') {
+          return new Response(JSON.stringify(fixture), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+          })
+        }
+        const asset = readAsset(buildDir, pathname)
+        if (!asset) throw new TypeError(`fetch failed: ${pathname}`)
+        return new Response(asset.body, { status: 200, headers: { 'Content-Type': asset.type } })
+      }
+    },
+  })
+
+  try {
+    const doc = dom.window.document
+    await waitFor(() => doc.querySelectorAll('#kpi-grid .kpi-card').length === 5, { timeout: 15000 })
+    assert.equal(doc.querySelectorAll('#daily-chart svg').length, 1)
+    assert.equal(doc.querySelectorAll('#hourly-chart svg').length, 1)
+    assert.ok(countShape(doc) > 30)
+    assert.match(doc.getElementById('locations-wrap').textContent, /Seattle, United States/)
+    assert.match(doc.getElementById('locations-wrap').textContent, /Frankfurt, Germany/)
+
+    // Switching to All Time swaps the KPI cards and shows the 90d detail note
+    const allBtn = doc.querySelector('button[data-window="all"]')
+    allBtn.click()
+    await waitFor(() => !doc.getElementById('alltime-detail-banner').hidden)
+    assert.match(doc.getElementById('kpi-grid').textContent, /Peak Day/)
+
+    // Filtering locations to Bots hides human-only rows and ranks Frankfurt #1
+    const botLocBtn = doc.querySelector('button[data-loc-filter="bot"]')
+    botLocBtn.click()
+    const firstRow = doc.querySelector('#locations-wrap tbody tr td').textContent
+    assert.match(firstRow, /Frankfurt/)
+    assert.deepEqual(errors, [])
+  } finally {
+    dom.window.close()
+  }
+})
+
 test('every page builds and runs without console errors', async () => {
   for (const page of listPages()) {
     const { dom, errors } = await render(buildDir, page)

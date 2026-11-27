@@ -1,4 +1,4 @@
-.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff diaper races analytics logs
+.PHONY: webp clean build deploy deploy-html deploy-static invalidate-cache drafts records waivers viz luck sitstart capture-rosters playoff diaper races analytics analytics-data logs
 
 BUCKET = derbruden.com
 DISTRIBUTION_ID = E3CDWEEK40CKI2
@@ -51,7 +51,7 @@ deploy-html: build
 deploy-static:
 	@echo "make deploy-static : Started"
 	@echo "Deploying static assets to bucket derbruden.com..."
-	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --exclude "data/luck.json" --exclude "data/sit-start.json" --exclude "data/games.json" --exclude "data/playoff-race.json" --exclude "data/relegation.json" --cache-control "public, max-age=31536000, immutable"
+	@aws s3 sync static/ s3://$(BUCKET)/static/ --delete --exclude "data/trades.json" --exclude "data/waivers.json" --exclude "data/alltime-records.json" --exclude "data/luck.json" --exclude "data/sit-start.json" --exclude "data/games.json" --exclude "data/playoff-race.json" --exclude "data/relegation.json" --exclude "data/analytics.json" --cache-control "public, max-age=31536000, immutable"
 	@aws s3 cp static/data/trades.json s3://$(BUCKET)/static/data/trades.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/alltime-records.json s3://$(BUCKET)/static/data/alltime-records.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/waivers.json s3://$(BUCKET)/static/data/waivers.json --cache-control "public, max-age=0, must-revalidate"
@@ -60,6 +60,7 @@ deploy-static:
 	@aws s3 cp static/data/playoff-race.json s3://$(BUCKET)/static/data/playoff-race.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/diaper-race.json s3://$(BUCKET)/static/data/diaper-race.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/data/relegation.json s3://$(BUCKET)/static/data/relegation.json --cache-control "public, max-age=0, must-revalidate"
+	@aws s3 cp static/data/analytics.json s3://$(BUCKET)/static/data/analytics.json --cache-control "public, max-age=0, must-revalidate"
 	@aws s3 cp static/ico/header-icon-32.png s3://$(BUCKET)/favicon.ico --cache-control "public, max-age=31536000, immutable"
 	@echo "make deploy-static : Finished"
 
@@ -145,7 +146,7 @@ relegation:
 	@ESPN_S2="$$ESPN_S2" SWID="$$SWID" node scripts/generate-relegation.mjs
 	@echo "make relegation : Finished"
 ANALYTICS_LOG_DIR ?= logs/cloudfront
-CLOUDFRONT_LOG_BUCKET ?=
+CLOUDFRONT_LOG_BUCKET ?= s3://derbruden-logs/AWSLogs/354450307824/CloudFront/
 
 logs:
 	@echo "make logs : Started"
@@ -158,3 +159,8 @@ analytics:
 	@echo "make analytics : Started"
 	@node scripts/analytics.mjs $(ANALYTICS_LOG_DIR)
 	@echo "make analytics : Finished"
+
+analytics-data:
+	@echo "make analytics-data : Started"
+	@node scripts/generate-analytics.mjs $(ANALYTICS_LOG_DIR)
+	@echo "make analytics-data : Finished"

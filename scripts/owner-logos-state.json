@@ -1,7 +1,31 @@
 {
+  "AN": {
+    "url": "https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/995bbde0-87a7-11f0-89de-d1ac062a5dc6",
+    "sha256": "8cc7c2477e29f2c352e8dcb642f828d2d746c1129515728960ba0614649e437d"
+  },
+  "AR": {
+    "url": "https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/76b18d00-877b-11f0-b1c3-bf61c28fbeb9",
+    "sha256": "b125f776fe7030d2fe5e74425545ee6f7a5ee12679e5fcf3ed19925c3a49e14d"
+  },
+  "CR": {
+    "url": "https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/7b572560-c58f-11f1-b70e-3b79d16938b9",
+    "sha256": "1bc01aa313bd13108aac13f847bc5fe9e1705427f2e67edd3f6c0127315cfe86"
+  },
+  "DM": {
+    "url": "https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/b5e38b00-8b57-11f1-8f90-a1d3270d2218",
+    "sha256": "de454886196aaf3f4cbdf46609ca3c756125d51f18368c71c7541c6aa2da692a"
+  },
   "DN": {
     "url": "https://i.imgur.com/efobiF4.png",
     "sha256": "e69b4b3efd56a93f37458d30e6fe900ad261a49581764ef15ff3b72270617247"
+  },
+  "GM": {
+    "url": "https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/94b66c60-d65a-11f1-8977-1928d050ef7b",
+    "sha256": "a096f13b3dc3e1edb72daabc6bea407fa7d3db6641e8e4a8b08ce78a069f3bbc"
+  },
+  "IK": {
+    "url": "https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/609f5160-c1f8-11f1-a634-c9868ed16479",
+    "sha256": "7f8b711b67585dc73ed3bc6b4293484dfa7af2166bac93025b092071ae6b22c6"
   },
   "JH": {
     "url": "https://research-methodology.net/wp-content/uploads/2012/08/Oracle4-150x150.jpg",
@@ -10,5 +34,9 @@
   "JO": {
     "url": "https://images-na.ssl-images-amazon.com/images/I/71ywp%2B0%2BpUL._SX425_.jpg",
     "sha256": "23cd28dd15bfc80453fdddfcd034d7fce467b98bf5fa74d8c9f8414f6a390b64"
+  },
+  "ZS": {
+    "url": "https://mystique-api.fantasy.espn.com/apis/v1/domains/lm/images/8c16cea0-4205-11f0-aeec-89a937148099",
+    "sha256": "50368462f6d0b03630814665c21403a19e14bf0e2b3ee36843e67c149823f2a3"
   }
 }

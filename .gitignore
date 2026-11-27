@@ -34,3 +34,17 @@ node_modules/
 scripts/.wacky-cache/
 # CloudFront access log pulls (make logs)
 /logs/
+
+# Terraform working directories, local state, and variable files
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+.terraformrc
+terraform.rc
+
